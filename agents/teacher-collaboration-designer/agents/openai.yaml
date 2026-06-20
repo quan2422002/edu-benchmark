@@ -1,0 +1,4 @@
+interface:
+  display_name: "Teacher Collaboration Designer"
+  short_description: "Clear human-in-the-loop teacher workflows"
+  default_prompt: "Use $teacher-collaboration-designer to turn research findings into clear teacher tasks and review workflows."

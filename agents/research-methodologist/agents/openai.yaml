@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Methodologist"
+  short_description: "Evidence-based literature review workflow"
+  default_prompt: "Use $research-methodologist to conduct a traceable literature review before proposing benchmark requirements."
