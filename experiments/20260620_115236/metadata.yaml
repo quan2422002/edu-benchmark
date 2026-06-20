@@ -1,0 +1,16 @@
+id: "20260620_115236"
+title: "Modular PoC planning for specialist agents, literature review, and teacher workflow"
+status: draft
+task_type: planning
+owner_agent: orchestrator
+parents:
+  - "20260618_150902"
+created_at: "2026-06-20T11:52:36+07:00"
+deadline: "2026-06-21T17:00:00+07:00"
+git_commit: null
+artifacts:
+  - roadmap.md
+  - plans/01-specialist-agent-foundation.md
+  - plans/02-literature-review-poc.md
+  - plans/03-human-in-the-loop-teacher-workflow.md
+  - plans/04-teacher-pilot-packet.md

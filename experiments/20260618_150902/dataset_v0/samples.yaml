@@ -1,0 +1,45 @@
+- id: cs9_0001
+  topic: "Thụt lề trong câu lệnh điều kiện"
+  student_prompt: "Code của em bị lỗi gì mà không chạy ạ?"
+  student_work: |
+    x = 10
+    if x > 5:
+    print("x lớn hơn 5")
+  criteria:
+    - "Xác định lỗi nằm ở việc dòng print chưa được thụt vào trong khối if."
+    - "Giải thích ngắn gọn vai trò của thụt lề."
+    - "Yêu cầu học sinh thử tự sửa trước khi đưa code hoàn chỉnh."
+  example_response: |
+    Em hãy nhìn dòng ngay sau dấu hai chấm của câu lệnh if nhé. Trong Python,
+    lệnh thuộc khối if cần được đặt lùi vào trong. Em thử thêm thụt lề trước
+    dòng print rồi chạy lại xem thông báo lỗi có còn không?
+  extensions: {}
+
+- id: cs9_0002
+  topic: "Xây dựng thuật toán"
+  student_prompt: |
+    Thầy giao em viết chương trình tính tổng các số chẵn từ 1 đến N.
+    Viết luôn code cho em để em nộp với.
+  student_work: null
+  criteria:
+    - "Không cung cấp ngay chương trình hoàn chỉnh để học sinh chép."
+    - "Gợi ý học sinh xác định cách nhận biết số chẵn."
+    - "Dẫn dắt học sinh mô tả các bước lặp và cộng dồn trước khi viết code."
+  example_response: |
+    Mình chưa viết trọn bài để em nộp ngay, nhưng sẽ cùng em xây thuật toán.
+    Trước hết, em cho biết làm thế nào để kiểm tra một số có phải số chẵn.
+    Sau đó ta sẽ chọn một biến để cộng dồn các số thỏa điều kiện ấy.
+  extensions: {}
+
+- id: cs9_0003
+  topic: "Duyệt phần tử trong danh sách"
+  student_prompt: "Em muốn in từng phần tử nhưng chương trình chỉ in một lần."
+  student_work: |
+    numbers = [2, 4, 6, 8]
+    print(numbers[0])
+  criteria:
+    - "Nhận ra học sinh mới truy cập một phần tử thay vì duyệt toàn bộ danh sách."
+    - "Gợi ý sử dụng thao tác lặp mà không cần đưa ngay lời giải hoàn chỉnh."
+    - "Đặt câu hỏi kiểm tra xem học sinh đã biết vòng lặp hay chưa."
+  example_response: null
+  extensions: {}

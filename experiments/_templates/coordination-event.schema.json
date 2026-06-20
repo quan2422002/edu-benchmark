@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination-event.schema.json",
+  "title": "Specialist delegation event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "timestamp",
+    "event_type",
+    "delegation_id",
+    "parent_session",
+    "agent",
+    "task",
+    "input_paths",
+    "allowed_write_paths",
+    "status",
+    "output_paths",
+    "open_questions"
+  ],
+  "properties": {
+    "timestamp": {"type": "string", "format": "date-time"},
+    "event_type": {
+      "enum": [
+        "delegation_started",
+        "delegation_steered",
+        "delegation_completed",
+        "delegation_stopped",
+        "delegation_failed"
+      ]
+    },
+    "delegation_id": {"type": "string", "minLength": 1},
+    "parent_session": {"type": "string", "minLength": 1},
+    "agent": {
+      "enum": ["research-methodologist", "teacher-collaboration-designer"]
+    },
+    "task": {"type": "string", "minLength": 1},
+    "input_paths": {"type": "array", "items": {"type": "string"}},
+    "allowed_write_paths": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["started", "running", "completed", "stopped", "failed"]},
+    "native_thread_id": {"type": ["string", "null"]},
+    "output_paths": {"type": "array", "items": {"type": "string"}},
+    "summary": {"type": ["string", "null"]},
+    "open_questions": {"type": "array", "items": {"type": "string"}}
+  }
+}
