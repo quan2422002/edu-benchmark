@@ -1,0 +1,5 @@
+# Skill metadata validation
+PyYAML==6.0.3
+
+# Project test runner
+pytest==9.1.1
