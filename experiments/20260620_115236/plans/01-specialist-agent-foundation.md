@@ -2,9 +2,12 @@
 
 ## Trạng thái
 
-- Status: `IMPLEMENTED_PENDING_FRESH_SESSION_TEST`
+- Status: `COMPLETED`
+- Completed at: `2026-06-21`
 - Approved at: `2026-06-20`
-- Project environment: `benchmark_env` (`/home/quannda/miniconda3/envs/benchmark_env`)
+- Project environment: `benchmark_env`
+  - Windows: `D:\conda-envs\benchmark_env\python.exe`
+  - Linux: `/home/quannda/miniconda3/envs/benchmark_env/bin/python`
 - Priority: urgent
 - Dependency: none
 - Blocks: P02 literature review
@@ -171,7 +174,7 @@ Người dùng phải có thể:
 
 ## 5. Quy trình triển khai
 
-1. Kích hoạt Conda environment `benchmark_env` và xác nhận `sys.executable` trỏ tới `/home/quannda/miniconda3/envs/benchmark_env/bin/python`.
+1. Kích hoạt Conda environment `benchmark_env` và xác nhận `sys.executable` trỏ tới executable của nền tảng: `D:\conda-envs\benchmark_env\python.exe` trên Windows hoặc `/home/quannda/miniconda3/envs/benchmark_env/bin/python` trên Linux.
 2. Chạy `skill-creator` initializer cho từng skill với `scripts,references`.
 3. Viết `SKILL.md` ngắn, imperative, frontmatter chỉ có `name` và `description`.
 4. Chỉ thêm script cho validation xác định; không viết script cho phần suy luận nghiên cứu.
@@ -362,7 +365,7 @@ Skill folders không có README riêng; theo skill convention, chúng chỉ ch�
 - ARCHITECTURE phân biệt rõ canonical agent, runtime adapter và native agent thread.
 - AGENTS enforce native-only delegation và plan/file ownership boundaries.
 - Không tạo tài liệu Markdown deferred nếu chưa thỏa trigger nêu tại Mục 6.4.
-- Tất cả project Python validation được chạy bằng `/home/quannda/miniconda3/envs/benchmark_env/bin/python`.
+- Tất cả project Python validation được chạy bằng executable `benchmark_env` của nền tảng; không dùng Conda base hoặc system Python.
 - Không sửa benchmark taxonomy, dataset schema hoặc evaluation pipeline trong P01.
 
 ## 9. File ownership

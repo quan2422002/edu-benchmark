@@ -2,9 +2,9 @@
 
 ## Status
 
-`IMPLEMENTED_PENDING_FRESH_SESSION_TEST`
+`COMPLETED`
 
-Implementation is complete. One runtime discovery check requires a fresh Codex session because project custom-agent files are loaded at session start.
+Implementation, fresh-session custom-agent discovery, Windows symlink materialization, and final validation are complete as of 2026-06-21.
 
 ## Implemented artifacts
 
@@ -18,18 +18,19 @@ Implementation is complete. One runtime discovery check requires a fresh Codex s
   - `.claude/agents/research-methodologist.md`
   - `.claude/agents/teacher-collaboration-designer.md`
 - Codex skill discovery symlinks under `.agents/skills/`.
-- Coordination event schema, handoff template, JSONL audit log, and three forward-test handoffs.
+- Coordination event schema, handoff template, JSONL audit log, three forward-test handoffs, and one fresh-session adapter-discovery handoff.
 - Root documentation: `README.md`, `ARCHITECTURE.md`, `AGENTS.md`.
-- Sixteen unit/static/documentation tests under `tests/agents/`.
+- Seventeen unit/static/documentation tests under `tests/agents/`.
 
 ## Validation results
 
 - Original implementation-turn tests were run with Conda base Python `/home/quannda/miniconda3/bin/python` (Python 3.13.12). This was discovered after the user identified the project environment and those results are retained only as historical context.
-- The authoritative project environment is now `benchmark_env` at `/home/quannda/miniconda3/envs/benchmark_env` (Python 3.12.13).
-- `PyYAML` and `pytest` were installed into `benchmark_env` on 2026-06-20.
+- The authoritative project environment is `benchmark_env`, using `D:\conda-envs\benchmark_env\python.exe` on Windows or `/home/quannda/miniconda3/envs/benchmark_env/bin/python` on Linux.
+- `PyYAML` 6.0.3 and `pytest` 9.1.1 were installed into the Windows `benchmark_env` from `requirements.txt` on 2026-06-21.
 - Revalidation on 2026-06-20 used `/home/quannda/miniconda3/envs/benchmark_env/bin/python` exclusively.
+- Windows closure validation on 2026-06-21 used `D:\conda-envs\benchmark_env\python.exe` (Python 3.12.13) exclusively.
 - `quick_validate.py`: pass for both skills.
-- Python unit/static/documentation tests: 16/16 pass with `pytest` 9.1.1.
+- Python unit/static/documentation tests: 17/17 pass with `pytest` 9.1.1.
 - Python compilation: pass.
 - Codex TOML parse: pass.
 - Coordination JSON schema and JSONL parse: pass.
@@ -57,18 +58,29 @@ The canonical skill and validator were tightened. A fresh second run passed: aut
 
 Native interrupt steering was exercised successfully on the first teacher-agent thread.
 
-## Pending acceptance check
+## Fresh-session custom-agent check
 
-The attempt to spawn `research-methodologist` directly by custom agent type returned `unknown agent_type`. This is expected in the current session because it started before `.codex/agents/` was created. Canonical skills were successfully exercised through native subagent threads using explicit skill loading.
+On 2026-06-21, a fresh Codex App session resolved `research-methodologist` directly by custom agent type:
 
-Required final check in a fresh Codex CLI/App session:
+- Native thread: `019ee625-a431-7bc0-a3b3-d97e27a51230` / Scholar.
+- The thread was observable, accepted an interrupt steer, and returned a source-aware result.
+- It correctly separated evidence, inference, unsupported inference, and open questions.
+- It rejected reward-model response classification as proof of student learning gains.
+- It limited cross-domain transfer and routed pedagogical suitability to an expert teacher.
+- The delegation used the native agent tool; no nested `codex exec`, `claude -p`, daemon, or hidden terminal specialist process was launched.
+- Audit artifact: `coordination/handoffs/p01-adapter-discovery-002.md`.
 
-1. Open the repository in a new session.
-2. Ask the orchestrator to spawn `research-methodologist` by custom agent type.
-3. Confirm the native thread appears and can be inspected/steered.
-4. Run `/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pytest tests/agents -q`.
-5. Mark P01 `COMPLETED`, commit only P01-owned files, and push.
+## Final Windows acceptance check
+
+- The two `.agents/skills/` entries were materialized from Git index in an Administrator PowerShell session.
+- PowerShell reported both entries as `SymbolicLink` with the expected relative canonical targets.
+- Git index reports both entries with mode `120000`.
+- Both skills passed `quick_validate.py`.
+- The full test suite passed: 17/17.
+- Python compilation and `pip check` passed.
+- Coordination JSONL parsed successfully with all required fields.
+- Path-scoped `git diff --check` passed.
 
 ## GitHub status
 
-Not committed or pushed. P01 requires all acceptance checks to pass first. Unrelated user deletions and document changes remain untouched.
+The implementation through commit `59e16d1` is already present on `origin/main`. The 2026-06-21 closure changes are not staged, committed, or pushed. Unrelated `.gitignore`, `project-understanding.md`, and line-ending-only working-tree changes remain outside the closure scope.

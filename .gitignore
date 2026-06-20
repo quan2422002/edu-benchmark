@@ -1,1 +1,5 @@
 document/
+.vscode/
+
+# Python bytecode and test caches
+__pycache__/

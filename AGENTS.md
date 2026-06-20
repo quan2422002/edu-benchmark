@@ -4,7 +4,7 @@ Read [README.md](README.md), [ARCHITECTURE.md](ARCHITECTURE.md), and the active 
 
 ## Required workflow
 
-- Use only `/home/quannda/miniconda3/envs/benchmark_env/bin/python` for project Python commands, package installation, validators, and tests. Do not install project packages into Conda base or system Python.
+- Use only the platform-specific `benchmark_env` interpreter for project Python commands, package installation, validators, and tests: `D:\conda-envs\benchmark_env\python.exe` on Windows or `/home/quannda/miniconda3/envs/benchmark_env/bin/python` on Linux. Do not install project packages into Conda base or system Python.
 - Do not implement a plan unless its file explicitly says `APPROVED`.
 - Modify only paths owned by the active plan; preserve unrelated user changes.
 - Announce the specialist name, task, inputs, allowed writes, and expected output before delegation.

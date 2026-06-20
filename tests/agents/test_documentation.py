@@ -56,6 +56,17 @@ class DocumentationTests(unittest.TestCase):
         ):
             self.assertIn(required, content)
 
+    def test_python_environment_contract(self) -> None:
+        for path in DOCS:
+            content = path.read_text(encoding="utf-8")
+            self.assertIn(r"D:\conda-envs\benchmark_env\python.exe", content)
+            self.assertIn(
+                "/home/quannda/miniconda3/envs/benchmark_env/bin/python",
+                content,
+            )
+            self.assertIn("Conda base", content)
+            self.assertIn("system Python", content)
+
     def test_local_markdown_links_resolve(self) -> None:
         for path in DOCS:
             content = path.read_text(encoding="utf-8")
