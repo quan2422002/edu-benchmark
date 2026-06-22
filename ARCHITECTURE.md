@@ -37,8 +37,12 @@ In plain language: the user directs the orchestrator; the orchestrator delegates
 | Skill discovery links | `.agents/skills/` | P01 | Generated and validated by P01 |
 | Coordination contract | `experiments/_templates/` | P01 | Implemented by P01 |
 | Modular plans | `experiments/<id>/plans/` | Respective plan | Active |
-| Teacher workflow and packet | Future P03/P04 artifacts | P03/P04 | Not implemented |
-| Benchmark specification | Future P05 artifacts | P05 | Not implemented |
+| F01 rapid evidence review | `experiments/20260621_135515/literature/` | F01 | Ready for expert review; does not complete P02 |
+| F01 curriculum source package | `experiments/20260621_135515/curriculum_sources/` | F01 | Two mandatory sources, registry, hashes, and Grade-9 location matrix |
+| F01 candidate benchmark framework | `experiments/20260621_135515/benchmark/` | F01 | Ready for expert review; not benchmark v1 |
+| F01 teacher workflow and packet | `experiments/20260621_135515/teacher_packet/` | F01 | Ready for expert review; does not complete P03/P04 |
+| F01 DOCX handoff | `experiments/20260621_135515/deliverables/` | F01 | Render-validated candidate handoff |
+| Durable benchmark specification | Future P05 artifacts | P05 | Not implemented |
 | Dataset tooling | Future P06 artifacts | P06 | Not implemented |
 | Evaluation pipeline | Future P07 artifacts | P07 | Not implemented |
 
@@ -113,7 +117,7 @@ Package installation, project scripts, validators, and tests must run with the m
 
 ## Dependency direction
 
-P01 owns agent infrastructure and root documentation. P02 may consume the research specialist but does not modify it without a P01 migration. P03/P04 consume teacher-workflow capabilities. P05–P07 own benchmark, dataset, and evaluation artifacts respectively.
+P01 owns agent infrastructure and root documentation. F01 consumes the P01 specialists and the C01 grounding package to create a candidate review handoff without changing canonical skills or completing P02–P05. P02 may consume or revise F01 research artifacts; P03/P04 may consume or revise its teacher workflow; P05–P07 own durable benchmark, dataset, and evaluation artifacts respectively.
 
 Later plans must not move canonical logic into runtime adapters or redefine P01 coordination semantics without an explicit architecture decision and migration plan.
 
@@ -130,7 +134,7 @@ Later plans must not move canonical logic into runtime adapters or redefine P01 
 - Claude adapters are not runtime-tested in P01.
 - Coordination events are file-based and not yet backed by a database or UI.
 - Native transcripts depend on runtime retention and do not include private chain-of-thought.
-- Benchmark taxonomy, dataset schema, and evaluation metrics remain provisional or unimplemented.
+- The F01 task taxonomy and rubric are provisional and await teacher review/calibration; dataset schema and evaluation metrics remain unimplemented.
 - Direct Python dependencies are pinned in `requirements.txt`; a complete Conda environment export and transitive lockfile have not yet been assigned to a dedicated plan.
 
-Last verified against P01 on 2026-06-21.
+Last verified against P01 and F01 on 2026-06-21.

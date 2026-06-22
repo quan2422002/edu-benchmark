@@ -4,11 +4,13 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-The project is in the proof-of-concept stage. The current approved work establishes specialist-agent infrastructure before conducting a broader literature review. The benchmark taxonomy, production dataset, and evaluation pipeline are not yet approved or implemented.
+The project is in the proof-of-concept stage. P01 specialist infrastructure is complete. The fast-track F01 experiment has produced a literature-backed candidate framework, teacher packet, traceability matrix, workbooks, and a DOCX handoff in `READY_FOR_EXPERT_REVIEW` status. The framework is not a validated benchmark, and the production dataset and evaluation pipeline are not implemented.
 
 Active roadmap: [experiments/20260620_115236/roadmap.md](experiments/20260620_115236/roadmap.md)
 
-Approved plan: [P01 — Specialist-agent foundation](experiments/20260620_115236/plans/01-specialist-agent-foundation.md)
+Candidate framework: [F01 report](experiments/20260621_135515/report.md)
+
+Teacher handoff: [Khung benchmark Tin học 9](experiments/20260621_135515/deliverables/Khung_benchmark_Tin_hoc_9.docx)
 
 ## People and decision authority
 
@@ -50,6 +52,14 @@ experiments/            Modular plans, coordination records, and reports
 document/               Project source material supplied by the user
 tests/agents/           P01 validation and documentation tests
 ```
+
+F01 artifacts live under `experiments/20260621_135515/`. They are candidate
+research/design artifacts awaiting independent expert-teacher review, not
+production benchmark data.
+
+The teacher handoff is Vietnamese-first. F01 also stores local, hashed copies
+of the two mandatory curriculum references under
+`experiments/20260621_135515/curriculum_sources/`.
 
 ## Project Python environment
 
@@ -111,4 +121,4 @@ Runtime smoke testing must be performed in an interactive Codex CLI/App session 
 
 Agents and contributors must follow [AGENTS.md](AGENTS.md). Architecture changes must update [ARCHITECTURE.md](ARCHITECTURE.md) in the same commit.
 
-Last verified against P01 on 2026-06-21.
+Last verified against P01 and F01 on 2026-06-21.
