@@ -1,0 +1,34 @@
+id: "20260621_135515"
+plan_id: "F01"
+title: "Fast-track evidence-backed benchmark framework and teacher handoff"
+status: ready_for_expert_review
+task_type: integrated_research_and_design
+owner_agent: orchestrator
+branch: "feature/C01_P02_P03"
+parents:
+  - "20260620_115236"
+  - "20260621_052024"
+created_at: "2026-06-21T13:55:15+07:00"
+git_commit: null
+artifacts:
+  - plan.md
+  - curriculum_sources/README.md
+  - curriculum_sources/source_registry.csv
+  - curriculum_sources/curriculum_reference_matrix.csv
+  - curriculum_sources/01-Chuong-trinh-GDPT-mon-Tin-hoc-2018.pdf
+  - curriculum_sources/02-Tai-lieu-tim-hieu-Chuong-trinh-mon-Tin-hoc-2019.pdf
+  - literature/review_protocol.md
+  - literature/review_log.csv
+  - literature/evidence_matrix.csv
+  - literature/rapid_review.md
+  - benchmark/benchmark_framework.xlsx
+  - benchmark/task_specification.md
+  - benchmark/traceability_matrix.csv
+  - teacher_packet/00-start-here.md
+  - teacher_packet/author-and-review-guide.md
+  - teacher_packet/examples.md
+  - teacher_packet/review_form.xlsx
+  - deliverables/Khung_benchmark_Tin_hoc_9.docx
+  - coordination/delegations.jsonl
+  - coordination/handoffs/
+  - report.md
