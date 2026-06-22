@@ -1,0 +1,25 @@
+id: "20260621_052024"
+title: "Reference-grounded Grade-9 Informatics examples for teacher handoff"
+status: running
+task_type: planning
+owner_agent: orchestrator
+parents:
+  - "20260620_115236"
+created_at: "2026-06-21T05:20:24+07:00"
+git_commit: null
+artifacts:
+  - plan.md
+  - grounding/source_registry.csv
+  - grounding/grade9_reference_matrix.csv
+  - grounding/reference_contract.md
+  - grounding/workbook_field_notes.md
+  - grounding/sample_template.csv
+  - grounding/example_coverage_proposal.md
+  - grounding/reference_grounded_examples.md
+  - grounding/teacher_review_questions.md
+  - coordination/delegations.jsonl
+  - coordination/handoffs/c01-research-001.md
+  - coordination/handoffs/c01-teacher-design-001.md
+  - coordination/handoffs/c01-research-002.md
+  - coordination/handoffs/c01-teacher-design-002.md
+  - report.md
