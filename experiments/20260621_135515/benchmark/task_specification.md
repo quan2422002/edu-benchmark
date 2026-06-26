@@ -21,6 +21,9 @@
 - `critical_failure_flags` là danh sách mã lỗi nghiêm trọng. Dùng `[]` khi
   không có lỗi; khi có lỗi, chỉ dùng mã trong trang `Ma_loi_nghiem_trong` của
   workbook. Mã lỗi không được thay bằng điểm thấp và không được bù bằng điểm cao.
+  Có lỗi nghiêm trọng không tự động làm toàn bộ tiêu chí thành 0; người thẩm định
+  vẫn chấm từng tiêu chí theo điều quan sát được, rồi ghi mã lỗi riêng để báo
+  rằng phản hồi không thể được chấp nhận như một phản hồi đạt yêu cầu.
 
 ## T01 — Giải thích khái niệm theo mức hiểu của học sinh
 
@@ -174,4 +177,7 @@
 - Chấm từng tiêu chí từ 0 đến 5.
 - Chỉ dùng `N/A` khi tiêu chí không áp dụng và phải ghi lí do.
 - Không dùng điểm cao để bù lỗi nghiêm trọng.
+- Không tự động đổi toàn bộ điểm thành 0 khi có lỗi nghiêm trọng; điểm tiêu chí
+  dùng để chẩn đoán từng mặt, còn mã lỗi nghiêm trọng dùng để chặn việc chấp
+  nhận hoặc bù điểm cho lỗi nguy hiểm.
 - Không đặt trọng số hoặc ngưỡng đạt trước khi giáo viên hiệu chuẩn.
