@@ -26,15 +26,16 @@ Agent hỗ trợ chuẩn hóa quy trình, tổng hợp nghiên cứu và tạo c
 
 ## 4. Thứ tự các plan
 
-| ID | Plan | Có thể chạy | Phụ thuộc | Ưu tiên |
-|---|---|---|---|---|
-| P01 | [Specialist-agent foundation](plans/01-specialist-agent-foundation.md) | Tuần tự đầu tiên | Không | Khẩn cấp |
-| P02 | [Literature review PoC](plans/02-literature-review-poc.md) | Sau P01 | P01 | Khẩn cấp |
-| P03 | [Human-in-the-loop teacher workflow](plans/03-human-in-the-loop-teacher-workflow.md) | Song song với P01/P02 | Không phụ thuộc code | Khẩn cấp |
-| P04 | [Teacher pilot packet](plans/04-teacher-pilot-packet.md) | Sau kết quả sơ bộ P02 và P03 | P02, P03 | Deadline 21/06/2026 |
-| P05 | Benchmark specification | Sau PoC | P02, P04 | Chưa viết |
-| P06 | Dataset tooling | Sau schema được duyệt | P05 | Chưa viết |
-| P07 | Evaluation pipeline | Sau benchmark specification | P05 | Chưa viết |
+
+| ID  | Plan                                                                                                     | Có thể chạy                                                   | Phụ thuộc             | Ưu tiên                  |
+| --- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------- | -------------------------- |
+| P01 | [Specialist-agent foundation](plans/01-specialist-agent-foundation.md)                                   | Tuần tự đầu tiên                                            | Không                  | Khẩn cấp                 |
+| P02 | [Literature review PoC](plans/02-literature-review-poc.md)                                               | Sau P01                                                          | P01                     | Khẩn cấp                 |
+| P03 | [Human-in-the-loop teacher workflow](plans/03-human-in-the-loop-teacher-workflow.md)                     | Song song với P01/P02                                           | Không phụ thuộc code | Khẩn cấp                 |
+| P04 | [Teacher pilot packet](plans/04-teacher-pilot-packet.md)                                                 | Sau kết quả sơ bộ P02 và P03                                | P02, P03                | Deadline 21/06/2026        |
+| P05 | Benchmark specification                                                                                  | Sau PoC                                                          | P02, P04                | Chưa viết                |
+| P06 | Dataset tooling                                                                                          | Sau schema được duyệt                                        | P05                     | Chưa viết                |
+| P07 | Evaluation pipeline                                                                                      | Sau benchmark specification                                      | P05                     | Chưa viết                |
 | P08 | [Agent workspace isolation and evaluator integrity](plans/08-agent-workspace-and-evaluator-hardening.md) | Hậu PoC, trước production-scale parallel writes/quality gates | P01; phối hợp P06/P07 | Backlog, chưa phê duyệt |
 
 ## 5. Critical path tới chiều Chủ nhật 21/06/2026
@@ -49,16 +50,17 @@ Nếu không đủ thời gian, ưu tiên chất lượng protocol và tính min
 
 ## 6. Ranh giới artifact để hạn chế sửa chồng chéo
 
-| Plan | Sở hữu chính |
-|---|---|
-| P01 | `agents/`, adapter agent/skill, agent validation tests |
-| P02 | literature protocol, evidence matrix, review và research gaps trong experiment riêng |
-| P03 | role model, teacher task contracts, handoff và review workflow |
-| P04 | teacher-facing packet, form/template và provisional examples |
-| P05 | benchmark taxonomy, task definitions, rubric specification |
-| P06 | schema/code nhập liệu và dataset versioning |
-| P07 | inference, judge, metrics và reporting |
-| P08 | workspace isolation, write leases, protected evaluator boundary và integration gates |
+
+| Plan | Sở hữu chính                                                                        |
+| ---- | -------------------------------------------------------------------------------------- |
+| P01  | `agents/`, adapter agent/skill, agent validation tests                                 |
+| P02  | literature protocol, evidence matrix, review và research gaps trong experiment riêng |
+| P03  | role model, teacher task contracts, handoff và review workflow                        |
+| P04  | teacher-facing packet, form/template và provisional examples                          |
+| P05  | benchmark taxonomy, task definitions, rubric specification                             |
+| P06  | schema/code nhập liệu và dataset versioning                                         |
+| P07  | inference, judge, metrics và reporting                                                |
+| P08  | workspace isolation, write leases, protected evaluator boundary và integration gates  |
 
 ## 7. Trạng thái artifact hiện có
 
