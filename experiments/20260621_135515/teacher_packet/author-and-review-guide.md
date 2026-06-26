@@ -113,9 +113,12 @@ thẩm định.
 5. Ghi lí do.
 6. Kiểm tra riêng lỗi nghiêm trọng và ghi mã trong danh mục; nếu không có lỗi,
    ghi danh sách rỗng `[]`.
-7. Xem bảng tiêu chí có bỏ sót cách trả lời hợp lệ.
-8. Chọn Chấp nhận, Cần sửa hoặc Loại.
-9. Chuyển tác giả hoặc người phân xử.
+7. Không tự động đổi toàn bộ điểm thành 0 chỉ vì có lỗi nghiêm trọng. Hãy giữ
+   điểm từng tiêu chí đúng với phần quan sát được, rồi dùng mã lỗi để báo rằng
+   phản hồi không thể được chấp nhận như một phản hồi đạt yêu cầu.
+8. Xem bảng tiêu chí có bỏ sót cách trả lời hợp lệ.
+9. Chọn Chấp nhận, Cần sửa hoặc Loại.
+10. Chuyển tác giả hoặc người phân xử.
 
 ## Ví dụ đạt yêu cầu
 
@@ -126,6 +129,20 @@ trước khi đánh giá lựa chọn phương tiện.”
 
 “Chấp nhận: mẫu nhìn chung ổn.” Nhận xét này không cho biết điều gì đã được
 kiểm tra.
+
+## Cách xử lí lỗi nghiêm trọng khi chấm
+
+Lỗi nghiêm trọng là **cờ cảnh báo riêng**, không phải lệnh tự động cho 0 toàn
+bộ tiêu chí. Khi thấy lỗi nghiêm trọng, người thẩm định làm ba việc:
+
+1. Chấm từng tiêu chí D1-D9 theo đúng điều quan sát được.
+2. Ghi một hoặc nhiều mã lỗi nghiêm trọng phù hợp.
+3. Chọn quyết định phù hợp, thường là `Cần sửa` hoặc `Loại`; chỉ đưa `Chấp nhận`
+   khi lỗi đã được sửa hoặc người phân xử có quyết định rõ.
+
+Ví dụ: một phản hồi có thể viết khá rõ ràng nên D7 không nhất thiết bằng 0, nhưng
+nếu phản hồi bịa dữ kiện chưa được cung cấp thì vẫn phải ghi lỗi nghiêm trọng và
+không được xem là phản hồi đạt yêu cầu.
 
 ## Bạn cần nộp gì
 
