@@ -36,11 +36,13 @@ tham chiếu lớp 9 nằm trong `curriculum_sources/curriculum_reference_matrix
 ## Thứ tự làm việc
 
 1. Đọc trang này.
-2. Đọc phần vai trò của mình trong `author-and-review-guide.md`.
-3. Xem đủ 18 mẫu trong `examples.md`; dùng `example_source_registry.csv` để
+2. Đọc `research-to-benchmark-logic.md` để hiểu vì sao từ chương trình,
+   nghiên cứu và học liệu lại hình thành các nhiệm vụ, tiêu chí và mẫu.
+3. Đọc phần vai trò của mình trong `author-and-review-guide.md`.
+4. Xem đủ 18 mẫu trong `examples.md`; dùng `example_source_registry.csv` để
    đối chiếu bài học, vị trí bài tập và tệp học liệu gốc.
-4. Ghi phần việc vào `review_form.xlsx`.
-5. Ghi điểm chưa chắc chắn vào trang tính `Cau_hoi_mo`.
+5. Ghi phần việc vào `review_form.xlsx`.
+6. Ghi điểm chưa chắc chắn vào trang tính `Cau_hoi_mo`.
 
 ## Nguyên tắc bắt buộc
 
@@ -50,6 +52,10 @@ tham chiếu lớp 9 nằm trong `curriculum_sources/curriculum_reference_matrix
 - Điểm số phải kèm lí do ngắn dựa trên điều quan sát được.
 - Chỉ dùng “Không áp dụng” khi tiêu chí thực sự không áp dụng.
 - Lỗi nghiêm trọng được ghi riêng và không thể bù bằng điểm khác.
+- Có lỗi nghiêm trọng **không có nghĩa là tự động cho 0 ở toàn bộ tiêu chí**.
+  Người thẩm định vẫn chấm từng tiêu chí theo điều quan sát được, rồi ghi mã
+  lỗi nghiêm trọng riêng. Phản hồi có lỗi nghiêm trọng không được xem là mẫu
+  đạt yêu cầu cho tới khi lỗi đó được sửa hoặc được người phân xử quyết định.
 - Lịch sử trao đổi được ghi theo từng lượt: số lượt, người nói và nội dung.
 - Mã lỗi nghiêm trọng được chọn trong trang tính `Ma_loi_nghiem_trong`;
   không có lỗi thì dùng danh sách rỗng `[]`.
