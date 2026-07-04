@@ -17,29 +17,36 @@ The system supports a human-in-the-loop research workflow for a Vietnamese grade
 flowchart LR
     U[Project lead / user] --> O[Orchestrator]
     O --> R[Research methodologist]
-    O --> T[Teacher collaboration designer]
+    O --> L[Learning resource curator]
+    R --> B[Benchmark specification designer]
+    L --> B
+    B --> T[Teacher collaboration designer]
     R --> A[Research artifacts]
+    L --> A[Learning-resource mappings]
+    B --> A[Benchmark specifications]
     T --> A
     A --> H[Expert teachers]
     H --> D[Human decisions and feedback]
     D --> O
 ```
 
-In plain language: the user directs the orchestrator; the orchestrator delegates bounded tasks to specialists; specialists produce auditable artifacts; expert teachers review pedagogical implications; the orchestrator records and applies the human decisions.
+In plain language: the user directs the orchestrator; the orchestrator delegates bounded tasks to specialists. Research and learning-resource work can proceed in parallel; benchmark specification then synthesizes both streams; teacher-collaboration work turns approved or provisional specifications into clear teacher workflows. Expert teachers review pedagogical implications; the orchestrator records and applies the human decisions.
 
 ## Components and ownership
 
 | Component | Location | Owner | Status |
 |---|---|---|---|
-| Canonical specialist skills | `agents/<name>/` | P01 | Implemented by P01 |
+| Canonical specialist skills | `agents/<name>/` | P01 + 20260701 Plan 01 | Implemented for four current specialists |
 | Codex adapters | `.codex/agents/` | P01 | Fresh-session runtime smoke-tested |
 | Claude adapters | `.claude/agents/` | P01 | Static validation; runtime deferred |
 | Skill discovery links | `.agents/skills/` | P01 | Generated and validated by P01 |
 | Coordination contract | `experiments/_templates/` | P01 | Implemented by P01 |
 | Modular plans | `experiments/<id>/plans/` | Respective plan | Active |
 | Teacher workflow and packet | Future P03/P04 artifacts | P03/P04 | Not implemented |
-| Benchmark specification | Future P05 artifacts | P05 | Not implemented |
-| Dataset tooling | Future P06 artifacts | P06 | Not implemented |
+| Benchmark specification specialist | `agents/benchmark-specification-designer/` | 20260701 Plan 01 / P05 support | Implemented as specialist support; benchmark content remains provisional |
+| Learning-resource specialist | `agents/learning-resource-curator/` | 20260701 Plan 01 / P06 support | Implemented as v0 mapping support; database platform remains future P06 |
+| Benchmark specification | Future P05 artifacts | P05 | Not implemented as official benchmark release |
+| Dataset tooling | Future P06 artifacts | P06 | Not implemented as database platform |
 | Evaluation pipeline | Future P07 artifacts | P07 | Not implemented |
 
 Canonical logic belongs in `agents/<name>/SKILL.md` and its resources. Runtime adapters may configure discovery and execution but must not fork the workflow logic.
@@ -90,6 +97,8 @@ Observability covers messages exposed by the runtime, tool activity, artifacts, 
 
 Nested `codex exec`, `claude -p`, shell daemons, and hidden terminal agents are prohibited for interactive delegation. Non-interactive automation requires a separate approved plan.
 
+The project keeps specialist fan-out conservative. `research-methodologist` and `learning-resource-curator` are pinned to `gpt-5.4-mini` with medium reasoning for default Codex subagent runs. `benchmark-specification-designer` is pinned to `gpt-5.4-mini` with high reasoning for synthesis. The orchestrator must not spawn multiple copies of the same specialist for one task unless the user explicitly approves the count, rationale, model, reasoning effort, input split, write paths, and merge plan. When fan-out is approved, each branch writes separate artifacts and the orchestrator or a dedicated synthesis task performs the merge.
+
 ## Python environment
 
 The project has one authoritative Conda environment with platform-specific executable paths:
@@ -113,7 +122,7 @@ Package installation, project scripts, validators, and tests must run with the m
 
 ## Dependency direction
 
-P01 owns agent infrastructure and root documentation. P02 may consume the research specialist but does not modify it without a P01 migration. P03/P04 consume teacher-workflow capabilities. P05–P07 own benchmark, dataset, and evaluation artifacts respectively.
+P01 owns the original agent infrastructure and root coordination contract. The 20260701 specialist-expansion plan adds `learning-resource-curator` as P06 support and `benchmark-specification-designer` as P05 support. P02 may consume the research specialist but does not modify it without a P01 migration. P03/P04 consume teacher-workflow capabilities. P05–P07 still own official benchmark, dataset, and evaluation artifacts respectively.
 
 Later plans must not move canonical logic into runtime adapters or redefine P01 coordination semantics without an explicit architecture decision and migration plan.
 
@@ -130,7 +139,7 @@ Later plans must not move canonical logic into runtime adapters or redefine P01 
 - Claude adapters are not runtime-tested in P01.
 - Coordination events are file-based and not yet backed by a database or UI.
 - Native transcripts depend on runtime retention and do not include private chain-of-thought.
-- Benchmark taxonomy, dataset schema, and evaluation metrics remain provisional or unimplemented.
+- Benchmark taxonomy, dataset schema, and evaluation metrics remain provisional or unimplemented; the new benchmark-specification specialist produces candidate specifications, not final HNMU-approved benchmark content.
 - Direct Python dependencies are pinned in `requirements.txt`; a complete Conda environment export and transitive lockfile have not yet been assigned to a dedicated plan.
 
 Last verified against P01 on 2026-06-21.
