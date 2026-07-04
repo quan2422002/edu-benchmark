@@ -23,14 +23,17 @@ class DocumentationTests(unittest.TestCase):
     def test_readme_contract(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
         for required in (
-            "chứng minh ý tưởng",
-            "Giáo viên chuyên môn",
-            "Quy ước ngôn ngữ",
+            "proof-of-concept",
+            "Expert teachers",
+            "Language policy / Quy ước ngôn ngữ",
             "research-methodologist",
+            "learning-resource-curator",
+            "benchmark-specification-designer",
             "teacher-collaboration-designer",
             "codex exec",
             "Claude Code",
-            "chưa kiểm thử ở môi trường chạy",
+            "runtime testing is deferred",
+            "Validate current specialists",
         ):
             self.assertIn(required, content)
 
@@ -54,8 +57,18 @@ class DocumentationTests(unittest.TestCase):
             "codex exec",
             "expert-teacher judgment",
             "preserve unrelated user changes",
+            "learning-resource-curator",
+            "benchmark-specification-designer",
+            "Specialist fan-out policy",
         ):
             self.assertIn(required, content)
+
+    def test_language_policy_keeps_agent_docs_english_first(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("Code-facing and agent-facing materials should prefer English", readme)
+        self.assertIn("Human-facing materials should prefer Vietnamese", readme)
+        self.assertIn("Use English for code-facing and agent-facing instructions", agents)
 
     def test_python_environment_contract(self) -> None:
         for path in DOCS:
