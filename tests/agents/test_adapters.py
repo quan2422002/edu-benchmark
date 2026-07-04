@@ -9,7 +9,17 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-AGENT_NAMES = ("research-methodologist", "teacher-collaboration-designer")
+AGENT_NAMES = (
+    "research-methodologist",
+    "teacher-collaboration-designer",
+    "learning-resource-curator",
+    "benchmark-specification-designer",
+)
+PINNED_CODEX_MODELS = {
+    "research-methodologist": ("gpt-5.4-mini", "medium"),
+    "learning-resource-curator": ("gpt-5.4-mini", "medium"),
+    "benchmark-specification-designer": ("gpt-5.4-mini", "high"),
+}
 
 
 class AdapterTests(unittest.TestCase):
@@ -24,6 +34,32 @@ class AdapterTests(unittest.TestCase):
             self.assertTrue(data["description"])
             self.assertIn(f"agents/{name}/SKILL.md", data["developer_instructions"])
             self.assertIn("never launch codex exec", data["developer_instructions"])
+
+    def test_cost_control_models_are_pinned_where_required(self) -> None:
+        for name, (model, effort) in PINNED_CODEX_MODELS.items():
+            path = ROOT / f".codex/agents/{name}.toml"
+            with path.open("rb") as handle:
+                data = tomllib.load(handle)
+            self.assertEqual(data["model"], model)
+            self.assertEqual(data["model_reasoning_effort"], effort)
+
+    def test_fan_out_requires_explicit_approval_for_cost_sensitive_agents(self) -> None:
+        for name in (
+            "research-methodologist",
+            "learning-resource-curator",
+            "benchmark-specification-designer",
+        ):
+            path = ROOT / f".codex/agents/{name}.toml"
+            with path.open("rb") as handle:
+                data = tomllib.load(handle)
+            instructions = data["developer_instructions"].lower()
+            self.assertIn("fan-out" if name == "research-methodologist" else "fan out", instructions)
+            self.assertTrue(
+                "approve" in instructions
+                or "approves" in instructions
+                or "ask the orchestrator" in instructions,
+                name,
+            )
 
     def test_claude_adapters_have_required_frontmatter(self) -> None:
         for name in AGENT_NAMES:

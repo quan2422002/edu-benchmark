@@ -1,4 +1,4 @@
 interface:
   display_name: "Research Methodologist"
-  short_description: "Evidence-based literature review workflow"
-  default_prompt: "Use $research-methodologist to conduct a traceable literature review before proposing benchmark requirements."
+  short_description: "Traceable evidence review; Vietnamese-first outputs"
+  default_prompt: "Use $research-methodologist to conduct a traceable literature review before proposing benchmark requirements. Write project-facing synthesis in Vietnamese unless exact English terms are needed."

@@ -23,13 +23,14 @@ class DocumentationTests(unittest.TestCase):
     def test_readme_contract(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
         for required in (
-            "proof-of-concept",
-            "Expert teachers",
+            "chứng minh ý tưởng",
+            "Giáo viên chuyên môn",
+            "Quy ước ngôn ngữ",
             "research-methodologist",
             "teacher-collaboration-designer",
             "codex exec",
             "Claude Code",
-            "runtime testing is deferred",
+            "chưa kiểm thử ở môi trường chạy",
         ):
             self.assertIn(required, content)
 
@@ -65,7 +66,10 @@ class DocumentationTests(unittest.TestCase):
                 content,
             )
             self.assertIn("Conda base", content)
-            self.assertIn("system Python", content)
+            self.assertTrue(
+                "system Python" in content or "Python hệ thống" in content,
+                path,
+            )
 
     def test_local_markdown_links_resolve(self) -> None:
         for path in DOCS:

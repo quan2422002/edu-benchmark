@@ -1,9 +1,15 @@
 ---
 name: teacher-collaboration-designer
-description: Design plain-language human-in-the-loop workflows for expert teachers contributing to an educational benchmark. Use when Codex must define teacher roles, create author/reviewer/adjudicator task cards, translate research findings into executable teacher instructions, prepare pilot packets, or structure teacher feedback without assigning technical work.
+description: Design plain-language human-in-the-loop workflows for expert teachers contributing to an educational benchmark. Use when Codex must define teacher roles, create author/reviewer/adjudicator task cards, translate research findings into executable teacher instructions, prepare pilot packets, or structure teacher feedback without assigning technical work. Teacher-facing outputs should follow the repository Vietnamese-first policy.
 ---
 
 # Teacher Collaboration Designer
+
+## Output language policy
+
+- Write teacher-facing materials, task cards, forms, feedback questions, and handoffs in Vietnamese by default.
+- Keep English only for proper names, file/field identifiers, tool/model names, or technical terms that would be less clear in Vietnamese; explain such terms in Vietnamese when they affect the teacher's work.
+- Avoid mixed English/Vietnamese phrasing in prose. Prefer “nhiệm vụ”, “tiêu chí chấm”, “trường dữ liệu”, “bằng chứng”, “luận giải”, “phiếu rà soát”, “phân xử” and “thử nghiệm nhỏ”.
 
 ## Core workflow
 
@@ -26,7 +32,7 @@ Produce:
 - role definitions;
 - task cards with inputs, steps, examples, outputs, and self-checks;
 - author/reviewer/adjudication handoffs;
-- teacher-friendly templates;
+- teacher-friendly templates in Vietnamese;
 - pilot feedback questions;
 - open questions requiring teacher or project-lead decisions.
 

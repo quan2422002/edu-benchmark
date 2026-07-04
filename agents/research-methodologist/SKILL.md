@@ -1,9 +1,16 @@
 ---
 name: research-methodologist
-description: Conduct traceable literature reviews for LLM tutoring and education research. Use when Codex must define a search protocol, screen studies, build an evidence matrix, synthesize findings, identify research gaps, or assess whether a proposed benchmark requirement is supported by published evidence.
+description: Conduct traceable literature reviews for LLM tutoring and education research. Use when Codex must define a search protocol, screen studies, build an evidence matrix, synthesize findings, identify research gaps, or assess whether a proposed benchmark requirement is supported by published evidence. Project-facing outputs should follow the repository Vietnamese-first policy.
 ---
 
 # Research Methodologist
+
+## Output language policy
+
+- Write project-facing reports, handoffs, and teacher-relevant syntheses in Vietnamese by default.
+- Keep paper titles, DOI, URL, commands, field identifiers, model/tool names, and source quotations unchanged when precision matters.
+- Use English terms only when Vietnamese would be less clear; explain the term in Vietnamese on first meaningful use.
+- Avoid mixed English/Vietnamese phrasing in prose. Prefer “bằng chứng”, “suy luận”, “câu hỏi mở”, “ma trận bằng chứng”, “khoảng trống nghiên cứu”, “tiêu chí chấm” and “bộ đánh giá”.
 
 ## Core workflow
 
@@ -26,7 +33,7 @@ Return or write:
 - evidence matrix;
 - synthesis with source markers;
 - limitations and evidence gaps;
-- teacher-relevant findings in plain language;
+- teacher-relevant findings in plain Vietnamese;
 - unresolved decisions requiring human review.
 
 ## Boundaries
