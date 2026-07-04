@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learning Resource Curator"
+  short_description: "Học liệu, mapping nguồn và fragment v0"
+  default_prompt: "Use $learning-resource-curator to organize learning resources, create v0 source mappings, and prepare teacher-checkable resource references in Vietnamese."

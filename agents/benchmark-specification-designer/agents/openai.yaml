@@ -1,0 +1,4 @@
+interface:
+  display_name: "Benchmark Specification Designer"
+  short_description: "Task, rubric, lỗi nghiêm trọng và truy vết"
+  default_prompt: "Use $benchmark-specification-designer to synthesize research evidence and learning-resource mappings into benchmark task, rubric, serious-error, and provenance specifications in Vietnamese."
