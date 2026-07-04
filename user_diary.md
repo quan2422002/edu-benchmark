@@ -48,3 +48,101 @@ Sau khi chốt được các điểm này, cũng như đọc kĩ plan của bạ
 - Vì deadline của task hiện tại khá gấp (vào chiều chủ nhật tuần này), nên dự án hiện tại được xác định đang ở giai đoạn PoC, vậy nên codebase/plan nên được xây dựng ở mức tương đối đơn giản, gọn nhẹ, ở mức MVP. Tuy nhiên, việc literature review và đưa ra được những yêu cầu rõ ràng cho đội ngũ giáo viên ngay từ đầu vẫn sẽ rất quan trọng
 
 Từ những ý trên, theo tôi thấy bạn nên xây dựng đội ngũ specialist agent trước đã, đặc biệt là agent `research-methodologist` để có thể tạo literature review, vì thực sự thì, tôi cũng không quá tin tưởng vào kết quả cho khung benchmark mà bạn đưa ra trong plan experiments/20260618_150902/plan.md đâu :), vì rõ ràng là chỉ với 2 paper mà tôi cung cấp, literature review đơn giản là chưa đủ sâu. Vì vậy, trước khi duyệt và xây dựng khung benchmark, tôi cần 1 literature review đủ sâu và rộng, được thực hiện bởi specialist agent, thay vì 1 agent tổng quát như bạn.
+
+# Update plan (23-06-2026)
+
+bạn có thể thấy là plan F01 là flash plan, lấy các ý cơ bản nhất của các plan full P02-P07 để có thể đưa ra 1 bộ benchmark sơ bộ, nhằm kịp tiến độ của chủ nhật tuần trước. Bây giờ, tôi sẽ note lại các ý sau, dựa trên những gì tôi thấy trước đó :
+
+- Ở nhánh feature/C01\_P02\_P03, khi chạy plan F01, tôi thấy khi chạy thì có đến 3 specialist agent research-methodologist đã được spawn và được chạy với model mặc định là gpt-5 - thực sự là quá tốn token. Vì vậy, tôi muốn bạn setup mô hình mặc định là GPT-5.4-mini, ít nhất hiện tại là ở specialist agent này nhé.
+- plan C01 và F01 chỉ là phiên bản mini, làm để kịp tiến độ. Tuy nhiên, việc lấy học liệu làm cơ sở tạo benchmark là BẮT BUỘC, không thể không có. Tôi nghĩ khi tạo/thẩm định các mẫu dữ liệu, giáo viên chuyên môn cũng cần phải đưa 1/nhiều mã học liệu tham khảo mà họ dùng làm cơ sở cho câu hỏi của học sinh/câu trả lời của tutor. Tuy nhiên, kho học liệu không bao giờ là cố định (có thể bị thêm/sửa/xóa). Vì vậy, tôi nghĩ về phần xây dựng benchmark, nên xây dựng 1 database để quản lý học liệu và benchmark (các task, các mẫu của task), đồng thời xây dựng cách mà đội ngũ giáo viên chuyên môn có thể dễ dàng update kho học liệu và truy xuất được mã của các đoạn học liệu mong muốn để họ có thể xây dựng benchmark một cách dễ dàng và rành mạch nhất. Bạn hãy xem xét phần code ở branch feature/C01\_P02\_P03 xem có hữu ích không, đồng thời cân nhắc thiết kế phần database học liệu/benchmark, từ đó có thể cập nhật thêm vào plan roadmap nhé.
+
+# Update plan (24-06-2026)
+
+Được rồi, tạm thời để roadmap đó qua 1 bên. Bây giờ tôi có task gấp hơn nhiều: Đội ngũ giáo viên chuyên môn đang yêu cầu nhóm tôi phải đưa ra được logic tại sao từ các nghiên cứu liên quan lại ra được benchmark này (các task của benchmark, các rubric dùng để chấm cho các task đó, nội dung các mẫu dữ liệu trong benchmark,...). Nên là bây giờ, tôi nghĩ bạn cần checkout sang nhánh feature/C01_P02_P03 để xem lại nội dung về việc xây dựng benchmark (có trong thử nghiệm experiments/20260621_135515 nhé). Trước khi bạn checkout sang nhánh đó, hãy đảm bảo code mà bạn đã sửa ở nhánh này được an toàn đã nhé (có thể push tạm lên nhánh main, tuy nhiên phải lưu lại git commit id của nó, vì thực tế các thay đổi này chưa được tôi duyệt chính thức đâu)
+
+# Update plan (26-06-2026)
+
+Note của buổi họp ngày 24-06-2026 giữa UET (là chúng tôi - đội ngũ engineer) và HNMU (đội ngũ giáo viên chuyên môn):
+
+1. Đại ý: HNMU đã xem xét kĩ bộ khung benchmark của UET gửi vào chủ nhật tuần trước (vốn được làm trong một thời gian rất ngắn để kịp deadline tuần trước, nằm trong thử nghiệm 20260621_135515, thuộc nhánh feature/C01_P02_P03) và yêu cầu bên UET phải làm kĩ lại benchmark, tức là phần lớn các phần về task/rubric được xây dựng ở phần này sẽ phải bỏ. Tuy nhiên, tôi thấy bên HNMU cũng đã hiểu được bộ khung benchmark mà bên UET đã truyền tải, bao gồm:
+   - Các task
+   - Các rubric
+   - Một số trường dữ liệu (metadata) trong phiếu tác giả (được nêu ở phiếu tác giả trong sheet Phieu_tac_gia trong file review_form.xlsx, nằm ở thư mục teacher_packet của thử nghiệm 20260621_135515, bên nhánh feature/C01_P02_P03).
+   - Sự liên kết, có thể truy vết của mã nghiên cứu, mã chương trình/học liệu đến nghiên cứu và chương trình/học liệu thực thụ.
+   - Sự liên kết, có thể truy vết của các lỗi nghiêm trọng với các rubric có liên quan đến lỗi nghiêm trọng đó.
+
+Tuy nhiên, có 1 điểm nghiêm trọng mà bên HNMU có trê trách bên UET khá nhiều. Đó là chưa làm sáng tỏ và tường minh logic để từ nghiên cứu và chương trình/học liệu, có thể đưa ra được task/rubric, ĐẶC BIỆT là về ý nghĩa nội hàm của từng task/rubric đó.
+
+2. Note chi tiết cuộc họp:
+   a. Điều mà HNMU và UET đã thống nhất: Benchmark PHẢI ĐƯỢC XÂY DỰNG dựa trên các nghiên cứu uy tín và học liệu/chương trình giáo dục có liên quan (sách giáo khoa, sách giáo viên,...)
+   b. Bên HNMU muốn bên UET làm rõ:
+   - Về benchmark: PHẢI ĐỊNH NGHĨA RÕ benchmark là gì ? Dùng để làm gì ? Gồm những thành phần nào ? Được vận hành như thế nào ?
+   - Về mỗi task trong benchmark: PHẢI KIẾN GIẢI RÕ RÀNG định nghĩa của mỗi task, bao gồm:
+
+     + Task đó được hình thành dựa trên logic nào ? (Được tổng hợp từ bài báo khoa học uy tín có liên quan đến lĩnh vực tutoring benchmark, cũng như các chương trình/học liệu có liên quan (sách giáo khoa/sách giáo viên) như thế nào ?)
+     + Yêu cầu về mặt nội dung, cấu trúc ... đối với đầu vào/đầu ra của một mẫu có trong mỗi task đó như thế nào ? Căn cứ vào đâu (dựa trên nghiên cứu uy tín, chương trình/học liệu giáo dục ) để có thể đưa ra được các yêu cầu đó (PHẢI KIẾN GIẢI RÕ)
+     + PHẢI KIẾN GIẢI RÕ về số lượng task có trong benchmark (vì sao lại có con số bao nhiêu task với từng đó lĩnh vực ? Cơ sở khoa học cho số lượng task này là gì ? Số lượng task với các lĩnh vực này đã đủ để bao quát trong việc đánh giá tutor chưa ?)
+   - Về các rubric được sử dụng để đánh giá cho 1 task cụ thể: cụ thể gồm những rubric nào ? lý do cụ thể nào khiến task này PHẢI được đánh giá bằng các rubric đó ? (dựa trên cơ sở khoa học nào ?)
+   - Về các lỗi nghiêm trọng có trong danh sách lỗi nghiêm trọng: cũng tương tự như với rubric - phải có luận giải/cơ sở khoa học rõ ràng. Tuy nhiên, thêm vào đó, cần lý giải rõ: khi có mã lỗi này xuất hiện ở trong phản hồi của gia sư thì hành động quyết định dành cho giáo viên thẩm định nên là gì ? (Loại, chỉnh sửa, duyệt qua ,...)
+   - Về các nghiên cứu được khảo sát và học liệu được dùng làm cơ sở xây dựng benchmark: Đã đủ tin cậy chưa ? Các nghiên cứu có uy tín không ? Quy tắc đặt tên mã cho nghiên cứu và học liệu là gì ? Các học liệu gốc được băm nhỏ và quản lý như thế nảo ?
+     c. Tư vấn từ đội ngũ HNMU dành cho UET:
+   - Cần nhìn vấn đề từ hướng tổng quát hơn, xuất phát từ tư duy hệ thống, tức là từ trên xuống. Gồm các bước lần lượt như sau:
+
+     1) Trước hết là về bài toán đánh giá gia sư. PHẢI HIỂU RÕ: gia sư (tutor) là một người trực tiếp dìu dắt học sinh (kèm 1-1), KHÁC HOÀN TOÀN so với giáo viên hay trợ giảng (teacher/teaching assistant), vốn chỉ giảng dạy cho 1 lớp học có nhiều học sinh, dựa trên 1 học liệu/chương trình hoặc bài giảng cố định. Tức là gia sư sẽ không bó hẹp theo nội dung môn học (ở đây là Tin học lớp 9, dù benchmark hiện tại vẫn sẽ ưu tiên cho lĩnh vực này), mà phải đặt vấn đề là học sinh có thể hỏi BẤT KÌ câu hỏi nào. Vì vậy, mục tiêu của benchmark này không chỉ là đánh giá dựa trên giáo trình/học liệu hay bài giảng đã có sẵn như giáo viên hay trợ giảng ở trên 1 lớp học chính quy, mà còn phải là đánh giá được khả năng cá nhân hóa theo từng người học, từ đó giúp cải thiện trình độ của người học (phát hiện và bù đắp các lỗ hổng kiến thức của người học, dẫn dắt người học tự tiến bộ,...). Tóm lại là ở bước tư duy này, ta không nên bó hẹp vào một môn học cụ thể, mà nên nhìn nhận rõ vai trò của gia sư trong lĩnh vực sư phạm nói chung.
+     2) Từ sự hiểu rõ về vai trò và chức năng của gia sư như vậy, thực hiện khảo sát kĩ lưỡng các bài báo khoa học úy tín liên quan đến tutoring assessment/toturing benchmark. Ưu tiên các bài báo đã được công bố ở các hội nghị và tạp chí có thứ hạng cao, hoặc các bài báo có nhiều citation,... nói chung là có chất lượng cao. Nên có công thức lượng hóa giá trị của bài báo đối với dự án này và ghi rõ giá trị này trong thử nghiệm.
+     3) Từ sự hiểu rõ về vai trò và chức năng của gia sư như vậy, kết hợp với khảo sát kĩ lưỡng các bài báo khoa học úy tín liên quan đến tutoring assessment/toturing benchmark và các học liệu/chương trình giáo dục mà bên HNMU cung cấp (vẫn sẽ ưu tiên môn tin học lớp 9) - đã được chia theo lĩnh vực kiến thức và mỗi lĩnh vực này đã có cấu trúc riêng (do bên UET xây dựng), sẽ xây dựng được một nền tảng cơ sở lý thuyết vững chắc, từ đó đưa ra các tiêu chí để đánh giá trên từng lĩnh vực: như thế nào là 1 gia sư tốt ? Có thể kể ra 1 số tiêu chí như: Có tính đúng đắn; câu trả lời áp dụng đúng chuyên môn, phương pháp, kỹ thuật của giáo dục;... Từ đó tạo nên 1 bộ khung (framework) dùng để xây dựng benchmark.
+     4) Sau khi có 1 bộ khung vững chắc và đầy đủ luận giải dựa trên cơ sở lý thuyết, sẽ lần lượt xây dựng các task/rubric và các thông tin liên quan (ví dụ: danh sách mã lỗi nghiêm trọng), đi kèm với đó là luận giải chặt chẽ cho các task và rubric này (như đã đề cập ở ý 2 của phần b). Luận giải cần trả lời được 1 số câu hỏi như sau (sau này có thể thêm để làm vững hơn về mặt lập luận):
+        . Vì sao lại có số lượng task, với các lĩnh vực đó như vậy ?
+        . Vì sao lại có số lượng rubric, với các khía cạnh đánh giá như vậy ? Đặc biệt, cần có 1 rubric/task nhằm đánh giá khả năng hỗ trợ học sinh đã hấp thụ kiến thức được đến đâu.
+        . Trong 1 task, có bao nhiêu trường hợp có thể xảy ra ? từ đó lại suy ra thêm 1 câu hỏi: trong 1 task cụ thể, cần bao nhiêu mẫu là đủ và lý do vì sao ? và ở mỗi trường hợp, nên có khoảng bao nhiêu ví dụ để có thể bao trùm lấy nội dung tổng quát của task đó, từ đó giúp cho đội ngũ giáo viên chuyên môn có cái nhìn tổng quát và rõ ràng hơn về task có trong benchmark
+
+     + Sau khi đã xác định rõ ràng được các task, rubric và các thông tin liên quan, sẽ vạch ra các trường dữ liệu (metadata) mà mỗi mẫu cần phải có trong mỗi task, đi kèm với các yêu cầu về định dạng dữ liệu, ý nghĩa,... đối với mỗi trường trong metadata đó. Tất nhiên, phải đi kèm luận giải logic rõ ràng và chắc chắn cho từng trường trong metadata này.
+   - Học liệu/chương trình giảng dạy mà bên HNMU cung cấp: link https://taphuan.nxbgd.vn/tap-huan/chi-tiet-sach/tin-hoc-9-940119364.940119364
+   - Về bối cảnh được cung cấp trong 1 mẫu của task, hướng đến tính cá nhân hóa: Vì mục tiêu là đánh giá khả năng của 1 gia sư, có khả năng cá nhân hóa theo người học với trình độ khác nhau giữa những người học (có em học giỏi, có em học trung bình,...). Tức là, trong bối cảnh được cung cấp, trình độ của học sinh phải được phản ánh ở một mức độ tương đối (có thể không cần rõ quá, do trên thực tế khá khó để có được 1 bối cảnh đầy đủ và rõ ràng). Bối cảnh này có thể được thể hiện thông qua lịch sử hội thoại giữa gia sư và học sinh. Ở đây, về tính cá nhân hóa, như tôi có nói, sẽ có cả những học sinh yếu, thậm chí kiến thức nền của em học sinh đó có thể chưa đủ để chạm đến môn tin học lớp 9. Vì vậy, khi xây dựng lịch sử hội thoại hay rubric đánh giá, ta đều phải có tiêu chí về việc xây dựng dữ liệu và rubric đánh giá phản hồi của gia sư về việc có thể đặt câu hỏi đáp ứng được các điều sau:
+
+     + Có mức độ khó tăng dần, được nâng lên từng bước 1 qua từng câu hỏi và có tính xây dựng.
+     + Phải đảm bảo các em học sinh đã có đầy đủ kiến thức của các lớp trước (các lớp 6,7,8), nói tóm lại là có đủ các kiến thức trước đó. Tức là ở đây, dù là ưu tiên xây dựng benchmark cho môn tin học lớp 9, ta vẫn phải đảm bảo cả các lớp trước đó. Từ đó, có thể suy ra rằng 1 mẫu dữ liệu có thể được xây dựng với nhiều hơn 1 học liệu/chương trình liên quan.
+       Chính từ việc hỏi từng bước này, chúng ta cũng có thể đánh giá được khả năng xác định vùng kiến thức mà học sinh có vấn đề của 1 gia sư.
+   - Cần có 1 hệ thống để quản lý học liệu/chương trình: Như bạn thấy là bên HNMU có cung cấp link học liệu cho UET. Vì vậy, cần có 1 cơ chế hiệu quả để băm nhỏ và quản lý học liệu, giúp giáo viên có thể dễ dàng truy xuất ra học liệu/chương trình mong muốn khi xây dựng mẫu dữ liệu, cũng như 1 cơ chế rõ ràng để tạo mã học liệu/chương trình tường minh, để giáo viên biết được học liệu/chương trình nào khi được thêm vào cơ sở dữ liệu sẽ có mã là gì.
+   - Tương tự với đó là phải xây dựng cơ chế rõ ràng để gán mã cho các nghiên cứu đã được khảo sát, từ đó dễ dàng biết được nghiên cứu này khi được khảo sát sẽ có mã là gì.
+   - Một lần nữa, làm rõ vai trò của đội ngũ giáo viên chuyên môn trong việc xây dựng và thẩm định các mẫu trong benchmark. Theo tôi thấy (ý kiến cá nhân của tôi thôi), trong quá trình xây dựng các mẫu benchmark, các thầy cô giáo viên có thể cung cấp các dữ liệu đầu vào cho 1 mẫu của 1 task (bối cảnh, lịch sử hội thoại, prompt của học sinh) rồi gửi lại bên UET. Bên UET có thể gọi LLM (tôi đang tính thông qua thư viện kaggle benchmark và kaggle CLI, kết hợp kaggle kernel) để tạo phản hồi của gia sư. Sau đó, các thầy cô bên HNMU sẽ chấm điểm rubric và đưa ra các quyết định đánh giá khác, từ đó hoàn thành 1 mẫu dữ liệu cho 1 task.
+
+Việc của bạn bây giờ là phân tích kĩ các note này và phản biện lại tôi ở những điều bạn thấy chưa ổn và còn mâu thuẫn, sau đó đưa ra schedule cụ thể cho các việc chi tiết mà tôi cần làm (viết schedule này ra 1 file md mới). Trên thực tế, dự án này sẽ có 2 người làm chính là tôi - trình độ middle ai engineer và 1 bạn sinh viên - trình độ fresher ai engineer. Về effort cụ thể của từng thành viên thì như sau:
+
+- Tôi từ giờ đến tuần đầu của tháng 8 sẽ vẫn phải làm việc full time trên công ty, tức là trong tuần tôi chỉ dành được khoảng 4 tiếng (~0.5 effort) cho dự án này. Sau đó thì tôi có thể dành 1.0 effort. Cuối tuần thì tôi có thể dành nhiều thời gian hơn.
+- Bạn sinh viên kia thì từ giờ đến 15/7 sẽ chỉ dành được khoảng 2 tiếng (0.25 effort) cho dự án này. Sau 15/7 thì có thể dành ra 6 tiếng cho dự án (~0.75 effort).
+
+# Update plan (01-07-2026)
+Sáng hôm qua, lúc 10h, tôi đã họp với giáo sư của tôi (UET) và các giáo viên chuyên môn của HNMU. Các nội dung đã được chốt:
+
+Về các deadline (QUAN TRỌNG NHẤT):
+- 1/8/2026: PHẢI CÓ bài báo để  nộp cho hội nghị KSE (link: https://kse2026.kse-conferences.org/)
+- 1/8/2026: Mục tiêu đạt được về kích thước của bộ benchmark là 1000 mẫu
+- 15/7/2026: Phải đạt được số lượng mẫu nhất định, để có thể kịp đánh giá tiến độ và cho thấy tính khả thi của việc đạt được 1000 mẫu và hoàn thành bài báo vào đầu tháng 8 (có thể mục tiêu ở mốc này sẽ là khoảng 700 mẫu)
+
+Về các nội dung đã chốt:
+- Phiếu tác giả, dùng để giáo viên chuyên môn xây dựng dữ liệu (link gg drive của sheet: https://docs.google.com/spreadsheets/d/1hx-bmX1hNfdFImfoKlXztGKp9QGCcou1/edit?gid=453913985#gid=453913985), với bản gốc là từ sheet "phiếu tác giả" có trong file gg sheet teacher_packet/review_form, đã được làm ở experiment 20260621_135515 ở branch feature/C01_P02_P03 (tôi đã sửa nhẹ so với bản gốc ở trên branch feature/C01_P02_P03 và upload lên thư mục drive này: https://drive.google.com/drive/folders/1h23ty1pE0sD10JpCqUIkfyuIifCd_USi?usp=sharing) . Ngoài ra tôi cũng đã thêm các thông tin liên quan, bổ sung và giải thích rõ ràng các thông tin có trong sheet "phiếu tác giả" trong cùng 1 file gg sheet đó. Hơn nữa, tôi cũng đã ném file phiếu tác giả được chốt vào experiment mới, mã là 20260701_100006 (link drive: https://drive.google.com/drive/folders/18k6oGkD4RJMhcKNjsVc178x2S2f6iur5?usp=sharing), cùng với đó là copy 2 thư mục là literature_review và curriculum_sources từ experiment 20260621_135515 vào experiment 20260701_100006. Tất nhiên, ở experiment này có 1 số chỗ  vẫn chưa được thống nhất toàn bộ. Bạn hãy soi kĩ experiment này, phần nào còn thiếu/mâu thuẫn/chưa đồng bộ thì note lại. Sau đó phản biện nhé.
+- Các trường trong phiếu tác giả, được kiến giải rõ ràng. Trong đó, có 1 trường là mã task. Đây là trường mà bên UET PHẢI điền và thông tin đến các giáo viên xây dựng trước khi các giáo viên chuyên môn tiếp tục hoàn thiện các trường còn lại.
+- Về trường "lịch sử trao đổi giữa học sinh và gia sư": hiện tại, cả giáo sư UET và giáo viên chuyên môn HNMU đã thống nhất là trong 1 lịch sử trao đổi, sẽ có :
+  + Trung bình 4 lượt hội thoại (min 1 lượt, max 5 lượt), với mỗi lượt cũng có trung bình 4 bước (max 5 bước, min 1 bước) trao đổi. Đây cũng là 1 con số mà tôi thấy phù hợp. dựa trên bài báo MathTutorBench mà tôi đã đọc trước đó. Bạn có thể xem lại phần này nhé. Ở đây, ta càn làm rõ định nghĩa của bước và lượt:
+    a. Lượt: Tương đương với 1 chat session
+    b. Bước: Là các bước trong 1 lượt hội thoại. Được chạy lần lượt theo: bước của học sinh và, bước của gia sư.
+    Đối với các bước hội thoại trong 1 lượt hội thoại, yêu cầu dành cho các bước của gia sư là phải tổ chức hội thoại theo phương pháp giàn giáo. Với phương pháp này, trước khi đi vào giải quyết vấn đề mà học sinh đưa ra, gia sư sẽ kiểm tra kiến thức nền của học sinh thông qua việc hỏi học sinh và tiếp nhận câu trả lời, từ đó xác định vấn đề của học sinh và đưa ra được hướng giải quyết trong vấn đề của học sinh, thay vì chỉ đưa ra 1 câu trả lời cuối cùng. TUY NHIÊN, do có giới hạn max cho số bước hội thoại, nên khi chạm đến giới hạn này, gia sư cũng cần đưa ra câu trả lời cuối cùng. Câu trả lời này có thể là kết quả cuối cùng luôn, hoặc 1 hướng dẫn chi tiết nhất để giúp học sinh giải bài.
+
+- Về phạm vi kiến thức được chốt: Đã được xác định rõ là CHỈ NẰM TRONG miền Tin học lớp 9 và kết nối đến các tiền kiến thức liên quan có trong các lớp 6-8. Sau khi trao đổi cùng các giáo viên chuyên môn bên HNMU, tôi thấy học liệu được sử dụng để xây dựng cho benchmark này có các đặc điểm sau:
+  + Học liệu được lấy trên trang tập huấn, thuộc môn Tin học (link: https://taphuan.nxbgd.vn/tap-huan?subjects=11), hiện tại sẽ dùng sách giáo khoa (SGK) làm học liệu chủ đạo.
+  + Xuyên suốt môn tin học của khối THCS sẽ có khoảng 6-7 chủ đề , với các bài thuộc cùng 1 chủ đề sẽ có độ khó tăng dần khi học ở các lớp trên. Bạn có thể  xem ở trang mục lục của các đầu sách SGK:
+    Lớp 6: https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-6.4699918592#page=5
+    Lớp 7: https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-7.4700056620#page=5
+    Lớp 8: https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-8.4700157933#page=5
+    Lớp 9: https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-9.4700233123#page=3
+    Bạn có thể thấy rằng trong các mục lục này, tên và số thứ tự của các chủ đề không phải lúc nào cũng đồng nhất và sẽ có 1 chút sự khác nhau. Tuy nhiên ý nghĩa và nội hàm của mỗi chủ đề đó thì, về cơ bản, là 1. Bạn hãy xem và đưa ra cho tôi nhóm chủ đề thống nhất nhé.
+
+Trên thực tế thì cá nhân tôi thấy, ngay cả những nội dung đã được chốt thì vẫn có nguy cơ bị mâu thuẫn. Bạn hãy soi kĩ các nội dung này và phản biện nhé.
+
+Các nội dung đang cần nhắc và xem xét thêm:
+Về ý tưởng thu thập dữ liệu: Giáo sư của tôi đã đề xuất 1 phương pháp như sau: Tạo 1 web để  học sinh có thể  tương tác trực tiếp với gia sư AI (Core LLM ở đây có thể sử dụng các model như chatGPT, Claude, Gemini,...). Sau đó sẽ thu thập hội thoại này để  làm các mẫu (chưa có điểm rubric). Các hội thoại được thu thập có thể được fill vào các cột như "Yêu cầu của học sinh về kiến thức thuộc chủ đề", "Bài làm của học sinh", "Lịch sử trao đổi giữa học sinh và gia sư", ....Các mẫu này sau đó sẽ được giaó viên chuyên môn chấm các điểm rubric ở trường "" và các thông tin khác (ví dụ: danh sách lỗi nghiêm trọng). Khi giáo sư của tôi đề xuất cách này, thì trước hết, cá nhân tối thấy đây là một cách làm rất hay, giúp thu thập dữ liệu trong thời gian ngắn. Tuy nhiên, tôi thấy có 1 số bất cập khi làm cách này:
+- Chi phí token cho các model này
+- Chi phí hosting cho web
+- Phải xây dựng một db quản lý học liệu THẬT chuẩn chỉnh, tương tự 1 mcp server để  model (đóng vai MCP client) có thể truy cập và lấy làm cơ sở để tương tác với học sinh. Nếu để nó tự zero-shot thì khả năng chỉ toàn thu được các mẫu kém chất lượng.
+Bạn có thể xem xét phần này và đưa ra đề xuất tối ưu cho tôi nhé
