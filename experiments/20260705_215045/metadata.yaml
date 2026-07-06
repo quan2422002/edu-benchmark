@@ -1,0 +1,42 @@
+id: "20260705_215045"
+title: "Bloom-oriented benchmark redesign after 2026-07-05 HNMU and professor meetings"
+status: active
+task_type: benchmark_redesign_planning
+owner_agent: orchestrator
+parents:
+  - "20260701_100006"
+created_at: "2026-07-05T21:53:57+07:00"
+source_meeting_at: "2026-07-05"
+git_commit: null
+artifacts:
+  - reports/meeting-notes-structured-20260705.md
+  - reports/state-transfer-from-20260701.md
+  - plans/01-bloom-task-rubric-example-sprint.md
+  - handoffs/p01-meeting-analysis-001.md
+  - coordination/delegations.jsonl
+  - roadmap.md
+  - plans/02-source-scope-topic-taxonomy.md
+  - plans/03-targeted-paper-review-bloom-tutoring.md
+  - plans/04-bloom-task-taxonomy-and-compact-rubric.md
+  - plans/05-case-coverage-and-pilot-allocation.md
+  - plans/06-teacher-examples-and-pilot-packet.md
+  - plans/07-pilot-sample-intake-and-design-check.md
+  - handoffs/p02-roadmap-and-modular-plans-002.md
+  - handoffs/p03-plan-revision-004.md
+  - literature_notes/paper_selection_registry.csv
+  - reports/P03-step1-paper-selection-summary.md
+  - handoffs/P03-step1-paper-selection-005.md
+  - literature_notes/review_protocol.md
+  - literature_notes/paper_summaries/P03-P001-mathtutorbench.md
+  - literature_notes/paper_summaries/P03-P002-kmp-bench.md
+  - literature_notes/paper_summaries/P03-P003-tutorbench.md
+  - reports/P03-step2A-three-A-paper-summaries.md
+  - handoffs/P03-step2A-three-A-paper-summaries-006.md
+  - handoffs/P03-review-protocol-evidence-label-clarification-007.md
+  - literature_notes/evidence_to_design_matrix.csv
+  - literature_notes/evidence_matrix.csv
+  - reports/P03-literature-synthesis-for-design.md
+  - handoffs/P03-step4A-three-paper-synthesis-008.md
+  - handoffs/P03-step4A-rubric-split-revision-009.md
+  - handoffs/P03-step4A-task-bloom-separation-revision-010.md
+  - handoffs/P02-plan-revision-hnmu-benchmark-docs-011.md
