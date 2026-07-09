@@ -1,8 +1,8 @@
 # P03-P002 — KMP-Bench
 
-Paper: `From Solver to Tutor: Evaluating the Pedagogical Intelligence of LLMs with KMP-Bench`  
-File local: `document/paper/source_paper/18426-AAAI26.ShiW-NLP.pdf`  
-Năm/nguồn: 2026, AAAI-26 local PDF  
+Paper: `From Solver to Tutor: Evaluating the Pedagogical Intelligence of LLMs with KMP-Bench`
+File local: `document/paper/source_paper/18426-AAAI26.ShiW-NLP.pdf`
+Năm/nguồn: 2026, AAAI-26 local PDF
 Registry ID: `P03-P002`  
 Vai trò trong P03: paper lõi về chuyển từ “model giải bài” sang “model làm gia sư”.
 
@@ -16,10 +16,11 @@ Vị trí nguồn chính: Abstract; Introduction; Figure 1.
 
 KMP-Bench có hai module:
 
-| Module | Mục tiêu | Task/năng lực |
-|---|---|---|
-| KMP-Dialogue | Đánh giá năng lực sư phạm tổng thể trong hội thoại nhiều lượt. | Tutor response được so với reference response trong hội thoại đã cắt tại một lượt. |
-| KMP-Skills | Đánh giá năng lực gia sư nền tảng ở mức hạt nhỏ hơn. | Multi-turn follow-up problem-solving; error detection and correction; mathematical problem generation. |
+
+| Module       | Mục tiêu                                                                   | Task/năng lực                                                                                        |
+| ------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| KMP-Dialogue | Đánh giá năng lực sư phạm tổng thể trong hội thoại nhiều lượt. | Tutor response được so với reference response trong hội thoại đã cắt tại một lượt.        |
+| KMP-Skills   | Đánh giá năng lực gia sư nền tảng ở mức hạt nhỏ hơn.            | Multi-turn follow-up problem-solving; error detection and correction; mathematical problem generation. |
 
 Dữ liệu được tạo từ 8K bài toán K-8 đã qua xác thực, lấy từ 9 nguồn, phủ 11 domain Toán và 9 grade levels. Pipeline tạo 4 loại thành phần sư phạm:
 
@@ -108,13 +109,14 @@ Vị trí nguồn chính: Table 1; Table 2; Table 3; Main Results; Figure 3.
 
 ## 9. Candidate claims cho evidence matrix
 
-| Claim candidate | Nhãn | Vị trí nguồn | Ghi chú chuyển giao |
-|---|---|---|---|
-| Nên đánh giá gia sư bằng tiêu chí sư phạm, không chỉ accuracy giải bài. | bằng chứng | Abstract; Introduction; Main Results | Rất phù hợp với P04. |
-| Có thể tách benchmark thành holistic dialogue và foundational tutoring skills. | bằng chứng | Abstract; Evaluation Framework | Hữu ích để phân biệt task chính và nhãn phụ. |
-| Human verification cần kiểm tra soundness/sequence của hội thoại. | bằng chứng | Figure 1; Dialogue Flow Generation and Verification | Gần với vai trò HNMU. |
-| Các nguyên tắc Challenge/Explanation/Modelling/Practice/Questioning/Feedback có thể là nguồn thiết kế rubric/nhãn. | bằng chứng | KMP-Dialogue; Figure 2 | Cần Việt hóa và rút gọn. |
-| Rubric 22 tiêu chí của KMP nên được gom lại cho PoC. | suy luận | Evaluation Framework | Phù hợp với yêu cầu rubric 3–4 tiêu chí của dự án. |
+
+| Claim candidate                                                                                                              | Nhãn        | Vị trí nguồn                                     | Ghi chú chuyển giao                                         |
+| ---------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------- | ------------------------------------------------------------- |
+| Nên đánh giá gia sư bằng tiêu chí sư phạm, không chỉ accuracy giải bài.                                        | bằng chứng | Abstract; Introduction; Main Results                | Rất phù hợp với P04.                                      |
+| Có thể tách benchmark thành holistic dialogue và foundational tutoring skills.                                          | bằng chứng | Abstract; Evaluation Framework                      | Hữu ích để phân biệt task chính và nhãn phụ.        |
+| Human verification cần kiểm tra soundness/sequence của hội thoại.                                                       | bằng chứng | Figure 1; Dialogue Flow Generation and Verification | Gần với vai trò HNMU.                                      |
+| Các nguyên tắc Challenge/Explanation/Modelling/Practice/Questioning/Feedback có thể là nguồn thiết kế rubric/nhãn. | bằng chứng | KMP-Dialogue; Figure 2                              | Cần Việt hóa và rút gọn.                                |
+| Rubric 22 tiêu chí của KMP nên được gom lại cho PoC.                                                                 | suy luận    | Evaluation Framework                                | Phù hợp với yêu cầu rubric 3–4 tiêu chí của dự án. |
 
 ## 10. Câu hỏi mở
 

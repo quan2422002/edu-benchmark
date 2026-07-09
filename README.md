@@ -4,9 +4,10 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-The project is in the proof-of-concept stage. P01 specialist-agent infrastructure has been approved, and the current approved follow-up adds learning-resource and benchmark-specification specialists after the HNMU meeting on July 1, 2026. The benchmark taxonomy, production dataset, and evaluation pipeline are still provisional until UET/HNMU confirm them.
+The project is in the proof-of-concept stage. P01 specialist-agent infrastructure has been approved, and the approved July 1 follow-up added learning-resource and benchmark-specification specialists. After the July 5, 2026 meetings, the active design work has moved to experiment `20260705_215045`. P02 reduced source scope, P03 targeted literature synthesis, P04 task/rubric v0, P05 general coverage matrix v0, and P06 teacher example packet v0 are now available as draft artifacts for UET/HNMU review. The benchmark taxonomy, production dataset, and evaluation pipeline are still provisional until UET/HNMU confirm them.
 
-Active roadmap: [experiments/20260620_115236/roadmap.md](experiments/20260620_115236/roadmap.md)
+Active planning roadmap: [experiments/20260705_215045/roadmap.md](experiments/20260705_215045/roadmap.md)
+Historical baseline roadmap: [experiments/20260620_115236/roadmap.md](experiments/20260620_115236/roadmap.md)
 
 Approved plans:
 

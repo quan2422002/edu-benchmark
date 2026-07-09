@@ -1,113 +1,141 @@
-# Plan 02 — Source scope, tài liệu hỗ trợ benchmark và chuẩn hóa chủ đề Tin học THCS
+# Plan 02 — Phạm vi nguồn học liệu và danh sách chủ đề SGK Tin học 9
 
-Trạng thái: `DRAFT` — chờ duyệt  
-Experiment: `20260705_215045`  
-Owner chính: `learning-resource-curator`  
-Có thể chạy độc lập: Có, không phụ thuộc paper review.
+Trạng thái: `COMPLETED_REDUCED` — đã hoàn tất P02 theo bản thu gọn ngày 06/07/2026.
+Experiment: `20260705_215045`
+Owner chính: `learning-resource-curator`
+Có thể chạy độc lập: Có.
 
 ## 1. Mục tiêu
 
-Xác định rõ học liệu chủ đạo, tài liệu hỗ trợ benchmark do HNMU cung cấp, và chuẩn hóa tên chủ đề xuyên suốt bộ SGK/SGV Tin học THCS. Đây là plan kiểm soát rủi ro coverage: nếu chưa có taxonomy chủ đề ổn định, mọi tuyên bố “phủ kiến thức” đều dễ bị đếm sai.
+P02 bản thu gọn có mục tiêu rất hẹp: xác định nguồn học liệu chính đang dùng ngay, chốt cách dùng hai tài liệu HNMU hỗ trợ benchmark, và tạo danh sách chủ đề/bài học v0 từ **mục lục SGK Tin học 9**.
 
-Sau cập nhật 06/07/2026, P02 cũng cần đăng ký và đọc ở mức nguồn đối với một số tài liệu HNMU cung cấp để P04/P06 dùng tiếp:
+P02 không cố giải quyết toàn bộ bài toán học liệu. OCR toàn văn, phân mảnh học liệu, mã hóa từng đoạn học liệu, SGV và SGK lớp 6–8 được chuyển sang P08 hoặc một plan học liệu riêng.
 
-- tài liệu mô tả mức độ nhận thức môn Tin học;
-- tài liệu mô tả khung dàn giáo/hội thoại minh họa;
-- tài liệu mô tả dạng bài tập trong ma trận đề.
+## 2. Quyết định đã chốt
 
-P02 chỉ quản lý nguồn, trích ý chính và ghi giới hạn sử dụng của các tài liệu này. P02 **không** chốt task/rubric, không viết hướng dẫn giáo viên, và không quyết định cuối cùng cách chia mức độ nhận thức.
+- Chỉ dùng 3 mức nhận thức: `Biết`, `Hiểu`, `Vận dụng`.
+- Không dùng hệ 4 mức `Nhận biết`, `Thông hiểu`, `Vận dụng`, `Vận dụng cao` trong P02 hiện tại.
+- Giữ phương pháp giàn giáo; chất lượng hỗ trợ theo phương pháp này được chấm chủ yếu bằng R3.
+- Trong phiếu tác giả, cột `note` nên ghi mức hỗ trợ bằng nhãn tiếng Việt: `Gợi mở`, `Giải thích`, `Gợi ý`, `Hướng dẫn`, `Làm mẫu`.
+- Phạm vi học liệu của P02: **SGK Tin học 9**.
+- Tên chủ đề/bài học lấy theo mục lục SGK Tin học 9; danh sách hiện ở trạng thái `needs_hnmu_review`.
+- Tài liệu “Các dạng bài tập” chưa dùng trong P02 bản thu gọn để tránh làm loạn taxonomy; format bài tập sẽ xử lý ở P04/P05 theo hướng đã trao đổi ở P03.
 
-Học liệu chủ đạo:
+## 3. Input đã dùng
 
-```text
-SGK và SGV môn Tin học THCS trên trang tập huấn:
-https://taphuan.nxbgd.vn/tap-huan?subjects=11
-```
+| Nguồn | Vai trò trong P02 |
+|---|---|
+| SGK Tin học 9 trên trang tập huấn NXBGD | Nguồn chính để lấy mục lục và tạo danh sách chủ đề/bài học v0 |
+| `Biểu hiện mức độ nhận thức _Tin học.docx` | Căn cứ cho 3 mức nhận thức `Biết`, `Hiểu`, `Vận dụng` |
+| `KhungDanGiao_HoiThoaiMinhHoa.docx` | Căn cứ để mô tả nhãn hỗ trợ giàn giáo và liên hệ với R3 |
 
-Ưu tiên trước mắt: lớp 9 và tiền kiến thức liên quan trong lớp 6–8.
+## 4. Quy trình đã thực hiện
 
-## 2. Không làm trong plan này
+### Bước 1 — Thu hẹp phạm vi nguồn
+
+Chốt rằng P02 chỉ giữ SGK Tin học 9 làm nguồn học liệu chính. Các nguồn lớp 6–8, SGV và OCR toàn văn không còn là output của P02.
+
+Output:
+
+- `source_scope/sgk_sgv_source_scope.md`
+- `source_scope/sgk_sgv_source_registry.csv`
+
+### Bước 2 — Chuẩn hóa hai tài liệu HNMU hỗ trợ benchmark
+
+Ghi lại hai nguồn HNMU thực sự được dùng trong P02: tài liệu mức nhận thức và tài liệu giàn giáo.
+
+Output:
+
+- `source_scope/benchmark_support_source_registry.csv`
+- `source_scope/cognitive_level_seed_map.md`
+- `source_scope/scaffolding_function_notes.md`
+
+### Bước 3 — Ghi nhận ảnh nguồn SGK Tin học 9
+
+Giữ lại ảnh PNG của SGK Tin học 9 đã crawl để làm bằng chứng local. Không coi đây là OCR toàn văn.
+
+Output:
+
+- `source_scope/tin9_raw_page_images_manifest.csv`
+- `source_scope/tin9_raw_page_images_report.md`
+- `source_scope/raw_page_images/SGK_TIN9/` được git-ignore vì là dữ liệu ảnh raw.
+
+
+### Bước bổ sung — Khôi phục kho ảnh raw SGK Tin học 6–8
+
+Ngày 07/07/2026, ảnh raw của SGK Tin học 6–8 được crawl lại vì phần dữ liệu này đã từng được thu thập nhưng không còn trong workspace. Việc khôi phục này chỉ nhằm bảo toàn nguồn học liệu; không thay đổi phạm vi xử lý của P02 bản thu gọn.
+
+Output bổ sung:
+
+- `source_scope/raw_page_images/SGK_TIN6/`
+- `source_scope/raw_page_images/SGK_TIN7/`
+- `source_scope/raw_page_images/SGK_TIN8/`
+- `source_scope/raw_page_images_manifest.csv`
+- `source_scope/tin6_raw_page_images_manifest.csv`
+- `source_scope/tin7_raw_page_images_manifest.csv`
+- `source_scope/tin8_raw_page_images_manifest.csv`
+- `source_scope/raw_page_images_restore_report.md`
+- `handoffs/P02-raw-image-archive-restore-025.md`
+
+### Bước 4 — OCR tối thiểu mục lục
+
+Dùng EasyOCR trên một số trang đầu SGK Tin học 9 để tìm và đọc mục lục. Trang OCR hữu ích nhất hiện là:
+
+- `topic_taxonomy/tin9_toc_ocr_probe/page_0005.txt`
+
+Các file OCR probe trang 1–8 được giữ làm dấu vết kiểm tra, nhưng output chính của P02 là danh sách chủ đề/bài học đã chuẩn hóa bên dưới.
+
+### Bước 5 — Tạo danh sách chủ đề/bài học v0
+
+Tạo danh sách 31 dòng gồm chủ đề, chủ đề con, bài học và phụ lục theo mục lục SGK Tin học 9.
+
+Output:
+
+- `topic_taxonomy/tin9_sgk_topics_v0.csv`
+- `topic_taxonomy/tin9_sgk_topics_v0.md`
+
+### Bước 6 — Handoff sang P04
+
+Tạo handoff để P04 dùng danh sách chủ đề/bài học v0, nhưng vẫn giữ trạng thái cần HNMU/UET xác nhận.
+
+Output:
+
+- `handoffs/P02-reduced-completion-018.md`
+- `reports/P02-benchmark-support-open-questions.md`
+
+## 5. Output chính và vai trò
+
+| File/thư mục | Vai trò |
+|---|---|
+| `source_scope/benchmark_support_source_registry.csv` | Registry hai tài liệu HNMU dùng trong P02 |
+| `source_scope/cognitive_level_seed_map.md` | Mô tả 3 mức nhận thức cho phiếu tác giả |
+| `source_scope/scaffolding_function_notes.md` | Mô tả nhãn hỗ trợ giàn giáo và cách liên hệ với R3 |
+| `source_scope/sgk_sgv_source_registry.csv` | Registry nguồn SGK Tin học 9 duy nhất trong P02 |
+| `source_scope/sgk_sgv_source_scope.md` | Ghi rõ phạm vi học liệu và các phần đã loại khỏi P02 |
+| `source_scope/tin9_raw_page_images_manifest.csv` | Manifest ảnh local SGK Tin học 9 |
+| `source_scope/tin9_raw_page_images_report.md` | Báo cáo ngắn về ảnh nguồn SGK Tin học 9 |
+| `topic_taxonomy/tin9_toc_ocr_probe/page_0005.txt` | Bằng chứng OCR mục lục SGK Tin học 9 |
+| `topic_taxonomy/tin9_sgk_topics_v0.csv` | Bảng chủ đề/bài học v0 để P04/P05 dùng tiếp |
+| `topic_taxonomy/tin9_sgk_topics_v0.md` | Bản đọc nhanh của danh sách chủ đề/bài học |
+| `reports/P02-benchmark-support-open-questions.md` | Các điểm đã chốt và câu hỏi còn cần HNMU/UET xác nhận |
+| `handoffs/P02-reduced-completion-018.md` | Handoff chính thức từ P02 bản thu gọn sang P04 |
+
+## 6. Không làm trong P02 bản thu gọn
 
 - Không thiết kế task/rubric.
-- Không đọc/synthesis paper nghiên cứu.
 - Không tạo ví dụ phiếu tác giả.
-- Không triển khai database production.
-- Không sửa artifact của `20260701_100006`.
-- Không chốt chính thức bốn mức `Nhận biết`, `Thông hiểu`, `Vận dụng`, `Vận dụng cao`; P02 chỉ tạo mapping nháp từ tài liệu HNMU và đánh dấu phần cần HNMU xác nhận.
-- Không biến khung dàn giáo thành hướng dẫn giáo viên; P02 chỉ ghi chú các chức năng dàn giáo để P04/P06 tiêu thụ.
+- Không triển khai database.
+- Không chuẩn hóa toàn bộ Tin học 6–9.
+- Không OCR toàn văn SGK Tin học 9.
+- Không phân mảnh học liệu thành đoạn nhỏ/mã học liệu chi tiết.
+- Không dùng tài liệu dạng bài để tạo taxonomy format.
 
-## 3. Input
+## 7. Kiểm tra đã chạy
 
-- Link tập huấn Tin học: `https://taphuan.nxbgd.vn/tap-huan?subjects=11`.
-- Link SGK đã ghi trong `user_diary.md`:
-  - Lớp 6: `https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-6.4699918592#page=5`
-  - Lớp 7: `https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-7.4700056620#page=5`
-  - Lớp 8: `https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-8.4700157933#page=5`
-  - Lớp 9: `https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-9.4700233123#page=3`
-- Artifact tham khảo từ `20260701_100006/learning_resources/`.
-- Tài liệu HNMU mới trong `document/teacher_training_curriculum/benchmark_building_documents/`:
-  - `Biểu hiện mức độ nhận thức _Tin học.docx`: nguồn mô tả các mức `Biết`, `Hiểu`, `Vận dụng`; dùng để tạo mapping nháp sang cột `Mức độ nhận thức` trong phiếu tác giả/metadata.
-  - `KhungDanGiao_HoiThoaiMinhHoa.docx`: nguồn mô tả các chức năng dàn giáo và hội thoại minh họa; dùng để P04/P06 hiểu scaffolding nhưng chưa chốt rubric/task tại P02.
-  - `Các dạng bài tập.txt`: nguồn mô tả dạng bài `MC`, `YN`, `ES` và cách tính lệnh hỏi; dùng để chuẩn hóa cột `Format/dạng bài` nếu P04/P05 cần coverage theo dạng bài.
+- Validate `source_scope/sgk_sgv_source_registry.csv` bằng `agents/learning-resource-curator/scripts/validate_learning_resource_registry.py`.
+- Validate `source_scope/benchmark_support_source_registry.csv` bằng cùng validator.
+- Kiểm tra `topic_taxonomy/tin9_sgk_topics_v0.csv`: không trùng `item_id`, `parent_id` hợp lệ, `learning_material_id` thống nhất.
+- Kiểm tra `metadata.yaml` đọc được bằng PyYAML.
+- Chạy `pytest tests/agents -q`.
 
-## 4. Output sở hữu
-
-Plan này chỉ ghi vào:
-
-```text
-experiments/20260705_215045/source_scope/
-experiments/20260705_215045/topic_taxonomy/
-experiments/20260705_215045/reports/P02-*.md
-experiments/20260705_215045/handoffs/P02-*.md
-```
-
-Artifact dự kiến:
-
-| File | Vai trò |
-|---|---|
-| `source_scope/sgk_sgv_source_scope.md` | Mô tả phạm vi SGK/SGV, lớp, loại tài liệu, nguồn link, trạng thái truy cập/snapshot. |
-| `source_scope/sgk_sgv_source_registry.csv` | Registry nguồn SGK/SGV, gồm lớp, loại, URL, source_key, trạng thái. |
-| `source_scope/benchmark_support_source_registry.csv` | Registry các tài liệu HNMU hỗ trợ xây benchmark, ví dụ mức độ nhận thức, khung dàn giáo, dạng bài. Tạo file này để các plan sau truy vết được nguồn local thay vì trích dẫn miệng. |
-| `source_scope/cognitive_level_seed_map.md` | Mapping nháp từ `Biết`, `Hiểu`, `Vận dụng` trong tài liệu HNMU sang `Nhận biết`, `Thông hiểu`, `Vận dụng`, `Vận dụng cao`. Tạo file này vì P03/P04 đã tách Bloom thành cột `Mức độ nhận thức`, nhưng tài liệu HNMU hiện mới có 3 mức. |
-| `source_scope/scaffolding_function_notes.md` | Ghi chú có truy vết về 5 chức năng dàn giáo và ví dụ hội thoại. Tạo file này để P04/P06 dùng khi định nghĩa task/rubric/hướng dẫn, nhưng không biến nó thành hướng dẫn giáo viên trong P02. |
-| `source_scope/exercise_format_notes.md` | Ghi chú về các dạng bài `MC`, `YN`, `ES` và đơn vị `lệnh hỏi`. Tạo file này để P04/P05 có căn cứ khi thiết kế coverage theo format. |
-| `topic_taxonomy/thcs_topic_taxonomy_v0.md` | Luận giải chủ đề chuẩn xuyên suốt Tin học THCS. |
-| `topic_taxonomy/thcs_topic_taxonomy_v0.csv` | Bảng chủ đề chuẩn, mã chủ đề, mô tả, trạng thái HNMU review. |
-| `topic_taxonomy/source_topic_alias_map.csv` | Map tên chủ đề gốc trong SGK/SGV về chủ đề chuẩn. |
-| `topic_taxonomy/coverage_unit_registry.csv` | Đơn vị coverage: bài/mục/chủ đề nào được đếm khi đo độ phủ. |
-| `reports/P02-topic-taxonomy-open-questions.md` | Câu hỏi cần HNMU xác nhận về chủ đề/coverage. |
-| `reports/P02-benchmark-support-open-questions.md` | Câu hỏi cần HNMU/giáo sư xác nhận về mức độ nhận thức, chức năng dàn giáo và dạng bài. |
-
-## 5. Acceptance criteria
-
-- Có danh sách SGK/SGV lớp 6–9 hoặc ghi rõ nguồn nào chưa truy cập/snapshot được.
-- Có registry riêng cho tài liệu HNMU hỗ trợ benchmark, tối thiểu gồm tài liệu mức độ nhận thức, khung dàn giáo và dạng bài.
-- Có taxonomy chủ đề chuẩn tạm thời cho Tin học THCS.
-- Mỗi tên chủ đề gốc được giữ lại trong alias map, không bị mất truy vết.
-- Mapping từ `Biết`, `Hiểu`, `Vận dụng` sang bốn mức `Nhận biết`, `Thông hiểu`, `Vận dụng`, `Vận dụng cao` phải ghi rõ phần nào là nguồn trực tiếp, phần nào là suy luận cần HNMU xác nhận.
-- Ghi chú khung dàn giáo phải giữ nguyên tinh thần “chức năng dàn giáo”, không diễn giải thành quy trình cứng theo thời gian.
-- Mỗi quyết định suy luận đều gắn `needs_hnmu_review`.
-- Plan sau có thể dùng `thcs_topic_taxonomy_v0.csv`, `coverage_unit_registry.csv` và các notes trong `source_scope/` mà không cần sửa lại plan này.
-
-## 6. Validation
-
-- Kiểm tra CSV có header bắt buộc, ID không trùng.
-- Kiểm tra mỗi alias map trỏ tới topic chuẩn tồn tại.
-- Kiểm tra `benchmark_support_source_registry.csv` có đường dẫn local hoặc ghi chú truy xuất cho từng tài liệu HNMU.
-- Chạy validator học liệu nếu tạo source/fragment mapping theo schema hiện có.
-- Chạy `pytest tests/agents -q` nếu có thay đổi tài liệu/validator liên quan.
-
-## 7. Handoff
-
-Handoff cần nêu rõ:
-
-- nguồn nào đã snapshot/đọc được;
-- nguồn nào mới chỉ có URL;
-- tài liệu HNMU nào được dùng làm nguồn hỗ trợ benchmark và vai trò của từng tài liệu;
-- chủ đề nào chắc từ SGK/SGV;
-- chủ đề nào là suy luận cần HNMU xác nhận;
-- điểm nào về mức độ nhận thức, dàn giáo và dạng bài cần P04/P06 hoặc HNMU quyết định tiếp.
-
-## 8. Ghi chú cập nhật
-
-- 06/07/2026: Bổ sung 3 tài liệu HNMU trong `document/teacher_training_curriculum/benchmark_building_documents/` vào input của P02. P02 vẫn ở trạng thái `DRAFT`; chưa triển khai source registry/taxonomy cho tới khi được duyệt.
+Python dùng cho kiểm tra và cài package: `/home/quannda/miniconda3/envs/benchmark_env/bin/python`.

@@ -113,23 +113,27 @@ Việc của bạn bây giờ là phân tích kĩ các note này và phản bi�
 - Bạn sinh viên kia thì từ giờ đến 15/7 sẽ chỉ dành được khoảng 2 tiếng (0.25 effort) cho dự án này. Sau 15/7 thì có thể dành ra 6 tiếng cho dự án (~0.75 effort).
 
 # Update plan (01-07-2026)
+
 Sáng hôm qua, lúc 10h, tôi đã họp với giáo sư của tôi (UET) và các giáo viên chuyên môn của HNMU. Các nội dung đã được chốt:
 
 Về các deadline (QUAN TRỌNG NHẤT):
+
 - 1/8/2026: PHẢI CÓ bài báo để  nộp cho hội nghị KSE (link: https://kse2026.kse-conferences.org/)
 - 1/8/2026: Mục tiêu đạt được về kích thước của bộ benchmark là 1000 mẫu
 - 15/7/2026: Phải đạt được số lượng mẫu nhất định, để có thể kịp đánh giá tiến độ và cho thấy tính khả thi của việc đạt được 1000 mẫu và hoàn thành bài báo vào đầu tháng 8 (có thể mục tiêu ở mốc này sẽ là khoảng 700 mẫu)
 
 Về các nội dung đã chốt:
+
 - Phiếu tác giả, dùng để giáo viên chuyên môn xây dựng dữ liệu (link gg drive của sheet: https://docs.google.com/spreadsheets/d/1hx-bmX1hNfdFImfoKlXztGKp9QGCcou1/edit?gid=453913985#gid=453913985), với bản gốc là từ sheet "phiếu tác giả" có trong file gg sheet teacher_packet/review_form, đã được làm ở experiment 20260621_135515 ở branch feature/C01_P02_P03 (tôi đã sửa nhẹ so với bản gốc ở trên branch feature/C01_P02_P03 và upload lên thư mục drive này: https://drive.google.com/drive/folders/1h23ty1pE0sD10JpCqUIkfyuIifCd_USi?usp=sharing) . Ngoài ra tôi cũng đã thêm các thông tin liên quan, bổ sung và giải thích rõ ràng các thông tin có trong sheet "phiếu tác giả" trong cùng 1 file gg sheet đó. Hơn nữa, tôi cũng đã ném file phiếu tác giả được chốt vào experiment mới, mã là 20260701_100006 (link drive: https://drive.google.com/drive/folders/18k6oGkD4RJMhcKNjsVc178x2S2f6iur5?usp=sharing), cùng với đó là copy 2 thư mục là literature_review và curriculum_sources từ experiment 20260621_135515 vào experiment 20260701_100006. Tất nhiên, ở experiment này có 1 số chỗ  vẫn chưa được thống nhất toàn bộ. Bạn hãy soi kĩ experiment này, phần nào còn thiếu/mâu thuẫn/chưa đồng bộ thì note lại. Sau đó phản biện nhé.
 - Các trường trong phiếu tác giả, được kiến giải rõ ràng. Trong đó, có 1 trường là mã task. Đây là trường mà bên UET PHẢI điền và thông tin đến các giáo viên xây dựng trước khi các giáo viên chuyên môn tiếp tục hoàn thiện các trường còn lại.
 - Về trường "lịch sử trao đổi giữa học sinh và gia sư": hiện tại, cả giáo sư UET và giáo viên chuyên môn HNMU đã thống nhất là trong 1 lịch sử trao đổi, sẽ có :
+
   + Trung bình 4 lượt hội thoại (min 1 lượt, max 5 lượt), với mỗi lượt cũng có trung bình 4 bước (max 5 bước, min 1 bước) trao đổi. Đây cũng là 1 con số mà tôi thấy phù hợp. dựa trên bài báo MathTutorBench mà tôi đã đọc trước đó. Bạn có thể xem lại phần này nhé. Ở đây, ta càn làm rõ định nghĩa của bước và lượt:
     a. Lượt: Tương đương với 1 chat session
     b. Bước: Là các bước trong 1 lượt hội thoại. Được chạy lần lượt theo: bước của học sinh và, bước của gia sư.
     Đối với các bước hội thoại trong 1 lượt hội thoại, yêu cầu dành cho các bước của gia sư là phải tổ chức hội thoại theo phương pháp giàn giáo. Với phương pháp này, trước khi đi vào giải quyết vấn đề mà học sinh đưa ra, gia sư sẽ kiểm tra kiến thức nền của học sinh thông qua việc hỏi học sinh và tiếp nhận câu trả lời, từ đó xác định vấn đề của học sinh và đưa ra được hướng giải quyết trong vấn đề của học sinh, thay vì chỉ đưa ra 1 câu trả lời cuối cùng. TUY NHIÊN, do có giới hạn max cho số bước hội thoại, nên khi chạm đến giới hạn này, gia sư cũng cần đưa ra câu trả lời cuối cùng. Câu trả lời này có thể là kết quả cuối cùng luôn, hoặc 1 hướng dẫn chi tiết nhất để giúp học sinh giải bài.
-
 - Về phạm vi kiến thức được chốt: Đã được xác định rõ là CHỈ NẰM TRONG miền Tin học lớp 9 và kết nối đến các tiền kiến thức liên quan có trong các lớp 6-8. Sau khi trao đổi cùng các giáo viên chuyên môn bên HNMU, tôi thấy học liệu được sử dụng để xây dựng cho benchmark này có các đặc điểm sau:
+
   + Học liệu được lấy trên trang tập huấn, thuộc môn Tin học (link: https://taphuan.nxbgd.vn/tap-huan?subjects=11), hiện tại sẽ dùng sách giáo khoa (SGK) làm học liệu chủ đạo.
   + Xuyên suốt môn tin học của khối THCS sẽ có khoảng 6-7 chủ đề , với các bài thuộc cùng 1 chủ đề sẽ có độ khó tăng dần khi học ở các lớp trên. Bạn có thể  xem ở trang mục lục của các đầu sách SGK:
     Lớp 6: https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tin-hoc-6.4699918592#page=5
@@ -142,7 +146,28 @@ Trên thực tế thì cá nhân tôi thấy, ngay cả những nội dung đã 
 
 Các nội dung đang cần nhắc và xem xét thêm:
 Về ý tưởng thu thập dữ liệu: Giáo sư của tôi đã đề xuất 1 phương pháp như sau: Tạo 1 web để  học sinh có thể  tương tác trực tiếp với gia sư AI (Core LLM ở đây có thể sử dụng các model như chatGPT, Claude, Gemini,...). Sau đó sẽ thu thập hội thoại này để  làm các mẫu (chưa có điểm rubric). Các hội thoại được thu thập có thể được fill vào các cột như "Yêu cầu của học sinh về kiến thức thuộc chủ đề", "Bài làm của học sinh", "Lịch sử trao đổi giữa học sinh và gia sư", ....Các mẫu này sau đó sẽ được giaó viên chuyên môn chấm các điểm rubric ở trường "" và các thông tin khác (ví dụ: danh sách lỗi nghiêm trọng). Khi giáo sư của tôi đề xuất cách này, thì trước hết, cá nhân tối thấy đây là một cách làm rất hay, giúp thu thập dữ liệu trong thời gian ngắn. Tuy nhiên, tôi thấy có 1 số bất cập khi làm cách này:
+
 - Chi phí token cho các model này
 - Chi phí hosting cho web
 - Phải xây dựng một db quản lý học liệu THẬT chuẩn chỉnh, tương tự 1 mcp server để  model (đóng vai MCP client) có thể truy cập và lấy làm cơ sở để tương tác với học sinh. Nếu để nó tự zero-shot thì khả năng chỉ toàn thu được các mẫu kém chất lượng.
-Bạn có thể xem xét phần này và đưa ra đề xuất tối ưu cho tôi nhé
+  Bạn có thể xem xét phần này và đưa ra đề xuất tối ưu cho tôi nhé
+
+# Update plan (05-07-2026)
+
+Hôm nay, tôi đã họp với giáo sư và thầy cô bên HNMU. Có 1 số ý cần note lại như sau:
+
+- Đọc kĩ 2 bài báo: 2502.18940v2.pdf (MathTutorBench) và 2512.14554v5.pdf (VietLegal), tập trung vào cách các task được phân chia theo 2 hướng: 1. Theo các khía cạnh, phẩm chất của 1 gia sư (MathTutorBench)  và 2. Theo độ khó, dựa trên thang đo Bloom (VietLegal). Tuần sau trao đổi.
+- Đề nghị bên HNMU xem kĩ sheet "Luận giải chi tiết trường dữ liệu", vốn dùng để làm rõ các nội dung có trong sheet "phiếu tác giả" có trong file review_form.xlsx đã thống nhất trong buổi họp 01-07-2026, xem có phần nào chưa ổn không thì comment lại.
+- Với các trường đã chốt trong phiếu tác giả, nhờ các thầy cô bên HNMU xây trước khoảng 20 mẫu, rồi đưa bên UET tổng hợp và thử chia task
+
+Sau khi trao đổi riêng và kĩ hơn với giáo sư của tôi, thầy đã vạch rõ ra các ý sau:
+
+- Coi như các trường trong sheet "phiếu tác giả" của file review_form.xlsx đã được chốt. Thực hiện xây dựng 1 số ví dụ dựa trên sheet này để giáo viên chuyên môn có thể hình dung ra cách sử dụng phiếu tác giả để xây dựng benchmark.
+- Ưu tiên phân chia task theo độ khó, dựa trên thang đo Bloom. Về rubric đánh giá, ưu tiên tạo khoảng 3-4 rubric. Tuy nhiên, PHẢI CÓ bằng chứng khoa học rõ ràng về các task/rubric này (có thể ít paper khảo sát, tuy nhiên paper tham khảo PHẢI CHẤT LƯỢNG và liên quan cao đến benchmark gia sư. Bạn có thể ưu tiên tham khảo các bài báo mà tôi để trong thư mục document/paper/source_paper).
+- Tiêu chí cho 1 benchmark tốt (hiện tại):
+  + Độ phủ kiến thức (Coverage): Tỷ lệ phần trăm các chủ đề trong sách giáo khoa Tin học THCS (Lớp 6 - 9) được bao phủ bởi các câu hỏi trong bộ benchmark (Ưu tiên làm lớp 9 và các tiền kiến thức có trong khối THCS, như mục tiêu xuyên suốt từ đầu đến giờ).
+  + Độ phân hóa (Difficulty Alignment): Tỷ lệ phân bổ các câu hỏi theo 4 mức độ nhận thức: Nhận biết, Thông hiểu, Vận dụng và Vận dụng cao (đã được chia theo task)
+  + Độ đa dạng định dạng (Format Diversity): Sự cân bằng giữa các dạng câu hỏi khác nhau như trắc nghiệm, tự luận lý thuyết, sửa lỗi code (Scratch/Python) và viết chương trình.
+  Dựa trên các tiêu chí này, hãy phân loại ra các case để có thể xảy ra ở mỗi task, từ đó vạch ra hướng làm ví dụ sao cho bao quát nhất có thể nhé.
+
+Và một điều mà giáo sư của tôi luôn nhắc nhở tôi là: Cứ làm đi, cần thêm gì thì có thể bổ sung sau!

@@ -1,0 +1,122 @@
+# OCR probe SGK Tin học 9 page 7
+
+00084.1	00163.2	0.982	thống
+00087.0	00617.0	0.619	động,  là những ví dụ về thiết bị có gắn
+00090.0	00128.0	1.000	Hệ
+00090.0	00232.0	0.984	nhận dạng khuôn mặt trong
+00094.0	00594.0	0.999	tự
+00116.0	00128.0	0.795	các cơ quan; tổ chức; máy chiếu trong
+00118.0	00596.0	0.795	bộ xử lí trong thương mại , trong sản xuất
+00142.2	00431.1	1.000	thông
+00143.0	00125.0	0.721	lớp học; bảng điện tử hiển thị
+00144.2	00591.1	1.000	công
+00146.0	00646.0	0.590	nghiệp và nông nghiệp hiện đai.
+00148.0	00498.0	1.000	tin
+00170.0	00253.0	0.931	máy rút tiền tự động (ATM)
+00173.2	00202.2	1.000	bay;
+00174.0	00128.0	0.998	chuyến
+00183.0	00595.0	0.576	Những thiết bị có gắn bộ xử lí hiện diện
+00198.0	00127.0	0.575	của ngân hàng; hệ thống _
+00201.0	00410.0	0.998	phí tự động
+00203.2	00370.2	1.000	thu
+00213.0	00758.0	0.851	và ngày càng trở nên
+00215.0	00594.0	0.847	xung quanh ta
+00229.0	00126.0	0.997	trên đường cao tốc;
+00229.0	00342.0	0.917	là những ví dụ cho
+00239.0	00594.0	0.728	quen thuộc. Chúng có thể là những vật
+00254.2	00387.1	1.000	thông
+00255.0	00125.0	0.751	thấy thiết bị có gắn bộ xử lí
+00258.0	00450.0	0.998	tin xuất
+00266.2	00785.2	0.998	dùng
+00268.0	00594.0	0.677	dụng cá nhân; đồ
+00271.0	00844.0	0.959	trong gia đình
+00284.0	00128.0	0.653	hiện trong moi lĩnh vực của đời sống:
+00295.0	00640.0	0.457	những thiết bị chuyên dụng trong
+00297.2	00591.2	1.000	hay
+00320.1	00161.2	0.966	thống
+00322.2	00857.2	1.000	công
+00326.0	00128.0	1.000	Hệ
+00326.0	00230.0	0.742	thanh toán trong siêu thị, hệ
+00326.0	00594.0	0.805	hầu hết các lĩnh vực như
+00326.0	00916.0	0.814	nghiệp;
+00347.2	00124.2	0.971	thống
+00350.1	00354.2	0.989	động
+00350.2	00187.2	0.993	băng
+00351.3	00850.6	1.000	giáo
+00352.0	00594.0	0.640	nông nghiệp; thương mại,
+00352.2	00471.2	1.000	công
+00354.0	00248.0	0.993	chuyền tự
+00354.0	00900.0	0.333	dục;, y tế
+00358.0	00414.0	1.000	trong
+00377.0	00127.0	0.800	nghiệp chế biến; những cỗ máy lắp ráp
+00378.0	00593.0	0.725	giao thông;.
+00380.0	00736.0	0.712	Sự đa dang của các thiết
+00404.1	00273.2	0.970	thống
+00407.0	00595.0	0.670	bị đó tạo nên thế giới kĩ thuật số.
+00408.5	00332.5	1.000	phun
+00409.0	00126.0	0.995	tự động
+00409.2	00203.3	1.000	hay
+00412.0	00246.0	1.000	hệ
+00412.0	00388.0	0.950	tưới vận hành
+00471.0	00163.0	0.600	Thiết bị được gắn bộ xử lí hiện diện xung quanh ta. Chúng giúp con
+00471.6	00828.5	0.993	người
+00472.0	00892.0	0.995	tự động
+00497.0	00163.0	0.564	hoá một phẩn hoat động xử lí thông tin và xuất hiên trong hẩu hết các lĩnh vực kinh tế,
+00524.1	00291.2	0.553	sống;
+00530.0	00162.0	0.927	xã hội và đời
+00606.0	00166.0	0.666	1. Em hãy ghép mỗi cụm từ ô tô lái tự động, máy chụp cắt lớp, bảng điện tử, robot
+00634.0	00190.0	0.600	lắp ráp với một thiết bị có gắn bộ xử lí trong Hình 1.2
+00663.0	00163.0	0.832	2 Những thiết bị trong Hinh 1.2 thường xuất hiện ở nơi nào trong thực tế?
+00745.0	00259.0	0.983	Terminal B
+00774.0	00154.0	0.006	aeooe
+00776.0	00258.0	0.040	tae
+00776.0	00282.0	0.033	a
+00784.0	00154.0	0.000	adssaCasToaeoaoeoraanagre
+00792.0	00156.0	0.000	cacaqvetudavcqvoguraaeoannag
+00802.0	00156.0	0.000	Haoaucanstadd2eaa4ne
+00802.0	00282.0	0.031	70,
+00810.0	00156.0	0.000	1970517veea(at/g   c0ca716
+00812.0	00282.0	0.015	Aana
+00820.0	00154.0	0.047	oza
+00828.0	00156.0	0.003	79,15 Josca/u0
+00828.0	00222.0	0.012	0028772970700918,20 45
+00838.0	00156.0	0.000	702 7u77285777510777aog
+00846.0	00154.0	0.019	an
+00848.0	00178.0	0.027	ee
+00848.0	00258.0	0.061	hae
+00856.0	00222.0	0.007	hae
+00891.0	00439.0	0.999	b)
+00922.0	00420.0	0.693	Hình 1.2 Thiết bị có bộ xử Ií
+00923.0	00632.0	0.552	xừ I
+00924.0	00354.0	0.017	1
+00944.0	00492.0	0.000	
+00982.0	00098.0	0.682	2 ỨNG DỤNG THỰC TỄ CỦA MÁY TÍNH TRONG KHOA HỌC KĨ THUẬT
+01021.0	00139.0	0.633	VÀ ĐỜỈ SỖNG
+01078.2	00205.1	0.990	động
+01082.0	00300.0	0.986	Máy tính thật là cẩn thiết
+01084.0	00156.0	0.666	Hoat
+01120.2	00379.2	0.998	năng
+01121.0	00155.0	0.702	Em hãy nêu một số khả
+01122.0	00434.0	0.782	của máy tính mà nhờ đó máy tính có thể hỗ
+01123.2	00841.4	0.998	trợ
+01124.0	00915.0	0.997	người
+01129.0	00879.0	1.000	con
+01146.2	00429.2	0.979	sống
+01150.0	00156.0	0.722	một cách đắc lực trong cuộc
+01199.0	00595.0	0.778	Máy tính có thể thực hiện hàng tỉ phép
+01225.0	00154.0	0.831	a) Khả năng của máy tính
+01230.0	00594.0	0.809	tính trong một giây một cách bền bỉ với
+01258.0	00594.0	0.710	độ chính xác cao; giúp con người giải
+01266.0	00156.0	0.664	Máy tính là thiết bị điện tử có thể hỗ trợ
+01285.0	00596.0	0.931	quyết được những bài toán phức tạp.
+01295.0	00126.0	0.976	tích cực nhiều hoạt động của con người
+01324.0	00128.0	0.880	do nó có khả năng tính toán nhanh; chính
+01324.0	00596.0	0.641	Máy tính có thể Iưu trữ và xử lí nhiều
+01352.0	00125.0	0.551	xác; Iưu trữ dung lượng lớn; kết nối toàn
+01353.0	00594.0	0.489	loại dữ liệu như văn bản; hình ảnh; âm
+01380.0	00126.0	0.945	cầu với tốc độ cao_
+01382.0	00594.0	0.771	thanh; video,
+01383.0	00746.0	0.600	với dung lượng lớn và có
+01408.0	00594.0	0.997	thể
+01408.0	00674.0	0.819	xuất nhanh chóng khi cần thiết.
+01409.2	00628.2	0.999	truy

@@ -1,0 +1,46 @@
+id: "20260701_100006"
+title: "HNMU author form meeting follow-up and data authoring workflow"
+status: active
+task_type: specialist_expansion
+owner_agent: orchestrator
+parents:
+  - "20260620_115236"
+created_at: "2026-07-01T10:00:06+07:00"
+source_meeting_at: "2026-07-01T10:00:00+07:00"
+git_commit: null
+artifacts:
+  - plans/01-specialist-expansion-learning-resource-and-benchmark-spec.md
+  - plans/02-author-form-rubric-task-and-learning-resource-sprint.md
+  - reports/hnmu-author-form-meeting-structured-notes-20260701.md
+  - drive_snapshot/README.md
+  - drive_snapshot/drive_file_manifest.csv
+  - drive_snapshot/review_form.extracted.txt
+  - drive_snapshot/files/teacher_packet/review_form.xlsx
+  - author_form/author_form_field_review.md
+  - author_form/author_form_field_matrix.csv
+  - reports/hnmu-open-questions.md
+  - handoffs/p02-step1-author-form-review-001.md
+  - coordination/delegations.jsonl
+  - learning_resources/learning_resource_source_map.csv
+  - learning_resources/learning_resource_fragments_v0.csv
+  - learning_resources/learning_resource_fragments.csv
+  - learning_resources/topic_map_grade6_9.csv
+  - learning_resources/topic_map_grade6_9.md
+  - learning_resources/grade9_prerequisite_map.csv
+  - learning_resources/learning_resource_open_questions.md
+  - benchmark_spec/benchmark_tasks.csv
+  - benchmark_spec/task_code_registry.csv
+  - benchmark_spec/rubrics.csv
+  - benchmark_spec/rubric_dimensions.csv
+  - benchmark_spec/rubric_specification.md
+  - benchmark_spec/serious_errors.csv
+  - benchmark_spec/serious_error_catalog.md
+  - benchmark_spec/rubric_error_mapping.csv
+  - benchmark_spec/provenance_matrix.csv
+  - benchmark_spec/provenance_matrix_v0.csv
+  - benchmark_spec/benchmark_task_specification.md
+  - benchmark_spec/benchmark_open_questions.md
+  - benchmark_spec/targeted_research_evidence_notes.md
+  - reports/sprint-02-summary.md
+  - handoffs/p02-learning-resource-v0-002.md
+  - handoffs/p02-benchmark-spec-v0-003.md

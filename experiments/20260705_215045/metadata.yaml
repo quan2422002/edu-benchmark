@@ -1,42 +1,93 @@
-id: "20260705_215045"
-title: "Bloom-oriented benchmark redesign after 2026-07-05 HNMU and professor meetings"
+id: '20260705_215045'
+title: Bloom-oriented benchmark redesign after 2026-07-05 HNMU and professor meetings
 status: active
 task_type: benchmark_redesign_planning
 owner_agent: orchestrator
 parents:
-  - "20260701_100006"
-created_at: "2026-07-05T21:53:57+07:00"
-source_meeting_at: "2026-07-05"
+- '20260701_100006'
+created_at: '2026-07-05T21:53:57+07:00'
+source_meeting_at: '2026-07-05'
 git_commit: null
 artifacts:
-  - reports/meeting-notes-structured-20260705.md
-  - reports/state-transfer-from-20260701.md
-  - plans/01-bloom-task-rubric-example-sprint.md
-  - handoffs/p01-meeting-analysis-001.md
-  - coordination/delegations.jsonl
-  - roadmap.md
-  - plans/02-source-scope-topic-taxonomy.md
-  - plans/03-targeted-paper-review-bloom-tutoring.md
-  - plans/04-bloom-task-taxonomy-and-compact-rubric.md
-  - plans/05-case-coverage-and-pilot-allocation.md
-  - plans/06-teacher-examples-and-pilot-packet.md
-  - plans/07-pilot-sample-intake-and-design-check.md
-  - handoffs/p02-roadmap-and-modular-plans-002.md
-  - handoffs/p03-plan-revision-004.md
-  - literature_notes/paper_selection_registry.csv
-  - reports/P03-step1-paper-selection-summary.md
-  - handoffs/P03-step1-paper-selection-005.md
-  - literature_notes/review_protocol.md
-  - literature_notes/paper_summaries/P03-P001-mathtutorbench.md
-  - literature_notes/paper_summaries/P03-P002-kmp-bench.md
-  - literature_notes/paper_summaries/P03-P003-tutorbench.md
-  - reports/P03-step2A-three-A-paper-summaries.md
-  - handoffs/P03-step2A-three-A-paper-summaries-006.md
-  - handoffs/P03-review-protocol-evidence-label-clarification-007.md
-  - literature_notes/evidence_to_design_matrix.csv
-  - literature_notes/evidence_matrix.csv
-  - reports/P03-literature-synthesis-for-design.md
-  - handoffs/P03-step4A-three-paper-synthesis-008.md
-  - handoffs/P03-step4A-rubric-split-revision-009.md
-  - handoffs/P03-step4A-task-bloom-separation-revision-010.md
-  - handoffs/P02-plan-revision-hnmu-benchmark-docs-011.md
+- reports/meeting-notes-structured-20260705.md
+- reports/state-transfer-from-20260701.md
+- plans/01-bloom-task-rubric-example-sprint.md
+- handoffs/p01-meeting-analysis-001.md
+- coordination/delegations.jsonl
+- roadmap.md
+- plans/02-source-scope-topic-taxonomy.md
+- plans/03-targeted-paper-review-bloom-tutoring.md
+- plans/04-bloom-task-taxonomy-and-compact-rubric.md
+- plans/05-case-coverage-and-pilot-allocation.md
+- plans/06-teacher-examples-and-pilot-packet.md
+- plans/07-pilot-sample-intake-and-design-check.md
+- handoffs/p02-roadmap-and-modular-plans-002.md
+- handoffs/p03-plan-revision-004.md
+- literature_notes/paper_selection_registry.csv
+- reports/P03-step1-paper-selection-summary.md
+- handoffs/P03-step1-paper-selection-005.md
+- literature_notes/review_protocol.md
+- literature_notes/paper_summaries/P03-P001-mathtutorbench.md
+- literature_notes/paper_summaries/P03-P002-kmp-bench.md
+- literature_notes/paper_summaries/P03-P003-tutorbench.md
+- reports/P03-step2A-three-A-paper-summaries.md
+- handoffs/P03-step2A-three-A-paper-summaries-006.md
+- handoffs/P03-review-protocol-evidence-label-clarification-007.md
+- literature_notes/evidence_to_design_matrix.csv
+- literature_notes/evidence_matrix.csv
+- reports/P03-literature-synthesis-for-design.md
+- handoffs/P03-step4A-three-paper-synthesis-008.md
+- handoffs/P03-step4A-rubric-split-revision-009.md
+- handoffs/P03-step4A-task-bloom-separation-revision-010.md
+- handoffs/P02-plan-process-revision-012.md
+- source_scope/benchmark_support_source_registry.csv
+- source_scope/cognitive_level_seed_map.md
+- source_scope/scaffolding_function_notes.md
+- source_scope/sgk_sgv_source_scope.md
+- source_scope/sgk_sgv_source_registry.csv
+- reports/P02-benchmark-support-open-questions.md
+- source_scope/raw_page_images/.gitignore
+- path: experiments/20260705_215045/source_scope/benchmark_support_source_registry.csv
+  description: P02 source registry for HNMU benchmark-support documents
+- path: experiments/20260705_215045/source_scope/cognitive_level_seed_map.md
+  description: P02 reduced cognitive-level map
+- path: experiments/20260705_215045/source_scope/scaffolding_function_notes.md
+  description: P02 scaffolding labels and R3 notes
+- path: experiments/20260705_215045/source_scope/sgk_sgv_source_registry.csv
+  description: P02 Tin9 SGK source registry
+- path: experiments/20260705_215045/source_scope/sgk_sgv_source_scope.md
+  description: P02 reduced learning-resource scope
+- path: experiments/20260705_215045/source_scope/tin9_raw_page_images_manifest.csv
+  description: Tin9 SGK image manifest
+- path: experiments/20260705_215045/source_scope/tin9_raw_page_images_report.md
+  description: Tin9 SGK image crawl report
+- path: experiments/20260705_215045/topic_taxonomy/tin9_toc_ocr_probe/page_0005.txt
+  description: OCR evidence for Tin9 table of contents
+- path: experiments/20260705_215045/topic_taxonomy/tin9_sgk_topics_v0.csv
+  description: Tin9 SGK topic taxonomy v0 table
+- path: experiments/20260705_215045/topic_taxonomy/tin9_sgk_topics_v0.md
+  description: Tin9 SGK topic taxonomy v0 readable version
+- path: experiments/20260705_215045/reports/P02-benchmark-support-open-questions.md
+  description: P02 decisions and remaining confirmation points
+- path: experiments/20260705_215045/handoffs/P02-reduced-completion-018.md
+  description: P02 reduced completion handoff
+- path: experiments/20260705_215045/plans/04-bloom-task-taxonomy-and-compact-rubric.md
+  description: P04 task/rubric-only revised plan
+- path: experiments/20260705_215045/handoffs/P04-plan-revision-from-P02-P03-020.md
+  description: Superseded P04 revision handoff; replaced by task/rubric-only revision
+    021
+- path: experiments/20260705_215045/handoffs/P04-plan-revision-task-rubric-only-021.md
+  description: Handoff for P04 task/rubric-only revision
+- path: experiments/20260705_215045/benchmark_design/task_design_rationale_v0.md
+  description: P04 task rationale for tutor-behavior task taxonomy
+- path: experiments/20260705_215045/benchmark_design/benchmark_tasks.csv
+  description: P04 benchmark task registry T1-T4
+- path: experiments/20260705_215045/benchmark_design/rubric_design_rationale_v0.md
+  description: P04 rubric rationale R1-R5 with Likert 1-5
+- path: experiments/20260705_215045/benchmark_design/rubrics.csv
+  description: P04 task-rubric CSV T1_R1 through T4_R5
+- path: experiments/20260705_215045/reports/P04-task-rubric-open-questions.md
+  description: P04 open questions for task/rubric review
+- path: experiments/20260705_215045/handoffs/P04-task-rubric-implementation-022.md
+  description: P04 implementation handoff for task/rubric v0
+updated_at: '2026-07-06'

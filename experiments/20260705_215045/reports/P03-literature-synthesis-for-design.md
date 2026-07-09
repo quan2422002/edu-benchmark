@@ -1,8 +1,6 @@
 # P03 — Tổng hợp literature cho thiết kế P04 từ 3 paper tier A
 
-Ngày tạo: 06/07/2026  
-Experiment: `20260705_215045`  
-Phạm vi: chỉ dùng 3 paper `priority_tier = A` đã tóm tắt trong Bước 2A:
+Ngày tạo: 06/07/2026Experiment: `20260705_215045`Phạm vi: chỉ dùng 3 paper `priority_tier = A` đã tóm tắt trong Bước 2A:
 
 - `P03-P001` — MathTutorBench.
 - `P03-P002` — KMP-Bench.
@@ -35,16 +33,16 @@ Bloom vẫn hữu ích, nhưng không nên là định danh chính của task. T
 Các claim dưới đây có thể đưa sang P04 như nền thiết kế khá chắc, với điều kiện vẫn ghi rõ giới hạn domain:
 
 
-| Claim                                                                                 | Nguồn     | Ý nghĩa cho P04                                                                                                     |
-| ------------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------- |
-| Cần tách “giải đúng” khỏi “dạy tốt”.                                      | `P03-C001` | Mọi task không nên chỉ hỏi đáp án cuối; phải xem tutor hỗ trợ học sinh thế nào.                        |
-| Cần task về hiểu/chẩn đoán trạng thái học sinh.                              | `P03-C002` | Nên có task/rubric liên quan đến nhận diện lỗi code/thuật toán/khái niệm hoặc hiểu lầm của học sinh. |
-| Gợi mở/scaffolding là năng lực gia sư cốt lõi.                                | `P03-C003` | Khi task yêu cầu active learning, tutor không nên tiết lộ lời giải ngay.                                      |
-| Task nên dựa vào kiểu hành vi gia sư trong hội thoại.                    | `P03-C004` | Bloom nên là cột `Mức độ nhận thức`; task nên mô tả tutor đang giải thích, phản hồi, gợi ý hay chẩn đoán. |
-| Rubric phải quan sát được, tự đủ nghĩa và tránh chồng chéo.              | `P03-C005` | Rubric P04 cần reviewer nhìn vào response là chấm được, không cần suy đoán ý đồ ẩn.                   |
-| Human expert cần tham gia authoring, review và validation.                          | `P03-C007` | HNMU phải giữ vai trò quyết định chuyên môn/sư phạm; agent chỉ hỗ trợ cấu trúc hóa.                   |
-| LLM judge cần validation với human experts trước khi dùng làm evaluator chính. | `P03-C008` | Giai đoạn hiện tại nên ưu tiên rubric cho người chấm; tự động hóa chấm để sau.                       |
-| Bloom hữu ích nhưng không tuyến tính với độ khó của LLM tutor.             | `P03-C009` | Dùng Bloom làm cột `Mức độ nhận thức`, nhưng không dùng Bloom làm định danh task hoặc thước đo khó duy nhất. |
+| Claim                                                                                 | Nguồn     | Ý nghĩa cho P04                                                                                                               |
+| ------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Cần tách “giải đúng” khỏi “dạy tốt”.                                      | `P03-C001` | Mọi task không nên chỉ hỏi đáp án cuối; phải xem tutor hỗ trợ học sinh thế nào.                                  |
+| Cần task về hiểu/chẩn đoán trạng thái học sinh.                              | `P03-C002` | Nên có task/rubric liên quan đến nhận diện lỗi code/thuật toán/khái niệm hoặc hiểu lầm của học sinh.           |
+| Gợi mở/scaffolding là năng lực gia sư cốt lõi.                                | `P03-C003` | Khi task yêu cầu active learning, tutor không nên tiết lộ lời giải ngay.                                                |
+| Task nên dựa vào kiểu hành vi gia sư trong hội thoại.                         | `P03-C004` | Bloom nên là cột`Mức độ nhận thức`; task nên mô tả tutor đang giải thích, phản hồi, gợi ý hay chẩn đoán.   |
+| Rubric phải quan sát được, tự đủ nghĩa và tránh chồng chéo.              | `P03-C005` | Rubric P04 cần reviewer nhìn vào response là chấm được, không cần suy đoán ý đồ ẩn.                             |
+| Human expert cần tham gia authoring, review và validation.                          | `P03-C007` | HNMU phải giữ vai trò quyết định chuyên môn/sư phạm; agent chỉ hỗ trợ cấu trúc hóa.                             |
+| LLM judge cần validation với human experts trước khi dùng làm evaluator chính. | `P03-C008` | Giai đoạn hiện tại nên ưu tiên rubric cho người chấm; tự động hóa chấm để sau.                                 |
+| Bloom hữu ích nhưng không tuyến tính với độ khó của LLM tutor.             | `P03-C009` | Dùng Bloom làm cột`Mức độ nhận thức`, nhưng không dùng Bloom làm định danh task hoặc thước đo khó duy nhất. |
 
 ## 4. Suy luận có kiểm soát cho P04
 
@@ -67,21 +65,23 @@ P04 nên tách hai khái niệm vốn dễ bị trộn:
 
 Cách tách này hợp lý hơn Bloom-only vì ba paper tier A đều nhấn mạnh năng lực gia sư nằm ở cách tutor tương tác với học sinh, không chỉ ở độ khó nhận thức của nội dung. Bloom vẫn quan trọng, nhưng nên là một cột riêng trong phiếu tác giả để kiểm soát coverage và độ sâu nhận thức.
 
-| Thành phần | Giá trị gợi ý | Vai trò |
-|---|---|---|
-| `task` | Dựa trên hành vi gia sư: giải thích thích ứng; phản hồi bài làm/lời giải; gợi ý học tập chủ động; chẩn đoán lỗi/hiểu lầm | Định nghĩa tutor phải làm gì trong lượt hội thoại. |
-| `Mức độ nhận thức` | Nhận biết; Thông hiểu; Vận dụng; Vận dụng cao | Mô tả độ sâu nhận thức của nội dung học tập theo Bloom. |
-| Chủ đề học liệu | Theo taxonomy SGK/SGV P02 | Kiểm soát coverage Tin học 9 và tiền kiến thức 6–8. |
-| Format | Khái niệm; trắc nghiệm; tự luận; sửa lỗi code; viết/hoàn thiện thuật toán hoặc chương trình | Kiểm soát đa dạng định dạng bài. |
+
+| Thành phần            | Giá trị gợi ý                                                                                                                                   | Vai trò                                                           |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `task`                  | Dựa trên hành vi gia sư: giải thích thích ứng; phản hồi bài làm/lời giải; gợi ý học tập chủ động; chẩn đoán lỗi/hiểu lầm | Định nghĩa tutor phải làm gì trong lượt hội thoại.       |
+| `Mức độ nhận thức` | Nhận biết; Thông hiểu; Vận dụng; Vận dụng cao                                                                                               | Mô tả độ sâu nhận thức của nội dung học tập theo Bloom. |
+| Chủ đề học liệu    | Theo taxonomy SGK/SGV P02                                                                                                                           | Kiểm soát coverage Tin học 9 và tiền kiến thức 6–8.        |
+| Format                  | Khái niệm; trắc nghiệm; tự luận; sửa lỗi code; viết/hoàn thiện thuật toán hoặc chương trình                                        | Kiểm soát đa dạng định dạng bài.                           |
 
 Một bộ task v0 có thể bắt đầu như sau:
 
-| Mã gợi ý | Task theo hành vi gia sư | Căn cứ từ paper | Ghi chú |
-|---|---|---|---|
-| T1 | Giải thích thích ứng theo mức hiểu của học sinh | TutorBench adaptive explanation; MathTutorBench teacher response generation | Dùng khi học sinh hỏi khái niệm/cách làm và tutor cần giải thích vừa sức. |
-| T2 | Phản hồi bài làm, lời giải hoặc lập luận của học sinh | TutorBench assessment/feedback; KMP-Bench feedback/error correction | Dùng khi đã có bài làm/câu trả lời/lập luận của học sinh cần nhận xét. |
-| T3 | Gợi ý từng bước để học sinh tự đi tiếp | TutorBench active learning support; MathTutorBench scaffolding | Dùng khi mục tiêu là giàn giáo, không đưa ngay lời giải cuối. |
-| T4 | Chẩn đoán lỗi, hiểu lầm hoặc điểm mắc kẹt của học sinh | MathTutorBench student understanding/mistake location; KMP-Bench error detection and correction; TutorBench misconception tags | Có thể là task riêng hoặc nhãn bắt buộc trong T2/T3; cần P04 chốt để tránh chồng chéo. |
+
+| Mã gợi ý | Task theo hành vi gia sư                                          | Căn cứ từ paper                                                                                                             | Ghi chú                                                                                              |
+| ----------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| T1          | Giải thích thích ứng theo mức hiểu của học sinh             | TutorBench adaptive explanation; MathTutorBench teacher response generation                                                    | Dùng khi học sinh hỏi khái niệm/cách làm và tutor cần giải thích vừa sức.                |
+| T2          | Phản hồi bài làm, lời giải hoặc lập luận của học sinh    | TutorBench assessment/feedback; KMP-Bench feedback/error correction                                                            | Dùng khi đã có bài làm/câu trả lời/lập luận của học sinh cần nhận xét.                |
+| T3          | Gợi ý từng bước để học sinh tự đi tiếp                   | TutorBench active learning support; MathTutorBench scaffolding                                                                 | Dùng khi mục tiêu là giàn giáo, không đưa ngay lời giải cuối.                             |
+| T4          | Chẩn đoán lỗi, hiểu lầm hoặc điểm mắc kẹt của học sinh | MathTutorBench student understanding/mistake location; KMP-Bench error detection and correction; TutorBench misconception tags | Có thể là task riêng hoặc nhãn bắt buộc trong T2/T3; cần P04 chốt để tránh chồng chéo. |
 
 Đề xuất của mình: P04 nên coi T1–T3 là ba task lõi dễ giải thích với HNMU, còn T4 là ứng viên cần cân nhắc kỹ. Nếu T4 được để riêng, nó phải tập trung vào “tutor xác định đúng vấn đề của học sinh” hơn là vừa chẩn đoán vừa dạy lại đầy đủ. Nếu không, T4 sẽ chồng lên T2 và T3. Một phương án an toàn là để T4 làm **nhãn kỹ năng phụ** trong bản pilot, rồi nâng thành task riêng nếu HNMU thấy cần.
 
@@ -95,13 +95,13 @@ Dựa trên ba paper và đối chiếu với phiếu tác giả đã chốt sơ
 Vì vậy, P04 nên tách rõ **đúng kiến thức** khỏi **tuân thủ ranh giới/phạm vi**. Hai tiêu chí này liên quan nhưng không thay thế nhau: một phản hồi có thể đúng kiến thức nhưng vẫn vượt phạm vi lớp 9, tiết lộ lời giải khi task yêu cầu gợi mở, hoặc vi phạm ranh giới an toàn/định kiến.
 
 
-| Mã gợi ý | Tiêu chí                                                 | Căn cứ từ paper                                                                         | Ghi chú                                                                       |
-| ----------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| R1          | Độ chính xác về kiến thức và bám học liệu          | MathTutorBench; TutorBench truthfulness                                                    | Tương ứng gần nhất với `truthfulness_score`; chấm nội dung đúng/sai khi đối chiếu SGK/SGV và học liệu tham khảo. |
-| R2          | Hiểu đúng trạng thái/lỗi/nhu cầu của học sinh     | MathTutorBench student understanding; TutorBench misconception/steps; KMP error correction | Rất quan trọng cho gia sư, không chỉ giải bài.                          |
-| R3          | Hỗ trợ sư phạm phù hợp                               | MathTutorBench scaffolding; KMP principles; TutorBench active learning/adaptivity          | Bao gồm gợi mở, giải thích vừa sức, không quá tải.                   |
-| R4          | Tuân thủ mục tiêu, phạm vi và ràng buộc của task   | TutorBench instruction following; KMP principle-specific criteria                           | Chấm việc tutor có bám yêu cầu của mẫu, phạm vi Tin học 9/tiền kiến thức liên quan, lịch sử hội thoại, yêu cầu gợi mở hay yêu cầu trả lời trực tiếp hay không. |
-| R5          | Tuân thủ ranh giới an toàn, đạo đức, pháp lý và không định kiến | TutorBench negative weights; MathTutorBench safety limitation; phiếu tác giả `boundary_adherence_score_list` | Tương ứng gần nhất với `boundary_adherence_score_list`; nên chấm riêng với ranh giới an toàn/đạo đức/pháp lý/định kiến và các ranh giới sư phạm đặc thù. |
+| Mã gợi ý | Tiêu chí                                                                     | Căn cứ từ paper                                                                                             | Ghi chú                                                                                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| R1          | Độ chính xác về kiến thức và bám học liệu                           | MathTutorBench; TutorBench truthfulness                                                                        | Tương ứng gần nhất với`truthfulness_score`; chấm nội dung đúng/sai khi đối chiếu SGK/SGV và học liệu tham khảo.                                                            |
+| R2          | Hiểu đúng trạng thái/lỗi/nhu cầu của học sinh                         | MathTutorBench student understanding; TutorBench misconception/steps; KMP error correction                     | Rất quan trọng cho gia sư, không chỉ giải bài.                                                                                                                                       |
+| R3          | Hỗ trợ sư phạm phù hợp                                                   | MathTutorBench scaffolding; KMP principles; TutorBench active learning/adaptivity                              | Bao gồm gợi mở, giải thích vừa sức, không quá tải.                                                                                                                                |
+| R4          | Tuân thủ mục tiêu, phạm vi và ràng buộc của task                      | TutorBench instruction following; KMP principle-specific criteria                                              | Chấm việc tutor có bám yêu cầu của mẫu, phạm vi Tin học 9/tiền kiến thức liên quan, lịch sử hội thoại, yêu cầu gợi mở hay yêu cầu trả lời trực tiếp hay không. |
+| R5          | Tuân thủ ranh giới an toàn, đạo đức, pháp lý và không định kiến | TutorBench negative weights; MathTutorBench safety limitation; phiếu tác giả`boundary_adherence_score_list` | Tương ứng gần nhất với`boundary_adherence_score_list`; nên chấm riêng với ranh giới an toàn/đạo đức/pháp lý/định kiến và các ranh giới sư phạm đặc thù.        |
 
 Đề xuất điều chỉnh: P04 nên viết R1–R5 như bộ rubric compact tạm thời, nhưng **mã lỗi nghiêm trọng vẫn nên là policy riêng** và có bảng mapping sang rubric bị ảnh hưởng. Ví dụ:
 

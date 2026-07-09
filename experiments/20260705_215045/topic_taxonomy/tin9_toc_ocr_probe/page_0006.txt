@@ -1,0 +1,94 @@
+# OCR probe SGK Tin học 9 page 6
+
+00091.0	00075.0	0.206	CHỦ ĐỂ !. MÁY TÍNH VÀ CỘNG ĐỖNG
+00203.0	00287.0	0.235	THÊ GlỚl KĨ THUẬT SỔ
+00206.0	00114.0	0.608	BAI
+00314.0	00266.0	0.684	Sau bài học này em sẽ:
+00345.0	00293.0	0.815	Nhận biết được sự có mặt của các thiết bị có gắn bộ xử
+00347.0	00878.0	0.997	thông tin ở
+00374.2	00618.1	0.629	hoạ.
+00376.0	00294.0	0.823	khắp nơi và nêu được ví dụ minh
+00408.0	00294.0	0.949	Nêu được khả năng của máy tính và chỉ ra được một số ứng dung thực
+00432.1	00683.2	0.861	sống:
+00438.0	00292.0	0.876	tế của nó trong khoa học kĩ thuật và đời
+00468.2	00685.1	1.000	thông
+00471.0	00292.0	0.888	Giải thích được tác động của công nghệ
+00471.4	00810.5	0.946	giáo
+00474.0	00748.0	0.773	tin lên
+00474.0	00860.0	0.989	dục và xã hội
+00496.2	00289.1	1.000	thông
+00498.0	00354.0	0.653	qua các ví dụ cụ thể.
+00557.0	00231.0	0.659	Bộ xử lí là thành phần quan trọng của máy tính; thường được gọi là "bộ não"
+00562.0	00164.0	1.000	An:
+00588.0	00230.0	0.581	của máy tính. Nhưng liệu có phải chỉ máy tính mới có bộ xử lí không?
+00619.0	00411.0	0.767	xuất hiện trong máy tính để bàn hoặc máy tính xách tay mà
+00621.0	00163.0	0.677	Khoa: Bộ xử lí không
+00623.2	00376.5	0.997	chỉ
+00648.2	00489.2	0.925	cũng
+00649.0	00544.0	0.601	cần bộ xử lí để hoạt động như ti vi kĩ thuật số
+00650.0	00232.0	0.776	nhiều thiết bị điện tử khác
+00679.2	00229.2	1.000	hay
+00680.0	00272.0	0.801	robot lau nhà
+00709.0	00231.0	0.608	Thế thì còn nhiều thiết bị nữa có gắn bộ xử lí ở xung quanh chúng ta_
+00714.0	00166.0	1.000	An:
+00770.0	00126.0	0.281	THỄ GIỚl KĨ THUẬT Sổ
+00789.0	00101.0	0.996	1
+00832.0	00298.0	0.698	Tìm hiểu ti vi kĩ thuật số
+00834.0	00156.0	0.508	Hoạt động 1
+00880.0	00156.0	0.675	Hầu hết ti vi được sử dụng hiện nay là ti vi kĩ thuật số (Hình 1.1).
+00906.0	00156.0	0.585	Em hãy tìm hiểu và trả lời các câu hỏi sau:
+00935.0	00177.0	0.524	Thông tin đầu vào nào được ti vi tiếp nhận từ bộ điều khiển?
+00942.0	00156.0	0.992	1.
+00968.0	00156.0	0.707	2. Ti vi thể hiện sự thay đổi ở đầu ra như thế nào?
+01001.0	00156.0	0.563	3. Ti vi có thực hiện thao tác xử lí thông tin không?
+01010.0	00758.0	0.570	Hình 1.1. Ti vi kĩ thuật số
+01093.0	00171.0	0.497	Khi em nhấn nút chuyển kênh ti vi
+01093.0	00592.0	0.695	được gắn vào các thiết bị khác để hỗ trợ
+01120.2	00751.1	1.000	thông
+01122.0	00126.0	0.547	trên bộ điều khiẻn từ xa, ti vi sẽ nhận
+01122.0	00594.0	0.577	xử lí bất kì loại
+01122.0	00818.0	0.851	tin nào có thể số
+01148.2	00183.1	1.000	thông
+01148.2	00341.1	1.000	thông
+01153.0	00127.0	0.999	được
+01153.0	00596.0	0.911	hoá được
+01154.0	00250.0	0.611	tin. Xử lí
+01154.0	00406.0	0.819	tin này; ti vi
+01175.7	00158.6	0.998	chuyển
+01180.0	00128.0	0.999	sẽ
+01180.0	00240.0	1.000	sang kênh
+01180.0	00356.0	0.869	mà em yêu cầu.
+01190.0	00712.0	0.636	nhiều thiết bị điện nhu ti vi,
+01193.0	00593.0	0.818	Trong nhà
+01206.0	00128.0	0.750	Để làm việc đó, ti vi phải được gắn một
+01217.0	00800.0	0.789	được gắn bộ xử Ií
+01218.0	00680.0	0.935	máy giặt,
+01222.0	00594.0	0.866	tủ lanh;
+01232.2	00203.1	1.000	thông
+01236.0	00128.0	0.825	bộ xử lí
+01238.0	00268.0	0.435	tin:.
+01244.0	00594.0	0.935	để có thêm nhiều tính năng và vận hành
+01271.0	00127.0	0.891	Bộ xử lí thông tin (hay thường gọi là bộ
+01274.0	00596.0	0.810	một cách linh hoạt. Hiện nay; nhiều thiết
+01299.0	00125.0	0.714	xử lí) là thành phần quan trọng của máy
+01300.2	00673.1	1.000	thông
+01302.0	00741.0	0.589	dụng như bếp điện; nồi
+01304.0	00596.0	0.889	bị điện
+01328.2	00909.1	1.000	cũng
+01332.0	00126.0	0.555	tính. Bộ xử lí làm việc với dữ liệu được
+01332.0	00594.0	0.506	cơm điện, thậm chí đèn, quạt;
+01334.0	00966.0	0.991	có
+01357.0	00593.0	0.873	thể được gắn bộ xử lí để có thêm nhiều
+01358.0	00128.0	0.670	biểu diễn dưới dạng dãy bit.
+01358.0	00461.0	0.731	nhiên;
+01359.2	00415.2	1.000	Tuy
+01383.0	00211.0	0.669	không chỉ xuất hiện trong máy
+01384.2	00635.2	0.847	năng
+01388.0	00128.0	0.531	bộ xử lí
+01388.0	00594.0	0.982	tính
+01388.0	00692.0	0.639	tiện lợi hơn:
+01412.2	00321.1	1.000	thông
+01413.2	00169.3	1.000	hay
+01416.0	00126.0	0.927	tính
+01416.0	00218.0	0.993	điện thoai
+01416.0	00390.0	0.992	minh mà còn

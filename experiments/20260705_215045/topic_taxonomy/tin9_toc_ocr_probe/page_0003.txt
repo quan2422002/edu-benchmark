@@ -1,0 +1,74 @@
+# OCR probe SGK Tin học 9 page 3
+
+00101.0	00129.0	0.656	HƯỚNG DẪN SỬ DỤNG SÁCH
+00169.2	00820.3	0.974	Ứng
+00173.3	00183.6	1.000	giáo
+00174.0	00232.0	0.739	khoa Tin học 9 gổm 6 chủ đề với 22 bài học. Trong đó, chủ đề
+00176.0	00130.0	1.000	Sách
+00177.0	00870.0	0.710	dung tin học
+00201.0	00130.0	0.624	có hai chủ đề con để Iựa chọn là Sử dụng bảng tính điện tử nâng cao (Bài 9a đến Bài 13a)
+00226.0	00130.0	0.631	và Làm quen với phần mềm làm video (Bài 9b đến Bài 13b)
+00254.0	00131.0	0.651	Các bài học được xây dựng với cấu trúc thống nhất: Sau đây là những hướng dẫn đẻ em
+00286.0	00132.0	0.889	sử dụng sách hiệu quả hơn.
+00338.0	00236.0	0.675	Mục tiêu: Giúp em biết cần đạt được gì sau bài học.
+00365.2	00741.3	1.000	bằng
+00368.0	00799.0	0.884	cách kết nối những
+00370.0	00236.0	0.663	Khởi động: Giúp em nhận biết Ý nghĩa của bài học
+00395.0	00265.0	0.890	huống xuất hiện trong cuộc
+00396.2	00535.2	0.981	sống
+00400.0	00590.0	0.772	với nội dung bài học.
+00402.0	00222.0	0.985	tình
+00432.0	00236.0	0.983	Nội dung bài học:
+00480.0	00346.0	0.656	Các hoạt động: Giúp lớp học tích cực, bài học dễ tiếp thu; giúp em
+00508.0	00334.0	0.820	chủ động hơn trong
+00510.2	00526.6	1.000	quá
+00512.0	00568.0	0.841	trình nhận thức.
+00552.0	00346.0	0.660	Kiến thức mới: Cung cấp cho em nội dung chính của bài học, giúp
+00580.0	00334.0	0.904	em bổ sung kiến thức nhằm đạt được mục tiêu của bài học.
+00619.0	00347.0	0.566	Hộp kiến thức: Ghi ngắn gọn hoặc tóm tắt kiến thức mới. Em có
+00649.0	00332.0	0.673	thể dùng hộp kiến thức cùng với bảng giải thích thuật ngữ (ở cuối
+00678.0	00332.0	0.796	sách) để ôn tập hoặc tra cứu thuật ngữ mới.
+00720.0	00346.0	0.833	Câu hỏi: Giúp em kiểm tra xem mình đã hiểu bài chưa.
+00782.2	00663.2	0.569	củng
+00782.2	00877.1	0.855	năng
+00784.0	00234.0	0.542	Luyện tập: Gồm những câu hỏi , bài tập để
+00784.0	00720.0	0.559	cố kiến thức, kĩ
+00790.0	00936.0	1.000	trong
+00814.0	00222.0	0.817	bài học.
+00872.2	00937.2	0.999	năng
+00875.0	00236.0	0.719	Vận dụng: Gồm những câu hỏi, bài tập yêu cầu em kết hợp kiến thức, kĩ
+00899.0	00221.0	0.823	đã học để giải quyết tình huống trong thực tiễn cuộc sống:
+00924.0	00356.0	0.028	11
+00968.0	00132.0	0.386	Sách sử dụng các phần mềm
+00972.0	00456.0	0.724	Microsoft
+00972.0	00556.0	0.869	Excel,
+00996.0	00239.0	0.995	PowerPoint;
+00996.0	00505.0	0.680	Sketchpad,
+00998.0	00131.0	1.000	Microsoft
+00998.0	00375.0	0.966	Geometer's
+01019.0	00131.0	0.899	MindMaple Lite; Video Editor; phần mềm mô phỏng
+01050.0	00130.0	0.630	trực tuyến PhET và ngôn ngữ lập trinh trực quan
+01074.0	00132.0	0.664	Scratch đẻ minh
+01074.0	00334.0	0.801	và hướng dẫn thực hành.
+01075.2	00289.2	0.859	hoa
+01114.0	00130.0	0.660	Trong các đoạn hội thoại; có ba nhân vật là ba bạn
+01138.0	00132.0	0.660	học sinh lớp 9: An; Minh, Khoa: Mỗi bạn có một
+01164.0	00132.0	0.811	sở trường khác nhau; đại diện cho một trong ba
+01192.0	00130.0	0.940	mạch kiến thức của môn Tin học là Học vấn số hoá
+01215.0	00127.0	0.754	phổ thông;
+01215.0	00481.0	0.714	truyền thông;
+01216.2	00243.2	1.000	Công
+01216.2	00357.1	1.000	thông
+01219.0	00302.0	1.000	nghệ
+01222.0	00422.0	0.999	tin và
+01230.0	00676.0	1.000	An
+01230.0	00806.0	1.000	Minh
+01230.0	00926.0	1.000	Khoa
+01248.0	00132.0	0.987	Khoa học máy tính
+01340.0	00482.0	0.771	gìn sách giáo khoa để dành
+01341.2	00305.2	0.771	Hãy
+01342.0	00350.0	0.848	bảo quản,
+01342.1	00442.5	0.995	giữ
+01342.2	00733.2	0.999	tặng
+01371.0	00614.8	0.803	sau!
+01372.0	00430.0	0.953	các em học sinh lớp

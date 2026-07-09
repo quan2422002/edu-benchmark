@@ -1,0 +1,50 @@
+# OCR probe SGK Tin học 9 page 4
+
+00111.0	00397.0	0.685	LỜl NÓI ĐẨU
+00261.0	00233.0	0.935	Các em học sinh yêu quý!
+00308.0	00233.0	0.798	Sách giáo khoa Tin học 9 tiếp nối các bài học của những năm
+00345.2	00565.2	0.998	năng
+00347.0	00195.0	0.918	học trước nhằm tiếp tục phát triển
+00350.0	00626.0	0.931	lực của các em trong lĩnh
+00383.0	00279.0	0.629	học và rèn luyện cho các em những phẩm chất cần có để
+00385.2	00237.3	1.000	Tin
+00392.0	00194.0	0.796	vực
+00425.0	00193.0	0.865	tham gia vào xã hội kĩ thuật số.
+00473.0	00233.0	0.705	Cuốn sách sẽ mở ra cánh cửa để các em bước vào thế giới
+00510.0	00195.0	0.826	kĩ thuật số với những thiết bị đa dạng, xuất hiện ở hầu hết mọi
+00548.2	00389.1	0.927	sống
+00548.2	00727.1	1.000	cũng
+00549.0	00535.0	0.961	người. Cuốn sách
+00549.3	00785.5	0.639	giới
+00552.0	00194.0	0.761	lĩnh vực trong đời
+00552.0	00450.0	0.998	của con
+00552.0	00834.0	0.999	thiệu
+00584.9	00193.4	0.999	phần
+00587.0	00327.0	0.981	mô phỏng để em được
+00587.0	00657.0	0.703	được biết, được trải
+00587.2	00601.2	0.998	học,
+00588.0	00262.0	0.999	mềm
+00623.0	00195.0	0.849	nghiệm và phát hiện ra những điều em chưa biết.
+00673.0	00231.0	0.845	Được biên soạn theo Chương trình Giáo dục phổ thông 2018,
+00711.0	00575.0	0.749	bước hướng dẫn các em biết
+00713.2	00511.1	1.000	từng
+00716.0	00194.0	0.766	sách giáo khoa Tin học 9 còn
+00749.0	00193.0	0.596	cách giải quyết vấn đề một cách khoa học, biết sử dụng thông
+00788.0	00193.0	0.777	tin một cách hiệu quả và tạo ra những sản phẩm kĩ thuật số, biết
+00825.0	00195.0	0.780	một số thông tin về ngành
+00825.3	00835.5	0.988	nghề
+00825.9	00477.3	1.000	nghề
+00828.0	00538.0	0.876	làm cơ sở cho việc lựa chọn
+00853.0	00655.0	0.032	Kg
+00861.2	00367.2	0.991	năng 
+00863.0	00193.0	0.885	nghiệp theo khả
+00866.0	00428.0	0.670	và sở thích của mình.
+00909.1	00834.3	0.995	hằng
+00913.0	00233.0	0.652	Các ví dụ trong sách gần gũi với các em trong đời sống
+00949.6	00417.4	0.998	giấu
+00952.0	00195.0	0.720	ngày nhưng cũng ẩn
+00954.0	00474.0	0.552	nhiều điều thú vị, thúc đẩy các em tìm
+00991.0	00393.0	0.881	đưa các em vào thế giới kĩ thuật số có biết bao
+00992.0	00196.0	0.671	hiểu, khám phá,-
+01030.0	00196.0	0.964	nhiêu điều kì thú
+01077.0	00233.0	0.879	Chúc các em học tập chăm chỉ và thành công.
