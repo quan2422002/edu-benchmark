@@ -1,0 +1,18 @@
+id: "20260709_155523"
+title: "HNMU raw dialogue intake, benchmark mapping, and evaluation planning"
+status: active
+task_type: benchmark_data_intake_and_evaluation_planning
+owner_agent: orchestrator
+parents:
+  - "20260705_215045"
+created_at: "2026-07-09T15:55:23+07:00"
+source_meeting_at: "2026-07-08"
+git_commit: null
+artifacts:
+  - reports/meeting-notes-structured-20260708.md
+  - reports/state-transfer-from-20260705.md
+  - reports/three-paper-benchmark-use-synthesis.md
+  - roadmap.md
+  - handoffs/experiment-initialization-001.md
+  - handoffs/three-paper-benchmark-use-synthesis-002.md
+  - coordination/delegations.jsonl
