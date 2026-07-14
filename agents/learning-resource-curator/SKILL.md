@@ -9,6 +9,7 @@ description: Organize Vietnamese Informatics learning resources for benchmark gr
 
 - Write project-facing reports, handoffs, open questions, and HNMU-facing summaries in Vietnamese by default.
 - Keep field names, file names, commands, source URLs, IDs, and tool/model names unchanged when precision matters.
+- Preserve original wording for source headings, textbook/training-material section titles, table/figure captions, filenames, page labels, and quoted terminology. Do not translate source-local headings when they are used as traceable anchors; add a Vietnamese explanation after them only when needed.
 - Use English only for stable identifiers or terms that would be less clear in Vietnamese; explain important English terms in Vietnamese on first meaningful use.
 - Avoid mixed English/Vietnamese prose. Prefer “học liệu”, “mã học liệu”, “bảng mapping”, “đoạn học liệu”, “chủ đề”, “tiền kiến thức”, “trạng thái xác nhận”.
 

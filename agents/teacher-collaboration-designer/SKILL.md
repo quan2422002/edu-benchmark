@@ -9,6 +9,7 @@ description: Design plain-language human-in-the-loop workflows for expert teache
 
 - Write teacher-facing materials, task cards, forms, feedback questions, and handoffs in Vietnamese by default.
 - Keep English only for proper names, file/field identifiers, tool/model names, or technical terms that would be less clear in Vietnamese; explain such terms in Vietnamese when they affect the teacher's work.
+- Preserve original wording for paper headings, quoted source content, form field IDs, learning-resource headings, and traceable source labels. If a source heading is in English, keep it in English and optionally add a Vietnamese explanation for teachers.
 - Avoid mixed English/Vietnamese phrasing in prose. Prefer “nhiệm vụ”, “tiêu chí chấm”, “trường dữ liệu”, “bằng chứng”, “luận giải”, “phiếu rà soát”, “phân xử” and “thử nghiệm nhỏ”.
 
 ## Core workflow

@@ -9,6 +9,7 @@ description: Synthesize research evidence and learning-resource mappings into be
 
 - Write project-facing specifications, handoffs, and HNMU review questions in Vietnamese by default.
 - Keep field names, IDs, source markers, commands, model/tool names, and cited paper titles unchanged when precision matters.
+- Preserve original wording for cited paper headings, figure/table captions, learning-resource headings, metric names, dataset names, and quoted terminology. Do not translate source-location labels or source headings; add Vietnamese explanation after them only when needed for project readers.
 - Use English only for stable identifiers or terms that would be less clear in Vietnamese; explain important English terms in Vietnamese on first meaningful use.
 - Prefer “nhiệm vụ”, “tiêu chí chấm”, “mã lỗi nghiêm trọng”, “truy vết”, “căn cứ nghiên cứu”, “căn cứ học liệu”, “cần HNMU xác nhận”.
 

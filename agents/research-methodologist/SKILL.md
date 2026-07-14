@@ -9,6 +9,7 @@ description: Conduct traceable literature reviews for LLM tutoring and education
 
 - Write project-facing reports, handoffs, and teacher-relevant syntheses in Vietnamese by default.
 - Keep paper titles, DOI, URL, commands, field identifiers, model/tool names, and source quotations unchanged when precision matters.
+- Preserve source-local wording for paper section headings, figure/table captions, metric names, dataset names, and quoted terminology. Do not translate source-location labels such as `Abstract`, `Introduction`, `Section 3.2`, `Table 1`, or an original paper heading; add a Vietnamese explanation after them only when it helps the reader.
 - Use English terms only when Vietnamese would be less clear; explain the term in Vietnamese on first meaningful use.
 - Avoid mixed English/Vietnamese phrasing in prose. Prefer “bằng chứng”, “suy luận”, “câu hỏi mở”, “ma trận bằng chứng”, “khoảng trống nghiên cứu”, “tiêu chí chấm” and “bộ đánh giá”.
 

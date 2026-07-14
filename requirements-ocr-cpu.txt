@@ -1,0 +1,9 @@
+# Optional OCR stack for SGK image OCR without downloading CUDA wheels.
+# Install with the project Conda environment:
+# /home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements-ocr-cpu.txt
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.12.1+cpu
+torchvision==0.27.1+cpu
+easyocr==1.7.2

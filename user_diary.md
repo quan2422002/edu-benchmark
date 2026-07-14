@@ -168,6 +168,60 @@ Sau khi trao đổi riêng và kĩ hơn với giáo sư của tôi, thầy đã 
   + Độ phủ kiến thức (Coverage): Tỷ lệ phần trăm các chủ đề trong sách giáo khoa Tin học THCS (Lớp 6 - 9) được bao phủ bởi các câu hỏi trong bộ benchmark (Ưu tiên làm lớp 9 và các tiền kiến thức có trong khối THCS, như mục tiêu xuyên suốt từ đầu đến giờ).
   + Độ phân hóa (Difficulty Alignment): Tỷ lệ phân bổ các câu hỏi theo 4 mức độ nhận thức: Nhận biết, Thông hiểu, Vận dụng và Vận dụng cao (đã được chia theo task)
   + Độ đa dạng định dạng (Format Diversity): Sự cân bằng giữa các dạng câu hỏi khác nhau như trắc nghiệm, tự luận lý thuyết, sửa lỗi code (Scratch/Python) và viết chương trình.
-  Dựa trên các tiêu chí này, hãy phân loại ra các case để có thể xảy ra ở mỗi task, từ đó vạch ra hướng làm ví dụ sao cho bao quát nhất có thể nhé.
+    Dựa trên các tiêu chí này, hãy phân loại ra các case để có thể xảy ra ở mỗi task, từ đó vạch ra hướng làm ví dụ sao cho bao quát nhất có thể nhé.
 
 Và một điều mà giáo sư của tôi luôn nhắc nhở tôi là: Cứ làm đi, cần thêm gì thì có thể bổ sung sau!
+
+# Update plan (08-07-2026)
+
+Hôm qua, tôi đã có 1 cuộc trao đổi ngắn với các thầy cô HNMU và nhận ra rằng: Họ đã bắt đầu làm dữ liệu rồi. Dữ liệu mà họ làm sẽ là các hội thoại kiểu mẫu giữa gia sư AI và học sinh, ngoài ra sẽ có thêm các thông tin phụ trợ như "Mức độ nhận thức", "Chủ đề", ... Tuy nhiên, thông tin chủ đạo vẫn sẽ là đoạn hội thoại kiểu mẫu. Hình ảnh document/ideal_dialog_example.png thể hiện 1 mẫu dữ liệu mà thầy cô HNMU đang tạo. Vì vậy, có lẽ từ giai đoạn này, chúng ta phải xác định rõ: Giáo viên HNMU CHỈ đóng vai trò xây dữ liệu thô (hội thoại và 1 số thông tin phụ trợ), không làm theo phiếu tác giả và sẽ không quan tâm đến task mà chúng ta xây dựng đâu. Vì thế, bây giờ sẽ có các việc cần làm như sau:
+
+- Đưa ra một phương pháp ổn định (tốt nhất là code-base, có thể có 1 chút AI, tuy nhiên KHÔNG ĐƯỢC PHÉP sửa nội dung trong hội thoại) để có thể map một cách ổn định các mẫu mà thầy cô bên HNMU tạo vào phiếu tác giả mà chúng ta đang có (như trong sheet "Phiếu tác giả" và sheet "Luận giải chi tiết các trường dữ liệu" có trong file review_form.xlsx (link: https://docs.google.com/spreadsheets/d/1EhlzymX71I9q_dC42B8PPyAlBa1jcVfV/edit?usp=drive_link&ouid=116920641936184459712&rtpof=true&sd=true))
+- Xây dựng dần task và rubric một cách thật chi tiết để khi dữ liệu thô hoàn thành xong, ta có thể có task và rubric để làm trụ cột để xây dựng benchmark từ dữ liệu thô.Sau khi có được dữ liệu với định dạng phù hợp để làm benchmark, ta cần lên kế hoạch sẽ sử dụng các benchmark này như thế nào, bao gồm:
+  - Tiến hành những thử nghiệm nào ?
+  - Chạy các thử nghiệm đó như thế nào ?
+  - Chạy bao nhiêu thử nghiệm ?
+
+Có thể phần note này sẽ vẫn hơi lộn xộn và chưa được rõ ràng
+
+# Update plan (09-07-2026)
+
+Tôi đã có 1 cuộc họp ngắn với giáo sư của tôi và các thầy cô HNMU vào hôm nay. Có 2 điểm chính:
+
+- Các thầy cô HNMU đã và đang triển khai xây dưng các mẫu hội thoại. Theo như 1 thầy giáo ở bên HNMU đề cập, họ đang dùng AI để tạo được 1550 mẫu hội thoại và đang rà soát lại.
+- giáo sư có góp ý cho tôi: Trước khi đi vào xây dựng benchmark, phải lên plan và code để đánh giá xem các mẫu hội thoại đã đủ bao phủ chưa. Cụ thể là bao phủ trên các trục gần tương tự như với experiment experiments/20260705_215045:
+  + Bao phủ về vùng kiến thức (Đã bao phủ hết vùng kiến thức (chủ đề, bài học,...) của môn tin học khối THCS chưa ?)
+  + Bao phủ về mức độ nhận thức (Biết, hiểu, vận dụng,...)
+  + Bao phủ về dạng câu hỏi và bài tập (Trắc nghiệm, tự luận, ảnh, code scratch/python, hay đơn giản là 1 câu hỏi...)
+
+Sắp tới, các thầy cô HNMU cũng sẽ chuyển giao các mẫu đã làm xong (không đợi đến lúc làm xong hết mới chuyển) nên tôi nghĩ đây là thời điểm tốt để bắt đầu lên kế hoạch cho phần này.
+
+# Update plan (10-07-2026)
+
+Hôm qua tôi có 1 buổi trao đổi với giáo sư của mình hôm qua. Trong cuộc trao đổi này, thầy đã giúp tôi làm rõ hơn mục tiêu cao nhất mà chúng ta cần đạt được: PHẢI LẤY BỘ BENCHMARK LÀM ĐỐI TƯỢNG ĐÁNH GIÁ CHÍNH, KHÔNG PHẢI MODEL. Tức là, trước khi dùng bộ benchmark mà chúng ta đã xây dựng để đánh giá model trong lĩnh vực gia sư mon tin học THCS, chúng ta phải đánh giá được xem bộ benchmark mà chúng ta xây dựng đã tốt hay chưa ? Thầy của tôi đã gợi ý về các khía cạnh để đánh giá 1 bộ benchmark như sau:
+
+1) Độ phủ: Phải bao hàm và có phân bố đồng đều các mẫu dữ liệu trên các trục sau:
+
++ Kiến thức: Đầy đủ các bài học, chủ đề có trong bộ SGK Tin học THCS (gồm cả 4 lớp 6, 7, 8, 9)
++ Độ khó: Đầy đủ các mức nhận thức: Biết, hiểu, vận dụng.
++ Dạng câu hỏi/bài tập: Đầy đủ các dạng bài tập và đề bài của học sinh: Trắc nghiệm, tự luận, code mã giả, python/script,... hoặc chỉ đơn giản là 1 câu hỏi liên quan đến bài học/chủ đề
+
+2) Độ chính xác: Các mẫu dữ liệu trong bộ benhmark phải có tính nhất quán và chính xác cao. Tiêu chí này đặc biệt quan trọng khi mà nguồn dữ liệu gốc của bộ benchmark được tạo bởi con người (Các thầy cô HNMU), dù rất chính xác nhưng VẪN LUÔN CÓ NGUY CƠ bị sai.
+3) Tính có thể áp dụng được: Có thể được sử dụng để đánh giá gia sư 1 cách toàn diện, và đặc biệt là phải có khả năng phân biệt/phân loại giữa một tutor xuất xắc, một tutor trung bình và một tutor kém
+
+Về 2 ý đầu, theo tôi thấy, trong 3 paper chủ chốt mà chúng ta đã đọc ở experiment experiments/20260705_215045, chưa được thể hiện rõ ràng. Theo những gì tôi đọc, các paper này chỉ đề cập đến việc dữ liệu được thu thập như thế nào, bao phủ những nội dung nào, ..., từ đó gián tiếp thể hiện bộ benchmark đó là tốt. Tuy nhiên, tôi thấy vẫn chưa có phần nào trong 3 paper đó thể hiện RÕ RÀNG cách họ đánh giá bộ benchmark như thế nào là tốt ? Tôi nghĩ ở plan sắp tới, ta cần đọc kĩ 3 paper này (cộng thêm bài V-legal) với mục tiêu là xem cách các benchmark được đánh giá, KHÔNG PHẢI là cách benchmark được dùng để đánh giá model.
+
+Cũng về 2 ý đầu này, tôi nghĩ ta có thể đánh giá ngay từ dữ liệu thô là các mẫu hội thoại được tạo bởi các thầy cô HNMU. Còn ý 3 thì sẽ chỉ có thể được thực hiện sau khi ta chuyển hóa mẫu hội thoại thành các mẫu trong benchmark hoàn chỉnh.
+
+Ngoài ra, về tiến độ, giáo sư của tôi đang mong muốn các thầy cô HNMU sẽ hoàn thành chuyển giao 500 mẫu trong tuần này/ đầu tuần sau.
+
+# Update plan (14/7/2026)
+
+Sáng nay, tôi có 1 buổi trao đổi ngắn với giáo sư của tôi. Thầy thấy flow hiện tại thì có thể coi là tạm thời ổn, tuy nhiên có 1 số phần cần lưu ý:
+
+- Flow phải rõ ràng và chi tiết hơn, cụ thể là như sau:
+  + Nêu rõ data flow/process flow từ dữ liệu thô (các mẫu hội thoại kiểu mẫu, đi kèm với các thông tin liên quan mà các thầy cô HNMU đã xây dựng) đến các mẫu dữ liệu hoàn chỉnh có trong benchmark, sau đó từ các mẫu dữ liệu hoàn chỉnh có trong benchmark sẽ được dùng để đánh giá gia sư AI như thế nào ?
+  + Nêu rõ các thành phần được sử dụng tại từng bước trong flow (dùng AI agent hay con người, và dùng như thế nào ?)
+- Ngoài ra, thầy cũng gợi ý cho tôi: khi sử dụng agent để check độ chính xác/tính nhất quán trong nội dung giữa các trường có trong 1 mẫu dữ liệu được xây dựng bởi các thầy cô HNMU thì nên lập 1 checklist gồm những tiêu chí để chấm chất lượng của các mẫu đó. Một mẫu được cho là có chất lượng tốt khi đáp ứng được tất cả các tiêu chí có trong checklist đó và các thầy cô HNMU sẽ được yêu cầu check lại các mẫu không đạt yêu cầu về chất lượng, dựa trên checklist, và đi kèm với lý do. Ngoài ra, trên thực tế, có những mẫu mà ngay cả agent cũng không thể đưa ra quyết định chất lượng 1 cách chắc chắn (ví dụ như các mẫu liên quan đến đạo đức, pháp lý,...) thì cũng cần có 1 chỉ số để thể hiện sự tự tin của agent khi đưa ra quyết định (ví dụ: confidence score, được lượng hóa).Nếu confidence thấp thì cũng nên trả về cho các thầy cô HNMU để xem xét thêm.
+
+Dữ liệu thô cũng đã được gửi về. tôi đã để trong thư mục shared/raw_data/HNMU-teacher_dialog_samples
