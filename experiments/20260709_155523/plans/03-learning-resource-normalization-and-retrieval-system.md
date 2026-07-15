@@ -1,9 +1,9 @@
 # Plan 03 — Chuẩn hóa học liệu SGK/SGV và thiết kế hệ thống truy xuất học liệu
 
 Experiment: `20260709_155523`
-Trạng thái: `DRAFT` — chưa triển khai.
+Trạng thái: `PHA 2 HOÀN THÀNH` — đã tạo danh mục học liệu v0 ngày 15/07/2026; các pha sau Pha 2 vẫn cần duyệt riêng.
 Ngày lập: 11/07/2026
-Ngày cập nhật: 14/07/2026
+Ngày cập nhật: 15/07/2026
 
 ## 1. Mục tiêu
 
@@ -150,3 +150,66 @@ Bản v0 hoàn thành khi có:
 - Không bắt model truy vấn học liệu ngay.
 - Không tự xác nhận nội dung chuyên môn thay HNMU.
 - Không xóa hoặc di chuyển bản ảnh SGK cũ trong experiment `20260705_215045` nếu chưa có quyết định rõ.
+
+## 7. Kết quả Pha 0 ngày 15/07/2026
+
+Pha 0 đã hoàn thành theo phạm vi được Quân duyệt:
+
+- Copy ảnh SGK Tin học 6–9 từ `experiments/20260705_215045/source_scope/raw_page_images` sang `shared/learning_resources/raw_page_images/sgk/`.
+- Tổng số ảnh đã đăng ký trong manifest: **356**.
+- Tạo/cập nhật `shared/learning_resources/registries/learning_resource_file_manifest.csv`.
+- Tạo `shared/learning_resources/registries/sgk_sgv_source_registry.csv` theo schema v0 của `learning-resource-curator`.
+- Ghi nhận các URL SGV Tin học 6–9 do Quân cung cấp để chuẩn bị cho Pha 1, nhưng chưa crawl SGV.
+- Tạo báo cáo `experiments/20260709_155523/reports/sgk-image-shared-migration-result.md`.
+
+Các ảnh SGK cũ ở experiment `20260705_215045` được giữ nguyên.
+
+
+## 8. Kết quả Pha 1 ngày 15/07/2026
+
+Pha 1 đã hoàn thành theo phạm vi được Quân duyệt:
+
+- Crawl ảnh SGV Tin học 6–9 từ các URL `taphuan.nxbgd.vn` đã cung cấp.
+- Lưu ảnh vào `shared/learning_resources/raw_page_images/sgv/`.
+- Tổng số ảnh SGV đã đăng ký trong manifest: **396**.
+- Cập nhật `shared/learning_resources/registries/learning_resource_file_manifest.csv`.
+- Cập nhật `shared/learning_resources/registries/sgk_sgv_source_registry.csv`.
+- Tạo báo cáo `experiments/20260709_155523/reports/sgv-crawl-source-and-risk-notes.md`.
+
+Số ảnh theo lớp:
+
+| Sách | Số ảnh SGV |
+| --- | ---: |
+| Tin học 6 | 98 |
+| Tin học 7 | 94 |
+| Tin học 8 | 102 |
+| Tin học 9 | 102 |
+
+Pha này chưa OCR, chưa fragment và chưa xác nhận nội dung chuyên môn.
+
+
+## 9. Kết quả tạo PDF dẫn xuất ngày 15/07/2026
+
+Đã tạo 8 PDF dẫn xuất từ ảnh SGK/SGV Tin học 6–9 để người dùng dễ mở xem.
+
+- Thư mục PDF: `shared/learning_resources/compiled_documents/`
+- Manifest đã cập nhật: `shared/learning_resources/registries/learning_resource_file_manifest.csv`
+- Báo cáo: `experiments/20260709_155523/reports/compiled-learning-resource-pdfs-result.md`
+
+PDF là bản dẫn xuất để xem nhanh, không thay thế ảnh từng trang và không thay thế truy vết trong manifest.
+
+
+## 10. Kết quả Pha 2 ngày 15/07/2026
+
+Pha 2 đã tạo danh mục học liệu v0 phục vụ Plan 04:
+
+- `shared/learning_resources/registries/sgk_thcs_topic_lesson_map_v0.csv`
+- `shared/learning_resources/registries/sgk_thcs_lesson_position_registry_v0.csv`
+- `experiments/20260709_155523/reports/learning-resource-registry-v0-for-hnmu-audit.md`
+
+Nguyên tắc bảo thủ:
+
+- Lớp 6–7 lấy bài/vị trí từ dữ liệu HNMU, nhóm chủ đề là suy luận và cần HNMU xác nhận.
+- Lớp 9 dùng lại OCR mục lục từ experiment `20260705_215045`, chưa chốt chính thức.
+- Lớp 8 chưa tạo danh mục bài học vì chưa có OCR mục lục hoặc nguồn HNMU xác nhận.
+- Registry vị trí v0 giữ cả vị trí cấp bài và một số vị trí cấp chủ đề/phụ lục của Tin học 9. Vì vậy, cột `lesson_item_id` trong bản v0 nên được hiểu là tham chiếu tới `item_id` học liệu trong topic/lesson map; tên cột này có thể cần đổi thành tên tổng quát hơn trong pha thiết kế schema sau.

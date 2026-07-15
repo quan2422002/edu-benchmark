@@ -1,9 +1,9 @@
 # Plan 02 — Quy ước layout dữ liệu dùng chung và code dùng chung
 
 Experiment: `20260709_155523`
-Trạng thái: `DRAFT` — chưa triển khai.
+Trạng thái: `HOÀN THÀNH` — được Quân duyệt và triển khai ngày 15/07/2026.
 Ngày lập: 11/07/2026
-Ngày cập nhật: 14/07/2026
+Ngày cập nhật: 15/07/2026
 
 ## 1. Mục tiêu
 
@@ -157,6 +157,25 @@ Plan hoàn thành khi:
 3. Có README giải thích vai trò từng thư mục nếu thư mục được tạo.
 4. Không di chuyển dữ liệu cũ nếu chưa có quyết định rõ.
 5. README/ARCHITECTURE được cập nhật nếu có thay đổi cấu trúc repo thật.
+
+## 5.1. Kết quả triển khai ngày 15/07/2026
+
+Plan 02 đã được triển khai theo hướng an toàn để Plan 03 có thể chạy song song mà ít chồng lấn nhất:
+
+- Giữ nguyên hai file Excel HNMU tại vị trí hiện có, không di chuyển vào `original/`.
+- Tạo `shared/raw_data/HNMU-teacher_dialog_samples/README.md` để quy định không sửa dữ liệu gốc.
+- Tạo `shared/raw_data/HNMU-teacher_dialog_samples/manifest.csv` để đăng ký batch `20260714_initial`.
+- Tạo khung `shared/learning_resources/` cho SGK/SGV, OCR, registry và fragment, nhưng chưa copy ảnh SGK và chưa crawl SGV.
+- Tạo `shared/learning_resources/registries/learning_resource_file_manifest.csv` làm manifest rỗng cho Plan 03 điền tiếp.
+- Tạo khung `src/edu_benchmark/` gồm các module dùng chung: `data_io`, `dialogue_audit`, `benchmark_conversion`, `learning_resources`, `benchmark_quality`.
+- Tạo `experiments/20260709_155523/outputs/` để chứa output riêng của experiment.
+- Cập nhật `README.md`, `ARCHITECTURE.md`, `roadmap.md` và `metadata.yaml`.
+
+Quy ước chống chồng lấn với Plan 03:
+
+- Plan 02 sở hữu layout, README nền và manifest raw data HNMU.
+- Plan 03 sở hữu việc copy/đăng ký ảnh SGK, crawl SGV, tạo registry học liệu và cập nhật `learning_resource_file_manifest.csv`.
+- Nếu Plan 03 cần sửa README nền trong `shared/learning_resources/`, chỉ bổ sung phần trạng thái học liệu, không đổi lại nguyên tắc layout đã chốt ở Plan 02.
 
 ## 6. Ngoài phạm vi
 

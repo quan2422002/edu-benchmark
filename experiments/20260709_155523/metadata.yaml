@@ -13,6 +13,20 @@ artifacts:
   - reports/state-transfer-from-20260705.md
   - reports/three-paper-benchmark-use-synthesis.md
   - roadmap.md
+  - plans/01-benchmark-quality-literature-review.md
+  - plans/02-shared-data-and-code-layout.md
+  - reports/benchmark-quality-checklist-v0.md
+  - handoffs/benchmark-quality-literature-review-final-004.md
+  - handoffs/shared-data-and-code-layout-005.md
+  - handoffs/learning-resource-phase0-sgk-shared-migration-006.md
+  - handoffs/learning-resource-phase1-sgv-crawl-007.md
+  - handoffs/learning-resource-derived-pdfs-008.md
+  - handoffs/learning-resource-phase2-registry-v0-009.md
+  - reports/learning-resource-registry-v0-for-hnmu-audit.md
+  - reports/compiled-learning-resource-pdfs-result.md
+  - reports/sgv-crawl-source-and-risk-notes.md
+  - reports/sgk-image-shared-migration-result.md
+  - plans/03-learning-resource-normalization-and-retrieval-system.md
   - handoffs/experiment-initialization-001.md
   - handoffs/three-paper-benchmark-use-synthesis-002.md
   - coordination/delegations.jsonl

@@ -2,8 +2,8 @@
 
 Experiment: `20260709_155523`
 Ngày tạo: 09/07/2026
-Ngày cập nhật: 14/07/2026
-Trạng thái: `DRAFT` — Plan 01 đã hoàn thành; các plan còn lại cần duyệt trước khi cài đặt.
+Ngày cập nhật: 15/07/2026
+Trạng thái: `DRAFT` — Plan 01 và Plan 02 đã hoàn thành; các plan còn lại cần duyệt trước khi cài đặt.
 
 ## 1. Mục tiêu cập nhật
 
@@ -19,7 +19,7 @@ Sau trao đổi ngày 10/07/2026 và cập nhật ngày 14/07/2026, mục tiêu 
 Tình hình mới:
 
 - HNMU đã gửi batch dữ liệu thô ban đầu tại `shared/raw_data/HNMU-teacher_dialog_samples/`, hiện có `Lớp 6.xlsx` và `Lớp 7.xlsx`.
-- Kiểm tra nhẹ bằng thư viện chuẩn Python cho thấy có khoảng 462 dòng dữ liệu có hội thoại: khoảng 237 dòng ở lớp 6 và 224 dòng ở lớp 7. Đây mới là con số ước tính để định hướng plan, chưa phải báo cáo kiểm toán chính thức.
+- Kiểm tra nhẹ bằng thư viện chuẩn Python cho thấy có khoảng 461 dòng dữ liệu có hội thoại: 237 dòng ở lớp 6 và 224 dòng ở lớp 7. Đây mới là con số ước tính để định hướng plan, chưa phải báo cáo kiểm toán chính thức.
 - Dữ liệu HNMU hiện có các trường chính: `STT`, `Bài`, `Vị trí`, `Câu hỏi`, `Mức Bloom`, `Đáp án (SGV)`, `Hội thoại gia sư (Theo phương pháp Dàn giáo)`.
 - Vì có trường `Đáp án (SGV)`, SGV phải được đưa vào phạm vi học liệu dài hạn. SGK dùng để kiểm câu hỏi/chủ đề/bài học; SGV dùng để kiểm đáp án và căn cứ giải thích.
 
@@ -50,7 +50,7 @@ Chuyển đổi hội thoại thô thành mẫu benchmark hoàn chỉnh
 Đánh giá khả năng phân biệt tutor tốt / trung bình / kém
 ```
 
-Điểm quan trọng: dữ liệu thô HNMU đã có batch ban đầu nhưng chưa đầy đủ toàn bộ khối lớp. Vì vậy, không nên vội chuyển đổi hàng loạt. Plan 01 đã hoàn thành checklist kiểm định chất lượng benchmark/dữ liệu; bước tiếp theo là dùng checklist này để thiết kế và triển khai Plan 04 sau khi các plan phụ thuộc được duyệt.
+Điểm quan trọng: dữ liệu thô HNMU đã có batch ban đầu nhưng chưa đầy đủ toàn bộ khối lớp. Vì vậy, không nên vội chuyển đổi hàng loạt. Plan 01 đã hoàn thành checklist kiểm định chất lượng benchmark/dữ liệu. Plan 02 đã chốt layout `shared/`, `src/` và manifest raw data HNMU, tạo nền an toàn để Plan 03 chuẩn hóa học liệu mà không chồng lấn.
 
 ## 4. Các plan nhỏ
 
@@ -58,8 +58,8 @@ Chuyển đổi hội thoại thô thành mẫu benchmark hoàn chỉnh
 | Plan | Tên                                                                                                                                          | Trạng thái                 | Mục tiêu                                                                                                                                                                                     | Phụ thuộc                                                                            |
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | 01   | [Đọc paper về cách đánh giá chất lượng benchmark](plans/01-benchmark-quality-literature-review.md)                                  | HOÀN THÀNH | Rút ra tiêu chí/logic đánh giá benchmark từ 3 paper tutor và V-Legal; tạo checklist kiểm định v0 cho dữ liệu HNMU.                                                               | Không phụ thuộc dữ liệu HNMU, nhưng output dùng trực tiếp cho Plan 04.        |
-| 02   | [Quy ước layout dữ liệu dùng chung và code dùng chung](plans/02-shared-data-and-code-layout.md)                                        | DRAFT                        | Chốt nơi đặt raw data, học liệu SGK/SGV, code và output experiment; tạo manifest cho batch HNMU đã nhận.                                                                            | Nên làm trước khi code Plan 04/06.                                                 |
-| 03   | [Chuẩn hóa học liệu SGK/SGV và thiết kế hệ thống học liệu](plans/03-learning-resource-normalization-and-retrieval-system.md)       | DRAFT                        | Đưa ảnh SGK đã crawl sang `shared/` bằng copy có manifest; bổ sung kế hoạch crawl SGV; tạo registry v0 đủ dùng cho độ phủ và kiểm đáp án.                                 | Cần ảnh SGK đã crawl ở experiment 20260705; cần tìm/crawl SGV tương ứng.     |
+| 02   | [Quy ước layout dữ liệu dùng chung và code dùng chung](plans/02-shared-data-and-code-layout.md)                                        | HOÀN THÀNH                   | Chốt nơi đặt raw data, học liệu SGK/SGV, code và output experiment; tạo manifest cho batch HNMU đã nhận.                                                                            | Đã hoàn thành; Plan 03/04/06 dùng lại layout này.                              |
+| 03   | [Chuẩn hóa học liệu SGK/SGV và thiết kế hệ thống học liệu](plans/03-learning-resource-normalization-and-retrieval-system.md)       | PHA 2 HOÀN THÀNH             | Đã có ảnh/PDF SGK/SGV và danh mục học liệu v0 cho topic/lesson/position. OCR, fragment và retrieval vẫn cần duyệt riêng.         | Cần duyệt tiếp Pha 3 nếu muốn OCR mục lục/trang trọng điểm.                  |
 | 04   | [Tiếp nhận, kiểm tra độ phủ, nhất quán và trùng lặp hội thoại HNMU](plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md) | DRAFT                        | Kiểm toán batch HNMU theo độ phủ, thiếu trường, nhất quán, trùng/gần trùng, checklist chất lượng và `confidence_score`.                                                        | Cần Plan 01; cần Plan 02; nên có output v0 của Plan 03.                           |
 | 06   | [Chuyển hội thoại thô HNMU thành mẫu benchmark hoàn chỉnh](plans/06-raw-dialogue-to-benchmark-sample-conversion.md)                   | DRAFT                        | Ánh xạ dữ liệu thô đã qua audit sang phiếu tác giả/mẫu benchmark, tách `student_prompt`, `conversation_history`, `gold_response`, `Đáp án`, gán task/rubric và giữ truy vết. | Cần Plan 04; cần task/rubric v0 từ experiment trước; cần học liệu registry v0. |
 | 05   | [Đánh giá khả năng áp dụng và phân biệt của benchmark](plans/05-benchmark-usability-and-discriminative-evaluation.md)              | DRAFT                        | Sau khi có mẫu benchmark hoàn chỉnh, kiểm tra benchmark có phân biệt tutor tốt/trung bình/kém không.                                                                               | Cần Plan 06; cần tập mẫu đã được UET/HNMU xác nhận.                         |
@@ -81,7 +81,7 @@ Output quan trọng cần bổ sung là checklist kiểm định v0 để Plan 0
 
 ### 5.2. Lớp tổ chức dữ liệu và code
 
-Plan 02 tránh việc dữ liệu/code bị lẫn vào experiment. Đây là bước nhỏ nhưng quan trọng, vì dữ liệu HNMU, ảnh SGK/SGV và code audit/chuyển đổi sẽ được dùng lại nhiều lần ở nhiều experiment.
+Plan 02 tránh việc dữ liệu/code bị lẫn vào experiment. Đây là bước nhỏ nhưng quan trọng, vì dữ liệu HNMU, ảnh SGK/SGV và code audit/chuyển đổi sẽ được dùng lại nhiều lần ở nhiều experiment. Plan này đã hoàn thành ngày 15/07/2026: raw data HNMU có README/manifest, `shared/learning_resources/` có khung thư mục cho Plan 03, và `src/edu_benchmark/` có package khung cho code dùng chung.
 
 ### 5.3. Lớp học liệu
 
@@ -131,10 +131,10 @@ Plan 05 kiểm tra tiêu chí thứ ba mà giáo sư nêu: benchmark có khả n
 
 ## 7. Phạm vi chưa làm
 
-- Đã nhận batch dữ liệu HNMU ban đầu trong `shared/raw_data/HNMU-teacher_dialog_samples/`, nhưng chưa có manifest chính thức và chưa kiểm toán.
-- Chưa đưa ảnh SGK đã crawl từ experiment `20260705_215045` sang `shared/learning_resources/`.
-- Chưa crawl ảnh SGV tương ứng với SGK Tin học THCS.
-- Chưa tạo code trong `src/`.
+- Đã nhận batch dữ liệu HNMU ban đầu trong `shared/raw_data/HNMU-teacher_dialog_samples/` và đã có manifest chính thức; chưa kiểm toán nội dung.
+- Đã copy ảnh SGK đã crawl từ experiment `20260705_215045` sang `shared/learning_resources/raw_page_images/sgk/` và đăng ký trong manifest.
+- Đã crawl ảnh SGV tương ứng với SGK Tin học THCS từ các URL đã cung cấp, đăng ký trong manifest, tạo PDF dẫn xuất và tạo danh mục học liệu v0; chưa OCR toàn văn/fragment.
+- Đã tạo khung package `src/edu_benchmark/`; chưa viết logic xử lý/audit/chuyển đổi.
 - Chưa chạy OCR/chuẩn hóa mới trên ảnh SGK/SGV.
-- Chưa cập nhật README/ARCHITECTURE cho layout mới, vì layout mới vẫn ở mức plan.
-- Chưa đánh dấu các plan mới ngoài Plan 01 là `APPROVED`.
+- README/ARCHITECTURE đã được cập nhật cho layout Plan 02.
+- Chưa đánh dấu các plan mới ngoài Plan 01 và Plan 02 là `APPROVED`.
