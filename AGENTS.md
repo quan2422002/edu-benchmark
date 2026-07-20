@@ -28,6 +28,7 @@ Canonical instructions live under `agents/<name>/`; runtime adapters must remain
 - `learning-resource-curator` — learning-resource mapping specialist for v0 source maps, simple learning-material IDs, fragments, topic maps, and prerequisite grounding. Codex model pinned to `gpt-5.4-mini`, reasoning `medium`.
 - `benchmark-specification-designer` — benchmark specification specialist for task definitions, rubrics, serious-error catalogs, and provenance matrices grounded in research and learning resources. Codex model pinned to `gpt-5.4-mini`, reasoning `high`.
 - `teacher-collaboration-designer` — teacher-workflow specialist for author/reviewer/adjudicator instructions and teacher-facing materials.
+- `hnmu-dialogue-auditor` — raw HNMU dialogue audit specialist for checklist-level consistency, SGK/SGV evidence, confidence, and review-queue suggestions before benchmark conversion. Codex model pinned to `gpt-5.4-mini`, reasoning `medium`.
 
 ## Specialist fan-out policy
 

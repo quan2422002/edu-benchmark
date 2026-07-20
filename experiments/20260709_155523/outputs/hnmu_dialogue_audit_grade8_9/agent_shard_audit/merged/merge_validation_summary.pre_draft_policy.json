@@ -1,0 +1,103 @@
+{
+  "status": "synced_from_regex_repaired_checklist",
+  "synced_at": "2026-07-19T18:41:17+07:00",
+  "source_checklist": "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv",
+  "rows": 10584,
+  "sample_count": 588,
+  "criteria_per_sample": [
+    18
+  ],
+  "checklist_result_counts": {
+    "pass": 9408,
+    "uncertain": 1174,
+    "fail": 2
+  },
+  "quality_suggestion_counts": {
+    "needs_human_review": 354,
+    "fail": 1,
+    "keep": 233
+  },
+  "review_queue_suggestion_count": 355,
+  "review_priority_counts": {
+    "trung bình": 350,
+    "cao": 5
+  },
+  "by_criterion": {
+    "RAW-CON-01": {
+      "uncertain": 252,
+      "pass": 336
+    },
+    "RAW-CON-02": {
+      "uncertain": 154,
+      "pass": 434
+    },
+    "RAW-CON-03": {
+      "pass": 588
+    },
+    "RAW-CON-04": {
+      "uncertain": 195,
+      "fail": 1,
+      "pass": 392
+    },
+    "RAW-CON-05": {
+      "pass": 588
+    },
+    "RAW-CON-06": {
+      "uncertain": 252,
+      "pass": 336
+    },
+    "RAW-CON-07": {
+      "uncertain": 252,
+      "pass": 336
+    },
+    "RAW-DUP-03": {
+      "pass": 586,
+      "uncertain": 2
+    },
+    "RAW-DUP-04": {
+      "pass": 586,
+      "uncertain": 2
+    },
+    "RAW-PED-01": {
+      "pass": 536,
+      "uncertain": 52
+    },
+    "RAW-PED-02": {
+      "pass": 580,
+      "uncertain": 8
+    },
+    "RAW-PED-03": {
+      "pass": 587,
+      "uncertain": 1
+    },
+    "RAW-PED-04": {
+      "pass": 587,
+      "uncertain": 1
+    },
+    "RAW-PED-05": {
+      "pass": 588
+    },
+    "RAW-PED-06": {
+      "pass": 588
+    },
+    "RAW-STR-02": {
+      "pass": 588
+    },
+    "RAW-STR-03": {
+      "pass": 586,
+      "fail": 1,
+      "uncertain": 1
+    },
+    "RAW-STR-04": {
+      "pass": 586,
+      "uncertain": 2
+    }
+  },
+  "synced_outputs": [
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/quality_check_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/agent_audit_notes.md",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/merge_validation_summary.json"
+  ],
+  "backup_policy": "Previous merged suggestion/note files were copied once with .pre_regex_repair suffix before overwrite."
+}

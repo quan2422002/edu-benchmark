@@ -1,0 +1,981 @@
+sample_id,source_file,source_row_number,grade,grade_label,stt,lesson,position,question,bloom_level,answer_sgv,dialogue
+HNMU-G8-R0198-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,198,8,Lớp 8,1,[11b] Thực hành tổng hợp,Bước 3. Ghép ảnh vào tờ rơi (Trang 72),Nhận diện được lệnh dùng để chèn một bức ảnh khác vào dự án đang mở dưới dạng một lớp (layer) mới.,Nhận biết,Lệnh File / Open as Layers.,"HS: Thầy ơi em mở ảnh bông hoa thì nó lại nhảy sang một cái tab (cửa sổ) mới tinh, không đè lên cái nền tờ rơi của em.
+AI: Thầy hiểu rồi. Em đang dùng lệnh ""File > Open"" đúng không? Lệnh đó sẽ tạo ra một dự án hoàn toàn mới. Để nhét bông hoa vào chung một nhà với tờ rơi, em cần mở nó dưới dạng ""Lớp"" (Layer).
+HS: Vậy em phải dùng lệnh gì ạ?
+AI: Em vào lại menu File. Dưới chữ Open có một lệnh chứa từ ""Layers"". Em thấy nó tên là gì?
+HS: Dạ là ""Open as Layers"" ạ.
+AI: Rất chuẩn. Em hãy đóng cái tab bị sai kia lại, quay về tab tờ rơi và dùng lệnh ""Open as Layers"" xem sao.
+HS: A, được rồi thầy ơi! Bông hoa đã chui vào nằm đè lên tờ rơi rồi ạ.
+AI: Rất tốt! Em nhớ kĩ sự khác biệt này để ghép ảnh nhé."
+HNMU-G8-R0199-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,199,8,Lớp 8,2,[11b] Thực hành tổng hợp,Bước 3. Ghép ảnh vào tờ rơi (Trang 72),Nêu được tên công cụ dùng để di chuyển ảnh mới chèn đến vị trí mong muốn trên tờ rơi.,Nhận biết,Công cụ Move (biểu tượng mũi tên 4 chiều).,"HS: Thầy ơi sao em lấy chuột kéo bông hoa đi chỗ khác mà nó cứ vẽ ra mấy cái đường nét đứt (vùng chọn) chứ không di chuyển ạ?
+AI: Đó là do em đang dùng nhầm công cụ Chọn (Select) thay vì công cụ Di chuyển. Để di chuyển một đối tượng đồ hoạ, mình cần một công cụ chuyên dụng. Từ ""di chuyển"" trong tiếng Anh là gì em nhỉ?
+HS: Dạ là Move ạ.
+AI: Rất tốt. Em hãy nhìn vào Hộp công cụ (Toolbox), tìm biểu tượng có 4 mũi tên toả ra 4 hướng. Khi trỏ chuột vào nó hiện chữ gì?
+HS: Nó hiện chữ ""Move Tool"" ạ.
+AI: Tuyệt vời. Bây giờ em nháy chọn Move Tool, click thẳng vào bông hoa rồi giữ chuột kéo đi xem.
+HS: Em kéo được nó ra góc màn hình rồi thầy ơi.
+AI: Chúc mừng em đã gỡ rối thành công!"
+HNMU-G8-R0200-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,200,8,Lớp 8,3,[11b] Thực hành tổng hợp,Bước 2. Tạo khung viền (Trang 71),Nhận diện lệnh dùng để trộn/gộp lớp phía trên xuống lớp phía dưới.,Nhận biết,Lệnh Merge Down (chuột phải vào lớp chọn Merge Down).,"HS: Thầy ơi, cô giáo bảo làm xong khung viền thì phải gộp nó lại với ảnh gốc cho gọn. Em bôi đen cả 2 lớp được không?
+AI: Trong GIMP, để gộp lớp, ta không ""bôi đen"" mà dùng lệnh trộn lớp. Em hãy để ý trong bảng Layers, lớp khung viền đang nằm ngay phía trên lớp ảnh gốc đúng không?
+HS: Dạ đúng ạ, khung viền nằm trên.
+AI: Tốt. Bây giờ em nháy chuột phải vào cái lớp nằm trên đó. Một danh sách xổ ra. Từ tiếng Anh mang ý nghĩa ""trộn, gộp"" là ""Merge"". Em có thấy lệnh nào chứa từ này không?
+HS: Dạ em thấy 2 cái là ""Merge Down"" và ""Merge Visible Layers"" ạ.
+AI: Rất tinh mắt! Vì ta chỉ muốn gộp lớp trên ""xuống"" lớp ngay dưới nó, nên em chọn hướng ""Down"". Vậy đáp án là gì?
+HS: Là Merge Down ạ! Em bấm xong thì 2 lớp dính thành 1 rồi.
+AI: Xuất sắc. Quản lí số lượng lớp bằng Merge Down là thói quen rất chuyên nghiệp."
+HNMU-G8-R0201-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,201,8,Lớp 8,4,[11b] Thực hành tổng hợp,Bước 2. Tạo khung viền (Trang 71),Nêu được tên công cụ dùng để tô màu chuyển sắc (từ màu này sang màu khác) cho khung viền.,Nhận biết,Công cụ Gradient.,"HS: Thầy ơi, bước tạo khung viền sách ghi là ""sử dụng công cụ Gradient để đổ màu"". Cái công cụ đó nằm đâu em tìm mỏi mắt không ra.
+AI: Chào em. Các công cụ có chung tính năng ""đổ màu"" thường được nhóm lại với nhau để tiết kiệm diện tích. Em đã tìm thấy công cụ đổ màu cơ bản nhất là Thùng sơn (Bucket Fill) chưa?
+HS: Dạ em thấy Thùng sơn rồi, biểu tượng cái xô đang đổ nước ra ạ.
+AI: Đúng rồi. Em có thấy một mũi tên nhỏ xíu xíu ở góc dưới bên phải của nút Thùng sơn không? Đó là dấu hiệu có công cụ bị ẩn.
+HS: Dạ thấy ạ.
+AI: Em hãy nhấp chuột phải (hoặc nhấn giữ chuột trái) vào biểu tượng Thùng sơn đó. Điều gì xảy ra?
+HS: Ô, nó xổ ra một cái menu nhỏ có chữ ""Gradient"" thầy ạ.
+AI: Bắt được nó rồi! Gradient chính là công cụ đổ màu chuyển sắc. Em nháy chọn nó đi.
+HS: Dạ em chọn được rồi ạ. Hoá ra nó trốn ở trong đó."
+HNMU-G8-R0202-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,202,8,Lớp 8,5,[11b] Thực hành tổng hợp,Bước 2. Tạo khung viền (Trang 70),Giải thích được lí do vì sao phải tạo một lớp mới (New Layer) có kích thước lớn hơn ảnh gốc để làm khung viền.,Thông hiểu,"Lớp mới tách biệt giúp không làm hỏng ảnh gốc. Kích thước phải lớn hơn để khi đặt ảnh gốc lên trên, phần viền thừa của lớp mới sẽ lộ ra tạo thành khung.","HS: Thầy ơi, bước 2 bắt tạo lớp ""Khungvien"" to hơn ảnh gốc. Tại sao mình không vẽ luôn cái viền chèn thẳng vào rìa bức ảnh gốc cho nhanh ạ?
+AI: Câu hỏi thể hiện tư duy phản biện rất hay! Thầy hỏi lại em: Nếu em vẽ trực tiếp viền màu đen đè lên rìa ảnh gốc, lỡ em vẽ sai hoặc muốn đổi sang viền đỏ thì em xoá kiểu gì?
+HS: Chắc em dùng cục tẩy... nhưng mà tẩy viền thì sẽ tẩy luôn bức ảnh gốc bị đè ở dưới ạ.
+AI: Rất logic! Đó là tác hại của việc vẽ trực tiếp. Việc tạo ra một Lớp (Layer) mới hoàn toàn tách biệt sẽ giải quyết vấn đề này. Giống như em dùng một tấm kính trong suốt đặt lên trên/dưới để vẽ viền vậy. Không bao giờ sợ hỏng ảnh thật.
+HS: Hay quá! Vậy tại sao tấm kính ""khung viền"" đó phải khai báo kích thước to hơn ảnh gốc ạ?
+AI: Nếu tấm kính bằng đúng ảnh gốc, và em đặt ảnh gốc đè lên trên, thì em có nhìn thấy viền của tấm kính không?
+HS: Dạ không, nó bị che khuất mất. À em hiểu rồi, phải làm tấm kính to hơn để phần viền loe ra xung quanh ảnh gốc!
+AI: Chính xác hoàn toàn. Bản chất của đồ hoạ số là ""lớp to làm nền, lớp nhỏ làm lõi"". Em tiến hành tạo New Layer nhé."
+HNMU-G8-R0203-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,203,8,Lớp 8,6,[11b] Thực hành tổng hợp,Bước 2. Tạo khung viền (Trang 71),Trình bày được cách sắp xếp thứ tự lớp (Layer) để hình ảnh gốc hiển thị được trên nền khung viền.,Thông hiểu,"Dùng chuột kéo thả lớp ""Khungvien"" xuống dưới lớp ảnh gốc (hoặc kéo lớp ảnh gốc lên trên) trong bảng điều khiển Layers.","HS: Thầy ơi em bực quá, em vừa tô màu Gradient cho cái lớp ""Khungvien"" xong thì cái ảnh phong cảnh của em biến mất tiêu luôn. Phần mềm bị lỗi ạ?
+AI: Không phải phần mềm lỗi đâu em, đây là nguyên lí hiển thị của Layer! Em hãy tưởng tượng các Layer giống như một xấp giấy chồng lên nhau. Em đang nhìn từ trên xuống dưới.
+HS: Dạ vâng.
+AI: Trong bảng Layers ở góc phải, em xem lớp ""Khungvien"" (có màu Gradient) đang nằm bên trên hay bên dưới lớp ảnh phong cảnh?
+HS: Nó đang nằm trên cùng ạ.
+AI: Khung viền thì bự, lại nằm trên cùng, bảo sao nó che kín mít bức ảnh ở dưới! Theo em, cái khung tranh thì phải nằm dưới hay nằm trên bức ảnh?
+HS: Khung tranh (cái nền) thì phải nằm dưới bức ảnh ạ.
+AI: Chuẩn luôn! Vậy em dùng chuột, nhấn giữ vào cái dòng chữ ""Khungvien"" trong bảng đó, lôi nó kéo tụt xuống bên dưới lớp ảnh phong cảnh đi.
+HS: Ôi ảo diệu quá, em kéo xuống là bức ảnh phong cảnh hiện ra nằm chễm chệ giữa cái khung viền luôn rồi thầy ơi.
+AI: Em nhớ nhé: Thay đổi vị trí Lên/Xuống trong bảng Layer sẽ thay đổi thứ tự Trước/Sau trên màn hình."
+HNMU-G8-R0204-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,204,8,Lớp 8,7,[11b] Thực hành tổng hợp,Bước 3. Ghép ảnh vào tờ rơi (Trang 72),"Phân biệt được tác dụng của hai lệnh: ""File > Open"" và ""File > Open as Layers"".",Thông hiểu,Open: Mở một tệp ảnh thành một dự án (tab) làm việc hoàn toàn mới. Open as Layers: Chèn một tệp ảnh vào dự án hiện tại dưới dạng một lớp mới xếp chồng lên.,"HS: Thầy ơi em đang làm tờ rơi. Em dùng File > Open để mở ảnh logo trường, nhưng nó lại nhảy ra một cái trang khác, chứ không nằm trong tờ rơi của em.
+AI: Em đã vấp phải một lỗi cực kì kinh điển của người mới học GIMP! Khi em dùng ""File > Open"", phần mềm hiểu là em muốn làm việc với một dự án hoàn toàn độc lập. Giống như mở 2 tab khác nhau trên trình duyệt Web vậy.
+HS: Dạ đúng rồi, em thấy nó có 2 tab riêng biệt. Giờ em muốn cái logo nó bay sang bên cái tờ rơi thì làm sao ạ?
+AI: Có hai cách. Cách 1 là copy-paste. Cách 2 (chuyên nghiệp hơn) là em tắt cái tab logo kia đi. Quay về tab tờ rơi. Lần này vào menu File, em không chọn Open nữa, mà chọn lệnh cho phép ""Mở ảnh như một Lớp mới"" chèn thẳng vào dự án này.
+HS: Em nhớ rồi, lệnh đó là ""Open as Layers"" đúng không thầy?
+AI: Cực kì chuẩn xác. Em thử dùng lệnh đó mở lại cái logo xem.
+HS: Đỉnh quá, logo hiện ra đè ngay trên tờ rơi của em, và trong bảng Layers có thêm một dòng mới tên là logo luôn.
+AI: Em đã nắm được chìa khoá để thiết kế ảnh ghép (collage) rồi đấy!"
+HNMU-G8-R0205-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,205,8,Lớp 8,8,[11b] Thực hành tổng hợp,Bước 3. Ghép ảnh vào tờ rơi (Trang 72),Hiểu được tại sao thường phải sử dụng công cụ Scale sau khi chèn một ảnh mới vào tờ rơi.,Thông hiểu,Ảnh mới chèn thường có kích thước (độ phân giải) không khớp với tờ rơi (quá to hoặc quá nhỏ). Scale giúp thu phóng ảnh vừa vặn với bố cục thiết kế.,"HS: Em dùng Open as Layers để chèn ảnh lớp em vào poster. Nhưng ảnh lớp em chụp bằng máy cơ nên nó siêu to khổng lồ, che lấp toàn bộ cái nền poster luôn.
+AI: Đây là vấn đề rất hay gặp về độ phân giải ảnh. Ảnh máy cơ có số lượng pixel cực lớn, trong khi poster của em có thể nhỏ hơn. Để giải quyết, mình cần tác động vào ""kích thước"" của riêng cái lớp ảnh đó. Công cụ gì giúp ta làm việc này?
+HS: Em nhớ bài trước có công cụ Scale (biểu tượng 2 ô vuông lồng nhau). Có phải nó không thầy?
+AI: Hoàn toàn chính xác! Em chọn công cụ Scale, sau đó click vào ảnh lớp em.
+HS: Em click rồi, nó hiện ra cái bảng có chữ Width, Height và xung quanh ảnh có cái khung viền.
+AI: Tốt. Bây giờ em nhắm vào các góc của khung viền đó, kéo chuột hướng vào tâm để thu nhỏ ảnh lại. (Nhớ đảm bảo biểu tượng mắt xích đang ""khoá"" để ảnh không méo nhé).
+HS: Em kéo nó thu bé lại bằng 1/4 rồi, vừa xinh vào một góc poster luôn ạ. Bấm nút ""Scale"" để xác nhận đúng không thầy?
+AI: Đúng rồi em! Em chốt lệnh đi. Tư duy bố cục của em rất tốt."
+HNMU-G8-R0206-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,206,8,Lớp 8,9,[11b] Thực hành tổng hợp,Bước 4. Hoàn thiện sản phẩm (Trang 72),Giải thích được lí do bước cuối cùng luôn yêu cầu chỉnh sửa độ sáng (Brightness) và độ tương phản (Contrast).,Thông hiểu,"Do ghép từ nhiều bức ảnh chụp ở các điều kiện ánh sáng khác nhau. Việc tinh chỉnh giúp toàn bộ các thành phần trong sản phẩm có độ sáng đồng đều, hài hoà và rõ nét hơn.","HS: Thầy ơi, em làm xong bước 3 (ghép chữ, ghép ảnh) rồi là xong bài đúng không? Em nộp luôn được chưa ạ?
+AI: Khoan đã! Em hãy nhìn lại tổng thể tờ rơi của mình như một khán giả. Em ghép 3 bức ảnh khác nhau: 1 cái chụp ngoài sân trường nắng rực, 1 cái chụp trong lớp học hơi tối, 1 cái nền thì màu mè. Cảm giác của em thế nào?
+HS: Em thấy nó cứ rời rạc, kiểu ""râu ông nọ cắm cằm bà kia"" ấy ạ.
+AI: Nhận xét rất chính xác về mặt thị giác! Vì các bức ảnh được chụp ở điều kiện ánh sáng khác nhau. Đó là lí do ta cần Bước 4: Hậu kì (Chỉnh sửa ánh sáng). Công cụ nào trong menu Colors giúp em cứu lại bức ảnh trong lớp học bị tối?
+HS: Dạ là Brightness-Contrast (Độ sáng - Độ tương phản) ạ.
+AI: Đúng vậy. Em hãy chọn lớp ảnh trong lớp học, kéo Brightness lên một chút cho sáng sủa, và nhích Contrast lên để nó sắc nét, tệp màu với ảnh ngoài sân trường xem.
+HS: Wow, em chỉnh xong nhìn tờ rơi nó ""hoà quyện"" vào nhau hẳn, trông chuyên nghiệp hơn nhiều thầy ạ.
+AI: Đây chính là bí quyết của dân đồ hoạ. Luôn luôn kiểm tra và cân bằng ánh sáng ở bước cuối cùng em nhé."
+HNMU-G8-R0207-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,207,8,Lớp 8,10,[11b] Thực hành tổng hợp,Bước 4. Hoàn thiện và lưu sản phẩm (Trang 72),Giải thích được sự khác biệt giữa lưu tệp dự án (Save) và xuất tệp ảnh (Export As).,Thông hiểu,"Save (Ctrl+S): Lưu dự án gốc đuôi .xcf, giữ nguyên các layer để sau này mở ra sửa tiếp. Export As (Shift+Ctrl+E): Xuất ra tệp ảnh phẳng .jpg/.png để in ấn, gửi cho người khác xem.","HS: Em thiết kế xong cái Poster rồi. Sách giáo khoa bảo chọn ""File / Export As để ghi lại ảnh với tên SchoolTour.jpg"". Sao mình không ấn ""Save"" cho nhanh ạ?
+AI: Một câu hỏi rất hay về quản lí file! Thầy giả sử em là kiến trúc sư. Lệnh ""Save"" (đuôi .xcf) giống như em lưu lại bản vẽ có dính đầy ghi chú, tẩy xoá, các bản nháp xếp chồng lên nhau. Còn ""Export As"" (đuôi .jpg) giống như em in ra một bức tranh phối cảnh hoàn mĩ để đưa cho khách hàng.
+HS: Dạ, tức là Save là để mình giữ lại bản gốc sửa sau, còn Export là để nộp bài ạ?
+AI: Em tóm tắt cực kì xuất sắc! Khi em Export ra .jpg, phần mềm sẽ ""ép"" tất cả các Layers lại thành một mặt phẳng duy nhất. Ưu điểm là dung lượng rất nhẹ và máy tính nào, điện thoại nào cũng xem được. Nhược điểm là gì em biết không?
+HS: Là các lớp dính vào nhau hết, không lôi cái ảnh ra sửa hay đổi màu chữ được nữa ạ.
+AI: Tuyệt vời. Chính vì vậy, quy trình chuẩn của dân chuyên nghiệp là: Nhấn Save (.xcf) để cất làm vốn trước, sau đó mới nhấn Export As (.jpg) để đem đi nộp. Em làm y như vậy nhé.
+HS: Dạ vâng, em ghi nhớ quy tắc này rồi ạ."
+HNMU-G8-R0208-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,208,8,Lớp 8,11,[11b] Thực hành tổng hợp,Bước 2. Tạo khung viền (Trang 71),Thực hiện thiết lập dải màu Gradient theo ý thích và tô lên lớp nền (Khungvien) bằng thao tác kéo thả chuột.,Vận dụng,Chọn Gradient Tool -> Click vào ô tuỳ chọn màu (Blend) để chọn dải màu -> Nhấn giữ chuột trái và kéo một đường qua màn hình.,"HS: Thầy ơi em muốn tô cái Khungvien của em bằng dải màu cầu vồng. Em bấm Gradient rồi mà kéo chuột nó chỉ ra màu Trắng đen nhàm chán quá.
+AI: Vấn đề là em chưa ""chọn mẫu màu"" cho cây cọ Gradient của mình. Em hãy quan sát khu vực Tool Options (Tuỳ chọn công cụ) nằm ở góc dưới bên trái màn hình.
+HS: Dạ em thấy rồi ạ.
+AI: Trong đó có một ô hình chữ nhật nằm ngang đang hiển thị màu dải màu Trắng-Đen đúng không? Nó gọi là bảng chọn Blend (mẫu màu). Em hãy nhấp vào ô chữ nhật đó.
+HS: Ồ, nó xổ ra một đống mẫu màu luôn thầy ơi.
+AI: Đúng rồi, kho tàng ở đó! Em hãy lăn chuột tìm mẫu màu cầu vồng, hoặc một mẫu rực rỡ nào em thích.
+HS: Em chọn mẫu có màu xanh - hồng - cam rồi. Giờ em làm sao để tô lên khung ạ?
+AI: Em đặt chuột ở góc trên bên trái của ảnh, nhấn và giữ chuột trái, kéo một đường thẳng tắp chéo xuống góc dưới bên phải, rồi thả tay ra.
+HS: Tuyệt quá, màu nó trải dài theo hướng em kéo chuột luôn. Em kéo thử hướng khác được không thầy?
+AI: Hoàn toàn được! Em cứ kéo thử nhiều hướng, ngắn dài khác nhau đến khi ra hiệu ứng màu ưng ý nhất nhé."
+HNMU-G8-R0209-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,209,8,Lớp 8,12,[11b] Thực hành tổng hợp,Bước 3. Ghép ảnh vào tờ rơi (Trang 72),"Vận dụng linh hoạt chuỗi công cụ Scale, Move và Rotate để xử lí và đặt một bức ảnh vào góc tờ rơi một cách nghệ thuật.",Vận dụng,Open as Layers -> Scale (thu nhỏ) -> Move (kéo ra góc) -> Rotate (xoay nghiêng) -> Enter xác nhận từng bước.,"HS: Em ghép được bức ảnh ngôi trường vào poster rồi. Giờ em muốn nó nhỏ lại, nằm ở góc phải và hơi nghiêng đi giống như một tấm bưu thiếp dán lên bảng ấy ạ.
+AI: Một ý tưởng thiết kế tuyệt vời! Để hiện thực hoá ý tưởng này, em cần dùng bộ 3 công cụ quyền lực: Scale (thu phóng), Move (di chuyển) và Rotate (xoay). Để dễ làm, thao tác đầu tiên bao giờ cũng nên đưa bức ảnh về kích cỡ vừa mắt đã. Dùng lệnh gì em nhỉ?
+HS: Dạ em dùng Scale. Em kéo nó nhỏ gọn lại bằng bàn tay rồi ạ.
+AI: Tốt. Giờ nó đang nằm giữa màn hình. Em muốn nó sang góc phải thì chọn công cụ gì tiếp theo?
+HS: Công cụ Move (mũi tên 4 chiều) ạ. Em nắm và lôi nó sang góc phải xong rồi.
+AI: Bước cuối cùng để tạo độ ""nghệ thuật"" là làm nó nghiêng đi. Em tìm công cụ Rotate (hai mũi tên xoay vòng) trong hộp công cụ, click vào ảnh và kéo xoay nhẹ một góc khoảng 15 độ xem.
+HS: Em xoay được rồi, nhìn nó nghiêng nghiêng bồng bềnh rất dễ thương. Em bấm chữ Rotate trên bảng phụ để chốt lệnh nhé?
+AI: Chốt luôn em! Khả năng kết hợp công cụ của em cực kì mượt mà. Cứ thế phát huy nhé."
+HNMU-G8-R0210-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,210,8,Lớp 8,13,[11b] Thực hành tổng hợp,Bước 3. Ghép ảnh vào tờ rơi (Trang 72),"Sử dụng công cụ Text (Chữ A) để nhập tiêu đề ""SCHOOL TOUR"" to, rõ nét và nổi bật trên tờ rơi.",Vận dụng,"Chọn Text Tool -> Quét khung vùng chữ -> Gõ chữ ""SCHOOL TOUR"" -> Bôi đen chữ -> Chỉnh Font to, In đậm, Màu sắc tương phản.","HS: Sách giáo khoa bảo chèn chữ ""SCHOOL TOUR"" làm tiêu đề. Em bấm nút Text gõ chữ xong rồi. Làm sao để chữ nó mang phong cách hoành tráng giống như phim bom tấn ạ?
+AI: Tiêu đề (Headline) là linh hồn của poster! Để nó hoành tráng, em cần điều chỉnh 3 yếu tố: Kích cỡ (Size), Phông chữ (Font) và Màu sắc (Color). Bước đầu tiên luôn là gì để phần mềm biết em muốn sửa dòng chữ đó?
+HS: Dạ phải dùng chuột quét bôi đen dòng chữ ""SCHOOL TOUR"" ạ.
+AI: Rất nhớ bài! Giờ em nhìn xuống bảng Tool Options. Thay vì để font chữ mặc định mỏng manh, em nhấp vào biểu tượng Aa, gõ tìm font ""Impact"" hoặc ""Arial Black"" xem sao. Đó là những font chữ đậm và dày.
+HS: Em đổi sang Impact rồi, chữ nó mập thù lù và cứng cáp lên hẳn. Nhưng nó vẫn hơi bé ạ.
+AI: Em tăng ô Size (kích thước) lên khoảng 120 cho nó toán cả chiều ngang poster. Sau đó, nhấp vào ô Màu sắc (Color). Vì nền của em đang là bầu trời màu xanh dương, em nên chọn màu chữ gì để tương phản mạnh nhất?
+HS: Chắc là màu Vàng cam hoặc Trắng ạ. Để em chọn màu Vàng cam... Ôi thầy ơi, nhìn chói loá và hút mắt cực kì luôn!
+AI: Sự tương phản Xanh dương - Vàng là quy tắc phối màu kinh điển đấy. Chúc mừng em có một tiêu đề ""bom tấn""."
+HNMU-G8-R0211-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,211,8,Lớp 8,14,[11b] Thực hành tổng hợp,Toàn bộ bài thực hành (Trang 70-72),Tự lực lập kế hoạch và hoàn thành quy trình 4 bước để thiết kế một tờ rơi theo chủ đề tự do (Vận dụng mở rộng).,Vận dụng,"Lên ý tưởng -> Tìm ảnh nền/ảnh ghép -> Dùng GIMP (New Layer khung, Open as Layers ghép ảnh, Rotate/Scale/Move bố cục, Text ghi chú) -> Chỉnh màu -> Export JPG.","HS: Bài tập cuối chương yêu cầu tự thiết kế một poster ""Kêu gọi bảo vệ môi trường"". Em tải 1 ảnh Trái đất và 1 ảnh cây xanh về máy rồi. Nhưng vô GIMP em bị ""ngợp"", không biết đi nét nào trước.
+AI: Cảm giác ""ngợp"" trước màn hình trống là rất bình thường với nhà thiết kế! Để giải quyết, ta áp dụng phương pháp ""Chia nhỏ vấn đề"". Hãy nhắm mắt lại và tưởng tượng poster của em có 3 lớp lang: Nền (dưới cùng), Hình ảnh (ở giữa), và Chữ (trên cùng). Em định làm cái gì đầu tiên?
+HS: Chắc em phải trải cái Nền ra trước ạ.
+AI: Chuẩn xác. Em hãy tạo một File > New để làm nền, có thể tô màu Gradient xanh lá cây cho đúng chủ đề môi trường nhé. Xong nền thì ta làm gì tiếp?
+HS: Ta đặt Hình ảnh lên nền. Em sẽ dùng lệnh ""Open as Layers"" lôi ảnh Trái đất và cây xanh vào, rồi dùng Scale và Move để xếp nó cho cân đối.
+AI: Lộ trình thao tác của em quá hoàn hảo! Sau khi xếp ảnh xong, lớp trên cùng để người ta đọc và hiểu thông điệp là gì?
+HS: Là viết Chữ ạ. Em dùng công cụ Text viết chữ ""Hành động ngay!"".
+AI: Và cuối cùng, để cô giáo chấm được trên điện thoại, em chốt hạ bằng lệnh gì?
+HS: Lệnh Export As ra file JPG ạ!
+AI: Em đã tự mình vẽ ra toàn bộ ""Bản thiết kế thi công"" (Blueprint) rồi đấy. Giờ thì cứ theo bản thiết kế đó mà làm thôi. Chúc em tạo ra một tác phẩm xuất sắc!
+HS: Dạ em hết ngợp rồi, em cảm ơn thầy. Em bắt tay vào làm ngay đây."
+HNMU-G8-R0212-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,212,8,Lớp 8,1,Bài 12,Mục 1. Kiến thức mới (Tr. 71 SGK),Kịch bản là gì?,Nhận biết (Nêu được khái niệm),Kịch bản là bản mô tả các bước giải quyết một vấn đề cụ thể dưới dạng ngôn ngữ tự nhiên hoặc sơ đồ khối.,"HS: Thầy AI ơi, em thấy từ ""kịch bản"" trong lập trình Scratch, nó có giống kịch bản phim không ạ?
+AI: Chào em! Rất giống đấy. Nếu kịch bản phim chỉ đạo diễn viên diễn xuất, thì kịch bản trong tin học chỉ đạo ""nhân vật máy tính"" thực hiện các bước. Vậy theo em, để giải quyết một bài toán, chúng ta cần một bản mô tả các bước đó gọi là gì?
+HS: Dạ, là kịch bản ạ!
+AI: Chính xác! Nó chính là bước chuẩn bị ""ý tưởng"" trước khi mình bắt tay vào viết code đấy."
+HNMU-G8-R0213-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,213,8,Lớp 8,2,Bài 12,Mục 2. Kiến thức mới (Tr. 72 SGK),Biến trong chương trình là gì?,Nhận biết (Biết được khái niệm),"Biến là một vùng trong bộ nhớ máy tính, được đặt tên và dùng để lưu trữ dữ liệu có thể thay đổi trong quá trình thực hiện chương trình.","HS: Thầy ơi, sao mình phải dùng ""biến"" ạ? Em thấy nó hơi rắc rối.
+AI: Em hãy tưởng tượng mình có một chiếc hộp để đựng điểm số trong trò chơi. Khi em ăn được một món đồ, con số trong hộp đó sẽ thay đổi. Chiếc hộp có tên đó chính là ""biến"". Vậy biến dùng để làm gì đối với dữ liệu nhỉ?
+HS: Để cất dữ liệu và thay đổi nó khi cần ạ.
+AI: Giỏi lắm! Biến giúp máy tính ""ghi nhớ"" những giá trị cần thiết để tính toán sau này."
+HNMU-G8-R0214-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,214,8,Lớp 8,3,Bài 12,Hoạt động 1 (Tr. 71 SGK),Nêu ba kiểu dữ liệu cơ bản trong Scratch.,Nhận biết (Chỉ ra được thành phần),"Có 3 kiểu dữ liệu: kiểu số, kiểu xâu kí tự và kiểu lôgic.","HS: Máy tính phân biệt các loại dữ liệu như thế nào hả thầy?
+AI: Em hãy nhìn vào các giá trị: 123, ""Xin chào"" và Đúng/Sai. Em thấy chúng có giống nhau không?
+HS: Dạ không, một cái là số, một cái là chữ, còn cái kia là kết quả so sánh ạ.
+AI: Đúng rồi! Trong Scratch, ta gọi chúng lần lượt là kiểu số, kiểu xâu kí tự và kiểu lôgic. Em hãy thử kể tên lại 3 loại này xem nào?
+HS: Kiểu số, xâu kí tự và lôgic ạ!"
+HNMU-G8-R0215-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,215,8,Lớp 8,4,Bài 12,Mục 2. Thực hành (Tr. 73 SGK),Khối lệnh nào trong Scratch dùng để gán giá trị cho một biến?,Nhận biết (Nhận biết biểu tượng),Khối lệnh đặt [tên biến] thành [giá trị] (Set [variable] to [value]).,"HS: Em muốn cho biến ""Điểm"" bằng 0 khi bắt đầu thì dùng khối nào ạ?
+AI: Em hãy tìm trong nhóm lệnh Các biến số màu cam. Có khối lệnh nào bắt đầu bằng từ ""đặt"" không?
+HS: Em thấy khối đặt [my variable] thành  ạ.
+AI: Rất tốt! Đó chính là lệnh để em ""bỏ giá trị vào hộp"" đấy."
+HNMU-G8-R0216-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,216,8,Lớp 8,5,Bài 12,Mục 1. Kiến thức mới (Tr. 71 SGK),Tại sao cần phải thiết lập kịch bản trước khi viết chương trình?,Thông hiểu (Giải thích sự cần thiết),"Để giúp người lập trình xác định rõ các bước cần làm, tránh sai sót logic và dễ dàng kiểm soát quá trình viết mã.","HS: Em vào Scratch gõ code luôn được không thầy? Cần gì kịch bản cho mất thời gian ạ.
+AI: Nếu em xây nhà mà không có bản vẽ, liệu thợ xây có xây đúng ý em không? Việc viết chương trình cũng vậy. Kịch bản giúp em làm gì với các ""ý tưởng"" trong đầu mình?
+HS: Giúp em sắp xếp chúng rõ ràng hơn để không bị nhầm ạ.
+AI: Tuyệt vời! Khi có kịch bản, em sẽ biết chính xác khối lệnh nào cần dùng trước, khối nào dùng sau."
+HNMU-G8-R0217-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,217,8,Lớp 8,6,Bài 12,Mục 2. Kiến thức mới (Tr. 72 SGK),Phân biệt sự khác nhau giữa hằng và biến.,Thông hiểu (Phân biệt được),"Biến có thể thay đổi giá trị khi chương trình chạy; hằng là giá trị cố định, không thay đổi.","HS: Hằng và biến khác nhau thế nào thầy nhỉ? Em thấy cái nào cũng là một cái tên.
+AI: Hãy nghĩ đến số Pi (π=3.14). Số này có bao giờ thay đổi không em?
+HS: Dạ không, nó luôn là 3.14 ạ.
+AI: Đó là hằng. Còn ""Số bước chân"" em đi được khi dạo phố thì sao?
+HS: Nó sẽ tăng dần ạ. Vậy đó là biến đúng không thầy?
+AI: Chính xác! Biến thì ""biến đổi"", còn hằng thì ""hằng hà sa số không đổi""."
+HNMU-G8-R0218-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,218,8,Lớp 8,7,Bài 12,Hình 12.4 (Tr. 75 SGK),Đọc hiểu kịch bản vẽ hình tam giác đều: Tại sao nhân vật phải quay 120 độ?,Thông hiểu (Đọc hiểu được chương trình),"Vì tổng các góc ngoài của một đa giác là 360 độ; với tam giác đều, mỗi góc quay là 360/3=120 độ.","HS: Thầy ơi, tam giác có góc 60 độ mà sao trong Scratch bạn Khoa lại cho quay 120 độ ạ? (Hình 12.4)
+AI: Một câu hỏi cực kỳ thông minh! Khi nhân vật đang đi thẳng, để rẽ vào cạnh tiếp theo, nó phải quay một ""góc ngoài"". Em thử lấy 360 chia cho 3 cạnh xem ra bao nhiêu?
+HS: Dạ ra 120 ạ!
+AI: Đúng rồi! Đó là lý do máy tính cần quay 120 độ để tạo ra góc trong 60 độ cho tam giác đấy."
+HNMU-G8-R0219-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,219,8,Lớp 8,8,Bài 12,Câu hỏi 2 (Tr. 72 SGK),"Giải thích ý nghĩa của việc ""kiểm thử"" chương trình với nhiều bộ dữ liệu khác nhau.",Thông hiểu (Giải thích được lợi ích),Để phát hiện các lỗi logic có thể xảy ra trong những trường hợp đặc biệt và đảm bảo chương trình hoạt động đúng với mọi đầu vào hợp lệ.,"HS: Em chạy thử thấy ra kết quả đúng rồi, sao thầy vẫn bảo em nhập thêm số khác ạ?
+AI: Nếu chương trình tính tổng hai số mà em chỉ thử 1+1=2 thì chưa chắc nó đã đúng với số âm hay số 0. Việc thử nhiều số khác nhau gọi là ""kiểm thử"". Nó giúp em phát hiện điều gì?
+HS: Phát hiện xem có lỗi nào còn giấu kín không ạ.
+AI: Rất chuẩn! Một lập trình viên giỏi luôn muốn chương trình của mình ""bất tử"" trước mọi dữ liệu."
+HNMU-G8-R0220-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,220,8,Lớp 8,9,Bài 12,Hoạt động 2 (Tr. 72 SGK),Một biến có thể lưu đồng thời cả số và chữ không? Giải thích.,Thông hiểu (Giải thích được tính chất),"Tại một thời điểm, một biến chỉ lưu được một giá trị duy nhất. Nếu gán giá trị mới, giá trị cũ sẽ bị mất.","HS: Em vừa gán biến X = 10, sau đó em gán X = ""Hello"". Vậy trong X giờ có cả hai đúng không thầy?
+AI: Em hãy tưởng tượng biến là một cái ngăn kéo nhỏ chỉ vừa đủ chỗ cho một món đồ. Khi em bỏ ""Hello"" vào, món đồ ""10"" cũ sẽ phải đi đâu?
+HS: Dạ, nó bị đẩy ra ngoài ạ.
+AI: Đúng vậy! Vậy cuối cùng biến X chỉ còn giữ lại giá trị nào?
+HS: Chỉ còn ""Hello"" thôi ạ. Em hiểu rồi!"
+HNMU-G8-R0221-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,221,8,Lớp 8,10,Bài 12,Luyện tập 3 (Tr. 75 SGK),Trình bày các bước từ thuật toán đến chương trình cho bài toán điều khiển ô tô dừng lại trước vật cản.,Thông hiểu (Trình bày được quá trình),"B1: Xác định điều kiện (khoảng cách < 120); B2: Lập kịch bản (nếu đúng thì dừng, sai thì đi); B3: Viết mã Scratch.","HS: Làm sao để cái xe tự dừng khi thấy hòn đá hả thầy? (Hình 12.5)
+AI: Đầu tiên, xe cần ""cảm nhận"" được khoảng cách. Theo em, điều kiện để xe dừng lại ở đây là gì?
+HS: Là khi khoảng cách nhỏ hơn 120 bước ạ.
+AI: Tốt! Vậy em hãy mô tả kịch bản: ""Nếu... (điều kiện em vừa nêu) thì... (hành động gì?)"".
+HS: Nếu khoảng cách < 120 thì xe dừng lại, còn không thì cứ đi tiếp ạ!
+AI: Xuất sắc! Em đã xây dựng xong kịch bản logic rồi đấy."
+HNMU-G8-R0222-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,222,8,Lớp 8,11,Bài 12,Luyện tập 1 (Tr. 75 SGK),Vẽ sơ đồ khối mô tả thuật toán vẽ hình vuông.,Vận dụng (Xác định cấu trúc thích hợp),Sơ đồ gồm: Bắt đầu -> Lặp 4 lần (Di chuyển -> Quay 90 độ) -> Kết thúc.,"HS: Em muốn vẽ sơ đồ khối cho bài vẽ hình vuông nhưng không biết dùng hình gì để lặp lại 4 lần ạ.
+AI: Hình vuông có 4 cạnh giống hệt nhau, nên thay vì vẽ 4 lần di chuyển, mình dùng cấu trúc lặp. Em có nhớ bài 11, hình nào dùng để thể hiện ""kiểm tra điều kiện"" để lặp không?
+HS: Hình thoi đúng không thầy?
+AI: Đúng rồi! Em vẽ một hình thoi ghi ""Số lần < 4?"". Nếu đúng thì đi tiếp các bước vẽ, nếu sai thì kết thúc. Em thử phác thảo xem nào!"
+HNMU-G8-R0223-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,223,8,Lớp 8,12,Bài 12,Nhiệm vụ 1 (Tr. 73 SGK),Viết chương trình Scratch để nhân vật vẽ một hình tam giác đều.,Vận dụng (Viết được chương trình),"Sử dụng nhóm lệnh Bút vẽ: Xóa tất cả, đặt bút, lặp lại 3 [di chuyển 60, xoay 120], nhấc bút.","HS: Thầy xem em kéo các khối di chuyển và xoay thế này đã đúng để vẽ tam giác chưa ạ?
+AI: Các khối lệnh đơn lẻ thì đúng rồi, nhưng để máy không phải làm việc vất vả, em nên dùng khối lệnh nào để ""gom"" 3 lần lặp lại đó?
+HS: Em dùng khối lặp lại 3 lần ạ!
+AI: Giỏi lắm! Đừng quên khối lệnh ""Đặt bút"" nhé, nếu không nhân vật sẽ đi mà không để lại dấu vết gì đâu.
+HS: A, em quên mất, để em thêm khối đặt bút ở đầu ạ!"
+HNMU-G8-R0224-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,224,8,Lớp 8,13,Bài 12,Luyện tập 2 (Tr. 75 SGK),Nâng cấp chương trình vẽ tam giác thành chương trình vẽ hình vuông bằng cách thay đổi giá trị.,Vận dụng (Chỉnh sửa được sản phẩm số),Thay đổi lặp lại 3 thành lặp lại 4 và xoay 120 thành xoay 90.,"HS: Em muốn sửa bài tam giác lúc nãy thành hình vuông thì phải bỏ hết đi làm lại ạ?
+AI: Không cần đâu em! Hình vuông có mấy cạnh và mỗi góc ngoài bằng bao nhiêu độ (360/4)?
+HS: Dạ có 4 cạnh và góc quay là 90 độ ạ.
+AI: Vậy trong chương trình cũ, em chỉ cần thay đổi 2 con số nào là ""biến"" tam giác thành hình vuông?
+HS: Em đổi số 3 thành số 4, và 120 thành 90 ạ. Em làm được rồi!"
+HNMU-G8-R0225-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,225,8,Lớp 8,14,Bài 12,Vận dụng (Tr. 75 SGK),Viết chương trình tính diện tích hình tròn với bán kính r nhập từ bàn phím.,Vận dụng (Viết được chương trình phức tạp),"B1: Tạo biến r, S; B2: Nhập r; B3: đặt S thành r * r * 3.14; B4: nói S.","HS: Thầy giúp em viết chương trình tính diện tích hình tròn với. Công thức là S=r×r×3.14 ạ.
+AI: Để làm bài này, em cần mấy chiếc ""hộp"" (biến) để đựng giá trị?
+HS: Em cần một hộp cho bán kính r và một hộp cho diện tích S ạ.
+AI: Rất tốt! Đầu tiên em dùng lệnh Hỏi... để lấy r từ người dùng. Sau đó, em dùng khối lệnh toán học (màu xanh lá) để lắp ráp công thức r×r×3.14 và gán vào biến S nhé. Em thử xem!
+HS: Em đã ghép được các khối * lại với nhau rồi. Máy đã hiện kết quả chính xác rồi thầy ơi!"
+HNMU-G8-R0226-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,226,8,Lớp 8,1,Bài 13: Biểu diễn dữ liệu,Mục 1. Kiến thức mới (Tr. 76),Dữ liệu trong máy tính được phân loại thành các kiểu dữ liệu cơ bản nào?,Nhận biết (Biết được các kiểu dữ liệu cơ bản),"Có 3 kiểu dữ liệu cơ bản: số, xâu kí tự và lôgic,.","HS: Thầy ơi, tại sao máy tính phải chia ra kiểu số với kiểu chữ ạ?
+AI: Chào em! Để bắt đầu, em hãy nghĩ xem nếu chúng ta muốn tính tổng của hai giá trị, chúng ta cần dữ liệu đó phải là gì để làm toán được nhỉ?
+HS: Dạ phải là con số ạ.
+AI: Đúng rồi! Vậy nếu là tên của em thì máy tính có đem đi cộng trừ được không?
+HS: Dạ không, đó là chữ thôi ạ.
+AI: Chính xác! Trong lập trình, người ta chia ra các ""kiểu"" để máy biết cách xử lý. Ngoài kiểu số và chữ (xâu kí tự), em có thấy kiểu nào chỉ có hai giá trị Đúng hoặc Sai không?
+HS: Dạ là kiểu lôgic ạ!"
+HNMU-G8-R0227-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,227,8,Lớp 8,2,Bài 13: Biểu diễn dữ liệu,Mục 1. Hoạt động 1 (Tr. 76),"Trong Scratch, kiểu dữ liệu lôgic có những giá trị nào?",Nhận biết (Nêu được đặc điểm),Giá trị đúng (True) hoặc sai (False).,"HS: Kiểu lôgic dùng để làm gì hả thầy?
+AI: Em hãy nhớ lại khi mình chơi trò chơi, nếu ""Điểm > 10"" thì mình thắng. Câu trả lời cho việc ""Điểm có lớn hơn 10 không?"" chỉ có mấy trường hợp xảy ra thôi?
+HS: Chỉ có Đúng hoặc Sai thôi ạ.
+AI: Rất giỏi! Đó chính là hai giá trị duy nhất của kiểu dữ liệu lôgic. Em thử tìm trong các khối lệnh Scratch màu xanh lục xem có thấy khối nào hình lục giác chứa giá trị này không?"
+HNMU-G8-R0228-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,228,8,Lớp 8,3,Bài 13: Biểu diễn dữ liệu,Mục 2. Các phép toán (Tr. 77),Phép toán mod trong Scratch dùng để làm gì?,Nhận biết (Nêu được công dụng),Dùng để lấy số dư của phép chia.,"HS: Em thấy khối lệnh [ ] mod [ ] mà không biết nó tính cái gì ạ.
+AI: Em thử làm một phép toán nhé: 10 chia 3 được mấy và dư mấy nào?
+HS: Dạ được 3 và dư 1 ạ.
+AI: Khối mod chính là để máy tính ""nhặt"" ra con số dư đó đấy. Vậy 10 mod 3 sẽ cho kết quả là bao nhiêu?
+HS: À, là 1 ạ! Em hiểu rồi."
+HNMU-G8-R0229-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,229,8,Lớp 8,4,Bài 13: Biểu diễn dữ liệu,Hình 13.1 (Tr. 77),Các phép toán lôgic cơ bản gồm những phép nào?,Nhận biết (Nêu được tên thành phần),"Phép Và (and), phép Hoặc (or) và phép Không (not).","HS: Làm sao để kết hợp nhiều điều kiện cùng lúc trong Scratch ạ?
+AI: Em hãy nhìn vào các khối lệnh màu xanh lục ở Hình 13.1 trang 77. Có 3 từ tiếng Anh rất quen thuộc dùng để nối các điều kiện, em có thấy không?
+HS: Em thấy có and, or và not ạ.
+AI: Rất chính xác! Đó chính là các ""vũ khí"" để em xây dựng những điều kiện phức tạp cho nhân vật đấy."
+HNMU-G8-R0230-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,230,8,Lớp 8,5,Bài 13: Biểu diễn dữ liệu,Mục 1. Kiến thức mới (Tr. 76),Giải thích tại sao việc xác định kiểu dữ liệu cho biến là cần thiết?,Thông hiểu (Giải thích được sự cần thiết),Để máy tính biết tập hợp các giá trị có thể lưu trữ và các phép toán có thể thực hiện trên dữ liệu đó.,"HS: Thầy ơi, sao mình không để máy tự đoán kiểu dữ liệu cho rảnh ạ?
+AI: Hãy tưởng tượng em có một chiếc hộp. Nếu em không biết bên trong là ""nước"" hay ""gạch"", em có dám lắc mạnh chiếc hộp đó không?
+HS: Dạ không, vì nếu là nước sẽ bị đổ ạ.
+AI: Máy tính cũng vậy! Nó cần biết ""kiểu"" để biết được những ""hành động"" (phép toán) nào là an toàn và đúng đắn. Nếu em lấy ""Tên"" nhân với ""Số"", máy sẽ bối rối ngay. Vậy mục đích chính là để làm gì nhỉ?
+HS: Để máy biết tập giá trị và các phép toán phù hợp với dữ liệu đó ạ!"
+HNMU-G8-R0231-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,231,8,Lớp 8,6,Bài 13: Biểu diễn dữ liệu,Mục 2. Các phép toán (Tr. 77),Phân biệt sự khác nhau giữa phép toán / và phép toán div (chia lấy nguyên).,Thông hiểu (Phân biệt được),"Phép / cho kết quả đầy đủ (có thể là số thập phân), phép div (lấy sàn hoặc làm tròn xuống) chỉ lấy phần nguyên.","HS: Thầy ơi, 10 / 4 ra 2.5, vậy nếu em chỉ muốn lấy số 2 thôi thì làm thế nào?
+AI: Trong toán học, phần không có thập phân gọi là phần gì em nhỉ?
+HS: Dạ là phần nguyên ạ.
+AI: Đúng rồi! Scratch có khối lệnh làm tròn hoặc dùng phép toán kết hợp để chỉ lấy phần nguyên này. Em thử tìm xem khối lệnh nào giúp em ""bỏ rơi"" phần thập phân đi nào?
+HS: Dạ em thấy khối lệnh floor của... (lấy sàn). Vậy nó chính là phép chia lấy nguyên đúng không thầy?"
+HNMU-G8-R0232-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,232,8,Lớp 8,7,Bài 13: Biểu diễn dữ liệu,Mục 2. Phép toán (Tr. 77),Khi nào thì phép toán and trả về giá trị Đúng (True)?,Thông hiểu (Giải thích được cơ chế),Trả về Đúng khi và chỉ khi tất cả các điều kiện thành phần đều Đúng.,"HS: Em dùng khối and để kiểm tra ""Điểm > 5"" và ""Điểm < 10"", tại sao nó lại ra Sai dù điểm em là 12 ạ?
+AI: Phép and giống như một người bảo vệ khó tính: ""Cả hai cửa đều phải mở tôi mới cho qua"". Với điểm 12, điều kiện ""Điểm > 5"" đúng hay sai?
+HS: Dạ đúng ạ.
+AI: Còn điều kiện ""Điểm < 10"" thì sao?
+HS: Dạ sai ạ. A, em hiểu rồi! Vì có một cái sai nên cả khối bị Sai luôn đúng không thầy?
+AI: Xuất sắc! Em đã nắm được quy tắc của người bảo vệ and rồi đấy."
+HNMU-G8-R0233-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,233,8,Lớp 8,8,Bài 13: Biểu diễn dữ liệu,Mục 2. Lưu ý (SGV Tr. 85),Chuyện gì xảy ra trong Scratch khi em thực hiện phép toán cộng giữa một số và một xâu kí tự chứa số?,Thông hiểu (Đọc hiểu được cách xử lý),Scratch sẽ tự động chuyển xâu kí tự đó sang số và thực hiện phép cộng bình thường.,"HS: Thầy ơi, nếu em lấy số 5 cộng với xâu chữ ""10"" thì máy có báo lỗi không ạ?
+AI: Một số ngôn ngữ khác sẽ báo lỗi, nhưng Scratch rất ""thông minh"" và linh hoạt. Nó sẽ thử nhìn xem trong xâu ""10"" có con số nào không. Theo em nó sẽ thấy gì?
+HS: Nó thấy số 10 ạ.
+AI: Vậy nó sẽ ""biến"" xâu đó thành số và thực hiện phép tính. Kết quả cuối cùng em đoán xem là bao nhiêu?
+HS: Dạ là 15 ạ! Hay quá, Scratch thật tiện lợi."
+HNMU-G8-R0234-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,234,8,Lớp 8,9,Bài 13: Biểu diễn dữ liệu,Câu hỏi 2 (Tr. 77),Phép toán so sánh nào dùng để kiểm tra một giá trị không nằm trong một khoảng cho trước?,Thông hiểu (Phát biểu được nhiệm vụ),Sử dụng phép toán not kết hợp với phép and hoặc or.,"HS: Làm sao để biết con số x KHÔNG nằm trong khoảng từ 1 đến 10 ạ?
+AI: Đầu tiên, em hãy viết điều kiện để x NẰM TRONG khoảng từ 1 đến 10 trước đã. Em dùng phép and hay or?
+HS: Dạ dùng (x > 1) and (x < 10) ạ.
+AI: Tốt! Bây giờ để nói ""KHÔNG phải như vậy"", em sẽ đặt cả khối đó vào trong khối lệnh nào em vừa học ở câu 4?
+HS: Dạ vào khối not ạ! Vậy là not ((x > 1) and (x < 10)). Em làm được rồi!"
+HNMU-G8-R0235-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,235,8,Lớp 8,10,Bài 13: Biểu diễn dữ liệu,Hình 13.1 (Tr. 77),Thứ tự ưu tiên thực hiện các phép toán lôgic khi không có ngoặc là gì?,Thông hiểu (Mô tả được quy trình),"Thực hiện not trước, sau đó đến and, cuối cùng là or.","HS: Thầy ơi, trong một câu lệnh dài có cả and, or, not thì máy tính làm cái nào trước ạ?
+AI: Máy tính cũng có quy tắc ""ưu tiên"" giống như nhân chia trước cộng trừ sau vậy. Em hãy nhớ thứ tự: 1. Phủ định, 2. Và, 3. Hoặc. Vậy cái nào được ưu tiên cao nhất?
+HS: Dạ là not ạ.
+AI: Chính xác! Nếu muốn thay đổi thứ tự này, em sẽ dùng cái gì để ""bao"" lấy phần muốn tính trước?
+HS: Dạ dùng các khối lồng nhau giống như dấu ngoặc trong toán học ạ!"
+HNMU-G8-R0236-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,236,8,Lớp 8,11,Bài 13: Biểu diễn dữ liệu,Luyện tập (Tr. 79),Hãy viết biểu thức lôgic để kiểm tra xem một số nguyên n có phải là số chẵn hay không?,Vận dụng (Sử dụng được biểu thức),Biểu thức: (n mod 2) = 0.,"HS: Thầy hướng dẫn em cách kiểm tra số chẵn trong Scratch với ạ.
+AI: Một số chẵn khi chia cho 2 sẽ có số dư bằng bao nhiêu em nhỉ?
+HS: Dạ dư 0 ạ.
+AI: Tốt! Ở câu 3 mình đã học phép toán lấy số dư là gì nào?
+HS: Dạ là mod ạ.
+AI: Vậy em hãy ghép khối mod với khối so sánh = để tạo thành biểu thức kiểm tra n chia 2 dư 0 xem.
+HS: Em sẽ gõ (n mod 2) = 0. Wow, em thử với số 4 nó báo True, số 5 nó báo False rồi thầy ơi!"
+HNMU-G8-R0237-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,237,8,Lớp 8,12,Bài 13: Biểu diễn dữ liệu,Hoạt động 1 (Tr. 76),"Cho xâu s1 = ""Tin học"", s2 = ""8"". Hãy sử dụng khối lệnh kết hợp để tạo ra xâu ""Tin học 8"".",Vận dụng (Tạo được sản phẩm số),Sử dụng khối lệnh: kết hợp (s1) (s2).,"HS: Em muốn nhân vật nói ""Chào bạn An"", trong đó ""An"" là một biến tên, thì làm thế nào ạ?
+AI: Em có thấy khối lệnh kết hợp [apple] [banana] (join) màu xanh lục không?
+HS: Dạ có ạ.
+AI: Khối này giúp em ""dán"" hai xâu lại với nhau. Ô thứ nhất em điền chữ ""Chào bạn "", ô thứ hai em sẽ kéo cái gì vào nào?
+HS: Em kéo biến Tên vào ạ. A, nhân vật đã nói đúng tên em rồi!"
+HNMU-G8-R0238-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,238,8,Lớp 8,13,Bài 13: Biểu diễn dữ liệu,Thực hành (Tr. 78),"Viết chương trình nhập vào một số và thông báo số đó là ""Số dương"" nếu nó lớn hơn 0.",Vận dụng (Viết được chương trình),B1: Hỏi...; B2: Nếu (trả lời > 0) thì nói [Số dương].,"HS: Em muốn máy tính tự nhận biết số dương mà em gõ vào bàn phím ạ.
+AI: Đầu tiên, em cần dùng lệnh gì để hiện ô nhập liệu cho người dùng gõ số?
+HS: Lệnh Hỏi... và đợi trong nhóm Cảm biến ạ.
+AI: Giỏi lắm! Sau đó em dùng cấu trúc điều khiển Nếu... thì để kiểm tra giá trị người dùng vừa gõ (biến trả lời). Điều kiện ở đây là gì nào?
+HS: Dạ là trả lời > 0. Em lắp vào khối Nếu rồi, máy đã chạy đúng rồi thầy!"
+HNMU-G8-R0239-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,239,8,Lớp 8,14,Bài 13: Biểu diễn dữ liệu,Vận dụng (Tr. 79),"Viết chương trình nhập điểm 3 môn, tính điểm trung bình (ĐTB) và thông báo ""Đỗ"" nếu ĐTB >= 5.",Vận dụng (Viết được chương trình phức tạp),B1: Tạo biến; B2: Nhập điểm; B3: ĐTB = (Toán+Văn+Anh)/3; B4: Nếu ĐTB >= 5 nói [Đỗ].,"HS: Bài này dài quá, em rối chỗ tính trung bình cộng và đưa ra thông báo ạ.
+AI: Đừng lo, mình chia nhỏ ra nhé! Bước 1: Em hãy tạo 3 biến để đựng điểm và 1 biến ĐTB. Bước 2: Em dùng phép toán + và / để lập công thức tính ĐTB. Em thử làm bước này trước xem.
+HS: (Làm xong) Em tính được ĐTB rồi ạ. Giờ làm sao để hiện chữ ""Đỗ"" hả thầy?
+AI: Em hãy dùng khối Nếu... thì mà mình vừa thực hành ở câu 13. Điều kiện lúc này sẽ liên quan đến biến nào em vừa tính?
+HS: Dạ là biến ĐTB >= 5. Em làm được rồi, cảm ơn thầy AI rất nhiều!"
+HNMU-G8-R0240-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,240,8,Lớp 8,1,Bài 14: Cấu trúc điều khiển,Mục 1. Cấu trúc tuần tự (Tr. 80 SGK),Cấu trúc tuần tự là gì?,Nhận biết (Nêu được khái niệm),"Cấu trúc tuần tự là cấu trúc điều khiển mà các bước thực hiện theo trình tự từ trên xuống dưới, bước sau chỉ được thực hiện khi bước trước đã hoàn thành.","HS: Thầy ơi, cấu trúc tuần tự trong Scratch có giống như việc em đọc một cuốn sách không ạ?
+AI: Chào em! Một ví dụ rất hay. Khi em đọc sách, em có đọc trang 10 trước rồi mới quay lại trang 1 không?
+HS: Dạ không, em phải đọc từ trang 1, rồi trang 2... cứ thế ạ.
+AI: Đúng rồi! Trong lập trình, nếu các câu lệnh được máy tính ""đọc"" và làm theo đúng thứ tự từ trên xuống dưới như vậy, ta gọi đó là cấu trúc gì nhỉ?
+HS: Dạ là cấu trúc tuần tự ạ!
+AI: Chính xác! Đó chính là cách đơn giản nhất để máy tính hiểu lệnh của chúng ta."
+HNMU-G8-R0241-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,241,8,Lớp 8,2,Bài 14: Cấu trúc điều khiển,Mục 1. Cấu trúc rẽ nhánh (Tr. 81 SGK),Có mấy dạng cấu trúc rẽ nhánh? Kể tên.,Nhận biết (Kể tên được thành phần),Có 2 dạng: cấu trúc rẽ nhánh dạng khuyết và cấu trúc rẽ nhánh dạng đầy đủ.,"HS: Em thấy có hai khối ""Nếu... thì"" khác nhau trong Scratch, chúng tên là gì hả thầy?
+AI: Em quan sát kỹ nhé: Một khối chỉ có một ""nhánh"" hành động (nếu đúng thì làm), một khối có thêm phần ""nếu không thì"". Em thử tìm trong Hình 14.3 xem tên gọi của chúng là gì?
+HS: A, là dạng khuyết và dạng đầy đủ ạ!
+AI: Rất giỏi! Em đã nhận diện đúng các ""công cụ"" để máy tính đưa ra quyết định rồi đấy."
+HNMU-G8-R0242-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,242,8,Lớp 8,3,Bài 14: Cấu trúc điều khiển,Mục 1. Cấu trúc lặp (Tr. 84 SGK),Một cấu trúc lặp bao gồm những thành phần nào?,Nhận biết (Nêu tên thành phần),Gồm 2 thành phần chính: Điều kiện tiếp tục lặp và Khối lệnh thực hiện trong mỗi bước lặp (thân lặp).,"HS: Thầy ơi, làm sao để con mèo trong Scratch cứ chạy mãi cho đến khi chạm vào cạnh sân khấu ạ?
+AI: Để làm được vậy, em cần dùng cấu trúc lặp. Theo em, để máy tính biết khi nào ""ngừng chạy"", nó cần phải kiểm tra cái gì ở mỗi bước?
+HS: Kiểm tra xem đã chạm cạnh chưa ạ.
+AI: Đúng rồi, đó gọi là ""điều kiện"". Vậy ngoài điều kiện, máy tính cần biết làm ""hành động"" gì lặp đi lặp lại?
+HS: Dạ là hành động ""di chuyển"" ạ. Vậy là gồm điều kiện và hành động đúng không thầy?"
+HNMU-G8-R0243-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,243,8,Lớp 8,4,Bài 14: Cấu trúc điều khiển,Hoạt động 1. Đoán số (Tr. 80 SGK),Biến nào được Scratch tạo sẵn để lưu giá trị nhập từ bàn phím?,Nhận biết (Biết được sự có mặt của thành phần),Biến trả lời (answer).,"HS: Khi em gõ số vào ô ""Hỏi và đợi"", máy tính cất số đó vào đâu ạ?
+AI: Em hãy nhìn vào nhóm lệnh Cảm biến. Có một ô hình tròn màu xanh nhạt ngay dưới lệnh ""Hỏi"", em thấy nó ghi chữ gì không?
+HS: Dạ là chữ trả lời ạ.
+AI: Chính xác! Đó là một ""chiếc hộp"" đặc biệt dùng để giữ bí mật mà người dùng vừa gõ vào đấy."
+HNMU-G8-R0244-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,244,8,Lớp 8,5,Bài 14: Cấu trúc điều khiển,Mục 1. Hoạt động 1 (Tr. 80 SGK),Tại sao việc mô tả thuật toán bằng ngôn ngữ tự nhiên lại có ích trước khi lập trình?,Thông hiểu (Giải thích được lợi ích),"Giúp người lập trình hình dung rõ các bước logic, tránh nhầm lẫn trước khi chuyển sang các khối lệnh cụ thể.","HS: Em vào Scratch kéo khối lệnh luôn cho nhanh, viết kịch bản bằng lời làm gì cho mệt thầy?
+AI: Giả sử trò chơi của em rất phức tạp, em có chắc mình sẽ nhớ hết mọi trường hợp ""nếu... thì"" trong đầu không?
+HS: Dạ chắc là em sẽ bị rối ạ.
+AI: Vậy việc viết ra từng bước bằng tiếng Việt giúp em điều gì trước khi ""dịch"" nó sang ngôn ngữ của máy tính?
+HS: Giúp em nhìn rõ logic và không bị sót bước ạ. Em hiểu rồi!."
+HNMU-G8-R0245-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,245,8,Lớp 8,6,Bài 14: Cấu trúc điều khiển,Hình 14.2 (Tr. 81 SGK),Phân biệt cấu trúc rẽ nhánh khuyết và đầy đủ qua sơ đồ khối.,Thông hiểu (Phân biệt được),Dạng khuyết: Nếu điều kiện sai thì không làm gì; Dạng đầy đủ: Cả hai trường hợp đúng và sai đều có hành động tương ứng.,"HS: Thầy ơi, nhìn sơ đồ khối làm sao biết cái nào là ""đầy đủ"" ạ?
+AI: Em nhìn vào Hình 14.2. Ở nhánh ""Sai"", sơ đồ (a) có dẫn đến hành động nào không, hay đi thẳng xuống dưới?
+HS: Dạ sơ đồ (a) đi thẳng luôn. Còn sơ đồ (b) ở nhánh ""Sai"" lại dẫn đến một ô chữ nhật khác ạ.
+AI: Rất tinh mắt! Khi cả hai ngả đường ""Đúng"" và ""Sai"" đều có việc để làm, ta gọi đó là cấu trúc gì?
+HS: Dạ là rẽ nhánh đầy đủ ạ!"
+HNMU-G8-R0246-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,246,8,Lớp 8,7,Bài 14: Cấu trúc điều khiển,Câu hỏi 2 (Tr. 81 SGK),"Giải thích tại sao trong bài toán so sánh hai số, ta không cần kiểm tra trường hợp ""bằng nhau"" riêng biệt?",Thông hiểu (Giải thích được lý do),"Vì các trường hợp ""nhỏ hơn"" và ""lớn hơn"" đã loại trừ lẫn nhau, nên chỉ cần kiểm tra hai lần là đủ xác định quan hệ.","HS: Thầy ơi, sao trong sơ đồ Hình 14.2a, bạn Khoa chỉ dùng 2 hình thoi mà so sánh được cả 3 trường hợp lớn, nhỏ, bằng ạ?
+AI: Một câu hỏi rất hay! Nếu một số không lớn hơn và cũng không nhỏ hơn số kia, thì chắc chắn nó phải là gì em nhỉ?
+HS: Dạ là bằng nhau ạ.
+AI: Đúng rồi! Vậy nếu máy tính đã kiểm tra ""lớn hơn"" thấy sai, ""nhỏ hơn"" cũng thấy sai, thì mình có cần hỏi thêm câu ""có bằng không"" nữa không?
+HS: À, không cần ạ, vì chắc chắn nó bằng rồi. Em hiểu rồi!"
+HNMU-G8-R0247-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,247,8,Lớp 8,8,Bài 14: Cấu trúc điều khiển,Hình 14.1 (Tr. 80 SGK),Đọc hiểu kịch bản trò chơi Đoán số: Bước nào thể hiện cấu trúc tuần tự?,Thông hiểu (Đọc hiểu được chương trình),Các bước từ 1 đến 6 được thực hiện lần lượt từ trên xuống dưới.,"HS: Thầy xem giúp em, trong thuật ngữ ""Đoán số"", bước gán số bí mật và bước hỏi số có đảo chỗ cho nhau được không ạ?
+AI: Nếu em hỏi người chơi đoán số trước khi máy tính kịp nghĩ ra ""số bí mật"", liệu máy có biết người đó đoán đúng hay sai không?
+HS: Dạ không ạ, máy phải có số trước đã.
+AI: Vậy các bước này phải tuân theo thứ tự ""trước - sau"" cố định. Đó chính là biểu hiện của cấu trúc gì chúng ta vừa học?
+HS: Dạ là cấu trúc tuần tự ạ!"
+HNMU-G8-R0248-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,248,8,Lớp 8,9,Bài 14: Cấu trúc điều khiển,Mục 1. Cấu trúc lặp (Tr. 84 SGK),Khi nào thì một vòng lặp sẽ kết thúc?,Thông hiểu (Giải thích được cơ chế),Vòng lặp kết thúc khi điều kiện dừng (hoặc điều kiện tiếp tục) không còn thỏa mãn.,"HS: Thầy ơi, khối lặp lại cho đến khi trong Scratch sẽ ngừng lại khi nào ạ?
+AI: Em hãy chú ý vào chữ ""cho đến khi"". Nếu em bảo: ""Hãy quét nhà cho đến khi sạch"", thì khi nào em được nghỉ?
+HS: Khi nhà đã sạch ạ.
+AI: Chính xác! Vậy trong Scratch, vòng lặp sẽ dừng lại ngay khi cái điều kiện bên trong nó trở thành ""Đúng"" hay ""Sai""?
+HS: Dạ là trở thành ""Đúng"" (thỏa mãn) ạ. Em đã nắm được quy luật rồi!"
+HNMU-G8-R0249-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,249,8,Lớp 8,10,Bài 14: Cấu trúc điều khiển,Câu hỏi (Tr. 83 SGK),Cấu trúc nào không được cho trước trong các nhóm lệnh của Scratch?,Thông hiểu (Nhận biết đặc điểm phần mềm),Cấu trúc lặp với điều kiện kiểm tra sau.,"HS: Thầy ơi, em tìm mãi không thấy khối lệnh ""làm... rồi mới kiểm tra điều kiện"" giống như trong sơ đồ khối ạ.
+AI: Quan sát rất tốt! Scratch chỉ cung cấp sẵn khối ""kiểm tra trước rồi mới làm"". Theo em, điều này có nghĩa là cấu trúc lặp kiểm tra sau là có sẵn hay mình phải tự ""chế"" ra?
+HS: Dạ là không được cho sẵn ạ. Đáp án D đúng không thầy?
+AI: Rất chuẩn! Đây là một lưu ý quan trọng khi em chuyển từ thuật toán sang Scratch đấy."
+HNMU-G8-R0250-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,250,8,Lớp 8,11,Bài 14: Cấu trúc điều khiển,Vận dụng 1 (Tr. 81 SGK),Vẽ sơ đồ khối mô tả thuật toán tìm số lớn hơn trong hai số a và b.,Vận dụng (Xác định cấu trúc thích hợp),"Sơ đồ gồm: Bắt đầu -> Nhập a, b -> Kiểm tra a>b? -> (Đúng: Xuất a; Sai: Xuất b) -> Kết thúc.","HS: Thầy hướng dẫn em vẽ sơ đồ tìm số lớn nhất với ạ. Em bắt đầu bằng hình chữ nhật nhập a, b rồi ạ.
+AI: Bước tiếp theo, em cần đưa ra một ""câu hỏi"" để so sánh hai số đó. Em dùng hình gì để biểu diễn câu hỏi lựa chọn?
+HS: Em dùng hình thoi ạ. Em sẽ ghi là ""a>b?"".
+AI: Tuyệt vời! Từ hình thoi đó tỏa ra 2 nhánh: Đúng và Sai. Nếu a>b là Đúng, em sẽ thông báo số nào lớn hơn?
+HS: Dạ em xuất số a ạ. Còn nếu Sai thì xuất b. Em vẽ xong rồi thầy ơi!."
+HNMU-G8-R0251-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,251,8,Lớp 8,12,Bài 14: Cấu trúc điều khiển,Vận dụng 2 (Tr. 81 SGK),Viết chương trình Scratch thực hiện thuật toán tính trung bình cộng của ba số.,Vận dụng (Viết được chương trình),"B1: Tạo biến a, b, c, TBC; B2: Nhập 3 số; B3: đặt TBC thành (a+b+c)/3; B4: nói TBC.","HS: Em viết xong lệnh nhập 3 số rồi, giờ làm sao để tính trung bình cộng hả thầy?
+AI: Công thức toán học là (a+b+c)/3. Em hãy vào nhóm lệnh Các phép toán (màu xanh lá) để tìm khối chia và khối cộng nhé. Em định ghép chúng như thế nào?
+HS: Em lấy khối cộng 3 biến lại rồi đặt vào trong khối chia cho 3 ạ.
+AI: Xuất sắc! Đừng quên dùng lệnh nói để máy tính hiện kết quả cho em xem nhé."
+HNMU-G8-R0252-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,252,8,Lớp 8,13,Bài 14: Cấu trúc điều khiển,Bảng 14.1 (Tr. 84 SGK),"Ghép đoạn lệnh vẽ hình với kết quả tương ứng (Hình 3 cạnh, 4 cạnh, 5 cạnh, 6 cạnh).",Vận dụng (Thực hiện thao tác xử lý),a - 2 (4 cạnh); b - 1 (3 cạnh); c - 3 (5 cạnh); d - 4 (6 cạnh).,"HS: Thầy ơi, sao đoạn lệnh (a) lặp 4 lần mà lại vẽ ra hình vuông ạ?
+AI: Em thử nhớ xem hình nào có 4 cạnh bằng nhau và 4 góc vuông (90 độ)?
+HS: Dạ là hình vuông. À, vậy số lần lặp tương ứng với số cạnh ạ!
+AI: Đúng rồi! Vậy đoạn lệnh (b) xoay 120 độ và lặp 3 lần sẽ vẽ ra hình gì? (Gợi ý: 360/120=3)
+HS: Dạ là hình tam giác (ba cạnh) ạ! Em đã biết cách khớp kết quả rồi."
+HNMU-G8-R0253-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,253,8,Lớp 8,14,Bài 14: Cấu trúc điều khiển,Thực hành (Tr. 83-84 SGK),"Hoàn thiện chương trình trò chơi Đoán số với đầy đủ các phản hồi ""Quá cao"", ""Quá thấp"".",Vận dụng (Chỉnh sửa được sản phẩm số),Sử dụng khối lặp lại cho đến khi kết hợp với nếu... thì... nếu không thì lồng nhau để đưa ra thông báo chính xác.,"HS: Chương trình của em chỉ báo ""Hoan hô"" khi đúng, còn đoán sai máy chả nói gì cả thầy ạ.
+AI: Đó là vì em mới chỉ dùng cấu trúc rẽ nhánh dạng khuyết. Để báo ""Cao"" hoặc ""Thấp"", em cần dùng khối lệnh nào có cả 2 nhánh xử lý?
+HS: Dạ khối nếu... thì... nếu không thì ạ. Em sẽ lồng thêm một khối nữa vào phần ""nếu không thì"" đúng không thầy?
+AI: Rất thông minh! Đó gọi là cấu trúc rẽ nhánh lồng nhau. Em hãy thử lắp ráp logic: Nếu trả lời < số bí mật thì nói ""Quá thấp"", nếu không thì nói ""Quá cao"" xem sao nhé!
+HS: Wow, máy tính đã ""giao tiếp"" với em rồi. Em cảm ơn thầy!."
+HNMU-G8-R0254-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,254,8,Lớp 8,1,Bài 15: Gỡ lỗi,Mục 1. Kiến thức mới (Tr. 85 SGK),Gỡ lỗi (debugging) trong lập trình là gì?,Nhận biết (Nêu được khái niệm),Gỡ lỗi là quá trình tìm lỗi và sửa lỗi trong chương trình.,"HS: Thầy ơi, tại sao chương trình của em không chạy đúng kết quả ạ? Có phải máy tính bị hỏng không?
+AI: Chào em! Không phải máy hỏng đâu. Trong lập trình, khi kết quả không như ý, ta cần thực hiện một quá trình để ""khám bệnh"" và ""chữa trị"" cho code. Theo em, việc tìm ra chỗ sai và sửa lại cho đúng gọi là gì nhỉ?
+HS: Dạ, là gỡ lỗi ạ!
+AI: Chính xác! Đó là kỹ năng quan trọng nhất của một lập trình viên đấy."
+HNMU-G8-R0255-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,255,8,Lớp 8,2,Bài 15: Gỡ lỗi,Mục 1. Hoạt động 1 (Tr. 85 SGK),Mục đích của việc chạy thử chương trình là gì?,Nhận biết (Biết được lợi ích),Để kiểm tra xem chương trình có hoạt động đúng như mong đợi hay không.,"HS: Em viết xong code rồi, cứ thế nộp bài luôn được không thầy?
+AI: Nếu em nấu một món ăn mới, em có nên nếm thử trước khi dọn ra mời khách không? Việc ""chạy thử"" chương trình cũng giống như vậy đấy. Mục đích là để làm gì em nhỉ?
+HS: Để xem nó có ngon... ý em là có chạy đúng kết quả không ạ.
+AI: Rất giỏi! Nếm thử để biết món ăn có lỗi vị, chạy thử để biết chương trình có lỗi code."
+HNMU-G8-R0256-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,256,8,Lớp 8,3,Bài 15: Gỡ lỗi,Mục 2. Phân loại lỗi (Tr. 86 SGK),Có mấy loại lỗi chính thường gặp khi lập trình?,Nhận biết (Nêu được thành phần),Có 2 loại lỗi chính: lỗi cú pháp và lỗi lôgic.,"HS: Thầy ơi, có những kiểu sai nào trong lập trình hả thầy?
+AI: Em hãy nhớ lại khi tập viết văn: có lỗi viết sai chính tả và lỗi viết câu đúng chính tả nhưng ý nghĩa lại buồn cười. Trong lập trình cũng vậy, ta chia thành lỗi ""ngữ pháp máy tính"" (cú pháp) và lỗi về ""cách tư duy"". Em thử gọi tên 2 loại này xem?
+HS: Dạ là lỗi cú pháp và lỗi lôgic ạ!
+AI: Rất chuẩn! Em đã nhận diện được hai ""kẻ thù"" chính của lập trình viên rồi."
+HNMU-G8-R0257-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,257,8,Lớp 8,4,Bài 15: Gỡ lỗi,Hình 15.2 (Tr. 86 SGK),Lỗi lôgic (logic error) là gì?,Nhận biết (Biết được khái niệm),Là lỗi xảy ra khi chương trình vẫn chạy được nhưng đưa ra kết quả sai so với mục tiêu ban đầu.,"HS: Thầy ơi, máy không báo lỗi đỏ nhưng kết quả tính 1+1 lại ra 3, thế là sao ạ?
+AI: Đó chính là biểu hiện của lỗi lôgic đấy! Chương trình vẫn ""sống"" nhưng tư duy của nó bị lệch. Vậy theo em, lỗi lôgic là lỗi làm chương trình dừng lại hay lỗi làm kết quả bị sai?
+HS: Dạ là lỗi làm kết quả bị sai ạ.
+AI: Đúng rồi! Nó giống như việc em đi đúng đường nhưng lại nhầm đích đến vậy."
+HNMU-G8-R0258-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,258,8,Lớp 8,5,Bài 15: Gỡ lỗi,Mục 1. Kiến thức mới (Tr. 85 SGK),Tại sao lỗi cú pháp trong Scratch lại ít xảy ra hơn các ngôn ngữ lập trình bậc cao khác?,Thông hiểu (Giải thích được đặc điểm),"Vì Scratch sử dụng các khối lệnh có hình dạng khớp nhau, ngăn chặn việc lắp ghép sai quy tắc.","HS: Bạn em học Python hay bị lỗi thiếu dấu phẩy, sao em dùng Scratch không thấy bị thầy nhỉ?
+AI: Em hãy nhìn vào hình dáng các khối lệnh Scratch. Nếu em cố lắp một khối hình tròn vào ô hình lục giác, chúng có ""khớp"" nhau không?
+HS: Dạ không ạ, nó không cho lắp luôn.
+AI: Chính xác! Việc thiết kế các ""mảnh ghép"" này giúp em tránh được điều gì so với việc phải tự gõ từng chữ cái?
+HS: Giúp em không bị viết sai quy tắc, tức là ít lỗi cú pháp hơn ạ!"
+HNMU-G8-R0259-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,259,8,Lớp 8,6,Bài 15: Gỡ lỗi,Mục 1. Lưu ý (Tr. 85 SGK),Việc sử dụng bộ dữ liệu kiểm thử (test case) giúp ích gì cho quá trình gỡ lỗi?,Thông hiểu (Giải thích được lợi ích),Giúp phát hiện các lỗi tiềm ẩn trong những trường hợp dữ liệu đặc biệt mà mắt thường khó nhận thấy.,"HS: Em thử với số 5 thấy đúng rồi, sao thầy bảo em phải thử thêm số 0 và số âm nữa ạ?
+AI: Giả sử em xây một chiếc cầu, nếu chỉ thử cho xe đạp đi qua thấy chắc chắn, liệu em có dám cho xe tải đi qua không?
+HS: Dạ không, xe tải nặng hơn nhiều ạ.
+AI: Đúng vậy! Thử với nhiều số khác nhau (test case) giúp em phát hiện xem chương trình có ""sập"" ở trường hợp đặc biệt nào không. Vậy lợi ích ở đây là gì?
+HS: Là để tìm ra các lỗi còn giấu kỹ ạ. Em hiểu rồi!"
+HNMU-G8-R0260-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,260,8,Lớp 8,7,Bài 15: Gỡ lỗi,Hoạt động 1 (Tr. 85 SGK),Giải thích quy trình 3 bước để gỡ lỗi một chương trình.,Thông hiểu (Trình bày được quá trình),B1: Xác định lỗi; B2: Tìm vị trí gây lỗi; B3: Sửa lỗi và kiểm tra lại.,"HS: Khi thấy kết quả sai, em nên làm gì đầu tiên hả thầy?
+AI: Đừng vội sửa ngay nhé! Đầu tiên em phải biết ""lỗi là gì"" (Xác định lỗi). Tiếp theo, em phải làm gì để biết đoạn code nào gây ra nó?
+HS: Em phải đi tìm chỗ nào viết sai ạ.
+AI: Đúng! Đó là bước ""Tìm vị trí"". Sau khi sửa xong, em có nên chạy lại lần nữa không?
+HS: Dạ có, để chắc chắn nó đã đúng. Vậy quy trình là: Biết lỗi -> Tìm chỗ sai -> Sửa và thử lại ạ!"
+HNMU-G8-R0261-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,261,8,Lớp 8,8,Bài 15: Gỡ lỗi,Hình 15.1 (Tr. 85 SGK),Tại sao việc đặt tên biến rõ ràng lại hỗ trợ quá trình gỡ lỗi?,Thông hiểu (Giải thích sự cần thiết),Giúp người lập trình dễ theo dõi luồng dữ liệu và nhanh chóng phát hiện ra biến nào đang chứa giá trị sai.,"HS: Em đặt tên biến là a, b, c cho nhanh, sao thầy bắt em đặt là so_bi_mat, so_duan ạ?
+AI: Khi em đọc một đoạn lệnh dài có 10 biến a, b, c..., em có dễ bị nhầm lẫn biến này với biến kia không?
+HS: Dạ có, em hay quên cái nào là cái nào ạ.
+AI: Nếu đặt tên rõ ràng, khi gỡ lỗi em sẽ biết ngay ""hộp đựng"" nào đang chứa giá trị không đúng. Vậy nó giúp ích gì cho em?
+HS: Giúp em dễ theo dõi và tìm chỗ sai nhanh hơn ạ!"
+HNMU-G8-R0262-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,262,8,Lớp 8,9,Bài 15: Gỡ lỗi,Mục 2. b (Tr. 86 SGK),Phân biệt sự khác nhau giữa lỗi lôgic và lỗi dừng chương trình.,Thông hiểu (Phân biệt được),Lỗi dừng: máy báo lỗi và ngừng chạy; Lỗi lôgic: máy vẫn chạy nhưng kết quả sai.,"HS: Thầy ơi, chương trình bị ""treo"" luôn là lỗi gì ạ?
+AI: Khi máy tính không thể thực hiện lệnh tiếp theo và buộc phải dừng lại, đó là lỗi dừng. Còn nếu nó vẫn chạy vèo vèo nhưng ra số bậy bạ thì là lỗi gì?
+HS: Là lỗi lôgic thầy vừa dạy ạ.
+AI: Rất giỏi! Vậy cái nào dễ nhận ra hơn: cái máy hét lên ""Tôi hỏng rồi"" hay cái âm thầm làm sai kết quả?
+HS: Dạ lỗi dừng dễ thấy hơn, còn lỗi lôgic mình phải tỉnh táo mới phát hiện được ạ!"
+HNMU-G8-R0263-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,263,8,Lớp 8,10,Bài 15: Gỡ lỗi,Câu hỏi 2 (Tr. 86 SGK),"Trong bài toán ""Đoán số"", nếu máy luôn báo ""Quá cao"" dù số đoán nhỏ hơn số bí mật, lỗi này nằm ở đâu?",Thông hiểu (Mô tả được nguyên nhân),Lỗi nằm ở điều kiện so sánh trong cấu trúc rẽ nhánh (nhầm dấu > và <).,"HS: Thầy ơi, em đoán số 10 mà máy bảo ""Quá cao"", trong khi số bí mật là 50 ạ.
+AI: Lạ nhỉ! Đáng lẽ 10 < 50 thì máy phải báo gì mới đúng em?
+HS: Phải báo ""Quá thấp"" ạ.
+AI: Vậy em hãy nhìn vào khối lệnh Nếu... thì. Em có đang dùng dấu > thay vì dấu < không?
+HS: A đúng rồi! Em viết Nếu số đoán > số bí mật thì nói Quá thấp. Em bị ngược dấu rồi thầy ơi!
+AI: Tuyệt vời, em đã tự tìm ra vị trí gây lỗi lôgic rồi đó!"
+HNMU-G8-R0264-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,264,8,Lớp 8,11,Bài 15: Gỡ lỗi,Hoạt động 2 (Tr. 86 SGK),"Hãy chạy thử thuật toán tìm số lớn nhất với bộ dữ liệu (8, -5, 3, 9, 6) và chỉ ra kết quả.",Vận dụng (Chạy thử chương trình),Kết quả đầu ra là 9.,"HS: Thầy xem em nhẩm thuật toán này đúng chưa: với dãy (8, -5, 3, 9, 6), em tìm được số lớn nhất là 9 ạ.
+AI: Để kiểm tra, em hãy đóng vai máy tính nhé. Lúc đầu số lớn nhất (Max) là 8. So với -5 thì Max vẫn là mấy?
+HS: Vẫn là 8 ạ. So với 3 vẫn là 8. Nhưng gặp số 9 thì Max đổi thành 9 ạ.
+AI: Tốt lắm! Cuối cùng gặp số 6, 9 có lớn hơn 6 không?
+HS: Dạ có, vậy kết quả cuối là 9. Em đã chạy thử thành công rồi!"
+HNMU-G8-R0265-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,265,8,Lớp 8,12,Bài 15: Gỡ lỗi,Bảng 16.2 (Tr. 86 SGK),Tại sao trường hợp nhập dãy toàn số âm lại cần được kiểm thử đặc biệt?,Vận dụng (Xác lập lựa chọn theo tiêu chí),Để kiểm tra xem giá trị khởi tạo ban đầu của biến Max có làm ảnh hưởng đến kết quả hay không (vd: nếu khởi tạo Max = 0 thì kết quả sẽ sai).,"HS: Thầy ơi, tại sao phải thử với dãy số âm làm gì cho khó ạ?
+AI: Nếu em đặt số lớn nhất lúc đầu là Max = 0, sau đó nhập dãy -8, -6, -10. Máy sẽ báo số nào lớn nhất?
+HS: Nó sẽ so sánh và thấy 0 lớn nhất ạ. Nhưng trong dãy không có số 0!
+AI: Rất chính xác! Vậy việc thử số âm giúp em phát hiện ra sai lầm khi đặt giá trị bắt đầu. Em nên sửa thế nào để đúng cho mọi dãy số?
+HS: Em nên đặt Max bằng chính số đầu tiên của dãy ạ!"
+HNMU-G8-R0266-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,266,8,Lớp 8,13,Bài 15: Gỡ lỗi,Luyện tập 2 (Tr. 86 SGK),Chỉnh sửa chương trình tìm số lớn nhất để bỏ qua các dữ liệu dạng chữ trong bộ dữ liệu đầu vào.,Vận dụng (Chỉnh sửa được sản phẩm số),Thêm khối lệnh kiểm tra Nếu (dữ liệu là số) thì mới thực hiện so sánh.,"HS: Nếu người dùng tinh nghịch gõ chữ ""Hello"" vào dãy số thì chương trình của em bị lỗi ạ.
+AI: Đúng rồi, máy không thể so sánh ""Hello"" với số 10 được. Em có nhớ khối lệnh nào trong nhóm Toán học hoặc Cảm biến giúp kiểm tra kiểu dữ liệu không?
+HS: Em dùng khối [ ] là số? đúng không thầy?
+AI: Quá chuẩn! Em hãy lồng nó vào trước khi thực hiện bước so sánh Max nhé. Em thử kéo khối lệnh xem nào.
+HS: Dạ, máy đã bỏ qua chữ và chỉ lấy số lớn nhất rồi thầy ơi!"
+HNMU-G8-R0267-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,267,8,Lớp 8,14,Bài 15: Gỡ lỗi,Vận dụng (Tr. 86 SGK),Xây dựng bộ dữ liệu kiểm thử gồm 5 tình huống cho chương trình tính điểm trung bình môn học.,Vận dụng (Thực hiện nhiệm vụ giáo viên đặt ra),5 tình huống: 1. Các điểm bình thường; 2. Có điểm bằng 0; 3. Có điểm bằng 10; 4. Nhập điểm là chữ; 5. Nhập điểm ngoài khoảng 0-10.,"HS: Thầy giúp em lập bảng thử cho bài tính điểm trung bình với. Em mới nghĩ ra trường hợp nhập 3 điểm 8, 9, 10 ạ.
+AI: Rất tốt! Đó là ""trường hợp lý tưởng"". Để gỡ lỗi chuyên nghiệp, em cần ""thử thách"" chương trình hơn. Nếu một bạn bị 0 điểm thì sao? Hoặc nếu em gõ nhầm chữ ""A"" vào ô điểm?
+HS: À, em sẽ thêm: Điểm bằng 0, Điểm là chữ, và thử cả trường hợp nhập số 100 xem máy có cho phép không ạ!
+AI: Tuyệt vời! Em đã biết cách tư duy như một kỹ sư kiểm thử phần mềm thực thụ rồi đấy"
+HNMU-G8-R0268-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,268,8,Lớp 8,1,Bài 16,Mục 1 (Tr. 89 SGK),Kể tên hai nhóm nghề thuộc lĩnh vực tin học.,Nhận biết (Kể tên được các thành phần),Nhóm nghề thuộc hướng Khoa học máy tính và nhóm nghề thuộc hướng Tin học ứng dụng.,"HS: Thầy ơi, các nghề liên quan đến máy tính có được chia thành các nhóm không ạ?
+AI: Chào em! Một câu hỏi rất hay để bắt đầu. Em hãy nhìn vào Hình 16.1 (Tr. 88 SGK). Có hai nhánh chính tỏa ra từ ""Tin học"", em có thấy tên của chúng không?
+HS: Dạ em thấy có ""Khoa học máy tính"" và ""Tin học ứng dụng"" ạ.
+AI: Đúng rồi! Đó chính là hai nhóm nghề lớn nhất. Em hãy ghi nhớ hai cái tên này nhé!"
+HNMU-G8-R0269-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,269,8,Lớp 8,2,Bài 16,Mục 1 (Tr. 87 SGK),Sản phẩm chính của nghề lập trình viên là gì?,Nhận biết (Nêu được sản phẩm),"Các phần mềm máy tính, ứng dụng điện thoại, trò chơi điện tử.","HS: Lập trình viên là làm ra cái gì hả thầy? Có phải là sửa máy tính không?
+AI: Sửa máy tính là một việc khác. Em hãy nghĩ xem, ứng dụng Facebook hay trò chơi Scratch em hay dùng được tạo ra bằng cách nào nhỉ?
+HS: Dạ, các bạn bảo là phải viết code (lệnh) ạ.
+AI: Chính xác! Những người viết ra các dòng lệnh đó để tạo thành một ""chương trình"" hoạt động được, ta gọi sản phẩm của họ là gì?
+HS: Dạ là các phần mềm và ứng dụng máy tính ạ!"
+HNMU-G8-R0270-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,270,8,Lớp 8,3,Bài 16,Mục 2 (Tr. 90 SGK),Nêu tên người được coi là lập trình viên đầu tiên trên thế giới.,Nhận biết (Nêu được tên),Bà Ada Lovelace (sinh năm 1815).,"HS: Thầy ơi, lập trình viên đầu tiên là nam hay nữ ạ?
+AI: Em thử tìm thông tin ở góc ""Em có biết"" trang 94 SGK xem. Có một người phụ nữ rất nổi tiếng đấy.
+HS: À, em thấy rồi, là bà Ada Lovelace ạ!
+AI: Giỏi lắm! Bà ấy đã viết thuật toán cho máy tính từ khi máy tính còn chưa thực sự ra đời như bây giờ đấy."
+HNMU-G8-R0271-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,271,8,Lớp 8,4,Bài 16,Câu hỏi 1 (Tr. 89 SGK),Nghề nào sau đây thuộc nhóm Khoa học máy tính: A. Kế toán; B. Phát triển ứng dụng trí tuệ nhân tạo; C. Quản lý thư viện.,Nhận biết (Nhận biết được nhóm nghề),Đáp án B.,"HS: Câu này em đang phân vân giữa B và C vì quản lý thư viện cũng dùng máy tính ạ.
+AI: Em hãy nhớ lại: Nhóm Khoa học máy tính tập trung vào việc ""nghiên cứu lý thuyết và thuật toán"" để tạo ra công nghệ mới. Theo em, giữa việc ""dùng máy tính để quản lý sách"" và ""tạo ra trí tuệ nhân tạo"", cái nào cần nghiên cứu sâu hơn về công nghệ?
+HS: Dạ là trí tuệ nhân tạo ạ!
+AI: Rất chuẩn! Vậy đáp án đúng ở đây là gì nào?
+HS: Dạ là B ạ!"
+HNMU-G8-R0272-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,272,8,Lớp 8,5,Bài 16,Mục 2 (Tr. 89 SGK),Tại sao tin học giúp tăng hiệu quả công việc trong lĩnh vực ngân hàng?,Thông hiểu (Giải thích được lợi ích),"Giúp thực hiện các giao dịch nhanh chóng, chính xác, bảo mật và quản lý khối lượng dữ liệu khổng lồ.","HS: Em thấy ngân hàng giờ toàn dùng máy tính, sao họ không dùng sổ sách như xưa cho an toàn hả thầy?
+AI: Nếu có hàng triệu khách hàng cùng giao dịch một lúc, em nghĩ việc lật từng trang sổ hay việc dùng máy tính tìm kiếm bằng ""một cú nhấp chuột"" sẽ nhanh hơn?
+HS: Dạ máy tính nhanh hơn nhiều ạ. Nhưng nó có chính xác không thầy?
+AI: Máy tính giúp tránh các sai sót do con người tính nhầm. Vậy lợi ích lớn nhất ở đây là gì nhỉ?
+HS: Dạ là nhanh chóng, chính xác và quản lý được rất nhiều thông tin ạ!"
+HNMU-G8-R0273-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,273,8,Lớp 8,6,Bài 16,Mục 1 (Tr. 89 SGK),Phân biệt sự khác nhau giữa nhóm nghề Khoa học máy tính và Tin học ứng dụng.,Thông hiểu (Phân biệt được),"Khoa học máy tính: nghiên cứu lý thuyết, thuật toán; Tin học ứng dụng: sử dụng công cụ tin học để giải quyết vấn đề trong các lĩnh vực khác.","HS: Thầy ơi, cả hai nhóm này đều dùng máy tính, vậy chúng khác nhau chỗ nào ạ?
+AI: Em hãy tưởng tượng: Một bên là người ""chế tạo ra chiếc xe"" (thuật toán, công nghệ), một bên là người ""lái xe giỏi"" để đi giao hàng (dùng công nghệ vào việc khác). Bên nào là Khoa học máy tính?
+HS: Dạ người chế tạo xe là Khoa học máy tính ạ.
+AI: Rất giỏi! Vậy những nghề như thiết kế đồ họa hay dùng phần mềm kế toán thì thuộc nhóm nào?
+HS: Dạ là Tin học ứng dụng ạ. Em phân biệt được rồi!"
+HNMU-G8-R0274-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,274,8,Lớp 8,7,Bài 16,Mục 2 (Tr. 90 SGK),Giải thích lý do phụ nữ có ưu thế trong một số nghề tin học.,Thông hiểu (Giải thích được đặc điểm),"Phụ nữ thường có khả năng ghi nhớ tốt, cẩn thận, chu đáo, giao tiếp tốt và chịu được áp lực lớn.","HS: Thầy ơi, con gái học tin học có vất vả lắm không ạ?
+AI: Tin học không chỉ là sức mạnh cơ bắp. Em hãy nhìn vào các phẩm chất cần thiết như sự ""tỉ mỉ"" khi gỡ lỗi hay ""giao tiếp"" với khách hàng. Theo em, các bạn nữ thường có thế mạnh gì ở những điểm này?
+HS: Dạ, các bạn nữ thường rất cẩn thận và khéo léo trong giao tiếp ạ.
+AI: Chính xác! Đó chính là lý do phái nữ ngày càng thành công trong ngành này đấy."
+HNMU-G8-R0275-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,275,8,Lớp 8,8,Bài 16,Mục 1 (Tr. 87 SGK),Mô tả tác động của tin học đến sự thay đổi của nghề nghiệp truyền thống.,Thông hiểu (Mô tả được sự thay đổi),"Làm thay đổi phương thức làm việc, tự động hóa quy trình và tạo ra nhiều nghề mới.","HS: Tin học làm thay đổi các nghề cũ như thế nào hả thầy?
+AI: Em hãy nghĩ về nghề thợ may. Trước đây họ làm hoàn toàn bằng tay, giờ đây họ có thể dùng phần mềm để thiết kế mẫu trên máy tính. Em thấy cách làm nào nhanh hơn?
+HS: Dạ dùng máy tính nhanh và chính xác hơn ạ.
+AI: Đúng rồi! Tin học không thay thế nghề cũ mà giúp con người làm việc đó ""hiệu quả hơn"" bằng các công cụ hiện đại."
+HNMU-G8-R0276-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,276,8,Lớp 8,9,Bài 16,Luyện tập 2 (Tr. 90 SGK),So sánh đặc điểm công việc của nghề Thiết kế đồ họa và Quản trị mạng.,Thông hiểu (So sánh được đặc điểm),"Thiết kế đồ họa: thiên về sáng tạo, nghệ thuật; Quản trị mạng: thiên về kỹ thuật, bảo trì hệ thống.","HS: Em thích vẽ nhưng cũng thích lắp ráp máy móc, em nên chọn nghề nào ạ?
+AI: Nếu em thích tạo ra những hình ảnh đẹp, banner quảng cáo sinh động, đó là Thiết kế đồ họa. Còn nếu em thích lo việc ""giữ cho mạng internet luôn chạy thông suốt"", đó là Quản trị mạng. Cái nào thiên về sáng tạo hơn?
+HS: Dạ là Thiết kế đồ họa ạ.
+AI: Đúng rồi! Mỗi nghề đều có một ""nhiệm vụ"" riêng. Em thấy mình hợp với cái nào hơn?
+HS: Em nghĩ em hợp với Thiết kế đồ họa hơn rồi ạ!"
+HNMU-G8-R0277-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,277,8,Lớp 8,10,Bài 16,Mục 1 (Tr. 87 SGK),Giải thích tại sao việc học tập suốt đời là bắt buộc đối với người làm nghề tin học.,Thông hiểu (Giải thích sự cần thiết),Vì công nghệ thông tin luôn phát triển và thay đổi hằng ngày với tốc độ rất nhanh.,"HS: Thầy ơi, sao anh em bảo làm tin học cực lắm, phải đọc sách suốt đời ạ?
+AI: Em thử nghĩ xem, cái điện thoại của 2 năm trước với điện thoại bây giờ có giống nhau không?
+HS: Dạ khác nhiều ạ, nhiều tính năng mới lắm.
+AI: Đúng vậy. Nếu người lập trình không học cái mới, họ sẽ bị lạc hậu. Vậy tốc độ thay đổi của công nghệ là ""nhanh"" hay ""chậm"" nhỉ?
+HS: Dạ rất nhanh ạ. Vậy nên mình phải học liên tục để không bị bỏ lại phía sau!"
+HNMU-G8-R0278-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,278,8,Lớp 8,11,Bài 16,Vận dụng 1 (Tr. 90 SGK),"Xác định nghề nghiệp phù hợp nếu một bạn có sở thích: ""Thích vẽ, sáng tạo và có năng khiếu thẩm mỹ"".",Vận dụng (Xác định cấu trúc thích hợp),"Nghề Thiết kế đồ họa, Thiết kế web hoặc Thiết kế trò chơi.","HS: Thầy ơi, bạn An lớp em vẽ rất đẹp, bạn ấy có thể làm nghề gì liên quan đến tin học không ạ?
+AI: Tuyệt vời! Vẽ đẹp là một lợi thế lớn. Em hãy kết hợp từ khóa ""Vẽ"" với ""Máy tính"". Em có nhớ nghề nào chuyên tạo ra hình ảnh trên máy tính không?
+HS: Dạ là Thiết kế đồ họa đúng không thầy?
+AI: Rất chính xác! Ngoài ra còn có thiết kế giao diện ứng dụng hay thiết kế nhân vật game nữa. Bạn An có rất nhiều lựa chọn đấy!"
+HNMU-G8-R0279-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,279,8,Lớp 8,12,Bài 16,Hoạt động 2 (Tr. 89 SGK),Lập danh sách 3 kỹ năng cần thiết để một học sinh chuẩn bị trở thành chuyên gia tin học trong tương lai.,Vận dụng (Thực hiện nhiệm vụ được giao),"Kỹ năng sử dụng máy tính thành thạo, tư duy logic, khả năng tự học và ngoại ngữ.","HS: Em muốn sau này làm nghề tin học, giờ em cần rèn luyện gì hả thầy?
+AI: Để giỏi tin học, bước đầu tiên em phải biết dùng công cụ gì thật tốt?
+HS: Dạ là máy tính và các phần mềm ạ.
+AI: Đúng rồi! Ngoài ra, vì code thường viết bằng tiếng Anh và công nghệ đổi mới liên tục, em cần thêm kỹ năng gì nữa nào?
+HS: Dạ em cần học tốt ngoại ngữ và phải biết ""tự học"" nữa thầy nhỉ?
+AI: Tuyệt vời! Em đã xác định đúng lộ trình cho mình rồi đấy."
+HNMU-G8-R0280-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,280,8,Lớp 8,13,Bài 16,Luyện tập 1 (Tr. 90 SGK),Hãy kể tên hai công việc liên quan đến nghề nghiệp tin học trong lĩnh vực Y tế và Giáo dục.,Vận dụng (Thực hiện nhiệm vụ giáo viên đặt ra),"Y tế: Quản lý bệnh án điện tử, chẩn đoán hình ảnh. Giáo dục: Dạy học trực tuyến, phần mềm quản lý điểm.","HS: Thầy ơi, trong trường học của mình thì tin học được ứng dụng vào việc gì ạ?
+AI: Em hãy nhớ lại mỗi khi cô giáo nhập điểm cho em. Cô dùng sổ tay hay dùng cái gì?
+HS: Dạ cô dùng phần mềm VnEdu ạ.
+AI: Đúng rồi! Đó là giáo dục. Còn khi em đi khám bệnh, bác sĩ thường in cho em tờ giấy gì từ máy tính?
+HS: Dạ là kết quả siêu âm hoặc đơn thuốc ạ.
+AI: Giỏi lắm! Đó chính là cách tin học len lỏi vào mọi ngành nghề đấy."
+HNMU-G8-R0281-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,281,8,Lớp 8,14,Bài 16,Mục 3 (Tr. 99 SGV),Tạo một sơ đồ tư duy về các nhóm nghề tin học và các phẩm chất cần thiết.,Vận dụng (Tạo được sản phẩm số),"Sơ đồ gồm 2 nhánh chính: Nhóm nghề (KHMT, THƯD) và Phẩm chất (Cẩn thận, Sáng tạo, Tự học).","HS: Thầy hướng dẫn em vẽ sơ đồ tóm tắt bài học này với ạ.
+AI: Hãy đặt từ khóa ""Nghề nghiệp Tin học"" ở trung tâm nhé. Theo bài học, chúng ta có mấy nhánh nghề chính?
+HS: Có 2 nhánh là Khoa học máy tính và Tin học ứng dụng ạ.
+AI: Tốt! Ở mỗi nhánh đó, em hãy ghi thêm 1-2 ví dụ nghề cụ thể. Cuối cùng, hãy thêm một nhánh về ""Con người"" - cần những tính cách gì?
+HS: Em sẽ ghi là: Cần cẩn thận và ham học hỏi ạ. Em vẽ xong rồi, nhìn rất dễ hiểu thầy ơi!"
+HNMU-G9-R0002-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,2,9,Lớp 9,1,Bài 1: Thế giới kĩ thuật số,Mục 1. Thế giới kĩ thuật số (Tr. 5 SGK),Bộ xử lý (microprocessor) có mặt ở đâu trong đời sống hằng ngày?,Nhận biết (Nêu được sự có mặt của thiết bị),"Bộ xử lý có mặt ở khắp nơi: trong máy tính, điện thoại, máy giặt, ô tô, camera, bảng điện tử, robot....","HS: Thầy ơi, bộ xử lý chỉ có trong máy tính thôi đúng không ạ? 
+AI: Chào em! Một câu hỏi rất hay. Em hãy thử nhìn vào chiếc điện thoại em đang dùng hay cái máy giặt ở nhà, chúng có thể tự thực hiện các chương trình không?
+HS: Dạ có, chúng hoạt động thông minh lắm ạ.
+AI: Đúng rồi! Chính vì chúng có ""bộ não"" nhỏ xíu bên trong để điều khiển đấy. Em thử tìm trong SGK trang 5 xem người ta liệt kê những thiết bị nào có gắn bộ xử lý nữa nhé?
+HS: À, em thấy rồi: cả camera, ô tô, và bảng điện tử nữa ạ!"
+HNMU-G9-R0003-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,3,9,Lớp 9,2,Bài 1: Thế giới kĩ thuật số,Mục 2. Ứng dụng (Tr. 6 SGK),Kể tên một thiết bị kĩ thuật số hỗ trợ việc quan sát vũ trụ.,Nhận biết (Kể tên được thiết bị),Kính viễn vọng không gian Hubble.,"HS: Con người làm sao để chụp ảnh các ngôi sao ở xa thật xa hả thầy?
+AI: Chúng ta không thể bay đến đó, nhưng có một ""mắt thần kĩ thuật số"" đang bay ngoài không gian. Em nhìn vào Hình 1.3 trang 7 xem nó tên là gì?
+HS: Dạ là kính viễn vọng Hubble ạ!
+AI: Rất chính xác! Đây là một cỗ máy xử lý thông tin đắt giá giúp chúng ta khám phá vũ trụ đấy."
+HNMU-G9-R0004-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,4,9,Lớp 9,3,Bài 1: Thế giới kĩ thuật số,Mục 3. Tác động (Tr. 7 SGK),Công nghệ thông tin (CNTT) có tác động tích cực đến lĩnh vực nào nổi bật nhất trong trường học?,Nhận biết (Nêu được lĩnh vực),Lĩnh vực Giáo dục.,"HS: CNTT giúp ích gì cho việc học của tụi em nhất ạ?
+AI: Em hãy nhớ lại lúc em học trực tuyến hoặc tìm tài liệu trên mạng. CNTT giúp em kết nối với nguồn tri thức khổng lồ ở đâu nhỉ?
+HS: Dạ là trên Internet ạ. Vậy đó là lĩnh vực giáo dục đúng không thầy?
+AI: Giỏi lắm! CNTT giúp chia sẻ kiến thức, kĩ năng cho mọi người ở bất kì đâu."
+HNMU-G9-R0005-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,5,9,Lớp 9,4,Bài 1: Thế giới kĩ thuật số,Mục 1. Kiến thức mới (Tr. 5 SGK),Thiết bị kĩ thuật số là gì?,Nhận biết (Nêu được khái niệm),Là thiết bị có gắn bộ xử lý thông tin.,"HS: Làm sao để phân biệt một thiết bị bình thường và một thiết bị kĩ thuật số ạ?
+AI: Điểm mấu chốt nằm ở cái ""lõi"" bên trong. Nếu một vật có gắn bộ phận để thu nhận, xử lý và xuất thông tin thì gọi là gì?
+HS: Dạ là thiết bị kĩ thuật số ạ.
+AI: Đúng rồi! Và bộ phận quan trọng nhất đó được gọi là ""Bộ xử lý"". Em nhớ đặc điểm này nhé!"
+HNMU-G9-R0006-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,6,9,Lớp 9,5,Bài 1: Thế giới kĩ thuật số,Vận dụng (Tr. 8 SGK),Tại sao đồng hồ thông minh lại cần có bộ xử lý?,Thông hiểu (Giải thích được sự cần thiết),"Để thực hiện các chức năng thông minh như theo dõi sức khỏe, đo nhịp tim, kết nối điện thoại và xử lý dữ liệu cảm biến.","HS: Thầy ơi, đồng hồ chỉ để xem giờ thôi mà, sao lại cần bộ xử lý cho đắt tiền ạ?
+AI: Nếu nó chỉ xem giờ thì là đồng hồ thường. Nhưng đồng hồ ""thông minh"" còn có thể làm gì khi em chạy bộ nhỉ?
+HS: Dạ nó đo được nhịp tim và đếm bước chân của em nữa.
+AI: Chính xác! Để tính toán được nhịp tim từ các cảm biến, nó cần cái gì để ""suy nghĩ"" và đưa ra con số?
+HS: À, nó cần bộ xử lý để xử lý các dữ liệu đó ạ! Em hiểu rồi."
+HNMU-G9-R0007-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,7,9,Lớp 9,6,Bài 1: Thế giới kĩ thuật số,Mục 2. b (Tr. 7 SGK),Phân biệt sự khác nhau giữa máy tính thông thường và siêu máy tính.,Thông hiểu (Phân biệt được),"Máy tính thông thường dùng cho cá nhân/văn phòng; siêu máy tính có khả năng tính toán cực nhanh, dùng cho nghiên cứu phức tạp.","HS: Siêu máy tính chắc là nó to hơn máy tính ở nhà mình nhiều thầy nhỉ?
+AI: Không chỉ to hơn đâu, mà nó ""khỏe"" hơn rất nhiều. Nếu máy tính ở nhà dùng để soạn thảo, thì siêu máy tính dùng để làm gì trong nghiên cứu khoa học? (Em nhìn mục 2.b trang 7 nhé)
+HS: Dạ dùng để dự báo thời tiết và mô phỏng các phản ứng hóa học phức tạp ạ.
+AI: Rất tinh mắt! Vậy điểm khác biệt lớn nhất giữa chúng là về khả năng gì nào?
+HS: Là khả năng tính toán siêu nhanh và giải quyết các bài toán khổng lồ ạ!"
+HNMU-G9-R0008-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,8,9,Lớp 9,7,Bài 1: Thế giới kĩ thuật số,Câu hỏi 2 (Tr. 19 SGV),Giải thích tại sao tin học giúp tăng hiệu quả công việc trong lĩnh vực ngân hàng?,Thông hiểu (Giải thích được lợi ích),"Giúp thực hiện giao dịch nhanh, chính xác, lưu trữ lượng dữ liệu khổng lồ và kết nối toàn cầu.","HS: Ngân hàng ngày xưa không có máy tính thì họ làm thế nào thầy?
+AI: Họ phải ghi chép tay vào những sổ sách khổng lồ. Em thử tưởng tượng nếu có hàng triệu khách hàng, việc tìm tên một người trong sổ tay so với gõ trên máy tính thì cái nào nhanh hơn?
+HS: Dạ máy tính nhanh hơn và không sợ tính nhầm tiền nữa ạ.
+AI: Đúng vậy! Đó chính là sự hỗ trợ về tốc độ, độ chính xác và khả năng lưu trữ. Em thấy CNTT quan trọng thế nào đối với kinh tế chưa?"
+HNMU-G9-R0009-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,9,9,Lớp 9,8,Bài 1: Thế giới kĩ thuật số,Mục 3 (Tr. 8 SGK),Nêu các tác động tiêu cực của việc sử dụng CNTT không đúng cách.,Thông hiểu (Trình bày được tác động tiêu cực),"Gây ảnh hưởng xấu đến sức khỏe (mắt, xương khớp), tâm thần và có thể dẫn đến các tệ nạn xã hội.","HS: Em thấy CNTT toàn cái hay, sao trong sách lại bảo có tác động tiêu cực ạ?
+AI: ""Cái gì quá cũng không tốt"". Nếu em ngồi máy tính 10 tiếng một ngày mà không vận động, mắt và lưng của em sẽ thế nào?
+HS: Dạ chắc là cận thị và đau lưng lắm ạ.
+AI: Chưa kể nếu xem những nội dung xấu, tâm hồn chúng ta cũng bị ảnh hưởng. Vậy mình nên dùng CNTT như thế nào để tránh các điều này?
+HS: Dạ phải dùng đúng cách, có thời gian biểu hợp lý ạ!"
+HNMU-G9-R0010-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,10,9,Lớp 9,9,Bài 1: Thế giới kĩ thuật số,Câu hỏi (Tr. 20 SGV),Tại sao CNTT giúp con người giảm bớt sự phụ thuộc vào không gian và thời gian?,Thông hiểu (Giải thích được tính chất),"Vì có thể giao tiếp, làm việc và học tập mọi lúc, mọi nơi thông qua Internet.","HS: Thầy giải thích giúp em câu ""giảm phụ thuộc vào không gian"" là sao ạ?
+AI: Giả sử bạn em đang ở Mỹ, em có cần phải bay sang đó mới nói chuyện được không?
+HS: Dạ không, em gọi video là thấy mặt nhau ngay ạ.
+AI: Đúng rồi! Khoảng cách địa lý (không gian) không còn là rào cản nữa. Vậy còn việc học thì sao, em có nhất thiết phải chờ đến giờ lên lớp không?
+HS: Dạ em có thể xem bài giảng bất cứ lúc nào trên mạng ạ. Em hiểu ý nghĩa của nó rồi!"
+HNMU-G9-R0011-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,11,9,Lớp 9,10,Bài 1: Thế giới kĩ thuật số,Hình 1.4 (Tr. 7 SGK),Xe tự lái hoạt động dựa trên nguyên lý kĩ thuật số nào?,Thông hiểu (Mô tả được chức năng),"Sử dụng các cảm biến và bộ xử lý để nhận biết môi trường, từ đó ra quyết định điều khiển xe tự động.","HS: Xe tự lái làm sao mà biết đường đi hay tránh người đi bộ vậy thầy?
+AI: Em hãy nhìn vào các bộ phận trên nóc xe ở Hình 1.4. Đó là các cảm biến. Sau khi cảm biến thu thập hình ảnh, thông tin đó sẽ được gửi đi đâu để xử lý?
+HS: Gửi vào bộ xử lý bên trong xe ạ.
+AI: Chính xác! Bộ xử lý sẽ ""phân tích"" dữ liệu đó để ra lệnh cho xe rẽ trái, rẽ phải hay dừng lại. Nó giống như bộ não của người lái xe kĩ thuật số vậy."
+HNMU-G9-R0012-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,12,9,Lớp 9,11,Bài 1: Thế giới kĩ thuật số,Luyện tập 1 (Tr. 8 SGK),Hãy tưởng tượng và mô tả cuộc sống sẽ thay đổi thế nào nếu một ngày các bộ xử lý biến mất.,Vận dụng (Xác định cấu trúc dữ liệu/tình huống thích hợp),"Cuộc sống sẽ trở nên khó khăn: điện thoại, máy tính, các thiết bị gia dụng thông minh, hệ thống giao thông... sẽ ngừng hoạt động.","HS: Nếu không có bộ xử lý, em nghĩ mình chỉ không chơi game được thôi chứ có sao đâu thầy?
+AI: Ồ, hãy nghĩ rộng hơn nào! Sáng sớm, cái báo thức điện tử có reo không? Xe bus hay đèn giao thông có hoạt động chính xác không?
+HS: A... đèn giao thông sẽ hỏng, thang máy cũng không chạy được luôn ạ!
+AI: Đúng rồi! Ngay cả việc rút tiền ngân hàng hay đi siêu thị cũng sẽ bế tắc. Em hãy thử viết một đoạn ngắn mô tả ""Một ngày hỗn loạn không có bộ xử lý"" xem sao nhé?
+HS: Dạ, em sẽ viết về việc mọi thứ quay lại thời kì dùng giấy bút và đi bộ ạ!"
+HNMU-G9-R0013-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,13,9,Lớp 9,12,Bài 1: Thế giới kĩ thuật số,Luyện tập 2 (Tr. 8 SGK),Kể về một ví dụ về kiến thức em học được từ nguồn thông tin trên Internet.,Vận dụng (Khai thác được thông tin),"HS nêu ví dụ cụ thể (vd: học ngoại ngữ, học cách nấu ăn, tìm hiểu về khoa học...).","HS: Trên Internet nhiều tin giả lắm, em có nên học trên đó không thầy?
+AI: Quan trọng là em biết ""chọn lọc"" nguồn tin uy tín. Em đã từng tự học được một kĩ năng nào đó qua Youtube hay các trang học tập chưa?
+HS: Dạ có, em học được cách gấp giấy Origami và học từ vựng tiếng Anh ạ.
+AI: Tuyệt vời! Đó chính là cách em đang khai thác CNTT để phát triển bản thân đấy. Em hãy chia sẻ điều này với các bạn trong lớp nhé."
+HNMU-G9-R0014-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,14,9,Lớp 9,13,Bài 1: Thế giới kĩ thuật số,Câu hỏi a (Tr. 8 SGK),So sánh đồng hồ thông minh và đồng hồ thường về khả năng xử lý thông tin.,Vận dụng (Thực hiện được nhiệm vụ đặt ra),Đồng hồ thường: chỉ hiển thị thời gian (xử lý cơ học); Đồng hồ thông minh: thu thập và xử lý đa dạng thông tin cảm biến.,"HS: Thầy giúp em lập bảng so sánh hai loại đồng hồ này với ạ.
+AI: Được chứ! Chúng ta chia ra 2 cột nhé. Về ""Đầu vào"": đồng hồ thường lấy năng lượng từ pin/cót để quay kim. Còn đồng hồ thông minh lấy dữ liệu từ đâu?
+HS: Lấy từ nhịp tim, giấc ngủ và GPS ạ.
+AI: Tốt! Về ""Kết quả"": đồng hồ thường chỉ hiện giờ. Đồng hồ thông minh còn hiện thêm gì nữa?
+HS: Hiện thông báo tin nhắn và cả bản đồ nữa ạ. Em làm bảng được rồi, cảm ơn thầy!"
+HNMU-G9-R0015-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,15,9,Lớp 9,14,Bài 1: Thế giới kĩ thuật số,Vận dụng (Tr. 8 SGK),Tại sao các thiết bị kĩ thuật số ngày càng nhỏ gọn nhưng lại mạnh mẽ hơn?,Vận dụng (Xác lập lựa chọn/giải thích theo tiêu chí),"Nhờ sự phát triển của công nghệ vi mạch, giúp thu nhỏ kích thước bóng bán dẫn và tăng tốc độ xử lý.","HS: Sao cái máy tính ngày xưa to bằng cả căn phòng mà giờ cái điện thoại nhỏ xíu lại mạnh hơn hả thầy?
+AI: Đó là nhờ một kĩ thuật gọi là ""thu nhỏ vi mạch"". Em hãy tưởng tượng các linh kiện được nén lại siêu nhỏ để chứa được nhiều ""năng lượng trí tuệ"" hơn. Điều này giúp ích gì cho em khi mang máy đi học?
+HS: Dạ giúp máy nhẹ hơn, dễ mang theo và làm được nhiều việc hơn ạ.
+AI: Chính xác! Đó chính là xu hướng phát triển của thế giới kĩ thuật số mà em đang sống đấy"
+HNMU-G9-R0016-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,16,9,Lớp 9,1,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. Chất lượng thông tin (Tr. 9 SGK),Kể tên 4 yếu tố chính để đánh giá chất lượng thông tin.,Nhận biết (Nêu được các yếu tố đánh giá),"Có 4 yếu tố: Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được.","HS: Thầy ơi, làm sao biết thông tin trên mạng cái nào tốt cái nào không ạ? 
+AI: Chào em! Một câu hỏi rất hay. Để đánh giá một ""món ăn thông tin"" có ngon không, ta cần 4 ""gia vị"" chuẩn. Em thử nhìn vào sơ đồ Hình 2.2 trang 11 xem 4 từ khóa đó là gì nhỉ?
+HS: Dạ em thấy là: Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được ạ. 
+AI: Rất chính xác! Em hãy ghi nhớ 4 ""gia vị"" này để trở thành người dùng thông tin thông thái nhé!"
+HNMU-G9-R0017-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,17,9,Lớp 9,2,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. a (Tr. 9 SGK),Tính mới (tính thời sự) của thông tin là gì?,Nhận biết (Nêu được khái niệm),Thông tin được cập nhật gần nhất với thời điểm xét đến.,"HS: Tại sao mình phải quan tâm đến ""tính mới"" hả thầy? 
+AI: Giả sử em muốn xem lịch chiếu phim của hôm nay, nhưng lại đọc trúng tờ lịch của tuần trước. Em có xem được phim không?
+HS: Dạ chắc chắn là không rồi ạ, phim đó chiếu xong mất rồi.
+AI: Đúng vậy! Vậy thông tin được coi là có ""tính mới"" khi nó được cập nhật như thế nào so với thời điểm mình cần?
+HS: Dạ là được cập nhật gần nhất ạ! 
+AI: Giỏi lắm! Đó chính là tính thời sự của thông tin đấy."
+HNMU-G9-R0018-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,18,9,Lớp 9,3,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. c (Tr. 9 SGK),Thế nào là thông tin đầy đủ?,Nhận biết (Nêu được đặc điểm),"Là thông tin bao quát được nhiều khía cạnh, cho cái nhìn tổng thể về vấn đề được đặt ra.","HS: Thầy ơi, ""đầy đủ"" là phải có tất cả mọi thứ trên đời hả thầy?
+AI: Không hẳn đâu em. Nếu em tìm hiểu về một trường học mà chỉ biết mỗi tên trường, chưa biết học phí hay địa chỉ, em có dám đăng ký vào học không?
+HS: Dạ không ạ, như vậy là thiếu thông tin quan trọng.
+AI: Chính xác! Vậy thông tin giúp em có cái nhìn ""tổng thể"" và ""bao quát"" về vấn đề thì ta gọi là thông tin gì?
+HS: Dạ là thông tin đầy đủ ạ!
+AI: Tuyệt vời! Em đã nắm bắt rất đúng bản chất."
+HNMU-G9-R0019-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,19,9,Lớp 9,4,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. d (Tr. 9 SGK),"Nhận biết thế nào là thông tin ""sử dụng được"".",Nhận biết (Biết được sự phù hợp của thông tin),"Là thông tin liên quan, phù hợp với vấn đề hay câu hỏi được đặt ra.","HS: Em đang tìm cách nấu cơm mà máy tính lại hiện ra cách sửa xe đạp, thì thông tin đó gọi là gì ạ?
+AI: Theo em, thông tin sửa xe đó có giúp em nấu được cơm không?
+HS: Dạ không liên quan tí nào luôn thầy.
+AI: Đúng rồi! Khi thông tin không ""phù hợp"" và không ""liên quan"" đến mục tiêu của em, ta nói nó không có tính gì trong 4 yếu tố trên?
+HS: Dạ là không có tính sử dụng được ạ!
+AI: Rất tốt! Thông tin dù đúng nhưng không dùng được cho việc mình cần thì cũng vô ích em nhé."
+HNMU-G9-R0020-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,20,9,Lớp 9,5,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. Kiến thức mới (Tr. 9 SGK),Tại sao chất lượng thông tin lại quan trọng trong giải quyết vấn đề?,Thông hiểu (Giải thích được sự cần thiết),Vì nó là yếu tố then chốt quyết định hiệu quả của việc giải quyết vấn đề và chất lượng của quyết định được đưa ra.,"HS: Em cứ chọn đại thông tin nào thấy đầu tiên là được mà thầy, sao phải soi xét ""chất lượng"" làm gì ạ?
+AI: Nếu em dùng một bản đồ sai để đi vào rừng, kết quả sẽ thế nào?
+HS: Dạ chắc là em sẽ bị lạc và gặp nguy hiểm ạ.
+AI: Đúng vậy! Việc giải quyết vấn đề cũng giống như đi đường. Nếu thông tin (bản đồ) kém chất lượng, nó sẽ dẫn đến điều gì cho kết quả cuối cùng của em?
+HS: Dẫn đến quyết định sai lầm và không hiệu quả ạ.
+AI: Rất chuẩn! Chất lượng thông tin chính là ""la bàn"" để em đi đúng hướng đấy."
+HNMU-G9-R0021-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,21,9,Lớp 9,6,Bài 2: Thông tin trong giải quyết vấn đề,Mục 2 (Tr. 11 SGK),Giải thích tại sao cần kiểm chứng thông tin từ nhiều nguồn khác nhau?,Thông hiểu (Giải thích được lợi ích),"Để đảm bảo tính chính xác, khách quan và tránh bị lừa đảo bởi các thông tin sai lệch.","HS: Thầy ơi, bạn em nói ngày mai được nghỉ học, em có nên tin luôn không ạ?
+AI: Em có nên hỏi thêm cô giáo chủ nhiệm hoặc xem thông báo trên website của trường không?
+HS: Dạ nên chứ ạ, để chắc chắn bạn ấy không đùa dai.
+AI: Việc em hỏi thêm nhiều người như vậy gọi là ""kiểm chứng"". Nó giúp em tránh được điều gì khi gặp phải thông tin sai?
+HS: Giúp em không bị lừa và có thông tin chính xác hơn ạ.
+AI: Xuất sắc! Luôn luôn kiểm chứng là kỹ năng sống còn trong thế giới số đấy."
+HNMU-G9-R0022-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,22,9,Lớp 9,7,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. b (Tr. 9 SGK),Phân biệt sự khác nhau giữa thông tin chính xác và thông tin đầy đủ.,Thông hiểu (Phân biệt được),Chính xác là đúng với sự thật; Đầy đủ là bao quát hết các khía cạnh cần thiết.,"HS: Thầy ơi, ""Đúng"" với ""Đủ"" có khác nhau không ạ? 
+AI: Một câu hỏi rất hay! Nếu thầy nói ""Hôm nay trời nắng"" (trong khi trời đang mưa), đó là lỗi về tính gì?
+HS: Dạ là không chính xác ạ.
+AI: Tốt! Còn nếu thầy nói ""Trường em ở quận 1"" nhưng không cho biết số nhà, tên đường. Thông tin đó có đúng sự thật không?
+HS: Dạ đúng, nhưng mà tìm không ra trường ạ.
+AI: Vậy trường hợp thứ hai là lỗi về tính gì nhỉ?
+HS: Dạ là thiếu tính đầy đủ ạ. Em phân biệt được rồi!"
+HNMU-G9-R0023-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,23,9,Lớp 9,8,Bài 2: Thông tin trong giải quyết vấn đề,Mục 2 (Tr. 11 SGK),Trình bày quá trình giải quyết vấn đề dựa trên thông tin.,Thông hiểu (Trình bày được quá trình),Xác định vấn đề -> Tìm kiếm thông tin -> Đánh giá chất lượng -> Ra quyết định.,"HS: Em muốn mua một chiếc máy tính mới, em nên bắt đầu từ đâu ạ?
+AI: Đầu tiên em phải biết mình mua máy để làm gì (học tập hay chơi game). Sau đó em sẽ làm gì để biết có những loại máy nào?
+HS: Em sẽ lên mạng tìm thông tin về các dòng máy ạ.
+AI: Đúng! Sau khi tìm thấy 10 mẫu máy, em có nên chọn ngay cái rẻ nhất không hay phải xem kỹ cấu hình và đánh giá?
+HS: Dạ em phải đánh giá chất lượng thông tin xem có đáng tin không, rồi mới quyết định mua ạ.
+AI: Rất tốt! Đó chính là các bước giải quyết vấn đề một cách khoa học đấy."
+HNMU-G9-R0024-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,24,9,Lớp 9,9,Bài 2: Thông tin trong giải quyết vấn đề,Câu hỏi 2 (Tr. 13 SGK),Tại sao thông tin không đáng tin cậy lại gây hại cho con người?,Thông hiểu (Giải thích được tác hại),"Gây ra những kết luận sai, quyết định hành động không đúng và không giải quyết được vấn đề đặt ra.","HS: Thầy ơi, mấy tin đồn nhảm trên mạng chỉ đọc cho vui thôi, đâu có hại gì đâu thầy?
+AI: Nếu tin đồn đó nói về một loại thuốc chữa bệnh giả mà người ta tin theo thì sao?
+HS: Ôi, vậy thì nguy hiểm đến tính mạng luôn ạ!
+AI: Đúng thế. Vậy ngoài tính mạng, thông tin sai còn có thể làm mất thời gian và tiền bạc của chúng ta không?
+HS: Dạ có, nó làm mình làm việc vô ích và tốn kém ạ. Em hiểu vì sao nó lại ""độc hại"" rồi."
+HNMU-G9-R0025-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,25,9,Lớp 9,10,Bài 2: Thông tin trong giải quyết vấn đề,Luyện tập (Tr. 11 SGK),Giải thích tình huống: Tại sao bạn An gọi điện theo số trên mạng nhưng không được?,Thông hiểu (Chỉ ra được nguyên nhân),Do thông tin thiếu tính mới (số điện thoại đã thay đổi nhưng website chưa cập nhật) hoặc thiếu tính chính xác.,"HS: Bạn An trong bài khổ thân quá, gọi mãi không được số của trang trại. Lỗi tại ai hả thầy?
+AI: Theo em, nếu trang trại đổi số điện thoại mà không sửa trên web, thì thông tin trên web đó bị vi phạm yếu tố nào trong 4 yếu tố mình học?
+HS: Dạ là thiếu ""tính mới"" ạ, vì nó cũ rồi.
+AI: Chính xác! Vậy nếu bạn An biết kiểm tra ngày cập nhật của trang web, bạn ấy có đỡ mất công hơn không?
+HS: Dạ có, bạn ấy sẽ tìm nguồn khác mới hơn ạ."
+HNMU-G9-R0026-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,26,9,Lớp 9,11,Bài 2: Thông tin trong giải quyết vấn đề,Câu hỏi c (Tr. 11 SGK),"Trong tình huống tìm trường THPT, nếu không chú ý đến thời gian đăng ký, bạn An gặp vấn đề gì về chất lượng thông tin?",Vận dụng (Xác định được lỗi trong tình huống),Thông tin thiếu tính sử dụng được vì đã quá hạn (vi phạm tính thời sự/mới).,"HS: Thầy ơi, bạn An tìm thấy trường rất tốt, đầy đủ thông tin nhưng lại hết hạn nộp hồ sơ từ hôm qua. Vậy thông tin đó có giá trị gì không ạ?
+AI: Thông tin đó có ""đúng"" và ""đủ"" không em?
+HS: Dạ có ạ, trường vẫn ở đó và thông tin rất chính xác.
+AI: Nhưng đối với mục tiêu ""đăng ký học"" của bạn An lúc này, nó có giúp ích được gì không?
+HS: Dạ không ạ, vì hết hạn rồi.
+AI: Đúng rồi! Khi thông tin không còn ""tính mới"" và không giúp đạt được mục tiêu, ta gọi là thiếu tính gì?
+HS: Dạ là tính sử dụng được ạ. Thật đáng tiếc cho bạn An!"
+HNMU-G9-R0027-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,27,9,Lớp 9,12,Bài 2: Thông tin trong giải quyết vấn đề,Nhiệm vụ 1 (Tr. 12 SGK),Thực hiện tìm kiếm thông tin về một trường THPT mà em yêu thích trên Internet.,Vận dụng (Khai thác được thông tin),"HS tìm và liệt kê được: Tên trường, địa chỉ, điểm chuẩn, các hoạt động giáo dục.","HS: Thầy hướng dẫn em cách tìm thông tin trường THPT Lê Quý Đôn với ạ.
+AI: Em hãy vào Google và gõ từ khóa ""Thông tin tuyển sinh trường THPT Lê Quý Đôn"" kèm theo năm học hiện tại nhé. Em thấy kết quả nào hiện ra đầu tiên?
+HS: Dạ em thấy website của trường luôn ạ.
+AI: Tốt! Bây giờ em hãy nhặt ra các thông tin: Địa chỉ, Điểm chuẩn năm ngoái và Chỉ tiêu năm nay nhé. Em làm được chứ?
+HS: Dạ được ạ, em đã ghi chép lại đầy đủ rồi thầy ơi!"
+HNMU-G9-R0028-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,28,9,Lớp 9,13,Bài 2: Thông tin trong giải quyết vấn đề,Nhiệm vụ 2 (Tr. 14 SGK),Lập danh sách 3 trường THPT ưu tiên dựa trên các thông tin đã tìm được.,Vận dụng (Xác lập được các lựa chọn theo tiêu chí),"HS sắp xếp danh sách theo tiêu chí: Năng lực bản thân (điểm chuẩn), sở thích và khoảng cách địa lý.","HS: Em tìm được 5 trường rồi, nhưng trường nào cũng hay, em nên chọn thế nào ạ?
+AI: Đừng lo! Hãy dùng ""phép lọc"" nhé. Trong 5 trường đó, trường nào có điểm chuẩn gần với sức học của em nhất? Trường nào gần nhà em nhất?
+HS: Dạ có 3 trường là vừa sức em và cũng không quá xa ạ.
+AI: Tuyệt vời! Vậy em hãy xếp 3 trường đó theo thứ tự ưu tiên 1, 2, 3 dựa trên sở thích cá nhân nhé. 
+HS: Em xếp xong rồi ạ. Nhìn bản danh sách này em thấy tự tin hơn hẳn!"
+HNMU-G9-R0029-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,29,9,Lớp 9,14,Bài 2: Thông tin trong giải quyết vấn đề,Vận dụng (Tr. 14 SGK),"Tạo một bài trình chiếu về chủ đề ""Chọn môi trường học tập sau khi kết thúc THCS"".",Vận dụng (Chuẩn bị được báo cáo của dự án),"Bài trình chiếu gồm các trang: Tiêu đề, Các tiêu chí đánh giá thông tin, Danh sách các trường tiềm năng, Kết luận lựa chọn.","HS: Thầy ơi, em muốn khoe kết quả chọn trường với cả lớp bằng PowerPoint thì nên làm thế nào cho chuyên nghiệp ạ?
+AI: Hãy cấu trúc bài làm 3 phần: 1. Các tiêu chí em dùng để đánh giá trường (4 yếu tố chất lượng); 2. Thông tin cụ thể của các trường em đã tìm; 3. Lựa chọn cuối cùng của em. Em định dùng hình ảnh gì để minh họa?
+HS: Em sẽ chèn ảnh cổng trường và biểu đồ điểm chuẩn ạ.
+AI: Rất sáng tạo! Hãy bắt tay vào làm và nhớ kiểm tra kỹ ""tính chính xác"" của số liệu trước khi trình chiếu nhé!
+HS: Dạ em rõ rồi, cảm ơn thầy AI đã đồng hành cùng em suốt bài học này!"
+HNMU-G9-R0030-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,30,9,Lớp 9,1,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 1. a (Tr. 9 SGK),Kể tên 4 tiêu chí dùng để đánh giá chất lượng thông tin.,Nhận biết (Kể tên được các thành phần),"Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được,.","HS: Thầy ơi, khi tìm thông tin trên mạng, làm sao để mình biết nó có ""xịn"" hay không ạ?
+AI: Chào em! Để đánh giá một ""món quà thông tin"", em cần kiểm tra 4 ""mã vạch"" chất lượng. Em hãy nhìn vào Hình 2.2 ở trang 11 xem đó là những tiêu chí nào?
+HS: Dạ em thấy là: Tính mới, chính xác, đầy đủ và sử dụng được ạ.
+AI: Rất chính xác! Hãy luôn mang ""bộ lọc"" 4 tiêu chí này khi lướt mạng nhé!"
+HNMU-G9-R0031-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,31,9,Lớp 9,2,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 1. a (Tr. 9 SGK),"Thông tin có ""tính mới"" là thông tin như thế nào?",Nhận biết (Nêu được khái niệm),"Là thông tin được cập nhật gần nhất với thời điểm xét đến,.","HS: Tại sao mình phải quan tâm đến thời gian cập nhật của bài viết hả thầy?
+AI: Giả sử em xem dự báo thời tiết của... tuần trước để đi dã ngoại hôm nay, kết quả sẽ thế nào?
+HS: Dạ chắc là em sẽ bị ướt sũng vì thông tin đó lạc hậu rồi ạ.
+AI: Đúng vậy! Vậy thông tin được gọi là có ""tính mới"" khi nó được cập nhật ra sao so với lúc em cần?
+HS: Dạ là được cập nhật gần nhất ạ!"
+HNMU-G9-R0032-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,32,9,Lớp 9,3,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 1. c (Tr. 10 SGK),Thế nào là thông tin đầy đủ?,Nhận biết (Nêu được đặc điểm),"Là thông tin bao quát được nhiều khía cạnh, cho cái nhìn tổng thể về vấn đề,.","HS: Thầy ơi, nếu em tìm trường mà chỉ thấy mỗi cái tên, không có địa chỉ hay học phí thì có coi là chất lượng không ạ?
+AI: Theo em, với thông tin sơ sài như vậy, em có thể đưa ra quyết định chọn trường ngay không?
+HS: Dạ không ạ, thiếu nhiều thứ quan trọng quá.
+AI: Chính xác! Vậy khi thông tin cho em cái nhìn ""tổng thể"" về mọi khía cạnh, ta gọi đó là tính gì?
+HS: Dạ là tính đầy đủ ạ!"
+HNMU-G9-R0033-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,33,9,Lớp 9,4,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 2 (Tr. 13 SGK),Tại sao không nên tin ngay vào kết quả đầu tiên hiện ra trên máy tìm kiếm?,Nhận biết (Biết được tính chất),"Vì không phải mọi thông tin trên Internet đều chính xác và đã được kiểm chứng,.","HS: Em cứ tưởng cái gì hiện lên đầu tiên là đúng nhất chứ thầy?
+AI: Máy tìm kiếm đôi khi ưu tiên những trang có nhiều người xem hoặc quảng cáo. Theo em, một tin đồn thất thiệt có nhiều người xem không?
+HS: Dạ có ạ, thường tin đồn hay giật gân nên nhiều người tò mò.
+AI: Đúng rồi! Vậy mình có nên ""chốt"" ngay kết quả đầu tiên không?
+HS: Dạ không, phải kiểm tra kỹ nguồn gốc ạ!"
+HNMU-G9-R0034-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,34,9,Lớp 9,5,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 2 (Tr. 11 SGK),Tại sao việc đánh giá chất lượng thông tin là bước không thể thiếu trong giải quyết vấn đề?,Thông hiểu (Giải thích được sự cần thiết),"Vì thông tin là căn cứ để đưa ra quyết định; thông tin sai dẫn đến hành động sai và lãng phí nguồn lực,.","HS: Thầy ơi, sao mình không cứ làm đại đi mà phải ngồi soi xét thông tin cho mệt ạ?
+AI: Hãy tưởng tượng em dùng một bản đồ bị vẽ sai để đi trong rừng. Điều gì sẽ xảy ra?
+HS: Dạ em sẽ bị lạc và gặp nguy hiểm ạ.
+AI: Việc giải quyết vấn đề cũng vậy. Nếu thông tin (bản đồ) kém chất lượng, quyết định của em sẽ thế nào?
+HS: Dạ sẽ bị sai lầm và không hiệu quả ạ. Em hiểu tầm quan trọng của nó rồi!"
+HNMU-G9-R0035-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,35,9,Lớp 9,6,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 2 (Tr. 11 SGK),"Phân biệt sự khác nhau giữa ""tính chính xác"" và ""tính sử dụng được"" của thông tin.",Thông hiểu (Phân biệt được),"Chính xác là đúng sự thật; Sử dụng được là liên quan và phù hợp với mục tiêu cụ thể đang xét,.","HS: ""Đúng"" với ""Dùng được"" có khác nhau không thầy? Em thấy cái gì đúng thì dùng được chứ ạ?
+AI: Một ví dụ nhé: Em tìm cách chữa đau bụng, nhưng máy tính hiện ra cách... chữa đau chân rất chính xác. Em có dùng được không?
+HS: Dạ không, dù nó đúng nhưng không liên quan đến cái bụng của em ạ.
+AI: Rất thông minh! Vậy ""đúng sự thật"" là tính chính xác, còn ""phù hợp với mục tiêu"" là tính gì?
+HS: Dạ là tính sử dụng được ạ!"
+HNMU-G9-R0036-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,36,9,Lớp 9,7,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 1. b (Tr. 9 SGK),"Giải thích tại sao cần kiểm chứng thông tin từ các website có tên miền tin cậy (như .gov, .edu)?",Thông hiểu (Giải thích được lợi ích),"Vì các tổ chức này có quy trình kiểm duyệt thông tin chặt chẽ và chịu trách nhiệm về nội dung đăng tải,.","HS: Thầy ơi, sao thầy dặn em nên ưu tiên các trang web có đuôi .edu hay .gov ạ?
+AI: Ở trường (.edu) hay cơ quan nhà nước (.gov), trước khi đăng một tin gì, họ có phải kiểm tra kỹ không em?
+HS: Dạ chắc chắn là có, vì họ là cơ quan uy tín ạ.
+AI: Đúng rồi! So với một trang cá nhân bất kỳ, nguồn nào sẽ cho em thông tin ít sai sót hơn?
+HS: Dạ là các trang của tổ chức uy tín ạ. Em sẽ để ý đuôi tên miền hơn!"
+HNMU-G9-R0037-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,37,9,Lớp 9,8,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Hoạt động 1 (Tr. 12 SGK),Trình bày các bước để tìm kiếm và đánh giá thông tin về một chủ đề cụ thể trên mạng.,Thông hiểu (Trình bày được quá trình),"B1: Xác định từ khóa; B2: Tìm kiếm; B3: Chọn nguồn tin; B4: Đối chiếu 4 tiêu chí chất lượng,.","HS: Thầy hướng dẫn em cách làm bài thực hành tìm thông tin trường THPT với ạ.
+AI: Đầu tiên, em cần nghĩ ra ""từ khóa"" để gõ vào Google. Sau khi có kết quả, em sẽ nhấp vào trang web nào đầu tiên?
+HS: Em sẽ chọn trang của Sở Giáo dục hoặc trang chính thức của trường ạ.
+AI: Tốt! Sau khi đọc thông tin, em cần dùng ""bộ lọc"" 4 tiêu chí đã học để làm gì?
+HS: Để xem thông tin đó có mới, chính xác, đầy đủ và dùng được cho em không ạ!
+AI: Xuất sắc!"
+HNMU-G9-R0038-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,38,9,Lớp 9,9,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Câu hỏi 2 (Tr. 13 SGK),"Việc sử dụng thông tin thiếu ""tính đầy đủ"" có thể dẫn đến hậu quả gì?",Thông hiểu (Mô tả được hệ quả),"Dẫn đến cái nhìn phiến diện, kết luận sai lầm hoặc bỏ lỡ các cơ hội tốt hơn,.","HS: Thầy ơi, nếu bạn An chỉ biết điểm chuẩn của trường mà không biết địa chỉ trường ở đâu thì sao ạ?
+AI: Bạn ấy có thể đăng ký vào một trường có điểm vừa sức nhưng lại cách nhà tận... 50km. Em thấy sao?
+HS: Ôi, thế thì không thể đi học nổi ạ. 
+AI: Đúng vậy. Đó chính là cái bẫy của việc thiếu thông tin ""tổng thể"". Vậy hậu quả là gì nhỉ?
+HS: Dạ là đưa ra quyết định không thực tế và gặp khó khăn sau này ạ!"
+HNMU-G9-R0039-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,39,9,Lớp 9,10,Bài 3: Thực hành: Đánh giá chất lượng thông tin,SGV Tr. 27,Tại sao thông tin trên mạng xã hội thường có độ tin cậy thấp hơn các trang tin chính thống?,Thông hiểu (Hiểu được đặc điểm nguồn tin),"Vì bất kỳ ai cũng có thể đăng tải mà không qua kiểm duyệt, dễ bị trộn lẫn ý kiến cá nhân và tin đồn,.","HS: Em thấy trên Facebook bạn em chia sẻ nhiều tin hay lắm, sao thầy bảo độ tin cậy thấp ạ?
+AI: Bạn em có phải là phóng viên hay chuyên gia không? Thông tin bạn đăng có ai kiểm chứng trước khi nhấn nút ""Đăng"" không?
+HS: Dạ không, thích là đăng thôi ạ.
+AI: Chính vì ""thích là đăng"" nên thông tin dễ bị sai lệch hoặc mang nặng ý kiến cá nhân. Em đã hiểu sự khác biệt chưa?
+HS: Dạ rồi, em sẽ cẩn thận hơn với tin trên mạng xã hội ạ!"
+HNMU-G9-R0040-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,40,9,Lớp 9,11,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Vận dụng (Tr. 11 SGK),"Đánh giá chất lượng thông tin tìm được về ""chiếc máy tính điện tử đầu tiên trên thế giới"".",Vận dụng (Thực hiện được nhiệm vụ),"HS chỉ ra được tên máy (ENIAC), năm ra đời, và đối chiếu xem thông tin từ các nguồn có khớp nhau không,.","HS: Thầy ơi, em tìm thấy có trang bảo máy tính đầu tiên là ENIAC, có trang lại bảo là máy khác. Em nên tin ai ạ?
+AI: Đây là lúc em cần ""đối chiếu"". Em hãy xem trang nào có ghi rõ nguồn trích dẫn từ các bảo tàng khoa học hoặc đại học lớn nhé.
+HS: Dạ, trang Wikipedia và trang của Đại học Pennsylvania đều ghi là ENIAC năm 1945 ạ.
+AI: Rất tốt! Hai nguồn uy tín khớp nhau thì tính ""chính xác"" đã được đảm bảo. Em hãy ghi lại cả công dụng của nó để đảm bảo tính ""đầy đủ"" nhé!"
+HNMU-G9-R0041-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,41,9,Lớp 9,12,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Nhiệm vụ 1 (Tr. 12 SGK),Thực hiện tìm kiếm và chọn lọc thông tin về 3 trường THPT mà em dự định đăng ký.,Vận dụng (Khai thác được thông tin),"HS lập được danh sách gồm: Tên trường, điểm chuẩn 3 năm gần nhất, chỉ tiêu tuyển sinh và địa chỉ,.","HS: Thầy xem bảng thông tin 3 trường em tìm được đã ổn chưa ạ?
+AI: Em đã có tên trường và điểm chuẩn rồi. Nhưng để biết trường nào ""mới"" nhất, em đã kiểm tra xem đây là điểm của năm 2023 hay 2024 chưa?
+HS: A, em mới lấy đại một con số, để em xem lại năm cập nhật ạ.
+AI: Đúng rồi! Đừng quên ghi thêm khoảng cách từ nhà em đến trường để đảm bảo tính ""sử dụng được"" nhé.
+HS: Dạ, em đã bổ sung đầy đủ rồi thầy ơi!"
+HNMU-G9-R0042-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,42,9,Lớp 9,13,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Nhiệm vụ 2 (Tr. 14 SGK),"Dựa trên thông tin đã tìm được, hãy đưa ra quyết định chọn trường phù hợp nhất với năng lực và sở thích.",Vận dụng (Xác lập được lựa chọn theo tiêu chí),"HS sắp xếp thứ tự ưu tiên các trường dựa trên đối chiếu điểm chuẩn với lực học và điều kiện đi lại,.","HS: Sau khi tìm xong, em thấy trường A rất tốt nhưng điểm cao quá, trường B thì vừa sức hơn. Em nên chọn thế nào ạ?
+AI: Hãy dùng tiêu chí ""Tính sử dụng được"". Nếu khả năng đỗ của em ở trường A chỉ là 10%, còn trường B là 90%, trường nào thực tế hơn?
+HS: Dạ là trường B ạ. 
+AI: Chính xác! Việc kết hợp giữa ""Dữ liệu chính xác"" và ""Năng lực bản thân"" sẽ giúp em có quyết định thông minh nhất. Em đã tự tin với lựa chọn của mình chưa?
+HS: Dạ rồi, em sẽ ưu tiên trường B ạ!"
+HNMU-G9-R0043-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,43,9,Lớp 9,14,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Vận dụng (Tr. 14 SGK),Chuẩn bị một bài trình bày ngắn về quy trình đánh giá thông tin mà em đã áp dụng.,Vận dụng (Chuẩn bị được báo cáo dự án),"Bài trình bày gồm: Các từ khóa tìm kiếm, Các nguồn tin đã chọn, Bảng đánh giá 4 tiêu chí và Kết luận,.","HS: Thầy ơi, em muốn giới thiệu cách chọn trường của em cho cả lớp thì nên nói những gì ạ?
+AI: Hãy chia sẻ ""bí kíp"" của em nhé! 1. Em đã tìm ở đâu? 2. Em đã dùng 4 tiêu chí nào để loại bỏ tin rác? 3. Kết quả cuối cùng là gì? Em có định dùng hình ảnh minh họa không?
+HS: Dạ em sẽ chụp màn hình các trang web uy tín em đã tìm ạ.
+AI: Tuyệt vời! Đó chính là cách thuyết phục mọi người rằng thông tin của em là chất lượng nhất. Chúc em có bài thuyết trình thành công!"
+HNMU-G9-R0044-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,44,9,Lớp 9,1,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Mục 1. a (Tr. 15 SGK),Kể tên các luật liên quan đến việc sử dụng thông tin và dịch vụ Internet tại Việt Nam.,Nhận biết (Nêu được nội dung liên quan đến Luật),Luật Công nghệ thông tin (2006) và Luật An ninh mạng (2018).,"HS: Thầy ơi, trên mạng mình muốn làm gì thì làm hay có luật nào quản lý không ạ?
+AI: Chào em! Giống như khi đi đường có Luật Giao thông, thế giới ảo cũng có quy tắc riêng. Em thử nhìn vào mục 1.a trang 15 xem, có hai bộ luật rất quan trọng được nhắc đến tên là gì nhỉ?
+HS: Dạ em thấy có Luật Công nghệ thông tin và Luật An ninh mạng ạ.
+AI: Rất chính xác! Đây là hai ""lá chắn"" pháp lý quan trọng nhất mà mọi công dân số cần biết đấy."
+HNMU-G9-R0045-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,45,9,Lớp 9,2,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Mục 1. b (Tr. 16 SGK),Quyền tác giả đối với sản phẩm số là gì?,Nhận biết (Nêu được khái niệm),"Là quyền của tổ chức, cá nhân đối với tác phẩm do mình sáng tạo ra hoặc sở hữu.","HS: Tại sao em lấy ảnh trên mạng về đăng lại bị coi là vi phạm bản quyền ạ?
+AI: Em hãy tưởng tượng em vẽ một bức tranh rất đẹp, nhưng người khác lại ký tên họ vào đó thì em thấy sao?
+HS: Dạ em sẽ thấy rất bất công vì đó là công sức của em.
+AI: Đúng rồi! Sự công nhận và bảo vệ công sức đó gọi là ""Quyền tác giả"". Vậy theo em, quyền này thuộc về ai?
+HS: Thuộc về người đã sáng tạo ra tác phẩm đó ạ!
+AI: Giỏi lắm! Đó chính là cốt lõi của vấn đề bản quyền."
+HNMU-G9-R0046-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,46,9,Lớp 9,3,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Mục 2. a (Tr. 17 SGK),Liệt kê 3 hành vi bị nghiêm cấm khi sử dụng Internet.,Nhận biết (Nêu được hành vi vi phạm pháp luật),"1. Chống phá Nhà nước; 2. Xuyên tạc lịch sử, xúc phạm tôn giáo; 3. Chia sẻ thông tin dâm ô, đồi trụy.","HS: Những việc gì thì tuyệt đối không được làm trên mạng hả thầy?
+AI: Internet là môi trường tự do nhưng có giới hạn. Em hãy đọc khung ghi nhớ ở trang 17 và tìm xem những nội dung nào liên quan đến ""chống phá"" hay ""xúc phạm"" bị cấm nhé?
+HS: Dạ là chống Nhà nước, xúc phạm tôn giáo và đăng tin đồi trụy ạ.
+AI: Rất chuẩn! Tránh xa những hành vi này để bảo vệ bản thân và cộng đồng em nhé."
+HNMU-G9-R0047-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,47,9,Lớp 9,4,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Hoạt động 3 (Tr. 18 SGK),Dấu hiệu nào cho thấy một thông điệp trên mạng có thể là lừa đảo?,Nhận biết (Nhận diện được một số thông điệp lừa đảo),"Yêu cầu cung cấp thông tin cá nhân, mã OTP, mật khẩu hoặc hứa hẹn quà tặng bất thường.","HS: Em nhận được tin nhắn báo trúng thưởng iPhone 15, có phải thật không thầy?
+AI: Nghe hấp dẫn quá nhỉ! Nhưng em hãy kiểm tra xem họ có yêu cầu em nhấp vào link lạ hay cung cấp mã gì gửi về điện thoại không?
+HS: Dạ họ bảo em nhập mã OTP để nhận quà ạ.
+AI: Đó chính là ""dấu hiệu đỏ"" đấy! Một món quà miễn phí kèm theo yêu cầu thông tin bí mật thì thường là gì em nhỉ?
+HS: Chắc chắn là lừa đảo rồi ạ! Em sẽ không làm theo."
+HNMU-G9-R0048-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,48,9,Lớp 9,5,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Mục 2. b (Tr. 17 SGK),Tại sao việc chia sẻ tin đồn thất thiệt lại bị coi là vi phạm pháp luật?,Thông hiểu (Giải thích được tác hại),"Vì nó gây hoang mang dư luận, ảnh hưởng đến trật tự xã hội và danh dự của người khác.","HS: Em thấy tin hay nên chia sẻ thôi, nếu sai thì mình xóa đi là xong mà thầy?
+AI: Nếu tin đồn đó làm hàng ngàn người sợ hãi hoặc một người bị xúc phạm oan ức, việc ""xóa"" có lấy lại được danh dự cho họ không?
+HS: Dạ chắc là không, vì nó đã lan đi rất nhanh rồi ạ.
+AI: Đúng vậy! Vì hậu quả của nó rất nghiêm trọng, nên pháp luật quy định đó là hành vi gì?
+HS: Là hành vi vi phạm pháp luật ạ. Em hiểu rồi, phải kiểm chứng trước khi chia sẻ!"
+HNMU-G9-R0049-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,49,9,Lớp 9,6,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Hoạt động 1 (Tr. 15 SGK),"Phân biệt sự khác nhau giữa việc sử dụng thông tin ""phi thương mại"" và ""thương mại"".",Thông hiểu (Phân biệt được loại hình),"Phi thương mại: dùng cho học tập, cá nhân không vì lợi nhuận; Thương mại: dùng để kinh doanh, kiếm tiền.","HS: Em lấy ảnh mạng làm bài thuyết trình trên lớp thì có phải trả tiền bản quyền không ạ?
+AI: Một câu hỏi rất thực tế! Mục đích làm bài trên lớp của em có phải để đem đi bán lấy tiền không?
+HS: Dạ không, chỉ để cô giáo chấm điểm thôi ạ.
+AI: Đó gọi là dùng ""phi thương mại"". Còn nếu em lấy ảnh đó in lên áo để bán lấy tiền thì gọi là dùng gì?
+HS: Dạ là dùng thương mại ạ. Vậy trường hợp của em là được phép đúng không thầy?
+AI: Chính xác! Luật cho phép sử dụng một phần tác phẩm cho mục đích giáo dục em nhé."
+HNMU-G9-R0050-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,50,9,Lớp 9,7,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Câu hỏi 1 (Tr. 17 SGK),Tại sao chúng ta cần phải tôn trọng quyền riêng tư của người khác trên mạng?,Thông hiểu (Giải thích sự cần thiết),Để bảo vệ an toàn cho cá nhân đó và tuân thủ các quy định về quyền nhân thân.,"HS: Bạn em để lộ ảnh ""dìm hàng"", em lấy đăng lên Facebook cho vui được không thầy?
+AI: Nếu bạn ấy cảm thấy bị tổn thương và không muốn ai thấy bức ảnh đó thì sao? Em có muốn thông tin cá nhân của mình bị đem ra làm trò đùa không?
+HS: Dạ không ạ, em sẽ thấy rất khó chịu.
+AI: Không gian mạng cũng cần sự tử tế như ngoài đời. Việc tôn trọng người khác giúp tạo ra môi trường thế nào nhỉ?
+HS: Dạ môi trường an toàn và văn minh ạ!"
+HNMU-G9-R0051-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,51,9,Lớp 9,8,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Mục 2 (Tr. 17 SGK),Trình bày các biện pháp để tránh bị lừa đảo chiếm đoạt thông tin cá nhân.,Thông hiểu (Trình bày được cách đề phòng),"Không chia sẻ thông tin mật, sử dụng mật khẩu mạnh, không truy cập liên kết lạ.","HS: Thầy hướng dẫn em cách bảo vệ tài khoản mạng xã hội với ạ.
+AI: Đầu tiên, về mật khẩu, em nên đặt như thế nào để người khác không dễ đoán (không dùng ngày sinh, tên)?
+HS: Em nên dùng cả chữ hoa, chữ thường và ký hiệu đặc biệt ạ.
+AI: Tốt! Ngoài ra, nếu có ai đó gửi link lạ bảo em ""nhập mật khẩu để xem clip này"", em có nên làm theo không?
+HS: Dạ tuyệt đối không ạ. Đó là cách họ lấy trộm tài khoản của mình."
+HNMU-G9-R0052-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,52,9,Lớp 9,9,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Hình 4.2 (Tr. 16 SGK),Giải thích ý nghĩa của ký hiệu BY và NC trong giấy phép Creative Commons (CC).,Thông hiểu (Hiểu được ý nghĩa chỉ dẫn),BY: ghi công tác giả; NC: phi thương mại (không dùng để kiếm tiền).,"HS: Em thấy dưới mấy video Youtube hay có chữ CC và hình người, hình tờ tiền gạch chéo là sao ạ?
+AI: Đó là ""luật chơi"" của tác giả. Hình người (BY) nghĩa là em dùng thì phải làm gì cho tác giả?
+HS: Dạ phải ghi tên tác giả vào ạ.
+AI: Đúng! Còn hình tờ tiền có dấu gạch (NC) thì em được dùng để kinh doanh không?
+HS: Dạ không, chỉ dùng phi thương mại thôi ạ. Em hiểu các ký hiệu này rồi!"
+HNMU-G9-R0053-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,53,9,Lớp 9,10,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Câu hỏi 2 (Tr. 17 SGK),Tại sao không nên tin vào các trang web không rõ nguồn gốc?,Thông hiểu (Giải thích tính chất thông tin),"Vì các trang này thiếu kiểm duyệt, dễ chứa thông tin sai sự thật hoặc mã độc lừa đảo.","HS: Em thấy một trang web bán đồ rẻ cực kỳ, nhưng trang đó nhìn hơi sơ sài, không có địa chỉ liên hệ.
+AI: Em hãy thử tìm xem có mục ""Giới thiệu"" hay ""Liên hệ"" uy tín không? Nếu họ làm sai, em có biết tìm ai để đòi lại tiền không?
+HS: Dạ không thấy gì luôn thầy ạ.
+AI: Một trang web ""vô danh"" nhưng hứa hẹn lợi ích quá lớn thường là dấu hiệu của việc gì?
+HS: Dạ là lừa đảo ạ. Em sẽ cảnh giác hơn với những trang web như vậy."
+HNMU-G9-R0054-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,54,9,Lớp 9,11,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Luyện tập 2 (Tr. 19 SGK),Thực hiện việc trích dẫn nguồn cho một bài viết em tìm được trên mạng.,Vận dụng (Thực hiện được chỉ dẫn trong tài liệu),"Ghi rõ: Tên tác giả, Tên bài viết, Tên website, URL, Ngày truy cập.","HS: Thầy xem em ghi nguồn thế này được chưa ạ: ""Lấy từ Google"".
+AI: Google chỉ là ""người dẫn đường"" thôi em. Em cần ghi rõ địa chỉ của ""ngôi nhà"" chứa thông tin đó. Em thử nhấp vào link và nhặt ra: Tên trang web và đường link đầy đủ xem?
+HS: Dạ, là trang ""Báo Tuổi Trẻ"" và link tuoitre.vn/... ạ.
+AI: Rất tốt! Hãy bổ sung thêm ngày hôm nay em truy cập nó là ngày bao nhiêu nhé. Đó mới là trích dẫn đầy đủ."
+HNMU-G9-R0055-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,55,9,Lớp 9,12,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Vận dụng (Tr. 19 SGK),"Xây dựng bộ quy tắc ""5 KHÔNG"" khi tham gia mạng xã hội để an toàn pháp lý.",Vận dụng (Tạo được văn bản/sản phẩm số),Ví dụ: Không share tin giả; Không xúc phạm người khác; Không lộ OTP; Không crack phần mềm; Không vi phạm bản quyền.,"HS: Thầy giúp em lập danh sách ""5 KHÔNG"" để dán ở góc học tập với ạ.
+AI: Tuyệt vời! Hãy bắt đầu từ những gì dễ vi phạm nhất. Về thông tin chưa kiểm chứng, em sẽ ghi ""Không..."" gì nào?
+HS: Dạ là ""Không chia sẻ tin chưa kiểm chứng"" ạ.
+AI: Tốt! Còn về mật khẩu và mã OTP thì sao?
+HS: Dạ là ""Không cung cấp mã OTP cho người lạ"". Em sẽ viết tiếp về bản quyền và ứng xử ạ!"
+HNMU-G9-R0056-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,56,9,Lớp 9,13,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,SGV Tr. 32,"Phân tích tình huống: Bạn em rủ dùng phần mềm ""bẻ khóa"" (crack) để không phải mua. Em xử lý thế nào?",Vận dụng (Xác lập lựa chọn theo tiêu chí),Từ chối vì vi phạm bản quyền và rủi ro nhiễm mã độc cho máy tính.,"HS: Bạn em bảo phần mềm này 500k nhưng có bản crack miễn phí, em có nên dùng không thầy?
+AI: Dùng bản ""bẻ khóa"" giống như mình đang dùng đồ lấy trộm vậy. Ngoài đạo đức, em có biết các phần mềm này thường giấu cái gì bên trong không?
+HS: Dạ em nghe nói hay có virus và mã độc ạ.
+AI: Đúng rồi! Vừa vi phạm luật, vừa hỏng máy. Vậy lựa chọn thông minh của em là gì?
+HS: Em sẽ từ chối và tìm phần mềm miễn phí thay thế ạ!"
+HNMU-G9-R0057-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,57,9,Lớp 9,14,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Vận dụng (Tr. 19 SGK),Tạo một tờ rơi ngắn gọn tuyên truyền về Luật An ninh mạng cho các bạn trong lớp.,Vận dụng (Chuẩn bị được báo cáo dự án/sản phẩm số),"Tờ rơi gồm: Tên luật, các hành vi bị cấm và hình ảnh minh họa.","HS: Em định dùng Canva làm tờ rơi, thầy gợi ý cho em các phần chính với ạ.
+AI: Một tờ rơi tốt cần: 1. Tiêu đề gây chú ý; 2. Những hành vi cần tránh (mục 2.a); 3. Cách bảo vệ mình. Em định chọn màu sắc thế nào để trông vừa hiện đại vừa nghiêm túc?
+HS: Em sẽ dùng màu xanh dương và các biểu tượng công nghệ ạ.
+AI: Rất sáng tạo! Hãy bắt tay làm và nhớ kiểm tra kỹ thông tin trước khi in nhé. Em đã hoàn thành xuất sắc bài học này rồi!"
+HNMU-G9-R0058-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,58,9,Lớp 9,1,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),Phần mềm mô phỏng là gì?,Nhận biết (Nêu được khái niệm),"Là phần mềm nhằm mục đích bắt chước các hiện tượng, sự vật xuất hiện tự nhiên hoặc trong thực tế.","HS: Thầy ơi, ""mô phỏng"" có phải là làm giả một cái gì đó không ạ? 
+AI: Chào em! Gần đúng rồi đấy. Em hãy nghĩ đến trò chơi lái ô tô trên máy tính, nó có ""bắt chước"" việc lái xe thật không? 
+HS: Dạ có, từ vô lăng đến đường đi đều giống ạ. 
+AI: Rất tốt! Vậy những phần mềm giúp chúng ta quan sát và thực hành các việc giống như thật trên máy tính gọi là gì nhỉ? 
+HS: Dạ là phần mềm mô phỏng ạ!"
+HNMU-G9-R0059-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,59,9,Lớp 9,2,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),Kể tên trang web mô phỏng pha màu được nhắc đến trong bài.,Nhận biết (Kể tên được thiết bị/công cụ),Website https://trycolors.com/.,"HS: Thầy ơi, em muốn tập pha màu mà không sợ bẩn tay thì dùng trang nào ạ? 
+AI: Một câu hỏi thú vị! Em hãy mở sách trang 20, phần Hoạt động 1, có một đường link màu xanh hiện ra, em thấy nó chưa? 
+HS: Dạ em thấy rồi, là trycolors.com ạ. 
+AI: Rất chính xác! Đây là ""phòng thí nghiệm màu sắc"" ảo dành cho em đấy."
+HNMU-G9-R0060-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,60,9,Lớp 9,3,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),Kể tên một lĩnh vực đời sống sử dụng phần mềm mô phỏng.,Nhận biết (Nêu được ví dụ),"Khoa học tự nhiên, Y tế, Giao thông, Giáo dục....","HS: Ngoài pha màu thì mô phỏng còn làm được gì nữa không thầy? 
+AI: Nhiều lắm em! Em có bao giờ nghe thấy phi công tập bay trước khi lên máy bay thật chưa? Đó là mô phỏng trong lĩnh vực gì nhỉ? 
+HS: Dạ là Giao thông - Hàng không ạ! 
+AI: Giỏi lắm! Nó giúp việc tập luyện trở nên an toàn hơn rất nhiều."
+HNMU-G9-R0061-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,61,9,Lớp 9,4,Bài 5: Tìm hiểu phần mềm mô phỏng,Hoạt động 2 (Tr. 21 SGK),Nêu một lợi ích của phần mềm mô phỏng.,Nhận biết (Nêu được lợi ích),"Giúp quan sát hiện tượng khó/không thể quan sát trực tiếp, đảm bảo an toàn.","HS: Tại sao phải dùng mô phỏng trong khi có thể làm thí nghiệm thật ạ? 
+AI: Nếu em làm thí nghiệm với hóa chất độc hại và lỡ tay làm đổ thì sao? 
+HS: Dạ sẽ rất nguy hiểm ạ. 
+AI: Đúng vậy! Vậy việc làm thí nghiệm trên máy tính giúp em khắc phục được nỗi sợ gì? 
+HS: Dạ là giúp em an toàn hơn ạ!"
+HNMU-G9-R0062-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,62,9,Lớp 9,5,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),Tại sao phần mềm mô phỏng lại giúp tiết kiệm chi phí?,Thông hiểu (Giải thích được lợi ích),"Vì không tốn nguyên vật liệu thật, có thể thực hiện nhiều lần mà không mất phí mua mới.","HS: Thầy giải thích rõ hơn vì sao mô phỏng lại rẻ hơn làm thật không ạ? 
+AI: Giả sử em pha 100 loại màu khác nhau để tìm ra màu ưng ý, em sẽ tốn bao nhiêu tiền mua màu thật? 
+HS: Dạ tốn nhiều tiền lắm thầy. 
+AI: Vậy nếu em dùng trycolors.com, em có mất đồng nào để ""đổ"" màu ra không? 
+HS: Dạ không ạ, chỉ cần bấm chuột thôi. Em hiểu rồi, nó giúp tiết kiệm tiền mua nguyên liệu!"
+HNMU-G9-R0063-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,63,9,Lớp 9,6,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),"Giải thích đặc điểm ""tương tác"" của phần mềm mô phỏng.",Thông hiểu (Giải thích được tính chất),Người dùng có thể thay đổi các thông số đầu vào và quan sát kết quả thay đổi ngay lập tức.,"HS: Thầy ơi, sao xem video thí nghiệm không được gọi là mô phỏng ạ? 
+AI: Trong video, em có thể ""thò tay"" vào thay đổi lượng hóa chất để xem kết quả khác đi không? 
+HS: Dạ không, video chỉ chạy theo một kịch bản thôi ạ. 
+AI: Đúng rồi! Còn phần mềm mô phỏng cho phép em điều chỉnh ""nút bấm"" để kết quả thay đổi theo ý mình. Hành động đó gọi là gì nhỉ? 
+HS: Dạ là ""tương tác"" ạ!"
+HNMU-G9-R0064-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,64,9,Lớp 9,7,Bài 5: Tìm hiểu phần mềm mô phỏng,Câu hỏi 2 (Tr. 21 SGK),Tại sao mô phỏng không thể thay thế hoàn toàn việc thực hành thực tế?,Thông hiểu (Giải thích được hạn chế),"Vì mô phỏng chỉ là sự bắt chước, không thể phản ánh 100% các biến số phức tạp của đời thực.","HS: Nếu mô phỏng hay vậy, mình bỏ luôn thí nghiệm thật đi thầy? 
+AI: Em nghĩ cảm giác cầm một ống nghiệm thật có khác với việc click chuột không? 
+HS: Dạ khác nhiều, tay mình sẽ cảm nhận được độ rung, nhiệt độ... 
+AI: Chính xác! Vì thế giới thực rất phức tạp nên mô phỏng dù tốt đến đâu vẫn chỉ là ""bản sao"" thôi em nhé."
+HNMU-G9-R0065-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,65,9,Lớp 9,8,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 2 (Tr. 21 SGK),Phần mềm mô phỏng giúp ích gì cho lĩnh vực Giáo dục?,Thông hiểu (Trình bày được tác dụng),"Giúp học sinh hứng thú hơn, dễ dàng hình dung các kiến thức trừu tượng.","HS: Thầy ơi, sao cô giáo em thích cho xem mô phỏng hệ Mặt Trời thay vì chỉ đọc sách ạ? 
+AI: Khi xem các hành tinh chuyển động sinh động, em thấy dễ hiểu hay đọc chữ dễ hiểu hơn? 
+HS: Dạ xem hình ảnh chuyển động thì dễ nhớ hơn nhiều ạ. 
+AI: Đúng rồi! Đó chính là cách mô phỏng giúp em ""hình dung"" những thứ ở xa ngoài tầm mắt đấy."
+HNMU-G9-R0066-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,66,9,Lớp 9,9,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),Tại sao phi công lại bắt buộc phải học trên phần mềm mô phỏng trước khi bay thật?,Thông hiểu (Mô tả được chức năng),Để rèn luyện kỹ năng xử lý sự cố trong môi trường không nguy hiểm đến tính mạng và thiết bị.,"HS: Bay giả thì sao mà giỏi bằng bay thật được hả thầy? 
+AI: Nếu lúc đang học, phi công lỡ tay làm rơi máy bay thật thì sao? 
+HS: Ôi, thế thì nguy hiểm tính mạng và mất nhiều tiền lắm ạ! 
+AI: Chính vì thế, mô phỏng giúp họ luyện tập ""sai và sửa"" thoải mái mà vẫn an toàn. Em thấy lý do này thuyết phục chưa?"
+HNMU-G9-R0067-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,67,9,Lớp 9,10,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (SGV Tr. 36),Phân biệt sự khác biệt lớn nhất giữa video và phần mềm mô phỏng.,Thông hiểu (Phân biệt được),Video là nội dung cố định; mô phỏng cho phép can thiệp vào quá trình để thay đổi kết quả.,"HS: Em thấy video pha màu trên Youtube cũng đẹp mà, sao phải dùng phần mềm làm gì ạ? 
+AI: Trên Youtube, em có thể tự chọn pha màu xanh với màu đỏ theo tỉ lệ em muốn không? 
+HS: Dạ không, em chỉ xem người ta làm thôi. 
+AI: Đúng rồi! Vậy điểm khác biệt là phần mềm cho phép em làm gì với quá trình đó nhỉ? 
+HS: Dạ cho phép em ""can thiệp"" và ""điều khiển"" ạ!"
+HNMU-G9-R0068-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,68,9,Lớp 9,11,Bài 5: Tìm hiểu phần mềm mô phỏng,Luyện tập (Tr. 22 SGK),Hãy xác định một lĩnh vực em muốn áp dụng mô phỏng để học tập tốt hơn.,Vận dụng (Xác định được tình huống thích hợp),"HS tự nêu ví dụ (mô phỏng hệ mặt trời, mô phỏng mổ xẻ y học, mô phỏng giao thông...).","HS: Em thích môn Sinh học, em có thể dùng mô phỏng vào việc gì ạ? 
+AI: Tuyệt vời! Em có muốn thử ""mổ xẻ"" một chú ếch mà không cần làm hại chú ếch thật nào không? 
+HS: Ôi, có phần mềm đó hả thầy? Thế thì em không sợ nữa rồi! 
+AI: Có chứ em! Hãy thử tìm từ khóa ""frog dissection simulation"" nhé, em sẽ thấy rất thú vị đấy."
+HNMU-G9-R0069-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,69,9,Lớp 9,12,Bài 5: Tìm hiểu phần mềm mô phỏng,Vận dụng (Tr. 22 SGK),Dự đoán kết quả: Chuyện gì xảy ra nếu em tăng tỉ lệ màu Vàng trong hỗn hợp Vàng và Xanh lam ở trycolors.com?,Vận dụng (Khai thác được thông tin),Màu sắc sẽ chuyển dần từ xanh lá cây sang xanh lá mạ hoặc vàng chanh.,"HS: Thầy ơi, em đang pha ra màu xanh lá, giờ em đổ thêm thật nhiều màu vàng vào thì nó ra màu gì ạ? 
+AI: Màu vàng là màu sáng, xanh lam là màu tối. Khi thêm ""nắng"" (vàng) vào ""biển"" (lam), màu xanh lá sẽ thay đổi thế nào? 
+HS: Dạ nó sẽ nhạt đi và sáng hơn ạ. 
+AI: Rất chính xác! Em hãy vào trang web và kiểm tra xem dự đoán của mình đúng không nhé."
+HNMU-G9-R0070-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,70,9,Lớp 9,13,Bài 5: Tìm hiểu phần mềm mô phỏng,SGV Tr. 43,Thiết lập các mục cần thiết để báo cáo về một phần mềm mô phỏng mà em đã trải nghiệm.,Vận dụng (Chuẩn bị được báo cáo),"Báo cáo gồm: Tên phần mềm, Mục đích, Các bước thực hiện, Kết quả quan sát.","HS: Thầy hướng dẫn em cách làm bài thuyết trình về phần mềm mô phỏng với ạ. 
+AI: Rất tốt! Một bản báo cáo ""xịn"" cần có 3 phần: 1. Tên và mục đích phần mềm; 2. Em đã ""tương tác"" thế nào; 3. Kết luận em học được gì. Em định bắt đầu bằng ý nào? 
+HS: Em sẽ giới thiệu về trang pha màu trước, sau đó chỉ các bạn cách tạo ra màu tím ạ. 
+AI: Tuyệt vời! Hãy bám sát 3 bước đó để bài nói thật mạch lạc nhé."
+HNMU-G9-R0071-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,71,9,Lớp 9,14,Bài 5: Tìm hiểu phần mềm mô phỏng,Vận dụng (Tr. 22 SGK),Hãy đề xuất một ý tưởng mô phỏng thực tế tại trường học của em.,Vận dụng (Tạo được sản phẩm số/ý tưởng),"Ý tưởng mô phỏng tiết kiệm điện, mô phỏng giao thông tại ngã tư trường.","HS: Thầy ơi, em muốn làm cái gì đó giúp trường mình bớt tắc đường lúc tan học ạ. 
+AI: Một ý tưởng rất nhân văn! Theo em, phần mềm cần ""bắt chước"" những đối tượng nào ở cổng trường để tìm ra cách giải quyết? 
+HS: Dạ là xe máy của phụ huynh, các bạn đi bộ và các chú bảo vệ ạ. 
+AI: Xuất sắc! Nếu em mô phỏng được dòng xe đó, em sẽ biết nên mở cổng vào lúc nào là hợp lý nhất đấy."
+HNMU-G9-R0072-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,72,9,Lớp 9,1,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Hoạt động 1 (Tr. 23 SGK),Tên website mô phỏng pha màu được yêu cầu sử dụng trong bài thực hành là gì?,Nhận biết (Nêu được tên thiết bị/công cụ),Website https://trycolors.com/.,"HS: Thầy ơi, em muốn bắt đầu bài thực hành pha màu mà không nhớ địa chỉ web ạ.
+AI: Chào em! Rất sẵn lòng giúp em. Em hãy nhìn vào phần Nhiệm vụ 1 ở trang 23 nhé. Có một dòng chữ màu xanh bắt đầu bằng ""https://..."", em thấy nó chưa?
+HS: Dạ em thấy rồi, là trycolors.com ạ.
+AI: Rất chính xác! Đó chính là ""phòng thí nghiệm"" đầu tiên của chúng ta hôm nay đấy."
+HNMU-G9-R0073-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,73,9,Lớp 9,2,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 2 (Tr. 25 SGK),"Để mô phỏng các thí nghiệm Vật lí, Hóa học, em truy cập vào website nào?",Nhận biết (Chỉ ra được công cụ),Website PhET (https://phet.colorado.edu/).,"HS: Ngoài pha màu, em muốn làm thí nghiệm mạch điện thì vào đâu hả thầy?
+AI: Một ý tưởng tuyệt vời! Em hãy lật sang trang 25, mục Nhiệm vụ 2. Tên của trang web mô phỏng nổi tiếng thế giới này gồm 4 chữ cái, em tìm thấy không?
+HS: Dạ là trang PhET ạ!
+AI: Giỏi lắm! Đây là nơi chứa hàng trăm mô phỏng khoa học thú vị dành cho em."
+HNMU-G9-R0074-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,74,9,Lớp 9,3,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Mục 2. b (Tr. 25 SGK),"Trong PhET, nút lệnh nào dùng để đưa mọi thông số thí nghiệm về trạng thái ban đầu?",Nhận biết (Nhận biết được biểu tượng/chức năng),Nút Reset (thường có hình mũi tên xoay tròn màu cam).,"HS: Thầy ơi, em lỡ tay kéo quá nhiều dây điện trong mô phỏng, giờ em muốn làm lại từ đầu thì bấm vào đâu ạ?
+AI: Đừng lo! Em hãy tìm ở góc dưới bên phải màn hình mô phỏng, có một nút màu cam với hình mũi tên cong lại. Em thấy nó chưa?
+HS: Dạ em thấy nút Reset rồi ạ!
+AI: Rất tốt! Mỗi khi ""lỡ tay"", nút đó sẽ là cứu cánh để em bắt đầu lại một cách nhanh chóng."
+HNMU-G9-R0075-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,75,9,Lớp 9,4,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Hoạt động 1 (Tr. 23 SGK),"Để thay đổi tỉ lệ của một màu trong trycolors.com, em cần tác động vào thành phần nào?",Nhận biết (Nhận diện được thao tác),Các nút dấu cộng (+) hoặc dấu trừ (-) trên các hộp màu.,"HS: Làm sao để em cho thêm nhiều màu đỏ vào hỗn hợp hả thầy?
+AI: Em hãy quan sát các ô màu ở hàng phía dưới nhé. Bên cạnh mỗi màu có các biểu tượng toán học đơn giản. Để ""tăng"" thêm màu, em sẽ chọn dấu gì?
+HS: Dạ em chọn dấu (+) ạ.
+AI: Chính xác! Thao tác đó chính là cách em ""tương tác"" để thay đổi dữ liệu đầu vào đấy."
+HNMU-G9-R0076-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,76,9,Lớp 9,5,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 1 (Tr. 23 SGK),Giải thích tại sao mã màu Hex (vd: #FF0000) lại thay đổi khi em nhấn thêm các màu khác?,Thông hiểu (Giải thích được tính chất),"Vì mã Hex đại diện cho giá trị màu hiện tại; khi thay đổi tỉ lệ thành phần, màu sắc thay đổi dẫn đến mã đại diện thay đổi theo.","HS: Thầy ơi, sao mỗi lần em bấm thêm màu xanh là cái dòng mã số ở trên lại nhảy số liên tục ạ?
+AI: Em hãy tưởng tượng mã Hex giống như ""tên định danh"" duy nhất của mỗi sắc độ màu. Khi em trộn thêm màu khác, sắc độ cũ còn giữ nguyên không?
+HS: Dạ không, nó thành màu mới rồi ạ.
+AI: Đúng vậy! Màu mới thì cần một ""cái tên"" (mã số) mới. Vậy việc nhảy số đó chứng tỏ điều gì về kết quả mô phỏng?
+HS: Chứng tỏ phần mềm đang cập nhật kết quả mới ngay lập tức theo thao tác của em ạ!"
+HNMU-G9-R0077-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,77,9,Lớp 9,6,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Hoạt động 2 (Tr. 25 SGK),"Tại sao sử dụng mô phỏng PhET lại giúp em hiểu rõ hơn về những thứ không nhìn thấy được như ""dòng điện""?",Thông hiểu (Trình bày được tác dụng),Vì mô phỏng sử dụng các hình ảnh trực quan (các dấu chấm di chuyển) để mô tả sự chuyển động của electron.,"HS: Trong mạch điện thật em đâu thấy điện chạy, sao trong máy tính lại thấy mấy đốm sáng chạy vèo vèo ạ?
+AI: Đó chính là ưu điểm của mô phỏng đấy! Máy tính đã ""vẽ"" ra các hạt electron cho em thấy. Nếu không có những hình ảnh đó, em có biết điện đang chảy theo hướng nào không?
+HS: Dạ không ạ, chỉ thấy bóng đèn sáng thôi. 
+AI: Rất thông minh! Vậy mô phỏng giúp biến những kiến thức ""trừu tượng"" thành cái gì để em dễ hiểu hơn?
+HS: Thành hình ảnh trực quan mà mắt em có thể quan sát được ạ!"
+HNMU-G9-R0078-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,78,9,Lớp 9,7,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 1 (Tr. 23 SGK),Phân biệt sự khác nhau giữa việc pha màu trên phần mềm và pha màu bằng sơn thật.,Thông hiểu (Phân biệt được),"Phần mềm: Sạch sẽ, không tốn nguyên liệu, biết chính xác mã màu; Sơn thật: Tốn kém, bẩn tay, khó lường trước kết quả chính xác.","HS: Học pha màu trên máy tính có ích gì khi sau này em vẫn phải vẽ bằng cọ thật ạ?
+AI: Hãy nghĩ xem, trước khi dùng lọ sơn đắt tiền, em thử trên máy trước để biết ""Công thức"" chuẩn thì có lợi gì?
+HS: Dạ em sẽ không bị lãng phí sơn nếu pha sai ạ.
+AI: Đúng rồi! Và trên máy em có thể ""Undo"" (quay lại) nếu không ưng ý, còn sơn thật đã trộn vào rồi thì có tách ra được không?
+HS: Dạ không ạ. Em thấy mô phỏng giúp mình tiết kiệm và tự tin hơn khi làm thật!"
+HNMU-G9-R0079-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,79,9,Lớp 9,8,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 2 (Tr. 25 SGK),"Trong mô phỏng mạch điện, tại sao bóng đèn sẽ bị ""cháy"" (hiện biểu tượng lửa) nếu em cho điện áp quá cao?",Thông hiểu (Mô tả được cơ chế),Để bắt chước hiện tượng vật lí thực tế khi cường độ dòng điện vượt quá giới hạn chịu đựng của thiết bị.,"HS: Thầy ơi, em tăng pin lên 100V cái bóng đèn nó bốc cháy trên màn hình luôn! Máy tính có hỏng không thầy?
+AI: (Cười) Máy tính không hỏng đâu, nhưng mô phỏng đang ""cảnh báo"" em đấy. Trong thực tế, nếu em làm vậy với bóng đèn thật thì chuyện gì xảy ra?
+HS: Dạ nó sẽ nổ và cháy thật, rất nguy hiểm ạ.
+AI: Chính xác! Mô phỏng PhET đang bắt chước quy luật tự nhiên để em biết điều gì là... ?
+HS: Dạ là biết điều gì là nguy hiểm và nên tránh khi thực hành thật ạ!"
+HNMU-G9-R0080-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,80,9,Lớp 9,9,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,SGV Tr. 27,Tại sao việc sử dụng phần mềm mô phỏng lại làm tăng hứng thú học tập của học sinh?,Thông hiểu (Giải thích được lợi ích),"Vì tính tương tác cao, hình ảnh sinh động và cho phép học sinh tự do khám phá mà không sợ sai hỏng.","HS: Thầy ơi, sao em thấy học lí thuyết mạch điện trong sách chán mà làm trên PhET lại thấy nhanh hết giờ thế ạ?
+AI: Bởi vì trên PhET, em không chỉ ""đọc"" mà em còn được ""làm"". Khi em tự tay lắp mạch và thấy đèn sáng, em cảm thấy thế nào?
+HS: Dạ em thấy rất vui và tự hào vì mình làm đúng ạ.
+AI: Đó chính là sự hứng thú từ việc ""khám phá chủ động"". Em thích cảm giác làm chủ thí nghiệm đúng không?"
+HNMU-G9-R0081-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,81,9,Lớp 9,10,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 1 (Tr. 24 SGK),"Chức năng ""Palette"" (Bảng màu) trong trycolors giúp ích gì cho việc lưu trữ kết quả?",Thông hiểu (Giải thích sự cần thiết),Giúp lưu lại danh sách các màu đã pha để có thể sử dụng lại hoặc so sánh sau này.,"HS: Em pha được màu tím rất đẹp nhưng giờ em lỡ bấm màu khác rồi, làm sao tìm lại màu đó ạ?
+AI: Em hãy nhìn vào mục ""Palette"" ở phía trên nhé. Nó có lưu lại lịch sử các màu em đã pha không?
+HS: A, em thấy nó xếp một hàng các ô màu cũ rồi ạ!
+AI: Tuyệt vời! Vậy chức năng này giúp em giải quyết vấn đề gì khi thực hiện nhiều thí nghiệm liên tiếp?
+HS: Giúp em không bị mất kết quả và có thể ""nhặt"" lại màu cũ bất cứ lúc nào ạ!"
+HNMU-G9-R0082-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,82,9,Lớp 9,11,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Luyện tập (Tr. 26 SGK),"Thực hiện pha màu ""Xanh lá mạ"" từ các màu cơ bản trên trycolors.com và ghi lại tỉ lệ.",Vận dụng (Thực hiện được nhiệm vụ đặt ra),"Chọn Vàng (Yellow) + Xanh lam (Blue) với tỉ lệ Vàng nhiều hơn (vd: 70% Vàng, 30% Lam).","HS: Thầy hướng dẫn em pha màu xanh lá mạ với ạ, em pha toàn ra xanh đậm thôi.
+AI: Màu xanh lá mạ thì trông ""vàng"" hơn hay ""xanh"" hơn màu cỏ bình thường em nhỉ?
+HS: Dạ nó hơi vàng chanh một chút ạ.
+AI: Đúng rồi! Vậy em hãy bắt đầu với màu Vàng, sau đó nhấn dấu (+) vào màu Xanh lam thật chậm rãi từng chút một cho đến khi ưng ý nhé. Em làm được chứ?
+HS: (Thực hiện) Em làm được rồi ạ! Tỉ lệ là 3 Vàng 1 Xanh lam thầy ơi!"
+HNMU-G9-R0083-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,83,9,Lớp 9,12,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Vận dụng (Tr. 26 SGK),"Sử dụng mô phỏng PhET để lắp một mạch điện gồm: 1 pin, 2 bóng đèn mắc nối tiếp và 1 công tắc.",Vận dụng (Thực hiện được thao tác xử lý),Kéo thả các linh kiện và nối dây để tạo thành mạch kín theo yêu cầu.,"HS: Thầy ơi, em nối xong rồi mà đèn không sáng ạ.
+AI: Em đã kiểm tra ""Công tắc"" chưa? Nó đang ở trạng thái Đóng (Close) hay Mở (Open)?
+HS: A, em chưa bấm đóng công tắc ạ.
+AI: (Sau khi HS đóng mạch) Giờ đèn sáng chưa? Em có nhận xét gì về độ sáng của 2 bóng đèn khi mắc nối tiếp như vậy?
+HS: Dạ sáng yếu hơn khi dùng 1 bóng ạ. Em đã hoàn thành mạch điện rồi!"
+HNMU-G9-R0084-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,84,9,Lớp 9,13,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 2 (Tr. 25 SGK),"Hãy tìm và thực hiện một mô phỏng về ""Sự cân bằng của đòn bẩy"" (Balancing Act) trên trang PhET.",Vận dụng (Khai thác được thông tin/công cụ),"Tìm từ khóa ""Balancing Act"" -> Đặt các vật nặng lên đòn bẩy để tìm vị trí cân bằng.","HS: Thầy ơi, em muốn chơi trò bập bênh trên PhET để hiểu về trọng lượng ạ.
+AI: Em hãy gõ từ khóa ""Balance"" vào ô tìm kiếm của trang PhET nhé. Em chọn mô phỏng ""Balancing Act"". Thử đặt một cục 10kg ở gần tâm và một cục 5kg ở xa tâm xem đòn bẩy thế nào?
+HS: Wow, cục 5kg nhỏ hơn mà vẫn nâng được cục 10kg thầy ạ!
+AI: Xuất sắc! Đó chính là bài học về đòn bẩy mà mô phỏng đã giúp em tự rút ra đấy."
+HNMU-G9-R0085-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,85,9,Lớp 9,14,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhiệm vụ 1 (Tr. 24 SGK),Chuẩn bị một báo cáo ngắn (chụp màn hình) kết quả pha màu của em và gửi qua email cho giáo viên.,Vận dụng (Chuẩn bị được báo cáo/chia sẻ dữ liệu),Chụp ảnh màn hình trycolors -> Đính kèm tệp vào email gửi GV.,"HS: Em làm xong hết các màu rồi, giờ làm sao để nộp cho cô giáo xem kết quả trên màn hình ạ?
+AI: Em có biết phím ""Print Screen"" (hoặc dùng Snipping Tool) để ""chụp ảnh"" màn hình không?
+HS: Dạ em biết ạ. Chụp xong em dán vào Word đúng không thầy?
+AI: Đúng rồi! Sau đó em đính kèm tệp Word đó vào email gửi cô nhé. Đừng quên ghi rõ tên và lớp ở tiêu đề thư. Em đã sẵn sàng nộp bài chưa?
+HS: Dạ rồi ạ, em cảm ơn thầy AI đã hướng dẫn em hoàn thành bài thực hành này!"
+HNMU-G9-R0086-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,86,9,Lớp 9,1,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 27 SGK),Kể tên hai công cụ phổ biến dùng để trình bày thông tin trong trao đổi và hợp tác.,Biết (Kể tên được tên thiết bị/công cụ).,Sơ đồ tư duy và bài trình chiếu.,"HS: Thầy AI ơi, khi cần giới thiệu sản phẩm của nhóm cho cả lớp, em nên dùng gì để mọi người dễ theo dõi ạ?
+AI: Chào em! Để bắt đầu, em hãy nghĩ xem mình đã từng dùng phần mềm nào để vẽ các ý tưởng tỏa ra từ một trung tâm hoặc phần mềm nào để chiếu các trang nội dung lên bảng nhỉ?
+HS: Dạ là sơ đồ tư duy và PowerPoint đúng không thầy?
+AI: Rất chính xác! Đó chính là hai ""vũ khí"" lợi hại nhất để trình bày thông tin trong bài học này đấy."
+HNMU-G9-R0087-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,87,9,Lớp 9,2,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 27 SGK),Cách nhanh nhất để chia sẻ và tương tác trực tiếp với người nghe khi trình bày là gì?,Biết (Nêu được đặc điểm/dịch vụ).,Sử dụng sơ đồ tư duy hoặc bài trình chiếu để trình bày trực tiếp.,"HS: Thầy ơi, nếu em muốn vừa nói vừa giải thích chi tiết cho các bạn ngay lập tức thì làm cách nào hiệu quả nhất ạ?
+AI: Một câu hỏi rất hay! Em hãy nhìn vào mục 1 trang 27, có một cách chia sẻ cho phép em ""diễn giải bức tranh toàn cảnh"" và ""trả lời trực tiếp"" các câu hỏi, đó là cách gì nhỉ?
+HS: Dạ là trình bày trực tiếp ạ!
+AI: Giỏi lắm! Đây chính là cách giúp em kết nối tốt nhất với khán giả của mình."
+HNMU-G9-R0088-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,88,9,Lớp 9,3,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Hoạt động 1 (Tr. 27 SGK),Nêu khả năng đính kèm dữ liệu vào sơ đồ tư duy.,Biết (Nêu được khả năng).,"Có thể đính kèm văn bản, hình ảnh, biểu đồ, video, trang tính vào sơ đồ tư duy.","HS: Em vẽ sơ đồ tư duy nhưng muốn cho các bạn xem thêm video minh họa thì có được không thầy?
+AI: Hoàn toàn được em nhé! Ngoài văn bản và hình ảnh, em thử tìm trong mục 2 trang 28 xem sơ đồ tư duy còn cho phép mình ""đính kèm"" thêm những loại dữ liệu nào nữa?
+HS: A, em thấy rồi: cả video, biểu đồ và cả trang tính nữa ạ!
+AI: Tuyệt vời! Khả năng này biến sơ đồ tư duy thành một ""kho chứa"" thông tin cực kỳ sinh động đấy."
+HNMU-G9-R0089-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,89,9,Lớp 9,4,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 28 SGK),Có mấy cách chính để chia sẻ bài trình chiếu và sơ đồ tư duy được nhắc tới trong bài?,Biết (Nêu được các bước/quy trình).,3 cách: Trình bày trực tiếp; Chia sẻ để người khác xem; Chia sẻ để cộng tác theo thời gian thực.,"HS: Làm sao để em gửi bài cho nhóm bạn cùng sửa bài với em trên mạng ạ?
+AI: Đó chính là một hình thức chia sẻ đấy. Em hãy nhìn vào khung ghi nhớ ở trang 28, có 3 gạch đầu dòng mô tả các cách chia sẻ, em có thấy cách nào nhắc tới việc ""cùng làm việc trực tuyến"" không?
+HS: Dạ là ""Chia sẻ để cộng tác theo thời gian thực"" ạ!
+AI: Rất tốt! Đây là tính năng tuyệt vời nhất của các công cụ làm việc trực tuyến hiện nay đấy."
+HNMU-G9-R0090-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,90,9,Lớp 9,5,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 27 SGK),Tại sao sử dụng sơ đồ tư duy hoặc bài trình chiếu lại giúp trao đổi thông tin hiệu quả hơn?,Hiểu (Giải thích được lợi ích).,"Giúp trình bày thông tin một cách cô đọng, trực quan, dễ hiểu và dễ so sánh.","HS: Em cứ đứng nói chay cho các bạn nghe không được sao thầy, cần gì phải làm slide cho mất công ạ?
+AI: Nếu em nói về 10 loại cây khác nhau, liệu các bạn có nhớ hết được không? So với việc chỉ nghe, nếu các bạn được nhìn thấy hình ảnh và các ý chính tóm gọn trên màn hình thì cái nào dễ nhớ hơn?
+HS: Dạ nhìn slide thì sẽ trực quan và dễ hiểu hơn ạ.
+AI: Chính xác! Nó giúp thông tin trở nên ""cô đọng"" và ""trực quan"" hơn rất nhiều."
+HNMU-G9-R0091-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,91,9,Lớp 9,6,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Hoạt động 1 (Tr. 27 SGK),Giải thích ưu điểm của việc trình bày thông tin trực tiếp trước người nghe.,Hiểu (Trình bày được tác dụng).,Cho phép người trình bày diễn giải chi tiết và trực tiếp trả lời các thắc mắc của người nghe ngay lập tức.,"HS: Thầy ơi, tại sao trình bày trực tiếp vẫn được coi là cách chia sẻ dễ dàng nhất để cộng tác ạ?
+AI: Em hãy tưởng tượng khi em đang nói, có bạn không hiểu và giơ tay hỏi luôn. Lúc đó em có thể làm gì để giúp bạn ấy hiểu ngay?
+HS: Dạ em sẽ giải thích kỹ hơn chỗ bạn ấy thắc mắc ạ.
+AI: Rất thông minh! Khả năng tương tác ""hai chiều"" đó chính là ưu điểm lớn nhất của cách làm này đấy."
+HNMU-G9-R0092-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,92,9,Lớp 9,7,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 28 SGK),Tại sao việc sử dụng hình ảnh và biểu đồ một cách hợp lý lại quan trọng trong trình bày?,Hiểu (Giải thích được sự cần thiết).,"Để minh họa tốt nội dung, truyền tải thông điệp rõ ràng và thu hút sự chú ý của người xem.","HS: Em cho thật nhiều ảnh đẹp vào bài thuyết trình là được đúng không thầy?
+AI: Đẹp là tốt, nhưng nếu ảnh không liên quan đến nội dung thì người xem có bị phân tâm không? Theo em, hình ảnh và biểu đồ cần được sử dụng như thế nào để truyền tải ""thông điệp"" tốt nhất?
+HS: Dạ phải sử dụng ""đúng công cụ"" và ""hợp lý"" để minh họa cho nội dung ạ.
+AI: Xuất sắc! Đừng để cái đẹp làm lu mờ nội dung chính em nhé."
+HNMU-G9-R0093-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,93,9,Lớp 9,8,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 28 SGK),Việc đảm bảo chất lượng dữ liệu khi trình bày thông tin có ý nghĩa gì?,Hiểu (Giải thích được tầm quan trọng).,"Giúp thông tin được truyền tải sắc nét, bố cục hợp lý, tăng sự chú ý và cải thiện khả năng hiển thị.","HS: Thầy ơi, em lấy cái ảnh bị mờ một chút để minh họa có sao không ạ?
+AI: Nếu bạn ngồi cuối lớp không nhìn rõ ảnh của em thì mục đích minh họa có đạt được không? Việc đảm bảo hình ảnh ""sắc nét"" và ""bố cục hợp lý"" giúp ích gì cho người xem nhỉ?
+HS: Dạ giúp các bạn dễ chú ý và nhìn rõ thông tin em muốn nói ạ.
+AI: Đúng rồi! Chất lượng dữ liệu chính là sự tôn trọng đối với người xem đấy."
+HNMU-G9-R0094-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,94,9,Lớp 9,9,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 28 SGK),Trình bày cơ chế của việc cộng tác theo thời gian thực trên các ứng dụng trực tuyến.,Hiểu (Trình bày được cơ chế hoạt động).,"Cho phép nhiều người cùng mở một tệp và chỉnh sửa đồng thời, các thay đổi được cập nhật ngay lập tức cho tất cả thành viên.","HS: Thầy giải thích giúp em ""cộng tác thời gian thực"" là máy tính làm thế nào mà hay vậy ạ?
+AI: Em hãy tưởng tượng cả nhóm cùng cầm một chiếc bút và vẽ trên cùng một tờ giấy. Khi em vẽ một nét, các bạn có thấy ngay không?
+HS: Dạ thấy luôn ạ. À, vậy trên mạng là nhiều người cùng sửa một tệp đồng thời đúng không thầy?
+AI: Rất chuẩn! Mọi thay đổi sẽ được ""cập nhật tức thời"" cho tất cả mọi người, giúp làm việc nhóm nhanh hơn rất nhiều."
+HNMU-G9-R0095-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,95,9,Lớp 9,10,Bài 7: Trình bày thông tin trong trao đổi hợp tác,SGV Tr. 44,"Tại sao cần kết hợp nhiều loại công cụ (văn bản, ảnh, video) vào sơ đồ tư duy?",Hiểu (Giải thích lợi ích của thông tin).,"Để tạo ra một bài trình bày tổng thể, sinh động và đầy đủ, đáp ứng các nhu cầu tiếp nhận thông tin khác nhau của người học.","HS: Thầy ơi, sao trong bài ""Lược sử công cụ tính toán"", bạn Khoa lại phải cho cả trang tính vào sơ đồ tư duy ạ?
+AI: Nếu chỉ nói bằng lời rằng máy tính nhanh thế nào, em có thấy thuyết phục bằng việc cho các bạn xem một bảng số liệu so sánh cụ thể không?
+HS: Dạ có bảng số liệu thì sẽ tin cậy và đầy đủ hơn ạ.
+AI: Chính xác! Việc kết hợp nhiều loại dữ liệu giúp bài trình bày của em trở nên ""toàn diện"" và ""thuyết phục"" hơn."
+HNMU-G9-R0096-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,96,9,Lớp 9,11,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Luyện tập (Tr. 29 SGK),Sử dụng sơ đồ tư duy để tóm tắt các nội dung chính của Bài 7.,Vận dụng (Sử dụng được biến nhớ và biểu thức/công cụ).,"Sơ đồ gồm tâm là ""Trình bày thông tin""; các nhánh chính: Công cụ, Cách chia sẻ, Lưu ý khi sử dụng.","HS: Thầy hướng dẫn em vẽ sơ đồ tóm tắt bài này với ạ. Em nên bắt đầu từ đâu ạ?
+AI: Hãy đặt từ khóa chính của bài học vào giữa nhé. Theo em, bài này có mấy nội dung lớn tương ứng với các mục 1, 2 trong sách?
+HS: Dạ có 2 nhánh là ""Trình bày thông tin"" và ""Khả năng đính kèm dữ liệu"" ạ.
+AI: Rất tốt! Ở nhánh chia sẻ, em hãy vẽ thêm các nhánh nhỏ cho 3 cách chia sẻ mình vừa học ở câu 4 nhé. Thử xem nào!"
+HNMU-G9-R0097-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,97,9,Lớp 9,12,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Vận dụng (Tr. 29 SGK),Thiết lập một bài trình chiếu về một chủ đề em yêu thích và thực hiện chia sẻ trực tuyến cho bạn bè.,"Vận dụng (Chia sẻ được thông tin, dữ liệu).",Tạo bài trình chiếu (vd: về một đội bóng) -> Sử dụng tính năng Share (Chia sẻ) -> Nhập email bạn bè.,"HS: Thầy ơi, em làm xong slide về đội bóng yêu thích rồi, giờ em muốn bạn em cũng xem được trên máy bạn ấy thì làm thế nào ạ?
+AI: Em có thấy nút ""Share"" (Chia sẻ) ở góc trên bên phải màn hình không?
+HS: Dạ em thấy rồi ạ. Nó hiện ra ô nhập địa chỉ.
+AI: Em hãy nhập địa chỉ email của bạn vào đó và chọn quyền ""Người xem"" (Viewer) nhé. Em đã gửi được chưa?
+HS: Dạ bạn em đã nhận được và đang xem rồi thầy ơi! Em cảm ơn thầy!"
+HNMU-G9-R0098-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,98,9,Lớp 9,13,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Vận dụng (Tr. 29 SGK),"Thực hiện việc đính kèm một tệp video minh họa vào sơ đồ tư duy về chủ đề ""Môi trường"".",Vận dụng (Tạo được sản phẩm số).,Chọn nhánh cần đính kèm -> Sử dụng công cụ chèn liên kết/đính kèm (Link/Attachment) -> Chọn tệp video.,"HS: Thầy giúp em đính kèm cái video clip bảo vệ môi trường vào sơ đồ tư duy với ạ.
+AI: Em hãy nhấp chuột phải vào nhánh ""Hành động"" trên sơ đồ nhé. Có biểu tượng hình cái kẹp giấy hoặc chữ ""Link"" không?
+HS: Dạ có ạ, em bấm vào và chọn tệp video từ máy tính rồi.
+AI: Tuyệt vời! Bây giờ em thử nhấp vào biểu tượng đó xem video có hiện ra không nào?
+HS: Wow, video đã chạy ngay trên sơ đồ luôn rồi thầy ạ!"
+HNMU-G9-R0099-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,99,9,Lớp 9,14,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Thực hành (Tr. 30 SGK),"Chuẩn bị một bài báo cáo sử dụng kết hợp cả bài trình chiếu và sơ đồ tư duy cho dự án ""Triển lãm tin học"".",Vận dụng (Chuẩn bị được báo cáo của dự án).,Sử dụng sơ đồ tư duy để trình bày cấu trúc dự án; dùng bài trình chiếu để trình bày chi tiết từng nội dung.,"HS: Thầy ơi, em nên dùng cả hai công cụ này thế nào trong buổi báo cáo dự án cho hợp lý ạ?
+AI: Một chiến thuật rất hay là dùng Sơ đồ tư duy để các bạn thấy ""bức tranh tổng thể"" của dự án trước. Sau đó, em dùng Bài trình chiếu để làm gì cho từng phần nhỏ?
+HS: Dạ để đi vào chi tiết, kèm hình ảnh và video minh họa cho sinh động ạ.
+AI: Rất chuyên nghiệp! Sự kết hợp này sẽ giúp bài báo cáo của em cực kỳ thuyết phục đấy. Chúc em thành công!"
+HNMU-G9-R0100-STT1,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,100,9,Lớp 9,1,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,"Mục đích, yêu cầu (Tr. 30 SGK/Tr. 46 SGV)",Các nhiệm vụ thực hành trong Bài 8 phục vụ cho dự án nào?,Biết (Nêu được mục tiêu của dự án),"Dự án ""Triển lãm tin học"".","HS: Thầy ơi, bài thực hành này em phải làm về chủ đề gì ạ?
+AI: Chào em! Để bắt đầu, em hãy nhớ lại Bài 7 chúng ta đã nhắc đến một sự kiện lớn ở trường sắp tới. Em thử nhìn vào phần khởi động ở trang 30 xem tên dự án đó là gì?
+HS: Dạ là dự án ""Triển lãm tin học"" ạ.
+AI: Rất chính xác! Đây là một hành trình thú vị để em tổng kết lại những gì đã học từ lớp 6 đến giờ đấy."
+HNMU-G9-R0101-STT2,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,101,9,Lớp 9,2,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Nhiệm vụ 2 (Tr. 31 SGK/Tr. 47 SGV),Sơ đồ tư duy giúp người nghe nắm bắt điều gì tốt hơn so với bài trình chiếu khi giới thiệu dự án?,Biết (Nêu được ưu điểm công cụ),Giúp người xem nắm bắt cái nhìn tổng quan và cấu trúc của toàn bộ dự án.,"HS: Sao em phải dùng cả sơ đồ tư duy lẫn slide hả thầy? Một cái không đủ sao ạ?
+AI: Một câu hỏi rất hay! Nếu em muốn các bạn thấy được ""bức tranh toàn cảnh"" của dự án chỉ trong một giây, em sẽ chọn cách trình bày nào?
+HS: Dạ chắc là sơ đồ tư duy vì nó hiện ra hết các nhánh ạ.
+AI: Giỏi lắm! Đó chính là lý do mình dùng sơ đồ để giới thiệu ""cấu trúc"", còn slide để nói chi tiết sau."
+HNMU-G9-R0102-STT3,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,102,9,Lớp 9,3,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Nhiệm vụ 1 (Tr. 31 SGK),Đuôi tệp (phần mở rộng) của phần mềm sơ đồ tư duy MindMaple Lite là gì?,Biết (Nhận biết phần mở rộng tên tệp),Phần mở rộng là .emm.,"HS: Thầy ơi, em lưu tệp sơ đồ xong thấy nó có cái đuôi lạ lắm, không phải .docx hay .pptx ạ.
+AI: Em quan sát kỹ tệp mình vừa lưu trên máy tính nhé. Sau dấu chấm là 3 chữ cái nào nhỉ?
+HS: Dạ là .emm ạ.
+AI: Đúng rồi! Mỗi phần mềm có một ""chứng minh thư"" riêng. Em hãy nhớ .emm là dành cho MindMaple nhé!"
+HNMU-G9-R0103-STT4,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,103,9,Lớp 9,4,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Mục 2 (Tr. 28 SGK),Kể tên 3 loại dữ liệu có thể đính kèm vào một nhánh trên sơ đồ tư duy kĩ thuật số.,Biết (Kể tên được khả năng đính kèm),"Văn bản, hình ảnh, video, trang tính, biểu đồ.","HS: Ngoài chữ ra, em có thể ""gắn"" thêm gì vào sơ đồ để nó sinh động hơn không thầy?
+AI: Ồ, rất nhiều thứ đấy! Em hãy nhìn vào mục 2 ở trang 28, đoạn nói về ""Khả năng đính kèm"". Em thấy người ta liệt kê những gì nào?
+HS: Dạ em thấy có văn bản, hình ảnh và cả video nữa ạ.
+AI: Rất tốt! Khả năng này biến sơ đồ của em thành một ""kho chứa"" thông tin cực kỳ lợi hại."
+HNMU-G9-R0104-STT5,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,104,9,Lớp 9,5,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Chuẩn bị (Tr. 46 SGV),"Tại sao học sinh cần chuẩn bị sẵn các tệp dữ liệu (ảnh, video, bảng tính) trước khi thực hành?",Hiểu (Giải thích sự cần thiết),"Để quá trình thực hiện liên tục, không bị ngắt quãng và đảm bảo có sẵn dữ liệu để đính kèm.","HS: Em cứ vừa làm vừa lên mạng tìm ảnh đính kèm có được không thầy?
+AI: Hãy tưởng tượng em đang nấu ăn mà cứ mỗi lúc lại phải chạy ra chợ mua một thứ gia vị, món ăn của em có ngon và nhanh được không?
+HS: Dạ không, sẽ rất lâu và bị rối ạ.
+AI: Đúng vậy! Việc chuẩn bị dữ liệu vào một thư mục trước giúp em làm gì cho quá trình thực hành?
+HS: Giúp em làm liên tục và không bị mất tập trung ạ. Em hiểu rồi!"
+HNMU-G9-R0105-STT6,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,105,9,Lớp 9,6,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Hoạt động khởi động (Tr. 46 SGV),Giải thích tại sao việc kết hợp sơ đồ tư duy và bài trình chiếu giúp buổi báo cáo chuyên nghiệp hơn?,Hiểu (Trình bày được tác dụng),"Giúp người nghe vừa thấy được bức tranh tổng thể, vừa hiểu sâu các nội dung chi tiết thông qua minh họa đa phương tiện.","HS: Thầy giải thích giúp em tại sao sự kết hợp này lại được coi là ""chuyên nghiệp"" ạ?
+AI: Nếu em chỉ chiếu slide, các bạn có dễ bị quên mất phần trước đó em đã nói gì không?
+HS: Dạ có thể ạ, vì slide cứ trôi qua mất.
+AI: Nhưng nếu có sơ đồ tư duy bên cạnh làm ""bản đồ dẫn đường"" cho toàn bài, các bạn sẽ luôn biết mình đang ở đâu. Em thấy sự kết hợp này thế nào?
+HS: Wow, giống như có cả bản đồ và kính phóng đại vậy thầy! Hay quá ạ."
+HNMU-G9-R0106-STT7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,106,9,Lớp 9,7,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Lưu ý (Tr. 46 SGV),"Tại sao khi sử dụng hình ảnh trong bài trình chiếu, chúng ta cần chọn những ảnh ""sắc nét"" và ""bố cục hợp lý""?",Hiểu (Giải thích được tầm quan trọng),"Để đảm bảo tính thẩm mỹ, thu hút sự chú ý và cải thiện khả năng truyền tải thông tin đến người xem.","HS: Em lấy ảnh trên mạng hơi mờ một tí chắc không sao đâu thầy nhỉ?
+AI: Nếu em ngồi ở cuối lớp và nhìn lên màn hình thấy một tấm hình mờ căm, em có còn hứng thú nghe bạn nói không?
+HS: Dạ không, em sẽ thấy mỏi mắt và chán ạ.
+AI: Chính xác! Chất lượng hình ảnh chính là cách em thể hiện sự tôn trọng với người nghe. Vậy ảnh cần đạt tiêu chuẩn gì em nhỉ?
+HS: Dạ phải thật rõ nét và được sắp xếp đẹp mắt ạ!"
+HNMU-G9-R0107-STT8,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,107,9,Lớp 9,8,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Nhiệm vụ 1 (Tr. 30 SGK),Trình bày các bước để đính kèm một tệp bảng tính vào một nhánh của sơ đồ tư duy trên phần mềm.,Hiểu (Mô tả được quy trình),Chọn nhánh -> Chọn công cụ Link/Attachment -> Duyệt đến tệp cần đính kèm -> OK.,"HS: Thầy hướng dẫn em cách gắn cái bảng tính kinh phí vào sơ đồ với ạ.
+AI: Đầu tiên, em hãy chọn (nhấp chuột) vào nhánh ""Kinh phí"" nhé. Sau đó, em tìm biểu tượng hình ""cái kẹp giấy"" hoặc chữ ""Link"" trên thanh công cụ xem.
+HS: Dạ em thấy rồi, nó hiện ra ô để chọn tệp ạ.
+AI: Tốt lắm! Bước cuối cùng là em dẫn đường mạch đến tệp bảng tính trong thư mục của em. Thử làm xem có hiện ra biểu tượng kẹp giấy trên nhánh không nào?
+HS: A, hiện ra rồi thầy ơi! Em đã làm được."
+HNMU-G9-R0108-STT9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,108,9,Lớp 9,9,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Mục 1 (Tr. 28 SGK),"Phân biệt sự khác nhau giữa việc ""Chia sẻ để xem"" và ""Chia sẻ để cộng tác"" trên các ứng dụng trực tuyến.",Hiểu (Phân biệt được chức năng),Chia sẻ để xem: người nhận chỉ được đọc nội dung; Chia sẻ để cộng tác: người nhận có quyền sửa và cập nhật thay đổi đồng thời.,"HS: Thầy ơi, bạn em bảo bạn ấy không sửa được bài em gửi, dù em đã nhấn nút Chia sẻ rồi ạ.
+AI: Có thể em mới chỉ cấp quyền ""Viewer"" (Người xem) thôi. Nếu muốn bạn cùng sửa bài với em, em phải chọn quyền gì trong phần cài đặt chia sẻ?
+HS: Dạ em phải chọn quyền ""Editor"" (Người chỉnh sửa) đúng không ạ?
+AI: Rất chính xác! Đó chính là điểm khác biệt giữa việc chỉ cho xem và mời cùng làm việc đấy."
+HNMU-G9-R0109-STT10,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,109,9,Lớp 9,10,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Nhiệm vụ 2 (Tr. 47 SGV),Tại sao việc trình bày sơ đồ tư duy trước nhóm lại là một bước quan trọng trong quá trình thực hành?,Hiểu (Giải thích lợi ích của hoạt động),"Để tiếp nhận phản hồi, điều chỉnh và hoàn thiện nội dung trước khi trình bày chính thức trước lớp.","HS: Em làm xong rồi, em nộp luôn cho cô được không thầy, cần gì phải nói thử trước nhóm ạ?
+AI: Nếu trong sơ đồ của em có một chỗ các bạn thấy khó hiểu mà em chưa nhận ra thì sao? Việc nói thử giúp em phát hiện điều gì?
+HS: Dạ giúp em biết chỗ nào chưa ổn để sửa lại cho tốt hơn ạ.
+AI: Đúng rồi! Ý kiến của các bạn chính là ""gương soi"" để sản phẩm của em hoàn hảo hơn đấy."
+HNMU-G9-R0110-STT11,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,110,9,Lớp 9,11,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Luyện tập (Tr. 29 SGK),"Hãy thực hiện tạo một sơ đồ tư duy tóm tắt 3 nội dung chính của dự án: Mục tiêu, Thành phần nhóm và Các hoạt động chính.",Vận dụng (Sử dụng được công cụ),"HS tạo được sơ đồ có tâm là ""Dự án Triển lãm"" và 3 nhánh yêu cầu.","HS: Thầy hướng dẫn em bắt đầu vẽ sơ đồ dự án với ạ. Em đặt tên ở giữa rồi, giờ làm gì nữa ạ?
+AI: Tuyệt vời! Từ cái ""tâm"" đó, em hãy vẽ ra 3 ""cánh tay"" lớn. Theo yêu cầu của câu hỏi, 3 cánh tay đó sẽ mang tên là gì nào?
+HS: Dạ là Mục tiêu, Nhóm và Hoạt động ạ.
+AI: Rất tốt! Bây giờ em hãy điền chi tiết vào mỗi nhánh nhé. Ví dụ nhánh Nhóm thì ghi tên em và các bạn vào. Thử xem nào!
+HS: Em làm xong rồi, nhìn rất rõ ràng thầy ạ!"
+HNMU-G9-R0111-STT12,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,111,9,Lớp 9,12,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Nhiệm vụ 1 (Tr. 31 SGK),"Sử dụng tính năng đính kèm để đưa tệp ""KinhPhi.xlsx"" vào đúng nhánh của sơ đồ tư duy em vừa tạo.",Vận dụng (Thực hiện thao tác xử lý),"HS đính kèm đúng tệp bảng tính vào nhánh ""Kinh phí"" trên sơ đồ.","HS: Thầy xem em gắn tệp bảng tính vào nhánh ""Mục tiêu"" có đúng không ạ?
+AI: Hãy suy nghĩ một chút nhé: Thông tin về ""tiền nong, chi phí"" thì nên nằm ở nhánh nào cho hợp lôgic nhất?
+HS: A, phải là nhánh ""Kinh phí"" (hoặc Hoạt động) mới đúng ạ. Để em kéo nó sang.
+AI: Chính xác! Đính kèm đúng vị trí giúp người xem tìm kiếm thông tin nhanh hơn rất nhiều."
+HNMU-G9-R0112-STT13,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,112,9,Lớp 9,13,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Nhiệm vụ 3 (Tr. 32 SGK),"Thiết lập 3 slide PowerPoint về chủ đề ""Lược sử công cụ tính toán"" có sử dụng ít nhất 2 hình ảnh minh họa từ thư mục tư liệu.",Vận dụng (Tạo được sản phẩm số),HS tạo được 3 slide có nội dung và hình ảnh phù hợp tiêu chí.,"HS: Bài này dài quá, em nên chia nội dung vào 3 slide thế nào cho hợp lý hả thầy?
+AI: Đừng lo, mình chia nhỏ ra nhé! Slide 1: Tiêu đề. Slide 2: Các công cụ cổ đại (kèm ảnh). Slide 3: Máy tính hiện đại (kèm ảnh). Em định chọn ảnh nào cho Slide 2?
+HS: Em sẽ chọn ảnh bàn tính gẩy và máy tính Pascaline ạ.
+AI: Lựa chọn tuyệt vời! Hãy bắt tay vào làm slide và nhớ chỉnh cỡ chữ cho to, rõ ràng nhé."
+HNMU-G9-R0113-STT14,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,113,9,Lớp 9,14,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Vận dụng (Tr. 29 SGK),"Chia sẻ tệp bài trình chiếu của nhóm em cho giáo viên qua Google Drive và cấp quyền ""Người xem"".",Vận dụng (Chia sẻ được dữ liệu),HS thực hiện Share tệp qua email GV với quyền Viewer.,"HS: Em làm slide xong rồi, giờ gửi cho cô giáo thế nào để cô chỉ xem được thôi, không xóa nhầm bài của em ạ?
+AI: Em nhấp chuột phải vào tệp trên Drive và chọn ""Chia sẻ"" (Share) nhé. Trong ô nhập email của cô, em nhìn xuống phần ""Vai trò"", có các lựa chọn nào?
+HS: Dạ có Người xem, Người nhận xét và Người chỉnh sửa ạ.
+AI: Để an toàn nhất cho bài làm của em, em sẽ chọn cái nào?
+HS: Dạ em chọn ""Người xem"" ạ. Em đã gửi thành công cho cô rồi! Cảm ơn thầy AI rất nhiều!"

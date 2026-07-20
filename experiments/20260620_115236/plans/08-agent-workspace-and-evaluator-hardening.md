@@ -6,7 +6,7 @@
 - Approval: `NOT_APPROVED`
 - Implementation timing: sau phase PoC, trước khi chạy nhiều write-capable agent song song hoặc dùng evaluator cho quyết định có hệ quả
 - Priority: deferred hardening
-- Dependencies: P01; cần đồng bộ thiết kế với P06 dataset tooling và P07 evaluation pipeline
+- Dependencies: P01; cần đồng bộ thiết kế với P06 learning-resource/benchmark data platform và P07 evaluation pipeline
 - Blocks: production-scale parallel agent execution và automated quality gates có tính quyết định
 - Implementation owner: AI engineering/orchestrator
 - Security reviewer: project lead hoặc reviewer độc lập không phải producer của cùng thay đổi

@@ -14,11 +14,13 @@ AGENT_NAMES = (
     "teacher-collaboration-designer",
     "learning-resource-curator",
     "benchmark-specification-designer",
+    "hnmu-dialogue-auditor",
 )
 PINNED_CODEX_MODELS = {
     "research-methodologist": ("gpt-5.4-mini", "medium"),
     "learning-resource-curator": ("gpt-5.4-mini", "medium"),
     "benchmark-specification-designer": ("gpt-5.4-mini", "high"),
+    "hnmu-dialogue-auditor": ("gpt-5.4-mini", "medium"),
 }
 
 
@@ -48,6 +50,7 @@ class AdapterTests(unittest.TestCase):
             "research-methodologist",
             "learning-resource-curator",
             "benchmark-specification-designer",
+            "hnmu-dialogue-auditor",
         ):
             path = ROOT / f".codex/agents/{name}.toml"
             with path.open("rb") as handle:

@@ -42,6 +42,9 @@ In plain language: the user directs the orchestrator; the orchestrator delegates
 | Skill discovery links | `.agents/skills/` | P01 | Generated and validated by P01 |
 | Coordination contract | `experiments/_templates/` | P01 | Implemented by P01 |
 | Modular plans | `experiments/<id>/plans/` | Respective plan | Active |
+| Shared raw data | `shared/raw_data/` | 20260709 Plan 02 | Implemented for HNMU dialogue manifests lớp 6–9; Plan 04 audit outputs cover lớp 6–7 and a separate follow-up run for lớp 8–9 |
+| Shared learning resources | `shared/learning_resources/` | 20260709 Plan 02 layout / Plan 03 content | SGK/SGV images, derived PDFs, registries, Nguyen OCR Markdown for SGK/SGV Tin học 6–9, `ocr_text_manifest.csv`, `learning_resource_fragments.csv`, a rebuildable SQLite FTS retrieval index, and `agent_context/` for audit-agent navigation are available; OCR/MinerU probe outputs remain experiment artifacts and are not the primary retrieval source |
+| Shared project package | `src/edu_benchmark/` | 20260709 Plan 02 layout; Plan 03/04 add logic | Data I/O, learning-resource fragmentation/retrieval, dialogue-audit v0, and strict checklist-to-sample aggregation for Plan 04 outputs are implemented; benchmark conversion/evaluation remain later plans |
 | Teacher workflow and packet | Future P03/P04 artifacts | P03/P04 | Not implemented |
 | Benchmark specification specialist | `agents/benchmark-specification-designer/` | 20260701 Plan 01 / P05 support | Implemented as specialist support; benchmark content remains provisional |
 | Learning-resource specialist | `agents/learning-resource-curator/` | 20260701 Plan 01 / P06 support | Implemented as v0 mapping support; database platform remains future P06 |
@@ -124,6 +127,23 @@ Package installation, project scripts, validators, and tests must run with the m
 
 P01 owns the original agent infrastructure and root coordination contract. The 20260701 specialist-expansion plan adds `learning-resource-curator` as P06 support and `benchmark-specification-designer` as P05 support. P02 may consume the research specialist but does not modify it without a P01 migration. P03/P04 consume teacher-workflow capabilities. P05–P07 still own official benchmark, dataset, and evaluation artifacts respectively.
 
+For experiment `20260709_155523`, Plan 02 owns the shared layout contract:
+
+- `shared/raw_data/` stores unmodified raw inputs and manifests;
+- `shared/learning_resources/` stores reusable SGK/SGV assets, OCR, registries, and fragments;
+- `src/edu_benchmark/` stores reusable code for data I/O, audit, conversion, learning resources, and benchmark quality checks;
+- `experiments/<id>/outputs/` stores run-specific derived outputs.
+
+Plan 03 may populate `shared/learning_resources/` and its learning-resource manifest, but should not redefine the Plan 02 layout without an explicit roadmap update. As of 2026-07-18, Plan 03 Phases 0–2 have copied SGK images, crawled SGV images, created derived PDFs, and produced v0 topic/lesson/position registries for Tin học 6–9. Phase 3 OCR probes remain useful as technical evidence, but the current shared retrieval source is Nguyen OCR Markdown under `shared/learning_resources/ocr_text/`, not the old OCR/MinerU probe outputs. The agreed processed-learning-resource direction is Markdown-first: Markdown pages with front matter and stable anchors are the human-readable artifact and feed SQLite/DuckDB retrieval indexes. Nguyen OCR Markdown for SGK/SGV Tin học 6–9 has been registered as 154 OCR units, split into 2,750 fragments, and indexed in a rebuildable SQLite FTS artifact. All OCR/fragment/index outputs remain `draft` until UET/HNMU review. Plan 04 and Plan 06 should add code under `src/edu_benchmark/` rather than placing reusable scripts inside experiment folders.
+
+For Plan 03 Phases 3–5, reusable learning-resource processing code should live under `src/edu_benchmark/learning_resources/`; thin CLI wrappers may live under `scripts/learning_resources/`. The default `benchmark_env` runs orchestration, layout reconstruction, Markdown export, fragment/index building, tests, and validation. The separate `ocr_vietocr_gpu` Conda environment is reserved for VietOCR GPU recognition only, with intermediate files connecting it back to the `benchmark_env` pipeline.
+
+MinerU local document-parsing probes use a separate `ocr_mineru` Conda environment. This keeps MinerU's Torch/CUDA/document-parsing dependency stack isolated from `benchmark_env` and `ocr_vietocr_gpu`. The `ocr_mineru` environment is for MinerU model/library probes only; project orchestration, validation, and reusable code still belong to `benchmark_env` and `src/edu_benchmark/`.
+
+Plan 03 Phase A adds a book-level MinerU preparation layer under `src/edu_benchmark/learning_resources/mineru_book_phase_a.py`, with thin CLIs in `scripts/learning_resources/prepare_mineru_book_phase_a.py` and `scripts/learning_resources/collect_mineru_book_markdown.py`. The preparation step runs in `benchmark_env`, writes experiment-scoped manifests and filtered PDFs under `experiments/20260709_155523/outputs/mineru_book_phase_a/`, and emits commands for the user to run MinerU outside the sandbox in `ocr_mineru`. Raw source images remain unchanged; by default, original pages `1-4` and the final 2 pages are excluded only through manifests and derived PDFs. The follow-up post-processing layer lives in `src/edu_benchmark/learning_resources/mineru_postprocess.py` and `scripts/learning_resources/postprocess_mineru_book_phase.py`; it runs in `benchmark_env`, reads MinerU `*_content_list_v2.json`, writes cleaned page-level Markdown under the experiment output folder, and creates a review queue instead of silently promoting pages to shared parsed learning resources.
+
+Plan 04 adds deterministic dialogue-audit tooling under `src/edu_benchmark/data_io/` and `src/edu_benchmark/dialogue_audit/`, with a CLI in `scripts/dialogue_audit/`. The completed Plan 04 v0 lớp 6–7 run writes under `experiments/20260709_155523/outputs/hnmu_dialogue_audit/`. A separate explicit follow-up audit for lớp 8–9 now writes under `experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/`, with its 3-shard specialist checklist output under `agent_shard_audit/`. In each merged agent-audit output, `quality_check_suggestions.csv` is the main sample-level review file and uses the canonical `quality_decision` labels `pass`, `need_human_review`, and `failed`; `raw_dialogue_checklist_results*.csv` remains the detailed criterion-level source of truth. The audit is a v0 mechanical/retrieval/agent-assisted pass, not final HNMU/UET subject-matter adjudication.
+
 Later plans must not move canonical logic into runtime adapters or redefine P01 coordination semantics without an explicit architecture decision and migration plan.
 
 ## Extension points
@@ -143,3 +163,7 @@ Later plans must not move canonical logic into runtime adapters or redefine P01 
 - Direct Python dependencies are pinned in `requirements.txt`; a complete Conda environment export and transitive lockfile have not yet been assigned to a dedicated plan.
 
 Last verified against P01 on 2026-06-21.
+
+### HNMU dialogue auditor specialist
+
+`hnmu-dialogue-auditor` is a narrow Plan 04 specialist. It audits raw HNMU dialogue rows with the raw-dialogue checklist, SGK/SGV retrieval evidence, and the canonical HNMU scaffolding note. It writes criterion-level checklist rows and review suggestions; it does not edit raw Excel files, create benchmark samples, assign official tasks, or replace HNMU/UET judgment.

@@ -1,0 +1,105 @@
+{
+  "status": "synced_from_draft_fragment_as_keep_policy",
+  "synced_at": "2026-07-19T20:03:05+07:00",
+  "source_checklist": "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv",
+  "policy": "If a draft fragment matches metadata and content, draft status alone is treated as preliminary pass and does not route the sample to review.",
+  "converted_uncertain_rows": 560,
+  "converted_by_criterion": {
+    "RAW-CON-01": 154,
+    "RAW-CON-02": 98,
+    "RAW-CON-06": 154,
+    "RAW-CON-07": 154
+  },
+  "rows": 10584,
+  "sample_count": 588,
+  "criteria_per_sample": [
+    18
+  ],
+  "checklist_result_counts": {
+    "pass": 9968,
+    "uncertain": 614,
+    "fail": 2
+  },
+  "quality_suggestion_counts": {
+    "needs_human_review": 299,
+    "fail": 1,
+    "keep": 288
+  },
+  "review_queue_suggestion_count": 300,
+  "review_priority_counts": {
+    "trung bình": 295,
+    "cao": 5
+  },
+  "by_criterion": {
+    "RAW-CON-01": {
+      "pass": 490,
+      "uncertain": 98
+    },
+    "RAW-CON-02": {
+      "pass": 532,
+      "uncertain": 56
+    },
+    "RAW-CON-03": {
+      "pass": 588
+    },
+    "RAW-CON-04": {
+      "uncertain": 195,
+      "fail": 1,
+      "pass": 392
+    },
+    "RAW-CON-05": {
+      "pass": 588
+    },
+    "RAW-CON-06": {
+      "pass": 490,
+      "uncertain": 98
+    },
+    "RAW-CON-07": {
+      "pass": 490,
+      "uncertain": 98
+    },
+    "RAW-DUP-03": {
+      "pass": 586,
+      "uncertain": 2
+    },
+    "RAW-DUP-04": {
+      "pass": 586,
+      "uncertain": 2
+    },
+    "RAW-PED-01": {
+      "pass": 536,
+      "uncertain": 52
+    },
+    "RAW-PED-02": {
+      "pass": 580,
+      "uncertain": 8
+    },
+    "RAW-PED-03": {
+      "pass": 587,
+      "uncertain": 1
+    },
+    "RAW-PED-04": {
+      "pass": 587,
+      "uncertain": 1
+    },
+    "RAW-PED-05": {
+      "pass": 588
+    },
+    "RAW-PED-06": {
+      "pass": 588
+    },
+    "RAW-STR-02": {
+      "pass": 588
+    },
+    "RAW-STR-03": {
+      "pass": 586,
+      "fail": 1,
+      "uncertain": 1
+    },
+    "RAW-STR-04": {
+      "pass": 586,
+      "uncertain": 2
+    }
+  },
+  "backup_policy": "Files before this policy update were copied once with .pre_draft_policy suffix."
+}

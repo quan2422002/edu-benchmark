@@ -1,4 +1,8 @@
 # Specialist handoff
+## Cập nhật trạng thái ngày 18/07/2026
+
+Handoff này ghi trạng thái lịch sử của Pha 1 tại ngày 15/07/2026. Sau đó, OCR Markdown SGK/SGV Tin học 6–9 do Nguyên gửi đã được xử lý ở Plan 03 Pha 4–5, đồng bộ vào manifest/fragment/index. Vì vậy câu “không OCR, không fragment” trong handoff này chỉ đúng với phạm vi Pha 1, không phải trạng thái hiện tại của toàn bộ học liệu.
+
 
 - Delegation ID: `learning-resource-phase1-sgv-crawl-007`
 - Agent: `learning-resource-curator` skill in single-agent/orchestrator mode

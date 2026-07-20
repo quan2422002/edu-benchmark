@@ -1,0 +1,118 @@
+{
+  "status": "full_sync_from_evidence_policy_checklist",
+  "synced_at": "2026-07-19T22:35:20+07:00",
+  "source_checklist": "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv",
+  "policy": "Matching draft fragments are treated as usable preliminary evidence for evidence-related consistency criteria; draft status alone does not route a sample to review.",
+  "evidence_policy_criteria": [
+    "RAW-CON-01",
+    "RAW-CON-02",
+    "RAW-CON-04",
+    "RAW-CON-06",
+    "RAW-CON-07"
+  ],
+  "converted_uncertain_rows_this_sync": 139,
+  "converted_by_criterion_this_sync": {
+    "RAW-CON-04": 139
+  },
+  "kept_uncertain_by_reason_this_sync": {
+    "missing_fragment": 406
+  },
+  "rows": 10584,
+  "sample_count": 588,
+  "criteria_per_sample": [
+    18
+  ],
+  "checklist_result_counts": {
+    "pass": 10107,
+    "fail": 2,
+    "uncertain": 475
+  },
+  "quality_suggestion_counts": {
+    "keep": 427,
+    "fail": 1,
+    "needs_human_review": 160
+  },
+  "review_queue_suggestion_count": 161,
+  "review_priority_counts": {
+    "cao": 5,
+    "trung bình": 156
+  },
+  "by_criterion": {
+    "RAW-CON-01": {
+      "pass": 490,
+      "uncertain": 98
+    },
+    "RAW-CON-02": {
+      "pass": 532,
+      "uncertain": 56
+    },
+    "RAW-CON-03": {
+      "pass": 588
+    },
+    "RAW-CON-04": {
+      "pass": 531,
+      "fail": 1,
+      "uncertain": 56
+    },
+    "RAW-CON-05": {
+      "pass": 588
+    },
+    "RAW-CON-06": {
+      "pass": 490,
+      "uncertain": 98
+    },
+    "RAW-CON-07": {
+      "pass": 490,
+      "uncertain": 98
+    },
+    "RAW-DUP-03": {
+      "pass": 586,
+      "uncertain": 2
+    },
+    "RAW-DUP-04": {
+      "pass": 586,
+      "uncertain": 2
+    },
+    "RAW-PED-01": {
+      "pass": 536,
+      "uncertain": 52
+    },
+    "RAW-PED-02": {
+      "pass": 580,
+      "uncertain": 8
+    },
+    "RAW-PED-03": {
+      "pass": 587,
+      "uncertain": 1
+    },
+    "RAW-PED-04": {
+      "pass": 587,
+      "uncertain": 1
+    },
+    "RAW-PED-05": {
+      "pass": 588
+    },
+    "RAW-PED-06": {
+      "pass": 588
+    },
+    "RAW-STR-02": {
+      "pass": 588
+    },
+    "RAW-STR-03": {
+      "pass": 586,
+      "fail": 1,
+      "uncertain": 1
+    },
+    "RAW-STR-04": {
+      "pass": 586,
+      "uncertain": 2
+    }
+  },
+  "synced_outputs": [
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/quality_check_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/merge_validation_summary.json",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/agent_audit_notes.md"
+  ],
+  "backup_policy": "Files before this full sync were copied once with .pre_evidence_policy_full_sync suffix."
+}

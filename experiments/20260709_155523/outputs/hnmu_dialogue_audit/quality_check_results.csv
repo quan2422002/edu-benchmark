@@ -1,0 +1,463 @@
+sample_id,grade,lesson,bloom_band,quality_decision,confidence_score,failure_reasons,suggested_reviewer_action,needs_sgv_verification,needs_learning_resource_review
+HNMU-G6-R0002-STT1,6,Bài 1. Thông tin và dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0003-STT2,6,Bài 1. Thông tin và dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0004-STT3,6,Bài 1. Thông tin và dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0005-STT4,6,Bài 1. Thông tin và dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0006-STT5,6,Bài 1. Thông tin và dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0007-STT6,6,Bài 1. Thông tin và dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0008-STT7,6,Bài 1. Thông tin và dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0009-STT8,6,Bài 1. Thông tin và dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0010-STT9,6,Bài 1. Thông tin và dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0011-STT10,6,Bài 1. Thông tin và dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0012-STT11,6,Bài 1. Thông tin và dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0013-STT12,6,Bài 1. Thông tin và dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0014-STT13,6,Bài 1. Thông tin và dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0015-STT14,6,Bài 1. Thông tin và dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0016-STT1,6,Bài 2. Xử lí dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0017-STT2,6,Bài 2. Xử lí dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0018-STT3,6,Bài 2. Xử lí dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0019-STT4,6,Bài 2. Xử lí dữ liệu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0020-STT5,6,Bài 2. Xử lí dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0021-STT6,6,Bài 2. Xử lí dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0022-STT7,6,Bài 2. Xử lí dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0023-STT8,6,Bài 2. Xử lí dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0024-STT9,6,Bài 2. Xử lí dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0025-STT10,6,Bài 2. Xử lí dữ liệu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0026-STT11,6,Bài 2. Xử lí dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0027-STT12,6,Bài 2. Xử lí dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0028-STT13,6,Bài 2. Xử lí dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0029-STT14,6,Bài 2. Xử lí dữ liệu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0030-STT1,6,Bài 3. Thông tin trong máy tinh,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0031-STT2,6,Bài 3. Thông tin trong máy tinh,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0032-STT3,6,Bài 3. Thông tin trong máy tinh,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0033-STT4,6,Bài 3. Thông tin trong máy tinh,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0034-STT5,6,Bài 3. Thông tin trong máy tinh,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0035-STT6,6,Bài 3. Thông tin trong máy tinh,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0036-STT7,6,Bài 3. Thông tin trong máy tinh,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0037-STT8,6,Bài 3. Thông tin trong máy tinh,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0038-STT9,6,Bài 3. Thông tin trong máy tinh,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0039-STT10,6,Bài 3. Thông tin trong máy tinh,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0040-STT11,6,Bài 3. Thông tin trong máy tinh,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0041-STT12,6,Bài 3. Thông tin trong máy tinh,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0042-STT13,6,Bài 3. Thông tin trong máy tinh,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0043-STT14,6,Bài 3. Thông tin trong máy tinh,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0044-STT1,6,Bài 4. Mạng máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0045-STT2,6,Bài 4. Mạng máy tính,Nhận biết,failed,0.75,Thiếu trường bắt buộc: dialogue,exclude_from_current_batch,false,false
+HNMU-G6-R0046-STT3,6,Bài 4. Mạng máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0047-STT4,6,Bài 4. Mạng máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0048-STT5,6,Bài 4. Mạng máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0049-STT6,6,Bài 4. Mạng máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0050-STT7,6,Bài 4. Mạng máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0051-STT8,6,Bài 4. Mạng máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0052-STT9,6,Bài 4. Mạng máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0053-STT10,6,Bài 4. Mạng máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0054-STT11,6,Bài 4. Mạng máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0055-STT12,6,Bài 4. Mạng máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0056-STT13,6,Bài 4. Mạng máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0057-STT14,6,Bài 4. Mạng máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0058-STT1,6,Bài 5: Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0059-STT2,6,Bài 5: Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0060-STT3,6,Bài 5: Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0061-STT4,6,Bài 5: Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0062-STT5,6,Bài 5: Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0063-STT6,6,Bài 5: Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0064-STT7,6,Bài 5: Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0065-STT8,6,Bài 5: Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0066-STT9,6,Bài 5: Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0067-STT10,6,Bài 5: Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0068-STT11,6,Bài 5: Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0069-STT12,6,Bài 5: Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0070-STT13,6,Bài 5: Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0071-STT14,6,Bài 5: Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0072-STT1,6,Bài 6: Mạng thông tin toàn cầu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0073-STT2,6,Bài 6: Mạng thông tin toàn cầu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0074-STT3,6,Bài 6: Mạng thông tin toàn cầu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0075-STT4,6,Bài 6: Mạng thông tin toàn cầu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0076-STT5,6,Bài 6: Mạng thông tin toàn cầu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0077-STT6,6,Bài 6: Mạng thông tin toàn cầu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0078-STT7,6,Bài 6: Mạng thông tin toàn cầu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0079-STT8,6,Bài 6: Mạng thông tin toàn cầu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0080-STT9,6,Bài 6: Mạng thông tin toàn cầu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0081-STT10,6,Bài 6: Mạng thông tin toàn cầu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0082-STT11,6,Bài 6: Mạng thông tin toàn cầu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0083-STT12,6,Bài 6: Mạng thông tin toàn cầu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0084-STT13,6,Bài 6: Mạng thông tin toàn cầu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0085-STT14,6,Bài 6: Mạng thông tin toàn cầu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0086-STT1,6,Bài 7: Tìm kiếm thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0087-STT2,6,Bài 7: Tìm kiếm thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0088-STT3,6,Bài 7: Tìm kiếm thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0089-STT4,6,Bài 7: Tìm kiếm thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0090-STT5,6,Bài 7: Tìm kiếm thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0091-STT6,6,Bài 7: Tìm kiếm thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0092-STT7,6,Bài 7: Tìm kiếm thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0093-STT8,6,Bài 7: Tìm kiếm thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0094-STT9,6,Bài 7: Tìm kiếm thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0095-STT10,6,Bài 7: Tìm kiếm thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0096-STT11,6,Bài 7: Tìm kiếm thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0097-STT12,6,Bài 7: Tìm kiếm thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0098-STT13,6,Bài 7: Tìm kiếm thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0099-STT14,6,Bài 7: Tìm kiếm thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0100-STT1,6,Bài 8: Thư điện tử,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0101-STT2,6,Bài 8: Thư điện tử,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0102-STT3,6,Bài 8: Thư điện tử,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0103-STT4,6,Bài 8: Thư điện tử,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0104-STT5,6,Bài 8: Thư điện tử,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0105-STT6,6,Bài 8: Thư điện tử,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0106-STT7,6,Bài 8: Thư điện tử,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0107-STT8,6,Bài 8: Thư điện tử,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0108-STT9,6,Bài 8: Thư điện tử,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0109-STT10,6,Bài 8: Thư điện tử,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0110-STT11,6,Bài 8: Thư điện tử,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0111-STT12,6,Bài 8: Thư điện tử,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0112-STT13,6,Bài 8: Thư điện tử,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0113-STT14,6,Bài 8: Thư điện tử,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0114-STT1,6,Bài 9: An toàn thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0115-STT2,6,Bài 9: An toàn thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0116-STT3,6,Bài 9: An toàn thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0117-STT4,6,Bài 9: An toàn thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0118-STT5,6,Bài 9: An toàn thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0119-STT6,6,Bài 9: An toàn thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0120-STT7,6,Bài 9: An toàn thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0121-STT8,6,Bài 9: An toàn thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0122-STT9,6,Bài 9: An toàn thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0123-STT10,6,Bài 9: An toàn thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0124-STT11,6,Bài 9: An toàn thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0125-STT12,6,Bài 9: An toàn thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0126-STT13,6,Bài 9: An toàn thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0127-STT14,6,Bài 9: An toàn thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0128-STT1,6,Bài 10: Sơ đồ tư duy,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0129-STT2,6,Bài 10: Sơ đồ tư duy,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0130-STT3,6,Bài 10: Sơ đồ tư duy,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0131-STT4,6,Bài 10: Sơ đồ tư duy,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0132-STT5,6,Bài 10: Sơ đồ tư duy,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0133-STT6,6,Bài 10: Sơ đồ tư duy,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0134-STT7,6,Bài 10: Sơ đồ tư duy,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0135-STT8,6,Bài 10: Sơ đồ tư duy,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0136-STT9,6,Bài 10: Sơ đồ tư duy,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0137-STT10,6,Bài 10: Sơ đồ tư duy,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0138-STT11,6,Bài 10: Sơ đồ tư duy,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0139-STT12,6,Bài 10: Sơ đồ tư duy,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0140-STT13,6,Bài 10: Sơ đồ tư duy,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0141-STT14,6,Bài 10: Sơ đồ tư duy,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0142-STT1,6,Bài 11: Định dạng văn bản,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0143-STT2,6,Bài 11: Định dạng văn bản,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0144-STT3,6,Bài 11: Định dạng văn bản,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0145-STT4,6,Bài 11: Định dạng văn bản,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0146-STT5,6,Bài 11: Định dạng văn bản,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0147-STT6,6,Bài 11: Định dạng văn bản,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0148-STT7,6,Bài 11: Định dạng văn bản,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0149-STT8,6,Bài 11: Định dạng văn bản,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0150-STT9,6,Bài 11: Định dạng văn bản,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0151-STT10,6,Bài 11: Định dạng văn bản,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0152-STT11,6,Bài 11: Định dạng văn bản,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0153-STT12,6,Bài 11: Định dạng văn bản,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0154-STT13,6,Bài 11: Định dạng văn bản,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0155-STT14,6,Bài 11: Định dạng văn bản,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0156-STT1,6,Bài 12: Trình bày thông tin ở dạng bảng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0157-STT2,6,Bài 12: Trình bày thông tin ở dạng bảng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0158-STT3,6,Bài 12: Trình bày thông tin ở dạng bảng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0159-STT4,6,Bài 12: Trình bày thông tin ở dạng bảng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0160-STT5,6,Bài 12: Trình bày thông tin ở dạng bảng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0161-STT6,6,Bài 12: Trình bày thông tin ở dạng bảng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0162-STT7,6,Bài 12: Trình bày thông tin ở dạng bảng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0163-STT8,6,Bài 12: Trình bày thông tin ở dạng bảng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0164-STT9,6,Bài 12: Trình bày thông tin ở dạng bảng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0165-STT10,6,Bài 12: Trình bày thông tin ở dạng bảng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0166-STT11,6,Bài 12: Trình bày thông tin ở dạng bảng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0167-STT12,6,Bài 12: Trình bày thông tin ở dạng bảng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0168-STT13,6,Bài 12: Trình bày thông tin ở dạng bảng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0169-STT14,6,Bài 12: Trình bày thông tin ở dạng bảng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0170-STT1,6,Bài 13: Tìm kiếm và thay thế,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0171-STT2,6,Bài 13: Tìm kiếm và thay thế,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0172-STT3,6,Bài 13: Tìm kiếm và thay thế,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0173-STT4,6,Bài 13: Tìm kiếm và thay thế,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0174-STT5,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0175-STT6,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0176-STT7,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0177-STT8,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0178-STT9,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0179-STT10,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0180-STT11,6,Bài 13: Tìm kiếm và thay thế,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0181-STT12,6,Bài 13: Tìm kiếm và thay thế,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0182-STT13,6,Bài 13: Tìm kiếm và thay thế,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0183-STT14,6,Bài 13: Tìm kiếm và thay thế,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0184-STT1,6,Bài 14: Hoàn thiện sổ lưu niệm,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0185-STT2,6,Bài 14: Hoàn thiện sổ lưu niệm,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0186-STT3,6,Bài 14: Hoàn thiện sổ lưu niệm,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0187-STT4,6,Bài 14: Hoàn thiện sổ lưu niệm,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0188-STT5,6,Bài 14: Hoàn thiện sổ lưu niệm,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0189-STT6,6,Bài 14: Hoàn thiện sổ lưu niệm,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0190-STT7,6,Bài 14: Hoàn thiện sổ lưu niệm,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0191-STT8,6,Bài 14: Hoàn thiện sổ lưu niệm,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0192-STT9,6,Bài 14: Hoàn thiện sổ lưu niệm,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0193-STT10,6,Bài 14: Hoàn thiện sổ lưu niệm,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0194-STT11,6,Bài 14: Hoàn thiện sổ lưu niệm,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0195-STT12,6,Bài 14: Hoàn thiện sổ lưu niệm,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0196-STT13,6,Bài 14: Hoàn thiện sổ lưu niệm,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0197-STT14,6,Bài 14: Hoàn thiện sổ lưu niệm,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0198-STT1,6,Bài 15: Thuật toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0199-STT2,6,Bài 15: Thuật toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0200-STT3,6,Bài 15: Thuật toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0201-STT4,6,Bài 15: Thuật toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0202-STT5,6,Bài 15: Thuật toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0203-STT6,6,Bài 15: Thuật toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0204-STT7,6,Bài 15: Thuật toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0205-STT8,6,Bài 15: Thuật toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0206-STT9,6,Bài 15: Thuật toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0207-STT10,6,Bài 15: Thuật toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0208-STT11,6,Bài 15: Thuật toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0209-STT12,6,Bài 15: Thuật toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0210-STT13,6,Bài 15: Thuật toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0211-STT14,6,Bài 15: Thuật toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0212-STT1,6,Bài 16: Các cấu trúc điều khiển,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0213-STT2,6,Bài 16: Các cấu trúc điều khiển,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0214-STT3,6,Bài 16: Các cấu trúc điều khiển,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0215-STT4,6,Bài 16: Các cấu trúc điều khiển,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0216-STT5,6,Bài 16: Các cấu trúc điều khiển,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0217-STT6,6,Bài 16: Các cấu trúc điều khiển,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0218-STT7,6,Bài 16: Các cấu trúc điều khiển,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0219-STT8,6,Bài 16: Các cấu trúc điều khiển,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0220-STT9,6,Bài 16: Các cấu trúc điều khiển,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0221-STT10,6,Bài 16: Các cấu trúc điều khiển,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0222-STT11,6,Bài 16: Các cấu trúc điều khiển,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0223-STT12,6,Bài 16: Các cấu trúc điều khiển,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0224-STT13,6,Bài 16: Các cấu trúc điều khiển,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0225-STT14,6,Bài 16: Các cấu trúc điều khiển,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0226-STT1,6,Bài 17: Chương trình máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0227-STT2,6,Bài 17: Chương trình máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0228-STT3,6,Bài 17: Chương trình máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0229-STT4,6,Bài 17: Chương trình máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G6-R0230-STT5,6,Bài 17: Chương trình máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0231-STT6,6,Bài 17: Chương trình máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0232-STT7,6,Bài 17: Chương trình máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0233-STT8,6,Bài 17: Chương trình máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0234-STT9,6,Bài 17: Chương trình máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0235-STT10,6,Bài 17: Chương trình máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G6-R0236-STT11,6,Bài 17: Chương trình máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0237-STT12,6,Bài 17: Chương trình máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0238-STT13,6,Bài 17: Chương trình máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G6-R0239-STT14,6,Bài 17: Chương trình máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0002-STT1,7,Bài 1. Thiết bị vào - ra,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0003-STT2,7,Bài 1. Thiết bị vào - ra,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0004-STT3,7,Bài 1. Thiết bị vào - ra,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0005-STT4,7,Bài 1. Thiết bị vào - ra,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0006-STT5,7,Bài 1. Thiết bị vào - ra,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0007-STT6,7,Bài 1. Thiết bị vào - ra,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0008-STT7,7,Bài 1. Thiết bị vào - ra,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0009-STT8,7,Bài 1. Thiết bị vào - ra,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0010-STT9,7,Bài 1. Thiết bị vào - ra,Thông hiểu,failed,0.88,Có nhãn lượt nói lạ: AII,exclude_from_current_batch,false,false
+HNMU-G7-R0011-STT10,7,Bài 1. Thiết bị vào - ra,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0012-STT11,7,Bài 1. Thiết bị vào - ra,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0013-STT12,7,Bài 1. Thiết bị vào - ra,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0014-STT13,7,Bài 1. Thiết bị vào - ra,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0015-STT14,7,Bài 1. Thiết bị vào - ra,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0016-STT1,7,Bài 2. Phần mềm máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0017-STT2,7,Bài 2. Phần mềm máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0018-STT3,7,Bài 2. Phần mềm máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0019-STT4,7,Bài 2. Phần mềm máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0020-STT5,7,Bài 2. Phần mềm máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0021-STT6,7,Bài 2. Phần mềm máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0022-STT7,7,Bài 2. Phần mềm máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0023-STT8,7,Bài 2. Phần mềm máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0024-STT9,7,Bài 2. Phần mềm máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0025-STT10,7,Bài 2. Phần mềm máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0026-STT11,7,Bài 2. Phần mềm máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0027-STT12,7,Bài 2. Phần mềm máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0028-STT13,7,Bài 2. Phần mềm máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0029-STT14,7,Bài 2. Phần mềm máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0030-STT1,7,Bài 3. Quản lí dữ liệu trong máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0031-STT2,7,Bài 3. Quản lí dữ liệu trong máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0032-STT3,7,Bài 3. Quản lí dữ liệu trong máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0033-STT4,7,Bài 3. Quản lí dữ liệu trong máy tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0034-STT5,7,Bài 3. Quản lí dữ liệu trong máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0035-STT6,7,Bài 3. Quản lí dữ liệu trong máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0036-STT7,7,Bài 3. Quản lí dữ liệu trong máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0037-STT8,7,Bài 3. Quản lí dữ liệu trong máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0038-STT9,7,Bài 3. Quản lí dữ liệu trong máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0039-STT10,7,Bài 3. Quản lí dữ liệu trong máy tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0040-STT11,7,Bài 3. Quản lí dữ liệu trong máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0041-STT12,7,Bài 3. Quản lí dữ liệu trong máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0042-STT13,7,Bài 3. Quản lí dữ liệu trong máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0043-STT14,7,Bài 3. Quản lí dữ liệu trong máy tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0044-STT1,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0045-STT2,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0046-STT3,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0047-STT4,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0048-STT5,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0049-STT6,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0050-STT7,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0051-STT8,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0052-STT9,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0053-STT10,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0054-STT11,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0055-STT12,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0056-STT13,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0057-STT14,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0058-STT1,7,Bài 5. Ứng xử trên mạng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0059-STT2,7,Bài 5. Ứng xử trên mạng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0060-STT3,7,Bài 5. Ứng xử trên mạng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0061-STT4,7,Bài 5. Ứng xử trên mạng,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0062-STT5,7,Bài 5. Ứng xử trên mạng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0063-STT6,7,Bài 5. Ứng xử trên mạng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0064-STT7,7,Bài 5. Ứng xử trên mạng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0065-STT8,7,Bài 5. Ứng xử trên mạng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0066-STT9,7,Bài 5. Ứng xử trên mạng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0067-STT10,7,Bài 5. Ứng xử trên mạng,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0068-STT11,7,Bài 5. Ứng xử trên mạng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0069-STT12,7,Bài 5. Ứng xử trên mạng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0070-STT13,7,Bài 5. Ứng xử trên mạng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0071-STT14,7,Bài 5. Ứng xử trên mạng,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0072-STT1,7,Bài 6: Làm quen với phần mềm bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0073-STT2,7,Bài 6: Làm quen với phần mềm bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0074-STT3,7,Bài 6: Làm quen với phần mềm bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0075-STT4,7,Bài 6: Làm quen với phần mềm bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0076-STT5,7,Bài 6: Làm quen với phần mềm bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0077-STT6,7,Bài 6: Làm quen với phần mềm bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0078-STT7,7,Bài 6: Làm quen với phần mềm bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0079-STT8,7,Bài 6: Làm quen với phần mềm bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0080-STT9,7,Bài 6: Làm quen với phần mềm bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0081-STT10,7,Bài 6: Làm quen với phần mềm bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0082-STT11,7,Bài 6: Làm quen với phần mềm bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0083-STT12,7,Bài 6: Làm quen với phần mềm bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0084-STT13,7,Bài 6: Làm quen với phần mềm bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0085-STT14,7,Bài 6: Làm quen với phần mềm bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0086-STT1,7,Bài 7: Tính toán tự động trên bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0087-STT2,7,Bài 7: Tính toán tự động trên bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0088-STT3,7,Bài 7: Tính toán tự động trên bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0089-STT4,7,Bài 7: Tính toán tự động trên bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0090-STT5,7,Bài 7: Tính toán tự động trên bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0091-STT6,7,Bài 7: Tính toán tự động trên bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0092-STT7,7,Bài 7: Tính toán tự động trên bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0093-STT8,7,Bài 7: Tính toán tự động trên bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0094-STT9,7,Bài 7: Tính toán tự động trên bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0095-STT10,7,Bài 7: Tính toán tự động trên bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0096-STT11,7,Bài 7: Tính toán tự động trên bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0097-STT12,7,Bài 7: Tính toán tự động trên bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0098-STT13,7,Bài 7: Tính toán tự động trên bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0099-STT14,7,Bài 7: Tính toán tự động trên bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0100-STT1,7,Bài 8: Công cụ hỗ trợ tính toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0101-STT2,7,Bài 8: Công cụ hỗ trợ tính toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0102-STT3,7,Bài 8: Công cụ hỗ trợ tính toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0103-STT4,7,Bài 8: Công cụ hỗ trợ tính toán,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0104-STT5,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0105-STT6,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0106-STT7,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0107-STT8,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0108-STT9,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0109-STT10,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0110-STT11,7,Bài 8: Công cụ hỗ trợ tính toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0111-STT12,7,Bài 8: Công cụ hỗ trợ tính toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0112-STT13,7,Bài 8: Công cụ hỗ trợ tính toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0113-STT14,7,Bài 8: Công cụ hỗ trợ tính toán,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0114-STT1,7,Bài 9: Trình bày bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0115-STT2,7,Bài 9: Trình bày bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0116-STT3,7,Bài 9: Trình bày bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0117-STT4,7,Bài 9: Trình bày bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0118-STT5,7,Bài 9: Trình bày bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0119-STT6,7,Bài 9: Trình bày bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0120-STT7,7,Bài 9: Trình bày bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0121-STT8,7,Bài 9: Trình bày bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0122-STT9,7,Bài 9: Trình bày bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0123-STT10,7,Bài 9: Trình bày bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0124-STT11,7,Bài 9: Trình bày bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0125-STT12,7,Bài 9: Trình bày bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0126-STT13,7,Bài 9: Trình bày bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0127-STT14,7,Bài 9: Trình bày bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0128-STT1,7,Bài 10: Hoàn thiện bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0129-STT2,7,Bài 10: Hoàn thiện bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0130-STT3,7,Bài 10: Hoàn thiện bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0131-STT4,7,Bài 10: Hoàn thiện bảng tính,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0132-STT5,7,Bài 10: Hoàn thiện bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0133-STT6,7,Bài 10: Hoàn thiện bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0134-STT7,7,Bài 10: Hoàn thiện bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0135-STT8,7,Bài 10: Hoàn thiện bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0136-STT9,7,Bài 10: Hoàn thiện bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0137-STT10,7,Bài 10: Hoàn thiện bảng tính,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0138-STT11,7,Bài 10: Hoàn thiện bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0139-STT12,7,Bài 10: Hoàn thiện bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0140-STT13,7,Bài 10: Hoàn thiện bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0141-STT14,7,Bài 10: Hoàn thiện bảng tính,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0142-STT1,7,Bài 11: Tạo bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0143-STT2,7,Bài 11: Tạo bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0144-STT3,7,Bài 11: Tạo bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0145-STT4,7,Bài 11: Tạo bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0146-STT5,7,Bài 11: Tạo bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0147-STT6,7,Bài 11: Tạo bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0148-STT7,7,Bài 11: Tạo bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0149-STT8,7,Bài 11: Tạo bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0150-STT9,7,Bài 11: Tạo bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0151-STT10,7,Bài 11: Tạo bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0152-STT11,7,Bài 11: Tạo bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0153-STT12,7,Bài 11: Tạo bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0154-STT13,7,Bài 11: Tạo bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0155-STT14,7,Bài 11: Tạo bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0156-STT1,7,Bài 12: Định dạng đối tượng trên trang chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0157-STT2,7,Bài 12: Định dạng đối tượng trên trang chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0158-STT3,7,Bài 12: Định dạng đối tượng trên trang chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0159-STT4,7,Bài 12: Định dạng đối tượng trên trang chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0160-STT5,7,Bài 12: Định dạng đối tượng trên trang chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0161-STT6,7,Bài 12: Định dạng đối tượng trên trang chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0162-STT7,7,Bài 12: Định dạng đối tượng trên trang chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0163-STT8,7,Bài 12: Định dạng đối tượng trên trang chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0164-STT9,7,Bài 12: Định dạng đối tượng trên trang chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0165-STT10,7,Bài 12: Định dạng đối tượng trên trang chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0166-STT11,7,Bài 12: Định dạng đối tượng trên trang chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0167-STT12,7,Bài 12: Định dạng đối tượng trên trang chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0168-STT13,7,Bài 12: Định dạng đối tượng trên trang chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0169-STT14,7,Bài 12: Định dạng đối tượng trên trang chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0170-STT1,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0171-STT2,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0172-STT3,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0173-STT4,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0174-STT5,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0175-STT6,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0176-STT7,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0177-STT8,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0178-STT9,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0179-STT10,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0180-STT11,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0181-STT12,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0182-STT13,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0183-STT14,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0184-STT1,7,Bài 14. Thuật toán tìm kiếm tuần tự,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0185-STT2,7,Bài 14. Thuật toán tìm kiếm tuần tự,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0186-STT3,7,Bài 14. Thuật toán tìm kiếm tuần tự,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0187-STT4,7,Bài 14. Thuật toán tìm kiếm tuần tự,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0188-STT5,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0189-STT6,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0190-STT7,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0191-STT8,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0192-STT9,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0193-STT10,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0194-STT11,7,Bài 14. Thuật toán tìm kiếm tuần tự,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0195-STT12,7,Bài 14. Thuật toán tìm kiếm tuần tự,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0196-STT13,7,Bài 14. Thuật toán tìm kiếm tuần tự,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0197-STT14,7,Bài 14. Thuật toán tìm kiếm tuần tự,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0198-STT1,7,Bài 15. Thuật toán tìm kiếm nhị phân,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0199-STT2,7,Bài 15. Thuật toán tìm kiếm nhị phân,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0200-STT3,7,Bài 15. Thuật toán tìm kiếm nhị phân,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0201-STT4,7,Bài 15. Thuật toán tìm kiếm nhị phân,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0202-STT5,7,Bài 15. Thuật toán tìm kiếm nhị phân,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0203-STT6,7,Bài 15. Thuật toán tìm kiếm nhị phân,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0204-STT7,7,Bài 15. Thuật toán tìm kiếm nhị phân,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0205-STT8,7,Bài 15. Thuật toán tìm kiếm nhị phân,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0206-STT9,7,Bài 15. Thuật toán tìm kiếm nhị phân,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0207-STT10,7,Bài 15. Thuật toán tìm kiếm nhị phân,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0208-STT11,7,Bài 15. Thuật toán tìm kiếm nhị phân,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0209-STT12,7,Bài 15. Thuật toán tìm kiếm nhị phân,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0210-STT13,7,Bài 15. Thuật toán tìm kiếm nhị phân,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0211-STT14,7,Bài 15. Thuật toán tìm kiếm nhị phân,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0212-STT1,7,Bài 16. Thuật toán sắp xếp,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0213-STT2,7,Bài 16. Thuật toán sắp xếp,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0214-STT3,7,Bài 16. Thuật toán sắp xếp,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0215-STT4,7,Bài 16. Thuật toán sắp xếp,Nhận biết,pass,1.0,,keep,false,false
+HNMU-G7-R0216-STT5,7,Bài 16. Thuật toán sắp xếp,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0217-STT6,7,Bài 16. Thuật toán sắp xếp,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0218-STT7,7,Bài 16. Thuật toán sắp xếp,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0219-STT8,7,Bài 16. Thuật toán sắp xếp,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0220-STT9,7,Bài 16. Thuật toán sắp xếp,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0221-STT10,7,Bài 16. Thuật toán sắp xếp,Thông hiểu,pass,1.0,,keep,false,false
+HNMU-G7-R0222-STT11,7,Bài 16. Thuật toán sắp xếp,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0223-STT12,7,Bài 16. Thuật toán sắp xếp,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0224-STT13,7,Bài 16. Thuật toán sắp xếp,Vận dụng,pass,1.0,,keep,false,false
+HNMU-G7-R0225-STT14,7,Bài 16. Thuật toán sắp xếp,Vận dụng,pass,1.0,,keep,false,false

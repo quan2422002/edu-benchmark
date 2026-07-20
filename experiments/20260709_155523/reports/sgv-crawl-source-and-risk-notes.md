@@ -2,6 +2,10 @@
 
 Ngày thực hiện: 15/07/2026
 Experiment: `20260709_155523`
+## Cập nhật trạng thái ngày 18/07/2026
+
+Phần dưới đây là báo cáo lịch sử của Pha 1 ngày 15/07/2026. Trạng thái hiện tại đã được đồng bộ lại: OCR Markdown SGK/SGV Tin học 6–9 do Nguyên gửi đã được đăng ký trong `ocr_text_manifest.csv`, tách thành 2.750 fragment và build SQLite FTS index ở mức `draft`. Chi tiết xem `experiments/20260709_155523/reports/learning-resource-registries-sync-20260718.md`.
+
 
 ## 1. Mục tiêu
 

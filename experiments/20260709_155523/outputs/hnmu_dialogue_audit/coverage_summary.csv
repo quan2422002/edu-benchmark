@@ -1,0 +1,47 @@
+dimension,value,grade,grade_label,topic_id,topic_label,lesson_id,lesson_label,registry_status,count,percentage
+grade,Lớp 6,6,Lớp 6,,,,,,238,0.5152
+grade,Lớp 7,7,Lớp 7,,,,,,224,0.4848
+topic,Ứng dụng tin học,,,TIN6-CD05;TIN7-CD04,Ứng dụng tin học,,,needs_hnmu_review,182,0.3939
+topic,Máy tính và cộng đồng,,,TIN6-CD01;TIN7-CD01,Máy tính và cộng đồng,,,needs_hnmu_review,84,0.1818
+topic,Giải quyết vấn đề với sự trợ giúp của máy tính,,,TIN6-CD06;TIN7-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,,,needs_hnmu_review,84,0.1818
+topic,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",,,TIN6-CD03;TIN7-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",,,needs_hnmu_review,56,0.1212
+topic,Mạng máy tính và Internet,,,TIN6-CD02,Mạng máy tính và Internet,,,needs_hnmu_review,28,0.0606
+topic,"Đạo đức, pháp luật và văn hoá trong môi trường số",,,TIN6-CD04;TIN7-CD03,"Đạo đức, pháp luật và văn hoá trong môi trường số",,,needs_hnmu_review,28,0.0606
+lesson_by_grade,Lớp 6 — Thông tin và dữ liệu,6,Lớp 6,TIN6-CD01,Máy tính và cộng đồng,TIN6-B01,Thông tin và dữ liệu,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Xử lí thông tin,6,Lớp 6,TIN6-CD01,Máy tính và cộng đồng,TIN6-B02,Xử lí thông tin,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Thông tin trong máy tính,6,Lớp 6,TIN6-CD01,Máy tính và cộng đồng,TIN6-B03,Thông tin trong máy tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Mạng máy tính,6,Lớp 6,TIN6-CD02,Mạng máy tính và Internet,TIN6-B04,Mạng máy tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Internet,6,Lớp 6,TIN6-CD02,Mạng máy tính và Internet,TIN6-B05,Internet,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Mạng thông tin toàn cầu,6,Lớp 6,TIN6-CD03,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN6-B06,Mạng thông tin toàn cầu,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Tìm kiếm thông tin trên Internet,6,Lớp 6,TIN6-CD03,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN6-B07,Tìm kiếm thông tin trên Internet,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Thư điện tử,6,Lớp 6,TIN6-CD03,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN6-B08,Thư điện tử,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — An toàn thông tin trên Internet,6,Lớp 6,TIN6-CD04,"Đạo đức, pháp luật và văn hoá trong môi trường số",TIN6-B09,An toàn thông tin trên Internet,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Sơ đồ tư duy,6,Lớp 6,TIN6-CD05,Ứng dụng tin học,TIN6-B10,Sơ đồ tư duy,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Định dạng văn bản,6,Lớp 6,TIN6-CD05,Ứng dụng tin học,TIN6-B11,Định dạng văn bản,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Trình bày thông tin ở dạng bảng,6,Lớp 6,TIN6-CD05,Ứng dụng tin học,TIN6-B12,Trình bày thông tin ở dạng bảng,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Thực hành: Tìm kiếm và thay thế,6,Lớp 6,TIN6-CD05,Ứng dụng tin học,TIN6-B13,Thực hành: Tìm kiếm và thay thế,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Thực hành tổng hợp: Hoàn thiện sổ lưu niệm,6,Lớp 6,TIN6-CD05,Ứng dụng tin học,TIN6-B14,Thực hành tổng hợp: Hoàn thiện sổ lưu niệm,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Thuật toán,6,Lớp 6,TIN6-CD06,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN6-B15,Thuật toán,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Các cấu trúc điều khiển,6,Lớp 6,TIN6-CD06,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN6-B16,Các cấu trúc điều khiển,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 6 — Chương trình máy tính,6,Lớp 6,TIN6-CD06,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN6-B17,Chương trình máy tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Thiết bị vào – ra,7,Lớp 7,TIN7-CD01,Máy tính và cộng đồng,TIN7-B01,Thiết bị vào – ra,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Phần mềm máy tính,7,Lớp 7,TIN7-CD01,Máy tính và cộng đồng,TIN7-B02,Phần mềm máy tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Quản lí dữ liệu trong máy tính,7,Lớp 7,TIN7-CD01,Máy tính và cộng đồng,TIN7-B03,Quản lí dữ liệu trong máy tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Mạng xã hội và một số kênh trao đổi thông tin trên Internet,7,Lớp 7,TIN7-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN7-B04,Mạng xã hội và một số kênh trao đổi thông tin trên Internet,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Ứng xử trên mạng,7,Lớp 7,TIN7-CD03,"Đạo đức, pháp luật và văn hoá trong môi trường số",TIN7-B05,Ứng xử trên mạng,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Làm quen với phần mềm bảng tính,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B06,Làm quen với phần mềm bảng tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Tính toán tự động trên bảng tính,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B07,Tính toán tự động trên bảng tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Công cụ hỗ trợ tính toán,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B08,Công cụ hỗ trợ tính toán,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Trình bày bảng tính,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B09,Trình bày bảng tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Hoàn thiện bảng tính,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B10,Hoàn thiện bảng tính,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Tạo bài trình chiếu,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B11,Tạo bài trình chiếu,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Định dạng đối tượng trên trang chiếu,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B12,Định dạng đối tượng trên trang chiếu,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Thực hành tổng hợp: Hoàn thiện bài trình chiếu,7,Lớp 7,TIN7-CD04,Ứng dụng tin học,TIN7-B13,Thực hành tổng hợp: Hoàn thiện bài trình chiếu,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Thuật toán tìm kiếm tuần tự,7,Lớp 7,TIN7-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN7-B14,Thuật toán tìm kiếm tuần tự,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Thuật toán tìm kiếm nhị phân,7,Lớp 7,TIN7-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN7-B15,Thuật toán tìm kiếm nhị phân,needs_hnmu_review,14,0.0303
+lesson_by_grade,Lớp 7 — Thuật toán sắp xếp,7,Lớp 7,TIN7-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN7-B16,Thuật toán sắp xếp,needs_hnmu_review,14,0.0303
+bloom_band,Thông hiểu,,,,,,,,193,0.4177
+bloom_band,Nhận biết,,,,,,,,137,0.2965
+bloom_band,Vận dụng,,,,,,,,132,0.2857
+source_file,Lớp 6.xlsx,,,,,,,,238,0.5152
+source_file,Lớp 7.xlsx,,,,,,,,224,0.4848

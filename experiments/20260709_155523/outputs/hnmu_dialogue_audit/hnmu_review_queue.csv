@@ -1,0 +1,3 @@
+sample_id,grade,lesson,bloom_band,quality_decision,confidence_score,failure_reasons,suggested_reviewer_action,needs_sgv_verification,needs_learning_resource_review
+HNMU-G6-R0045-STT2,6,Bài 4. Mạng máy tính,Nhận biết,fail,0.75,Thiếu trường bắt buộc: dialogue,exclude_from_current_batch,false,false
+HNMU-G7-R0010-STT9,7,Bài 1. Thiết bị vào - ra,Thông hiểu,fail,0.88,Có nhãn lượt nói lạ: AII,exclude_from_current_batch,false,false

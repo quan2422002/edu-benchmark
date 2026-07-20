@@ -1,0 +1,3 @@
+sample_id,issue_type,field,severity,message
+HNMU-G6-R0045-STT2,missing_required_field,dialogue,high,Thiếu trường bắt buộc: dialogue
+HNMU-G7-R0010-STT9,dialogue_format,dialogue,medium,Có nhãn lượt nói lạ: AII

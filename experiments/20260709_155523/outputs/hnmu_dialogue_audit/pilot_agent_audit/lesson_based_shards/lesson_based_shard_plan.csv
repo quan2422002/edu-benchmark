@@ -1,0 +1,34 @@
+shard_id,grade,lesson,sample_count
+shard_01,6,Bài 1. Thông tin và dữ liệu,14
+shard_01,6,Bài 12: Trình bày thông tin ở dạng bảng,14
+shard_01,6,Bài 15: Thuật toán,14
+shard_01,6,Bài 2. Xử lí dữ liệu,14
+shard_01,6,Bài 5: Internet,14
+shard_01,6,Bài 8: Thư điện tử,14
+shard_01,7,Bài 10: Hoàn thiện bảng tính,14
+shard_01,7,Bài 13: Thực hành tổng hợp: Hoàn thiện bài trình chiếu,14
+shard_01,7,Bài 16. Thuật toán sắp xếp,14
+shard_01,7,Bài 4. Mạng xã hội và một số kênh trao đổi thông tin trên Internet,14
+shard_01,7,Bài 7: Tính toán tự động trên bảng tính,14
+shard_02,6,Bài 10: Sơ đồ tư duy,14
+shard_02,6,Bài 13: Tìm kiếm và thay thế,14
+shard_02,6,Bài 16: Các cấu trúc điều khiển,14
+shard_02,6,Bài 3. Thông tin trong máy tinh,14
+shard_02,6,Bài 6: Mạng thông tin toàn cầu,14
+shard_02,6,Bài 9: An toàn thông tin trên Internet,14
+shard_02,7,Bài 11: Tạo bài trình chiếu,14
+shard_02,7,Bài 14. Thuật toán tìm kiếm tuần tự,14
+shard_02,7,Bài 2. Phần mềm máy tính,14
+shard_02,7,Bài 5. Ứng xử trên mạng,14
+shard_02,7,Bài 8: Công cụ hỗ trợ tính toán,14
+shard_03,6,Bài 11: Định dạng văn bản,14
+shard_03,6,Bài 14: Hoàn thiện sổ lưu niệm,14
+shard_03,6,Bài 17: Chương trình máy tính,14
+shard_03,6,Bài 4. Mạng máy tính,14
+shard_03,6,Bài 7: Tìm kiếm thông tin trên Internet,14
+shard_03,7,Bài 1. Thiết bị vào - ra,14
+shard_03,7,Bài 12: Định dạng đối tượng trên trang chiếu,14
+shard_03,7,Bài 15. Thuật toán tìm kiếm nhị phân,14
+shard_03,7,Bài 3. Quản lí dữ liệu trong máy tính,14
+shard_03,7,Bài 6: Làm quen với phần mềm bảng tính,14
+shard_03,7,Bài 9: Trình bày bảng tính,14

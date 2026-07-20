@@ -1,0 +1,3 @@
+sample_id,review_reason,priority,suggested_question_to_hnmu,related_criterion_ids,evidence_fragment_ids,checked_by,checked_at
+HNMU-G9-R0018-STT3,Mẫu nằm trong cặp trùng chính xác sau chuẩn hóa với một mẫu khác trong batch; cần xác nhận mẫu đại diện.,high,"Hai mẫu trùng này có cần giữ cả hai không, hay chỉ giữ một mẫu đại diện?",RAW-DUP-03;RAW-DUP-04,LM-SGK-TIN9-0001#F0015,hnmu-dialogue-auditor(shard-02-grade8-9),2026-07-18T21:00:00+07:00
+HNMU-G9-R0032-STT3,Mẫu nằm trong cặp trùng chính xác sau chuẩn hóa với một mẫu khác trong batch; cần xác nhận mẫu đại diện.,high,"Hai mẫu trùng này có cần giữ cả hai không, hay chỉ giữ một mẫu đại diện?",RAW-DUP-03;RAW-DUP-04,LM-SGK-TIN9-0001#F0020,hnmu-dialogue-auditor(shard-02-grade8-9),2026-07-18T21:00:00+07:00

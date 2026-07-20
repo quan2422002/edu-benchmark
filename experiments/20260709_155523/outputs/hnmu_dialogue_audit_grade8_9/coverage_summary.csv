@@ -1,0 +1,62 @@
+dimension,value,grade,grade_label,topic_id,topic_label,lesson_id,lesson_label,registry_status,count,percentage
+grade,Lớp 9,9,Lớp 9,,,,,,308,0.5238
+grade,Lớp 8,8,Lớp 8,,,,,,280,0.4762
+topic,Ứng dụng tin học,,,TIN8-CD04;TIN9-CD04,Ứng dụng tin học,,,needs_hnmu_review,98,0.1667
+topic,Giải quyết vấn đề với sự trợ giúp của máy tính,,,TIN8-CD05;TIN9-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,,,needs_hnmu_review,98,0.1667
+topic,Sử dụng bảng tính điện tử nâng cao,,,TIN9-CD04A,Sử dụng bảng tính điện tử nâng cao,,,needs_hnmu_review,70,0.119
+topic,Làm quen với phần mềm làm video,,,TIN9-CD04B,Làm quen với phần mềm làm video,,,needs_hnmu_review,70,0.119
+topic,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",,,TIN8-CD02;TIN9-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",,,needs_hnmu_review,56,0.0952
+topic,Soạn thảo văn bản và trình chiếu nâng cao,,,TIN8-CD04A,Soạn thảo văn bản và trình chiếu nâng cao,,,needs_hnmu_review,56,0.0952
+topic,Làm quen với phần mềm chỉnh sửa ảnh,,,TIN8-CD04B,Làm quen với phần mềm chỉnh sửa ảnh,,,needs_hnmu_review,56,0.0952
+topic,Máy tính và cộng đồng,,,TIN8-CD01;TIN9-CD01,Máy tính và cộng đồng,,,needs_hnmu_review,28,0.0476
+topic,"Đạo đức, pháp luật và văn hoá trong môi trường số",,,TIN8-CD03;TIN9-CD03,"Đạo đức, pháp luật và văn hoá trong môi trường số",,,needs_hnmu_review,28,0.0476
+topic,Hướng nghiệp với Tin học,,,TIN8-CD06,Hướng nghiệp với Tin học,,,needs_hnmu_review,14,0.0238
+topic,Hướng nghiệp với tin học,,,TIN9-CD06,Hướng nghiệp với tin học,,,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Lược sử công cụ tính toán,8,Lớp 8,TIN8-CD01,Máy tính và cộng đồng,TIN8-B01,Lược sử công cụ tính toán,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Thông tin trong môi trường số,8,Lớp 8,TIN8-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN8-B02,Thông tin trong môi trường số,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Thực hành: Khai thác thông tin số,8,Lớp 8,TIN8-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN8-B03,Thực hành: Khai thác thông tin số,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số,8,Lớp 8,TIN8-CD03,"Đạo đức, pháp luật và văn hoá trong môi trường số",TIN8-B04,Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Sử dụng bảng tính giải quyết bài toán thực tế,8,Lớp 8,TIN8-CD04,Ứng dụng tin học,TIN8-B05,Sử dụng bảng tính giải quyết bài toán thực tế,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Sắp xếp và lọc dữ liệu,8,Lớp 8,TIN8-CD04,Ứng dụng tin học,TIN8-B06,Sắp xếp và lọc dữ liệu,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Trình bày dữ liệu bằng biểu đồ,8,Lớp 8,TIN8-CD04,Ứng dụng tin học,TIN8-B07,Trình bày dữ liệu bằng biểu đồ,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản,8,Lớp 8,TIN8-CD04A,Soạn thảo văn bản và trình chiếu nâng cao,TIN8-B08A,Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản,needs_hnmu_review,14,0.0238
+lesson_by_grade,"Lớp 8 — Tạo đầu trang, chân trang cho văn bản",8,Lớp 8,TIN8-CD04A,Soạn thảo văn bản và trình chiếu nâng cao,TIN8-B09A,"Tạo đầu trang, chân trang cho văn bản",needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Định dạng nâng cao cho trang chiếu,8,Lớp 8,TIN8-CD04A,Soạn thảo văn bản và trình chiếu nâng cao,TIN8-B10A,Định dạng nâng cao cho trang chiếu,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Sử dụng bản mẫu tạo bài trình chiếu,8,Lớp 8,TIN8-CD04A,Soạn thảo văn bản và trình chiếu nâng cao,TIN8-B11A,Sử dụng bản mẫu tạo bài trình chiếu,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Phần mềm chỉnh sửa ảnh,8,Lớp 8,TIN8-CD04B,Làm quen với phần mềm chỉnh sửa ảnh,TIN8-B08B,Phần mềm chỉnh sửa ảnh,needs_hnmu_review,14,0.0238
+lesson_by_grade,"Lớp 8 — Thay đổi khung hình, kích thước ảnh",8,Lớp 8,TIN8-CD04B,Làm quen với phần mềm chỉnh sửa ảnh,TIN8-B09B,"Thay đổi khung hình, kích thước ảnh",needs_hnmu_review,14,0.0238
+lesson_by_grade,"Lớp 8 — Thêm văn bản, tạo hiệu ứng cho ảnh",8,Lớp 8,TIN8-CD04B,Làm quen với phần mềm chỉnh sửa ảnh,TIN8-B10B,"Thêm văn bản, tạo hiệu ứng cho ảnh",needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Thực hành tổng hợp,8,Lớp 8,TIN8-CD04B,Làm quen với phần mềm chỉnh sửa ảnh,TIN8-B11B,Thực hành tổng hợp,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Từ thuật toán đến chương trình,8,Lớp 8,TIN8-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN8-B12,Từ thuật toán đến chương trình,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Biểu diễn dữ liệu,8,Lớp 8,TIN8-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN8-B13,Biểu diễn dữ liệu,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Cấu trúc điều khiển,8,Lớp 8,TIN8-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN8-B14,Cấu trúc điều khiển,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Gỡ lỗi,8,Lớp 8,TIN8-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN8-B15,Gỡ lỗi,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 8 — Tin học với nghề nghiệp,8,Lớp 8,TIN8-CD06,Hướng nghiệp với Tin học,TIN8-B16,Tin học với nghề nghiệp,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thế giới kĩ thuật số,9,Lớp 9,TIN9-CD01,Máy tính và cộng đồng,TIN9-B01,Thế giới kĩ thuật số,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thông tin trong giải quyết vấn đề,9,Lớp 9,TIN9-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN9-B02,Thông tin trong giải quyết vấn đề,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thực hành: Đánh giá chất lượng thông tin,9,Lớp 9,TIN9-CD02,"Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin",TIN9-B03,Thực hành: Đánh giá chất lượng thông tin,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Một số vấn đề pháp lí về sử dụng dịch vụ Internet,9,Lớp 9,TIN9-CD03,"Đạo đức, pháp luật và văn hoá trong môi trường số",TIN9-B04,Một số vấn đề pháp lí về sử dụng dịch vụ Internet,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Tìm hiểu phần mềm mô phỏng,9,Lớp 9,TIN9-CD04,Ứng dụng tin học,TIN9-B05,Tìm hiểu phần mềm mô phỏng,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thực hành: Khai thác phần mềm mô phỏng,9,Lớp 9,TIN9-CD04,Ứng dụng tin học,TIN9-B06,Thực hành: Khai thác phần mềm mô phỏng,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Trình bày thông tin trong trao đổi và hợp tác,9,Lớp 9,TIN9-CD04,Ứng dụng tin học,TIN9-B07,Trình bày thông tin trong trao đổi và hợp tác,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thực hành: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,9,Lớp 9,TIN9-CD04,Ứng dụng tin học,TIN9-B08,Thực hành: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Sử dụng công cụ xác thực dữ liệu,9,Lớp 9,TIN9-CD04A,Sử dụng bảng tính điện tử nâng cao,TIN9-B09A,Sử dụng công cụ xác thực dữ liệu,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Sử dụng hàm COUNTIF,9,Lớp 9,TIN9-CD04A,Sử dụng bảng tính điện tử nâng cao,TIN9-B10A,Sử dụng hàm COUNTIF,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Sử dụng hàm SUMIF,9,Lớp 9,TIN9-CD04A,Sử dụng bảng tính điện tử nâng cao,TIN9-B11A,Sử dụng hàm SUMIF,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Sử dụng hàm IF,9,Lớp 9,TIN9-CD04A,Sử dụng bảng tính điện tử nâng cao,TIN9-B12A,Sử dụng hàm IF,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Hoàn thiện bảng tính quản lí tài chính gia đình,9,Lớp 9,TIN9-CD04A,Sử dụng bảng tính điện tử nâng cao,TIN9-B13A,Hoàn thiện bảng tính quản lí tài chính gia đình,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Các chức năng chính của phần mềm làm video,9,Lớp 9,TIN9-CD04B,Làm quen với phần mềm làm video,TIN9-B09B,Các chức năng chính của phần mềm làm video,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Chuẩn bị dữ liệu và dựng video,9,Lớp 9,TIN9-CD04B,Làm quen với phần mềm làm video,TIN9-B10B,Chuẩn bị dữ liệu và dựng video,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thực hành: Dựng video theo kịch bản,9,Lớp 9,TIN9-CD04B,Làm quen với phần mềm làm video,TIN9-B11B,Thực hành: Dựng video theo kịch bản,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Hoàn thành việc dựng video,9,Lớp 9,TIN9-CD04B,Làm quen với phần mềm làm video,TIN9-B12B,Hoàn thành việc dựng video,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Biên tập và xuất video,9,Lớp 9,TIN9-CD04B,Làm quen với phần mềm làm video,TIN9-B13B,Biên tập và xuất video,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Giải quyết vấn đề,9,Lớp 9,TIN9-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN9-B14,Giải quyết vấn đề,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Bài toán tin học,9,Lớp 9,TIN9-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN9-B15,Bài toán tin học,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Thực hành: Lập chương trình máy tính,9,Lớp 9,TIN9-CD05,Giải quyết vấn đề với sự trợ giúp của máy tính,TIN9-B16,Thực hành: Lập chương trình máy tính,needs_hnmu_review,14,0.0238
+lesson_by_grade,Lớp 9 — Tin học và thế giới nghề nghiệp,9,Lớp 9,TIN9-CD06,Hướng nghiệp với tin học,TIN9-B17,Tin học và thế giới nghề nghiệp,needs_hnmu_review,14,0.0238
+bloom_band,Thông hiểu,,,,,,,,237,0.4031
+bloom_band,Vận dụng,,,,,,,,170,0.2891
+bloom_band,Nhận biết,,,,,,,,162,0.2755
+bloom_band,Không rõ,,,,,,,,19,0.0323
+source_file,Lớp 9.xlsx,,,,,,,,308,0.5238
+source_file,Lớp 8.xlsx,,,,,,,,280,0.4762

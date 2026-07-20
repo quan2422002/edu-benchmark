@@ -1,0 +1,42 @@
+{
+  "run_id": "comprehensive_reason_sync_20260719",
+  "checked_at": "2026-07-19T23:22:22+07:00",
+  "checked_by": "orchestrator-comprehensive-sync-from-checklist",
+  "source_checklist": "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv",
+  "synced_outputs": [
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/quality_check_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/merge_validation_summary.json",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/agent_audit_notes.md"
+  ],
+  "checklist_rows": 10584,
+  "quality_rows": 588,
+  "review_queue_rows": 161,
+  "cleaned_reason_rows": 266,
+  "cleaned_reason_rows_by_criterion": {
+    "RAW-CON-01": 98,
+    "RAW-CON-02": 56,
+    "RAW-CON-04": 56,
+    "RAW-CON-06": 56
+  },
+  "checklist_result_counts": {
+    "pass": 10107,
+    "fail": 2,
+    "uncertain": 475
+  },
+  "quality_decision_counts": {
+    "keep": 427,
+    "fail": 1,
+    "needs_human_review": 160
+  },
+  "review_queue_priority_counts": {
+    "cao": 43,
+    "trung bình": 118
+  },
+  "samples_with_nonpass": 161,
+  "sync_problem_count": 0,
+  "sync_problems_preview": [],
+  "draft_or_unconfirmed_mentions_in_quality_reasons": 0,
+  "draft_or_unconfirmed_mentions_in_nonpass_checklist_without_fragment": 0,
+  "policy_note": "Fragment draft khớp metadata/nội dung không tự động làm mẫu bị uncertain. Các reason thiếu fragment được diễn đạt là chưa truy xuất được fragment phù hợp, không còn quy về trạng thái draft."
+}

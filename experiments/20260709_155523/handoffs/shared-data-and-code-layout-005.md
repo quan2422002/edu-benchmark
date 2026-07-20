@@ -1,4 +1,8 @@
 # Specialist handoff
+## Cập nhật trạng thái ngày 18/07/2026
+
+Handoff này ghi trạng thái lịch sử khi Plan 02 vừa tạo layout. Sau đó, Plan 03 đã copy/crawl SGK/SGV Tin học 6–9, tạo PDF dẫn xuất, nhận OCR Markdown do Nguyên gửi, đồng bộ manifest/fragment/index; Plan 02 cũng đã đăng ký thêm raw data lớp 8–9 trong manifest. Vì vậy các câu “chưa copy ảnh/chưa crawl/chưa OCR” chỉ mô tả thời điểm hoàn thành Plan 02 ban đầu.
+
 
 - Delegation ID: `shared-data-and-code-layout-005`
 - Agent: `single-agent/orchestrator`

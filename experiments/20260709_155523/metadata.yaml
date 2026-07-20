@@ -16,6 +16,8 @@ artifacts:
   - plans/01-benchmark-quality-literature-review.md
   - plans/02-shared-data-and-code-layout.md
   - reports/benchmark-quality-checklist-v0.md
+  - reports/raw-dialogue-quality-checklist-v0.md
+  - reports/benchmark-candidate-quality-checklist-v0.md
   - handoffs/benchmark-quality-literature-review-final-004.md
   - handoffs/shared-data-and-code-layout-005.md
   - handoffs/learning-resource-phase0-sgk-shared-migration-006.md
@@ -26,7 +28,80 @@ artifacts:
   - reports/compiled-learning-resource-pdfs-result.md
   - reports/sgv-crawl-source-and-risk-notes.md
   - reports/sgk-image-shared-migration-result.md
+  - reports/ocr-gpu-probe-result.md
+  - reports/paddleocr-gpu-probe-result.md
+  - reports/ocr-method-comparison-result.md
+  - reports/vietocr-vgg-seq2seq-gpu-probe-result.md
+  - reports/vietocr-vgg-transformer-gpu-probe-result.md
+  - reports/learning-resource-markdown-retrieval-decision.md
   - plans/03-learning-resource-normalization-and-retrieval-system.md
+  - handoffs/learning-resource-phase3-ocr-gpu-probe-010.md
+  - handoffs/learning-resource-phase3-paddleocr-probe-011.md
+  - handoffs/learning-resource-phase3-ocr-method-comparison-012.md
+  - handoffs/learning-resource-phase3-vietocr-gpu-probe-013.md
+  - handoffs/learning-resource-phase3-vietocr-transformer-gpu-probe-014.md
+  - handoffs/learning-resource-markdown-retrieval-decision-015.md
+  - handoffs/learning-resource-ocr-layout-markdown-flow-016.md
+  - handoffs/learning-resource-code-env-contract-017.md
+  - reports/learning-resource-phase3-code-usage.md
+  - handoffs/learning-resource-phase3-code-implementation-018.md
+  - handoffs/learning-resource-phase3-full-grade6-7-layout-v2-019.md
+  - reports/learning-resource-phase3-grade6-7-full-batch-result.md
+  - reports/learning-resource-phase3-output-audit-notes.md
+  - reports/sgk-sgv-image-data-characteristics-and-ocr-strategy.md
+  - reports/vlm-first-ocr-markdown-flow-proposal.md
+  - reports/vlm-ocr-framework-survey-20260716.md
+  - handoffs/learning-resource-vlm-first-ocr-flow-020.md
+  - handoffs/learning-resource-vlm-ocr-framework-survey-021.md
+  - reports/mineru-env-setup-result-20260716.md
+  - handoffs/learning-resource-mineru-env-setup-022.md
+  - reports/mineru-probe-result-and-verification-direction-20260716.md
+  - handoffs/learning-resource-mineru-probe-analysis-023.md
+  - reports/mineru-pdf-chunk-speed-probe-20260716.md
+  - handoffs/learning-resource-mineru-pdf-chunk-speed-probe-024.md
+  - reports/mineru-pdf-vs-per-image-spelling-comparison-20260716.md
+  - handoffs/learning-resource-mineru-spelling-comparison-025.md
+  - reports/mineru-pdf-chunk-scale-probe-20260716.md
+  - handoffs/learning-resource-mineru-pdf-chunk-scale-probe-026.md
+  - handoffs/learning-resource-phase-a-book-level-flow-update-027.md
+  - handoffs/learning-resource-mineru-formula-true-sync-028.md
+  - reports/learning-resource-phase-a-book-level-implementation-result.md
+  - handoffs/learning-resource-phase-a-book-level-implementation-029.md
+  - handoffs/learning-resource-phase-a-back-matter-filter-030.md
+  - reports/learning-resource-phase-b-e-postprocess-implementation-result.md
+  - handoffs/learning-resource-mineru-postprocess-implementation-031.md
+  - outputs/learning_resource_phase3_grade6_7_all_pages.csv
+  - outputs/learning_resource_phase3_grade6_7_all_pages.txt
+  - outputs/learning_resource_phase3_grade6_7_all/recognition/recognition_summary.csv
+  - outputs/learning_resource_phase3_grade6_7_all/markdown_manifest.csv
+  - outputs/learning_resource_phase3_grade6_7_all/ocr_quality_summary.csv
+  - outputs/learning_resource_phase3_layout_probe_v2/markdown_manifest.csv
   - handoffs/experiment-initialization-001.md
   - handoffs/three-paper-benchmark-use-synthesis-002.md
   - coordination/delegations.jsonl
+
+  - plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md
+  - reports/hnmu-dialogue-audit-batch-20260717.md
+  - outputs/hnmu_dialogue_audit/quality_check_results.csv
+  - outputs/hnmu_dialogue_audit/hnmu_review_queue.csv
+  - handoffs/hnmu-dialogue-audit-plan04-v0-035.md
+  - plans/07-hnmu-dialogue-auditor-specialist.md
+  - handoffs/hnmu-dialogue-auditor-specialist-036.md
+  - reports/hnmu-dialogue-auditor-pilot-20260717.md
+  - handoffs/hnmu-dialogue-auditor-pilot-037.md
+  - outputs/hnmu_dialogue_audit/pilot_agent_audit/raw_dialogue_checklist_results.csv
+  - outputs/hnmu_dialogue_audit/pilot_agent_audit/quality_check_suggestions.csv
+  - outputs/hnmu_dialogue_audit/pilot_agent_audit/hnmu_review_queue_suggestions.csv
+  - reports/hnmu-dialogue-auditor-sharded-run-20260717.md
+  - handoffs/hnmu-dialogue-auditor-sharded-run-038.md
+  - outputs/hnmu_dialogue_audit/agent_shard_audit/merged/raw_dialogue_checklist_results.csv
+  - outputs/hnmu_dialogue_audit/agent_shard_audit/merged/quality_check_suggestions.csv
+  - outputs/hnmu_dialogue_audit/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv
+  - outputs/hnmu_dialogue_audit/agent_shard_audit/merged/merge_validation_summary.json
+
+  - reports/grade8-9-data-intake-and-learning-resource-extension-20260718.md
+  - handoffs/learning-resource-registry-sync-041.md
+  - handoffs/learning-resource-phase4-5-current-sync-042.md
+  - reports/learning-resource-registries-sync-20260718.md
+
+  - handoffs/grade8-9-data-intake-and-learning-resource-extension-040.md

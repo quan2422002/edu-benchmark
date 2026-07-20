@@ -29,7 +29,14 @@ shared/learning_resources/
   ocr_text/
   registries/
   fragments/
+  indexes/
+  agent_context/
 ```
+
+## Hướng dẫn vận hành
+
+- [OCR_TEXT_PROCESSING_RUNBOOK.md](OCR_TEXT_PROCESSING_RUNBOOK.md): hướng dẫn đưa OCR Markdown SGK/SGV mới do Nguyên gửi vào manifest, fragment và index truy xuất. Dùng file này khi bổ sung lớp 8, lớp 9 hoặc các sách mới cùng chuẩn.
+- [agent_context/README.md](agent_context/README.md): hub ngữ cảnh để specialist agent kiểm tra dữ liệu HNMU biết cần dùng checklist, fragment, index và công cụ truy xuất nào.
 
 ## Quy tắc an toàn
 
@@ -38,4 +45,4 @@ shared/learning_resources/
 3. OCR chưa được kiểm tra không được coi là nguồn chân lý.
 4. Các phần cần HNMU xác nhận phải được gắn trạng thái rõ ràng.
 
-Plan 03 sẽ chịu trách nhiệm copy ảnh SGK đã crawl, bổ sung kế hoạch SGV và tạo registry học liệu v0.
+Plan 03 đã đưa SGK/SGV Tin học 6–9 vào hệ học liệu dùng chung ở mức v0: ảnh gốc/ảnh crawl được quản lý bằng `learning_resource_file_manifest.csv`, OCR Markdown do Nguyên gửi được đăng ký trong `ocr_text_manifest.csv` với 154 đơn vị, tách thành 2.750 fragment và build thành SQLite FTS index truy xuất. Các fragment hiện vẫn ở trạng thái `draft`, chưa thay thế xác nhận chuyên môn của HNMU/UET.

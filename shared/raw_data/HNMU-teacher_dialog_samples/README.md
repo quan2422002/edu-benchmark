@@ -11,12 +11,12 @@ Thư mục này lưu dữ liệu hội thoại thô do đội ngũ giáo viên H
 
 ## Batch hiện tại
 
-Hiện tại có batch ban đầu gồm:
+Hiện tại có các batch đã được đăng ký trong `manifest.csv`:
 
-- `Lớp 6.xlsx`
-- `Lớp 7.xlsx`
+- `20260714_initial`: `Lớp 6.xlsx`, `Lớp 7.xlsx`;
+- `20260718_grade8_9`: `Lớp 8.xlsx`, `Lớp 9.xlsx`.
 
-Hai file này được giữ nguyên tại vị trí hiện có để tránh làm gãy các đường dẫn hoặc thao tác đang dùng. `manifest.csv` là nguồn ghi nhận chính thức cho batch này.
+Các file này được giữ nguyên tại vị trí hiện có để tránh làm gãy các đường dẫn hoặc thao tác đang dùng. `manifest.csv` là nguồn ghi nhận chính thức cho các batch này.
 
 ## Quan hệ với các plan sau
 

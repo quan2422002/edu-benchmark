@@ -1,0 +1,141 @@
+{
+  "created_at": "2026-07-17T23:27:18+07:00",
+  "python": "/home/quannda/miniconda3/envs/benchmark_env/bin/python",
+  "shard_summary": [
+    {
+      "shard": "shard_01",
+      "input_samples": 154,
+      "quality_rows": 154,
+      "detail_rows": 2464,
+      "review_rows": 61,
+      "criterion_count_per_sample_min": 16,
+      "criterion_count_per_sample_max": 16,
+      "decision_counts": {
+        "pass": 93,
+        "needs_human_review": 61
+      },
+      "criterion_result_counts": {
+        "pass": 2241,
+        "uncertain": 223
+      }
+    },
+    {
+      "shard": "shard_02",
+      "input_samples": 154,
+      "quality_rows": 154,
+      "detail_rows": 2772,
+      "review_rows": 29,
+      "criterion_count_per_sample_min": 18,
+      "criterion_count_per_sample_max": 18,
+      "decision_counts": {
+        "pass": 125,
+        "needs_human_review": 29
+      },
+      "criterion_result_counts": {
+        "pass": 2693,
+        "uncertain": 79
+      }
+    },
+    {
+      "shard": "shard_03",
+      "input_samples": 154,
+      "quality_rows": 154,
+      "detail_rows": 2464,
+      "review_rows": 15,
+      "criterion_count_per_sample_min": 16,
+      "criterion_count_per_sample_max": 16,
+      "decision_counts": {
+        "pass": 139,
+        "needs_human_review": 13,
+        "fail": 2
+      },
+      "criterion_result_counts": {
+        "pass": 2436,
+        "uncertain": 18,
+        "fail": 7,
+        "not_applicable": 3
+      }
+    }
+  ],
+  "validation": {
+    "shard_01": {
+      "returncode": 0,
+      "stdout": "OK: /home/quannda/Kaggle/edu-benchmark/experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/shard_01/raw_dialogue_checklist_results.csv",
+      "stderr": ""
+    },
+    "shard_02": {
+      "returncode": 0,
+      "stdout": "OK: /home/quannda/Kaggle/edu-benchmark/experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/shard_02/raw_dialogue_checklist_results.csv",
+      "stderr": ""
+    },
+    "shard_03": {
+      "returncode": 0,
+      "stdout": "OK: /home/quannda/Kaggle/edu-benchmark/experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/shard_03/raw_dialogue_checklist_results.csv",
+      "stderr": ""
+    }
+  },
+  "merged_validation": {
+    "returncode": 0,
+    "stdout": "OK: /home/quannda/Kaggle/edu-benchmark/experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/raw_dialogue_checklist_results.csv",
+    "stderr": ""
+  },
+  "input_sample_count": 462,
+  "output_sample_count": 462,
+  "detail_row_count": 7700,
+  "quality_row_count": 462,
+  "review_row_count": 105,
+  "duplicate_output_ids": [],
+  "missing_output_ids": [],
+  "extra_output_ids": [],
+  "header_consistency": {
+    "detail": true,
+    "quality": true,
+    "review": true
+  },
+  "detail_criterion_counts": {
+    "shard_01": [
+      16
+    ],
+    "shard_02": [
+      18
+    ],
+    "shard_03": [
+      16
+    ]
+  },
+  "decision_counts": {
+    "pass": 357,
+    "needs_human_review": 103,
+    "fail": 2
+  },
+  "criterion_result_counts": {
+    "pass": 7370,
+    "uncertain": 320,
+    "fail": 7,
+    "not_applicable": 3
+  },
+  "uncertain_by_criterion": {
+    "RAW-CON-02": 168,
+    "RAW-CON-05": 74,
+    "RAW-DUP-04": 41,
+    "RAW-CON-04": 15,
+    "RAW-PED-02": 10,
+    "RAW-PED-04": 2,
+    "RAW-CON-03": 2,
+    "RAW-PED-03": 2,
+    "RAW-STR-04": 1,
+    "RAW-CON-01": 1,
+    "RAW-CON-06": 1,
+    "RAW-CON-07": 1,
+    "RAW-PED-06": 1,
+    "RAW-PED-01": 1
+  },
+  "fail_by_criterion": {
+    "RAW-STR-03": 2,
+    "RAW-STR-02": 1,
+    "RAW-STR-04": 1,
+    "RAW-CON-03": 1,
+    "RAW-CON-04": 1,
+    "RAW-PED-06": 1
+  }
+}

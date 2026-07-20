@@ -1,0 +1,4 @@
+sample_id,grade,lesson,bloom_band,quality_decision,confidence_score,failure_reasons,suggested_reviewer_action,needs_sgv_verification,needs_learning_resource_review
+HNMU-G8-R0068-STT11,8,Bài 5: Sử dụng bảng tính giải quyết bài toán thực tế,Vận dụng,fail,0.75,Hội thoại không có nhãn AI:.,exclude_from_current_batch,false,false
+HNMU-G9-R0018-STT3,9,Bài 2: Thông tin trong giải quyết vấn đề,Nhận biết,needs_human_review,0.88,Có ứng viên trùng/gần trùng.,ask_hnmu_review,false,false
+HNMU-G9-R0032-STT3,9,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Nhận biết,needs_human_review,0.88,Có ứng viên trùng/gần trùng.,ask_hnmu_review,false,false
