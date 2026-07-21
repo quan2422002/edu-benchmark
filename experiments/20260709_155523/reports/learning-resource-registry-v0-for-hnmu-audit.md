@@ -1,67 +1,131 @@
 # Danh mục học liệu v0 phục vụ kiểm toán HNMU
 
-Ngày thực hiện: 15/07/2026
-Experiment: `20260709_155523`
+Ngày tạo bản đầu: 15/07/2026  
+Ngày đồng bộ mới nhất: 18/07/2026  
+Experiment: `20260709_155523`  
+Trạng thái: `draft`, dùng được cho truy xuất/audit v0 nhưng chưa thay thế xác nhận chuyên môn của HNMU/UET.
 
 ## 1. Mục tiêu
 
-Tạo danh mục học liệu v0 ở mức khối lớp, sách, chủ đề/bài học và vị trí/trang để Plan 04 có thể kiểm độ phủ dữ liệu HNMU.
+Tạo danh mục học liệu v0 ở mức khối lớp, sách, chủ đề/bài học và vị trí/trang để Plan 04 có thể kiểm độ phủ và kiểm nhất quán dữ liệu HNMU.
 
-Đây là bản **v0 thận trọng**, chưa phải danh mục chính thức được HNMU xác nhận.
+Bản ngày 18/07/2026 đã đồng bộ lại sau khi có OCR Markdown SGK/SGV Tin học 8–9 do Nguyên gửi và dữ liệu hội thoại HNMU lớp 8–9.
 
-## 2. Output đã tạo
+## 2. Output hiện tại
 
+- `shared/learning_resources/registries/sgk_sgv_source_registry.csv`
+- `shared/learning_resources/registries/learning_resource_file_manifest.csv`
+- `shared/learning_resources/registries/ocr_text_manifest.csv`
 - `shared/learning_resources/registries/sgk_thcs_topic_lesson_map_v0.csv`
 - `shared/learning_resources/registries/sgk_thcs_lesson_position_registry_v0.csv`
-- `shared/learning_resources/registries/sgk_sgv_source_registry.csv` được bổ sung URL/source key SGK từ registry cũ.
+- `shared/learning_resources/fragments/learning_resource_fragments.csv`
+- `shared/learning_resources/indexes/learning_resources_v0.sqlite` — artifact sinh lại được, bị ignore bởi Git.
 
-## 3. Nguồn dùng trong Pha 2
+## 3. Nguồn dùng
 
-- Dữ liệu hội thoại HNMU lớp 6–7: `shared/raw_data/HNMU-teacher_dialog_samples/`.
-- Topic map Tin học 9 từ experiment trước: `experiments/20260705_215045/topic_taxonomy/tin9_sgk_topics_v0.csv`.
-- Source registry và ảnh/PDF SGK/SGV đã có trong `shared/learning_resources/`.
+- OCR Markdown SGK/SGV Tin học 6–9 do Nguyên gửi: `shared/learning_resources/ocr_text/`.
+- Ảnh/PDF học liệu dùng chung: `shared/learning_resources/raw_page_images/` và `shared/learning_resources/compiled_documents/`.
+- Dữ liệu hội thoại HNMU lớp 6–9: `shared/raw_data/HNMU-teacher_dialog_samples/`.
+- Source registry SGK/SGV: `shared/learning_resources/registries/sgk_sgv_source_registry.csv`.
 
-## 4. Thống kê topic/lesson map
+Không còn dùng placeholder lớp 8 hoặc OCR mục lục từ experiment cũ làm nguồn chính cho topic map hiện tại.
 
-Theo lớp và loại item:
+## 4. Thống kê source/file registry
 
-- `('6', 'bai_hoc')`: 17
-- `('6', 'chu_de')`: 5
-- `('7', 'bai_hoc')`: 16
-- `('7', 'chu_de')`: 4
-- `('8', 'scope_placeholder')`: 1
-- `('9', 'bai_hoc')`: 22
-- `('9', 'chu_de')`: 6
-- `('9', 'chu_de_con')`: 2
-- `('9', 'phu_luc')`: 1
+- `sgk_sgv_source_registry.csv`: 8 nguồn, gồm SGK và SGV Tin học 6–9.
+- `learning_resource_file_manifest.csv`: 760 dòng ảnh/PDF.
+  - SGK ảnh: 356 trang.
+  - SGV ảnh: 396 trang.
+  - PDF dẫn xuất: 8 file.
+
+Các ảnh/PDF vẫn là nguồn truy vết. OCR Markdown là artifact xử lý riêng, đã đăng ký qua `ocr_text_manifest.csv`.
+
+## 5. Thống kê topic/lesson map
+
+| Lớp | Loại mục | Số lượng |
+| --- | --- | --- |
+| 6 | chu_de | 6 |
+| 6 | bai_hoc | 17 |
+| 6 | phu_luc | 1 |
+| 7 | chu_de | 5 |
+| 7 | bai_hoc | 16 |
+| 7 | phu_luc | 1 |
+| 8 | chu_de | 6 |
+| 8 | chu_de_con | 2 |
+| 8 | bai_hoc | 20 |
+| 8 | phu_luc | 1 |
+| 9 | chu_de | 6 |
+| 9 | chu_de_con | 2 |
+| 9 | bai_hoc | 22 |
+| 9 | phu_luc | 1 |
 
 Theo trạng thái:
 
-- `needs_hnmu_review`: 73
-- `needs_uet_review`: 1
+| Trạng thái | Số lượng |
+| --- | --- |
+| needs_hnmu_review | 106 |
 
-## 5. Thống kê lesson-position registry
+Ghi chú: topic/lesson map hiện dựa trên mục lục OCR Markdown do Nguyên gửi. Mặc dù OCR Markdown khá sạch, toàn bộ vẫn gắn `needs_hnmu_review` vì tên chủ đề/bài học là căn cứ sư phạm quan trọng.
+
+## 6. Thống kê lesson-position registry
 
 Theo lớp:
 
-- `6`: 181
-- `7`: 160
-- `9`: 27
+| Lớp | Số vị trí |
+| --- | --- |
+| 6 | 181 |
+| 7 | 160 |
+| 8 | 197 |
+| 9 | 217 |
+
+Theo loại học liệu:
+
+| Loại học liệu | Số vị trí |
+| --- | --- |
+| SGK | 384 |
+| SGK_or_unspecified | 289 |
+| SGV | 82 |
 
 Theo trạng thái:
 
-- `needs_hnmu_review`: 368
+| Trạng thái | Số lượng |
+| --- | --- |
+| needs_hnmu_review | 755 |
 
-## 6. Quyết định bảo thủ
+Các dòng position registry được tạo từ cột vị trí trong dữ liệu thô HNMU. Vì vậy, chúng là căn cứ để kiểm phủ và truy xuất, không phải bằng chứng rằng vị trí được khai báo đã đúng.
 
-- Với lớp 6–7, tên bài và vị trí lấy từ dữ liệu HNMU thật, nhưng nhóm chủ đề là suy luận từ thứ tự/tên bài nên gắn `needs_hnmu_review`.
-- Với lớp 9, dùng lại OCR mục lục từ experiment `20260705_215045`, vẫn giữ trạng thái `needs_hnmu_review`.
-- Với lớp 8, hiện chỉ có ảnh/PDF học liệu; Pha 2 không bịa danh sách bài học khi chưa OCR mục lục hoặc chưa có dữ liệu HNMU.
-- Cột `source_image_path` của vị trí lớp 6–7 để trống vì chưa xác nhận offset giữa số trang in trong SGK/SGV và số thứ tự ảnh.
-- Trong `sgk_thcs_lesson_position_registry_v0.csv`, cột `lesson_item_id` hiện được dùng như tham chiếu tới `item_id` trong topic/lesson map. Phần lớn là bài học, nhưng có 7 dòng Tin học 9 trỏ tới cấp chủ đề/chủ đề con/phụ lục vì nguồn OCR mục lục có vị trí trang cho các mục này. Đây là quyết định v0 để giữ thông tin mục lục, không phải xác nhận rằng các dòng đó là bài học.
+## 7. Thống kê OCR manifest và fragment
 
-## 7. Việc cần làm tiếp
+OCR manifest:
 
-- Pha 3: OCR mục lục/trang trọng điểm để map chắc hơn từ trang in sang ảnh.
-- HNMU/UET cần rà soát nhóm chủ đề lớp 6–7 và toàn bộ danh mục Tin học 9 OCR.
-- Cần tạo danh mục lớp 8 bằng OCR mục lục hoặc nguồn xác nhận từ HNMU trước khi dùng để kiểm phủ đầy đủ THCS.
+| Lớp | SGK | SGV |
+| --- | --- | --- |
+| 6 | 17 | 18 |
+| 7 | 16 | 17 |
+| 8 | 20 | 21 |
+| 9 | 22 | 23 |
+
+Fragment truy xuất:
+
+| Lớp | SGK | SGV |
+| --- | --- | --- |
+| 6 | 223 | 383 |
+| 7 | 302 | 414 |
+| 8 | 315 | 400 |
+| 9 | 296 | 417 |
+
+Tổng cộng: 154 đơn vị OCR Markdown và 2750 fragment.
+
+## 8. Quyết định bảo thủ
+
+- Toàn bộ OCR Markdown/fragment/index giữ trạng thái `draft`.
+- Topic/lesson map giữ `needs_hnmu_review` cho tới khi HNMU xác nhận.
+- Lesson-position registry giữ `needs_hnmu_review` vì được lấy từ metadata HNMU khai báo, chưa qua audit đúng/sai.
+- Với SGV, `topic_title` trong OCR manifest được nối theo bài SGK tương ứng để hỗ trợ truy xuất; đây là mapping kỹ thuật v0, không phải xác nhận chuyên môn cuối cùng.
+- PDF dẫn xuất chỉ để đọc nhanh, không thay thế truy vết từng trang bằng ảnh gốc/Markdown/fragment.
+
+## 9. Việc cần làm tiếp
+
+- Khi chạy Plan 04 cho lớp 8–9, dùng registry hiện tại để truy xuất evidence nhưng không ghi đè output audit lớp 6–7 nếu chưa có plan rõ.
+- Cần HNMU/UET kiểm một mẫu topic/lesson map và một mẫu fragment để quyết định có đủ tin cậy cho chuyển đổi benchmark hàng loạt hay không.
+- Nếu Nguyên bổ sung hoặc sửa OCR Markdown, chạy lại runbook `shared/learning_resources/OCR_TEXT_PROCESSING_RUNBOOK.md` để rebuild manifest/fragment/index.

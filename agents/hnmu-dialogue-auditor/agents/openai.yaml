@@ -1,0 +1,6 @@
+interface:
+  display_name: "HNMU Dialogue Auditor"
+  short_description: "Audit raw HNMU dialogue samples before benchmark conversion."
+  default_prompt: "Use $hnmu-dialogue-auditor to audit raw HNMU teacher dialogue samples against the raw-dialogue checklist and SGK/SGV retrieval evidence."
+policy:
+  allow_implicit_invocation: true

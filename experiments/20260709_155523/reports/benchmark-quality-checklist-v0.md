@@ -3,7 +3,20 @@
 Experiment: `20260709_155523`
 Plan: `01-benchmark-quality-literature-review.md`
 Ngày tạo: 14/07/2026
-Trạng thái: bản v0 để Plan 04 chuyển thành logic kiểm toán dữ liệu HNMU.
+Trạng thái: bản tổng hợp nền; checklist vận hành đã được tách thành checklist dữ liệu thô và checklist ứng viên benchmark.
+
+## 0. Cách dùng hiện tại sau khi tách checklist
+
+File này được giữ lại như bản tổng hợp nền từ Plan 01, ghi lại logic chung rút ra từ 4 bài báo. Từ ngày 17/07/2026, không dùng trực tiếp file này làm checklist vận hành cho specialist agent nữa.
+
+Dùng hai checklist tách riêng sau:
+
+| Giai đoạn | Checklist vận hành | Ghi chú |
+|---|---|---|
+| Kiểm dữ liệu thô HNMU trong Plan 04 | `experiments/20260709_155523/reports/raw-dialogue-quality-checklist-v0.md` | Chỉ kiểm file/dòng dữ liệu thô: câu hỏi, bài học, đáp án SGV, hội thoại, truy vết, evidence SGK/SGV. |
+| Kiểm ứng viên mẫu benchmark sau chuyển đổi trong Plan 06 | `experiments/20260709_155523/reports/benchmark-candidate-quality-checklist-v0.md` | Chỉ kiểm mẫu đã có `student_prompt`, `conversation_history`, `gold_response`, task/rubric và truy vết benchmark. |
+
+Nguyên tắc: agent kiểm Plan 04 chỉ dùng checklist dữ liệu thô; không áp tiêu chí của mẫu benchmark khi dữ liệu chưa được chuyển đổi.
 
 ## 1. Mục đích
 
@@ -37,7 +50,7 @@ Mỗi mẫu sau kiểm định nên có các trường dẫn xuất sau:
 | `confidence_score`          | Mức tự tin của kiểm định tự động/agent, từ 0.00 đến 1.00.                  |
 | `failure_reasons`           | Danh sách lý do nếu mẫu không đạt hoặc cần xem lại.                          |
 | `suggested_reviewer_action` | `keep`, `ask_hnmu_review`, `exclude_from_current_batch`, hoặc `needs_uet_decision`.   |
-| `needs_sgv_verification`    | `true` nếu kiểm đáp án cần SGV nhưng SGV chưa có hoặc chưa OCR/chuẩn hóa. |
+| `needs_sgv_verification`    | `true` nếu kiểm đáp án cần SGV nhưng chưa tìm được evidence SGV đủ chắc, OCR/fragment còn mơ hồ, hoặc cần HNMU/UET xác nhận. |
 | `audit_notes`               | Ghi chú ngắn, ưu tiên tiếng Việt, nêu rõ căn cứ kiểm tra.                   |
 
 ## 4. Quy tắc quyết định và điểm tự tin
@@ -147,7 +160,7 @@ Một mẫu nên vào `hnmu_review_queue.csv` nếu có ít nhất một điều
 - Thiếu hoặc mơ hồ trường lõi.
 - `confidence_score < 0.50`.
 - Câu hỏi, đáp án, hội thoại hoặc mức nhận thức mâu thuẫn nhưng agent không đủ chắc.
-- Cần SGV để xác minh nhưng SGV chưa crawl/OCR: `needs_sgv_verification = true`.
+- Cần SGV để xác minh nhưng evidence SGV chưa đủ chắc, không truy xuất được đúng đoạn, hoặc còn cần HNMU/UET xác nhận: `needs_sgv_verification = true`.
 - Có dấu hiệu nội dung bịa, lệch học liệu, hoặc nhạy cảm về đạo đức/pháp lý.
 - Hội thoại có giá trị sư phạm không rõ.
 - Mẫu trùng/gần trùng với nhiều mẫu khác và cần quyết định giữ mẫu đại diện nào.
@@ -184,7 +197,7 @@ Quy trình đề xuất:
 
 - Checklist được rút ra từ 3 paper gia sư chủ yếu thuộc Toán/STEM và 1 paper tiếng Việt thuộc Luật; không thể xem là kết luận cuối cùng cho Tin học THCS.
 - Checklist chưa thay thế xác nhận chuyên môn của HNMU.
-- Khi chưa có SGV crawl/OCR, kiểm đáp án chỉ là sơ bộ.
+- SGV Tin học 6–9 hiện đã có OCR Markdown/fragment v0, nhưng vẫn ở trạng thái `draft`; kiểm đáp án vẫn là sơ bộ nếu evidence truy xuất chưa đủ chắc hoặc chưa được HNMU/UET xác nhận.
 - Checklist chưa thiết kế bộ chấm model; phần đó thuộc Plan 05.
 
 ## 15. Câu hỏi cần chốt tiếp

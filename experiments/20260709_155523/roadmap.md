@@ -2,8 +2,8 @@
 
 Experiment: `20260709_155523`
 Ngày tạo: 09/07/2026
-Ngày cập nhật: 15/07/2026
-Trạng thái: `DRAFT` — Plan 01 và Plan 02 đã hoàn thành; các plan còn lại cần duyệt trước khi cài đặt.
+Ngày cập nhật: 19/07/2026
+Trạng thái: `ACTIVE` — Plan 01, Plan 02, Plan 03 v0 đã mở rộng học liệu truy xuất đến SGK/SGV Tin học 6–9; Plan 04 audit v0 đã hoàn thành cho lớp 6–7 và có lượt follow-up riêng cho lớp 8–9.
 
 ## 1. Mục tiêu cập nhật
 
@@ -18,8 +18,8 @@ Sau trao đổi ngày 10/07/2026 và cập nhật ngày 14/07/2026, mục tiêu 
 
 Tình hình mới:
 
-- HNMU đã gửi batch dữ liệu thô ban đầu tại `shared/raw_data/HNMU-teacher_dialog_samples/`, hiện có `Lớp 6.xlsx` và `Lớp 7.xlsx`.
-- Kiểm tra nhẹ bằng thư viện chuẩn Python cho thấy có khoảng 461 dòng dữ liệu có hội thoại: 237 dòng ở lớp 6 và 224 dòng ở lớp 7. Đây mới là con số ước tính để định hướng plan, chưa phải báo cáo kiểm toán chính thức.
+- HNMU đã gửi batch dữ liệu thô tại `shared/raw_data/HNMU-teacher_dialog_samples/`. Experiment này đã xử lý chính thức `Lớp 6.xlsx`, `Lớp 7.xlsx`, và sau đó chạy một lượt follow-up riêng cho `Lớp 8.xlsx`, `Lớp 9.xlsx`.
+- Plan 04 audit v0 đã đọc 462 dòng lớp 6–7 trong output chính. Lượt follow-up ngày 19/07/2026 xử lý thêm 588 dòng lớp 8–9 trong thư mục output riêng, gồm kiểm cơ học và 3-shard specialist audit. Sau khi sửa mapping bài học bằng regex-only, coverage lớp 8–9 không còn nhóm `Không rõ chủ đề`, review queue cơ học giảm còn 3 mẫu. Đây chưa phải xác nhận chuyên môn cuối cùng của HNMU/UET.
 - Dữ liệu HNMU hiện có các trường chính: `STT`, `Bài`, `Vị trí`, `Câu hỏi`, `Mức Bloom`, `Đáp án (SGV)`, `Hội thoại gia sư (Theo phương pháp Dàn giáo)`.
 - Vì có trường `Đáp án (SGV)`, SGV phải được đưa vào phạm vi học liệu dài hạn. SGK dùng để kiểm câu hỏi/chủ đề/bài học; SGV dùng để kiểm đáp án và căn cứ giải thích.
 
@@ -50,7 +50,7 @@ Chuyển đổi hội thoại thô thành mẫu benchmark hoàn chỉnh
 Đánh giá khả năng phân biệt tutor tốt / trung bình / kém
 ```
 
-Điểm quan trọng: dữ liệu thô HNMU đã có batch ban đầu nhưng chưa đầy đủ toàn bộ khối lớp. Vì vậy, không nên vội chuyển đổi hàng loạt. Plan 01 đã hoàn thành checklist kiểm định chất lượng benchmark/dữ liệu. Plan 02 đã chốt layout `shared/`, `src/` và manifest raw data HNMU, tạo nền an toàn để Plan 03 chuẩn hóa học liệu mà không chồng lấn.
+Điểm quan trọng: dữ liệu thô HNMU đã có batch ban đầu nhưng chưa đầy đủ toàn bộ khối lớp. Vì vậy, không nên vội chuyển đổi hàng loạt. Plan 01 đã hoàn thành checklist kiểm định chất lượng benchmark/dữ liệu. Plan 02 đã chốt layout `shared/`, `src/` và manifest raw data HNMU. Plan 03 đã tạo nguồn truy xuất học liệu lớp 6–9 từ OCR Markdown của Nguyên. Plan 04 v0 đã kiểm toán batch lớp 6–7 và có lượt follow-up riêng cho lớp 8–9; hai nhóm output được giữ tách biệt để tránh ghi đè. Plan 07 đã bổ sung specialist `hnmu-dialogue-auditor` để thực hiện phần kiểm ngữ nghĩa/sư phạm theo checklist ở các batch tiếp theo.
 
 ## 4. Các plan nhỏ
 
@@ -59,8 +59,9 @@ Chuyển đổi hội thoại thô thành mẫu benchmark hoàn chỉnh
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | 01   | [Đọc paper về cách đánh giá chất lượng benchmark](plans/01-benchmark-quality-literature-review.md)                                  | HOÀN THÀNH | Rút ra tiêu chí/logic đánh giá benchmark từ 3 paper tutor và V-Legal; tạo checklist kiểm định v0 cho dữ liệu HNMU.                                                               | Không phụ thuộc dữ liệu HNMU, nhưng output dùng trực tiếp cho Plan 04.        |
 | 02   | [Quy ước layout dữ liệu dùng chung và code dùng chung](plans/02-shared-data-and-code-layout.md)                                        | HOÀN THÀNH                   | Chốt nơi đặt raw data, học liệu SGK/SGV, code và output experiment; tạo manifest cho batch HNMU đã nhận.                                                                            | Đã hoàn thành; Plan 03/04/06 dùng lại layout này.                              |
-| 03   | [Chuẩn hóa học liệu SGK/SGV và thiết kế hệ thống học liệu](plans/03-learning-resource-normalization-and-retrieval-system.md)       | PHA 2 HOÀN THÀNH             | Đã có ảnh/PDF SGK/SGV và danh mục học liệu v0 cho topic/lesson/position. OCR, fragment và retrieval vẫn cần duyệt riêng.         | Cần duyệt tiếp Pha 3 nếu muốn OCR mục lục/trang trọng điểm.                  |
-| 04   | [Tiếp nhận, kiểm tra độ phủ, nhất quán và trùng lặp hội thoại HNMU](plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md) | DRAFT                        | Kiểm toán batch HNMU theo độ phủ, thiếu trường, nhất quán, trùng/gần trùng, checklist chất lượng và `confidence_score`.                                                        | Cần Plan 01; cần Plan 02; nên có output v0 của Plan 03.                           |
+| 03   | [Chuẩn hóa học liệu SGK/SGV và thiết kế hệ thống học liệu](plans/03-learning-resource-normalization-and-retrieval-system.md)       | HOÀN THÀNH V0 CHO LỚP 6–9             | Đã dùng OCR Markdown của Nguyên cho SGK/SGV Tin học 6–9, đồng bộ topic/lesson/position registry, tạo 154 OCR units, 2.750 fragment và SQLite FTS index; các artifact OCR/MinerU cũ được đánh dấu là thử nghiệm.         | Học liệu vẫn ở trạng thái `draft`, chưa thay thế xác nhận chuyên môn của HNMU/UET. Report sync: `reports/learning-resource-registries-sync-20260718.md`.                  |
+| 04   | [Tiếp nhận, kiểm tra độ phủ, nhất quán và trùng lặp hội thoại HNMU](plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md) | HOÀN THÀNH V0 CHO LỚP 6–7; FOLLOW-UP LỚP 8–9                        | Đã kiểm toán cơ học/truy xuất sơ bộ lớp 6–7: 462 dòng. Lượt follow-up lớp 8–9: 588 dòng, 1 cặp trùng chính xác, 3 mẫu vào review queue cơ học sau regex-only lesson mapping, 3-shard agent checklist đủ 18 tiêu chí/mẫu. File chính cấp mẫu sau agent audit của cả hai batch là `agent_shard_audit/merged/quality_check_suggestions.csv` với schema canonical.                                                        | Dùng checklist Plan 01, layout Plan 02, retrieval học liệu Plan 03 và specialist Plan 07. Output lớp 8–9 nằm riêng tại `outputs/hnmu_dialogue_audit_grade8_9/`.                           |
+| 07   | [Tạo specialist agent kiểm toán dữ liệu thô HNMU](plans/07-hnmu-dialogue-auditor-specialist.md) | APPROVED — ĐÃ TRIỂN KHAI V0 | Tạo specialist `hnmu-dialogue-auditor` để kiểm ngữ nghĩa/sư phạm từng mẫu thô bằng checklist, học liệu SGK/SGV và phương pháp dàn giáo; output là checklist chi tiết và gợi ý review. | Mở rộng trực tiếp phần agent của Plan 04; dùng checklist Plan 01 và học liệu Plan 03. |
 | 06   | [Chuyển hội thoại thô HNMU thành mẫu benchmark hoàn chỉnh](plans/06-raw-dialogue-to-benchmark-sample-conversion.md)                   | DRAFT                        | Ánh xạ dữ liệu thô đã qua audit sang phiếu tác giả/mẫu benchmark, tách `student_prompt`, `conversation_history`, `gold_response`, `Đáp án`, gán task/rubric và giữ truy vết. | Cần Plan 04; cần task/rubric v0 từ experiment trước; cần học liệu registry v0. |
 | 05   | [Đánh giá khả năng áp dụng và phân biệt của benchmark](plans/05-benchmark-usability-and-discriminative-evaluation.md)              | DRAFT                        | Sau khi có mẫu benchmark hoàn chỉnh, kiểm tra benchmark có phân biệt tutor tốt/trung bình/kém không.                                                                               | Cần Plan 06; cần tập mẫu đã được UET/HNMU xác nhận.                         |
 
@@ -85,11 +86,15 @@ Plan 02 tránh việc dữ liệu/code bị lẫn vào experiment. Đây là bư
 
 ### 5.3. Lớp học liệu
 
-Plan 03 tạo thước đo để biết dữ liệu HNMU đã phủ đủ SGK/SGV Tin học THCS hay chưa. SGK dùng để kiểm câu hỏi, chủ đề, bài học và vị trí học liệu; SGV dùng để kiểm đáp án chuẩn và căn cứ giải thích. Về dài hạn, đây cũng là nền cho hệ thống học liệu dạng database/retrieval để model có thể truy vấn khi được đánh giá.
+Plan 03 tạo thước đo để biết dữ liệu HNMU đã phủ đủ SGK/SGV Tin học THCS hay chưa. Tính đến 18/07/2026, bản dùng được ngay đã mở rộng đến lớp 6–9 ở mức source/file registry, topic/lesson map, lesson-position registry, OCR manifest, fragment và SQLite FTS index truy xuất. SGK dùng để kiểm câu hỏi, chủ đề, bài học và vị trí học liệu; SGV dùng để kiểm đáp án chuẩn và căn cứ giải thích. Về dài hạn, đây cũng là nền cho hệ thống học liệu dạng database/retrieval để model có thể truy vấn khi được đánh giá.
+
+Sau probe OCR ngày 15/07/2026, hướng học liệu đã xử lý không phải là text thuần. Flow được chốt là: ảnh trang → PaddleOCR lấy vùng chữ/bbox → VietOCR GPU nhận dạng tiếng Việt → tái dựng bố cục từ tọa độ → xuất Markdown có front matter, bảng và anchor → build index truy xuất. Bước tái dựng bố cục là bắt buộc để giữ nghĩa của mục lục, bảng và các khung nội dung.
+
+Về code/env, Pha 3–5 sẽ dùng code chung trong `src/edu_benchmark/learning_resources/`, không đặt logic xử lý trong experiment. `benchmark_env` chạy điều phối, tái dựng bố cục, xuất Markdown, fragment, index và validation. Riêng VietOCR GPU recognition chạy bằng `/home/quannda/miniconda3/envs/ocr_vietocr_gpu/bin/python`, rồi trả output trung gian cho các bước tiếp theo trong `benchmark_env`.
 
 ### 5.4. Lớp dữ liệu hội thoại HNMU
 
-Plan 04 hiện đã có điều kiện đầu vào ban đầu vì HNMU đã gửi dữ liệu lớp 6 và lớp 7. Plan này không quyết định benchmark cuối cùng, mà kiểm tra dữ liệu thô đã đủ tin cậy để chuyển đổi thử chưa. Ngoài độ phủ/trùng lặp, Plan 04 phải có checklist chất lượng từng mẫu, `confidence_score` và hàng đợi gửi HNMU kiểm lại.
+Plan 04 đã có audit v0 cho dữ liệu lớp 6 và lớp 7, và có lượt follow-up riêng cho lớp 8 và lớp 9. Plan này không quyết định benchmark cuối cùng, mà kiểm tra dữ liệu thô đã đủ tin cậy để chuyển đổi thử chưa. Ngoài độ phủ/trùng lặp, Plan 04 có checklist chi tiết theo tiêu chí, `confidence_score`, file chính cấp mẫu `agent_shard_audit/merged/quality_check_suggestions.csv` và hàng đợi gửi HNMU kiểm lại. Lớp 8–9 đã xử lý nhóm `Không rõ chủ đề` bằng regex-only lesson mapping; nhãn gợi ý tổng hợp đã được chuẩn hóa về `pass`, `need_human_review`, `failed` trước khi dùng cho Plan 06.
 
 ### 5.5. Lớp chuyển đổi thành mẫu benchmark
 
@@ -131,10 +136,17 @@ Plan 05 kiểm tra tiêu chí thứ ba mà giáo sư nêu: benchmark có khả n
 
 ## 7. Phạm vi chưa làm
 
-- Đã nhận batch dữ liệu HNMU ban đầu trong `shared/raw_data/HNMU-teacher_dialog_samples/` và đã có manifest chính thức; chưa kiểm toán nội dung.
+- Đã nhận batch dữ liệu HNMU trong `shared/raw_data/HNMU-teacher_dialog_samples/` và đã có manifest chính thức cho lớp 6–9. Đã kiểm toán v0 lớp 6–7; lượt follow-up lớp 8–9 đã chạy và lưu riêng tại `experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/`.
 - Đã copy ảnh SGK đã crawl từ experiment `20260705_215045` sang `shared/learning_resources/raw_page_images/sgk/` và đăng ký trong manifest.
-- Đã crawl ảnh SGV tương ứng với SGK Tin học THCS từ các URL đã cung cấp, đăng ký trong manifest, tạo PDF dẫn xuất và tạo danh mục học liệu v0; chưa OCR toàn văn/fragment.
-- Đã tạo khung package `src/edu_benchmark/`; chưa viết logic xử lý/audit/chuyển đổi.
-- Chưa chạy OCR/chuẩn hóa mới trên ảnh SGK/SGV.
+- Đã crawl ảnh SGV tương ứng với SGK Tin học THCS từ các URL đã cung cấp, đăng ký trong manifest, tạo PDF dẫn xuất, tạo danh mục học liệu v0, chạy probe OCR, chốt hướng Markdown-first. Đã dùng OCR Markdown của Nguyên để tạo và đồng bộ manifest/topic map/position registry/fragment/index truy xuất cho SGK/SGV Tin học 6–9.
+- Đã tạo package `src/edu_benchmark/`; đã có logic đọc XLSX, audit dialogue v0 và retrieval học liệu lớp 6–9. Logic chuyển đổi benchmark vẫn thuộc Plan 06.
+- Không chạy OCR hàng loạt mới trong Plan 04; Plan 03 v0 hiện dùng OCR Markdown lớp 6–9 do Nguyên cung cấp.
 - README/ARCHITECTURE đã được cập nhật cho layout Plan 02.
-- Chưa đánh dấu các plan mới ngoài Plan 01 và Plan 02 là `APPROVED`.
+- Plan 04 đã được đánh dấu `APPROVED` và hoàn thành audit v0 cho lớp 6–7. Các plan 05/06 vẫn cần duyệt trước khi triển khai.
+
+
+## Cập nhật Plan 04 ngày 19/07/2026
+
+- Dữ liệu lớp 8–9 đã được rerun kiểm cơ học bằng mapping bài học regex-only, không còn dòng `Không rõ chủ đề` trong coverage.
+- Đã repair checklist specialist cho 154 mẫu từng bị ảnh hưởng bởi lỗi mapping A/B, với 4 tiêu chí `RAW-CON-01`, `RAW-CON-02`, `RAW-CON-06`, `RAW-CON-07`.
+- Bản checklist specialist nên dùng hiện tại: `experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv`.

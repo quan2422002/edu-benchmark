@@ -3,7 +3,7 @@
 Experiment: `20260709_155523`
 Trạng thái: `DRAFT` — chưa triển khai.
 Ngày lập: 11/07/2026
-Ngày cập nhật: 14/07/2026
+Ngày cập nhật: 15/07/2026
 
 ## 1. Mục tiêu
 
@@ -21,6 +21,8 @@ Cần có:
 4. Giao thức đầu vào model rõ ràng.
 5. Cách chấm điểm đã được HNMU/UET chấp nhận.
 6. Có tập nhỏ được UET/HNMU xác nhận để làm điểm neo ban đầu.
+7. Với các mẫu cần học liệu, có truy vết được tới fragment Markdown/index của Plan 03 hoặc có cờ rõ ràng rằng học liệu chưa xác nhận.
+8. Nếu mẫu phụ thuộc bảng/mục lục/đáp án SGV dạng bảng, fragment học liệu phải đến từ Markdown đã qua tái dựng bố cục, không chỉ từ text OCR thuần.
 
 ## 3. Câu hỏi cần trả lời
 
@@ -31,6 +33,8 @@ Cần có:
 5. Human reviewer có đồng thuận khi chấm một tập nhỏ không?
 6. Có mẫu nào rubric không đủ phân biệt hoặc gây nhầm lẫn không?
 7. Mẫu nào có vấn đề do chuyển đổi từ dữ liệu thô, dù dữ liệu thô đã qua audit?
+8. Sai khác điểm model là do năng lực tutor hay do thiếu/không truy xuất đúng học liệu?
+9. Sai khác điểm model có bị ảnh hưởng bởi lỗi OCR hoặc mất cấu trúc Markdown của học liệu không?
 
 ## 4. Thiết kế thử nghiệm sơ bộ
 
@@ -47,6 +51,8 @@ Lưu ý: phản hồi kém phải được tạo và dùng cẩn thận, không 
 - `reports/benchmark-discriminative-evaluation-design.md`
 - bảng thiết kế thử nghiệm
 - bảng phân tích phân bố điểm
+- bảng truy vết mẫu benchmark tới learning-resource fragments nếu mẫu phụ thuộc SGK/SGV
+- bảng ghi nhận trạng thái học liệu: đã kiểm bố cục, còn `needs_review`, hay chỉ có text OCR sơ bộ
 - danh sách task/rubric cần sửa nếu không phân hóa
 - handoff cho giai đoạn paper/experiment
 

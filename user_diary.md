@@ -225,3 +225,7 @@ Sáng nay, tôi có 1 buổi trao đổi ngắn với giáo sư của tôi. Th�
 - Ngoài ra, thầy cũng gợi ý cho tôi: khi sử dụng agent để check độ chính xác/tính nhất quán trong nội dung giữa các trường có trong 1 mẫu dữ liệu được xây dựng bởi các thầy cô HNMU thì nên lập 1 checklist gồm những tiêu chí để chấm chất lượng của các mẫu đó. Một mẫu được cho là có chất lượng tốt khi đáp ứng được tất cả các tiêu chí có trong checklist đó và các thầy cô HNMU sẽ được yêu cầu check lại các mẫu không đạt yêu cầu về chất lượng, dựa trên checklist, và đi kèm với lý do. Ngoài ra, trên thực tế, có những mẫu mà ngay cả agent cũng không thể đưa ra quyết định chất lượng 1 cách chắc chắn (ví dụ như các mẫu liên quan đến đạo đức, pháp lý,...) thì cũng cần có 1 chỉ số để thể hiện sự tự tin của agent khi đưa ra quyết định (ví dụ: confidence score, được lượng hóa).Nếu confidence thấp thì cũng nên trả về cho các thầy cô HNMU để xem xét thêm.
 
 Dữ liệu thô cũng đã được gửi về. tôi đã để trong thư mục shared/raw_data/HNMU-teacher_dialog_samples
+
+# Update plan (21/7/2026)
+
+Sáng nay, tôi cũng có trao đổi với giáo sư và một số anh chị em Nghiên cứu sinh khác về tiến trình của phase 1 của dự án.

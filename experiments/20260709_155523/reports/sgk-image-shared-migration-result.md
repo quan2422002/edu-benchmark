@@ -2,6 +2,10 @@
 
 Ngày thực hiện: 15/07/2026
 Experiment: `20260709_155523`
+## Cập nhật trạng thái ngày 18/07/2026
+
+Phần dưới đây là báo cáo lịch sử của Pha 0 ngày 15/07/2026. Tính đến 18/07/2026, SGK/SGV Tin học 6–9 đã có OCR Markdown do Nguyên gửi, manifest OCR, fragment và SQLite FTS index ở mức `draft`. Ảnh/PDF vẫn là nguồn truy vết gốc, không bị thay thế bởi OCR. Chi tiết xem `experiments/20260709_155523/reports/learning-resource-registries-sync-20260718.md`.
+
 
 ## 1. Mục tiêu
 

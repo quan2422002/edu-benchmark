@@ -1,0 +1,21 @@
+sample_id,issue_type,field,severity,message
+HNMU-G8-R0068-STT11,dialogue_format,dialogue,high,Hội thoại không có nhãn AI:.
+HNMU-G9-R0086-STT1,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0087-STT2,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0088-STT3,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0089-STT4,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0090-STT5,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0091-STT6,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0092-STT7,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0093-STT8,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0094-STT9,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0095-STT10,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0100-STT1,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0101-STT2,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0103-STT4,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0104-STT5,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0105-STT6,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0106-STT7,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0107-STT8,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0108-STT9,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.
+HNMU-G9-R0109-STT10,metadata_format,bloom_level,medium,Không nhận diện được mức nhận thức v0.

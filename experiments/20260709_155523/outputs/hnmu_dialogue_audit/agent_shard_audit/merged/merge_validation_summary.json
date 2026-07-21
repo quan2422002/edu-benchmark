@@ -1,0 +1,97 @@
+{
+  "run_id": "canonical_quality_decision_label_sync_20260720_lop6_7",
+  "checked_at": "2026-07-20T00:00:00+07:00",
+  "checked_by": "orchestrator-canonical-quality-decision-label-sync",
+  "source_checklist": "experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/raw_dialogue_checklist_results.repaired.csv",
+  "synced_outputs": [
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/quality_check_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/merge_validation_summary.json"
+  ],
+  "python": "/home/quannda/miniconda3/envs/benchmark_env/bin/python",
+  "aggregation_rule": {
+    "decision": "failed nếu có ít nhất một tiêu chí fail; nếu không có fail nhưng có ít nhất một uncertain thì need_human_review; nếu còn lại toàn pass/not_applicable thì pass.",
+    "confidence_score": "failed: confidence thấp nhất trong các tiêu chí fail; need_human_review: confidence thấp nhất trong các tiêu chí uncertain; pass: confidence thấp nhất trong toàn bộ tiêu chí của mẫu."
+  },
+  "checklist_rows": 8316,
+  "quality_rows": 462,
+  "review_queue_rows": 224,
+  "input_sample_count": 462,
+  "output_sample_count": 462,
+  "criterion_count_per_sample_distribution": {
+    "18": 462
+  },
+  "checklist_result_counts": {
+    "pass": 7923,
+    "uncertain": 382,
+    "fail": 8,
+    "not_applicable": 3
+  },
+  "quality_decision_counts": {
+    "need_human_review": 222,
+    "pass": 238,
+    "failed": 2
+  },
+  "review_queue_priority_counts": {
+    "medium": 222,
+    "high": 2
+  },
+  "samples_with_nonpass": 224,
+  "sync_problem_count": 0,
+  "sync_problems_preview": [],
+  "uncertain_by_criterion": {
+    "RAW-CON-02": 168,
+    "RAW-CON-05": 74,
+    "RAW-CON-07": 53,
+    "RAW-DUP-04": 41,
+    "RAW-CON-04": 15,
+    "RAW-CON-06": 11,
+    "RAW-PED-02": 10,
+    "RAW-STR-04": 1,
+    "RAW-PED-04": 2,
+    "RAW-CON-01": 1,
+    "RAW-CON-03": 2,
+    "RAW-PED-06": 1,
+    "RAW-PED-01": 1,
+    "RAW-PED-03": 2
+  },
+  "fail_by_criterion": {
+    "RAW-STR-02": 1,
+    "RAW-STR-03": 2,
+    "RAW-STR-04": 1,
+    "RAW-CON-03": 1,
+    "RAW-CON-04": 1,
+    "RAW-CON-07": 1,
+    "RAW-PED-06": 1
+  },
+  "policy_note": "Đồng bộ lại quality_check_suggestions.csv và hnmu_review_queue_suggestions.csv từ raw_dialogue_checklist_results.repaired.csv. Checklist chi tiết là nguồn chân lý; sample-level suggestion không được pass nếu còn tiêu chí fail hoặc uncertain.",
+  "main_sample_level_file": "experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/quality_check_suggestions.csv",
+  "quality_schema": "canonical_quality_check_suggestions_v2",
+  "quality_columns": [
+    "sample_id",
+    "source_file",
+    "source_row_number",
+    "grade",
+    "lesson",
+    "quality_decision",
+    "confidence_score",
+    "failure_reasons",
+    "blocking_criterion_ids",
+    "suggested_reviewer_action",
+    "needs_hnmu_review",
+    "needs_learning_resource_review",
+    "needs_sgv_verification",
+    "evidence_fragment_ids",
+    "checked_by",
+    "checked_at",
+    "source_shard"
+  ],
+  "decision_column": "quality_decision",
+  "pass_label": "pass",
+  "canonical_quality_schema_sync_note": "quality_check_suggestions.csv là file chính ở cấp mẫu sau agent audit. Schema đã được chuẩn hóa giữa batch lớp 6-7 và lớp 8-9; quality_decision chỉ dùng pass, need_human_review, failed.",
+  "allowed_quality_decisions": [
+    "pass",
+    "need_human_review",
+    "failed"
+  ]
+}

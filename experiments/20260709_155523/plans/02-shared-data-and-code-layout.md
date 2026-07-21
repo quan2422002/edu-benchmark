@@ -3,7 +3,7 @@
 Experiment: `20260709_155523`
 Trạng thái: `HOÀN THÀNH` — được Quân duyệt và triển khai ngày 15/07/2026.
 Ngày lập: 11/07/2026
-Ngày cập nhật: 15/07/2026
+Ngày cập nhật: 18/07/2026
 
 ## 1. Mục tiêu
 
@@ -33,12 +33,16 @@ Sau cập nhật ngày 14/07/2026, dữ liệu HNMU thật đã xuất hiện tr
 Vai trò: lưu dữ liệu hội thoại thô do HNMU gửi.
 Lý do tạo: dữ liệu HNMU sẽ được dùng lại ở nhiều experiment, không nên bị chôn trong một experiment cụ thể.
 
-Tình trạng hiện tại:
+Tình trạng hiện tại sau đồng bộ ngày 18/07/2026:
 
 ```text
 shared/raw_data/HNMU-teacher_dialog_samples/
   Lớp 6.xlsx
   Lớp 7.xlsx
+  Lớp 8.xlsx
+  Lớp 9.xlsx
+  README.md
+  manifest.csv
 ```
 
 Cấu trúc quản lý đề xuất sau khi Plan 02 được duyệt:
@@ -51,6 +55,9 @@ shared/raw_data/HNMU-teacher_dialog_samples/
     20260714_initial/
       Lớp 6.xlsx
       Lớp 7.xlsx
+    20260718_grade8_9/
+      Lớp 8.xlsx
+      Lớp 9.xlsx
 ```
 
 Nếu không muốn di chuyển file gốc ngay, có thể giữ file tại vị trí hiện tại và tạo manifest trỏ tới đường dẫn hiện có. Điều quan trọng là mọi batch phải được đăng ký, không xử lý file “trôi nổi”.
@@ -176,6 +183,19 @@ Quy ước chống chồng lấn với Plan 03:
 - Plan 02 sở hữu layout, README nền và manifest raw data HNMU.
 - Plan 03 sở hữu việc copy/đăng ký ảnh SGK, crawl SGV, tạo registry học liệu và cập nhật `learning_resource_file_manifest.csv`.
 - Nếu Plan 03 cần sửa README nền trong `shared/learning_resources/`, chỉ bổ sung phần trạng thái học liệu, không đổi lại nguyên tắc layout đã chốt ở Plan 02.
+
+
+
+## 5.2. Cập nhật đồng bộ ngày 18/07/2026
+
+Plan 02 vẫn giữ nguyên vai trò: quản lý layout và manifest, không kiểm toán nội dung hội thoại. Sau khi HNMU gửi thêm lớp 8–9, đã cập nhật phần raw-data dùng chung như sau:
+
+- Đăng ký `Lớp 8.xlsx` và `Lớp 9.xlsx` trong `shared/raw_data/HNMU-teacher_dialog_samples/manifest.csv`.
+- Giữ nguyên file Excel gốc tại vị trí hiện có, không di chuyển vào thư mục con để tránh làm gãy đường dẫn.
+- Cập nhật `shared/raw_data/HNMU-teacher_dialog_samples/README.md` để ghi rõ hai batch hiện có: `20260714_initial` và `20260718_grade8_9`.
+- Trạng thái của lớp 8–9 là `raw_registered_no_audit`: đã đăng ký nhưng chưa chạy Plan 04 audit.
+
+Như vậy Plan 02 đã hoàn thành cả phần đăng ký dữ liệu thô lớp 6–9. Các bước kiểm chất lượng/nhất quán vẫn thuộc Plan 04 hoặc các plan sau, không thuộc Plan 02.
 
 ## 6. Ngoài phạm vi
 

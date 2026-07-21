@@ -2,6 +2,10 @@
 
 Ngày thực hiện: 15/07/2026
 Experiment: `20260709_155523`
+## Cập nhật trạng thái ngày 18/07/2026
+
+PDF trong báo cáo này vẫn chỉ là bản dẫn xuất để xem nhanh. Tính đến 18/07/2026, OCR Markdown SGK/SGV Tin học 6–9 đã được đăng ký riêng trong `ocr_text_manifest.csv`, tách thành fragment và build index truy xuất ở mức `draft`; PDF không phải artifact chính cho truy xuất tự động. Chi tiết xem `experiments/20260709_155523/reports/learning-resource-registries-sync-20260718.md`.
+
 
 ## 1. Mục tiêu
 

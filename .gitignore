@@ -3,3 +3,196 @@ document/
 
 # Python bytecode and test caches
 __pycache__/
+
+# Shared heavy/local data
+# Keep lightweight manifests, registries, README files, and .gitkeep files trackable.
+shared/raw_data/**/*
+!shared/raw_data/**/
+!shared/raw_data/**/README.md
+!shared/raw_data/**/manifest.csv
+
+shared/learning_resources/raw_page_images/**/*
+!shared/learning_resources/raw_page_images/**/
+!shared/learning_resources/raw_page_images/**/.gitkeep
+
+shared/learning_resources/compiled_documents/**/*
+!shared/learning_resources/compiled_documents/**/
+!shared/learning_resources/compiled_documents/**/.gitkeep
+!shared/learning_resources/compiled_documents/**/README.md
+
+shared/**/*.sqlite
+shared/**/*.sqlite3
+shared/**/*.db
+shared/**/*.duckdb
+shared/**/*.parquet
+shared/**/*.zip
+shared/**/*.tar
+shared/**/*.tar.gz
+shared/**/*.tgz
+
+# Experiment OCR/debug image outputs can be regenerated and may be large.
+experiments/**/outputs/**/crops/**/*
+experiments/**/outputs/**/detection/pages/**/*
+experiments/**/outputs/**/detection/crops/**/*
+experiments/**/outputs/**/recognition/pages/**/*
+experiments/**/outputs/**/recognition/texts/**/*
+experiments/**/outputs/**/parsed_pages/**/*
+experiments/**/outputs/**/*.png
+experiments/**/outputs/**/*.jpg
+experiments/**/outputs/**/*.jpeg
+experiments/**/outputs/**/*.webp
+experiments/**/outputs/**/*.pdf
+experiments/**/outputs/**/mineru_runs/**/*
+experiments/**/outputs/**/book_markdown/**/*.md
+
+shared/learning_resources/ocr_text/**/*
+
+# Plan 04 HNMU dialogue-audit output hygiene — lớp 6-7
+# Applies only to: experiments/20260709_155523/outputs/hnmu_dialogue_audit/
+# Keep HNMU-facing/root summary files and the current repaired merged specialist outputs.
+# Ignore pilot runs, per-shard outputs, copied checklist snapshots, repair/debug files, and local backups.
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/pilot_agent_audit/**
+# experiments/20260709_155523/outputs/hnmu_dialogue_audit/checklists/**
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/**
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/README_final.md
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/README_final.md
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/raw_dialogue_checklist_results.repaired.csv
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/quality_check_suggestions.csv
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/merge_validation_summary.json
+
+# Plan 04 HNMU dialogue-audit output hygiene — lớp 8-9
+# Applies only to: experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/
+# Keep only the current synced deliverables visible to Git.
+# Ignore per-shard outputs, regex-repair intermediates, old merged files, and `.pre_*` backup snapshots.
+# The ignored files remain on disk for local traceability, but should not be confused with synced outputs.
+experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/**
+
+# Re-open the merged directory and the current synced files only.
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/README_final.md
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/README_final.md
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/quality_check_suggestions.csv
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/merge_validation_summary.json
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/agent_audit_notes.md
+
+# For lớp 8-9, keep the human-facing report bundle visible; ignore copied checklist snapshots under outputs.
+# experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/checklists/**
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/reports/
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/reports/README.md
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/reports/bao-cao-gui-hnmu-ket-qua-ra-soat-du-lieu-hoi-thoai-lop-6-9-20260719.md
+!experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/reports/hnmu-dialogue-audit-batch-grade8-9-20260719.md
+
+# Plan 04 root-level intermediate/pre-specialist summaries that can confuse the synced result set.
+# These files are useful locally, but they are not the final synced specialist audit outputs.
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/metadata_consistency_flags.csv
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/quality_check_results.csv
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/hnmu_review_queue.csv
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/reports/hnmu-dialogue-auditor-shard-repair-20260718.md
+experiments/20260709_155523/outputs/hnmu_dialogue_audit/reports/hnmu-dialogue-auditor-sharded-run-20260717.md
+
+experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/metadata_consistency_flags.csv
+experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/quality_check_results.csv
+experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/hnmu_review_queue.csv
+
+
+# other OCR experiment using PaddleOCR, VietOCR, Mineru, etc. that are not part of the main HNMU dialogue-audit project.
+experiments/20260709_155523/outputs/mineru_book_phase_a
+experiments/20260709_155523/outputs/mineru_probe_20260716
+experiments/20260709_155523/outputs/ocr_method_compare
+experiments/20260709_155523/outputs/ocr_probe
+experiments/20260709_155523/outputs/ocr_vietocr_gpu_probe
+experiments/20260709_155523/outputs/paddleocr_probe
+
+requirements-ocr-cpu.txt
+requirements-ocr-easyocr-gpu.txt
+requirements-ocr-gpu.txt
+requirements-ocr-mineru-core.txt
+requirements-ocr-paddle-gpu.txt
+requirements-ocr-paddle-vietocr-cpu.txt
+requirements-ocr-vietocr-gpu.txt
+
+# Plan 03 OCR/MinerU trial artifacts superseded by Nguyen OCR Markdown.
+# Keep these local unless explicitly needed for audit/history.
+# Do not broaden this to all learning-resource code: Phase 4-5 Nguyen OCR
+# manifest/fragment/retrieval files are part of the current working path.
+experiments/20260709_155523/outputs/PLAN03_CODEX_ARTIFACTS_CLEANUP_README.md
+experiments/20260709_155523/outputs/learning_resource_phase3_batch_test/
+experiments/20260709_155523/outputs/learning_resource_phase3_grade6_7/
+experiments/20260709_155523/outputs/learning_resource_phase3_grade6_7_all/
+experiments/20260709_155523/outputs/learning_resource_phase3_grade6_7_all_pages.csv
+experiments/20260709_155523/outputs/learning_resource_phase3_grade6_7_all_pages.txt
+experiments/20260709_155523/outputs/learning_resource_phase3_layout_probe_v2/
+experiments/20260709_155523/outputs/learning_resource_phase3_pipeline_probe/
+
+experiments/20260709_155523/reports/learning-resource-markdown-retrieval-decision.md
+experiments/20260709_155523/reports/learning-resource-phase-a-book-level-implementation-result.md
+experiments/20260709_155523/reports/learning-resource-phase-b-e-postprocess-implementation-result.md
+experiments/20260709_155523/reports/learning-resource-phase3-code-usage.md
+experiments/20260709_155523/reports/learning-resource-phase3-grade6-7-full-batch-result.md
+experiments/20260709_155523/reports/learning-resource-phase3-output-audit-notes.md
+experiments/20260709_155523/reports/mineru-env-setup-result-20260716.md
+experiments/20260709_155523/reports/mineru-pdf-chunk-scale-probe-20260716.md
+experiments/20260709_155523/reports/mineru-pdf-chunk-speed-probe-20260716.md
+experiments/20260709_155523/reports/mineru-pdf-vs-per-image-spelling-comparison-20260716.md
+experiments/20260709_155523/reports/mineru-probe-result-and-verification-direction-20260716.md
+experiments/20260709_155523/reports/ocr-gpu-probe-result.md
+experiments/20260709_155523/reports/ocr-method-comparison-result.md
+experiments/20260709_155523/reports/paddleocr-gpu-probe-result.md
+experiments/20260709_155523/reports/plan03-codex-artifact-cleanup-map.md
+experiments/20260709_155523/reports/sgk-sgv-image-data-characteristics-and-ocr-strategy.md
+experiments/20260709_155523/reports/vietocr-vgg-seq2seq-gpu-probe-result.md
+experiments/20260709_155523/reports/vietocr-vgg-transformer-gpu-probe-result.md
+experiments/20260709_155523/reports/vlm-first-ocr-markdown-flow-proposal.md
+experiments/20260709_155523/reports/vlm-ocr-framework-survey-20260716.md
+
+experiments/20260709_155523/handoffs/learning-resource-code-env-contract-017.md
+experiments/20260709_155523/handoffs/learning-resource-codex-artifact-cleanup-marking-032.md
+experiments/20260709_155523/handoffs/learning-resource-markdown-retrieval-decision-015.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-env-setup-022.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-formula-true-sync-028.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-pdf-chunk-scale-probe-026.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-pdf-chunk-speed-probe-024.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-postprocess-implementation-031.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-probe-analysis-023.md
+experiments/20260709_155523/handoffs/learning-resource-mineru-spelling-comparison-025.md
+experiments/20260709_155523/handoffs/learning-resource-ocr-layout-markdown-flow-016.md
+experiments/20260709_155523/handoffs/learning-resource-phase-a-back-matter-filter-030.md
+experiments/20260709_155523/handoffs/learning-resource-phase-a-book-level-flow-update-027.md
+experiments/20260709_155523/handoffs/learning-resource-phase-a-book-level-implementation-029.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-code-implementation-018.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-full-grade6-7-layout-v2-019.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-ocr-gpu-probe-010.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-ocr-method-comparison-012.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-paddleocr-probe-011.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-vietocr-gpu-probe-013.md
+experiments/20260709_155523/handoffs/learning-resource-phase3-vietocr-transformer-gpu-probe-014.md
+experiments/20260709_155523/handoffs/learning-resource-vlm-first-ocr-flow-020.md
+experiments/20260709_155523/handoffs/learning-resource-vlm-ocr-framework-survey-021.md
+
+scripts/learning_resources/build_markdown_pages.py
+scripts/learning_resources/collect_mineru_book_markdown.py
+scripts/learning_resources/list_learning_resource_images.py
+scripts/learning_resources/postprocess_mineru_book_phase.py
+scripts/learning_resources/prepare_mineru_book_phase_a.py
+scripts/learning_resources/run_paddle_detection.py
+scripts/learning_resources/run_vietocr_recognition.py
+scripts/learning_resources/select_hnmu_referenced_pages.py
+scripts/learning_resources/summarize_ocr_quality.py
+
+src/edu_benchmark/learning_resources/layout_reconstruction.py
+src/edu_benchmark/learning_resources/markdown_export.py
+src/edu_benchmark/learning_resources/mineru_book_phase_a.py
+src/edu_benchmark/learning_resources/mineru_postprocess.py
+src/edu_benchmark/learning_resources/ocr_detection.py
+src/edu_benchmark/learning_resources/quality_checks.py
+src/edu_benchmark/learning_resources/vietocr_recognition.py
+
+tests/learning_resources/test_mineru_book_phase_a.py
+tests/learning_resources/test_mineru_postprocess.py
+tests/learning_resources/test_ocr_pipeline_units.py

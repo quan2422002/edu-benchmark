@@ -1,0 +1,81 @@
+{
+  "run_id": "canonical_quality_decision_label_sync_20260720_lop8_9",
+  "checked_at": "2026-07-20T00:00:00+07:00",
+  "checked_by": "orchestrator-canonical-quality-decision-label-sync",
+  "source_checklist": "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv",
+  "synced_outputs": [
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/quality_check_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/hnmu_review_queue_suggestions.csv",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/merge_validation_summary.json",
+    "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/agent_audit_notes.md"
+  ],
+  "checklist_rows": 10584,
+  "quality_rows": 588,
+  "review_queue_rows": 161,
+  "cleaned_missing_fragment_reason_rows": 140,
+  "cleaned_missing_fragment_reason_rows_by_criterion": {
+    "RAW-CON-07": 98,
+    "RAW-CON-06": 42
+  },
+  "checklist_result_counts": {
+    "pass": 10107,
+    "fail": 2,
+    "uncertain": 475
+  },
+  "quality_decision_counts": {
+    "pass": 427,
+    "failed": 1,
+    "need_human_review": 160
+  },
+  "review_queue_priority_counts": {
+    "cao": 43,
+    "trung bình": 118
+  },
+  "samples_with_nonpass": 161,
+  "sync_problem_count": 0,
+  "sync_problems_preview": [],
+  "draft_or_unconfirmed_mentions_in_quality_reasons": 0,
+  "draft_or_unconfirmed_mentions_in_nonpass_checklist": 0,
+  "policy_note": "Đồng bộ toàn diện theo checklist hiện hành. Khi evidence_fragment_id trống, reason diễn đạt là chưa truy xuất được fragment phù hợp; không quy vấn đề về trạng thái draft. Rule tổng hợp strict từ checklist chi tiết đã được ghi lại ngày 20/07/2026; keep là nhãn legacy tương đương pass trong batch lớp 8-9.",
+  "aggregation_rule": {
+    "decision": "failed nếu có ít nhất một tiêu chí fail; nếu không có fail nhưng có ít nhất một uncertain thì need_human_review; nếu còn lại toàn pass/not_applicable thì pass.",
+    "confidence_score": "failed: confidence thấp nhất trong các tiêu chí fail; need_human_review: confidence thấp nhất trong các tiêu chí uncertain; pass: confidence thấp nhất trong toàn bộ tiêu chí của mẫu."
+  },
+  "strict_aggregation_consistency_checked_at": "2026-07-20T00:00:00+07:00",
+  "strict_aggregation_consistency_problem_count": 0,
+  "main_sample_level_file": "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/quality_check_suggestions.csv",
+  "quality_schema": "canonical_quality_check_suggestions_v2",
+  "quality_columns": [
+    "sample_id",
+    "source_file",
+    "source_row_number",
+    "grade",
+    "lesson",
+    "quality_decision",
+    "confidence_score",
+    "failure_reasons",
+    "blocking_criterion_ids",
+    "suggested_reviewer_action",
+    "needs_hnmu_review",
+    "needs_learning_resource_review",
+    "needs_sgv_verification",
+    "evidence_fragment_ids",
+    "checked_by",
+    "checked_at",
+    "source_shard"
+  ],
+  "decision_column": "quality_decision",
+  "pass_label": "pass",
+  "python": "/home/quannda/miniconda3/envs/benchmark_env/bin/python",
+  "input_sample_count": 588,
+  "output_sample_count": 588,
+  "criterion_count_per_sample_distribution": {
+    "18": 588
+  },
+  "canonical_quality_schema_sync_note": "quality_check_suggestions.csv là file chính ở cấp mẫu sau agent audit. Schema đã được chuẩn hóa giữa batch lớp 6-7 và lớp 8-9; quality_decision chỉ dùng pass, need_human_review, failed.",
+  "allowed_quality_decisions": [
+    "pass",
+    "need_human_review",
+    "failed"
+  ]
+}
