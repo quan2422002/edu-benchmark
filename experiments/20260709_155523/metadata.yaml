@@ -1,12 +1,14 @@
 id: "20260709_155523"
 title: "HNMU raw dialogue intake, benchmark mapping, and evaluation planning"
-status: active
+status: closed
 task_type: benchmark_data_intake_and_evaluation_planning
 owner_agent: orchestrator
 parents:
   - "20260705_215045"
 created_at: "2026-07-09T15:55:23+07:00"
 source_meeting_at: "2026-07-08"
+closed_at: "2026-07-22T00:09:40+07:00"
+closure_reason: "Tạm đóng giai đoạn 1: đánh giá chất lượng dữ liệu hội thoại thô HNMU; chuyển sang experiment 20260722_000940 cho giai đoạn 2."
 git_commit: null
 artifacts:
   - reports/meeting-notes-structured-20260708.md
