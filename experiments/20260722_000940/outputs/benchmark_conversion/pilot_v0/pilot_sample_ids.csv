@@ -1,0 +1,41 @@
+sample_id,grade,lesson,bloom_level,cognitive_band,turn_count,turn_count_bin,raw_audit_evidence_count
+HNMU-G6-R0030-STT1,6,Bài 3. Thông tin trong máy tinh,Nhận biết (Nêu được tên đơn vị),Biết,6,4-6,2
+HNMU-G6-R0176-STT7,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu (Mô tả quy trình),Hiểu,8,7-9,1
+HNMU-G6-R0055-STT12,6,Bài 4. Mạng máy tính,Vận dụng (Vẽ sơ đồ mạng),Vận dụng,6,4-6,3
+HNMU-G6-R0076-STT5,6,Bài 6: Mạng thông tin toàn cầu,Thông hiểu (Giải thích chức năng),Hiểu,6,4-6,2
+HNMU-G6-R0086-STT1,6,Bài 7: Tìm kiếm thông tin trên Internet,Nhận biết (Nêu được khái niệm),Biết,6,4-6,4
+HNMU-G6-R0130-STT3,6,Bài 10: Sơ đồ tư duy,Nhận biết (Nêu được tên thành phần),Biết,6,4-6,2
+HNMU-G6-R0142-STT1,6,Bài 11: Định dạng văn bản,Nhận biết (Kể tên được các chức năng cơ bản),Biết,6,4-6,3
+HNMU-G6-R0184-STT1,6,Bài 14: Hoàn thiện sổ lưu niệm,Nhận biết (Nêu được nội dung công việc),Biết,4,4-6,3
+HNMU-G6-R0213-STT2,6,Bài 16: Các cấu trúc điều khiển,Nhận biết (Nhận diện được ý nghĩa ký hiệu),Biết,6,4-6,1
+HNMU-G6-R0226-STT1,6,Bài 17: Chương trình máy tính,Nhận biết (Nêu được khái niệm),Biết,6,4-6,3
+HNMU-G7-R0002-STT1,7,Bài 1. Thiết bị vào - ra,Nhận biết (Nêu được chức năng),Biết,6,4-6,3
+HNMU-G7-R0188-STT5,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,Hiểu,10,>=10,1
+HNMU-G7-R0012-STT11,7,Bài 1. Thiết bị vào - ra,Vận dụng (Xác định trình tự xử lý),Vận dụng,8,7-9,3
+HNMU-G7-R0024-STT9,7,Bài 2. Phần mềm máy tính,Thông hiểu (Giải thích sự cần thiết),Hiểu,6,4-6,1
+HNMU-G7-R0030-STT1,7,Bài 3. Quản lí dữ liệu trong máy tính,Nhận biết (Biết được tệp chương trình cũng là dữ liệu),Biết,6,4-6,3
+HNMU-G7-R0058-STT1,7,Bài 5. Ứng xử trên mạng,Nhận biết (Biết được khái niệm),Biết,6,4-6,2
+HNMU-G7-R0074-STT3,7,Bài 6: Làm quen với phần mềm bảng tính,Nhận biết (Nêu được tên thành phần),Biết,6,4-6,3
+HNMU-G7-R0104-STT5,7,Bài 8: Công cụ hỗ trợ tính toán,Thông hiểu (Giải thích được lợi ích),Hiểu,6,4-6,2
+HNMU-G7-R0115-STT2,7,Bài 9: Trình bày bảng tính,Nhận biết (Nêu được tên lệnh),Biết,4,4-6,3
+HNMU-G7-R0142-STT1,7,Bài 11: Tạo bài trình chiếu,Nhận biết (Nêu được),Biết,6,4-6,2
+HNMU-G8-R0002-STT1,8,Bài 1. Lược sử công cụ tính toán,Nhận biết (Nhớ được tên tác giả),Biết,4,4-6,1
+HNMU-G8-R0160-STT5,8,[8b] Làm quen với phần mềm chỉnh sửa ảnh,Thông hiểu,Hiểu,8,7-9,1
+HNMU-G8-R0195-STT12,8,"[10b] Thêm văn bản, tạo hiệu ứng cho ảnh",Vận dụng,Vận dụng,10,>=10,1
+HNMU-G8-R0016-STT1,8,Bài 2. Thông tin trong môi trường số,Nhận biết (Nêu được khái niệm),Biết,6,4-6,1
+HNMU-G8-R0032-STT3,8,Bài 3. Thực hành: Khai thác thông tin số,Nhận biết (Nêu tên được kênh chia sẻ),Biết,6,4-6,1
+HNMU-G8-R0044-STT1,8,Bài 4. Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số,Nhận biết (Nêu được khái niệm),Biết,4,4-6,1
+HNMU-G8-R0058-STT1,8,Bài 5: Sử dụng bảng tính giải quyết bài toán thực tế,Nhận biết (Nêu được khái niệm),Biết,6,4-6,1
+HNMU-G8-R0072-STT1,8,Bài 6. Săp xếp và lọc dữ liệu,Nhận biết (Nêu được khái niệm),Biết,4,4-6,1
+HNMU-G8-R0086-STT1,8,Bài 7. Trình bày dữ liệu bằng biểu đồ,Nhận biết (Nêu được khái niệm),Biết,6,4-6,1
+HNMU-G8-R0170-STT1,8,"[9b] Thay đổi khung hình, kích thước ảnh",Nhận biết,Biết,6,4-6,1
+HNMU-G9-R0004-STT3,9,Bài 1: Thế giới kĩ thuật số,Nhận biết (Nêu được lĩnh vực),Biết,4,4-6,1
+HNMU-G9-R0189-STT6,9,[9b]: Các chức năng chính của phần mềm làm Video,Thông hiểu,Hiểu,8,7-9,1
+HNMU-G9-R0209-STT12,9,[10b]: Chuẩn bị dữ liệu và dựng video,Vận dụng,Vận dụng,10,>=10,1
+HNMU-G9-R0016-STT1,9,Bài 2: Thông tin trong giải quyết vấn đề,Nhận biết (Nêu được các yếu tố đánh giá),Biết,4,4-6,1
+HNMU-G9-R0030-STT1,9,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Nhận biết (Kể tên được các thành phần),Biết,4,4-6,1
+HNMU-G9-R0044-STT1,9,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Nhận biết (Nêu được nội dung liên quan đến Luật),Biết,4,4-6,1
+HNMU-G9-R0059-STT2,9,Bài 5: Tìm hiểu phần mềm mô phỏng,Nhận biết (Kể tên được thiết bị/công cụ),Biết,4,4-6,1
+HNMU-G9-R0072-STT1,9,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Nhận biết (Nêu được tên thiết bị/công cụ),Biết,4,4-6,1
+HNMU-G9-R0086-STT1,9,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Biết (Kể tên được tên thiết bị/công cụ).,Biết,4,4-6,1
+HNMU-G9-R0100-STT1,9,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,Biết (Nêu được mục tiêu của dự án),Biết,4,4-6,1

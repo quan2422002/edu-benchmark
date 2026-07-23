@@ -1,0 +1,39 @@
+{
+  "total_rows": 297,
+  "grade_counts": {
+    "6": 41,
+    "7": 57,
+    "8": 108,
+    "9": 91
+  },
+  "category_counts": {
+    "action_commitment_or_completion": 49,
+    "answer_or_explanation_to_tutor_prompt": 206,
+    "pure_acknowledgement_or_thanks": 1,
+    "reflection_or_other_closing": 35,
+    "student_followup_or_confirmation_question": 6
+  },
+  "word_count_bin_counts": {
+    "11-20": 204,
+    "6-10": 57,
+    "<=5": 9,
+    ">20": 27
+  },
+  "marker_counts": {
+    "has_politeness_or_agreement_marker": 191,
+    "has_understanding_marker": 66,
+    "has_thanks_marker": 30,
+    "has_action_marker": 49,
+    "ends_as_question": 6
+  },
+  "treatment_counts": {
+    "retain_as_trailing_student_outcome": 291,
+    "review_before_using_trailing_outcome_strategy": 6
+  },
+  "method": "deterministic_heuristic_v0",
+  "limitations": [
+    "Categories are heuristic analysis aids, not HNMU/UET adjudications.",
+    "Politeness markers such as 'dạ' do not by themselves make a turn empty.",
+    "A trailing student response may provide observed learning-outcome evidence."
+  ]
+}

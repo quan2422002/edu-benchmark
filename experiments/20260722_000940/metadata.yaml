@@ -1,0 +1,24 @@
+id: "20260722_000940"
+title: "Benchmark sample construction from audited HNMU raw dialogues"
+status: active
+task_type: benchmark_sample_conversion_and_candidate_quality_audit
+owner_agent: orchestrator
+parents:
+  - "20260709_155523"
+  - "20260705_215045"
+created_at: "2026-07-22T00:09:40+07:00"
+source_phase: "Giai đoạn 2 — xây dựng mẫu benchmark từ dữ liệu thô đã pass ở giai đoạn 1"
+git_commit: null
+artifacts:
+  - roadmap.md
+  - reports/state-transfer-from-20260705-and-20260709.md
+  - plans/01-audited-raw-dialogue-to-benchmark-candidate-conversion.md
+  - inherited_resources/README.md
+  - inherited_resources/from_20260705_215045/benchmark_design/benchmark_tasks.csv
+  - inherited_resources/from_20260705_215045/benchmark_design/rubrics.csv
+  - inherited_resources/from_20260705_215045/coverage_design/general_coverage_matrix_v0.csv
+  - inherited_resources/from_20260709_155523/raw_audit_grade6_7/normalized_dialogue_rows.csv
+  - inherited_resources/from_20260709_155523/raw_audit_grade6_7/quality_check_suggestions.csv
+  - inherited_resources/from_20260709_155523/raw_audit_grade8_9/normalized_dialogue_rows.csv
+  - inherited_resources/from_20260709_155523/raw_audit_grade8_9/quality_check_suggestions.csv
+  - inherited_resources/from_20260709_155523/checklists/benchmark-candidate-quality-checklist-v0.md

@@ -1,0 +1,128 @@
+{
+  "selection_method": "deterministic_greedy_v0",
+  "size_per_grade": 10,
+  "total_selected": 40,
+  "grades": {
+    "6": {
+      "selected_count": 10,
+      "split_incompatible_pass_rows_excluded": 41,
+      "cognitive_band_counts": {
+        "Biết": 7,
+        "Hiểu": 2,
+        "Vận dụng": 1
+      },
+      "turn_bin_counts": {
+        "4-6": 9,
+        "7-9": 1
+      },
+      "evidence_band_counts": {
+        "multiple": 8,
+        "single": 2
+      },
+      "lesson_counts": {
+        "Bài 10: Sơ đồ tư duy": 1,
+        "Bài 11: Định dạng văn bản": 1,
+        "Bài 13: Tìm kiếm và thay thế": 1,
+        "Bài 14: Hoàn thiện sổ lưu niệm": 1,
+        "Bài 16: Các cấu trúc điều khiển": 1,
+        "Bài 17: Chương trình máy tính": 1,
+        "Bài 3. Thông tin trong máy tinh": 1,
+        "Bài 4. Mạng máy tính": 1,
+        "Bài 6: Mạng thông tin toàn cầu": 1,
+        "Bài 7: Tìm kiếm thông tin trên Internet": 1
+      }
+    },
+    "7": {
+      "selected_count": 10,
+      "split_incompatible_pass_rows_excluded": 57,
+      "cognitive_band_counts": {
+        "Biết": 6,
+        "Hiểu": 3,
+        "Vận dụng": 1
+      },
+      "turn_bin_counts": {
+        "4-6": 8,
+        "7-9": 1,
+        ">=10": 1
+      },
+      "evidence_band_counts": {
+        "multiple": 8,
+        "single": 2
+      },
+      "lesson_counts": {
+        "Bài 1. Thiết bị vào - ra": 2,
+        "Bài 11: Tạo bài trình chiếu": 1,
+        "Bài 14. Thuật toán tìm kiếm tuần tự": 1,
+        "Bài 2. Phần mềm máy tính": 1,
+        "Bài 3. Quản lí dữ liệu trong máy tính": 1,
+        "Bài 5. Ứng xử trên mạng": 1,
+        "Bài 6: Làm quen với phần mềm bảng tính": 1,
+        "Bài 8: Công cụ hỗ trợ tính toán": 1,
+        "Bài 9: Trình bày bảng tính": 1
+      }
+    },
+    "8": {
+      "selected_count": 10,
+      "split_incompatible_pass_rows_excluded": 108,
+      "cognitive_band_counts": {
+        "Biết": 8,
+        "Hiểu": 1,
+        "Vận dụng": 1
+      },
+      "turn_bin_counts": {
+        "4-6": 8,
+        "7-9": 1,
+        ">=10": 1
+      },
+      "evidence_band_counts": {
+        "single": 10
+      },
+      "lesson_counts": {
+        "Bài 1. Lược sử công cụ tính toán": 1,
+        "Bài 2. Thông tin trong môi trường số": 1,
+        "Bài 3. Thực hành: Khai thác thông tin số": 1,
+        "Bài 4. Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số": 1,
+        "Bài 5: Sử dụng bảng tính giải quyết bài toán thực tế": 1,
+        "Bài 6. Săp xếp và lọc dữ liệu": 1,
+        "Bài 7. Trình bày dữ liệu bằng biểu đồ": 1,
+        "[10b] Thêm văn bản, tạo hiệu ứng cho ảnh": 1,
+        "[8b] Làm quen với phần mềm chỉnh sửa ảnh": 1,
+        "[9b] Thay đổi khung hình, kích thước ảnh": 1
+      }
+    },
+    "9": {
+      "selected_count": 10,
+      "split_incompatible_pass_rows_excluded": 91,
+      "cognitive_band_counts": {
+        "Biết": 8,
+        "Hiểu": 1,
+        "Vận dụng": 1
+      },
+      "turn_bin_counts": {
+        "4-6": 8,
+        "7-9": 1,
+        ">=10": 1
+      },
+      "evidence_band_counts": {
+        "single": 10
+      },
+      "lesson_counts": {
+        "Bài 1: Thế giới kĩ thuật số": 1,
+        "Bài 2: Thông tin trong giải quyết vấn đề": 1,
+        "Bài 3: Thực hành: Đánh giá chất lượng thông tin": 1,
+        "Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet": 1,
+        "Bài 5: Tìm hiểu phần mềm mô phỏng": 1,
+        "Bài 6: Thực hành: Khai thác phần mềm mô phỏng": 1,
+        "Bài 7: Trình bày thông tin trong trao đổi hợp tác": 1,
+        "Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác": 1,
+        "[10b]: Chuẩn bị dữ liệu và dựng video": 1,
+        "[9b]: Các chức năng chính của phần mềm làm Video": 1
+      }
+    }
+  },
+  "fallbacks": [
+    "grade 6: unavailable selected turn_bin strata: >=10",
+    "grade 8: unavailable selected evidence strata: multiple",
+    "grade 9: unavailable selected evidence strata: multiple"
+  ]
+}

@@ -1,0 +1,429 @@
+benchmark_candidate_id,sample_id,source_batch,source_file,source_row_number,grade,lesson,position,bloom_level,student_prompt,conversation_history,gold_response,gold_answer,raw_dialogue,conversion_dialogue,dialogue_correction_ids,target_tutor_turn_index,split_strategy,raw_audit_blocking_evidence_fragment_ids,raw_audit_all_evidence_fragment_ids
+BC-HNMU-G6-R0030-STT1-FINAL,HNMU-G6-R0030-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,30,6,Bài 3. Thông tin trong máy tinh,"Mục 1, Trang 14 SGK",Nhận biết (Nêu được tên đơn vị),"Thầy ơi, máy tính dùng đơn vị gì nhỏ nhất để đo thông tin ạ? ","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Rất vui được hỗ trợ em. Em có nhớ mỗi kí hiệu 0 hoặc 1 trong máy tính được gọi là gì không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là chữ số nhị phân ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Tên tiếng Anh của nó là \""Binary digit\"", viết tắt là một từ có 3 chữ cái bắt đầu bằng chữ 'B'. Em đoán xem?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""À, là Bit đúng không thầy?""}]",Chính xác! Đó chính là đơn vị nhỏ nhất đấy.,Bit,"HS: Thầy ơi, máy tính dùng đơn vị gì nhỏ nhất để đo thông tin ạ? 
+ AI: Chào em! Rất vui được hỗ trợ em. Em có nhớ mỗi kí hiệu 0 hoặc 1 trong máy tính được gọi là gì không?
+ HS: Dạ là chữ số nhị phân ạ.
+ AI: Đúng rồi! Tên tiếng Anh của nó là ""Binary digit"", viết tắt là một từ có 3 chữ cái bắt đầu bằng chữ 'B'. Em đoán xem?
+ HS: À, là Bit đúng không thầy?
+ AI: Chính xác! Đó chính là đơn vị nhỏ nhất đấy.","HS: Thầy ơi, máy tính dùng đơn vị gì nhỏ nhất để đo thông tin ạ? 
+ AI: Chào em! Rất vui được hỗ trợ em. Em có nhớ mỗi kí hiệu 0 hoặc 1 trong máy tính được gọi là gì không?
+ HS: Dạ là chữ số nhị phân ạ.
+ AI: Đúng rồi! Tên tiếng Anh của nó là ""Binary digit"", viết tắt là một từ có 3 chữ cái bắt đầu bằng chữ 'B'. Em đoán xem?
+ HS: À, là Bit đúng không thầy?
+ AI: Chính xác! Đó chính là đơn vị nhỏ nhất đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN6-0001#F0036"", ""LM-SGV-TIN6-4918798731#F0104""]"
+BC-HNMU-G6-R0176-STT7-FINAL,HNMU-G6-R0176-STT7,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,176,6,Bài 13: Tìm kiếm và thay thế,"Mục 1, Trang 64",Thông hiểu (Mô tả quy trình),Thầy tóm tắt lại các bước để em tự thực hiện tìm kiếm với ạ.,"[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Đầu tiên, em cần mở công cụ tìm kiếm ở đâu?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ vào thẻ Home rồi chọn Find ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Tốt! Bước tiếp theo, em làm gì để máy biết em đang cần tìm gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Em gõ từ đó vào ô tìm kiếm ạ.""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Chính xác. Cuối cùng, làm sao em biết máy đã tìm thấy từ đó ở đâu trong văn bản?""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Các từ tìm được sẽ được tô màu nổi bật lên đúng không thầy?""}]","Đúng rồi, em đã nắm vững quy trình rồi đó.",B1: Chọn Home/Find; B2: Nhập từ cần tìm vào ô Search; B3: Quan sát các kết quả được đánh dấu trên văn bản.,"HS: Thầy tóm tắt lại các bước để em tự thực hiện tìm kiếm với ạ.
+AI: Đầu tiên, em cần mở công cụ tìm kiếm ở đâu?
+HS: Dạ vào thẻ Home rồi chọn Find ạ.
+AI: Tốt! Bước tiếp theo, em làm gì để máy biết em đang cần tìm gì?
+HS: Em gõ từ đó vào ô tìm kiếm ạ.
+AI: Chính xác. Cuối cùng, làm sao em biết máy đã tìm thấy từ đó ở đâu trong văn bản?
+HS: Các từ tìm được sẽ được tô màu nổi bật lên đúng không thầy?
+AI: Đúng rồi, em đã nắm vững quy trình rồi đó.","HS: Thầy tóm tắt lại các bước để em tự thực hiện tìm kiếm với ạ.
+AI: Đầu tiên, em cần mở công cụ tìm kiếm ở đâu?
+HS: Dạ vào thẻ Home rồi chọn Find ạ.
+AI: Tốt! Bước tiếp theo, em làm gì để máy biết em đang cần tìm gì?
+HS: Em gõ từ đó vào ô tìm kiếm ạ.
+AI: Chính xác. Cuối cùng, làm sao em biết máy đã tìm thấy từ đó ở đâu trong văn bản?
+HS: Các từ tìm được sẽ được tô màu nổi bật lên đúng không thầy?
+AI: Đúng rồi, em đã nắm vững quy trình rồi đó.",[],8,final_tutor_response,[],"[""LM-SGV-TIN6-4918798731#F0289""]"
+BC-HNMU-G6-R0055-STT12-FINAL,HNMU-G6-R0055-STT12,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,55,6,Bài 4. Mạng máy tính,"Vận dụng 2, Trang 19 SGK",Vận dụng (Vẽ sơ đồ mạng),"Thầy ơi, em muốn vẽ sơ đồ mạng nhà em nhưng không biết cái cục Modem đặt ở đâu.","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Thông thường, Modem là nơi đón tín hiệu Internet từ ngoài vào nhà. Vậy em sẽ vẽ nó ở đầu hay ở cuối sơ đồ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ ở đầu ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Tốt! Từ Modem đó, sóng Wifi (Access Point) sẽ tỏa ra cho các máy khác. Em sẽ nối các thiết bị còn lại vào đâu?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Em nối Tivi và Điện thoại vào Access Point ạ. ""}]",Quá chuẩn! Em đã hoàn thành sơ đồ rồi đấy.,"Sơ đồ: Internet -> Modem/Access Point -> (Máy tính, Điện thoại, Tivi).","HS: Thầy ơi, em muốn vẽ sơ đồ mạng nhà em nhưng không biết cái cục Modem đặt ở đâu.
+ AI: Thông thường, Modem là nơi đón tín hiệu Internet từ ngoài vào nhà. Vậy em sẽ vẽ nó ở đầu hay ở cuối sơ đồ?
+ HS: Dạ ở đầu ạ.
+ AI: Tốt! Từ Modem đó, sóng Wifi (Access Point) sẽ tỏa ra cho các máy khác. Em sẽ nối các thiết bị còn lại vào đâu?
+ HS: Em nối Tivi và Điện thoại vào Access Point ạ. 
+ AI: Quá chuẩn! Em đã hoàn thành sơ đồ rồi đấy.","HS: Thầy ơi, em muốn vẽ sơ đồ mạng nhà em nhưng không biết cái cục Modem đặt ở đâu.
+ AI: Thông thường, Modem là nơi đón tín hiệu Internet từ ngoài vào nhà. Vậy em sẽ vẽ nó ở đầu hay ở cuối sơ đồ?
+ HS: Dạ ở đầu ạ.
+ AI: Tốt! Từ Modem đó, sóng Wifi (Access Point) sẽ tỏa ra cho các máy khác. Em sẽ nối các thiết bị còn lại vào đâu?
+ HS: Em nối Tivi và Điện thoại vào Access Point ạ. 
+ AI: Quá chuẩn! Em đã hoàn thành sơ đồ rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN6-0001#F0048"", ""LM-SGV-TIN6-4918798731#F0126"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G6-R0076-STT5-FINAL,HNMU-G6-R0076-STT5,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,76,6,Bài 6: Mạng thông tin toàn cầu,Mục 1. Kiến thức mới (Tr. 27),Thông hiểu (Giải thích chức năng),Tại sao mỗi website lại cần một địa chỉ riêng dài dằng dặc thế ạ?,"[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Nếu em muốn gửi thư cho một người bạn, em có cần biết địa chỉ nhà bạn ấy không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ cần chứ ạ, nếu không thư sẽ bị lạc.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Website cũng vậy! Internet rất rộng lớn, địa chỉ website giúp trình duyệt tìm đúng \""căn nhà\"" chứa thông tin em cần. Vậy địa chỉ đó có được trùng nhau không nhỉ?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ không, phải là duy nhất ạ!""}]",Rất chuẩn!,Dùng để xác định vị trí duy nhất của website đó trên mạng để người dùng có thể truy cập.,"HS: Tại sao mỗi website lại cần một địa chỉ riêng dài dằng dặc thế ạ?
+AI: Nếu em muốn gửi thư cho một người bạn, em có cần biết địa chỉ nhà bạn ấy không?
+HS: Dạ cần chứ ạ, nếu không thư sẽ bị lạc.
+AI: Website cũng vậy! Internet rất rộng lớn, địa chỉ website giúp trình duyệt tìm đúng ""căn nhà"" chứa thông tin em cần. Vậy địa chỉ đó có được trùng nhau không nhỉ?
+HS: Dạ không, phải là duy nhất ạ!
+AI: Rất chuẩn!","HS: Tại sao mỗi website lại cần một địa chỉ riêng dài dằng dặc thế ạ?
+AI: Nếu em muốn gửi thư cho một người bạn, em có cần biết địa chỉ nhà bạn ấy không?
+HS: Dạ cần chứ ạ, nếu không thư sẽ bị lạc.
+AI: Website cũng vậy! Internet rất rộng lớn, địa chỉ website giúp trình duyệt tìm đúng ""căn nhà"" chứa thông tin em cần. Vậy địa chỉ đó có được trùng nhau không nhỉ?
+HS: Dạ không, phải là duy nhất ạ!
+AI: Rất chuẩn!",[],6,final_tutor_response,[],"[""LM-SGK-TIN6-0001#F0065"", ""LM-SGV-TIN6-4918798731#F0155""]"
+BC-HNMU-G6-R0086-STT1-FINAL,HNMU-G6-R0086-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,86,6,Bài 7: Tìm kiếm thông tin trên Internet,Mục 1. Máy tìm kiếm (Tr. 32),Nhận biết (Nêu được khái niệm),"Thầy ơi, ""máy tìm kiếm"" là một cái máy giống như máy tính hay là cái gì ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Hãy nhớ lại khi em muốn tìm một bài hát mà chỉ nhớ vài lời, em thường vào trang web nào để gõ lời đó vào?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em hay vào Google ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Google không phải là một cái máy vật lý, mà là một \""hệ thống phần mềm\"". Vậy theo em, phần mềm đó giúp mình làm công việc gì trên Internet nhỉ?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Giúp mình tìm thấy thông tin mình cần ạ.""}]",Chính xác! Đó chính là khái niệm về máy tìm kiếm đấy.,Máy tìm kiếm là hệ thống phần mềm hỗ trợ người dùng tìm kiếm thông tin trên Internet theo yêu cầu của người dùng.,"HS: Thầy ơi, ""máy tìm kiếm"" là một cái máy giống như máy tính hay là cái gì ạ?
+AI: Chào em! Hãy nhớ lại khi em muốn tìm một bài hát mà chỉ nhớ vài lời, em thường vào trang web nào để gõ lời đó vào?
+HS: Dạ em hay vào Google ạ.
+AI: Đúng rồi! Google không phải là một cái máy vật lý, mà là một ""hệ thống phần mềm"". Vậy theo em, phần mềm đó giúp mình làm công việc gì trên Internet nhỉ?
+HS: Giúp mình tìm thấy thông tin mình cần ạ.
+AI: Chính xác! Đó chính là khái niệm về máy tìm kiếm đấy.","HS: Thầy ơi, ""máy tìm kiếm"" là một cái máy giống như máy tính hay là cái gì ạ?
+AI: Chào em! Hãy nhớ lại khi em muốn tìm một bài hát mà chỉ nhớ vài lời, em thường vào trang web nào để gõ lời đó vào?
+HS: Dạ em hay vào Google ạ.
+AI: Đúng rồi! Google không phải là một cái máy vật lý, mà là một ""hệ thống phần mềm"". Vậy theo em, phần mềm đó giúp mình làm công việc gì trên Internet nhỉ?
+HS: Giúp mình tìm thấy thông tin mình cần ạ.
+AI: Chính xác! Đó chính là khái niệm về máy tìm kiếm đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN6-0001#F0081"", ""LM-SGK-TIN6-0001#F0082"", ""LM-SGV-TIN6-4918798731#F0178"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G6-R0130-STT3-FINAL,HNMU-G6-R0130-STT3,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,130,6,Bài 10: Sơ đồ tư duy,Hoạt động 2 (Tr. 49),Nhận biết (Nêu được tên thành phần),Một sơ đồ tư duy cần có những gì để hoàn chỉnh ạ?,"[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Hãy nhìn vào Hình 5.2. Ở giữa trung tâm là gì em nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Là \""Sổ lưu niệm\"", chắc là chủ đề chính ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Giỏi lắm! Từ đó tỏa ra các \""cánh tay\"" gọi là gì? Và trên đó có chữ hay hình gì không?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ là các nhánh, có chữ và cả hình ảnh minh họa nữa ạ.""}]",Tuyệt vời! Em đã liệt kê đủ các thành phần rồi đó.,"Chủ đề chính, chủ đề con (các nhánh), từ khoá, hình ảnh, đường nối.","HS: Một sơ đồ tư duy cần có những gì để hoàn chỉnh ạ?
+AI: Hãy nhìn vào Hình 5.2. Ở giữa trung tâm là gì em nhỉ?
+HS: Là ""Sổ lưu niệm"", chắc là chủ đề chính ạ.
+AI: Giỏi lắm! Từ đó tỏa ra các ""cánh tay"" gọi là gì? Và trên đó có chữ hay hình gì không?
+HS: Dạ là các nhánh, có chữ và cả hình ảnh minh họa nữa ạ.
+AI: Tuyệt vời! Em đã liệt kê đủ các thành phần rồi đó.","HS: Một sơ đồ tư duy cần có những gì để hoàn chỉnh ạ?
+AI: Hãy nhìn vào Hình 5.2. Ở giữa trung tâm là gì em nhỉ?
+HS: Là ""Sổ lưu niệm"", chắc là chủ đề chính ạ.
+AI: Giỏi lắm! Từ đó tỏa ra các ""cánh tay"" gọi là gì? Và trên đó có chữ hay hình gì không?
+HS: Dạ là các nhánh, có chữ và cả hình ảnh minh họa nữa ạ.
+AI: Tuyệt vời! Em đã liệt kê đủ các thành phần rồi đó.",[],6,final_tutor_response,[],"[""LM-SGV-TIN6-4918798731#F0243"", ""LM-SGV-TIN6-4918798731#F0246""]"
+BC-HNMU-G6-R0142-STT1-FINAL,HNMU-G6-R0142-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,142,6,Bài 11: Định dạng văn bản,Mục 1. Phần mềm soạn thảo văn bản (Tr. 54),Nhận biết (Kể tên được các chức năng cơ bản),"Thầy AI ơi, phần mềm soạn thảo văn bản giúp mình làm được những gì ngoài viết chữ ạ? ","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Hãy nhớ lại khi em dùng Word để làm một bài tập, sau khi gõ chữ xong, em có thể thay đổi màu sắc hay sửa lỗi sai không? ""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ có ạ, em còn lưu lại để mai xem tiếp nữa. ""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Những việc như sửa chữ, đổi màu, lưu tệp hay đưa ra máy in chính là các chức năng cơ bản đấy. Em thử tóm tắt lại tên các chức năng đó xem nào? ""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ là tạo, chỉnh sửa, định dạng, lưu trữ và in văn bản ạ! ""}]",Rất chính xác! Em đã nhận diện đủ các chức năng quan trọng nhất rồi.,"Các chức năng cơ bản: Tạo và định dạng văn bản; Biên tập, chỉnh sửa nội dung; Lưu trữ văn bản; In văn bản.","HS: Thầy AI ơi, phần mềm soạn thảo văn bản giúp mình làm được những gì ngoài viết chữ ạ? 
+AI: Chào em! Hãy nhớ lại khi em dùng Word để làm một bài tập, sau khi gõ chữ xong, em có thể thay đổi màu sắc hay sửa lỗi sai không? 
+HS: Dạ có ạ, em còn lưu lại để mai xem tiếp nữa. 
+AI: Đúng rồi! Những việc như sửa chữ, đổi màu, lưu tệp hay đưa ra máy in chính là các chức năng cơ bản đấy. Em thử tóm tắt lại tên các chức năng đó xem nào? 
+HS: Dạ là tạo, chỉnh sửa, định dạng, lưu trữ và in văn bản ạ! 
+AI: Rất chính xác! Em đã nhận diện đủ các chức năng quan trọng nhất rồi.","HS: Thầy AI ơi, phần mềm soạn thảo văn bản giúp mình làm được những gì ngoài viết chữ ạ? 
+AI: Chào em! Hãy nhớ lại khi em dùng Word để làm một bài tập, sau khi gõ chữ xong, em có thể thay đổi màu sắc hay sửa lỗi sai không? 
+HS: Dạ có ạ, em còn lưu lại để mai xem tiếp nữa. 
+AI: Đúng rồi! Những việc như sửa chữ, đổi màu, lưu tệp hay đưa ra máy in chính là các chức năng cơ bản đấy. Em thử tóm tắt lại tên các chức năng đó xem nào? 
+HS: Dạ là tạo, chỉnh sửa, định dạng, lưu trữ và in văn bản ạ! 
+AI: Rất chính xác! Em đã nhận diện đủ các chức năng quan trọng nhất rồi.",[],6,final_tutor_response,[],"[""LM-SGK-TIN6-0001#F0139"", ""LM-SGV-TIN6-4918798731#F0263"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G6-R0184-STT1-FINAL,HNMU-G6-R0184-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,184,6,Bài 14: Hoàn thiện sổ lưu niệm,"Mục 1, Trang 67",Nhận biết (Nêu được nội dung công việc),"Thầy ơi, bài 14 này chúng ta sẽ làm gì vậy ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Hãy nhớ lại các sản phẩm em đã làm ở bài 10, 11, 12 và 13 nhé. Mục tiêu của chúng ta là gom tất cả chúng lại thành một sản phẩm cuối cùng. Em đoán xem đó là gì?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Có phải là cuốn Sổ lưu niệm không thầy?""}]","Chính xác! Vậy mục đích của bài này là giúp em ""tổng hợp"" lại những gì đã học để tạo ra sản phẩm đó. Em đã sẵn sàng chưa?","Tổng hợp các kiến thức và kĩ năng đã học để hoàn thiện sản phẩm số là cuốn ""Sổ lưu niệm của lớp"".","HS: Thầy ơi, bài 14 này chúng ta sẽ làm gì vậy ạ?
+AI: Chào em! Hãy nhớ lại các sản phẩm em đã làm ở bài 10, 11, 12 và 13 nhé. Mục tiêu của chúng ta là gom tất cả chúng lại thành một sản phẩm cuối cùng. Em đoán xem đó là gì?
+HS: Có phải là cuốn Sổ lưu niệm không thầy?
+AI: Chính xác! Vậy mục đích của bài này là giúp em ""tổng hợp"" lại những gì đã học để tạo ra sản phẩm đó. Em đã sẵn sàng chưa?","HS: Thầy ơi, bài 14 này chúng ta sẽ làm gì vậy ạ?
+AI: Chào em! Hãy nhớ lại các sản phẩm em đã làm ở bài 10, 11, 12 và 13 nhé. Mục tiêu của chúng ta là gom tất cả chúng lại thành một sản phẩm cuối cùng. Em đoán xem đó là gì?
+HS: Có phải là cuốn Sổ lưu niệm không thầy?
+AI: Chính xác! Vậy mục đích của bài này là giúp em ""tổng hợp"" lại những gì đã học để tạo ra sản phẩm đó. Em đã sẵn sàng chưa?",[],4,final_tutor_response,[],"[""LM-SGV-TIN6-4918798731#F0306"", ""LM-SGV-TIN6-4918798731#F0312"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G6-R0213-STT2-FINAL,HNMU-G6-R0213-STT2,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,213,6,Bài 16: Các cấu trúc điều khiển,"Mục 1.b, Trang 75",Nhận biết (Nhận diện được ý nghĩa ký hiệu),"Trong sơ đồ khối ở Hình 6.7, tại sao người ta lại vẽ cái hình thoi hả thầy?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Hãy nhớ lại trò chơi \""Đúng hay Sai\"" ở trang 74. Khi bạn thứ hai nhận câu hỏi, bạn ấy phải làm gì trước khi gật đầu hoặc lắc đầu?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Bạn ấy phải kiểm tra xem câu đó đúng hay sai ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Và để máy tính biết chỗ nào cần \""kiểm tra\"" như thế, ta dùng hình thoi. Vậy hình thoi dùng để làm gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ, dùng để mô tả điều kiện kiểm tra ạ!""}]",Tuyệt vời!,Hình thoi được dùng để mô tả điều kiện kiểm tra logic.,"HS: Trong sơ đồ khối ở Hình 6.7, tại sao người ta lại vẽ cái hình thoi hả thầy?
+AI: Hãy nhớ lại trò chơi ""Đúng hay Sai"" ở trang 74. Khi bạn thứ hai nhận câu hỏi, bạn ấy phải làm gì trước khi gật đầu hoặc lắc đầu?
+HS: Bạn ấy phải kiểm tra xem câu đó đúng hay sai ạ.
+AI: Đúng rồi! Và để máy tính biết chỗ nào cần ""kiểm tra"" như thế, ta dùng hình thoi. Vậy hình thoi dùng để làm gì?
+HS: Dạ, dùng để mô tả điều kiện kiểm tra ạ!
+AI: Tuyệt vời!","HS: Trong sơ đồ khối ở Hình 6.7, tại sao người ta lại vẽ cái hình thoi hả thầy?
+AI: Hãy nhớ lại trò chơi ""Đúng hay Sai"" ở trang 74. Khi bạn thứ hai nhận câu hỏi, bạn ấy phải làm gì trước khi gật đầu hoặc lắc đầu?
+HS: Bạn ấy phải kiểm tra xem câu đó đúng hay sai ạ.
+AI: Đúng rồi! Và để máy tính biết chỗ nào cần ""kiểm tra"" như thế, ta dùng hình thoi. Vậy hình thoi dùng để làm gì?
+HS: Dạ, dùng để mô tả điều kiện kiểm tra ạ!
+AI: Tuyệt vời!",[],6,final_tutor_response,[],"[""LM-SGV-TIN6-4918798731#F0345""]"
+BC-HNMU-G6-R0226-STT1-FINAL,HNMU-G6-R0226-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 6.xlsx,226,6,Bài 17: Chương trình máy tính,"Mục 1, Trang 78",Nhận biết (Nêu được khái niệm),"Thầy AI ơi, em không nhớ rõ định nghĩa chương trình máy tính là gì.","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Hãy nhớ lại trò chơi \""Làm theo chỉ dẫn\"" ở trang 78 nhé. Nếu thuật toán là các bước giải quyết vấn đề, thì thứ dùng để \""nói\"" cho máy tính biết phải thực hiện các bước đó gọi là gì nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Là các lệnh đúng không thầy?""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Và tập hợp các lệnh đó được viết bằng một loại ngôn ngữ đặc biệt để máy tính \""hiểu\"" và \""thực hiện\"". Em đoán xem đó là ngôn ngữ gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ là ngôn ngữ lập trình. Vậy chương trình là tập hợp các lệnh viết bằng ngôn ngữ lập trình để chỉ dẫn máy tính làm thuật toán ạ!""}]",Chính xác! Em đã nắm vững khái niệm rồi đấy.,"Chương trình là tập hợp các lệnh viết bằng ngôn ngữ lập trình, chỉ dẫn các bước của thuật toán để máy tính thực hiện công việc.","HS: Thầy AI ơi, em không nhớ rõ định nghĩa chương trình máy tính là gì.
+AI: Chào em! Hãy nhớ lại trò chơi ""Làm theo chỉ dẫn"" ở trang 78 nhé. Nếu thuật toán là các bước giải quyết vấn đề, thì thứ dùng để ""nói"" cho máy tính biết phải thực hiện các bước đó gọi là gì nhỉ?
+HS: Là các lệnh đúng không thầy?
+AI: Đúng rồi! Và tập hợp các lệnh đó được viết bằng một loại ngôn ngữ đặc biệt để máy tính ""hiểu"" và ""thực hiện"". Em đoán xem đó là ngôn ngữ gì?
+HS: Dạ là ngôn ngữ lập trình. Vậy chương trình là tập hợp các lệnh viết bằng ngôn ngữ lập trình để chỉ dẫn máy tính làm thuật toán ạ!
+AI: Chính xác! Em đã nắm vững khái niệm rồi đấy.","HS: Thầy AI ơi, em không nhớ rõ định nghĩa chương trình máy tính là gì.
+AI: Chào em! Hãy nhớ lại trò chơi ""Làm theo chỉ dẫn"" ở trang 78 nhé. Nếu thuật toán là các bước giải quyết vấn đề, thì thứ dùng để ""nói"" cho máy tính biết phải thực hiện các bước đó gọi là gì nhỉ?
+HS: Là các lệnh đúng không thầy?
+AI: Đúng rồi! Và tập hợp các lệnh đó được viết bằng một loại ngôn ngữ đặc biệt để máy tính ""hiểu"" và ""thực hiện"". Em đoán xem đó là ngôn ngữ gì?
+HS: Dạ là ngôn ngữ lập trình. Vậy chương trình là tập hợp các lệnh viết bằng ngôn ngữ lập trình để chỉ dẫn máy tính làm thuật toán ạ!
+AI: Chính xác! Em đã nắm vững khái niệm rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN6-0001#F0211"", ""LM-SGV-TIN6-4918798731#F0378"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G7-R0002-STT1-FINAL,HNMU-G7-R0002-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,2,7,Bài 1. Thiết bị vào - ra,"Mục 1, Trang 5 SGK",Nhận biết (Nêu được chức năng),"Thầy ơi, ""thiết bị vào"" là những cái như bàn phím đúng không ạ? Nó làm gì vậy thầy?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Đúng rồi, bàn phím là một ví dụ điển hình. Em hãy thử nghĩ xem, khi em gõ một chữ trên bàn phím, cái chữ đó sẽ đi đâu?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ, nó hiện lên màn hình máy tính ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Chính xác! Vậy bàn phím đã giúp em đưa thứ gì từ bên ngoài \""vào\"" trong máy tính nhỉ?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""À, là đưa thông tin vào máy ạ!""}]",Rất giỏi! Đó chính là chức năng của thiết bị vào đấy.,Dùng để thu nhận thông tin vào máy tính.,"HS: Thầy ơi, ""thiết bị vào"" là những cái như bàn phím đúng không ạ? Nó làm gì vậy thầy?
+ AI: Chào em! Đúng rồi, bàn phím là một ví dụ điển hình. Em hãy thử nghĩ xem, khi em gõ một chữ trên bàn phím, cái chữ đó sẽ đi đâu?
+ HS: Dạ, nó hiện lên màn hình máy tính ạ.
+ AI: Chính xác! Vậy bàn phím đã giúp em đưa thứ gì từ bên ngoài ""vào"" trong máy tính nhỉ?
+ HS: À, là đưa thông tin vào máy ạ!
+ AI: Rất giỏi! Đó chính là chức năng của thiết bị vào đấy.","HS: Thầy ơi, ""thiết bị vào"" là những cái như bàn phím đúng không ạ? Nó làm gì vậy thầy?
+ AI: Chào em! Đúng rồi, bàn phím là một ví dụ điển hình. Em hãy thử nghĩ xem, khi em gõ một chữ trên bàn phím, cái chữ đó sẽ đi đâu?
+ HS: Dạ, nó hiện lên màn hình máy tính ạ.
+ AI: Chính xác! Vậy bàn phím đã giúp em đưa thứ gì từ bên ngoài ""vào"" trong máy tính nhỉ?
+ HS: À, là đưa thông tin vào máy ạ!
+ AI: Rất giỏi! Đó chính là chức năng của thiết bị vào đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN7-0001#F0010"", ""LM-SGV-TIN7-4920462481#F0036"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G7-R0188-STT5-FINAL,HNMU-G7-R0188-STT5,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,188,7,Bài 14. Thuật toán tìm kiếm tuần tự,"Câu 2 phần Đánh giá (Trang 90, SGV)",Thông hiểu,"Bài kiểm tra yêu cầu ""mô phỏng"" quá trình tìm số 10 trong dãy. Mô phỏng là em phải viết ra như thế nào ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Mô phỏng là em đóng vai máy tính để thực hiện và viết ra từng bước một. Máy tính sẽ bắt đầu ở vị trí thứ 1. Ở vị trí thứ 1, em thấy số mấy?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ số 2 ạ. Nó khác 10 nên máy tính sẽ đi tiếp đúng không ạ?""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Rất đúng logic! Tiếp tục bước 2, 3, 4, em gặp những số nào?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Bước 2 là số 6, bước 3 là số 8, bước 4 là số 4. Tất cả đều không phải là 10 ạ.""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Vậy tới bước thứ 5 thì điều gì xảy ra?""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Bước 5 em xét vị trí thứ 5, lấy ra được số 10. Bằng với giá trị cần tìm rồi ạ!""}, {""turn_index"": 8, ""role"": ""tutor"", ""content"": ""Vậy lúc này thuật toán có tiếp tục duyệt qua số 12 không, và sẽ đưa ra kết luận thế nào?""}, {""turn_index"": 9, ""role"": ""student"", ""content"": ""Theo điều kiện dừng, thuật toán sẽ không xét số 12 nữa. Nó dừng ngay và thông báo \""Tìm thấy tại vị trí thứ 5\"" ạ.""}]",Xuất sắc! Em vừa hoàn thành việc viết mô phỏng y hệt cách máy tính xử lí rồi đó.,"So sánh lần lượt từ vị trí 1 đến vị trí 5. Khi đến vị trí 5, giá trị bằng 10. Thuật toán dừng lại, thông báo tìm thấy ở vị trí thứ 5.","HS: Bài kiểm tra yêu cầu ""mô phỏng"" quá trình tìm số 10 trong dãy. Mô phỏng là em phải viết ra như thế nào ạ?
+AI: Mô phỏng là em đóng vai máy tính để thực hiện và viết ra từng bước một. Máy tính sẽ bắt đầu ở vị trí thứ 1. Ở vị trí thứ 1, em thấy số mấy?
+HS: Dạ số 2 ạ. Nó khác 10 nên máy tính sẽ đi tiếp đúng không ạ?
+AI: Rất đúng logic! Tiếp tục bước 2, 3, 4, em gặp những số nào?
+HS: Bước 2 là số 6, bước 3 là số 8, bước 4 là số 4. Tất cả đều không phải là 10 ạ.
+AI: Vậy tới bước thứ 5 thì điều gì xảy ra?
+HS: Bước 5 em xét vị trí thứ 5, lấy ra được số 10. Bằng với giá trị cần tìm rồi ạ!
+AI: Vậy lúc này thuật toán có tiếp tục duyệt qua số 12 không, và sẽ đưa ra kết luận thế nào?
+HS: Theo điều kiện dừng, thuật toán sẽ không xét số 12 nữa. Nó dừng ngay và thông báo ""Tìm thấy tại vị trí thứ 5"" ạ.
+AI: Xuất sắc! Em vừa hoàn thành việc viết mô phỏng y hệt cách máy tính xử lí rồi đó.","HS: Bài kiểm tra yêu cầu ""mô phỏng"" quá trình tìm số 10 trong dãy. Mô phỏng là em phải viết ra như thế nào ạ?
+AI: Mô phỏng là em đóng vai máy tính để thực hiện và viết ra từng bước một. Máy tính sẽ bắt đầu ở vị trí thứ 1. Ở vị trí thứ 1, em thấy số mấy?
+HS: Dạ số 2 ạ. Nó khác 10 nên máy tính sẽ đi tiếp đúng không ạ?
+AI: Rất đúng logic! Tiếp tục bước 2, 3, 4, em gặp những số nào?
+HS: Bước 2 là số 6, bước 3 là số 8, bước 4 là số 4. Tất cả đều không phải là 10 ạ.
+AI: Vậy tới bước thứ 5 thì điều gì xảy ra?
+HS: Bước 5 em xét vị trí thứ 5, lấy ra được số 10. Bằng với giá trị cần tìm rồi ạ!
+AI: Vậy lúc này thuật toán có tiếp tục duyệt qua số 12 không, và sẽ đưa ra kết luận thế nào?
+HS: Theo điều kiện dừng, thuật toán sẽ không xét số 12 nữa. Nó dừng ngay và thông báo ""Tìm thấy tại vị trí thứ 5"" ạ.
+AI: Xuất sắc! Em vừa hoàn thành việc viết mô phỏng y hệt cách máy tính xử lí rồi đó.",[],10,final_tutor_response,[],"[""LM-SGV-TIN7-4920462481#F0350""]"
+BC-HNMU-G7-R0012-STT11-FINAL,HNMU-G7-R0012-STT11,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,12,7,Bài 1. Thiết bị vào - ra,"Câu 4, Trang 31 SGV",Vận dụng (Xác định trình tự xử lý),"Thầy giúp em sắp xếp quy trình này với, em hơi rối chỗ máy tính.","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Đừng lo! Bước đầu tiên để có cái ảnh trong máy, em dùng thiết bị gì để \""thu nhận\""?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ dùng máy ảnh chụp ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Tốt! Sau khi chụp, cái ảnh đó phải được đưa vào đâu để lưu trữ và chỉnh sửa trước khi in?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ đưa vào máy tính ạ.""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Chuẩn luôn! Cuối cùng, để có bức ảnh trên tay, máy tính phải gửi dữ liệu ra thiết bị nào?""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Dạ là máy in! Vậy thứ tự là Máy ảnh -> Máy tính -> Máy in đúng không thầy?""}]",Rất xuất sắc! Em đã vận dụng đúng luồng xử lý thông tin rồi đấy.,B. Máy ảnh → Máy tính → Máy in.,"HS: Thầy giúp em sắp xếp quy trình này với, em hơi rối chỗ máy tính.
+ AI: Đừng lo! Bước đầu tiên để có cái ảnh trong máy, em dùng thiết bị gì để ""thu nhận""?
+ HS: Dạ dùng máy ảnh chụp ạ.
+ AI: Tốt! Sau khi chụp, cái ảnh đó phải được đưa vào đâu để lưu trữ và chỉnh sửa trước khi in?
+ HS: Dạ đưa vào máy tính ạ.
+ AI: Chuẩn luôn! Cuối cùng, để có bức ảnh trên tay, máy tính phải gửi dữ liệu ra thiết bị nào?
+ HS: Dạ là máy in! Vậy thứ tự là Máy ảnh -> Máy tính -> Máy in đúng không thầy?
+ AI: Rất xuất sắc! Em đã vận dụng đúng luồng xử lý thông tin rồi đấy.","HS: Thầy giúp em sắp xếp quy trình này với, em hơi rối chỗ máy tính.
+ AI: Đừng lo! Bước đầu tiên để có cái ảnh trong máy, em dùng thiết bị gì để ""thu nhận""?
+ HS: Dạ dùng máy ảnh chụp ạ.
+ AI: Tốt! Sau khi chụp, cái ảnh đó phải được đưa vào đâu để lưu trữ và chỉnh sửa trước khi in?
+ HS: Dạ đưa vào máy tính ạ.
+ AI: Chuẩn luôn! Cuối cùng, để có bức ảnh trên tay, máy tính phải gửi dữ liệu ra thiết bị nào?
+ HS: Dạ là máy in! Vậy thứ tự là Máy ảnh -> Máy tính -> Máy in đúng không thầy?
+ AI: Rất xuất sắc! Em đã vận dụng đúng luồng xử lý thông tin rồi đấy.",[],8,final_tutor_response,[],"[""LM-SGV-TIN7-4920462481#F0049"", ""LM-SGV-TIN7-4920462481#F0059"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G7-R0024-STT9-FINAL,HNMU-G7-R0024-STT9,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,24,7,Bài 2. Phần mềm máy tính,"Hoạt động khởi động, Trang 22 SGV",Thông hiểu (Giải thích sự cần thiết),"Thầy ơi, nếu em mua máy tính xịn mà không cài Windows thì có chơi game được không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Một câu hỏi rất thực tế! Em hãy nghĩ xem, các linh kiện như CPU hay RAM có biết tự trò chuyện với em không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ không, nó chỉ là mấy miếng mạch điện thôi ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Nếu không có \""người chỉ huy\"" là hệ điều hành để biến điện năng thành hành động, thì máy tính sẽ thế nào?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ nó sẽ đứng im, không phản hồi gì hết ạ.""}]","Chính xác! Nó sẽ chỉ là một ""đống sắt"" vô dụng thôi.",Máy tính sẽ chỉ là một khối vật chất không phản hồi và người dùng không thể sử dụng được.,"HS: Thầy ơi, nếu em mua máy tính xịn mà không cài Windows thì có chơi game được không ạ?
+ AI: Một câu hỏi rất thực tế! Em hãy nghĩ xem, các linh kiện như CPU hay RAM có biết tự trò chuyện với em không?
+ HS: Dạ không, nó chỉ là mấy miếng mạch điện thôi ạ.
+ AI: Đúng rồi! Nếu không có ""người chỉ huy"" là hệ điều hành để biến điện năng thành hành động, thì máy tính sẽ thế nào?
+ HS: Dạ nó sẽ đứng im, không phản hồi gì hết ạ.
+ AI: Chính xác! Nó sẽ chỉ là một ""đống sắt"" vô dụng thôi.","HS: Thầy ơi, nếu em mua máy tính xịn mà không cài Windows thì có chơi game được không ạ?
+ AI: Một câu hỏi rất thực tế! Em hãy nghĩ xem, các linh kiện như CPU hay RAM có biết tự trò chuyện với em không?
+ HS: Dạ không, nó chỉ là mấy miếng mạch điện thôi ạ.
+ AI: Đúng rồi! Nếu không có ""người chỉ huy"" là hệ điều hành để biến điện năng thành hành động, thì máy tính sẽ thế nào?
+ HS: Dạ nó sẽ đứng im, không phản hồi gì hết ạ.
+ AI: Chính xác! Nó sẽ chỉ là một ""đống sắt"" vô dụng thôi.",[],6,final_tutor_response,[],"[""LM-SGV-TIN7-4920462481#F0063""]"
+BC-HNMU-G7-R0030-STT1-FINAL,HNMU-G7-R0030-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,30,7,Bài 3. Quản lí dữ liệu trong máy tính,"Mục 1, Trang 13 SGK",Nhận biết (Biết được tệp chương trình cũng là dữ liệu),"Thầy ơi, tệp .exe chạy phần mềm có phải là dữ liệu giống như ảnh hay văn bản không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Một câu hỏi rất hay về bản chất máy tính. Em có nhớ nguyên lý Von Neumann mà mình đã học không? Nó nói mọi thứ trong bộ nhớ đều là gì nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ, em nhớ là dữ liệu ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Chính xác! Vậy dù là một bức ảnh hay là một chương trình điều khiển, khi nằm trong bộ nhớ máy tính, chúng đều được coi là gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""À, vậy chương trình cũng là dữ liệu luôn đúng không thầy?""}]",Đúng rồi! Em đã nhận ra điểm mấu chốt rồi đấy.,"Có, chương trình máy tính cũng được lưu trữ trong bộ nhớ giống như tệp dữ liệu.","HS: Thầy ơi, tệp .exe chạy phần mềm có phải là dữ liệu giống như ảnh hay văn bản không ạ?
+ AI: Chào em! Một câu hỏi rất hay về bản chất máy tính. Em có nhớ nguyên lý Von Neumann mà mình đã học không? Nó nói mọi thứ trong bộ nhớ đều là gì nhỉ?
+ HS: Dạ, em nhớ là dữ liệu ạ.
+ AI: Chính xác! Vậy dù là một bức ảnh hay là một chương trình điều khiển, khi nằm trong bộ nhớ máy tính, chúng đều được coi là gì?
+ HS: À, vậy chương trình cũng là dữ liệu luôn đúng không thầy?
+ AI: Đúng rồi! Em đã nhận ra điểm mấu chốt rồi đấy.","HS: Thầy ơi, tệp .exe chạy phần mềm có phải là dữ liệu giống như ảnh hay văn bản không ạ?
+ AI: Chào em! Một câu hỏi rất hay về bản chất máy tính. Em có nhớ nguyên lý Von Neumann mà mình đã học không? Nó nói mọi thứ trong bộ nhớ đều là gì nhỉ?
+ HS: Dạ, em nhớ là dữ liệu ạ.
+ AI: Chính xác! Vậy dù là một bức ảnh hay là một chương trình điều khiển, khi nằm trong bộ nhớ máy tính, chúng đều được coi là gì?
+ HS: À, vậy chương trình cũng là dữ liệu luôn đúng không thầy?
+ AI: Đúng rồi! Em đã nhận ra điểm mấu chốt rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN7-0001#F0026"", ""LM-SGV-TIN7-4920462481#F0087"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G7-R0058-STT1-FINAL,HNMU-G7-R0058-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,58,7,Bài 5. Ứng xử trên mạng,"Mục 1, Trang 23-24 SGK",Nhận biết (Biết được khái niệm),"Thầy ơi, ứng xử trên mạng có cần phải nghiêm túc như ngoài đời không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Một câu hỏi rất thực tế. Em hãy nghĩ xem, nếu ai đó nói xấu em trên mạng, dù không gặp mặt trực tiếp em có thấy buồn không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ có chứ, em sẽ thấy rất khó chịu ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Chính xác! Vậy để tạo ra một môi trường mạng vui vẻ, mình cần dùng ngôn ngữ như thế nào và đối xử với người khác ra sao?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ phải lịch sự và tôn trọng họ như ngoài đời ạ.""}]",Rất giỏi! Đó chính là cốt lõi của việc ứng xử có văn hóa trên mạng đấy.,"Là sử dụng ngôn ngữ lịch sự, tôn trọng người khác và tuân thủ các quy định pháp luật khi giao tiếp trực tuyến,.","HS: Thầy ơi, ứng xử trên mạng có cần phải nghiêm túc như ngoài đời không ạ?
+ AI: Chào em! Một câu hỏi rất thực tế. Em hãy nghĩ xem, nếu ai đó nói xấu em trên mạng, dù không gặp mặt trực tiếp em có thấy buồn không?
+ HS: Dạ có chứ, em sẽ thấy rất khó chịu ạ.
+ AI: Chính xác! Vậy để tạo ra một môi trường mạng vui vẻ, mình cần dùng ngôn ngữ như thế nào và đối xử với người khác ra sao?
+ HS: Dạ phải lịch sự và tôn trọng họ như ngoài đời ạ.
+ AI: Rất giỏi! Đó chính là cốt lõi của việc ứng xử có văn hóa trên mạng đấy.","HS: Thầy ơi, ứng xử trên mạng có cần phải nghiêm túc như ngoài đời không ạ?
+ AI: Chào em! Một câu hỏi rất thực tế. Em hãy nghĩ xem, nếu ai đó nói xấu em trên mạng, dù không gặp mặt trực tiếp em có thấy buồn không?
+ HS: Dạ có chứ, em sẽ thấy rất khó chịu ạ.
+ AI: Chính xác! Vậy để tạo ra một môi trường mạng vui vẻ, mình cần dùng ngôn ngữ như thế nào và đối xử với người khác ra sao?
+ HS: Dạ phải lịch sự và tôn trọng họ như ngoài đời ạ.
+ AI: Rất giỏi! Đó chính là cốt lõi của việc ứng xử có văn hóa trên mạng đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN7-0001#F0057"", ""LM-SGV-TIN7-4920462481#F0147""]"
+BC-HNMU-G7-R0074-STT3-FINAL,HNMU-G7-R0074-STT3,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,74,7,Bài 6: Làm quen với phần mềm bảng tính,Mục 1. Giao diện (Tr. 42 SGK),Nhận biết (Nêu được tên thành phần),"Vậy còn các chữ cái A, B, C ở phía trên là gì hả thầy?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Em đã biết hàng được đánh số rồi. Vậy các chữ cái nằm ở phía trên cùng, theo chiều dọc, sẽ đại diện cho thành phần nào đối lập với hàng?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Chắc là tên của các cột ạ!""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Rất giỏi! Tên cột được đặt theo bảng chữ cái. Em thử đoán xem sau cột Z sẽ là cột gì không?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Em đoán là cột AA ạ!""}]","Xuất sắc, em đã nắm vững quy luật đặt tên rồi đấy.","Các cột được đặt tên theo bảng chữ cái A, B, C... từ trái sang phải.","HS: Vậy còn các chữ cái A, B, C ở phía trên là gì hả thầy?
+AI: Em đã biết hàng được đánh số rồi. Vậy các chữ cái nằm ở phía trên cùng, theo chiều dọc, sẽ đại diện cho thành phần nào đối lập với hàng?
+HS: Chắc là tên của các cột ạ!
+AI: Rất giỏi! Tên cột được đặt theo bảng chữ cái. Em thử đoán xem sau cột Z sẽ là cột gì không?
+HS: Em đoán là cột AA ạ!
+AI: Xuất sắc, em đã nắm vững quy luật đặt tên rồi đấy.","HS: Vậy còn các chữ cái A, B, C ở phía trên là gì hả thầy?
+AI: Em đã biết hàng được đánh số rồi. Vậy các chữ cái nằm ở phía trên cùng, theo chiều dọc, sẽ đại diện cho thành phần nào đối lập với hàng?
+HS: Chắc là tên của các cột ạ!
+AI: Rất giỏi! Tên cột được đặt theo bảng chữ cái. Em thử đoán xem sau cột Z sẽ là cột gì không?
+HS: Em đoán là cột AA ạ!
+AI: Xuất sắc, em đã nắm vững quy luật đặt tên rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN7-0001#F0073"", ""LM-SGV-TIN7-4920462481#F0182"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G7-R0104-STT5-FINAL,HNMU-G7-R0104-STT5,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,104,7,Bài 8: Công cụ hỗ trợ tính toán,Hoạt động 1 (Tr. 52 SGK),Thông hiểu (Giải thích được lợi ích),"Em thấy viết cộng từng ô cũng ra kết quả mà, sao phải học hàm chi cho cực ạ? ","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Nếu em có 1000 hàng dữ liệu, em có đủ kiên nhẫn để gõ dấu cộng 999 lần không? ""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ chắc là xỉu luôn thầy ơi... ""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Vậy việc dùng hàm SUM giúp em khắc phục được khó khăn gì về thời gian và độ dài của công thức? ""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ giúp công thức ngắn gọn và làm cực nhanh ạ! ""}]",Rất chuẩn! Đó chính là lý do các chuyên gia luôn dùng hàm.,"Giúp viết công thức ngắn gọn, dễ quản lý, tránh sai sót và tiết kiệm thời gian.","HS: Em thấy viết cộng từng ô cũng ra kết quả mà, sao phải học hàm chi cho cực ạ? 
+AI: Nếu em có 1000 hàng dữ liệu, em có đủ kiên nhẫn để gõ dấu cộng 999 lần không? 
+HS: Dạ chắc là xỉu luôn thầy ơi... 
+AI: Vậy việc dùng hàm SUM giúp em khắc phục được khó khăn gì về thời gian và độ dài của công thức? 
+HS: Dạ giúp công thức ngắn gọn và làm cực nhanh ạ! 
+AI: Rất chuẩn! Đó chính là lý do các chuyên gia luôn dùng hàm.","HS: Em thấy viết cộng từng ô cũng ra kết quả mà, sao phải học hàm chi cho cực ạ? 
+AI: Nếu em có 1000 hàng dữ liệu, em có đủ kiên nhẫn để gõ dấu cộng 999 lần không? 
+HS: Dạ chắc là xỉu luôn thầy ơi... 
+AI: Vậy việc dùng hàm SUM giúp em khắc phục được khó khăn gì về thời gian và độ dài của công thức? 
+HS: Dạ giúp công thức ngắn gọn và làm cực nhanh ạ! 
+AI: Rất chuẩn! Đó chính là lý do các chuyên gia luôn dùng hàm.",[],6,final_tutor_response,[],"[""LM-SGK-TIN7-0001#F0127"", ""LM-SGV-TIN7-4920462481#F0225""]"
+BC-HNMU-G7-R0115-STT2-FINAL,HNMU-G7-R0115-STT2,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,115,7,Bài 9: Trình bày bảng tính,Mục 2. Trình bày bảng tính (Tr. 58 SGK),Nhận biết (Nêu được tên lệnh),"Em quên mất một bạn trong danh sách, giờ muốn thêm một hàng ở giữa thì bấm vào đâu thầy nhỉ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Em hãy tìm trong thẻ Home, nhóm Cells (Ô). Có nút nào mang ý nghĩa là \""Chèn thêm\"" không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là nút Insert ạ!""}]",Rất chính xác! Em chỉ cần chọn hàng bên dưới vị trí muốn chèn rồi nhấn Insert là xong.,Lệnh Insert trong nhóm Cells.,"HS: Em quên mất một bạn trong danh sách, giờ muốn thêm một hàng ở giữa thì bấm vào đâu thầy nhỉ?
+AI: Em hãy tìm trong thẻ Home, nhóm Cells (Ô). Có nút nào mang ý nghĩa là ""Chèn thêm"" không?
+HS: Dạ là nút Insert ạ!
+AI: Rất chính xác! Em chỉ cần chọn hàng bên dưới vị trí muốn chèn rồi nhấn Insert là xong.","HS: Em quên mất một bạn trong danh sách, giờ muốn thêm một hàng ở giữa thì bấm vào đâu thầy nhỉ?
+AI: Em hãy tìm trong thẻ Home, nhóm Cells (Ô). Có nút nào mang ý nghĩa là ""Chèn thêm"" không?
+HS: Dạ là nút Insert ạ!
+AI: Rất chính xác! Em chỉ cần chọn hàng bên dưới vị trí muốn chèn rồi nhấn Insert là xong.",[],4,final_tutor_response,[],"[""LM-SGK-TIN7-0001#F0156"", ""LM-SGV-TIN7-4920462481#F0263"", ""shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md""]"
+BC-HNMU-G7-R0142-STT1-FINAL,HNMU-G7-R0142-STT1,grade6_7,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 7.xlsx,142,7,Bài 11: Tạo bài trình chiếu,Mục 1. Trang 64,Nhận biết (Nêu được),"Thầy AI ơi, phần mềm trình chiếu có tác dụng gì chính ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Em đã bao giờ xem các thầy cô dùng máy chiếu để dạy học trên lớp chưa?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em thấy suốt ạ, trên tivi hoặc màn chiếu to đùng.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi. Các bài giảng đó được tạo từ phần mềm trình chiếu. Vậy theo em, mục đích chính của phần mềm này là tạo ra cái gì và làm cho bài giảng trở nên như thế nào?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Để tạo bài trình chiếu và giúp bài giảng sinh động, hấp dẫn hơn ạ.""}]",Chính xác! Em đã tự rút ra được chức năng cơ bản của nó rồi đấy.,"Chức năng cơ bản là tạo bài trình chiếu và các hiệu ứng để làm cho nội dung trình bày thêm sinh động, hấp dẫn.","HS: Thầy AI ơi, phần mềm trình chiếu có tác dụng gì chính ạ?
+AI: Chào em! Em đã bao giờ xem các thầy cô dùng máy chiếu để dạy học trên lớp chưa?
+HS: Dạ em thấy suốt ạ, trên tivi hoặc màn chiếu to đùng.
+AI: Đúng rồi. Các bài giảng đó được tạo từ phần mềm trình chiếu. Vậy theo em, mục đích chính của phần mềm này là tạo ra cái gì và làm cho bài giảng trở nên như thế nào?
+HS: Để tạo bài trình chiếu và giúp bài giảng sinh động, hấp dẫn hơn ạ.
+AI: Chính xác! Em đã tự rút ra được chức năng cơ bản của nó rồi đấy.","HS: Thầy AI ơi, phần mềm trình chiếu có tác dụng gì chính ạ?
+AI: Chào em! Em đã bao giờ xem các thầy cô dùng máy chiếu để dạy học trên lớp chưa?
+HS: Dạ em thấy suốt ạ, trên tivi hoặc màn chiếu to đùng.
+AI: Đúng rồi. Các bài giảng đó được tạo từ phần mềm trình chiếu. Vậy theo em, mục đích chính của phần mềm này là tạo ra cái gì và làm cho bài giảng trở nên như thế nào?
+HS: Để tạo bài trình chiếu và giúp bài giảng sinh động, hấp dẫn hơn ạ.
+AI: Chính xác! Em đã tự rút ra được chức năng cơ bản của nó rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGV-TIN7-4920462481#F0286"", ""LM-SGV-TIN7-4920462481#F0291""]"
+BC-HNMU-G8-R0002-STT1-FINAL,HNMU-G8-R0002-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,2,8,Bài 1. Lược sử công cụ tính toán,"Mục 1, Trang 5 SGK",Nhận biết (Nhớ được tên tác giả),"Thầy ơi, máy tính Pascaline là do ai làm ra vậy ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Một câu hỏi rất hay để bắt đầu lịch sử máy tính. Em hãy để ý cái tên của chiếc máy \""Pascaline\"", nó rất giống với họ của một nhà bác học nổi tiếng người Pháp. Em có đoán được là ai không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ, có phải là ông Pascal không thầy?""}]",Chính xác! Ông ấy tên đầy đủ là Blaise Pascal. Em đã tìm thấy câu trả lời nhờ sự liên tưởng rất tốt đấy!,Blaise Pascal.,"HS: Thầy ơi, máy tính Pascaline là do ai làm ra vậy ạ?
+ AI: Chào em! Một câu hỏi rất hay để bắt đầu lịch sử máy tính. Em hãy để ý cái tên của chiếc máy ""Pascaline"", nó rất giống với họ của một nhà bác học nổi tiếng người Pháp. Em có đoán được là ai không?
+ HS: Dạ, có phải là ông Pascal không thầy?
+ AI: Chính xác! Ông ấy tên đầy đủ là Blaise Pascal. Em đã tìm thấy câu trả lời nhờ sự liên tưởng rất tốt đấy!","HS: Thầy ơi, máy tính Pascaline là do ai làm ra vậy ạ?
+ AI: Chào em! Một câu hỏi rất hay để bắt đầu lịch sử máy tính. Em hãy để ý cái tên của chiếc máy ""Pascaline"", nó rất giống với họ của một nhà bác học nổi tiếng người Pháp. Em có đoán được là ai không?
+ HS: Dạ, có phải là ông Pascal không thầy?
+ AI: Chính xác! Ông ấy tên đầy đủ là Blaise Pascal. Em đã tìm thấy câu trả lời nhờ sự liên tưởng rất tốt đấy!",[],4,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0006""]"
+BC-HNMU-G8-R0160-STT5-FINAL,HNMU-G8-R0160-STT5,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,160,8,[8b] Làm quen với phần mềm chỉnh sửa ảnh,Luyện tập,Thông hiểu,"Thầy ơi, em làm xong rồi, ấn Save rồi gửi cho thầy chấm nhé.","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chậm lại một chút nhé! Em Save thì tệp sẽ có đuôi gì?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Đuôi .xcf ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Nếu thầy không cài GIMP trong máy thì thầy có mở được đuôi .xcf không?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ không ạ. Vậy em phải làm sao để thầy mở được?""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Em cần một đuôi ảnh thông dụng như .jpg. Trong menu File, lệnh nào giúp \""xuất\"" ảnh ra đuôi .jpg nhỉ?""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Là Export As đúng không thầy?""}]",Chuẩn luôn! Em dùng Export As rồi gửi lại cho thầy nhé.,"Save: lưu tệp dự án (.xcf) để sửa đổi; Export: xuất ra tệp ảnh (.jpg, .png) để sử dụng.","HS: Thầy ơi, em làm xong rồi, ấn Save rồi gửi cho thầy chấm nhé.
+AI: Chậm lại một chút nhé! Em Save thì tệp sẽ có đuôi gì?
+HS: Đuôi .xcf ạ.
+AI: Nếu thầy không cài GIMP trong máy thì thầy có mở được đuôi .xcf không?
+HS: Dạ không ạ. Vậy em phải làm sao để thầy mở được?
+AI: Em cần một đuôi ảnh thông dụng như .jpg. Trong menu File, lệnh nào giúp ""xuất"" ảnh ra đuôi .jpg nhỉ?
+HS: Là Export As đúng không thầy?
+AI: Chuẩn luôn! Em dùng Export As rồi gửi lại cho thầy nhé.","HS: Thầy ơi, em làm xong rồi, ấn Save rồi gửi cho thầy chấm nhé.
+AI: Chậm lại một chút nhé! Em Save thì tệp sẽ có đuôi gì?
+HS: Đuôi .xcf ạ.
+AI: Nếu thầy không cài GIMP trong máy thì thầy có mở được đuôi .xcf không?
+HS: Dạ không ạ. Vậy em phải làm sao để thầy mở được?
+AI: Em cần một đuôi ảnh thông dụng như .jpg. Trong menu File, lệnh nào giúp ""xuất"" ảnh ra đuôi .jpg nhỉ?
+HS: Là Export As đúng không thầy?
+AI: Chuẩn luôn! Em dùng Export As rồi gửi lại cho thầy nhé.",[],8,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0166""]"
+BC-HNMU-G8-R0195-STT12-FINAL,HNMU-G8-R0195-STT12,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,195,8,"[10b] Thêm văn bản, tạo hiệu ứng cho ảnh",Vận dụng (Trang 69),Vận dụng,"Thầy ơi ảnh hoàng hôn này em chụp đẹp lắm nhưng bầu trời thì rực rỡ mà mặt đất, cây cối ở dưới nó đen ngòm. Làm sao cho phần dưới nó rõ lên ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Hiện tượng này trong nhiếp ảnh gọi là \""ngược sáng\"". Để cứu vớt các chi tiết bị chìm trong vùng tối (đen ngòm), ta cần tác động vào tổng thể ánh sáng của bức ảnh. Công cụ quen thuộc nào trong menu Colors giúp điều chỉnh mức sáng tối chung em nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Là công cụ Brightness-Contrast đúng không ạ?""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Rất chính xác. Em hãy mở bảng đó lên. Để mặt đất bớt đen, em cần tăng hay giảm thông số Brightness?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Em phải kéo tăng thông số Brightness lên. A, lá cây và con đường dưới đất hiện ra rõ mồn một rồi thầy ơi.""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Tốt lắm. Nhưng em có để ý khi kéo Brightness lên mạnh quá, bức ảnh bị phủ một lớp sương mù trắng trắng, nhìn nhạt nhạt không thật không?""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Dạ đúng, màu nó cứ bạc bệch ra ạ.""}, {""turn_index"": 8, ""role"": ""tutor"", ""content"": ""Đó là lúc thông số thứ hai (Contrast) phát huy tác dụng. Em hãy kéo thanh Contrast nhích lên dần dần, nó sẽ ép các điểm đen đen lại, điểm màu rực rỡ rực lên, xua tan lớp mù sương đó.""}, {""turn_index"": 9, ""role"": ""student"", ""content"": ""Đỉnh quá thầy ơi! Kéo Contrast cái là ảnh trong vắt, màu sắc đậm đà mà vẫn thấy rõ mặt đất. Bức ảnh hoàn hảo luôn ạ!""}]",Em đã làm chủ nghệ thuật cân bằng ánh sáng - độ tương phản rồi đấy.,Menu Colors -> Brightness-Contrast -> Kéo thanh trượt Brightness tăng lên (sáng hơn) -> Kéo Contrast tăng nhẹ để ảnh trong trẻo -> Nhấn OK.,"HS: Thầy ơi ảnh hoàng hôn này em chụp đẹp lắm nhưng bầu trời thì rực rỡ mà mặt đất, cây cối ở dưới nó đen ngòm. Làm sao cho phần dưới nó rõ lên ạ?
+AI: Hiện tượng này trong nhiếp ảnh gọi là ""ngược sáng"". Để cứu vớt các chi tiết bị chìm trong vùng tối (đen ngòm), ta cần tác động vào tổng thể ánh sáng của bức ảnh. Công cụ quen thuộc nào trong menu Colors giúp điều chỉnh mức sáng tối chung em nhỉ?
+HS: Là công cụ Brightness-Contrast đúng không ạ?
+AI: Rất chính xác. Em hãy mở bảng đó lên. Để mặt đất bớt đen, em cần tăng hay giảm thông số Brightness?
+HS: Em phải kéo tăng thông số Brightness lên. A, lá cây và con đường dưới đất hiện ra rõ mồn một rồi thầy ơi.
+AI: Tốt lắm. Nhưng em có để ý khi kéo Brightness lên mạnh quá, bức ảnh bị phủ một lớp sương mù trắng trắng, nhìn nhạt nhạt không thật không?
+HS: Dạ đúng, màu nó cứ bạc bệch ra ạ.
+AI: Đó là lúc thông số thứ hai (Contrast) phát huy tác dụng. Em hãy kéo thanh Contrast nhích lên dần dần, nó sẽ ép các điểm đen đen lại, điểm màu rực rỡ rực lên, xua tan lớp mù sương đó.
+HS: Đỉnh quá thầy ơi! Kéo Contrast cái là ảnh trong vắt, màu sắc đậm đà mà vẫn thấy rõ mặt đất. Bức ảnh hoàn hảo luôn ạ!
+AI: Em đã làm chủ nghệ thuật cân bằng ánh sáng - độ tương phản rồi đấy.","HS: Thầy ơi ảnh hoàng hôn này em chụp đẹp lắm nhưng bầu trời thì rực rỡ mà mặt đất, cây cối ở dưới nó đen ngòm. Làm sao cho phần dưới nó rõ lên ạ?
+AI: Hiện tượng này trong nhiếp ảnh gọi là ""ngược sáng"". Để cứu vớt các chi tiết bị chìm trong vùng tối (đen ngòm), ta cần tác động vào tổng thể ánh sáng của bức ảnh. Công cụ quen thuộc nào trong menu Colors giúp điều chỉnh mức sáng tối chung em nhỉ?
+HS: Là công cụ Brightness-Contrast đúng không ạ?
+AI: Rất chính xác. Em hãy mở bảng đó lên. Để mặt đất bớt đen, em cần tăng hay giảm thông số Brightness?
+HS: Em phải kéo tăng thông số Brightness lên. A, lá cây và con đường dưới đất hiện ra rõ mồn một rồi thầy ơi.
+AI: Tốt lắm. Nhưng em có để ý khi kéo Brightness lên mạnh quá, bức ảnh bị phủ một lớp sương mù trắng trắng, nhìn nhạt nhạt không thật không?
+HS: Dạ đúng, màu nó cứ bạc bệch ra ạ.
+AI: Đó là lúc thông số thứ hai (Contrast) phát huy tác dụng. Em hãy kéo thanh Contrast nhích lên dần dần, nó sẽ ép các điểm đen đen lại, điểm màu rực rỡ rực lên, xua tan lớp mù sương đó.
+HS: Đỉnh quá thầy ơi! Kéo Contrast cái là ảnh trong vắt, màu sắc đậm đà mà vẫn thấy rõ mặt đất. Bức ảnh hoàn hảo luôn ạ!
+AI: Em đã làm chủ nghệ thuật cân bằng ánh sáng - độ tương phản rồi đấy.",[],10,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0221""]"
+BC-HNMU-G8-R0016-STT1-FINAL,HNMU-G8-R0016-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,16,8,Bài 2. Thông tin trong môi trường số,"Mục 1.a, Trang 10 SGK",Nhận biết (Nêu được khái niệm),"Thầy ơi, thông tin số có phải chỉ là những gì trên máy tính không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Gần đúng rồi đó. Em hãy nghĩ xem, ngoài máy tính, thông tin trên điện thoại hay thẻ nhớ có được gọi là \""số\"" không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ có ạ, vì chúng dùng thiết bị điện tử.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Chính xác! Vậy điểm chung là những thông tin này được tạo ra và lưu trữ bởi loại thiết bị nào?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ là các thiết bị số ạ! Vậy thông tin số là thông tin trên các thiết bị số đúng không thầy?""}]",Quá chuẩn! Em đã nắm được cốt lõi rồi đấy.,"Là thông tin được tạo ra, lưu trữ, truyền tải bởi các thiết bị số.","HS: Thầy ơi, thông tin số có phải chỉ là những gì trên máy tính không ạ?
+ AI: Chào em! Gần đúng rồi đó. Em hãy nghĩ xem, ngoài máy tính, thông tin trên điện thoại hay thẻ nhớ có được gọi là ""số"" không?
+ HS: Dạ có ạ, vì chúng dùng thiết bị điện tử.
+ AI: Chính xác! Vậy điểm chung là những thông tin này được tạo ra và lưu trữ bởi loại thiết bị nào?
+ HS: Dạ là các thiết bị số ạ! Vậy thông tin số là thông tin trên các thiết bị số đúng không thầy?
+ AI: Quá chuẩn! Em đã nắm được cốt lõi rồi đấy.","HS: Thầy ơi, thông tin số có phải chỉ là những gì trên máy tính không ạ?
+ AI: Chào em! Gần đúng rồi đó. Em hãy nghĩ xem, ngoài máy tính, thông tin trên điện thoại hay thẻ nhớ có được gọi là ""số"" không?
+ HS: Dạ có ạ, vì chúng dùng thiết bị điện tử.
+ AI: Chính xác! Vậy điểm chung là những thông tin này được tạo ra và lưu trữ bởi loại thiết bị nào?
+ HS: Dạ là các thiết bị số ạ! Vậy thông tin số là thông tin trên các thiết bị số đúng không thầy?
+ AI: Quá chuẩn! Em đã nắm được cốt lõi rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0027""]"
+BC-HNMU-G8-R0032-STT3-FINAL,HNMU-G8-R0032-STT3,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,32,8,Bài 3. Thực hành: Khai thác thông tin số,"Nhiệm vụ 3, Trang 16-17 SGK",Nhận biết (Nêu tên được kênh chia sẻ),"Thầy ơi, làm xong bài thuyết trình em gửi cho cô giáo bằng cách nào ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Có nhiều cách lắm! Nếu em muốn gửi vào \""hộp thư số\"" cá nhân của cô thì dùng dịch vụ gì?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ dùng Thư điện tử (Email) ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Còn nếu muốn cả lớp cùng xem và bình luận trên một nhóm, em có thể dùng kênh gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""À, mạng xã hội hoặc các ổ đĩa dùng chung thầy nhỉ?""}]",Quá chuẩn luôn!,"Thư điện tử (Email), mạng xã hội, không gian lưu trữ dùng chung.","HS: Thầy ơi, làm xong bài thuyết trình em gửi cho cô giáo bằng cách nào ạ?
+ AI: Có nhiều cách lắm! Nếu em muốn gửi vào ""hộp thư số"" cá nhân của cô thì dùng dịch vụ gì?
+ HS: Dạ dùng Thư điện tử (Email) ạ.
+ AI: Đúng rồi! Còn nếu muốn cả lớp cùng xem và bình luận trên một nhóm, em có thể dùng kênh gì?
+ HS: À, mạng xã hội hoặc các ổ đĩa dùng chung thầy nhỉ?
+ AI: Quá chuẩn luôn!","HS: Thầy ơi, làm xong bài thuyết trình em gửi cho cô giáo bằng cách nào ạ?
+ AI: Có nhiều cách lắm! Nếu em muốn gửi vào ""hộp thư số"" cá nhân của cô thì dùng dịch vụ gì?
+ HS: Dạ dùng Thư điện tử (Email) ạ.
+ AI: Đúng rồi! Còn nếu muốn cả lớp cùng xem và bình luận trên một nhóm, em có thể dùng kênh gì?
+ HS: À, mạng xã hội hoặc các ổ đĩa dùng chung thầy nhỉ?
+ AI: Quá chuẩn luôn!",[],6,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0035""]"
+BC-HNMU-G8-R0044-STT1-FINAL,HNMU-G8-R0044-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,44,8,Bài 4. Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số,"Mục 1, Trang 18 SGK",Nhận biết (Nêu được khái niệm),"Thầy ơi, ""bản quyền"" có phải là mình phải trả tiền mới được xem video không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Trả tiền là một phần của việc thực hiện bản quyền. Em hãy nghĩ xem, nếu em vẽ một bức tranh rất đẹp, ai là người có quyền quyết định cho phép người khác in bức tranh đó ra?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là em ạ, vì em là người vẽ.""}]",Chính xác! Quyền của người sáng tạo đối với tác phẩm của họ như thế chính là bản quyền. Vậy em nêu lại định nghĩa ngắn gọn được không?,Là quyền của tác giả đối với tác phẩm do mình sáng tạo ra.,"HS: Thầy ơi, ""bản quyền"" có phải là mình phải trả tiền mới được xem video không ạ?
+ AI: Chào em! Trả tiền là một phần của việc thực hiện bản quyền. Em hãy nghĩ xem, nếu em vẽ một bức tranh rất đẹp, ai là người có quyền quyết định cho phép người khác in bức tranh đó ra?
+ HS: Dạ là em ạ, vì em là người vẽ.
+ AI: Chính xác! Quyền của người sáng tạo đối với tác phẩm của họ như thế chính là bản quyền. Vậy em nêu lại định nghĩa ngắn gọn được không?","HS: Thầy ơi, ""bản quyền"" có phải là mình phải trả tiền mới được xem video không ạ?
+ AI: Chào em! Trả tiền là một phần của việc thực hiện bản quyền. Em hãy nghĩ xem, nếu em vẽ một bức tranh rất đẹp, ai là người có quyền quyết định cho phép người khác in bức tranh đó ra?
+ HS: Dạ là em ạ, vì em là người vẽ.
+ AI: Chính xác! Quyền của người sáng tạo đối với tác phẩm của họ như thế chính là bản quyền. Vậy em nêu lại định nghĩa ngắn gọn được không?",[],4,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0054""]"
+BC-HNMU-G8-R0058-STT1-FINAL,HNMU-G8-R0058-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,58,8,Bài 5: Sử dụng bảng tính giải quyết bài toán thực tế,"Mục 1, Trang 22 SGK",Nhận biết (Nêu được khái niệm),"Thầy ơi, khi em gõ ""=A1+B1"" rồi kéo xuống, tại sao nó lại tự đổi thành ""=A2+B2"" ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Đó là một tính năng rất thông minh của bảng tính. Em có nhớ trong bài học, loại địa chỉ nào sẽ \""tự động thay đổi\"" khi ta sao chép công thức không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ, em nhớ có hai loại là tương đối và tuyệt đối ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Vậy loại nào là \""mặc định\"" và có tính chất thay đổi theo vị trí mới nhỉ?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""À, là địa chỉ tương đối đúng không thầy?""}]",Chính xác! Em đã nhận ra tính chất của nó rồi đấy.,Là tự động thay đổi khi sao chép công thức nhưng vẫn giữ nguyên vị trí tương đối giữa ô chứa công thức và ô có địa chỉ tương đối trong công thức.,"HS: Thầy ơi, khi em gõ ""=A1+B1"" rồi kéo xuống, tại sao nó lại tự đổi thành ""=A2+B2"" ạ?
+ AI: Chào em! Đó là một tính năng rất thông minh của bảng tính. Em có nhớ trong bài học, loại địa chỉ nào sẽ ""tự động thay đổi"" khi ta sao chép công thức không?
+ HS: Dạ, em nhớ có hai loại là tương đối và tuyệt đối ạ.
+ AI: Đúng rồi! Vậy loại nào là ""mặc định"" và có tính chất thay đổi theo vị trí mới nhỉ?
+ HS: À, là địa chỉ tương đối đúng không thầy?
+ AI: Chính xác! Em đã nhận ra tính chất của nó rồi đấy.","HS: Thầy ơi, khi em gõ ""=A1+B1"" rồi kéo xuống, tại sao nó lại tự đổi thành ""=A2+B2"" ạ?
+ AI: Chào em! Đó là một tính năng rất thông minh của bảng tính. Em có nhớ trong bài học, loại địa chỉ nào sẽ ""tự động thay đổi"" khi ta sao chép công thức không?
+ HS: Dạ, em nhớ có hai loại là tương đối và tuyệt đối ạ.
+ AI: Đúng rồi! Vậy loại nào là ""mặc định"" và có tính chất thay đổi theo vị trí mới nhỉ?
+ HS: À, là địa chỉ tương đối đúng không thầy?
+ AI: Chính xác! Em đã nhận ra tính chất của nó rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0062""]"
+BC-HNMU-G8-R0072-STT1-FINAL,HNMU-G8-R0072-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,72,8,Bài 6. Săp xếp và lọc dữ liệu,"Mục 2, Trang 28 SGK",Nhận biết (Nêu được khái niệm),"Thầy ơi, sắp xếp dữ liệu có phải là mình cầm chuột kéo từng hàng đi không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Một ý tưởng thú vị! Nhưng nếu có 1000 hàng thì kéo mỏi tay lắm. Em hãy nghĩ xem, khi ta muốn tên các bạn trong lớp theo đúng bảng chữ cái từ A đến Z, ta đang làm gì với vị trí các hàng nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là đổi chỗ chúng cho đúng thứ tự ạ.""}]",Chính xác! Việc hoán đổi vị trí các hàng để dữ liệu tăng hoặc giảm dần theo cột đó chính là sắp xếp. Em nêu lại định nghĩa này giúp thầy nhé!,Là hoán đổi vị trí các hàng để giá trị dữ liệu trong một hay nhiều cột được sắp xếp theo thứ tự tăng dần hoặc giảm dần.,"HS: Thầy ơi, sắp xếp dữ liệu có phải là mình cầm chuột kéo từng hàng đi không ạ?
+ AI: Một ý tưởng thú vị! Nhưng nếu có 1000 hàng thì kéo mỏi tay lắm. Em hãy nghĩ xem, khi ta muốn tên các bạn trong lớp theo đúng bảng chữ cái từ A đến Z, ta đang làm gì với vị trí các hàng nhỉ?
+ HS: Dạ là đổi chỗ chúng cho đúng thứ tự ạ.
+ AI: Chính xác! Việc hoán đổi vị trí các hàng để dữ liệu tăng hoặc giảm dần theo cột đó chính là sắp xếp. Em nêu lại định nghĩa này giúp thầy nhé!","HS: Thầy ơi, sắp xếp dữ liệu có phải là mình cầm chuột kéo từng hàng đi không ạ?
+ AI: Một ý tưởng thú vị! Nhưng nếu có 1000 hàng thì kéo mỏi tay lắm. Em hãy nghĩ xem, khi ta muốn tên các bạn trong lớp theo đúng bảng chữ cái từ A đến Z, ta đang làm gì với vị trí các hàng nhỉ?
+ HS: Dạ là đổi chỗ chúng cho đúng thứ tự ạ.
+ AI: Chính xác! Việc hoán đổi vị trí các hàng để dữ liệu tăng hoặc giảm dần theo cột đó chính là sắp xếp. Em nêu lại định nghĩa này giúp thầy nhé!",[],4,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0088""]"
+BC-HNMU-G8-R0086-STT1-FINAL,HNMU-G8-R0086-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,86,8,Bài 7. Trình bày dữ liệu bằng biểu đồ,"Mục 1, Trang 33 SGK",Nhận biết (Nêu được khái niệm),"Thầy ơi, trực quan hóa dữ liệu nghe khó hiểu quá, nó là cái gì vậy thầy?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Đừng lo nhé. Em hãy tưởng tượng một bảng điểm đầy số và một bức hình có các cột cao thấp khác nhau. Cái nào giúp em thấy ngay bạn nào cao điểm nhất?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là cái hình có các cột ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Đúng rồi! Cái \""hình\"" đó chính là biểu đồ. Vậy theo em, mục đích của việc dùng biểu đồ thay cho con số là để làm gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Dạ để mình nhìn vào là thấy ngay sự so sánh và xu hướng đúng không thầy?""}]",Chính xác! Em đã nắm được khái niệm trực quan hóa rồi đấy.,"Là cách minh hoạ dữ liệu một cách trực quan, giúp dễ so sánh hoặc dự đoán xu hướng tăng giảm của dữ liệu.","HS: Thầy ơi, trực quan hóa dữ liệu nghe khó hiểu quá, nó là cái gì vậy thầy?
+ AI: Chào em! Đừng lo nhé. Em hãy tưởng tượng một bảng điểm đầy số và một bức hình có các cột cao thấp khác nhau. Cái nào giúp em thấy ngay bạn nào cao điểm nhất?
+ HS: Dạ là cái hình có các cột ạ.
+ AI: Đúng rồi! Cái ""hình"" đó chính là biểu đồ. Vậy theo em, mục đích của việc dùng biểu đồ thay cho con số là để làm gì?
+ HS: Dạ để mình nhìn vào là thấy ngay sự so sánh và xu hướng đúng không thầy?
+ AI: Chính xác! Em đã nắm được khái niệm trực quan hóa rồi đấy.","HS: Thầy ơi, trực quan hóa dữ liệu nghe khó hiểu quá, nó là cái gì vậy thầy?
+ AI: Chào em! Đừng lo nhé. Em hãy tưởng tượng một bảng điểm đầy số và một bức hình có các cột cao thấp khác nhau. Cái nào giúp em thấy ngay bạn nào cao điểm nhất?
+ HS: Dạ là cái hình có các cột ạ.
+ AI: Đúng rồi! Cái ""hình"" đó chính là biểu đồ. Vậy theo em, mục đích của việc dùng biểu đồ thay cho con số là để làm gì?
+ HS: Dạ để mình nhìn vào là thấy ngay sự so sánh và xu hướng đúng không thầy?
+ AI: Chính xác! Em đã nắm được khái niệm trực quan hóa rồi đấy.",[],6,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0120""]"
+BC-HNMU-G8-R0170-STT1-FINAL,HNMU-G8-R0170-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 8.xlsx,170,8,"[9b] Thay đổi khung hình, kích thước ảnh",Mục 1. Khám phá (Trang 58),Nhận biết,"Thầy ơi, em muốn lấy mỗi hình ngôi nhà thôi, em dùng cục tẩy (Eraser) xoá hết cảnh xung quanh được không?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em. Dùng cục tẩy cũng là một cách, nhưng sẽ rất lâu và lem nhem. Em có nhớ bài học cung cấp công cụ nào chuyên dùng để xén khung hình gọn gàng không?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Em nhớ mang máng, có phải cái kéo (Scissors) không ạ?""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Gần đúng! Cái kéo dùng để cắt lượn theo hình dáng đồ vật. Nhưng để xén thành khung ảnh chữ nhật vuông vức, ta dùng công cụ xén (Crop). Biểu tượng đan chéo nhau.""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""À em thấy chữ Crop Tool rồi. Để em quét thử ạ.""}]","Tuyệt vời, em thao tác đi nhé!",Công cụ Crop (Crop Tool),"HS: Thầy ơi, em muốn lấy mỗi hình ngôi nhà thôi, em dùng cục tẩy (Eraser) xoá hết cảnh xung quanh được không?
+AI: Chào em. Dùng cục tẩy cũng là một cách, nhưng sẽ rất lâu và lem nhem. Em có nhớ bài học cung cấp công cụ nào chuyên dùng để xén khung hình gọn gàng không?
+HS: Em nhớ mang máng, có phải cái kéo (Scissors) không ạ?
+AI: Gần đúng! Cái kéo dùng để cắt lượn theo hình dáng đồ vật. Nhưng để xén thành khung ảnh chữ nhật vuông vức, ta dùng công cụ xén (Crop). Biểu tượng đan chéo nhau.
+HS: À em thấy chữ Crop Tool rồi. Để em quét thử ạ.
+AI: Tuyệt vời, em thao tác đi nhé!","HS: Thầy ơi, em muốn lấy mỗi hình ngôi nhà thôi, em dùng cục tẩy (Eraser) xoá hết cảnh xung quanh được không?
+AI: Chào em. Dùng cục tẩy cũng là một cách, nhưng sẽ rất lâu và lem nhem. Em có nhớ bài học cung cấp công cụ nào chuyên dùng để xén khung hình gọn gàng không?
+HS: Em nhớ mang máng, có phải cái kéo (Scissors) không ạ?
+AI: Gần đúng! Cái kéo dùng để cắt lượn theo hình dáng đồ vật. Nhưng để xén thành khung ảnh chữ nhật vuông vức, ta dùng công cụ xén (Crop). Biểu tượng đan chéo nhau.
+HS: À em thấy chữ Crop Tool rồi. Để em quét thử ạ.
+AI: Tuyệt vời, em thao tác đi nhé!",[],6,final_tutor_response,[],"[""LM-SGK-TIN8-0001#F0198""]"
+BC-HNMU-G9-R0004-STT3-FINAL,HNMU-G9-R0004-STT3,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,4,9,Bài 1: Thế giới kĩ thuật số,Mục 3. Tác động (Tr. 7 SGK),Nhận biết (Nêu được lĩnh vực),CNTT giúp ích gì cho việc học của tụi em nhất ạ?,"[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Em hãy nhớ lại lúc em học trực tuyến hoặc tìm tài liệu trên mạng. CNTT giúp em kết nối với nguồn tri thức khổng lồ ở đâu nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là trên Internet ạ. Vậy đó là lĩnh vực giáo dục đúng không thầy?""}]","Giỏi lắm! CNTT giúp chia sẻ kiến thức, kĩ năng cho mọi người ở bất kì đâu.",Lĩnh vực Giáo dục.,"HS: CNTT giúp ích gì cho việc học của tụi em nhất ạ?
+AI: Em hãy nhớ lại lúc em học trực tuyến hoặc tìm tài liệu trên mạng. CNTT giúp em kết nối với nguồn tri thức khổng lồ ở đâu nhỉ?
+HS: Dạ là trên Internet ạ. Vậy đó là lĩnh vực giáo dục đúng không thầy?
+AI: Giỏi lắm! CNTT giúp chia sẻ kiến thức, kĩ năng cho mọi người ở bất kì đâu.","HS: CNTT giúp ích gì cho việc học của tụi em nhất ạ?
+AI: Em hãy nhớ lại lúc em học trực tuyến hoặc tìm tài liệu trên mạng. CNTT giúp em kết nối với nguồn tri thức khổng lồ ở đâu nhỉ?
+HS: Dạ là trên Internet ạ. Vậy đó là lĩnh vực giáo dục đúng không thầy?
+AI: Giỏi lắm! CNTT giúp chia sẻ kiến thức, kĩ năng cho mọi người ở bất kì đâu.",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0004""]"
+BC-HNMU-G9-R0189-STT6-FINAL,HNMU-G9-R0189-STT6,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,189,9,[9b]: Các chức năng chính của phần mềm làm Video,"Mục 3b, c (Tr. 58)",Thông hiểu,AI giải thích lại giúp em sự khác nhau giữa Project library và Storyboard với.,"[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Được thôi! Em đi siêu thị mua rất nhiều đồ bỏ vào giỏ hàng. Nhưng em chỉ lấy một vài món ra nấu bữa tối. \""Giỏ hàng\"" tương ứng với phần nào?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Giỏ hàng là Project library (Thư viện) ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Rất thông minh! Vậy khi em cắt thái, sắp xếp rau củ, thịt lên thớt để nấu, thì cái \""thớt\"" đó là gì?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Là Storyboard (Bàn dựng) đúng không ạ?""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Hoàn toàn chính xác. Vậy ảnh nằm ở thư viện đã xuất hiện trên video chưa?""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Dạ chưa, phải kéo xuống bàn dựng mới thành video được.""}]","Tuyệt vời, em phân biệt rất tốt rồi đó!",Thư viện là nơi chứa tất cả tư liệu có thể dùng. Bàn dựng là nơi sắp xếp các tư liệu được chọn để tạo thành video hoàn chỉnh theo trình tự.,"HS: AI giải thích lại giúp em sự khác nhau giữa Project library và Storyboard với.
+AI: Được thôi! Em đi siêu thị mua rất nhiều đồ bỏ vào giỏ hàng. Nhưng em chỉ lấy một vài món ra nấu bữa tối. ""Giỏ hàng"" tương ứng với phần nào?
+HS: Giỏ hàng là Project library (Thư viện) ạ.
+AI: Rất thông minh! Vậy khi em cắt thái, sắp xếp rau củ, thịt lên thớt để nấu, thì cái ""thớt"" đó là gì?
+HS: Là Storyboard (Bàn dựng) đúng không ạ?
+AI: Hoàn toàn chính xác. Vậy ảnh nằm ở thư viện đã xuất hiện trên video chưa?
+HS: Dạ chưa, phải kéo xuống bàn dựng mới thành video được.
+AI: Tuyệt vời, em phân biệt rất tốt rồi đó!","HS: AI giải thích lại giúp em sự khác nhau giữa Project library và Storyboard với.
+AI: Được thôi! Em đi siêu thị mua rất nhiều đồ bỏ vào giỏ hàng. Nhưng em chỉ lấy một vài món ra nấu bữa tối. ""Giỏ hàng"" tương ứng với phần nào?
+HS: Giỏ hàng là Project library (Thư viện) ạ.
+AI: Rất thông minh! Vậy khi em cắt thái, sắp xếp rau củ, thịt lên thớt để nấu, thì cái ""thớt"" đó là gì?
+HS: Là Storyboard (Bàn dựng) đúng không ạ?
+AI: Hoàn toàn chính xác. Vậy ảnh nằm ở thư viện đã xuất hiện trên video chưa?
+HS: Dạ chưa, phải kéo xuống bàn dựng mới thành video được.
+AI: Tuyệt vời, em phân biệt rất tốt rồi đó!",[],8,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0130""]"
+BC-HNMU-G9-R0209-STT12-FINAL,HNMU-G9-R0209-STT12,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,209,9,[10b]: Chuẩn bị dữ liệu và dựng video,Thực hành (Tr. 61),Vận dụng,Em đang có một đống lộn xộn các tệp tải về ở thư mục Downloads. Giờ thao tác thế nào để chuyển vào thư mục dự án ạ?,"[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Trước tiên, ở ổ đĩa D hoặc ổ E của em, em hãy click chuột phải, chọn New -> Folder và đặt tên là \""SanPhamTinHoc\"".""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Xong rồi ạ. Mở thư mục đó ra em tạo tiếp 3 thư mục con là DuLieu-Anh, DuLieu-Video, DuLieu-AmThanh rồi ạ.""}, {""turn_index"": 4, ""role"": ""tutor"", ""content"": ""Rất nhanh. Bây giờ quay lại thư mục Downloads. Để tiết kiệm thời gian, em hãy ấn vào nút \""Sort by\"" (Sắp xếp theo) và chọn \""Type\"" (Loại tệp). Em thấy điều kì diệu gì xảy ra?""}, {""turn_index"": 5, ""role"": ""student"", ""content"": ""Ồ, các tệp nhạc xếp tụm vào nhau, các tệp ảnh xếp vào nhau rồi ạ! Không bị xen kẽ nữa.""}, {""turn_index"": 6, ""role"": ""tutor"", ""content"": ""Đúng vậy, kĩ thuật này giúp em chọn dữ liệu cực nhanh. Giờ em hãy bôi đen toàn bộ ảnh, ấn Cut (Ctrl + X) và Paste (Ctrl + V) sang thư mục DuLieu-Anh nhé.""}, {""turn_index"": 7, ""role"": ""student"", ""content"": ""Em làm được rồi! Tương tự em cắt nhạc sang DuLieu-AmThanh và video sang DuLieu-Video.""}, {""turn_index"": 8, ""role"": ""tutor"", ""content"": ""Em thấy thư mục Downloads của em bây giờ thế nào?""}, {""turn_index"": 9, ""role"": ""student"", ""content"": ""Đã sạch sẽ và dữ liệu dự án của em đã nằm đúng vị trí. Cách phân loại này chuyên nghiệp quá AI ạ!""}]",Kĩ năng máy tính của em đang tăng lên mỗi ngày đấy!,"HS tự thao tác trên máy: Tạo New Folder ""SanPhamTinHoc"", bên trong tạo ""DuLieu-AmThanh"", ""DuLieu-Anh"", ""DuLieu-Video"", copy đúng file.","HS: Em đang có một đống lộn xộn các tệp tải về ở thư mục Downloads. Giờ thao tác thế nào để chuyển vào thư mục dự án ạ?
+AI: Trước tiên, ở ổ đĩa D hoặc ổ E của em, em hãy click chuột phải, chọn New -> Folder và đặt tên là ""SanPhamTinHoc"".
+HS: Xong rồi ạ. Mở thư mục đó ra em tạo tiếp 3 thư mục con là DuLieu-Anh, DuLieu-Video, DuLieu-AmThanh rồi ạ.
+AI: Rất nhanh. Bây giờ quay lại thư mục Downloads. Để tiết kiệm thời gian, em hãy ấn vào nút ""Sort by"" (Sắp xếp theo) và chọn ""Type"" (Loại tệp). Em thấy điều kì diệu gì xảy ra?
+HS: Ồ, các tệp nhạc xếp tụm vào nhau, các tệp ảnh xếp vào nhau rồi ạ! Không bị xen kẽ nữa.
+AI: Đúng vậy, kĩ thuật này giúp em chọn dữ liệu cực nhanh. Giờ em hãy bôi đen toàn bộ ảnh, ấn Cut (Ctrl + X) và Paste (Ctrl + V) sang thư mục DuLieu-Anh nhé.
+HS: Em làm được rồi! Tương tự em cắt nhạc sang DuLieu-AmThanh và video sang DuLieu-Video.
+AI: Em thấy thư mục Downloads của em bây giờ thế nào?
+HS: Đã sạch sẽ và dữ liệu dự án của em đã nằm đúng vị trí. Cách phân loại này chuyên nghiệp quá AI ạ!
+AI: Kĩ năng máy tính của em đang tăng lên mỗi ngày đấy!","HS: Em đang có một đống lộn xộn các tệp tải về ở thư mục Downloads. Giờ thao tác thế nào để chuyển vào thư mục dự án ạ?
+AI: Trước tiên, ở ổ đĩa D hoặc ổ E của em, em hãy click chuột phải, chọn New -> Folder và đặt tên là ""SanPhamTinHoc"".
+HS: Xong rồi ạ. Mở thư mục đó ra em tạo tiếp 3 thư mục con là DuLieu-Anh, DuLieu-Video, DuLieu-AmThanh rồi ạ.
+AI: Rất nhanh. Bây giờ quay lại thư mục Downloads. Để tiết kiệm thời gian, em hãy ấn vào nút ""Sort by"" (Sắp xếp theo) và chọn ""Type"" (Loại tệp). Em thấy điều kì diệu gì xảy ra?
+HS: Ồ, các tệp nhạc xếp tụm vào nhau, các tệp ảnh xếp vào nhau rồi ạ! Không bị xen kẽ nữa.
+AI: Đúng vậy, kĩ thuật này giúp em chọn dữ liệu cực nhanh. Giờ em hãy bôi đen toàn bộ ảnh, ấn Cut (Ctrl + X) và Paste (Ctrl + V) sang thư mục DuLieu-Anh nhé.
+HS: Em làm được rồi! Tương tự em cắt nhạc sang DuLieu-AmThanh và video sang DuLieu-Video.
+AI: Em thấy thư mục Downloads của em bây giờ thế nào?
+HS: Đã sạch sẽ và dữ liệu dự án của em đã nằm đúng vị trí. Cách phân loại này chuyên nghiệp quá AI ạ!
+AI: Kĩ năng máy tính của em đang tăng lên mỗi ngày đấy!",[],10,final_tutor_response,[],"[""LM-SGV-TIN9-4923777498#F0247""]"
+BC-HNMU-G9-R0016-STT1-FINAL,HNMU-G9-R0016-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,16,9,Bài 2: Thông tin trong giải quyết vấn đề,Mục 1. Chất lượng thông tin (Tr. 9 SGK),Nhận biết (Nêu được các yếu tố đánh giá),"Thầy ơi, làm sao biết thông tin trên mạng cái nào tốt cái nào không ạ? ","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Một câu hỏi rất hay. Để đánh giá một \""món ăn thông tin\"" có ngon không, ta cần 4 \""gia vị\"" chuẩn. Em thử nhìn vào sơ đồ Hình 2.2 trang 11 xem 4 từ khóa đó là gì nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em thấy là: Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được ạ. ""}]","Rất chính xác! Em hãy ghi nhớ 4 ""gia vị"" này để trở thành người dùng thông tin thông thái nhé!","Có 4 yếu tố: Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được.","HS: Thầy ơi, làm sao biết thông tin trên mạng cái nào tốt cái nào không ạ? 
+AI: Chào em! Một câu hỏi rất hay. Để đánh giá một ""món ăn thông tin"" có ngon không, ta cần 4 ""gia vị"" chuẩn. Em thử nhìn vào sơ đồ Hình 2.2 trang 11 xem 4 từ khóa đó là gì nhỉ?
+HS: Dạ em thấy là: Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được ạ. 
+AI: Rất chính xác! Em hãy ghi nhớ 4 ""gia vị"" này để trở thành người dùng thông tin thông thái nhé!","HS: Thầy ơi, làm sao biết thông tin trên mạng cái nào tốt cái nào không ạ? 
+AI: Chào em! Một câu hỏi rất hay. Để đánh giá một ""món ăn thông tin"" có ngon không, ta cần 4 ""gia vị"" chuẩn. Em thử nhìn vào sơ đồ Hình 2.2 trang 11 xem 4 từ khóa đó là gì nhỉ?
+HS: Dạ em thấy là: Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được ạ. 
+AI: Rất chính xác! Em hãy ghi nhớ 4 ""gia vị"" này để trở thành người dùng thông tin thông thái nhé!",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0016""]"
+BC-HNMU-G9-R0030-STT1-FINAL,HNMU-G9-R0030-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,30,9,Bài 3: Thực hành: Đánh giá chất lượng thông tin,Mục 1. a (Tr. 9 SGK),Nhận biết (Kể tên được các thành phần),"Thầy ơi, khi tìm thông tin trên mạng, làm sao để mình biết nó có ""xịn"" hay không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Để đánh giá một \""món quà thông tin\"", em cần kiểm tra 4 \""mã vạch\"" chất lượng. Em hãy nhìn vào Hình 2.2 ở trang 11 xem đó là những tiêu chí nào?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em thấy là: Tính mới, chính xác, đầy đủ và sử dụng được ạ.""}]","Rất chính xác! Hãy luôn mang ""bộ lọc"" 4 tiêu chí này khi lướt mạng nhé!","Tính mới, tính chính xác, tính đầy đủ và tính sử dụng được,.","HS: Thầy ơi, khi tìm thông tin trên mạng, làm sao để mình biết nó có ""xịn"" hay không ạ?
+AI: Chào em! Để đánh giá một ""món quà thông tin"", em cần kiểm tra 4 ""mã vạch"" chất lượng. Em hãy nhìn vào Hình 2.2 ở trang 11 xem đó là những tiêu chí nào?
+HS: Dạ em thấy là: Tính mới, chính xác, đầy đủ và sử dụng được ạ.
+AI: Rất chính xác! Hãy luôn mang ""bộ lọc"" 4 tiêu chí này khi lướt mạng nhé!","HS: Thầy ơi, khi tìm thông tin trên mạng, làm sao để mình biết nó có ""xịn"" hay không ạ?
+AI: Chào em! Để đánh giá một ""món quà thông tin"", em cần kiểm tra 4 ""mã vạch"" chất lượng. Em hãy nhìn vào Hình 2.2 ở trang 11 xem đó là những tiêu chí nào?
+HS: Dạ em thấy là: Tính mới, chính xác, đầy đủ và sử dụng được ạ.
+AI: Rất chính xác! Hãy luôn mang ""bộ lọc"" 4 tiêu chí này khi lướt mạng nhé!",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0028""]"
+BC-HNMU-G9-R0044-STT1-FINAL,HNMU-G9-R0044-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,44,9,Bài 4: Một số vấn đề pháp lý về sử dụng dịch vụ Internet,Mục 1. a (Tr. 15 SGK),Nhận biết (Nêu được nội dung liên quan đến Luật),"Thầy ơi, trên mạng mình muốn làm gì thì làm hay có luật nào quản lý không ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Giống như khi đi đường có Luật Giao thông, thế giới ảo cũng có quy tắc riêng. Em thử nhìn vào mục 1.a trang 15 xem, có hai bộ luật rất quan trọng được nhắc đến tên là gì nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em thấy có Luật Công nghệ thông tin và Luật An ninh mạng ạ.""}]","Rất chính xác! Đây là hai ""lá chắn"" pháp lý quan trọng nhất mà mọi công dân số cần biết đấy.",Luật Công nghệ thông tin (2006) và Luật An ninh mạng (2018).,"HS: Thầy ơi, trên mạng mình muốn làm gì thì làm hay có luật nào quản lý không ạ?
+AI: Chào em! Giống như khi đi đường có Luật Giao thông, thế giới ảo cũng có quy tắc riêng. Em thử nhìn vào mục 1.a trang 15 xem, có hai bộ luật rất quan trọng được nhắc đến tên là gì nhỉ?
+HS: Dạ em thấy có Luật Công nghệ thông tin và Luật An ninh mạng ạ.
+AI: Rất chính xác! Đây là hai ""lá chắn"" pháp lý quan trọng nhất mà mọi công dân số cần biết đấy.","HS: Thầy ơi, trên mạng mình muốn làm gì thì làm hay có luật nào quản lý không ạ?
+AI: Chào em! Giống như khi đi đường có Luật Giao thông, thế giới ảo cũng có quy tắc riêng. Em thử nhìn vào mục 1.a trang 15 xem, có hai bộ luật rất quan trọng được nhắc đến tên là gì nhỉ?
+HS: Dạ em thấy có Luật Công nghệ thông tin và Luật An ninh mạng ạ.
+AI: Rất chính xác! Đây là hai ""lá chắn"" pháp lý quan trọng nhất mà mọi công dân số cần biết đấy.",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0038""]"
+BC-HNMU-G9-R0059-STT2-FINAL,HNMU-G9-R0059-STT2,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,59,9,Bài 5: Tìm hiểu phần mềm mô phỏng,Mục 1 (Tr. 20 SGK),Nhận biết (Kể tên được thiết bị/công cụ),"Thầy ơi, em muốn tập pha màu mà không sợ bẩn tay thì dùng trang nào ạ? ","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Một câu hỏi thú vị! Em hãy mở sách trang 20, phần Hoạt động 1, có một đường link màu xanh hiện ra, em thấy nó chưa? ""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em thấy rồi, là trycolors.com ạ. ""}]","Rất chính xác! Đây là ""phòng thí nghiệm màu sắc"" ảo dành cho em đấy.",Website https://trycolors.com/.,"HS: Thầy ơi, em muốn tập pha màu mà không sợ bẩn tay thì dùng trang nào ạ? 
+AI: Một câu hỏi thú vị! Em hãy mở sách trang 20, phần Hoạt động 1, có một đường link màu xanh hiện ra, em thấy nó chưa? 
+HS: Dạ em thấy rồi, là trycolors.com ạ. 
+AI: Rất chính xác! Đây là ""phòng thí nghiệm màu sắc"" ảo dành cho em đấy.","HS: Thầy ơi, em muốn tập pha màu mà không sợ bẩn tay thì dùng trang nào ạ? 
+AI: Một câu hỏi thú vị! Em hãy mở sách trang 20, phần Hoạt động 1, có một đường link màu xanh hiện ra, em thấy nó chưa? 
+HS: Dạ em thấy rồi, là trycolors.com ạ. 
+AI: Rất chính xác! Đây là ""phòng thí nghiệm màu sắc"" ảo dành cho em đấy.",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0045""]"
+BC-HNMU-G9-R0072-STT1-FINAL,HNMU-G9-R0072-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,72,9,Bài 6: Thực hành: Khai thác phần mềm mô phỏng,Hoạt động 1 (Tr. 23 SGK),Nhận biết (Nêu được tên thiết bị/công cụ),"Thầy ơi, em muốn bắt đầu bài thực hành pha màu mà không nhớ địa chỉ web ạ.","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Rất sẵn lòng giúp em. Em hãy nhìn vào phần Nhiệm vụ 1 ở trang 23 nhé. Có một dòng chữ màu xanh bắt đầu bằng \""https://...\"", em thấy nó chưa?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ em thấy rồi, là trycolors.com ạ.""}]","Rất chính xác! Đó chính là ""phòng thí nghiệm"" đầu tiên của chúng ta hôm nay đấy.",Website https://trycolors.com/.,"HS: Thầy ơi, em muốn bắt đầu bài thực hành pha màu mà không nhớ địa chỉ web ạ.
+AI: Chào em! Rất sẵn lòng giúp em. Em hãy nhìn vào phần Nhiệm vụ 1 ở trang 23 nhé. Có một dòng chữ màu xanh bắt đầu bằng ""https://..."", em thấy nó chưa?
+HS: Dạ em thấy rồi, là trycolors.com ạ.
+AI: Rất chính xác! Đó chính là ""phòng thí nghiệm"" đầu tiên của chúng ta hôm nay đấy.","HS: Thầy ơi, em muốn bắt đầu bài thực hành pha màu mà không nhớ địa chỉ web ạ.
+AI: Chào em! Rất sẵn lòng giúp em. Em hãy nhìn vào phần Nhiệm vụ 1 ở trang 23 nhé. Có một dòng chữ màu xanh bắt đầu bằng ""https://..."", em thấy nó chưa?
+HS: Dạ em thấy rồi, là trycolors.com ạ.
+AI: Rất chính xác! Đó chính là ""phòng thí nghiệm"" đầu tiên của chúng ta hôm nay đấy.",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0049""]"
+BC-HNMU-G9-R0086-STT1-FINAL,HNMU-G9-R0086-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,86,9,Bài 7: Trình bày thông tin trong trao đổi hợp tác,Mục 1 (Tr. 27 SGK),Biết (Kể tên được tên thiết bị/công cụ).,"Thầy AI ơi, khi cần giới thiệu sản phẩm của nhóm cho cả lớp, em nên dùng gì để mọi người dễ theo dõi ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Để bắt đầu, em hãy nghĩ xem mình đã từng dùng phần mềm nào để vẽ các ý tưởng tỏa ra từ một trung tâm hoặc phần mềm nào để chiếu các trang nội dung lên bảng nhỉ?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là sơ đồ tư duy và PowerPoint đúng không thầy?""}]","Rất chính xác! Đó chính là hai ""vũ khí"" lợi hại nhất để trình bày thông tin trong bài học này đấy.",Sơ đồ tư duy và bài trình chiếu.,"HS: Thầy AI ơi, khi cần giới thiệu sản phẩm của nhóm cho cả lớp, em nên dùng gì để mọi người dễ theo dõi ạ?
+AI: Chào em! Để bắt đầu, em hãy nghĩ xem mình đã từng dùng phần mềm nào để vẽ các ý tưởng tỏa ra từ một trung tâm hoặc phần mềm nào để chiếu các trang nội dung lên bảng nhỉ?
+HS: Dạ là sơ đồ tư duy và PowerPoint đúng không thầy?
+AI: Rất chính xác! Đó chính là hai ""vũ khí"" lợi hại nhất để trình bày thông tin trong bài học này đấy.","HS: Thầy AI ơi, khi cần giới thiệu sản phẩm của nhóm cho cả lớp, em nên dùng gì để mọi người dễ theo dõi ạ?
+AI: Chào em! Để bắt đầu, em hãy nghĩ xem mình đã từng dùng phần mềm nào để vẽ các ý tưởng tỏa ra từ một trung tâm hoặc phần mềm nào để chiếu các trang nội dung lên bảng nhỉ?
+HS: Dạ là sơ đồ tư duy và PowerPoint đúng không thầy?
+AI: Rất chính xác! Đó chính là hai ""vũ khí"" lợi hại nhất để trình bày thông tin trong bài học này đấy.",[],4,final_tutor_response,[],"[""LM-SGK-TIN9-0001#F0069""]"
+BC-HNMU-G9-R0100-STT1-FINAL,HNMU-G9-R0100-STT1,grade8_9,shared/raw_data/HNMU-teacher_dialog_samples/Lớp 9.xlsx,100,9,Bài 8: Sử dụng công cụ trực quan trình bày thông tin trong trao đổi và hợp tác,"Mục đích, yêu cầu (Tr. 30 SGK/Tr. 46 SGV)",Biết (Nêu được mục tiêu của dự án),"Thầy ơi, bài thực hành này em phải làm về chủ đề gì ạ?","[{""turn_index"": 2, ""role"": ""tutor"", ""content"": ""Chào em! Để bắt đầu, em hãy nhớ lại Bài 7 chúng ta đã nhắc đến một sự kiện lớn ở trường sắp tới. Em thử nhìn vào phần khởi động ở trang 30 xem tên dự án đó là gì?""}, {""turn_index"": 3, ""role"": ""student"", ""content"": ""Dạ là dự án \""Triển lãm tin học\"" ạ.""}]",Rất chính xác! Đây là một hành trình thú vị để em tổng kết lại những gì đã học từ lớp 6 đến giờ đấy.,"Dự án ""Triển lãm tin học"".","HS: Thầy ơi, bài thực hành này em phải làm về chủ đề gì ạ?
+AI: Chào em! Để bắt đầu, em hãy nhớ lại Bài 7 chúng ta đã nhắc đến một sự kiện lớn ở trường sắp tới. Em thử nhìn vào phần khởi động ở trang 30 xem tên dự án đó là gì?
+HS: Dạ là dự án ""Triển lãm tin học"" ạ.
+AI: Rất chính xác! Đây là một hành trình thú vị để em tổng kết lại những gì đã học từ lớp 6 đến giờ đấy.","HS: Thầy ơi, bài thực hành này em phải làm về chủ đề gì ạ?
+AI: Chào em! Để bắt đầu, em hãy nhớ lại Bài 7 chúng ta đã nhắc đến một sự kiện lớn ở trường sắp tới. Em thử nhìn vào phần khởi động ở trang 30 xem tên dự án đó là gì?
+HS: Dạ là dự án ""Triển lãm tin học"" ạ.
+AI: Rất chính xác! Đây là một hành trình thú vị để em tổng kết lại những gì đã học từ lớp 6 đến giờ đấy.",[],4,final_tutor_response,[],"[""LM-SGV-TIN9-4923777498#F0185""]"

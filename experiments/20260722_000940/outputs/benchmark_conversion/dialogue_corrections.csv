@@ -1,0 +1,3 @@
+correction_id,sample_id,operation,target_turn_index,secondary_turn_index,replacement_role,original_dialogue_sha256,decision_source,reason
+DCR-20260723-001,HNMU-G7-R0189-STT6,merge_adjacent_turns,4,5,AI,8d7819e4a26688eb0b724d8a9a845734f52116f8a4ee68f6c917c6dd0843d0d0,project_lead_review_2026-07-23,Hai lượt AI liên tiếp thuộc cùng một lượt giải thích và câu hỏi gợi mở; gộp thành một lượt AI.
+DCR-20260723-002,HNMU-G9-R0237-STT12,relabel_turn,8,,AI,6ac630730329fcbb863ad6a277f4600b2aa420db3e302f13abb62a09ef2c1b21,project_lead_review_2026-07-23,Lượt giữa ba nhãn HS liên tiếp mang nội dung hướng dẫn của gia sư; sửa nhãn lượt 8 từ HS thành AI.
