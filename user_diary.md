@@ -228,4 +228,21 @@ Dữ liệu thô cũng đã được gửi về. tôi đã để trong thư mụ
 
 # Update plan (21/7/2026)
 
-Sáng nay, tôi cũng có trao đổi với giáo sư và một số anh chị em Nghiên cứu sinh khác về tiến trình của phase 1 của dự án.
+Sáng nay, tôi cũng có trao đổi với giáo sư và một số anh chị em Nghiên cứu sinh khác về tiến trình của phase 1 của dự án. Góp ý của các anh chị em Nghiên cứu sinh như sau:
+
+- Cần làm rõ quy trình tạo dữ liệu hội thoại thô của các thầy cô HNMU
+- Cần sự tham vấn của các thầy cô HNMU về bộ tiêu chí (checklist) dùng để chấm từng mẫu dữ liệu thô và cơ chế tổng hợp , để xem checklist hiện tại có phù hợp và toàn diện để đánh giá các mẫu dữ liệu thô không ?
+- Thống kê và phân tích kết quả của phase 1. Nhiệm vụ của việc thống kê và phân tích này không chỉ là đưa ra các insight có từ kết quả hiện tại, mà còn là đưa ra hướng dẫn rõ ràng và dễ hiểu nhất để các thầy cô HNMU có thể cải tiến xây dựng dữ liệu thô:
+  - Tỉ lệ pass/need_review/failed của từng khối lớp
+  - Phân bố của các mẫu pass trên các trục
+  - Phân tích các mẫu failed/need_review: điểm chung giữa chúng, tập trung vào các tiêu chí nào ?
+  - Nguy cơ trong quá trình chấm điểm các mẫu của specialist agent, được thể hiện trong kết quả chấm (không đồng nhất giữa các shard, viện dẫn trạng thái draft của fragment làm lý do cho quyết định uncertain,....)
+
+Tuy nhiên, tôi sẽ để các công việc này cho Nguyên. Còn tôi sẽ ưu tiên chạy tiếp phase 2: Xây dựng dữ liệu cho bộ benchmark và đánh giá dữ liệu của bộ benchmark (về độ phủ và chất lượng các mẫu trong benchmark)
+
+# Update plan (23/07/2026)
+
+Một số vấn đề khi xử lý dữ liệu thô ở phase 2:
+
+- Dữ liệu kết thúc bằng lượt của học sinh
+- Có 1 số mẫu có vài lượt liên tiếp của HS/AI, không sự xen kẽ toàn bộ

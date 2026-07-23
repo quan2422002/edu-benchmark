@@ -1,17 +1,20 @@
-# Vietnamese Grade-9 Informatics Tutor Benchmark
+# Vietnamese Lower-Secondary Informatics Tutor Benchmark
 
-This repository is building a human-in-the-loop benchmark for evaluating how well large language models tutor Vietnamese grade-9 Informatics students.
+This repository is building a human-in-the-loop benchmark for evaluating how well large language models tutor Vietnamese lower-secondary Informatics students in grades 6–9.
 
 ## Current status
 
-The project is in the proof-of-concept stage. P01 specialist-agent infrastructure has been approved, and the approved July 1 follow-up added learning-resource and benchmark-specification specialists. After the July 8, 2026 HNMU update, active work has moved to experiment `20260709_155523`: HNMU supplies raw exemplary dialogues and supporting information, while UET owns lossless mapping into the internal author-form structure, task/rubric assignment, and evaluation design. The July 5 experiment remains the versioned source of research synthesis, task/rubric v0, coverage design, and teacher examples. The benchmark taxonomy, production dataset, and evaluation pipeline remain provisional.
+The project is in the proof-of-concept stage. P01 specialist-agent infrastructure has been approved, and the approved July 1 follow-up added learning-resource and benchmark-specification specialists. Experiment `20260709_155523` closed the first raw-dialogue quality-audit phase for HNMU Tin học 6–9 data. Active work has moved to experiment `20260722_000940`, which starts phase 2: converting audited `pass` raw dialogues into structured benchmark candidates and checking candidate quality before model evaluation. As of 2026-07-23, the benchmark domain is Tin học THCS grades 6–9 rather than grade 9 with grades 6–8 treated only as prerequisites. Plan 01 of the active experiment is complete: it implemented the deterministic conversion contract, joined all 665 `pass` inputs, and produced a reproducible 40-candidate pilot (10 per grade). Two role-sequence errors found in the preflight were corrected through a project-lead-approved, hash-guarded overlay without changing inherited snapshots. Draft Plan 02 now proposes one candidate for every tutor turn, with the first student turn fixed as `student_prompt` and only the prefix before the target tutor turn used as history. A deterministic preflight projects 2,028 preliminary candidates from the 665 pass dialogues; task/rubric assignment and filtering remain later gated work. The July 5 experiment remains the versioned source of research synthesis, task/rubric v0, coverage design, and teacher examples, but its grade-9-oriented coverage matrix is only a structural reference for the expanded domain. The benchmark taxonomy, production dataset, and evaluation pipeline remain provisional.
 
-Active planning roadmap: [experiments/20260709_155523/roadmap.md](experiments/20260709_155523/roadmap.md)
+Active planning roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
+Previous raw-dialogue audit roadmap: [experiments/20260709_155523/roadmap.md](experiments/20260709_155523/roadmap.md)
 Previous design roadmap: [experiments/20260705_215045/roadmap.md](experiments/20260705_215045/roadmap.md)
 Historical baseline roadmap: [experiments/20260620_115236/roadmap.md](experiments/20260620_115236/roadmap.md)
 
 Approved plans:
 
+- [Experiment 20260722 Plan 01 — Raw-dialogue to benchmark-candidate conversion contract and pilot](experiments/20260722_000940/plans/01-audited-raw-dialogue-to-benchmark-candidate-conversion.md)
+- [Experiment 20260722 Plan 02 draft — Multi-candidate conversion from every tutor turn](experiments/20260722_000940/plans/02-split-policy-and-full-benchmark-conversion.md)
 - [P01 — Specialist-agent foundation](experiments/20260620_115236/plans/01-specialist-agent-foundation.md)
 - [Plan 01 — Specialist expansion for learning resources and benchmark specification](experiments/20260701_100006/plans/01-specialist-expansion-learning-resource-and-benchmark-spec.md)
 - [Experiment 20260709 Plan 01 — Benchmark quality literature review](experiments/20260709_155523/plans/01-benchmark-quality-literature-review.md)
