@@ -1,0 +1,13 @@
+{
+  "candidate_row_count": 2028,
+  "disposition_row_count": 665,
+  "exact_mapping_pass_count": 2028,
+  "failure_count": 0,
+  "failure_examples": [],
+  "regex_parsed_source_count": 665,
+  "source_row_count": 665,
+  "status": "pass",
+  "trace_row_count": 2028,
+  "trailing_student_source_count": 297,
+  "validation_method": "TURN_PATTERN_regex_parse_and_exact_structural_comparison"
+}

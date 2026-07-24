@@ -1,0 +1,14 @@
+{
+  "candidate_bundle_published": true,
+  "conversion_summary_sha256": "747917fa4dfd9e4d9785c321c9949af0fe70d5a806ba231f27e8ae882256cc0a",
+  "policy_id": "D02-01-multi-candidate-each-tutor-turn",
+  "required_files": [
+    "benchmark_candidate_splits.csv",
+    "candidate_mapping_validation.json",
+    "conversion_dispositions.csv",
+    "conversion_summary.json",
+    "conversion_trace.csv",
+    "dialogue_split_errors.csv"
+  ],
+  "status": "complete"
+}

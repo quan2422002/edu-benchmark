@@ -3,10 +3,15 @@ import json
 import pytest
 
 from edu_benchmark.benchmark_conversion.schema import (
+    CANDIDATE_SPLIT_COLUMNS,
+    CONVERSION_DISPOSITION_COLUMNS,
+    TRACE_COLUMNS,
     dump_json_string_list,
     parse_json_string_list,
     validate_candidate_split_row,
+    validate_conversion_trace_row,
     validate_conversion_input_row,
+    validate_conversion_disposition_row,
 )
 
 
@@ -75,3 +80,51 @@ def test_candidate_contract_distinguishes_gold_answer_and_gold_response():
         "raw_audit_all_evidence_fragment_ids": '["F1"]',
     }
     assert validate_candidate_split_row(row) == []
+
+
+def test_plan02_candidate_schema_is_lean_and_trace_is_separate():
+    assert CANDIDATE_SPLIT_COLUMNS == [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history",
+        "gold_response",
+        "gold_answer",
+    ]
+    assert "raw_dialogue" not in CANDIDATE_SPLIT_COLUMNS
+    assert "dialogue_correction_ids" not in CANDIDATE_SPLIT_COLUMNS
+    assert TRACE_COLUMNS[-3:] == [
+        "target_tutor_turn_index",
+        "split_strategy",
+        "dialogue_correction_ids",
+    ]
+
+
+def test_plan02_trace_and_raw_summary_contracts():
+    trace = {
+        "benchmark_candidate_id": "BC-S1-AI02",
+        "sample_id": "S1",
+        "source_batch": "grade6_7",
+        "source_file": "source.xlsx",
+        "source_row_number": "2",
+        "target_tutor_turn_index": "2",
+        "split_strategy": "each_tutor_turn",
+        "dialogue_correction_ids": "[]",
+    }
+    assert validate_conversion_trace_row(trace) == []
+    summary = dict.fromkeys(CONVERSION_DISPOSITION_COLUMNS, "")
+    summary.update(
+        {
+            "sample_id": "S1",
+            "grade": "6",
+            "candidate_count": "2",
+            "first_target_tutor_turn_index": "2",
+            "last_target_tutor_turn_index": "4",
+            "conversion_disposition": "converted",
+        }
+    )
+    assert validate_conversion_disposition_row(summary) == []

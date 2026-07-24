@@ -262,6 +262,9 @@ def select_conversion_pilot(
         except DialogueSplitError:
             invalid_parse_counts[row["grade"]] += 1
             continue
+        if turns[-1].role != "tutor":
+            invalid_parse_counts[row["grade"]] += 1
+            continue
         row["_pilot_cognitive_band"] = cognitive_band(row["bloom_level"])
         row["_pilot_turn_count"] = str(len(turns))
         row["_pilot_turn_bin"] = turn_count_bin(len(turns))

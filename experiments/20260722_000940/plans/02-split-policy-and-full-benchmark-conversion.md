@@ -1,8 +1,11 @@
 # Plan 02 — Multi-candidate conversion từ mọi lượt gia sư
 
-Experiment: `20260722_000940`  
-Trạng thái: `DRAFT` — chưa được duyệt, không triển khai  
-Ngày cập nhật: 23/07/2026  
+Experiment: `20260722_000940`
+
+Trạng thái: `COMPLETED` — được duyệt và hoàn thành ngày 23/07/2026; hardening sau hậu kiểm ngày 24/07/2026
+
+Ngày cập nhật: 24/07/2026
+
 Phụ thuộc: Plan 01 đã `COMPLETED`
 
 ## 1. Mục tiêu và vị trí của Plan 02
@@ -13,15 +16,15 @@ Plan 02 không lặp lại Plan 01 ở quy mô lớn một cách máy móc. Plan
 
 1. migrate contract `final_tutor_response` của Plan 01 sang contract `each_tutor_turn`;
 2. từ mỗi raw dialogue, tạo một candidate cho **mỗi lượt AI** trong hội thoại đã áp dụng correction;
-3. chạy migration pilot có kiểm tra thủ công;
+3. chạy migration pilot có kiểm tra exhaustive bằng code/regex;
 4. sau khi pilot đạt gate, chuyển toàn bộ 665 raw dialogue `pass` thành pool sơ bộ dự kiến 2.028 candidate;
 5. giữ candidate content gọn, đồng thời tách provenance và thông tin correction sang bảng trace riêng.
 
 Plan 02 chỉ tạo **pool ứng viên trước task/rubric**. Plan này không gán task/rubric, không đánh giá chất lượng sư phạm và không tuyên bố 2.028 candidate là benchmark chính thức.
 
-## 2. Quyết định thiết kế D02-01 đã được người phụ trách dự án định hướng
+## 2. Quyết định thiết kế D02-01 đã được duyệt
 
-Policy sẽ được ghi thành decision record khi Plan 02 được duyệt:
+Policy đã được ghi tại `decisions/D02-01-multi-candidate-each-tutor-turn.md`:
 
 - `split_strategy = each_tutor_turn`;
 - một raw dialogue tạo đúng một candidate cho mỗi lượt AI;
@@ -183,16 +186,16 @@ Không đưa các trường sau vào file candidate:
 
 Trace giữ provenance kỹ thuật mà không làm phình schema candidate. `raw_dialogue`, `conversion_dialogue` và hai trường `raw_audit_*` vẫn nằm ở conversion input cấp mẫu và được join lại bằng `sample_id` khi cần điều tra.
 
-### 5.3. Bảng tổng hợp cấp raw sample
+### 5.3. Bảng disposition cấp raw sample
 
-`raw_sample_conversion_summary.csv` có đúng 665 dòng:
+`conversion_dispositions.csv` có đúng 665 dòng:
 
 1. `sample_id`
 2. `grade`
 3. `candidate_count`
 4. `first_target_tutor_turn_index`
 5. `last_target_tutor_turn_index`
-6. `conversion_status`: `converted`, `need_human_review`, hoặc `failed`
+6. `conversion_disposition`: `converted`, `need_human_review`, hoặc `failed`
 7. `reason_code`
 8. `reason`
 
@@ -205,7 +208,7 @@ Trong một run hợp lệ dự kiến 665 dòng đều là `converted`. Hai nh�
 - đổi `SPLIT_STRATEGIES` để hỗ trợ `each_tutor_turn`;
 - tách `CANDIDATE_SPLIT_COLUMNS` thành schema gọn ở mục 5.1;
 - mở rộng `TRACE_COLUMNS` theo mục 5.2;
-- thêm `RAW_SAMPLE_CONVERSION_SUMMARY_COLUMNS`;
+- thêm `CONVERSION_DISPOSITION_COLUMNS`;
 - validator history theo role/content và đúng thứ tự;
 - validator 1:1 giữa candidate và trace;
 - validator group coverage giữa raw sample, số lượt AI và candidate count.
@@ -238,9 +241,13 @@ Thêm:
 - `run_multi_candidate_migration_pilot(...)`;
 - `run_full_multi_candidate_conversion(...)`;
 - kiểm input schema/hash và correction overlay trước khi tách;
-- ghi candidate, trace, raw-sample summary, error queue và summary JSON;
+- ghi candidate, trace, conversion disposition, error queue và summary JSON;
 - sort deterministic theo `sample_id`, rồi `target_tutor_turn_index`;
 - dừng full run nếu output không đạt các baseline ở mục 3.3.
+- ghi toàn bộ output vào staging directory và chỉ publish nguyên bundle sau khi mọi gate đạt;
+- nếu input, baseline hoặc serialized mapping lỗi, publish failure bundle chỉ có error/summary/status; không để candidate cũ ở đường dẫn output;
+- ghi `run_status.json` để downstream kiểm `status = complete`;
+- chạy post-write validator: parse toàn bộ source bằng regex `HS:/AI:` rồi so sánh chính xác mọi prompt, history, target, answer, trace và disposition.
 
 ### 6.4. CLI
 
@@ -262,7 +269,7 @@ Không hard-code đường dẫn máy cá nhân hoặc thay đổi snapshot kế
 
 Mở rộng `tests/benchmark_conversion/`:
 
-- `test_multi_candidate_dialogue_split.py`
+- `test_dialogue_split.py` cho parser và multi-candidate splitter;
 - `test_full_conversion_pipeline.py`
 - cập nhật schema/CLI tests liên quan.
 
@@ -313,15 +320,17 @@ Chọn deterministic 20 raw dialogue:
 - bắt buộc chứa hai sample có correction;
 - lưu `pilot_sample_ids.csv` kèm lý do chọn.
 
-Kiểm thủ công cho từng target:
+Kiểm exhaustive bằng code cho từng target:
 
-- prompt có đúng lượt HS đầu;
-- history có đúng prefix;
-- target có đúng lượt AI;
-- suffix bị bỏ đúng;
-- nội dung không bị sửa hoặc ghép ngoài correction đã duyệt.
+- parser regex nhận diện và kiểm chuỗi role `HS:/AI:`;
+- prompt phải đúng lượt HS đầu;
+- history phải đúng prefix theo turn index/role/content;
+- target phải đúng lượt AI;
+- suffix phải bị bỏ đúng;
+- nội dung không được sửa hoặc ghép ngoài correction đã duyệt;
+- candidate, trace và disposition phải khớp 1:1/cấp family.
 
-Nếu một bất biến sai, không chạy full conversion.
+Kết quả ghi vào `candidate_mapping_validation.json`. Nếu một bất biến sai, không chạy full conversion. Không yêu cầu người đọc thủ công 69 candidate deterministic.
 
 ### Bước 3 — Full conversion
 
@@ -354,9 +363,11 @@ Report tách rõ:
 - `pilot_sample_ids.csv`
 - `benchmark_candidate_splits.csv`
 - `conversion_trace.csv`
-- `raw_sample_conversion_summary.csv`
+- `conversion_dispositions.csv`
 - `dialogue_split_errors.csv`
+- `candidate_mapping_validation.json`
 - `conversion_summary.json`
+- `run_status.json`
 
 Report:
 
@@ -368,9 +379,11 @@ Report:
 
 - `benchmark_candidate_splits.csv`
 - `conversion_trace.csv`
-- `raw_sample_conversion_summary.csv`
+- `conversion_dispositions.csv`
 - `dialogue_split_errors.csv`
+- `candidate_mapping_validation.json`
 - `conversion_summary.json`
+- `run_status.json`
 
 Handoff:
 
@@ -457,3 +470,21 @@ Plan 02 chỉ hoàn thành khi:
 - Không chia train/dev/test trong Plan 02.
 - Không chấm model.
 - Không commit; người phụ trách dự án commit thủ công.
+
+## 14. Kết quả thực thi
+
+- Decision record: `decisions/D02-01-multi-candidate-each-tutor-turn.md`.
+- Migration pilot: 20 raw dialogue, 69 candidate, 0 lỗi blocking.
+- Full conversion: 665 raw dialogue, 2.028 candidate, 0 lỗi blocking.
+- Candidate/trace: 2.028/2.028 ID khớp 1:1.
+- Conversion disposition: 665/665 dòng có `conversion_disposition = converted`.
+- Hai correction đã duyệt được tái tạo từ raw dialogue và kiểm đúng source hash.
+- Chạy lại full conversion giữ nguyên SHA-256 của bốn CSV output.
+- Post-write regex/structural validation: 2.028/2.028 candidate pass.
+- Output được publish nguyên bundle qua staging; failure bundle không giữ candidate stale.
+- Validation cuối: 89 test repository pass bằng `benchmark_env`.
+
+Report:
+
+- `reports/plan02-multi-candidate-migration-pilot.md`
+- `reports/plan02-full-multi-candidate-conversion-summary.md`

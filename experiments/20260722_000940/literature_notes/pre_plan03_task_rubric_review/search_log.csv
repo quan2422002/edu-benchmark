@@ -1,0 +1,13 @@
+search_id,searched_at,source,query_or_path,result,decision,notes
+S01,2026-07-24,local_pdf,document/paper/source_paper/2502.18940v2.pdf,Toàn văn MathTutorBench v2,include,Đọc nội dung chính; Tables 1-4; Figures 2 và 5-7; các phụ lục về đề dẫn nhiệm vụ và mô hình chấm điểm ưu tiên.
+S02,2026-07-24,local_pdf,document/paper/source_paper/18426-AAAI26.ShiW-NLP.pdf,Bản KMP-Bench trong kỷ yếu AAAI-26,include,Bản kỷ yếu có chín trang nội dung chính nhưng không có phụ lục arXiv dài.
+S03,2026-07-24,local_pdf,document/paper/source_paper/2510.02663v1.pdf,Toàn văn TutorBench v1,include,Đọc Sections 2.1-2.4 và 3.1-3.7; Appendix A.
+S04,2026-07-24,local_pdf,document/paper/source_paper/2512.14554v5.pdf,Toàn văn VietLegal/VLegal-Bench v5,include,Đọc Table 1; Sections 3-4; Appendices E-G.
+S05,2026-07-24,arxiv_html,https://arxiv.org/html/2502.18940v2,Bản HTML chính thức của MathTutorBench,include,Dùng để kiểm tra định nghĩa nhiệm vụ và cách vận hành mô hình chấm/phản hồi tham chiếu.
+S06,2026-07-24,arxiv_html,https://arxiv.org/html/2603.02775v1,Bản HTML chính thức của KMP-Bench có phụ lục,include,Dùng vì bản PDF AAAI cục bộ thiếu Appendix F và chi tiết gán nhãn thủ công.
+S07,2026-07-24,official_venue,https://doi.org/10.1609/aaai.v40i39.40578,Hồ sơ công bố KMP-Bench tại AAAI-26,include,Xác nhận DOI; hội nghị phản biện; trạng thái công bố.
+S08,2026-07-24,arxiv_html,https://arxiv.org/html/2510.02663v1,Bản HTML chính thức của TutorBench,include,Kiểm tra tiêu chí riêng theo mẫu; trọng số; công thức tổng hợp.
+S09,2026-07-24,dataset_card,https://huggingface.co/datasets/tutorbench/tutorbench,Tập công khai 30 mẫu của TutorBench,include,Chỉ dùng để kiểm tra các trường dữ liệu công khai và cấu trúc thuộc tính của tiêu chí.
+S10,2026-07-24,arxiv_html,https://arxiv.org/html/2512.14554v5,Bản HTML chính thức của VietLegal,include,Kiểm tra taxonomy 22 nhiệm vụ; thước đo theo nhiệm vụ; quy trình đánh giá con người.
+S11,2026-07-24,repository_search,"MathTutorBench; KMP-Bench; TutorBench; VietLegal trong experiments/20260705_215045 và experiments/20260709_155523",Ghi chú kế thừa và bản tổng hợp trước,include_for_cross_check,Không chấp nhận phát biểu từ bản tóm tắt kế thừa nếu chưa tìm lại được trong bài báo.
+S12,2026-07-24,web_search,"site:arxiv.org MathTutorBench 2502.18940; KMP-Bench criteria; site:arxiv.org TutorBench 2510.02663; site:arxiv.org VietLegal 2512.14554",Bốn hồ sơ bài báo chính thức và hồ sơ AAAI,include,Dừng tìm kiếm sau khi có nguồn sơ cấp ổn định cho cả bốn bài báo.

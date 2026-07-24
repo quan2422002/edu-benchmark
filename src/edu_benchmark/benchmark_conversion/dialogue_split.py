@@ -1,4 +1,4 @@
-"""Parse raw HNMU dialogues and split the final tutor response."""
+"""Parse raw HNMU dialogues and split one or every tutor response."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ class DialogueTurn:
 
 
 def parse_dialogue_turns(dialogue: str) -> list[DialogueTurn]:
-    """Parse HS/AI lines while preserving turn content and order."""
+    """Parse an alternating HS/AI dialogue while preserving content and order."""
 
     if not dialogue or not dialogue.strip():
         raise DialogueSplitError("empty_dialogue", "Dialogue is empty")
@@ -65,8 +65,6 @@ def parse_dialogue_turns(dialogue: str) -> list[DialogueTurn]:
         raise DialogueSplitError("no_turns", "No HS:/AI: turns were found")
     if turns[0].role != "student":
         raise DialogueSplitError("first_turn_not_student", "The first turn must be HS")
-    if turns[-1].role != "tutor":
-        raise DialogueSplitError("last_turn_not_tutor", "The last turn must be AI")
     for previous, current in zip(turns, turns[1:]):
         if previous.role == current.role:
             raise DialogueSplitError(
@@ -83,6 +81,8 @@ def split_final_tutor_response_candidate(row: Mapping[str, str]) -> dict[str, st
         row.get("conversion_dialogue", "") or row.get("raw_dialogue", "")
     )
     turns = parse_dialogue_turns(conversion_dialogue)
+    if turns[-1].role != "tutor":
+        raise DialogueSplitError("last_turn_not_tutor", "The last turn must be AI")
     target = turns[-1]
     history = [
         {"turn_index": turn.turn_index, "role": turn.role, "content": turn.content}
@@ -116,3 +116,49 @@ def split_final_tutor_response_candidate(row: Mapping[str, str]) -> dict[str, st
         ),
     }
     return candidate
+
+
+def split_each_tutor_turn_candidates(
+    row: Mapping[str, str],
+) -> list[dict[str, str]]:
+    """Create one deterministic candidate for every tutor turn."""
+
+    conversion_dialogue = str(
+        row.get("conversion_dialogue", "") or row.get("raw_dialogue", "")
+    )
+    turns = parse_dialogue_turns(conversion_dialogue)
+    sample_id = str(row["sample_id"])
+    candidates: list[dict[str, str]] = []
+    for target in turns:
+        if target.role != "tutor":
+            continue
+        history = [
+            {
+                "turn_index": turn.turn_index,
+                "role": turn.role,
+                "content": turn.content,
+            }
+            for turn in turns[1 : target.turn_index - 1]
+        ]
+        candidates.append(
+            {
+                "benchmark_candidate_id": (
+                    f"BC-{sample_id}-AI{target.turn_index:02d}"
+                ),
+                "sample_id": sample_id,
+                "grade": str(row.get("grade", "")),
+                "lesson": str(row.get("lesson", "")),
+                "position": str(row.get("position", "")),
+                "bloom_level": str(row.get("bloom_level", "")),
+                "student_prompt": turns[0].content,
+                "conversation_history": json.dumps(
+                    history, ensure_ascii=False
+                ),
+                "gold_response": target.content,
+                "gold_answer": str(row.get("answer_sgv", "")),
+                "_target_tutor_turn_index": str(target.turn_index),
+            }
+        )
+    if not candidates:
+        raise DialogueSplitError("no_tutor_turns", "Dialogue has no AI turn")
+    return candidates

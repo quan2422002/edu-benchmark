@@ -88,8 +88,8 @@ Experiment này không giao toàn bộ phase 2 cho một plan duy nhất. Các p
 | Plan | Trạng thái | Phạm vi | Scale | Output/chốt chính | Phụ thuộc |
 |---|---|---|---:|---|---|
 | [Plan 01 — Contract và pilot conversion](plans/01-audited-raw-dialogue-to-benchmark-candidate-conversion.md) | `COMPLETED` | Chốt schema, semantics evidence, code chọn input và tách hội thoại; chạy pilot deterministic | 665 input, 40 candidate pilot | Code conversion v0, schema v0, pilot, lỗi và trace | Dữ liệu phase 1 |
-| [Plan 02 — Multi-candidate conversion từ mọi lượt gia sư](plans/02-split-policy-and-full-benchmark-conversion.md) | `DRAFT`, chờ duyệt | Migrate contract Plan 01 sang một candidate cho mỗi lượt AI; chạy pilot rồi full conversion | 665 raw sample `pass` → dự kiến 2.028 candidate sơ bộ | D02-01, migration pilot, candidate file gọn, trace, raw-sample summary và error queue | Plan 01 |
-| [Plan 03 — Task/rubric specification và coverage THCS](plans/03-thcs-task-rubric-specification-and-coverage.md) | `DRAFT` | Migrate spec sang THCS 6–9, gán task/rubric cho pool sơ bộ và ghi disposition giữ/loại có truy vết | Dự kiến 2.028 candidate trước filtering | Spec v1, serious errors, provenance, assignment/disposition/review queue, coverage | Plan 02 |
+| [Plan 02 — Multi-candidate conversion từ mọi lượt gia sư](plans/02-split-policy-and-full-benchmark-conversion.md) | `COMPLETED` | Migrate contract Plan 01 sang một candidate cho mỗi lượt AI; chạy pilot rồi full conversion | 665 raw sample `pass` → 2.028 candidate sơ bộ | D02-01, pilot 69 candidate, full candidate file gọn, trace, raw-sample summary và error queue | Plan 01 |
+| [Plan 03 — Task/rubric specification và coverage THCS](plans/03-thcs-task-rubric-specification-and-coverage.md) | `DRAFT` | Migrate spec sang THCS 6–9, gán task/rubric cho pool sơ bộ và ghi disposition giữ/loại có truy vết | 2.028 candidate trước filtering | Spec v1, serious errors, provenance, assignment/disposition/review queue, coverage | Plan 02 |
 | [Plan 04 — Evidence và audit benchmark candidate](plans/04-benchmark-candidate-evidence-and-quality-audit.md) | `DRAFT` | Kiểm schema, evidence, task/rubric, `gold_answer`, `gold_response`, leakage, trùng/gần trùng và giá trị đánh giá | Toàn bộ candidate | Evidence links, checklist chi tiết, `candidate_quality_suggestions.csv`, review queue | Plan 03 |
 | [Plan 05 — Pilot benchmark và HNMU/UET review](plans/05-benchmark-pilot-and-hnmu-uet-review.md) | `DRAFT` | Chọn candidate đạt yêu cầu, chuẩn bị packet, review độc lập và phân xử | Tập con sau audit; đề xuất 40 | Pilot v0, teacher packet, review/adjudication, readiness report | Plan 04 |
 
@@ -101,7 +101,7 @@ Plan 01 đã tạo 665 conversion inputs hợp lệ và 40 candidate pilot, 10 m
 
 Người phụ trách dự án đã định hướng Plan 02 theo contract mới: một raw dialogue tạo một candidate cho mỗi lượt AI. `student_prompt` luôn là lượt HS đầu, history là prefix trước target AI, và mọi suffix sau target đều bị bỏ qua. Do đó, việc 297 hội thoại kết thúc bằng HS không còn tạo một nhánh split policy riêng; lượt HS cuối không xuất hiện trong candidate và không cần cột outcome.
 
-Preflight deterministic trên đúng 665 mẫu `pass` cho thấy contract này sẽ tạo tối đa 2.028 candidate sơ bộ: lớp 6 có 279, lớp 7 có 438, lớp 8 có 557 và lớp 9 có 754. Plan 02 vẫn phải ở trạng thái `DRAFT` cho đến khi người phụ trách duyệt plan, sau đó chạy migration pilot trước full conversion.
+Plan 02 đã được duyệt và hoàn thành. Migration pilot dùng 20 raw dialogue, 5 mẫu mỗi lớp, sinh 69 candidate và bao phủ cả hai correction đã duyệt; pilot đạt gate với 0 lỗi blocking. Full conversion trên đúng 665 mẫu `pass` tạo 2.028 candidate sơ bộ: lớp 6 có 279, lớp 7 có 438, lớp 8 có 557 và lớp 9 có 754. Output có 2.028 trace khớp 1:1, summary đủ 665 raw sample và 0 lỗi.
 
 ## 5. Hướng triển khai giai đoạn 2
 
@@ -129,7 +129,7 @@ Mục tiêu:
 - tách riêng trường `gold_answer` từ `answer_sgv`;
 - không sửa hội thoại gốc;
 - Plan 01 dùng chiến lược pilot `final_tutor_response`: một raw dialogue tạo tối đa một candidate;
-- Plan 02 sẽ migrate sang `each_tutor_turn`: mỗi lượt AI tạo đúng một candidate;
+- Plan 02 đã triển khai `each_tutor_turn`: mỗi lượt AI tạo đúng một candidate;
 - `student_prompt` luôn là lượt HS đầu; history là các lượt từ sau prompt đến trước target AI;
 - mọi lượt sau target không được dùng trong candidate đó; riêng lượt HS cuối của 297 hội thoại không được đưa vào bất kỳ candidate nào;
 - không thêm `post_response_student_outcome`; provenance chi tiết được giữ trong bảng trace riêng;
@@ -141,7 +141,7 @@ Output dự kiến:
 - pilot Plan 01: `outputs/benchmark_conversion/pilot_v0/benchmark_candidate_splits.csv`
 - full batch Plan 02: `outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv`
 - `conversion_trace.csv` trong thư mục run tương ứng;
-- Plan 02 thêm `raw_sample_conversion_summary.csv` bao phủ đủ 665 raw sample.
+- Plan 02 thêm `conversion_dispositions.csv` bao phủ đủ 665 raw sample.
 
 ### Giai đoạn 2.3 — Gán task/rubric và metadata còn thiếu
 

@@ -28,9 +28,9 @@ Không được đổi một inference thành “đã xác nhận” chỉ vì p
 - `outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv`
 - `outputs/benchmark_conversion/full_v0/conversion_trace.csv`
 - `outputs/benchmark_conversion/full_v0/conversion_dispositions.csv`
-- `reports/plan02-full-conversion-summary.md`
+- `reports/plan02-full-multi-candidate-conversion-summary.md`
 
-Chỉ candidate có `conversion_disposition = converted` được đưa vào assignment. Candidate đang `need_human_review` không được coi là input sạch.
+Plan 02 hiện có 665 disposition cấp raw sample đều là `converted`, tương ứng 2.028 candidate trước filtering. Chỉ candidate thuộc `sample_id` có `conversion_disposition = converted` được đưa vào assignment. Family đang `need_human_review` không được coi là input sạch.
 
 ### Specification kế thừa
 

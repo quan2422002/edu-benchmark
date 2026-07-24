@@ -1,0 +1,21 @@
+sample_id,grade,lesson,bloom_level,turn_count,candidate_count,max_history_turn_count,dialogue_correction_ids,selection_reason
+HNMU-G6-R0030-STT1,6,Bài 3. Thông tin trong máy tinh,Nhận biết (Nêu được tên đơn vị),6,3,4,[],candidate_count_stratum_3
+HNMU-G6-R0033-STT4,6,Bài 3. Thông tin trong máy tinh,Nhận biết (Nhận ra dạng biểu diễn),5,2,2,[],candidate_count_stratum_2
+HNMU-G6-R0034-STT5,6,Bài 3. Thông tin trong máy tinh,Thông hiểu (Giải thích được lý do),5,2,2,[],deterministic_fill
+HNMU-G6-R0038-STT9,6,Bài 3. Thông tin trong máy tinh,Thông hiểu (Nêu được mối quan hệ),5,2,2,[],deterministic_fill
+HNMU-G6-R0176-STT7,6,Bài 13: Tìm kiếm và thay thế,Thông hiểu (Mô tả quy trình),8,4,6,[],candidate_count_stratum_4
+HNMU-G7-R0002-STT1,7,Bài 1. Thiết bị vào - ra,Nhận biết (Nêu được chức năng),6,3,4,[],candidate_count_stratum_3
+HNMU-G7-R0006-STT5,7,Bài 1. Thiết bị vào - ra,Thông hiểu (Mô tả được chức năng),5,2,2,[],candidate_count_stratum_2
+HNMU-G7-R0012-STT11,7,Bài 1. Thiết bị vào - ra,Vận dụng (Xác định trình tự xử lý),8,4,6,[],candidate_count_stratum_4
+HNMU-G7-R0166-STT11,7,Bài 12: Định dạng đối tượng trên trang chiếu,Vận dụng (Thực hiện được),12,6,10,[],candidate_count_stratum_6
+HNMU-G7-R0189-STT6,7,Bài 14. Thuật toán tìm kiếm tuần tự,Thông hiểu,10,5,8,"[""DCR-20260723-001""]",approved_correction_coverage
+HNMU-G8-R0002-STT1,8,Bài 1. Lược sử công cụ tính toán,Nhận biết (Nhớ được tên tác giả),4,2,2,[],candidate_count_stratum_2
+HNMU-G8-R0003-STT2,8,Bài 1. Lược sử công cụ tính toán,Nhận biết (Nêu được tên thành phần),4,2,2,[],deterministic_fill
+HNMU-G8-R0007-STT6,8,Bài 1. Lược sử công cụ tính toán,Thông hiểu (Trình bày được sự thay đổi),7,3,4,[],candidate_count_stratum_3
+HNMU-G8-R0156-STT1,8,[8b] Làm quen với phần mềm chỉnh sửa ảnh,Nhận biết,8,4,6,[],candidate_count_stratum_4
+HNMU-G8-R0169-STT14,8,[8b] Làm quen với phần mềm chỉnh sửa ảnh,Vận dụng,10,5,8,[],candidate_count_stratum_5
+HNMU-G9-R0002-STT1,9,Bài 1: Thế giới kĩ thuật số,Nhận biết (Nêu được sự có mặt của thiết bị),5,2,2,[],candidate_count_stratum_2
+HNMU-G9-R0019-STT4,9,Bài 2: Thông tin trong giải quyết vấn đề,Nhận biết (Biết được sự phù hợp của thông tin),6,3,4,[],candidate_count_stratum_3
+HNMU-G9-R0141-STT14,9,10a. Sử dụng hàm Countif,"Vận dụng (Thực hiện được dự án, nhiệm vụ giáo viên đặt ra)",9,4,6,[],candidate_count_stratum_4
+HNMU-G9-R0198-STT1,9,[10b]: Chuẩn bị dữ liệu và dựng video,Nhận biết,12,6,10,[],candidate_count_stratum_6
+HNMU-G9-R0237-STT12,9,[12b]: Hoàn thành việc dựng video,Vận dụng,10,5,8,"[""DCR-20260723-002""]",approved_correction_coverage

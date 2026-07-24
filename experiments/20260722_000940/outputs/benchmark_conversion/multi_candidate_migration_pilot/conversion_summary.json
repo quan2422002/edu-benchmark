@@ -1,0 +1,52 @@
+{
+  "blocking_error_count": 0,
+  "candidate_count": 69,
+  "candidate_counts_by_grade": {
+    "6": 13,
+    "7": 20,
+    "8": 16,
+    "9": 20
+  },
+  "candidate_family_count": 20,
+  "candidates_per_raw_dialogue": {
+    "2": 7,
+    "3": 4,
+    "4": 4,
+    "5": 3,
+    "6": 2
+  },
+  "corrected_sample_count": 2,
+  "corrections_path": "/home/quannda/Kaggle/edu-benchmark/experiments/20260722_000940/outputs/benchmark_conversion/dialogue_corrections.csv",
+  "corrections_sha256": "196af0d0ec8306ff71d78909438f1128df4c1444cc1d221e3a5407b0722e0973",
+  "file_sha256": {
+    "benchmark_candidate_splits.csv": "2ac92c219078d3cc445e156ae397bb3629a1f0c9eed8a4d3b6f347c592f296d3",
+    "candidate_mapping_validation.json": "019c2afc49574ef73ed9a8220f4fbb0b23fd177c9c99118fad0b43531dbf061d",
+    "conversion_dispositions.csv": "150f7e607f252de073537725782fd2a39150d1722c170908bd22ffea9b111b16",
+    "conversion_trace.csv": "e85759d71e6c79a184ecdcbb79baf0d59221923a78176b201637912c11bb8978",
+    "dialogue_split_errors.csv": "a283d26aff5ef9222c860b121f375d452893cd1feec01afc4e5b32ea52e509b1",
+    "pilot_sample_ids.csv": "7c135d75730a38ce4fe669338078be6a0eedbaa6594a5b009257b355e525f838"
+  },
+  "history_turn_counts": {
+    "0": 20,
+    "10": 2,
+    "2": 20,
+    "4": 13,
+    "6": 9,
+    "8": 5
+  },
+  "input_path": "/home/quannda/Kaggle/edu-benchmark/experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv",
+  "input_sha256": "d3f156dc80ce5815d79c07d23f75cc856de34241cf89155479daa25a17a95b57",
+  "pilot_size_per_grade": 5,
+  "policy_id": "D02-01-multi-candidate-each-tutor-turn",
+  "raw_sample_count": 20,
+  "raw_sample_counts_by_grade": {
+    "6": 5,
+    "7": 5,
+    "8": 5,
+    "9": 5
+  },
+  "run_status": "complete",
+  "selected_raw_sample_count": 20,
+  "selection_method": "deterministic_correction_and_candidate_count_strata_v1",
+  "split_strategy": "each_tutor_turn"
+}
