@@ -192,3 +192,24 @@ src/edu_benchmark/learning_resources/vietocr_recognition.py
 tests/learning_resources/test_mineru_book_phase_a.py
 tests/learning_resources/test_mineru_postprocess.py
 tests/learning_resources/test_ocr_pipeline_units.py
+
+# Plan 08 local teacher-facing HNMU bundle workbooks.
+# README files remain tracked; the project lead uploads reviewed workbooks separately.
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1/lop_6/01_ket_qua_ra_soat_lop_6.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1/lop_7/01_ket_qua_ra_soat_lop_7.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1/lop_8/01_ket_qua_ra_soat_lop_8.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1/lop_9/01_ket_qua_ra_soat_lop_9.xlsx
+
+# Plan 08b local grade-partitioned HNMU bundle data files.
+# Root/grade README files, the overview report, and the file manifest remain tracked for review.
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/02_checklist_tieu_chi.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/03_thong_ke_pass_reject_giua_cac_khoi.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/04_thong_ke_do_phu_mau_pass_giua_cac_khoi.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/lop_*/01_du_lieu_tho_sau_chuan_hoa.csv
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/lop_*/02_thong_ke_do_phu_mau_pass.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/lop_*/03_ket_qua_cham_tong_the_tung_mau.csv
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/lop_*/04_ket_qua_cham_chi_tiet_tung_tieu_chi.csv
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/lop_*/05_mau_thieu_sai_truong_du_lieu.csv
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/lop_*/06_ung_vien_trung_lap.csv
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/**/*.xlsx
+experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1_v2/**/*.csv

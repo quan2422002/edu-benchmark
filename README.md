@@ -20,6 +20,8 @@ Approved plans:
 - [Experiment 20260709 Plan 03.4–03.5 — Fragment and retrieval from Nguyen OCR Markdown](experiments/20260709_155523/plans/03-phase4-5-fragment-and-retrieval-from-nguyen-ocr.md)
 - [Experiment 20260709 Plan 04 — HNMU dialogue intake, coverage, consistency, and dedup audit](experiments/20260709_155523/plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md)
 - [Experiment 20260709 Plan 07 — HNMU dialogue auditor specialist](experiments/20260709_155523/plans/07-hnmu-dialogue-auditor-specialist.md)
+- [Experiment 20260709 Plan 08 — HNMU dialogue-audit teacher bundle](experiments/20260709_155523/plans/08-hnmu-dialogue-audit-teacher-bundle.md)
+- [Experiment 20260709 Plan 08b — HNMU dialogue-audit teacher bundle v2](experiments/20260709_155523/plans/08b-hnmu-dialogue-audit-teacher-bundle-v2.md)
 
 ## People and decision authority
 
@@ -88,6 +90,8 @@ Experiment `20260709_155523` Plan 02 established the shared layout:
 - Reusable implementation code belongs under `src/edu_benchmark/`. Experiments should store run outputs, not reusable code.
 - Plan 04 dialogue audit v0 reads HNMU raw Excel files through `src/edu_benchmark/data_io/` and `src/edu_benchmark/dialogue_audit/`, then writes experiment-scoped audit tables. The lớp 6–7 audit remains under `experiments/20260709_155523/outputs/hnmu_dialogue_audit/`; the separate lớp 8–9 follow-up audit is under `experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/`. Both runs are draft audits and do not replace HNMU/UET subject-matter review.
 - Agent-assisted Plan 04 outputs must aggregate the main sample-level `agent_shard_audit/merged/quality_check_suggestions.csv` from criterion-level `raw_dialogue_checklist_results*.csv` with the strict checklist rule implemented in `src/edu_benchmark/dialogue_audit/checklist_aggregation.py` and `scripts/dialogue_audit/sync_quality_suggestions_from_checklist.py`. This file uses the canonical `quality_decision` labels `pass`, `need_human_review`, and `failed`. A sample cannot remain `pass` if any required criterion is `fail` or `uncertain`.
+- Plan 08 v1 remains preserved under `experiments/20260709_155523/deliverables/hnmu_dialogue_audit_phase1/`; it is not overwritten by later packaging work.
+- Plan 08b now rebuilds the v2 bundle from the repaired grade 6–7 checklist and regex-repaired grade 8–9 checklist. At root, `05_report_fragment_va_ty_le_dat.md` answers one HNMU-facing question about fragment criterion coverage and official pass; `05_phu_luc_ky_thuat_phan_tich_fragment.xlsx` exposes five readable/checking sheets and preserves the original 396 × 29 technical table in a final traceability sheet. Each grade directory retains its eight-row summary and technical appendix. The root also contains shared guidance, the criterion catalog, cross-grade status/lesson coverage, and four combined CSVs; `lop_6/` through `lop_9/` retain grade-only normalized, coverage, overall-status, criterion-detail, missing-field, duplicate, summary, and appendix files. Lesson coverage is left-joined from the complete 75-lesson registry, duplicate detection runs across all 1,050 normalized samples, and teacher-facing paths are portable. The validator reopens every CSV/workbook, verifies 1,050 samples × 18 criteria, source hashes, the six-sheet root appendix, one-sheet workbooks elsewhere, and absence of internal path leaks.
 
 
 ## Project Python environment

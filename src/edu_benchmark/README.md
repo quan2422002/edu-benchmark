@@ -58,10 +58,16 @@ Các bước này chỉ dùng môi trường `benchmark_env`; không dùng `ocr_
 
 ## Ghi chú Plan 04 audit hội thoại HNMU
 
-Các module sau phục vụ kiểm toán v0 dữ liệu hội thoại thô HNMU. Vòng đã chạy chính thức trong experiment này là lớp 6–7; dữ liệu lớp 8–9 đã được đăng ký manifest nhưng cần một lượt audit riêng nếu muốn tạo output Plan 04:
+Các module sau phục vụ kiểm toán v0 dữ liệu hội thoại thô HNMU. Experiment hiện có output canonical riêng cho lớp 6–7 và lớp 8–9:
 
-- `data_io.xlsx`: đọc `.xlsx` bằng thư viện chuẩn Python để tránh phụ thuộc runtime vào `openpyxl`.
+- `data_io.xlsx`: đọc raw `.xlsx` độc lập bằng thư viện chuẩn; dependency `openpyxl` của Plan 08 chỉ phục vụ xuất và kiểm tra workbook bàn giao.
 - `dialogue_audit.hnmu_audit`: chuẩn hóa dòng raw, kiểm thiếu trường/định dạng, thống kê độ phủ, phát hiện trùng/gần trùng, truy xuất evidence học liệu v0 và sinh bảng chất lượng.
+- `dialogue_audit.teacher_bundle`: đóng gói đúng 15 output canonical thành bốn workbook giáo viên, giữ `source_file` để truy vết nhưng không mở đường dẫn đó.
+- `dialogue_audit.teacher_bundle_v2_complete`: builder canonical của bundle v2; dùng checklist repaired, tạo CSV root, duplicate toàn bộ lớp, độ phủ 75 bài học, sinh report Markdown một câu hỏi ở root và giữ summary 8 dòng theo lớp; build theo staging + atomic replacement và validator mở lại toàn bộ output.
+- `dialogue_audit.fragment_analysis_hnmu`: giữ schema và writer phụ lục kỹ thuật đầy đủ.
+- `dialogue_audit.fragment_analysis_hnmu_compact`: giữ renderer bốn cột cho các summary theo lớp.
+- `dialogue_audit.fragment_analysis_root_deliverables`: sinh report Markdown HNMU và workbook kỹ thuật sáu sheet; sheet cuối bảo toàn nguyên vẹn bảng kỹ thuật 396 × 29 để truy vết.
+- `dialogue_audit.teacher_bundle_v2_hnmu_docs`: sinh README, báo cáo và danh mục file đồng bộ với cây bundle.
 
 CLI chạy bằng `benchmark_env`:
 
@@ -70,4 +76,17 @@ PYTHONPATH=src /home/quannda/miniconda3/envs/benchmark_env/bin/python \
   scripts/dialogue_audit/run_hnmu_dialogue_audit.py --grades 6 7
 ```
 
-Lớp 8–9 hiện đã có học liệu truy xuất v0 từ OCR Markdown của Nguyên và raw Excel đã được đăng ký manifest. Nếu cần audit, chạy như một vòng riêng để không ghi đè output lớp 6–7 đã có.
+Plan 08 không chạy lại audit. Lệnh build bundle đã được duyệt dùng interpreter task-specific:
+
+```bash
+PYTHONPATH=src /home/dknguyen/miniconda3/envs/edu_ai/bin/python \
+  scripts/dialogue_audit/build_hnmu_phase1_teacher_bundle.py
+```
+
+Bundle v2 dùng lệnh riêng và không sửa bundle v1:
+
+```bash
+PYTHONPATH=src /home/dknguyen/miniconda3/envs/edu_ai/bin/python \
+  scripts/dialogue_audit/build_hnmu_phase1_teacher_bundle_v2.py
+PYTHONPATH=src /home/dknguyen/miniconda3/envs/edu_ai/bin/python \
+  scripts/dialogue_audit/build_hnmu_phase1_teacher_bundle_v2.py --validate-only

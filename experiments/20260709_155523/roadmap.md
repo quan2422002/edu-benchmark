@@ -2,8 +2,8 @@
 
 Experiment: `20260709_155523`
 Ngày tạo: 09/07/2026
-Ngày cập nhật: 19/07/2026
-Trạng thái: `ACTIVE` — Plan 01, Plan 02, Plan 03 v0 đã mở rộng học liệu truy xuất đến SGK/SGV Tin học 6–9; Plan 04 audit v0 đã hoàn thành cho lớp 6–7 và có lượt follow-up riêng cho lớp 8–9.
+Ngày cập nhật: 22/07/2026
+Trạng thái: `ACTIVE` — Plan 04 có output canonical repaired cho lớp 6–9; Plan 08b đã thu gọn file 05 root thành một câu hỏi HNMU, giữ summary theo lớp và phụ lục kỹ thuật, rebuild và validate toàn bộ bundle v2, đang chờ project lead review local.
 
 ## 1. Mục tiêu cập nhật
 
@@ -50,7 +50,7 @@ Chuyển đổi hội thoại thô thành mẫu benchmark hoàn chỉnh
 Đánh giá khả năng phân biệt tutor tốt / trung bình / kém
 ```
 
-Điểm quan trọng: dữ liệu thô HNMU đã có batch ban đầu nhưng chưa đầy đủ toàn bộ khối lớp. Vì vậy, không nên vội chuyển đổi hàng loạt. Plan 01 đã hoàn thành checklist kiểm định chất lượng benchmark/dữ liệu. Plan 02 đã chốt layout `shared/`, `src/` và manifest raw data HNMU. Plan 03 đã tạo nguồn truy xuất học liệu lớp 6–9 từ OCR Markdown của Nguyên. Plan 04 v0 đã kiểm toán batch lớp 6–7 và có lượt follow-up riêng cho lớp 8–9; hai nhóm output được giữ tách biệt để tránh ghi đè. Plan 07 đã bổ sung specialist `hnmu-dialogue-auditor` để thực hiện phần kiểm ngữ nghĩa/sư phạm theo checklist ở các batch tiếp theo.
+Điểm quan trọng: dữ liệu thô HNMU đã có batch ban đầu nhưng chưa đầy đủ toàn bộ khối lớp. Vì vậy, không nên vội chuyển đổi hàng loạt. Plan 01 đã hoàn thành checklist kiểm định chất lượng benchmark/dữ liệu. Plan 02 đã chốt layout `shared/`, `src/` và manifest raw data HNMU. Plan 03 đã tạo nguồn truy xuất học liệu lớp 6–9 từ OCR Markdown của Nguyên. Plan 04 v0 đã kiểm toán batch lớp 6–7 và có lượt follow-up riêng cho lớp 8–9; hai nhóm output được giữ tách biệt để tránh ghi đè. Plan 07 đã bổ sung specialist `hnmu-dialogue-auditor`. Plan 08/08b chỉ đóng gói output canonical đã có, không chạy lại audit và giữ nguyên bundle v1. Bản complete của Plan 08b chỉ đọc thêm registry 75 bài học để giữ cả bài có 0 mẫu pass; không dereference `source_file`.
 
 ## 4. Các plan nhỏ
 
@@ -62,6 +62,8 @@ Chuyển đổi hội thoại thô thành mẫu benchmark hoàn chỉnh
 | 03   | [Chuẩn hóa học liệu SGK/SGV và thiết kế hệ thống học liệu](plans/03-learning-resource-normalization-and-retrieval-system.md)       | HOÀN THÀNH V0 CHO LỚP 6–9             | Đã dùng OCR Markdown của Nguyên cho SGK/SGV Tin học 6–9, đồng bộ topic/lesson/position registry, tạo 154 OCR units, 2.750 fragment và SQLite FTS index; các artifact OCR/MinerU cũ được đánh dấu là thử nghiệm.         | Học liệu vẫn ở trạng thái `draft`, chưa thay thế xác nhận chuyên môn của HNMU/UET. Report sync: `reports/learning-resource-registries-sync-20260718.md`.                  |
 | 04   | [Tiếp nhận, kiểm tra độ phủ, nhất quán và trùng lặp hội thoại HNMU](plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md) | HOÀN THÀNH V0 CHO LỚP 6–7; FOLLOW-UP LỚP 8–9                        | Đã kiểm toán cơ học/truy xuất sơ bộ lớp 6–7: 462 dòng. Lượt follow-up lớp 8–9: 588 dòng, 1 cặp trùng chính xác, 3 mẫu vào review queue cơ học sau regex-only lesson mapping, 3-shard agent checklist đủ 18 tiêu chí/mẫu. File chính cấp mẫu sau agent audit của cả hai batch là `agent_shard_audit/merged/quality_check_suggestions.csv` với schema canonical.                                                        | Dùng checklist Plan 01, layout Plan 02, retrieval học liệu Plan 03 và specialist Plan 07. Output lớp 8–9 nằm riêng tại `outputs/hnmu_dialogue_audit_grade8_9/`.                           |
 | 07   | [Tạo specialist agent kiểm toán dữ liệu thô HNMU](plans/07-hnmu-dialogue-auditor-specialist.md) | APPROVED — ĐÃ TRIỂN KHAI V0 | Tạo specialist `hnmu-dialogue-auditor` để kiểm ngữ nghĩa/sư phạm từng mẫu thô bằng checklist, học liệu SGK/SGV và phương pháp dàn giáo; output là checklist chi tiết và gợi ý review. | Mở rộng trực tiếp phần agent của Plan 04; dùng checklist Plan 01 và học liệu Plan 03. |
+| 08   | [Đóng gói kết quả kiểm toán hội thoại HNMU cho giáo viên](plans/08-hnmu-dialogue-audit-teacher-bundle.md) | APPROVED — ĐÃ TRIỂN KHAI, CHỜ DUYỆT BUNDLE LOCAL | Đã tạo và validate bốn workbook lớp 6–9 có cùng cấu trúc từ đúng 15 output canonical, giữ truy vết `source_file` và loại mọi artifact debug khỏi bundle. | Chờ người dùng duyệt trước mọi thao tác Git hoặc upload; không chạy lại experiment hoặc specialist audit. |
+| 08b  | [Đóng gói lại Phase 1 theo loại deliverable và theo lớp](plans/08b-hnmu-dialogue-audit-teacher-bundle-v2.md) | APPROVED — ĐÃ TÁCH REPORT HNMU VÀ BẢNG KỸ THUẬT DỄ KIỂM TRA, CHỜ DUYỆT LOCAL | Root có report Markdown trả lời một câu hỏi và workbook kỹ thuật sáu sheet; sheet mở đầu có 8 kết quả dễ đọc, sheet cuối giữ nguyên 396 × 29 ô kỹ thuật. | Dùng checklist repaired/regex-repaired, registry 75 bài học; 1.050 mẫu × 18 tiêu chí, nguồn canonical và bundle v1 không thay đổi. |
 | 06   | [Chuyển hội thoại thô HNMU thành mẫu benchmark hoàn chỉnh](plans/06-raw-dialogue-to-benchmark-sample-conversion.md)                   | DRAFT                        | Ánh xạ dữ liệu thô đã qua audit sang phiếu tác giả/mẫu benchmark, tách `student_prompt`, `conversation_history`, `gold_response`, `Đáp án`, gán task/rubric và giữ truy vết. | Cần Plan 04; cần task/rubric v0 từ experiment trước; cần học liệu registry v0. |
 | 05   | [Đánh giá khả năng áp dụng và phân biệt của benchmark](plans/05-benchmark-usability-and-discriminative-evaluation.md)              | DRAFT                        | Sau khi có mẫu benchmark hoàn chỉnh, kiểm tra benchmark có phân biệt tutor tốt/trung bình/kém không.                                                                               | Cần Plan 06; cần tập mẫu đã được UET/HNMU xác nhận.                         |
 
