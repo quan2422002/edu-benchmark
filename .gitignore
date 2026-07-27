@@ -1,6 +1,9 @@
 document/
 .vscode/
 
+# Legacy/local credential file; the active Vertex runner uses ADC and never reads it
+src/vertex_ai_call/.env
+
 # Python bytecode and test caches
 __pycache__/
 
@@ -196,3 +199,8 @@ src/edu_benchmark/learning_resources/vietocr_recognition.py
 tests/learning_resources/test_mineru_book_phase_a.py
 tests/learning_resources/test_mineru_postprocess.py
 tests/learning_resources/test_ocr_pipeline_units.py
+
+
+
+
+google-cloud-sdk/*

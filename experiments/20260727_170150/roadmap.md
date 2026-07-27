@@ -1,7 +1,7 @@
 # Roadmap — Chấm yêu cầu sư phạm và xây benchmark đánh giá phản hồi gia sư
 
 Experiment: `20260727_170150`  
-Trạng thái: `ACTIVE_V4_CALIBRATION_AWAITING_USER_RUN`  
+Trạng thái: `ACTIVE_FULL_SINGLE_RUN_AWAITING_USER_RUN`
 Nguồn kế thừa chính: `20260722_000940`
 
 ## 1. Lý do mở experiment mới
@@ -80,11 +80,12 @@ Win / Tie / Lose theo tiêu chí + overall judgement
 | Plan | Trạng thái | Phạm vi | Output chính | Phụ thuộc |
 |---|---|---|---|---|
 | [Plan 01 — Đặc tả requirement score](plans/01-principle-requirement-score-specification.md) | `COMPLETED — SPECIFICATION_V4_PUBLISHED` | Một lượt grounding, anchor, prompt, schema và ranh giới model–code; V4 siết lập luận 4–5 cùng ranh giới Feedback/Questioning | Specification V4, schema V2 dùng lại, 36 ca calibration, manifest V4 và prompt tiếng Việt | Snapshot kế thừa |
-| [Plan 02 — Pipeline và Vertex pilot](plans/02-vertex-ai-requirement-scoring-pilot.md) | `APPROVED — V4_CALIBRATION_IMPLEMENTED; AWAITING_USER_RUN` | Vertex chuẩn qua ADC; đa luồng; ghi JSONL tăng dần; retry sau lượt quét; semantic lint; hai run trên 36 ca calibration | Runner trỏ sang `calibration_v1`; chưa gọi API V4 | Plan 01 |
-| Plan 03 — Instruction và thư viện rubric hai tầng | `NOT_DRAFTED` | Rubric chung từ sáu năng lực; rubric riêng từ sáu nguyên tắc; item instruction | Rubric registry, instruction builder, error catalog | Plan 02 |
-| Plan 04 — Audit gold và chất lượng candidate | `NOT_DRAFTED` | Kiểm gold theo instruction/rubric, evidence, leakage, trùng và giá trị đánh giá | Candidate audit, gold dispositions, review queue | Plan 03 |
-| Plan 05 — Sinh và chấm response nhiều mô hình | `NOT_DRAFTED` | Gọi các tutor model, chấm Win/Tie/Lose theo tiêu chí, kiểm judge | Response bundle, criterion judgements, validity analysis | Plan 04 |
-| Plan 06 — HNMU/UET review và freeze benchmark | `NOT_DRAFTED` | Review gói tích hợp, phân xử, coverage, split và publication | Spec/dataset v1 có truy vết | Plan 05 |
+| [Plan 02 — Pipeline, calibration và full run](plans/02-vertex-ai-requirement-scoring-pilot.md) | `APPROVED — FULL_SINGLE_RUN_IMPLEMENTED; AWAITING_USER_RUN` | Giữ calibration làm chẩn đoán; chạy một lần trên 2.028 candidate bằng Gemini 3.5 Flash, concurrency 20 | `full_gemini35_medium_v1/run_full.jsonl` và manifest | Plan 01 |
+| [Plan 03 — Thống kê và phân tích full run](plans/03-full-run-statistics-and-analysis.md) | `DRAFT — AWAITING_UET_REVIEW` | Kiểm toàn vẹn, phân bố score/tập nguyên tắc, candidate/family macro, phân tầng và review queue | Một JSON thống kê, một báo cáo Markdown, một CSV review | Full run Plan 02 |
+| Plan 04 — Instruction và thư viện rubric hai tầng | `NOT_DRAFTED` | Rubric chung từ sáu năng lực; rubric riêng từ sáu nguyên tắc; item instruction | Rubric registry, instruction builder, error catalog | Plan 03 |
+| Plan 05 — Audit gold và chất lượng candidate | `NOT_DRAFTED` | Kiểm gold theo instruction/rubric, evidence, leakage, trùng và giá trị đánh giá | Candidate audit, gold dispositions, review queue | Plan 04 |
+| Plan 06 — Sinh và chấm response nhiều mô hình | `NOT_DRAFTED` | Gọi các tutor model, chấm Win/Tie/Lose theo tiêu chí, kiểm judge | Response bundle, criterion judgements, validity analysis | Plan 05 |
+| Plan 07 — HNMU/UET review và freeze benchmark | `NOT_DRAFTED` | Review gói tích hợp, phân xử, coverage, split và publication | Spec/dataset v1 có truy vết | Plan 06 |
 
 Plan viết paper KSE tại `kse_submit_manuscript/` tiếp tục nhận snapshot
 bằng chứng sau mỗi gate; không đợi Plan 05 mới viết.
@@ -95,28 +96,34 @@ bằng chứng sau mỗi gate; không đợi Plan 05 mới viết.
    lại vì hình dạng input/output không đổi.
 2. Code, validator, client và CLI Plan 02 đã chuyển sang ADC với project
    `edu-benchmark`, đa luồng, ghi output tăng dần và retry sau lượt quét.
-3. Người dùng review command, location/model, concurrency, `max_retries`
-   và request ceiling.
-4. Người dùng tự chạy lệnh calibration; Codex không gọi API trong lượt
-   cài đặt.
-5. Code đọc 36 ca cố định, kiểm cân bằng 3 positive + 3 near-miss cho mỗi
-   nguyên tắc và khóa hash trước request.
-6. Code chạy hai run độc lập, kiểm expected range, positive support,
-   semantic lint và độ ổn định.
-7. UET review `calibration_summary.md` và `review_queue.csv`.
-8. Sau disposition, tạo holdout 40 candidate mới và chạy lại V4 để kiểm
-   khả năng khái quát.
-9. Chỉ sau khi đạt các gate mới viết Plan 03 cho instruction và rubric.
+3. Calibration nền bằng Gemini 2.5 Flash đã hoàn tất: hai run trùng nhau,
+   nhưng chỉ 32/36 ca nằm trong expected range tạm thời và còn 13
+   candidate bị semantic lint.
+4. Runner đã được chuyển sang cấu hình so sánh
+   `gemini-3.5-flash`: không gửi tham số sampling, dùng
+   `thinking_level=MEDIUM`, không trả thought summary và giữ nguyên prompt,
+   schema cùng dữ liệu.
+5. Calibration Gemini 3.5 đã hoàn tất: 34/36 ca đúng expected range nhưng
+   chỉ 75% candidate có cùng tập nguyên tắc bắt buộc giữa hai run.
+6. UET quyết định dừng calibration tại đây, chấp nhận giới hạn về độ lặp
+   lại và chốt một full run Gemini 3.5 Flash.
+7. Người dùng tự chạy lệnh `full`; Codex không gọi API trong lượt cài đặt.
+8. Runner đọc trực tiếp 2.028 candidate, dùng concurrency 20, ghi tăng dần
+   `run_full.jsonl`, retry sau lượt quét và validate trước khi đóng.
+9. Plan 03 dùng code thống kê candidate/family macro, phân tầng, kiểm rủi
+   ro ngữ nghĩa và tạo review queue.
+10. UET review full-run analysis trước khi viết Plan 04 cho instruction
+    và rubric.
 
 ## 6. Cổng dừng hiện tại
 
-Plan 01 V4 đã hoàn thành; Plan 02 đã cài và đang chờ người dùng chạy
-calibration V4. Trước
-khi có run do người dùng thực hiện, không được:
+Plan 01 V4 và hai calibration bundle đã hoàn thành. Plan 02 đã cài full
+single-run Gemini 3.5 Flash và đang chờ người dùng chạy bundle 2.028
+candidate. Trước khi có full run hoàn chỉnh, không được:
 
 - để Codex gọi Vertex AI; chỉ người dùng chạy lệnh bàn giao sau khi review;
-- tạo output score chính thức;
-- chạy đủ 2.028 candidate;
+- gọi score model là nhãn chính thức hoặc ground truth;
+- triển khai Plan 03 trên bundle thiếu/failure;
 - đưa API key hoặc credential vào repository;
 - xây rubric như specification đã xác nhận;
 - gọi run cũ là ground truth.

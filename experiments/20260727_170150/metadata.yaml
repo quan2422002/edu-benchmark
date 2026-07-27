@@ -1,6 +1,6 @@
 id: "20260727_170150"
 title: "Requirement-scored pedagogical principles and rubric-driven tutor evaluation"
-status: active_v4_calibration_awaiting_user_run
+status: active_full_single_run_awaiting_user_run
 task_type: benchmark_principle_requirement_scoring_and_rubric_evaluation
 owner_agent: orchestrator
 parents:
@@ -12,6 +12,7 @@ artifacts:
   - roadmap.md
   - plans/01-principle-requirement-score-specification.md
   - plans/02-vertex-ai-requirement-scoring-pilot.md
+  - plans/03-full-run-statistics-and-analysis.md
   - reports/state-transfer-from-20260722.md
   - handoffs/single-pass-grounding-decision.md
   - handoffs/code-first-and-path-ownership-decision.md
@@ -24,3 +25,5 @@ artifacts:
   - handoffs/plans01-02-implementation.md
   - handoffs/requirement-guardrails-v3.md
   - handoffs/requirement-v4-calibration.md
+  - handoffs/gemini35-medium-calibration-comparison.md
+  - handoffs/full-single-run-implementation.md

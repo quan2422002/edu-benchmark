@@ -1,0 +1,403 @@
+{
+  "api_request_attempt_count": 72,
+  "bundle_type": "semantic_boundary_calibration",
+  "calibration_summary_sha256": "39cd436e64e6d1be149aab0e5252c0c2e5d4caff3b5b95825c26c150c74fe94d",
+  "code": {
+    "files": [
+      {
+        "path": "src/vertex_ai_call/requirement_scoring.py",
+        "sha256": "cd25fc53f7d97e93c66cf4cf4daf89e9f1b8ecce77d251b37d404359ad186ae4"
+      },
+      {
+        "path": "src/vertex_ai_call/vertex_client.py",
+        "sha256": "d660ea393d94940c74b794875134df205ddffb5b011164fcd024349b8807c0bd"
+      },
+      {
+        "path": "src/vertex_ai_call/run_requirement_scoring.py",
+        "sha256": "b296ac776941a06aba24b4e4dacc212d155e6d00364c57c182a541c88ddf4ec7"
+      }
+    ],
+    "git_commit": null,
+    "git_commit_note": "Project lead will commit manually after plans and roadmap are final"
+  },
+  "created_at": "2026-07-27T17:35:13.759206+00:00",
+  "errors": [],
+  "experiment_id": "20260727_170150",
+  "generation_config": {
+    "concurrency": 8,
+    "include_thoughts": false,
+    "max_output_tokens": 4096,
+    "max_requests": 120,
+    "max_retries": 3,
+    "model": "gemini-3.5-flash",
+    "retry_base_delay_seconds": 2.0,
+    "seed": 20260727,
+    "temperature": null,
+    "thinking_budget": null,
+    "thinking_level": "MEDIUM",
+    "timeout_seconds": 120.0,
+    "top_p": null
+  },
+  "generation_config_sha256": "253ad0b5405adf3d2d55d3d05ba2209519d4744afac8b336d6a03f9c521dc5c8",
+  "input": {
+    "candidate_count": 36,
+    "family_count": 36,
+    "grade_counts": {
+      "6": 10,
+      "7": 9,
+      "8": 10,
+      "9": 7
+    },
+    "grounding_pool_path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv",
+    "grounding_pool_sha256": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a",
+    "ordered_candidate_ids_sha256": "7980e51ded1939284f121aa25a35ad81881b3f82c5982a32c73ac92c61353955",
+    "pilot_input_path": "experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_cases_v1.csv",
+    "pilot_input_sha256": "639e44742371b23ae8f7f041dd46de69efc653d24f9e057e18c54d4d09373bb0"
+  },
+  "metrics": {
+    "all_gates_passed": false,
+    "calibration": {
+      "both_runs_in_range_count": 34,
+      "both_runs_in_range_rate": 0.9444444444444444,
+      "case_count": 36,
+      "expected_ranges_are_provisional": true,
+      "per_principle": {
+        "PRINCIPLE-CHALLENGE": {
+          "near_miss": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          },
+          "positive": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          }
+        },
+        "PRINCIPLE-EXPLANATION": {
+          "near_miss": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          },
+          "positive": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          }
+        },
+        "PRINCIPLE-FEEDBACK": {
+          "near_miss": {
+            "both_runs_in_range": 2,
+            "case_count": 3,
+            "run_a_in_range": 2,
+            "run_b_in_range": 2
+          },
+          "positive": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          }
+        },
+        "PRINCIPLE-MODELLING": {
+          "near_miss": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          },
+          "positive": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          }
+        },
+        "PRINCIPLE-PRACTICE": {
+          "near_miss": {
+            "both_runs_in_range": 2,
+            "case_count": 3,
+            "run_a_in_range": 2,
+            "run_b_in_range": 2
+          },
+          "positive": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          }
+        },
+        "PRINCIPLE-QUESTIONING": {
+          "near_miss": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          },
+          "positive": {
+            "both_runs_in_range": 3,
+            "case_count": 3,
+            "run_a_in_range": 3,
+            "run_b_in_range": 3
+          }
+        }
+      }
+    },
+    "candidate_count": 36,
+    "exact_score_agreement_rate": 0.7824074074074074,
+    "gate_checks": {
+      "calibration_expected_ranges": false,
+      "no_threshold_crossing_rate": false,
+      "principle_f1": false,
+      "principle_positive_support": true,
+      "required_exact_agreement": false,
+      "required_jaccard_mean": false,
+      "within_one_rate": true
+    },
+    "no_threshold_crossing_rate": 0.75,
+    "principle_f1": {
+      "PRINCIPLE-CHALLENGE": 1.0,
+      "PRINCIPLE-EXPLANATION": 0.875,
+      "PRINCIPLE-FEEDBACK": 0.8888888888888888,
+      "PRINCIPLE-MODELLING": 0.8571428571428571,
+      "PRINCIPLE-PRACTICE": 1.0,
+      "PRINCIPLE-QUESTIONING": 0.8
+    },
+    "principle_positive_support": {
+      "PRINCIPLE-CHALLENGE": {
+        "run_a": 4,
+        "run_b": 4
+      },
+      "PRINCIPLE-EXPLANATION": {
+        "run_a": 15,
+        "run_b": 17
+      },
+      "PRINCIPLE-FEEDBACK": {
+        "run_a": 5,
+        "run_b": 4
+      },
+      "PRINCIPLE-MODELLING": {
+        "run_a": 4,
+        "run_b": 3
+      },
+      "PRINCIPLE-PRACTICE": {
+        "run_a": 8,
+        "run_b": 8
+      },
+      "PRINCIPLE-QUESTIONING": {
+        "run_a": 10,
+        "run_b": 15
+      }
+    },
+    "required_exact_agreement_rate": 0.75,
+    "required_jaccard_mean": 0.875,
+    "score_count": 216,
+    "score_distribution_run_a": {
+      "PRINCIPLE-CHALLENGE:1": 17,
+      "PRINCIPLE-CHALLENGE:2": 15,
+      "PRINCIPLE-CHALLENGE:5": 4,
+      "PRINCIPLE-EXPLANATION:1": 3,
+      "PRINCIPLE-EXPLANATION:2": 7,
+      "PRINCIPLE-EXPLANATION:3": 11,
+      "PRINCIPLE-EXPLANATION:4": 2,
+      "PRINCIPLE-EXPLANATION:5": 13,
+      "PRINCIPLE-FEEDBACK:1": 23,
+      "PRINCIPLE-FEEDBACK:2": 8,
+      "PRINCIPLE-FEEDBACK:4": 1,
+      "PRINCIPLE-FEEDBACK:5": 4,
+      "PRINCIPLE-MODELLING:1": 4,
+      "PRINCIPLE-MODELLING:2": 15,
+      "PRINCIPLE-MODELLING:3": 13,
+      "PRINCIPLE-MODELLING:4": 1,
+      "PRINCIPLE-MODELLING:5": 3,
+      "PRINCIPLE-PRACTICE:1": 7,
+      "PRINCIPLE-PRACTICE:2": 18,
+      "PRINCIPLE-PRACTICE:3": 3,
+      "PRINCIPLE-PRACTICE:5": 8,
+      "PRINCIPLE-QUESTIONING:2": 5,
+      "PRINCIPLE-QUESTIONING:3": 21,
+      "PRINCIPLE-QUESTIONING:4": 2,
+      "PRINCIPLE-QUESTIONING:5": 8
+    },
+    "score_distribution_run_b": {
+      "PRINCIPLE-CHALLENGE:1": 13,
+      "PRINCIPLE-CHALLENGE:2": 18,
+      "PRINCIPLE-CHALLENGE:3": 1,
+      "PRINCIPLE-CHALLENGE:4": 1,
+      "PRINCIPLE-CHALLENGE:5": 3,
+      "PRINCIPLE-EXPLANATION:1": 4,
+      "PRINCIPLE-EXPLANATION:2": 5,
+      "PRINCIPLE-EXPLANATION:3": 10,
+      "PRINCIPLE-EXPLANATION:4": 5,
+      "PRINCIPLE-EXPLANATION:5": 12,
+      "PRINCIPLE-FEEDBACK:1": 22,
+      "PRINCIPLE-FEEDBACK:2": 7,
+      "PRINCIPLE-FEEDBACK:3": 3,
+      "PRINCIPLE-FEEDBACK:5": 4,
+      "PRINCIPLE-MODELLING:1": 5,
+      "PRINCIPLE-MODELLING:2": 17,
+      "PRINCIPLE-MODELLING:3": 11,
+      "PRINCIPLE-MODELLING:5": 3,
+      "PRINCIPLE-PRACTICE:1": 6,
+      "PRINCIPLE-PRACTICE:2": 16,
+      "PRINCIPLE-PRACTICE:3": 6,
+      "PRINCIPLE-PRACTICE:5": 8,
+      "PRINCIPLE-QUESTIONING:2": 2,
+      "PRINCIPLE-QUESTIONING:3": 19,
+      "PRINCIPLE-QUESTIONING:4": 8,
+      "PRINCIPLE-QUESTIONING:5": 7
+    },
+    "semantic_lint_candidate_count": 4,
+    "threshold_crossing_candidate_count": 9,
+    "thresholds": {
+      "no_threshold_crossing_rate_min": 0.95,
+      "principle_f1_min": 0.9,
+      "required_exact_agreement_min": 0.9,
+      "required_jaccard_mean_min": 0.9,
+      "within_one_rate_min": 0.95
+    },
+    "weighted_kappa_quadratic": {
+      "PRINCIPLE-CHALLENGE": 0.8976691301876066,
+      "PRINCIPLE-EXPLANATION": 0.9027431421446384,
+      "PRINCIPLE-FEEDBACK": 0.91701244813278,
+      "PRINCIPLE-MODELLING": 0.9327354260089686,
+      "PRINCIPLE-PRACTICE": 0.9569377990430622,
+      "PRINCIPLE-QUESTIONING": 0.8561278863232682
+    },
+    "within_one_rate": 0.9907407407407407
+  },
+  "pilot_version": "calibration_gemini35_medium_v1",
+  "prompt_language": "vi",
+  "provider": {
+    "api_version": "v1",
+    "location": "global",
+    "mode": "standard_adc",
+    "model": "gemini-3.5-flash",
+    "name": "Vertex AI",
+    "project": "edu-benchmark",
+    "response_mime_type": "application/json",
+    "sdk_package": "google-genai",
+    "sdk_version": "2.14.0"
+  },
+  "request_ceiling": 120,
+  "review_queue_count": 18,
+  "review_queue_sha256": "360b708ab9987b537d51bc6ad4d00f23e78f6797e5a3a325cd2681bbe70ff93c",
+  "runs": {
+    "a": {
+      "attempts_by_candidate": {
+        "CAL-CHA-N01": 1,
+        "CAL-CHA-N02": 1,
+        "CAL-CHA-N03": 1,
+        "CAL-CHA-P01": 1,
+        "CAL-CHA-P02": 1,
+        "CAL-CHA-P03": 1,
+        "CAL-EXP-N01": 1,
+        "CAL-EXP-N02": 1,
+        "CAL-EXP-N03": 1,
+        "CAL-EXP-P01": 1,
+        "CAL-EXP-P02": 1,
+        "CAL-EXP-P03": 1,
+        "CAL-FEE-N01": 1,
+        "CAL-FEE-N02": 1,
+        "CAL-FEE-N03": 1,
+        "CAL-FEE-P01": 1,
+        "CAL-FEE-P02": 1,
+        "CAL-FEE-P03": 1,
+        "CAL-MOD-N01": 1,
+        "CAL-MOD-N02": 1,
+        "CAL-MOD-N03": 1,
+        "CAL-MOD-P01": 1,
+        "CAL-MOD-P02": 1,
+        "CAL-MOD-P03": 1,
+        "CAL-PRA-N01": 1,
+        "CAL-PRA-N02": 1,
+        "CAL-PRA-N03": 1,
+        "CAL-PRA-P01": 1,
+        "CAL-PRA-P02": 1,
+        "CAL-PRA-P03": 1,
+        "CAL-QUE-N01": 1,
+        "CAL-QUE-N02": 1,
+        "CAL-QUE-N03": 1,
+        "CAL-QUE-P01": 1,
+        "CAL-QUE-P02": 1,
+        "CAL-QUE-P03": 1
+      },
+      "completed_count": 36,
+      "failed_candidate_ids": [],
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_gemini35_medium_v1/run_a.jsonl",
+      "retry_sweeps_completed": 0,
+      "sha256": "8c4c8fc3fac5f4b4c9c45d4e49b19601762e3e424c7c4ebef0176c6527f16081",
+      "status": "completed"
+    },
+    "b": {
+      "attempts_by_candidate": {
+        "CAL-CHA-N01": 1,
+        "CAL-CHA-N02": 1,
+        "CAL-CHA-N03": 1,
+        "CAL-CHA-P01": 1,
+        "CAL-CHA-P02": 1,
+        "CAL-CHA-P03": 1,
+        "CAL-EXP-N01": 1,
+        "CAL-EXP-N02": 1,
+        "CAL-EXP-N03": 1,
+        "CAL-EXP-P01": 1,
+        "CAL-EXP-P02": 1,
+        "CAL-EXP-P03": 1,
+        "CAL-FEE-N01": 1,
+        "CAL-FEE-N02": 1,
+        "CAL-FEE-N03": 1,
+        "CAL-FEE-P01": 1,
+        "CAL-FEE-P02": 1,
+        "CAL-FEE-P03": 1,
+        "CAL-MOD-N01": 1,
+        "CAL-MOD-N02": 1,
+        "CAL-MOD-N03": 1,
+        "CAL-MOD-P01": 1,
+        "CAL-MOD-P02": 1,
+        "CAL-MOD-P03": 1,
+        "CAL-PRA-N01": 1,
+        "CAL-PRA-N02": 1,
+        "CAL-PRA-N03": 1,
+        "CAL-PRA-P01": 1,
+        "CAL-PRA-P02": 1,
+        "CAL-PRA-P03": 1,
+        "CAL-QUE-N01": 1,
+        "CAL-QUE-N02": 1,
+        "CAL-QUE-N03": 1,
+        "CAL-QUE-P01": 1,
+        "CAL-QUE-P02": 1,
+        "CAL-QUE-P03": 1
+      },
+      "completed_count": 36,
+      "failed_candidate_ids": [],
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_gemini35_medium_v1/run_b.jsonl",
+      "retry_sweeps_completed": 0,
+      "sha256": "d79498e766fc2cd87045837d98e4eae6223c0cb172a4511a1e3314384017252a",
+      "status": "completed"
+    }
+  },
+  "runtime": {
+    "concurrency": 8,
+    "cost_guard": "request_ceiling",
+    "monetary_budget_usd": null,
+    "retry_base_delay_seconds": 2.0,
+    "retry_count": 3,
+    "retry_strategy": "retry_failed_candidates_after_each_full_sweep",
+    "timeout_seconds": 120.0
+  },
+  "specification": {
+    "manifest_path": "experiments/20260727_170150/outputs/principle_requirement_scoring/specification_manifest_v4.json",
+    "manifest_sha256": "79e5bbb46b7a38562bc5dd580385b02f26b1c0b7a97e4c5aefe9c8baca1bb762",
+    "prompt_path": "shared/prompts/benchmark_candidate_task_assigning/system_prompt_v4.md",
+    "prompt_sha256": "069c4c1516928d2bb49d02ad5e95725c4beeea62586ab36963bbf361a28ef644",
+    "schema_path": "experiments/20260727_170150/outputs/principle_requirement_scoring/scoring_schema_v2.json",
+    "schema_sha256": "9650fc66c87c0348d75f449de5f2bd0e3dc5878c5364bff0e41e49b65634831f"
+  },
+  "status": "awaiting_uet_review",
+  "updated_at": "2026-07-27T17:38:01.327691+00:00"
+}

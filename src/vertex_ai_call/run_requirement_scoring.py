@@ -8,8 +8,10 @@ import importlib.metadata
 import json
 import os
 import random
+import re
 import sys
 import time
+from collections import Counter
 from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Mapping, Sequence
@@ -193,13 +195,23 @@ def _load_schema(path: Path) -> dict[str, Any]:
 
 
 def _config_from_args(args: argparse.Namespace) -> GenerationConfig:
+    thinking_level = getattr(args, "thinking_level", None)
+    thinking_budget = getattr(args, "thinking_budget", None)
+    if (
+        args.model.strip().lower().startswith("gemini-3")
+        and thinking_level is None
+        and thinking_budget is None
+    ):
+        thinking_level = "MEDIUM"
     return GenerationConfig(
         model=args.model,
         temperature=args.temperature,
         top_p=args.top_p,
         max_output_tokens=args.max_output_tokens,
         seed=args.seed,
-        thinking_budget=args.thinking_budget,
+        thinking_budget=thinking_budget,
+        thinking_level=thinking_level,
+        include_thoughts=getattr(args, "include_thoughts", False),
         timeout_seconds=args.timeout_seconds,
         max_retries=args.max_retries,
         max_requests=args.max_requests,
@@ -212,15 +224,30 @@ def _is_calibration(args: argparse.Namespace) -> bool:
     return getattr(args, "command", "pilot") == "calibration"
 
 
+def _is_full(args: argparse.Namespace) -> bool:
+    return getattr(args, "command", "pilot") == "full"
+
+
 def _pilot_directory(args: argparse.Namespace) -> Path:
+    bundle_name = getattr(args, "bundle_name", None)
+    if bundle_name:
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", bundle_name):
+            raise RequirementScoringError(
+                "--bundle-name must contain only letters, numbers, '.', '_' or '-'"
+            )
+        return args.output_root / bundle_name
     if _is_calibration(args):
-        return args.output_root / "calibration_v1"
+        return args.output_root / "calibration_gemini35_medium_v1"
+    if _is_full(args):
+        return args.output_root / "full_gemini35_medium_v1"
     return args.output_root / "pilot_v4"
 
 
 def _load_scoring_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
     if _is_calibration(args):
         return load_calibration_cases(args.calibration_input)
+    if _is_full(args):
+        return load_grounding_pool(args.pool)
     return load_pilot_input(_pilot_directory(args) / "pilot_input.csv")
 
 
@@ -247,16 +274,44 @@ def _planned_manifest(
         REPOSITORY_ROOT / "src/vertex_ai_call/vertex_client.py",
         REPOSITORY_ROOT / "src/vertex_ai_call/run_requirement_scoring.py",
     )
-    return {
-        "experiment_id": "20260727_170150",
-        "pilot_version": (
-            "calibration_v1" if _is_calibration(args) else "v4"
-        ),
-        "bundle_type": (
+    if _is_full(args):
+        input_manifest = {
+            "input_role": "full_grounding_pool",
+            "scoring_input_path": _manifest_path(args.pool),
+            "scoring_input_sha256": sha256_file(args.pool),
+        }
+        run_ids = ("full",)
+        bundle_type = "full_single_run_requirement_scoring"
+    else:
+        input_path = (
+            args.calibration_input
+            if _is_calibration(args)
+            else _pilot_directory(args) / "pilot_input.csv"
+        )
+        input_manifest = {
+            "input_role": (
+                "semantic_boundary_calibration"
+                if _is_calibration(args)
+                else "stratified_repeatability_pilot"
+            ),
+            "pilot_input_path": _manifest_path(input_path),
+            "pilot_input_sha256": None,
+        }
+        run_ids = ("a", "b")
+        bundle_type = (
             "semantic_boundary_calibration"
             if _is_calibration(args)
             else "stratified_repeatability_pilot"
+        )
+    return {
+        "experiment_id": "20260727_170150",
+        "bundle_version": _pilot_directory(args).name,
+        **(
+            {}
+            if _is_full(args)
+            else {"pilot_version": _pilot_directory(args).name}
         ),
+        "bundle_type": bundle_type,
         "status": "prepared",
         "prompt_language": "vi",
         "created_at": utc_now(),
@@ -264,12 +319,6 @@ def _planned_manifest(
         "input": {
             "grounding_pool_path": _manifest_path(args.pool),
             "grounding_pool_sha256": sha256_file(args.pool),
-            "pilot_input_path": _manifest_path(
-                args.calibration_input
-                if _is_calibration(args)
-                else _pilot_directory(args) / "pilot_input.csv"
-            ),
-            "pilot_input_sha256": None,
             "ordered_candidate_ids_sha256": canonical_json_hash(ordered_ids),
             "candidate_count": len(pilot_rows),
             "family_count": len({row["sample_id"] for row in pilot_rows}),
@@ -277,6 +326,7 @@ def _planned_manifest(
                 str(grade): sum(row["grade"] == grade for row in pilot_rows)
                 for grade in (6, 7, 8, 9)
             },
+            **input_manifest,
         },
         "specification": {
             "manifest_path": _manifest_path(args.spec_manifest),
@@ -326,18 +376,13 @@ def _planned_manifest(
         "request_ceiling": generation_config.max_requests,
         "api_request_attempt_count": 0,
         "runs": {
-            "a": {
+            run_id: {
                 "status": "pending",
                 "completed_count": 0,
                 "attempts_by_candidate": {},
                 "failed_candidate_ids": [],
-            },
-            "b": {
-                "status": "pending",
-                "completed_count": 0,
-                "attempts_by_candidate": {},
-                "failed_candidate_ids": [],
-            },
+            }
+            for run_id in run_ids
         },
         "metrics": None,
         "review_queue_count": None,
@@ -349,20 +394,22 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
     validate_snapshot_manifest(args.snapshot_manifest)
     validate_specification_manifest(args.spec_manifest, REPOSITORY_ROOT)
     rows = load_grounding_pool(args.pool)
-    pilot_rows = (
-        load_calibration_cases(args.calibration_input)
-        if _is_calibration(args)
-        else select_pilot(rows, per_grade=10, seed=args.selection_seed)
-    )
+    if _is_calibration(args):
+        pilot_rows = load_calibration_cases(args.calibration_input)
+    elif _is_full(args):
+        pilot_rows = rows
+    else:
+        pilot_rows = select_pilot(rows, per_grade=10, seed=args.selection_seed)
     pilot_dir = _pilot_directory(args)
     pilot_input = pilot_dir / "pilot_input.csv"
     manifest_path = pilot_dir / "run_manifest.json"
     generation_config = _config_from_args(args)
-    minimum_requests = len(pilot_rows) * 2
+    run_count = 1 if _is_full(args) else 2
+    minimum_requests = len(pilot_rows) * run_count
     if generation_config.max_requests < minimum_requests:
         raise RequirementScoringError(
-            f"max_requests must be at least {minimum_requests} for two "
-            "complete runs"
+            f"max_requests must be at least {minimum_requests} for "
+            f"{run_count} complete run(s)"
         )
     if generation_config.concurrency < 1:
         raise RequirementScoringError("concurrency must be at least 1")
@@ -379,7 +426,12 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
     )
     if manifest_path.exists():
         existing = json.loads(manifest_path.read_text(encoding="utf-8"))
-        if existing.get("status") not in {"prepared", "running", "failed"}:
+        if existing.get("status") not in {
+            "prepared",
+            "running",
+            "failed",
+            "runs_completed",
+        }:
             raise RequirementScoringError(
                 "Active pilot already exists; refusing to overwrite it"
             )
@@ -395,7 +447,9 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
                 "Existing pilot uses a different input/config; use a new pilot version"
             )
         return existing
-    if _is_calibration(args):
+    if _is_full(args):
+        pass
+    elif _is_calibration(args):
         planned["input"]["pilot_input_sha256"] = sha256_file(
             args.calibration_input
         )
@@ -739,8 +793,8 @@ def execute_run(
         manifest["status"] = (
             "runs_completed"
             if all(
-                manifest["runs"][item]["status"] == "completed"
-                for item in ("a", "b")
+                state["status"] == "completed"
+                for state in manifest["runs"].values()
             )
             else "running"
         )
@@ -815,6 +869,48 @@ def finalize(args: argparse.Namespace) -> dict[str, Any]:
     return manifest
 
 
+def finalize_full(args: argparse.Namespace) -> dict[str, Any]:
+    """Validate a full single-run bundle without doing semantic analysis."""
+
+    bundle_dir = _pilot_directory(args)
+    manifest_path = bundle_dir / "run_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    rows = _load_scoring_rows(args)
+    run_path = bundle_dir / "run_full.jsonl"
+    records = load_run_records(run_path)
+    validated = validate_run_records(records, rows, run_id="full")
+    model_versions = Counter(
+        str(record.get("model_version", "")) for record in records
+    )
+    finish_reasons = Counter(
+        str(record.get("finish_reason", "")) for record in records
+    )
+    response_ids = {
+        str(record.get("response_id", ""))
+        for record in records
+        if str(record.get("response_id", ""))
+    }
+    manifest["integrity"] = {
+        "validated": True,
+        "record_count": len(records),
+        "candidate_count": len(rows),
+        "family_count": len({row["sample_id"] for row in rows}),
+        "score_count": len(records) * 6,
+        "distinct_response_id_count": len(response_ids),
+        "model_versions": dict(sorted(model_versions.items())),
+        "finish_reasons": dict(sorted(finish_reasons.items())),
+        "ordered_candidate_ids_sha256": canonical_json_hash(
+            [row["benchmark_candidate_id"] for row in rows]
+        ),
+        "run_file_sha256": sha256_file(run_path),
+        "validated_record_count": len(validated),
+    }
+    manifest["status"] = "completed_awaiting_analysis"
+    manifest["updated_at"] = utc_now()
+    atomic_write_json(manifest_path, manifest)
+    return manifest
+
+
 def run_full_pilot(args: argparse.Namespace) -> None:
     if not args.execute_api:
         raise RequirementScoringError(
@@ -834,9 +930,39 @@ def run_full_pilot(args: argparse.Namespace) -> None:
         )
 
 
-def add_common_arguments(parser: argparse.ArgumentParser) -> None:
+def run_full_dataset(args: argparse.Namespace) -> None:
+    if not args.execute_api:
+        raise RequirementScoringError(
+            "The full command requires --execute-api; no request was sent"
+        )
+    bundle_dir = _pilot_directory(args)
+    if getattr(args, "progress", False):
+        print(f"Output directory: {bundle_dir}", file=sys.stderr)
+    prepare(args)
+    execute_run(args, run_id="full")
+    finalize_full(args)
+    if getattr(args, "progress", False):
+        print(
+            f"Full run completed; analysis input: {bundle_dir}",
+            file=sys.stderr,
+        )
+
+
+def add_common_arguments(
+    parser: argparse.ArgumentParser,
+    *,
+    default_max_requests: int = 120,
+    default_concurrency: int = 20,
+) -> None:
     parser.add_argument("--pool", type=Path, default=DEFAULT_POOL)
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+    parser.add_argument(
+        "--bundle-name",
+        help=(
+            "Name of the output bundle below --output-root; "
+            "defaults to the active bundle for the selected command"
+        ),
+    )
     parser.add_argument("--prompt", type=Path, default=DEFAULT_PROMPT)
     parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA)
     parser.add_argument("--spec-manifest", type=Path, default=DEFAULT_SPEC_MANIFEST)
@@ -852,17 +978,48 @@ def add_common_arguments(parser: argparse.ArgumentParser) -> None:
     )
     parser.add_argument("--project", default=DEFAULT_PROJECT)
     parser.add_argument("--location", default=DEFAULT_LOCATION)
-    parser.add_argument("--model", default="gemini-2.5-flash")
-    parser.add_argument("--temperature", type=float, default=0.0)
-    parser.add_argument("--top-p", type=float, default=1.0)
+    parser.add_argument("--model", default="gemini-3.5-flash")
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        help="Legacy sampling override; omit for Gemini 3 models",
+    )
+    parser.add_argument(
+        "--top-p",
+        type=float,
+        help="Legacy sampling override; omit for Gemini 3 models",
+    )
     parser.add_argument("--max-output-tokens", type=int, default=4096)
     parser.add_argument("--seed", type=int, default=20260727)
-    parser.add_argument("--thinking-budget", type=int, default=0)
+    parser.add_argument(
+        "--thinking-budget",
+        type=int,
+        help="Legacy Gemini 2.5 thinking budget; mutually exclusive with level",
+    )
+    parser.add_argument(
+        "--thinking-level",
+        choices=("MINIMAL", "LOW", "MEDIUM", "HIGH"),
+        help="Gemini 3 thinking level; defaults to MEDIUM for Gemini 3",
+    )
+    parser.add_argument(
+        "--include-thoughts",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Include thought summaries in the response (default: disabled)",
+    )
     parser.add_argument("--selection-seed", type=int, default=20260727)
     parser.add_argument("--timeout-seconds", type=float, default=120.0)
     parser.add_argument("--max-retries", type=int, default=3)
-    parser.add_argument("--max-requests", type=int, default=120)
-    parser.add_argument("--concurrency", type=int, default=8)
+    parser.add_argument(
+        "--max-requests",
+        type=int,
+        default=default_max_requests,
+    )
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=default_concurrency,
+    )
     parser.add_argument("--retry-base-delay-seconds", type=float, default=2.0)
     parser.add_argument("--spot-check-count", type=int, default=4)
     parser.add_argument(
@@ -883,6 +1040,13 @@ def build_parser() -> argparse.ArgumentParser:
         add_common_arguments(subparser)
         if command in {"pilot", "calibration"}:
             subparser.add_argument("--execute-api", action="store_true")
+    full_parser = subparsers.add_parser("full")
+    add_common_arguments(
+        full_parser,
+        default_max_requests=2500,
+        default_concurrency=20,
+    )
+    full_parser.add_argument("--execute-api", action="store_true")
     run_parser = subparsers.add_parser("run")
     add_common_arguments(run_parser)
     run_parser.add_argument("--run-id", choices=("a", "b"), required=True)
@@ -909,6 +1073,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             finalize(args)
         elif args.command in {"pilot", "calibration"}:
             run_full_pilot(args)
+        elif args.command == "full":
+            run_full_dataset(args)
         else:
             parser.error(f"Unsupported command: {args.command}")
     except (RequirementScoringError, OSError, RuntimeError) as exc:

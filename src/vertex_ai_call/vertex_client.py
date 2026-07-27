@@ -79,18 +79,33 @@ class VertexRequirementClient:
         return client
 
     def generate(self, user_prompt: str) -> dict[str, Any]:
-        config = types.GenerateContentConfig(
-            system_instruction=self._system_prompt,
-            temperature=self._generation_config.temperature,
-            top_p=self._generation_config.top_p,
-            max_output_tokens=self._generation_config.max_output_tokens,
-            seed=self._generation_config.seed,
-            thinking_config=types.ThinkingConfig(
-                thinking_budget=self._generation_config.thinking_budget
-            ),
-            response_mime_type="application/json",
-            response_json_schema=self._response_schema,
+        config_kwargs: dict[str, Any] = {
+            "system_instruction": self._system_prompt,
+            "max_output_tokens": self._generation_config.max_output_tokens,
+            "seed": self._generation_config.seed,
+            "response_mime_type": "application/json",
+            "response_json_schema": self._response_schema,
+        }
+        if self._generation_config.temperature is not None:
+            config_kwargs["temperature"] = self._generation_config.temperature
+        if self._generation_config.top_p is not None:
+            config_kwargs["top_p"] = self._generation_config.top_p
+
+        thinking_kwargs: dict[str, Any] = {
+            "include_thoughts": self._generation_config.include_thoughts,
+        }
+        if self._generation_config.thinking_budget is not None:
+            thinking_kwargs["thinking_budget"] = (
+                self._generation_config.thinking_budget
+            )
+        if self._generation_config.thinking_level is not None:
+            thinking_kwargs["thinking_level"] = types.ThinkingLevel[
+                self._generation_config.thinking_level
+            ]
+        config_kwargs["thinking_config"] = types.ThinkingConfig(
+            **thinking_kwargs
         )
+        config = types.GenerateContentConfig(**config_kwargs)
         response = self._client_for_current_thread().models.generate_content(
             model=self._generation_config.model,
             contents=user_prompt,

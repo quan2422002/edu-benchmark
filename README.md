@@ -4,7 +4,7 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment `20260722_000940` đã chuyển 665 hội thoại `pass` thành 2.028 candidate và xây nền tảng sáu năng lực–sáu nguyên tắc. Experiment active `20260727_170150` đã hoàn thành Plan 01: khóa đặc tả, anchor, schema và system prompt tiếng Việt cho `requirement_score` 1–5 trong một lượt grounding có `gold_answer` nhưng không có `gold_response`. Plan 02 đã cài pipeline Vertex AI chuẩn dùng ADC cho project `edu-benchmark`; runner hỗ trợ đa luồng có giới hạn, progress bar theo từng lượt quét, ghi từng kết quả hợp lệ ngay vào JSONL và chỉ retry mẫu lỗi sau khi chạy hết lượt quét. Cấu hình đã khóa là `gemini-2.5-flash`, `thinking_budget=0`, `temperature=0`, `top_p=1`, `max_output_tokens=4096` và seed cố định. Sau V3, contract V4 siết lập luận điểm 4–5, ranh giới Feedback/Questioning và bổ sung semantic lint bằng code. Run kế tiếp là hai lần chấm 36 ca calibration cân bằng positive/near-miss tại `calibration_v1`; Vertex AI chưa được gọi cho V4. Các pilot V1–V3 được giữ làm provenance. Model chỉ chấm ngữ nghĩa, còn join ID, threshold, validation, lint, lọc tập nguyên tắc và metric đều do code thực hiện. HNMU sẽ xác nhận nguyên tắc, năng lực, anchor và rubric trong gói tích hợp; toàn bộ specification và dataset vẫn ở trạng thái tạm thời.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment `20260722_000940` đã chuyển 665 hội thoại `pass` thành 2.028 candidate và xây nền tảng sáu năng lực–sáu nguyên tắc. Experiment active `20260727_170150` đã hoàn thành đặc tả `requirement_score` 1–5 và hai calibration bằng Gemini 2.5/3.5 Flash. Gemini 3.5 đạt 34/36 expected range nhưng không đạt gate độ lặp lại; UET quyết định dừng calibration và chạy một lần trên toàn bộ 2.028 candidate bằng `gemini-3.5-flash`, `thinking_level=MEDIUM`, `include_thoughts=false`, không gửi sampling legacy, giữ `max_output_tokens=4096` và seed `20260727`. Lệnh `full` dùng ADC cho project `edu-benchmark`, concurrency 20, ghi tăng dần, resume và retry sau lượt quét; bundle active là `full_gemini35_medium_v1`. Plan 03 sẽ thống kê bằng code và tạo review queue, nhưng output model vẫn là đề xuất tạm thời, không phải ground truth hoặc nhãn HNMU xác nhận.
 
 Active planning roadmap: [experiments/20260727_170150/roadmap.md](experiments/20260727_170150/roadmap.md)
 Previous phase-2 construction roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
@@ -30,6 +30,7 @@ Current plans:
 
 - [Experiment 20260727 Plan 01 — Principle requirement-score specification](experiments/20260727_170150/plans/01-principle-requirement-score-specification.md)
 - [Experiment 20260727 Plan 02 — Vertex AI requirement-scoring pilot](experiments/20260727_170150/plans/02-vertex-ai-requirement-scoring-pilot.md)
+- [Experiment 20260727 Plan 03 — Full-run statistics and analysis](experiments/20260727_170150/plans/03-full-run-statistics-and-analysis.md)
 
 ## People and decision authority
 

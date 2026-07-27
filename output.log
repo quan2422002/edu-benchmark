@@ -1,0 +1,20 @@
+Output directory: /home/quannda/Kaggle/edu-benchmark/experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_gemini35_medium_v1
+Run A | initial [------------------------] 0/36 | completed 0/36 | failed 0 | requests 36/120
+Run A | initial [###---------------------] 5/36 | completed 5/36 | failed 0 | requests 36/120
+Run A | initial [######------------------] 10/36 | completed 10/36 | failed 0 | requests 36/120
+Run A | initial [##########--------------] 15/36 | completed 15/36 | failed 0 | requests 36/120
+Run A | initial [#############-----------] 20/36 | completed 20/36 | failed 0 | requests 36/120
+Run A | initial [################--------] 25/36 | completed 25/36 | failed 0 | requests 36/120
+Run A | initial [####################----] 30/36 | completed 30/36 | failed 0 | requests 36/120
+Run A | initial [#######################-] 35/36 | completed 35/36 | failed 0 | requests 36/120
+Run A | initial [########################] 36/36 | completed 36/36 | failed 0 | requests 36/120
+Run B | initial [------------------------] 0/36 | completed 0/36 | failed 0 | requests 72/120
+Run B | initial [###---------------------] 5/36 | completed 5/36 | failed 0 | requests 72/120
+Run B | initial [######------------------] 10/36 | completed 10/36 | failed 0 | requests 72/120
+Run B | initial [##########--------------] 15/36 | completed 15/36 | failed 0 | requests 72/120
+Run B | initial [#############-----------] 20/36 | completed 20/36 | failed 0 | requests 72/120
+Run B | initial [################--------] 25/36 | completed 25/36 | failed 0 | requests 72/120
+Run B | initial [####################----] 30/36 | completed 30/36 | failed 0 | requests 72/120
+Run B | initial [#######################-] 35/36 | completed 35/36 | failed 0 | requests 72/120
+Run B | initial [########################] 36/36 | completed 36/36 | failed 0 | requests 72/120
+Run completed; review bundle: /home/quannda/Kaggle/edu-benchmark/experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_gemini35_medium_v1

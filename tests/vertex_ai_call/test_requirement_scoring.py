@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import json
 import io
 import threading
@@ -9,6 +10,7 @@ from types import SimpleNamespace
 import pytest
 
 from src.vertex_ai_call.requirement_scoring import (
+    GROUNDING_HEADER,
     PRINCIPLE_IDS,
     GenerationConfig,
     RequirementScoringError,
@@ -33,6 +35,7 @@ from src.vertex_ai_call.run_requirement_scoring import (
     _load_schema,
     build_parser,
     execute_run,
+    finalize_full,
     main,
     prepare,
 )
@@ -256,7 +259,12 @@ def test_vertex_client_uses_injected_fake_without_network() -> None:
         location="global",
         system_prompt="Prompt tiếng Việt",
         response_schema={"type": "object"},
-        generation_config=GenerationConfig(model="fake-model"),
+        generation_config=GenerationConfig(
+            model="fake-model",
+            temperature=0.0,
+            top_p=1.0,
+            thinking_budget=0,
+        ),
         client=fake,
     )
     user_prompt = '{"grade":6}'
@@ -271,6 +279,68 @@ def test_vertex_client_uses_injected_fake_without_network() -> None:
     assert request_config.max_output_tokens == 4096
     assert request_config.seed == 20260727
     assert request_config.thinking_config.thinking_budget == 0
+
+
+def test_vertex_client_omits_sampling_for_gemini_35() -> None:
+    response = _response()
+
+    class FakeModels:
+        def __init__(self) -> None:
+            self.calls = []
+
+        def generate_content(self, **kwargs):
+            self.calls.append(kwargs)
+            return SimpleNamespace(
+                text=json.dumps(response, ensure_ascii=False),
+                candidates=[SimpleNamespace(finish_reason="STOP")],
+                usage_metadata=None,
+                response_id="fake-response",
+                model_version="gemini-3.5-flash",
+            )
+
+    fake = SimpleNamespace(models=FakeModels(), close=lambda: None)
+    generation_config = GenerationConfig(
+        model="gemini-3.5-flash",
+        thinking_level="MEDIUM",
+        include_thoughts=False,
+    )
+    client = VertexRequirementClient(
+        project="edu-benchmark",
+        location="global",
+        system_prompt="Prompt tiếng Việt",
+        response_schema={"type": "object"},
+        generation_config=generation_config,
+        client=fake,
+    )
+    client.generate('{"grade":6}')
+    request_config = fake.models.calls[0]["config"]
+    serialized = request_config.model_dump(exclude_none=True)
+    assert "temperature" not in serialized
+    assert "top_p" not in serialized
+    assert serialized["thinking_config"]["thinking_level"] == "MEDIUM"
+    assert serialized["thinking_config"]["include_thoughts"] is False
+    assert "thinking_budget" not in serialized["thinking_config"]
+
+
+def test_gemini_35_configuration_rejects_legacy_sampling_and_budget() -> None:
+    with pytest.raises(
+        RequirementScoringError,
+        match="must omit temperature and top_p",
+    ):
+        GenerationConfig(
+            model="gemini-3.5-flash",
+            temperature=0.0,
+            thinking_level="MEDIUM",
+        )
+    with pytest.raises(
+        RequirementScoringError,
+        match="mutually exclusive",
+    ):
+        GenerationConfig(
+            model="gemini-3.5-flash",
+            thinking_budget=0,
+            thinking_level="MEDIUM",
+        )
 
 
 def test_request_hash_ignores_runtime_only_concurrency() -> None:
@@ -393,6 +463,8 @@ def test_concurrent_run_writes_successes_and_retries_after_full_sweep(
         max_output_tokens=config.max_output_tokens,
         seed=config.seed,
         thinking_budget=config.thinking_budget,
+        thinking_level=config.thinking_level,
+        include_thoughts=config.include_thoughts,
         timeout_seconds=config.timeout_seconds,
         max_retries=config.max_retries,
         max_requests=config.max_requests,
@@ -451,11 +523,151 @@ def test_calibration_prepare_validates_and_writes_no_copied_input(
     ):
         setattr(args, field, getattr(args, field).resolve())
     manifest = prepare(args)
-    calibration_dir = tmp_path / "calibration_v1"
-    assert manifest["pilot_version"] == "calibration_v1"
+    calibration_dir = tmp_path / "calibration_gemini35_medium_v1"
+    assert manifest["pilot_version"] == "calibration_gemini35_medium_v1"
     assert manifest["input"]["candidate_count"] == 36
+    assert manifest["bundle_type"] == "semantic_boundary_calibration"
+    assert manifest["generation_config"]["model"] == "gemini-3.5-flash"
+    assert manifest["generation_config"]["temperature"] is None
+    assert manifest["generation_config"]["top_p"] is None
+    assert manifest["generation_config"]["thinking_budget"] is None
+    assert manifest["generation_config"]["thinking_level"] == "MEDIUM"
+    assert manifest["generation_config"]["include_thoughts"] is False
     assert (calibration_dir / "run_manifest.json").is_file()
     assert not (calibration_dir / "pilot_input.csv").exists()
+
+
+def test_calibration_bundle_name_is_separate_and_safe(tmp_path: Path) -> None:
+    parser = build_parser()
+    args = parser.parse_args(
+        [
+            "calibration",
+            "--output-root",
+            str(tmp_path),
+            "--bundle-name",
+            "calibration_gemini35_medium_test",
+        ]
+    )
+    for field in (
+        "pool",
+        "output_root",
+        "prompt",
+        "schema",
+        "spec_manifest",
+        "calibration_input",
+        "snapshot_manifest",
+    ):
+        setattr(args, field, getattr(args, field).resolve())
+    manifest = prepare(args)
+    assert manifest["pilot_version"] == "calibration_gemini35_medium_test"
+    assert (
+        tmp_path
+        / "calibration_gemini35_medium_test"
+        / "run_manifest.json"
+    ).is_file()
+
+
+def test_full_single_run_uses_all_rows_and_publishes_integrity(
+    tmp_path: Path,
+) -> None:
+    pool_path = tmp_path / "grounding_pool.csv"
+    pool_rows = [
+        _row(grade, grade, with_history=bool(grade % 2))
+        for grade in (6, 7, 8, 9)
+    ]
+    with pool_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=GROUNDING_HEADER)
+        writer.writeheader()
+        for row in pool_rows:
+            serialized = dict(row)
+            serialized["conversation_history"] = json.dumps(
+                row["conversation_history"],
+                ensure_ascii=False,
+            )
+            writer.writerow(serialized)
+
+    parser = build_parser()
+    defaults = parser.parse_args(["full"])
+    assert defaults.concurrency == 20
+    assert defaults.max_requests == 2500
+
+    args = parser.parse_args(
+        [
+            "full",
+            "--pool",
+            str(pool_path),
+            "--output-root",
+            str(tmp_path),
+            "--bundle-name",
+            "full_test",
+            "--max-requests",
+            "4",
+            "--concurrency",
+            "2",
+            "--execute-api",
+        ]
+    )
+    for field in (
+        "pool",
+        "output_root",
+        "prompt",
+        "schema",
+        "spec_manifest",
+        "calibration_input",
+        "snapshot_manifest",
+    ):
+        setattr(args, field, getattr(args, field).resolve())
+    manifest = prepare(args)
+    bundle_dir = tmp_path / "full_test"
+    assert manifest["bundle_type"] == "full_single_run_requirement_scoring"
+    assert manifest["input"]["candidate_count"] == 4
+    assert manifest["input"]["input_role"] == "full_grounding_pool"
+    assert set(manifest["runs"]) == {"full"}
+    assert not (bundle_dir / "pilot_input.csv").exists()
+
+    prompt_to_candidate = {
+        serialize_user_prompt(build_grounding_payload(row)): row[
+            "benchmark_candidate_id"
+        ]
+        for row in pool_rows
+    }
+
+    class FakeRequirementClient:
+        def generate(self, user_prompt):
+            candidate_id = prompt_to_candidate[user_prompt]
+            return {
+                "raw_response_text": json.dumps(
+                    _response(),
+                    ensure_ascii=False,
+                ),
+                "response_id": f"response-{candidate_id}",
+                "model_version": "gemini-3.5-flash",
+                "finish_reason": "STOP",
+                "usage_metadata": {},
+            }
+
+    execute_run(args, run_id="full", client=FakeRequirementClient())
+    completed = finalize_full(args)
+    assert completed["status"] == "completed_awaiting_analysis"
+    assert completed["integrity"]["validated"] is True
+    assert completed["integrity"]["record_count"] == 4
+    assert completed["integrity"]["score_count"] == 24
+    assert completed["integrity"]["distinct_response_id_count"] == 4
+    assert len((bundle_dir / "run_full.jsonl").read_text().splitlines()) == 4
+
+
+def test_full_command_refuses_network_without_explicit_flag(
+    tmp_path: Path,
+) -> None:
+    exit_code = main(
+        [
+            "full",
+            "--output-root",
+            str(tmp_path),
+        ]
+    )
+    assert exit_code == 2
+    assert not list(tmp_path.iterdir())
 
 
 def test_specification_manifest_hashes_are_valid() -> None:

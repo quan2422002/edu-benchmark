@@ -103,16 +103,46 @@ class GenerationConfig:
     """Registered generation configuration used by both pilot runs."""
 
     model: str
-    temperature: float = 0.0
-    top_p: float = 1.0
+    temperature: float | None = None
+    top_p: float | None = None
     max_output_tokens: int = 4096
     seed: int = 20260727
-    thinking_budget: int = 0
+    thinking_budget: int | None = None
+    thinking_level: str | None = None
+    include_thoughts: bool = False
     timeout_seconds: float = 120.0
     max_retries: int = 3
     max_requests: int = 80
     concurrency: int = 8
     retry_base_delay_seconds: float = 2.0
+
+    def __post_init__(self) -> None:
+        model = self.model.strip().lower()
+        level = self.thinking_level
+        if level is not None:
+            normalized_level = level.strip().upper()
+            if normalized_level not in {"MINIMAL", "LOW", "MEDIUM", "HIGH"}:
+                raise RequirementScoringError(
+                    f"Unsupported thinking_level: {self.thinking_level}"
+                )
+            object.__setattr__(self, "thinking_level", normalized_level)
+        if self.thinking_budget is not None and self.thinking_level is not None:
+            raise RequirementScoringError(
+                "thinking_budget and thinking_level are mutually exclusive"
+            )
+        if model.startswith("gemini-3"):
+            if self.temperature is not None or self.top_p is not None:
+                raise RequirementScoringError(
+                    "Gemini 3 requests must omit temperature and top_p"
+                )
+            if self.thinking_budget is not None:
+                raise RequirementScoringError(
+                    "Gemini 3 requests must use thinking_level, not thinking_budget"
+                )
+            if self.thinking_level is None:
+                raise RequirementScoringError(
+                    "Gemini 3 requests require an explicit thinking_level"
+                )
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -122,6 +152,8 @@ class GenerationConfig:
             "max_output_tokens": self.max_output_tokens,
             "seed": self.seed,
             "thinking_budget": self.thinking_budget,
+            "thinking_level": self.thinking_level,
+            "include_thoughts": self.include_thoughts,
             "timeout_seconds": self.timeout_seconds,
             "max_retries": self.max_retries,
             "max_requests": self.max_requests,
@@ -139,6 +171,8 @@ class GenerationConfig:
             "max_output_tokens": self.max_output_tokens,
             "seed": self.seed,
             "thinking_budget": self.thinking_budget,
+            "thinking_level": self.thinking_level,
+            "include_thoughts": self.include_thoughts,
         }
 
 

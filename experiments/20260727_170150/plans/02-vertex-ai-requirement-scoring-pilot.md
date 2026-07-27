@@ -1,7 +1,7 @@
-# Plan 02 — Cài đặt pipeline và pilot chấm requirement bằng Vertex AI
+# Plan 02 — Pipeline, calibration và full run requirement-scoring
 
 Experiment: `20260727_170150`
-Trạng thái: `APPROVED — V4_CALIBRATION_IMPLEMENTED; AWAITING_USER_RUN`
+Trạng thái: `APPROVED — FULL_SINGLE_RUN_IMPLEMENTED; AWAITING_USER_RUN`
 Ngày soạn: 27/07/2026
 Phụ thuộc: Plan 01 hoàn thành và công bố specification manifest V4
 
@@ -15,12 +15,14 @@ Triển khai đúng contract đã khóa ở Plan 01:
    các lần retry dùng lại đúng payload/hash đó;
 3. validate đủ sáu `requirement_score`;
 4. dẫn xuất tập nguyên tắc bắt buộc/thay thế bằng code;
-5. chạy hai run lặp độc lập trên bộ calibration 36 ca trước khi tạo
-   holdout pilot mới;
-6. tính metric, tạo review queue bằng code và tạo packet UET review.
+5. giữ hai calibration bundle làm bằng chứng chẩn đoán;
+6. chạy đúng một run trên toàn bộ 2.028 candidate bằng cấu hình Gemini 3.5
+   Flash đã được UET chốt;
+7. lưu output tăng dần, hỗ trợ resume/retry và bàn giao cho Plan 03 phân
+   tích bằng code.
 
-Plan này không xây rubric cuối, không sinh tutor response và không chạy đủ
-2.028 candidate.
+Plan này không xây rubric cuối và không sinh tutor response. Full-run score
+vẫn là output model tạm thời, không phải nhãn HNMU xác nhận.
 
 ## 2. Điều kiện mở plan
 
@@ -59,7 +61,8 @@ score cùng rationale/evidence. Code phải thực hiện:
 - validate response và chuẩn hóa output;
 - áp threshold 4 và lọc tập bắt buộc/thay thế;
 - phát hiện toàn bộ điều kiện review;
-- so sánh run A/B, tính metric và coverage;
+- so sánh run A/B cho calibration; full run một lần được phân tích riêng
+  ở Plan 03;
 - retry/resume, chống trùng và publish fail-closed.
 
 Không gọi thêm model hoặc agent để làm các phép lọc, so sánh, đếm, kiểm
@@ -71,8 +74,8 @@ Run manifest ghi:
 
 - chế độ Vertex, API version, project ID, location và model ID;
 - model version trả về;
-- `temperature`, `top_p`, `max_output_tokens`, `seed` và
-  `thinking_budget` nếu hỗ trợ;
+- các tham số sinh được gửi thực tế, các tham số chủ động bỏ khỏi request,
+  `max_output_tokens`, `seed` và cấu hình thinking phù hợp với họ model;
 - response MIME `application/json` và response schema hash;
 - prompt, input, code commit và config hash;
 - timeout, retry policy, concurrency và quota ceiling;
@@ -84,23 +87,48 @@ Runner không đọc API key. Xác thực dùng Application Default Credentials
 (ADC) đã được thiết lập trên máy; không ghi credential/token vào source,
 manifest, raw response, log hoặc handoff.
 
-### 3.2.1. Cấu hình pilot đã được UET khóa
+### 3.2.1. Cấu hình so sánh Gemini 3.5 đã được UET khóa
 
-Pilot hiện dùng:
+Bundle `calibration_v1` đã chạy bằng cấu hình nền:
 
 - model: `gemini-2.5-flash`;
-- `temperature = 0.0`;
-- `top_p = 1.0`;
-- `max_output_tokens = 4096`;
-- `seed = 20260727`;
-- `thinking_budget = 0`.
+- `temperature = 0.0`, `top_p = 1.0`;
+- `thinking_budget = 0`;
+- `max_output_tokens = 4096`, `seed = 20260727`.
 
-Mục tiêu của cấu hình này là ưu tiên tính ổn định của phép chấm. Giá trị
-`thinking_budget = 0` tắt thinking của Gemini 2.5 Flash; runner phải gửi
-giá trị này tường minh và ghi nó vào request hash cùng run manifest. Hai
-run A/B dùng cùng cấu hình và cùng seed để đo khả năng lặp lại của đúng
-một phép chấm đã khóa. Việc dùng model hoặc cấu hình khác cần được UET
-duyệt và chuẩn bị lại manifest trước khi gọi API.
+Kết quả nền đạt 32/36 ca trong expected range tạm thời, nhưng chưa qua
+toàn bộ gate ngữ nghĩa. Bundle này là provenance bất biến.
+
+Lần so sánh kế tiếp chỉ thay model và cấu hình sinh/thinking:
+
+- model: `gemini-3.5-flash`;
+- không truyền `temperature`, `top_p` hoặc `top_k`;
+- `thinking_level = MEDIUM`;
+- `include_thoughts = false`;
+- không truyền `thinking_budget`;
+- giữ `max_output_tokens = 4096`, `seed = 20260727`.
+
+System prompt V4, schema V2, 36 ca calibration, expected range, semantic
+lint và các ngưỡng đều giữ nguyên. Việc bỏ các tham số sampling và
+`thinking_budget` là chủ đích theo hợp đồng Gemini 3.x; giá trị `null`
+được ghi trong manifest/request hash để phân biệt rõ “không gửi” với
+“gửi bằng 0”. Runner đóng lỗi nếu cấu hình Gemini 3.x chứa các tham số
+legacy này hoặc thiếu `thinking_level`.
+
+Ngày 28/07/2026, UET quyết định dừng hiệu chỉnh calibration và dùng đúng
+cấu hình Gemini 3.5 trên cho full run. Quyết định vận hành full run:
+
+- một request logic cho mỗi candidate, tổng 2.028 candidate;
+- đúng một run, ID `full`;
+- `concurrency = 20`;
+- `max_retries = 3`;
+- `max_requests = 2500`, đủ một lượt hoàn chỉnh và tối đa 472 request
+  retry trong cùng cost guard;
+- output bundle `full_gemini35_medium_v1`;
+- không dùng run A hoặc B của calibration làm input cho full run.
+
+Đây là quyết định UET chấp nhận giới hạn về độ lặp lại đã quan sát trong
+calibration; không được trình bày full-run score như ground truth.
 
 ### 3.3. Xác thực và project
 
@@ -118,8 +146,9 @@ active.
 ### 3.4. Raw và normalized output
 
 - Raw response lưu append-only theo request hash.
-- Mỗi response hợp lệ được ghi ngay vào `run_a.jsonl` hoặc `run_b.jsonl`,
-  `flush` và `fsync` trước khi runner xử lý response kế tiếp.
+- Mỗi response hợp lệ được ghi ngay vào `run_a.jsonl`, `run_b.jsonl` hoặc
+  `run_full.jsonl`, `flush` và `fsync` trước khi runner xử lý response kế
+  tiếp.
 - Mỗi record giữ trường `user_prompt` là đúng chuỗi JSON đã truyền vào
   `contents`; không tạo thêm file request trùng lặp.
 - Normalized table chỉ publish khi ID/schema/score hợp lệ.
@@ -127,7 +156,7 @@ active.
   metadata khi API cung cấp.
 - Retry không được tạo hai normalized row cho cùng request.
 
-## 4. Pilot
+## 4. Calibration và full run
 
 ### Bước 0 — Khóa input và manifest
 
@@ -182,7 +211,7 @@ là bất biến.
 - Run B không được đọc output A.
 - Không tạo comparison trước khi cả hai bundle đóng và qua validator.
 - Trong mỗi run, `ThreadPoolExecutor` gửi đồng thời tối đa `concurrency`
-  request; mặc định là 8.
+  request; mặc định active là 20.
 - Chỉ thread điều phối được ghi file. Worker chỉ gọi Vertex và trả kết quả,
   nên không có hai thread cùng ghi JSONL.
 - Terminal hiển thị progress bar riêng cho lượt quét đầu và từng lượt
@@ -194,10 +223,11 @@ Run A và B là hai lần chạy lặp độc lập để đo độ ổn định
 chấm một lượt. Chúng không phải hai vòng gán nhãn và output A không được
 dùng làm input cho B.
 
-### Bước 4A — Calibration V4 trước holdout
+### Bước 4A — Calibration V4 đã đóng
 
-Run active kế tiếp không dùng lại 40 candidate của V1–V3. Runner đọc trực
-tiếp `calibration_cases_v1.csv`, gồm 36 ca:
+Run Gemini 2.5 Flash tại `calibration_v1` đã hoàn tất và được giữ nguyên.
+Run so sánh Gemini 3.5 Flash đọc lại đúng `calibration_cases_v1.csv`, gồm
+36 ca:
 
 - ba positive và ba near-miss cho mỗi nguyên tắc;
 - positive có expected range 4–5;
@@ -205,13 +235,32 @@ tiếp `calibration_cases_v1.csv`, gồm 36 ca:
 - mỗi run vẫn chấm đủ cả sáu nguyên tắc; expected range chỉ áp vào nguyên
   tắc trọng tâm của ca.
 
-Code chạy hai lần A/B, kiểm expected range, positive support, semantic
-lint và các ngưỡng ổn định. Expected range hiện là giả thuyết tạm thời,
-chờ UET review sau run; không được gọi là nhãn chuyên gia HNMU.
+Code chạy hai lần A/B trong bundle riêng
+`calibration_gemini35_medium_v1`, kiểm expected range, positive support,
+semantic lint và các ngưỡng ổn định. Expected range hiện là giả thuyết
+tạm thời, chờ UET review sau run; không được gọi là nhãn chuyên gia HNMU.
 
-Chỉ sau khi calibration đạt hoặc có disposition rõ cho ca chưa đạt mới
-tạo một holdout 40 candidate mới để kiểm tra khả năng khái quát. Không
-dùng kết quả V1–V3 làm expected label của holdout.
+Calibration Gemini 3.5 đạt 34/36 expected range nhưng không đạt các gate
+độ lặp lại. UET đã review giới hạn này và quyết định không chạy thêm
+holdout; chuyển sang full run một lần để có dữ liệu cho phân tích mô tả.
+
+### Bước 4B — Full run một lần
+
+Lệnh `full`:
+
+1. đọc trực tiếp toàn bộ grounding pool, không sampling và không tạo bản
+   copy `pilot_input.csv`;
+2. khóa thứ tự 2.028 candidate và hash input;
+3. tạo manifest chỉ có một run `full`;
+4. gửi tối đa 20 request đồng thời;
+5. ghi từng response thành công vào `run_full.jsonl`;
+6. retry candidate lỗi sau khi lượt quét hoàn chỉnh kết thúc;
+7. validate đủ 2.028 record và 12.168 principle score;
+8. chuyển trạng thái thành `completed_awaiting_analysis`.
+
+Full runner chỉ xuất `run_full.jsonl` và `run_manifest.json`. Thống kê,
+semantic review queue và báo cáo thuộc Plan 03, tránh trộn runtime với
+diễn giải hậu chạy.
 
 ### Bước 4.1 — Retry sau toàn bộ lượt quét
 
@@ -249,7 +298,7 @@ Code còn chạy semantic lint nhưng không tự sửa score:
 - Feedback điểm cao chỉ là xác nhận/khen, không có hướng cải thiện;
 - Questioning điểm cao không nêu sự phụ thuộc vào câu trả lời học sinh.
 
-### Bước 6 — So sánh và UET review
+### Bước 6 — So sánh calibration và UET review
 
 Code tính:
 
@@ -272,13 +321,16 @@ UET review:
 
 ### Bước 7 — Quyết định phương pháp
 
-Nếu lỗi thuộc implementation/config, sửa trong Plan 02 và rerun đúng
-version prompt. Nếu lỗi thuộc định nghĩa/anchor/prompt, quay lại Plan 01,
-tăng version và chạy lại toàn bộ pilot; không trộn hai version.
+Calibration được đóng ở trạng thái chẩn đoán. UET chốt full run một lần
+bằng Gemini 3.5 Flash với cấu hình hiện tại, đồng thời chấp nhận rằng:
 
-Chỉ sau khi Plan 02 đạt gate mới được viết plan chạy đủ 2.028 candidate.
+- không có agreement A/B cho full output;
+- score là đề xuất của model;
+- độ ổn định calibration không được suy rộng thành độ tin cậy của toàn
+  bộ dữ liệu;
+- Plan 03 phải phân tích và tạo review queue trước khi xây rubric.
 
-## 5. Ngưỡng phải đăng ký trước run
+## 5. Ngưỡng calibration đã đăng ký
 
 Các ngưỡng dưới đây đã được UET phê duyệt trước run:
 
@@ -293,18 +345,24 @@ Các ngưỡng dưới đây đã được UET phê duyệt trước run:
 Weighted kappa được báo nhưng chưa đặt ngưỡng trước khi biết phân bố các
 mức; không diễn giải kappa khi nguyên tắc gần như không có biến thiên.
 
-## 6. Review queue bắt buộc
+Các ngưỡng trên chỉ mô tả calibration hai run. Chúng không áp vào full
+run một lần vì full run không có cặp A/B để tính agreement.
+
+## 6. Review queue
 
 - không có nguyên tắc đạt 4;
 - hơn ba nguyên tắc đạt 4;
-- hai run nằm khác phía ngưỡng 4;
-- score thay đổi từ hai mức trở lên;
+- hai run nằm khác phía ngưỡng 4 và score thay đổi từ hai mức trở lên chỉ
+  áp cho calibration;
 - rationale không khớp anchor;
 - evidence nhắc nội dung không có trong grounding payload;
 - output chứa nhãn trước/sau, `reference_effect` hoặc evidence bị tách theo
   hai vòng;
 - tổ hợp nguyên tắc có vẻ là lựa chọn thay thế;
 - lỗi API, safety block, output thiếu/trùng hoặc không parse được.
+
+Full-run review queue được tạo ở Plan 03 bằng code, không được runner gọi
+model lần hai để tự sửa hoặc phân xử.
 
 ## 7. Vị trí code, prompt và kết quả
 
@@ -347,12 +405,21 @@ experiments/20260727_170150/outputs/principle_requirement_scoring/
 ├── scoring_schema_v2.json
 ├── specification_manifest_v4.json
 ├── calibration_cases_v1.csv
-└── calibration_v1/
-    ├── run_a.jsonl
-    ├── run_b.jsonl
-    ├── review_queue.csv
-    ├── run_manifest.json
-    └── calibration_summary.md
+├── calibration_v1/                    # provenance Gemini 2.5 Flash
+│   ├── run_a.jsonl
+│   ├── run_b.jsonl
+│   ├── review_queue.csv
+│   ├── run_manifest.json
+│   └── calibration_summary.md
+├── calibration_gemini35_medium_v1/    # provenance Gemini 3.5 calibration
+│   ├── run_a.jsonl
+│   ├── run_b.jsonl
+│   ├── review_queue.csv
+│   ├── run_manifest.json
+│   └── calibration_summary.md
+└── full_gemini35_medium_v1/           # active full run một lần
+    ├── run_full.jsonl
+    └── run_manifest.json
 ```
 
 Mỗi `run_*.jsonl` giữ cùng lúc metadata request, user prompt chính xác,
@@ -391,7 +458,8 @@ Không ghi raw response, normalized score, metric hoặc review queue vào
 ## 8. Fail-closed
 
 - Builder ghi staging, validate rồi mới publish input.
-- Runner không ghi đè raw response đã tồn tại.
+- Runner không ghi đè raw response đã tồn tại; `--bundle-name` chọn một
+  thư mục con riêng và từ chối tên có thành phần đường dẫn.
 - Runner chỉ dùng ADC, project/location đã khóa và không đọc `.env`.
 - Mỗi worker thread có một Google Gen AI client riêng; JSONL chỉ do thread
   điều phối ghi append-only, `flush` và `fsync`.
@@ -411,7 +479,8 @@ Không ghi raw response, normalized score, metric hoặc review queue vào
 
 ## 9. Quyền quyết định
 
-- UET duyệt model/config/quota/ngưỡng và phân xử pilot.
+- UET đã duyệt model/config, full-run concurrency và cost guard; UET
+  review kết quả ở Plan 03.
 - Plan 02 không được tự sửa semantic artifact Plan 01.
 - Vertex model chỉ đề xuất score/rationale; không ghi `confirmed`.
 - HNMU xác nhận sư phạm ở gói tích hợp sau khi rubric và ví dụ đã có.
@@ -433,10 +502,11 @@ Plan 02 chỉ `COMPLETED` khi:
 6. ADC, project/location được đăng ký; secret không xuất hiện trong
    repository/log;
 7. model/config/concurrency/retry/quota/ngưỡng được đăng ký trước run;
-8. hai run calibration 36 ca hoàn tất độc lập và qua validator;
-9. threshold, tập nguyên tắc, review queue và metric đều do code tính;
-10. mọi review bắt buộc có disposition UET;
-11. bundle calibration tuân thủ cây artifact tinh gọn ở Mục 7.3, không có bản
-    sao hoặc thư mục debug thừa;
-12. đạt ngưỡng hoặc có quyết định sửa/rerun đúng version;
+   Gemini 3.x không gửi sampling legacy và dùng duy nhất
+   `thinking_level`;
+8. hai calibration bundle được giữ nguyên làm provenance chẩn đoán;
+9. full runner đọc đủ 2.028 candidate và chỉ tạo một run `full`;
+10. output có đúng 2.028 record, 12.168 score, không duplicate/failure;
+11. bundle full chỉ chứa run JSONL và manifest trước Plan 03;
+12. manifest ghi rõ single-run limitation và trạng thái chờ phân tích;
 13. paper update, coordination và handoff đầy đủ.
