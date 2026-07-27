@@ -4,9 +4,10 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept (thử nghiệm chứng minh tính khả thi) nhằm xây dựng benchmark gia sư AI môn Tin học THCS. Experiment `20260709_155523` đã kết thúc vòng audit hội thoại thô đầu tiên cho dữ liệu lớp 6–9; công việc đang tiếp tục tại experiment `20260722_000940` để triển khai phase 2. Plans 01–02 đã hoàn thành: 665 hội thoại `pass` tạo thành 2.028 ứng viên sơ bộ có provenance theo family và cơ chế công bố đóng khi lỗi. Plan 03 Workstreams A–B đã hoàn tất ở mức UET phê duyệt tạm thời. Đặc tả hiện hành dùng một nhiệm vụ benchmark là sinh phản hồi tiếp theo của gia sư, sáu nguyên tắc KMP làm tập nhãn không thứ tự cấp ứng viên, cùng sáu năng lực gia sư làm nền cho rubric chất lượng. Tập nhãn không có giới hạn cứng ở hai; candidate có hơn ba nguyên tắc bắt buộc UET review. Nhánh tám nhiệm vụ ứng viên, 20 nhãn thử và packet C1 cũ chỉ còn tại `outputs/benchmark_specification/legacy/eight_task_candidate_branch/`; plan và validator hiện hành không được đọc nhánh này. Số nhãn nguyên tắc chính thức hiện là 0. Pilot A/B 40 mẫu theo schema chính–phụ cũ không đạt C0b và nay chỉ là bằng chứng chẩn đoán. Phương pháp v3 đã hoàn tất codebook, skill, schema quan hệ, validator, ngưỡng và lô pilot 40 phân tầng 10 ứng viên mỗi lớp; hai input đều loại `gold_response`. Forward test v3 đạt kiểm tra cấu trúc nhưng chỉ khớp 3/5 tập nhãn kỳ vọng ở hai ca biên `FT-C02` và `FT-C04`, nên C0b v3 chưa được mở và đang chờ UET phân xử. HNMU sẽ rà soát gói tích hợp nguyên tắc–năng lực–rubric–ví dụ sau Workstream D. Audit chất lượng ứng viên, lọc cuối và pipeline đánh giá vẫn là công việc có cổng ở các plan sau. Kế hoạch bản thảo KSE 2026 được triển khai xuyên suốt trước hạn 31/07/2026. Toàn bộ đặc tả benchmark và tập dữ liệu sản xuất vẫn ở trạng thái tạm thời.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment `20260722_000940` đã chuyển 665 hội thoại `pass` thành 2.028 candidate và xây nền tảng sáu năng lực–sáu nguyên tắc. Experiment active `20260727_170150` đã hoàn thành Plan 01: khóa đặc tả, anchor, schema và system prompt tiếng Việt cho `requirement_score` 1–5 trong một lượt grounding có `gold_answer` nhưng không có `gold_response`. Plan 02 đã cài pipeline Vertex AI chuẩn dùng ADC cho project `edu-benchmark`; runner hỗ trợ đa luồng có giới hạn, progress bar theo từng lượt quét, ghi từng kết quả hợp lệ ngay vào JSONL và chỉ retry mẫu lỗi sau khi chạy hết lượt quét. Cấu hình đã khóa là `gemini-2.5-flash`, `thinking_budget=0`, `temperature=0`, `top_p=1`, `max_output_tokens=4096` và seed cố định. Sau V3, contract V4 siết lập luận điểm 4–5, ranh giới Feedback/Questioning và bổ sung semantic lint bằng code. Run kế tiếp là hai lần chấm 36 ca calibration cân bằng positive/near-miss tại `calibration_v1`; Vertex AI chưa được gọi cho V4. Các pilot V1–V3 được giữ làm provenance. Model chỉ chấm ngữ nghĩa, còn join ID, threshold, validation, lint, lọc tập nguyên tắc và metric đều do code thực hiện. HNMU sẽ xác nhận nguyên tắc, năng lực, anchor và rubric trong gói tích hợp; toàn bộ specification và dataset vẫn ở trạng thái tạm thời.
 
-Active planning roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
+Active planning roadmap: [experiments/20260727_170150/roadmap.md](experiments/20260727_170150/roadmap.md)
+Previous phase-2 construction roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
 Previous raw-dialogue audit roadmap: [experiments/20260709_155523/roadmap.md](experiments/20260709_155523/roadmap.md)
 Previous design roadmap: [experiments/20260705_215045/roadmap.md](experiments/20260705_215045/roadmap.md)
 Historical baseline roadmap: [experiments/20260620_115236/roadmap.md](experiments/20260620_115236/roadmap.md)
@@ -24,6 +25,11 @@ Approved plans:
 - [Experiment 20260709 Plan 03.4–03.5 — Fragment and retrieval from Nguyen OCR Markdown](experiments/20260709_155523/plans/03-phase4-5-fragment-and-retrieval-from-nguyen-ocr.md)
 - [Experiment 20260709 Plan 04 — HNMU dialogue intake, coverage, consistency, and dedup audit](experiments/20260709_155523/plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md)
 - [Experiment 20260709 Plan 07 — HNMU dialogue auditor specialist](experiments/20260709_155523/plans/07-hnmu-dialogue-auditor-specialist.md)
+
+Current plans:
+
+- [Experiment 20260727 Plan 01 — Principle requirement-score specification](experiments/20260727_170150/plans/01-principle-requirement-score-specification.md)
+- [Experiment 20260727 Plan 02 — Vertex AI requirement-scoring pilot](experiments/20260727_170150/plans/02-vertex-ai-requirement-scoring-pilot.md)
 
 ## People and decision authority
 
@@ -45,7 +51,7 @@ Approved plans:
 - `benchmark-specification-designer`: benchmark task definitions, rubrics, serious-error catalogs, and provenance matrices grounded in research and learning resources.
 - `teacher-collaboration-designer`: teacher-facing author/reviewer/adjudicator workflows, checklists, examples, and handoffs.
 - `hnmu-dialogue-auditor`: raw HNMU dialogue audit specialist for checklist-level consistency, SGK/SGV evidence, confidence, and review-queue suggestions before benchmark conversion.
-- `pedagogical-principle-annotator`: áp dụng codebook sáu nguyên tắc KMP theo hai lượt context/grounding, tạo tập nhãn đề xuất và hàng đợi UET; không được đọc `gold_response`, sửa codebook hoặc xác nhận nhãn.
+- `pedagogical-principle-annotator`: specialist thử nghiệm của phương pháp Plan 03 cũ; các run đã trở thành diagnostic legacy. Experiment active dùng Vertex AI API trực tiếp cho `requirement_score`, không dùng specialist này để chấm từng candidate.
 
 Cost-control defaults are pinned in Codex adapters: `research-methodologist`, `learning-resource-curator`, `hnmu-dialogue-auditor`, and `pedagogical-principle-annotator` use `gpt-5.4-mini` with reasoning `medium`; `benchmark-specification-designer` uses `gpt-5.4-mini` with reasoning `high` for synthesis. Do not spawn multiple instances of the same specialist unless the project lead approves the instance count, rationale, model, reasoning effort, allowed writes, expected output, and merge plan.
 
@@ -78,6 +84,7 @@ agents/                 Canonical specialist skills, references, and validators
 experiments/            Modular plans, coordination records, and reports
 shared/                 Shared raw data and learning resources reused across experiments
 src/edu_benchmark/      Shared project code for data I/O, audit, conversion, resources, and quality checks
+src/vertex_ai_call/     Vertex AI pilot runner for six-principle requirement scoring
 document/               User-provided project source documents
 kse_submit_manuscript/  KSE 2026 writing plan, LaTeX source, evidence registry, snapshots, and releases
 tests/agents/           Agent and documentation tests

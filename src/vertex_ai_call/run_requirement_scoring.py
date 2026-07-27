@@ -1,0 +1,921 @@
+"""CLI for preparing, running, and finalizing the Vertex requirement pilot."""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import importlib.metadata
+import json
+import os
+import random
+import sys
+import time
+from concurrent.futures import Future, ThreadPoolExecutor, as_completed
+from pathlib import Path
+from typing import Any, Mapping, Sequence
+
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from src.vertex_ai_call.requirement_scoring import (  # noqa: E402
+    GenerationConfig,
+    RequirementScoringError,
+    atomic_write_json,
+    atomic_write_text,
+    build_grounding_payload,
+    build_calibration_summary,
+    build_pilot_summary,
+    build_request_hash,
+    canonical_json_hash,
+    compare_runs,
+    derive_principle_sets,
+    load_grounding_pool,
+    load_calibration_cases,
+    load_pilot_input,
+    load_run_records,
+    parse_and_validate_response,
+    serialize_user_prompt,
+    select_pilot,
+    sha256_file,
+    utc_now,
+    validate_run_records,
+    validate_snapshot_manifest,
+    validate_specification_manifest,
+    write_pilot_input,
+    write_review_queue,
+)
+from src.vertex_ai_call.vertex_client import VertexRequirementClient  # noqa: E402
+
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
+DEFAULT_POOL = (
+    DEFAULT_EXPERIMENT
+    / "inherited_resources/from_20260722_000940/benchmark_specification/"
+    "candidate_grounding/candidate_principle_grounding_pool.csv"
+)
+DEFAULT_OUTPUT_ROOT = (
+    DEFAULT_EXPERIMENT / "outputs/principle_requirement_scoring"
+)
+DEFAULT_PROMPT = (
+    REPOSITORY_ROOT
+    / "shared/prompts/benchmark_candidate_task_assigning/system_prompt_v4.md"
+)
+DEFAULT_SCHEMA = DEFAULT_OUTPUT_ROOT / "scoring_schema_v2.json"
+DEFAULT_SPEC_MANIFEST = DEFAULT_OUTPUT_ROOT / "specification_manifest_v4.json"
+DEFAULT_CALIBRATION_INPUT = DEFAULT_OUTPUT_ROOT / "calibration_cases_v1.csv"
+DEFAULT_SNAPSHOT_MANIFEST = (
+    DEFAULT_EXPERIMENT / "inherited_resources/snapshot_manifest.csv"
+)
+DEFAULT_PROJECT = "edu-benchmark"
+DEFAULT_LOCATION = "global"
+
+
+class _ProgressBar:
+    """Dependency-free terminal progress for one request sweep."""
+
+    def __init__(
+        self,
+        *,
+        label: str,
+        total: int,
+        overall_total: int,
+        request_ceiling: int,
+        enabled: bool,
+        stream: Any = None,
+        width: int = 24,
+    ) -> None:
+        self.label = label
+        self.total = total
+        self.overall_total = overall_total
+        self.request_ceiling = request_ceiling
+        self.enabled = enabled
+        self.stream = stream or sys.stderr
+        self.width = width
+        self.dynamic = bool(
+            getattr(self.stream, "isatty", lambda: False)()
+        )
+        self._last_non_tty_processed = -1
+
+    def _line(
+        self,
+        *,
+        processed: int,
+        completed: int,
+        failed: int,
+        requests: int,
+    ) -> str:
+        fraction = processed / self.total if self.total else 1.0
+        filled = min(self.width, int(self.width * fraction))
+        bar = "#" * filled + "-" * (self.width - filled)
+        return (
+            f"{self.label} [{bar}] {processed}/{self.total}"
+            f" | completed {completed}/{self.overall_total}"
+            f" | failed {failed}"
+            f" | requests {requests}/{self.request_ceiling}"
+        )
+
+    def update(
+        self,
+        *,
+        processed: int,
+        completed: int,
+        failed: int,
+        requests: int,
+    ) -> None:
+        if not self.enabled:
+            return
+        line = self._line(
+            processed=processed,
+            completed=completed,
+            failed=failed,
+            requests=requests,
+        )
+        if self.dynamic:
+            self.stream.write(f"\r{line}\033[K")
+            self.stream.flush()
+            return
+        should_print = (
+            processed == 0
+            or processed == self.total
+            or processed - self._last_non_tty_processed >= 5
+        )
+        if should_print:
+            self.stream.write(line + "\n")
+            self.stream.flush()
+            self._last_non_tty_processed = processed
+
+    def finish(
+        self,
+        *,
+        processed: int,
+        completed: int,
+        failed: int,
+        requests: int,
+    ) -> None:
+        if not self.enabled:
+            return
+        if self.dynamic:
+            self.update(
+                processed=processed,
+                completed=completed,
+                failed=failed,
+                requests=requests,
+            )
+            self.stream.write("\n")
+            self.stream.flush()
+        elif self._last_non_tty_processed != processed:
+            self.update(
+                processed=processed,
+                completed=completed,
+                failed=failed,
+                requests=requests,
+            )
+
+
+def _load_schema(path: Path) -> dict[str, Any]:
+    bundle = json.loads(path.read_text(encoding="utf-8"))
+    response_schema = bundle.get("$defs", {}).get("scoring_response")
+    if not isinstance(response_schema, dict):
+        raise RequirementScoringError(
+            "Scoring schema does not define $defs.scoring_response"
+        )
+    principle_score = bundle.get("$defs", {}).get("principle_score")
+    if not isinstance(principle_score, dict):
+        raise RequirementScoringError(
+            "Scoring schema does not define $defs.principle_score"
+        )
+    resolved = copy.deepcopy(response_schema)
+    resolved["properties"]["principle_scores"]["items"] = copy.deepcopy(
+        principle_score
+    )
+    return resolved
+
+
+def _config_from_args(args: argparse.Namespace) -> GenerationConfig:
+    return GenerationConfig(
+        model=args.model,
+        temperature=args.temperature,
+        top_p=args.top_p,
+        max_output_tokens=args.max_output_tokens,
+        seed=args.seed,
+        thinking_budget=args.thinking_budget,
+        timeout_seconds=args.timeout_seconds,
+        max_retries=args.max_retries,
+        max_requests=args.max_requests,
+        concurrency=args.concurrency,
+        retry_base_delay_seconds=args.retry_base_delay_seconds,
+    )
+
+
+def _is_calibration(args: argparse.Namespace) -> bool:
+    return getattr(args, "command", "pilot") == "calibration"
+
+
+def _pilot_directory(args: argparse.Namespace) -> Path:
+    if _is_calibration(args):
+        return args.output_root / "calibration_v1"
+    return args.output_root / "pilot_v4"
+
+
+def _load_scoring_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
+    if _is_calibration(args):
+        return load_calibration_cases(args.calibration_input)
+    return load_pilot_input(_pilot_directory(args) / "pilot_input.csv")
+
+
+def _manifest_path(path: Path) -> str:
+    """Use repository-relative paths when possible."""
+
+    try:
+        return str(path.relative_to(REPOSITORY_ROOT))
+    except ValueError:
+        return str(path)
+
+
+def _planned_manifest(
+    *,
+    args: argparse.Namespace,
+    pilot_rows: Sequence[Mapping[str, Any]],
+    generation_config: GenerationConfig,
+) -> dict[str, Any]:
+    ordered_ids = [row["benchmark_candidate_id"] for row in pilot_rows]
+    prompt_hash = sha256_file(args.prompt)
+    schema_hash = sha256_file(args.schema)
+    code_paths = (
+        REPOSITORY_ROOT / "src/vertex_ai_call/requirement_scoring.py",
+        REPOSITORY_ROOT / "src/vertex_ai_call/vertex_client.py",
+        REPOSITORY_ROOT / "src/vertex_ai_call/run_requirement_scoring.py",
+    )
+    return {
+        "experiment_id": "20260727_170150",
+        "pilot_version": (
+            "calibration_v1" if _is_calibration(args) else "v4"
+        ),
+        "bundle_type": (
+            "semantic_boundary_calibration"
+            if _is_calibration(args)
+            else "stratified_repeatability_pilot"
+        ),
+        "status": "prepared",
+        "prompt_language": "vi",
+        "created_at": utc_now(),
+        "updated_at": utc_now(),
+        "input": {
+            "grounding_pool_path": _manifest_path(args.pool),
+            "grounding_pool_sha256": sha256_file(args.pool),
+            "pilot_input_path": _manifest_path(
+                args.calibration_input
+                if _is_calibration(args)
+                else _pilot_directory(args) / "pilot_input.csv"
+            ),
+            "pilot_input_sha256": None,
+            "ordered_candidate_ids_sha256": canonical_json_hash(ordered_ids),
+            "candidate_count": len(pilot_rows),
+            "family_count": len({row["sample_id"] for row in pilot_rows}),
+            "grade_counts": {
+                str(grade): sum(row["grade"] == grade for row in pilot_rows)
+                for grade in (6, 7, 8, 9)
+            },
+        },
+        "specification": {
+            "manifest_path": _manifest_path(args.spec_manifest),
+            "manifest_sha256": sha256_file(args.spec_manifest),
+            "prompt_path": _manifest_path(args.prompt),
+            "prompt_sha256": prompt_hash,
+            "schema_path": _manifest_path(args.schema),
+            "schema_sha256": schema_hash,
+        },
+        "generation_config": generation_config.as_dict(),
+        "generation_config_sha256": canonical_json_hash(generation_config.as_dict()),
+        "provider": {
+            "name": "Vertex AI",
+            "mode": "standard_adc",
+            "api_version": "v1",
+            "project": args.project,
+            "location": args.location,
+            "model": generation_config.model,
+            "sdk_package": "google-genai",
+            "sdk_version": importlib.metadata.version("google-genai"),
+            "response_mime_type": "application/json",
+        },
+        "code": {
+            "git_commit": None,
+            "git_commit_note": (
+                "Project lead will commit manually after plans and roadmap are final"
+            ),
+            "files": [
+                {
+                    "path": str(path.relative_to(REPOSITORY_ROOT)),
+                    "sha256": sha256_file(path),
+                }
+                for path in code_paths
+            ],
+        },
+        "runtime": {
+            "concurrency": generation_config.concurrency,
+            "retry_strategy": "retry_failed_candidates_after_each_full_sweep",
+            "retry_count": generation_config.max_retries,
+            "retry_base_delay_seconds": (
+                generation_config.retry_base_delay_seconds
+            ),
+            "timeout_seconds": generation_config.timeout_seconds,
+            "monetary_budget_usd": None,
+            "cost_guard": "request_ceiling",
+        },
+        "request_ceiling": generation_config.max_requests,
+        "api_request_attempt_count": 0,
+        "runs": {
+            "a": {
+                "status": "pending",
+                "completed_count": 0,
+                "attempts_by_candidate": {},
+                "failed_candidate_ids": [],
+            },
+            "b": {
+                "status": "pending",
+                "completed_count": 0,
+                "attempts_by_candidate": {},
+                "failed_candidate_ids": [],
+            },
+        },
+        "metrics": None,
+        "review_queue_count": None,
+        "errors": [],
+    }
+
+
+def prepare(args: argparse.Namespace) -> dict[str, Any]:
+    validate_snapshot_manifest(args.snapshot_manifest)
+    validate_specification_manifest(args.spec_manifest, REPOSITORY_ROOT)
+    rows = load_grounding_pool(args.pool)
+    pilot_rows = (
+        load_calibration_cases(args.calibration_input)
+        if _is_calibration(args)
+        else select_pilot(rows, per_grade=10, seed=args.selection_seed)
+    )
+    pilot_dir = _pilot_directory(args)
+    pilot_input = pilot_dir / "pilot_input.csv"
+    manifest_path = pilot_dir / "run_manifest.json"
+    generation_config = _config_from_args(args)
+    minimum_requests = len(pilot_rows) * 2
+    if generation_config.max_requests < minimum_requests:
+        raise RequirementScoringError(
+            f"max_requests must be at least {minimum_requests} for two "
+            "complete runs"
+        )
+    if generation_config.concurrency < 1:
+        raise RequirementScoringError("concurrency must be at least 1")
+    if generation_config.max_retries < 0:
+        raise RequirementScoringError("max_retries must not be negative")
+    if generation_config.retry_base_delay_seconds < 0:
+        raise RequirementScoringError(
+            "retry_base_delay_seconds must not be negative"
+        )
+    planned = _planned_manifest(
+        args=args,
+        pilot_rows=pilot_rows,
+        generation_config=generation_config,
+    )
+    if manifest_path.exists():
+        existing = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if existing.get("status") not in {"prepared", "running", "failed"}:
+            raise RequirementScoringError(
+                "Active pilot already exists; refusing to overwrite it"
+            )
+        if (
+            existing.get("generation_config_sha256")
+            != planned["generation_config_sha256"]
+            or existing.get("input", {}).get("ordered_candidate_ids_sha256")
+            != planned["input"]["ordered_candidate_ids_sha256"]
+            or existing.get("provider") != planned["provider"]
+            or existing.get("specification") != planned["specification"]
+        ):
+            raise RequirementScoringError(
+                "Existing pilot uses a different input/config; use a new pilot version"
+            )
+        return existing
+    if _is_calibration(args):
+        planned["input"]["pilot_input_sha256"] = sha256_file(
+            args.calibration_input
+        )
+    else:
+        write_pilot_input(pilot_input, pilot_rows)
+        planned["input"]["pilot_input_sha256"] = sha256_file(pilot_input)
+    atomic_write_json(manifest_path, planned)
+    return planned
+
+
+def _append_jsonl(path: Path, record: Mapping[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    line = json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n"
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(line)
+        handle.flush()
+        os.fsync(handle.fileno())
+
+
+def _completed_records(path: Path, run_id: str) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+    records = load_run_records(path)
+    completed: dict[str, dict[str, Any]] = {}
+    for record in records:
+        if record.get("run_id") != run_id:
+            raise RequirementScoringError(f"{path} contains another run_id")
+        candidate_id = record.get("benchmark_candidate_id")
+        if candidate_id in completed:
+            raise RequirementScoringError(f"{path} contains duplicate records")
+        completed[str(candidate_id)] = record
+    return completed
+
+
+def _generate_record(
+    *,
+    live_client: VertexRequirementClient,
+    row: Mapping[str, Any],
+    request_hash: str,
+    run_id: str,
+    generation_config: GenerationConfig,
+) -> dict[str, Any]:
+    candidate_id = str(row["benchmark_candidate_id"])
+    payload = build_grounding_payload(row)
+    user_prompt = serialize_user_prompt(payload)
+    result = live_client.generate(user_prompt)
+    normalized = parse_and_validate_response(
+        result["raw_response_text"],
+        expected_candidate_id=candidate_id,
+    )
+    required, alternative = derive_principle_sets(normalized)
+    return {
+        "run_id": run_id,
+        "benchmark_candidate_id": candidate_id,
+        "request_hash": request_hash,
+        "user_prompt": user_prompt,
+        "model": generation_config.model,
+        "model_version": result["model_version"],
+        "response_id": result["response_id"],
+        "finish_reason": result["finish_reason"],
+        "usage_metadata": result["usage_metadata"],
+        "raw_response_text": result["raw_response_text"],
+        "normalized_response": normalized,
+        "required_principle_set": required,
+        "alternative_principle_set": alternative,
+        "created_at": utc_now(),
+    }
+
+
+def _safe_failure(
+    *,
+    candidate_id: str,
+    attempt: int,
+    exc: Exception,
+) -> dict[str, Any]:
+    return {
+        "benchmark_candidate_id": candidate_id,
+        "attempt": attempt,
+        "error_type": type(exc).__name__,
+    }
+
+
+def execute_run(
+    args: argparse.Namespace,
+    *,
+    run_id: str,
+    client: VertexRequirementClient | None = None,
+) -> None:
+    if not args.execute_api:
+        raise RequirementScoringError(
+            "Real Vertex calls require the explicit --execute-api flag"
+        )
+    manifest_path = _pilot_directory(args) / "run_manifest.json"
+    if not manifest_path.exists():
+        raise RequirementScoringError("Run prepare before calling Vertex AI")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    generation_config = _config_from_args(args)
+    if canonical_json_hash(generation_config.as_dict()) != manifest.get(
+        "generation_config_sha256"
+    ):
+        raise RequirementScoringError("CLI generation config differs from run manifest")
+    provider = manifest.get("provider", {})
+    if (
+        provider.get("mode") != "standard_adc"
+        or provider.get("project") != args.project
+        or provider.get("location") != args.location
+    ):
+        raise RequirementScoringError(
+            "CLI Vertex project/location differs from run manifest"
+        )
+    if manifest.get("prompt_language") != "vi":
+        raise RequirementScoringError("Run manifest prompt_language must be 'vi'")
+    pilot_rows = _load_scoring_rows(args)
+    run_path = _pilot_directory(args) / f"run_{run_id}.jsonl"
+    completed = _completed_records(run_path, run_id)
+    prompt_hash = sha256_file(args.prompt)
+    schema_hash = sha256_file(args.schema)
+    prompt = args.prompt.read_text(encoding="utf-8")
+    response_schema = _load_schema(args.schema)
+    owns_client = client is None
+    live_client = client or VertexRequirementClient(
+        project=args.project,
+        location=args.location,
+        system_prompt=prompt,
+        response_schema=response_schema,
+        generation_config=generation_config,
+    )
+    run_state = manifest["runs"][run_id]
+    attempts_by_candidate = {
+        str(candidate_id): int(attempts)
+        for candidate_id, attempts in run_state.get(
+            "attempts_by_candidate", {}
+        ).items()
+    }
+    work_items: list[tuple[dict[str, Any], str]] = []
+    for row in pilot_rows:
+        candidate_id = row["benchmark_candidate_id"]
+        payload = build_grounding_payload(row)
+        request_hash = build_request_hash(
+            payload=payload,
+            prompt_sha256=prompt_hash,
+            schema_sha256=schema_hash,
+            generation_config=generation_config,
+        )
+        if candidate_id in completed:
+            if completed[candidate_id].get("request_hash") != request_hash:
+                raise RequirementScoringError(
+                    f"{candidate_id}: existing response hash does not match"
+                )
+            continue
+        work_items.append((row, request_hash))
+    manifest["status"] = "running"
+    run_state["status"] = "running"
+    run_state["completed_count"] = len(completed)
+    run_state["attempts_by_candidate"] = attempts_by_candidate
+    run_state["failed_candidate_ids"] = [
+        row["benchmark_candidate_id"] for row, _ in work_items
+    ]
+    run_state.setdefault("retry_sweeps_completed", 0)
+    run_state.setdefault("last_failures", [])
+    manifest["updated_at"] = utc_now()
+    atomic_write_json(manifest_path, manifest)
+    try:
+        pending = list(work_items)
+        max_attempts_per_candidate = generation_config.max_retries + 1
+        retry_sweep = int(run_state.get("retry_sweeps_completed", 0))
+        progress_enabled = bool(getattr(args, "progress", False))
+        with ThreadPoolExecutor(
+            max_workers=generation_config.concurrency,
+            thread_name_prefix=f"vertex-{run_id}",
+        ) as executor:
+            while pending:
+                eligible = [
+                    item
+                    for item in pending
+                    if attempts_by_candidate.get(
+                        item[0]["benchmark_candidate_id"], 0
+                    )
+                    < max_attempts_per_candidate
+                ]
+                request_capacity = (
+                    generation_config.max_requests
+                    - int(manifest["api_request_attempt_count"])
+                )
+                if not eligible or request_capacity <= 0:
+                    break
+                sweep = eligible[:request_capacity]
+                scheduled_ids = {
+                    row["benchmark_candidate_id"] for row, _ in sweep
+                }
+                unscheduled = [
+                    item
+                    for item in pending
+                    if item[0]["benchmark_candidate_id"] not in scheduled_ids
+                ]
+                for row, _ in sweep:
+                    candidate_id = row["benchmark_candidate_id"]
+                    attempts_by_candidate[candidate_id] = (
+                        attempts_by_candidate.get(candidate_id, 0) + 1
+                    )
+                manifest["api_request_attempt_count"] += len(sweep)
+                run_state["attempts_by_candidate"] = attempts_by_candidate
+                run_state["active_sweep_size"] = len(sweep)
+                run_state["last_failures"] = []
+                manifest["updated_at"] = utc_now()
+                atomic_write_json(manifest_path, manifest)
+
+                sweep_label = (
+                    "initial" if retry_sweep == 0 else f"retry {retry_sweep}"
+                )
+                progress = _ProgressBar(
+                    label=f"Run {run_id.upper()} | {sweep_label}",
+                    total=len(sweep),
+                    overall_total=len(pilot_rows),
+                    request_ceiling=generation_config.max_requests,
+                    enabled=progress_enabled,
+                )
+                processed_in_sweep = 0
+                progress.update(
+                    processed=processed_in_sweep,
+                    completed=len(completed),
+                    failed=0,
+                    requests=int(manifest["api_request_attempt_count"]),
+                )
+                future_to_item: dict[
+                    Future[dict[str, Any]], tuple[dict[str, Any], str]
+                ] = {
+                    executor.submit(
+                        _generate_record,
+                        live_client=live_client,
+                        row=row,
+                        request_hash=request_hash,
+                        run_id=run_id,
+                        generation_config=generation_config,
+                    ): (row, request_hash)
+                    for row, request_hash in sweep
+                }
+                failed_items: list[tuple[dict[str, Any], str]] = []
+                last_failures: list[dict[str, Any]] = []
+                for future in as_completed(future_to_item):
+                    row, request_hash = future_to_item[future]
+                    candidate_id = row["benchmark_candidate_id"]
+                    try:
+                        record = future.result()
+                    except Exception as exc:
+                        failed_items.append((row, request_hash))
+                        last_failures.append(
+                            _safe_failure(
+                                candidate_id=candidate_id,
+                                attempt=attempts_by_candidate[candidate_id],
+                                exc=exc,
+                            )
+                        )
+                    else:
+                        _append_jsonl(run_path, record)
+                        completed[candidate_id] = record
+                    processed_in_sweep += 1
+                    run_state["completed_count"] = len(completed)
+                    run_state["last_failures"] = sorted(
+                        last_failures,
+                        key=lambda item: item["benchmark_candidate_id"],
+                    )
+                    run_state["failed_candidate_ids"] = sorted(
+                        {
+                            item[0]["benchmark_candidate_id"]
+                            for item in failed_items + unscheduled
+                        }
+                    )
+                    manifest["updated_at"] = utc_now()
+                    atomic_write_json(manifest_path, manifest)
+                    progress.update(
+                        processed=processed_in_sweep,
+                        completed=len(completed),
+                        failed=len(last_failures),
+                        requests=int(manifest["api_request_attempt_count"]),
+                    )
+
+                progress.finish(
+                    processed=processed_in_sweep,
+                    completed=len(completed),
+                    failed=len(last_failures),
+                    requests=int(manifest["api_request_attempt_count"]),
+                )
+                pending = failed_items + unscheduled
+                run_state["failed_candidate_ids"] = sorted(
+                    item[0]["benchmark_candidate_id"] for item in pending
+                )
+                run_state["active_sweep_size"] = 0
+                manifest["updated_at"] = utc_now()
+                atomic_write_json(manifest_path, manifest)
+                retryable = [
+                    item
+                    for item in pending
+                    if attempts_by_candidate.get(
+                        item[0]["benchmark_candidate_id"], 0
+                    )
+                    < max_attempts_per_candidate
+                ]
+                if (
+                    not retryable
+                    or manifest["api_request_attempt_count"]
+                    >= generation_config.max_requests
+                ):
+                    break
+                retry_sweep += 1
+                run_state["retry_sweeps_completed"] = retry_sweep
+                jitter = random.Random(
+                    f"{generation_config.seed}:{run_id}:{retry_sweep}"
+                ).uniform(0.0, generation_config.retry_base_delay_seconds)
+                delay = min(
+                    generation_config.retry_base_delay_seconds
+                    * (2 ** (retry_sweep - 1))
+                    + jitter,
+                    30.0,
+                )
+                run_state["next_retry_delay_seconds"] = delay
+                manifest["updated_at"] = utc_now()
+                atomic_write_json(manifest_path, manifest)
+                time.sleep(delay)
+
+        if pending:
+            failed_ids = sorted(
+                row["benchmark_candidate_id"] for row, _ in pending
+            )
+            run_state["failed_candidate_ids"] = failed_ids
+            raise RequirementScoringError(
+                f"Run {run_id} has {len(failed_ids)} failed candidates after "
+                "retry sweeps or request-ceiling exhaustion"
+            )
+        records = load_run_records(run_path)
+        validate_run_records(records, pilot_rows, run_id=run_id)
+        manifest["runs"][run_id] = {
+            "status": "completed",
+            "completed_count": len(records),
+            "attempts_by_candidate": attempts_by_candidate,
+            "failed_candidate_ids": [],
+            "retry_sweeps_completed": retry_sweep,
+            "path": _manifest_path(run_path),
+            "sha256": sha256_file(run_path),
+        }
+        manifest["status"] = (
+            "runs_completed"
+            if all(
+                manifest["runs"][item]["status"] == "completed"
+                for item in ("a", "b")
+            )
+            else "running"
+        )
+        manifest["updated_at"] = utc_now()
+        atomic_write_json(manifest_path, manifest)
+    except Exception as exc:
+        manifest["status"] = "failed"
+        manifest["runs"][run_id]["status"] = "failed"
+        manifest["runs"][run_id]["completed_count"] = len(completed)
+        manifest["errors"].append(
+            {
+                "run_id": run_id,
+                "error_type": type(exc).__name__,
+                "message": (
+                    str(exc)
+                    if isinstance(exc, RequirementScoringError)
+                    else "Unexpected runner error; details were not persisted"
+                ),
+                "at": utc_now(),
+            }
+        )
+        manifest["updated_at"] = utc_now()
+        atomic_write_json(manifest_path, manifest)
+        raise
+    finally:
+        if owns_client:
+            live_client.close()
+
+
+def finalize(args: argparse.Namespace) -> dict[str, Any]:
+    pilot_dir = _pilot_directory(args)
+    manifest_path = pilot_dir / "run_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    pilot_rows = _load_scoring_rows(args)
+    run_a = validate_run_records(
+        load_run_records(pilot_dir / "run_a.jsonl"), pilot_rows, run_id="a"
+    )
+    run_b = validate_run_records(
+        load_run_records(pilot_dir / "run_b.jsonl"), pilot_rows, run_id="b"
+    )
+    metrics, review_rows = compare_runs(
+        run_a,
+        run_b,
+        pilot_rows,
+        spot_check_count=args.spot_check_count,
+        seed=args.selection_seed,
+    )
+    review_path = pilot_dir / "review_queue.csv"
+    summary_path = pilot_dir / (
+        "calibration_summary.md"
+        if _is_calibration(args)
+        else "pilot_summary.md"
+    )
+    write_review_queue(review_path, review_rows)
+    summary = (
+        build_calibration_summary(metrics, len(review_rows))
+        if _is_calibration(args)
+        else build_pilot_summary(metrics, len(review_rows))
+    )
+    atomic_write_text(summary_path, summary)
+    manifest["metrics"] = metrics
+    manifest["review_queue_count"] = len(review_rows)
+    manifest["review_queue_sha256"] = sha256_file(review_path)
+    manifest[
+        "calibration_summary_sha256"
+        if _is_calibration(args)
+        else "pilot_summary_sha256"
+    ] = sha256_file(summary_path)
+    manifest["status"] = "awaiting_uet_review"
+    manifest["updated_at"] = utc_now()
+    atomic_write_json(manifest_path, manifest)
+    return manifest
+
+
+def run_full_pilot(args: argparse.Namespace) -> None:
+    if not args.execute_api:
+        raise RequirementScoringError(
+            "The pilot command requires --execute-api; no request was sent"
+        )
+    pilot_dir = _pilot_directory(args)
+    if getattr(args, "progress", False):
+        print(f"Output directory: {pilot_dir}", file=sys.stderr)
+    prepare(args)
+    execute_run(args, run_id="a")
+    execute_run(args, run_id="b")
+    finalize(args)
+    if getattr(args, "progress", False):
+        print(
+            f"Run completed; review bundle: {pilot_dir}",
+            file=sys.stderr,
+        )
+
+
+def add_common_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--pool", type=Path, default=DEFAULT_POOL)
+    parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+    parser.add_argument("--prompt", type=Path, default=DEFAULT_PROMPT)
+    parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA)
+    parser.add_argument("--spec-manifest", type=Path, default=DEFAULT_SPEC_MANIFEST)
+    parser.add_argument(
+        "--calibration-input",
+        type=Path,
+        default=DEFAULT_CALIBRATION_INPUT,
+    )
+    parser.add_argument(
+        "--snapshot-manifest",
+        type=Path,
+        default=DEFAULT_SNAPSHOT_MANIFEST,
+    )
+    parser.add_argument("--project", default=DEFAULT_PROJECT)
+    parser.add_argument("--location", default=DEFAULT_LOCATION)
+    parser.add_argument("--model", default="gemini-2.5-flash")
+    parser.add_argument("--temperature", type=float, default=0.0)
+    parser.add_argument("--top-p", type=float, default=1.0)
+    parser.add_argument("--max-output-tokens", type=int, default=4096)
+    parser.add_argument("--seed", type=int, default=20260727)
+    parser.add_argument("--thinking-budget", type=int, default=0)
+    parser.add_argument("--selection-seed", type=int, default=20260727)
+    parser.add_argument("--timeout-seconds", type=float, default=120.0)
+    parser.add_argument("--max-retries", type=int, default=3)
+    parser.add_argument("--max-requests", type=int, default=120)
+    parser.add_argument("--concurrency", type=int, default=8)
+    parser.add_argument("--retry-base-delay-seconds", type=float, default=2.0)
+    parser.add_argument("--spot-check-count", type=int, default=4)
+    parser.add_argument(
+        "--progress",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Show terminal progress bars (use --no-progress to disable)",
+    )
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Vertex AI pedagogical-principle requirement scoring pilot"
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    for command in ("prepare", "finalize", "pilot", "calibration"):
+        subparser = subparsers.add_parser(command)
+        add_common_arguments(subparser)
+        if command in {"pilot", "calibration"}:
+            subparser.add_argument("--execute-api", action="store_true")
+    run_parser = subparsers.add_parser("run")
+    add_common_arguments(run_parser)
+    run_parser.add_argument("--run-id", choices=("a", "b"), required=True)
+    run_parser.add_argument("--execute-api", action="store_true")
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    args.pool = args.pool.resolve()
+    args.output_root = args.output_root.resolve()
+    args.prompt = args.prompt.resolve()
+    args.schema = args.schema.resolve()
+    args.spec_manifest = args.spec_manifest.resolve()
+    args.calibration_input = args.calibration_input.resolve()
+    args.snapshot_manifest = args.snapshot_manifest.resolve()
+    try:
+        if args.command == "prepare":
+            prepare(args)
+        elif args.command == "run":
+            execute_run(args, run_id=args.run_id)
+        elif args.command == "finalize":
+            finalize(args)
+        elif args.command in {"pilot", "calibration"}:
+            run_full_pilot(args)
+        else:
+            parser.error(f"Unsupported command: {args.command}")
+    except (RequirementScoringError, OSError, RuntimeError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

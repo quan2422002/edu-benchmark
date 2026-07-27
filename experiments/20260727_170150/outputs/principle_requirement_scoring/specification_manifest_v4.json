@@ -1,0 +1,95 @@
+{
+  "experiment_id": "20260727_170150",
+  "specification_version": "v4",
+  "supersedes_for_new_runs": "v3",
+  "status": "approved_for_calibration",
+  "approved_at": "2026-07-27",
+  "prompt_language": "vi",
+  "scoring_mode": "single_pass_grounding",
+  "required_threshold": 4,
+  "alternative_score": 3,
+  "semantic_change": "explicit_need_counterfactual_feedback_questioning_gates",
+  "model_input_fields": [
+    "grade",
+    "lesson",
+    "position",
+    "bloom_level",
+    "student_prompt",
+    "conversation_history",
+    "source_question",
+    "gold_answer"
+  ],
+  "code_only_identity_fields": [
+    "benchmark_candidate_id",
+    "sample_id"
+  ],
+  "model_role": [
+    "semantic_requirement_scoring",
+    "vietnamese_rationale",
+    "vietnamese_evidence"
+  ],
+  "code_role": [
+    "schema_validation",
+    "candidate_id_join",
+    "user_prompt_serialization_and_storage",
+    "threshold_filtering",
+    "set_derivation",
+    "semantic_lint",
+    "calibration_range_check",
+    "review_queue_rules",
+    "run_comparison",
+    "metrics",
+    "coverage",
+    "hashing",
+    "retry_resume",
+    "fail_closed_publication"
+  ],
+  "calibration_contract": {
+    "case_count": 36,
+    "cases_per_principle": 6,
+    "positive_cases_per_principle": 3,
+    "near_miss_cases_per_principle": 3,
+    "positive_expected_range": [
+      4,
+      5
+    ],
+    "near_miss_expected_range": [
+      1,
+      3
+    ],
+    "run_count": 2,
+    "expected_ranges_status": "provisional_pending_uet_review"
+  },
+  "artifacts": [
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/specification_v4.md",
+      "sha256": "aa58a6bda19badaffefc307b772ecbc261000f7340a1043f9067048e42935cd3"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/scoring_schema_v2.json",
+      "sha256": "9650fc66c87c0348d75f449de5f2bd0e3dc5878c5364bff0e41e49b65634831f"
+    },
+    {
+      "path": "shared/prompts/benchmark_candidate_task_assigning/system_prompt_v4.md",
+      "sha256": "069c4c1516928d2bb49d02ad5e95725c4beeea62586ab36963bbf361a28ef644"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_cases_v1.csv",
+      "sha256": "639e44742371b23ae8f7f041dd46de69efc653d24f9e057e18c54d4d09373bb0"
+    }
+  ],
+  "sources": [
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv",
+      "sha256": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a"
+    },
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/principle_foundation/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6"
+    }
+  ],
+  "human_authority": {
+    "uet": "approved_for_code_implementation; calibration_expected_ranges_pending_review",
+    "hnmu": "pending_integrated_task_rubric_review"
+  }
+}

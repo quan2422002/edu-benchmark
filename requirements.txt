@@ -3,3 +3,7 @@ PyYAML==6.0.3
 
 # Project test runner
 pytest==9.1.1
+
+# Vertex AI requirement-scoring pilot
+google-genai==2.14.0
+google-auth==2.56.2

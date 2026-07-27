@@ -1,0 +1,73 @@
+{
+  "experiment_id": "20260727_170150",
+  "specification_version": "v3",
+  "supersedes_for_new_runs": "v2",
+  "status": "approved_for_pilot",
+  "approved_at": "2026-07-27",
+  "prompt_language": "vi",
+  "scoring_mode": "single_pass_grounding",
+  "required_threshold": 4,
+  "alternative_score": 3,
+  "semantic_change": "necessity_counterfactual_and_anti_overassignment_guardrails",
+  "model_input_fields": [
+    "grade",
+    "lesson",
+    "position",
+    "bloom_level",
+    "student_prompt",
+    "conversation_history",
+    "source_question",
+    "gold_answer"
+  ],
+  "code_only_identity_fields": [
+    "benchmark_candidate_id",
+    "sample_id"
+  ],
+  "model_role": [
+    "semantic_requirement_scoring",
+    "vietnamese_rationale",
+    "vietnamese_evidence"
+  ],
+  "code_role": [
+    "schema_validation",
+    "candidate_id_join",
+    "user_prompt_serialization_and_storage",
+    "threshold_filtering",
+    "set_derivation",
+    "review_queue_rules",
+    "run_comparison",
+    "metrics",
+    "coverage",
+    "hashing",
+    "retry_resume",
+    "fail_closed_publication"
+  ],
+  "artifacts": [
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/specification_v3.md",
+      "sha256": "549b44778b875bd2f0c7b3447e6f3c3aa89ed5685f8ffe996ae60dac0f7c65c9"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/scoring_schema_v2.json",
+      "sha256": "9650fc66c87c0348d75f449de5f2bd0e3dc5878c5364bff0e41e49b65634831f"
+    },
+    {
+      "path": "shared/prompts/benchmark_candidate_task_assigning/system_prompt_v3.md",
+      "sha256": "873c1ca3d6cbb296cffe74f05f73bde68aaff281bdbc9b01ac14adeb50ccab5f"
+    }
+  ],
+  "sources": [
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv",
+      "sha256": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a"
+    },
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/principle_foundation/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6"
+    }
+  ],
+  "human_authority": {
+    "uet": "approved_for_prompt_pilot",
+    "hnmu": "pending_integrated_review"
+  }
+}

@@ -1,8 +1,14 @@
 # Roadmap — Giai đoạn 2: xây dựng mẫu benchmark từ dữ liệu thô đã pass
 
 Experiment: `20260722_000940`  
-Trạng thái: `ACTIVE`  
+Trạng thái: `SUPERSEDED_BY_20260727_170150`
 Nguồn kế thừa chính: `20260709_155523` và `20260705_215045`
+
+Experiment này đã hoàn tất Plans 01–02 và Workstreams A–B của Plan 03.
+Nhánh phương pháp Workstream C dừng sau khi forward test v3 đạt cấu trúc
+nhưng chỉ khớp 3/5 tập kỳ vọng. Công việc active đã chuyển sang
+`experiments/20260727_170150/`, dùng `requirement_score` 1–5 và Vertex AI
+trực tiếp. Mọi artifact cũ được bảo toàn; không chạy tiếp C0a/C0b tại đây.
 
 ## 1. Mục tiêu của experiment
 
@@ -89,7 +95,7 @@ Experiment này không giao toàn bộ phase 2 cho một plan duy nhất. Các p
 |---|---|---|---:|---|---|
 | [Plan 01 — Contract và pilot conversion](plans/01-audited-raw-dialogue-to-benchmark-candidate-conversion.md) | `COMPLETED` | Chốt schema, semantics evidence, code chọn input và tách hội thoại; chạy pilot deterministic | 665 input, 40 candidate pilot | Code conversion v0, schema v0, pilot, lỗi và trace | Dữ liệu phase 1 |
 | [Plan 02 — Multi-candidate conversion từ mọi lượt gia sư](plans/02-split-policy-and-full-benchmark-conversion.md) | `COMPLETED` | Migrate contract Plan 01 sang một candidate cho mỗi lượt AI; chạy pilot rồi full conversion | 665 raw sample `pass` → 2.028 candidate sơ bộ | D02-01, pilot 69 candidate, full candidate file gọn, trace, raw-sample summary và error queue | Plan 01 |
-| [Plan 03 — Một nhiệm vụ, sáu năng lực, sáu nguyên tắc KMP và rubric hai tầng](plans/03-thcs-task-rubric-specification-and-coverage.md) | `WORKSTREAM_C_C0A_V3_UET_REVIEW_REQUIRED` | Codebook/skill/schema/validator v3, grounding pool 2.028 ứng viên và lô pilot 40 phân tầng đã hoàn tất; forward test đạt cấu trúc nhưng chỉ khớp 3/5 tập nhãn kỳ vọng | 2.028 ứng viên; 665 family nguồn; pilot 40 gồm 10 ứng viên mỗi lớp; nhãn nguyên tắc chính thức 0 | UET phân xử hai ca `FT-C02` và `FT-C04`; chạy lại C0a trong thread mới, chỉ mở C0b nếu đạt 5/5 | Plan 02 |
+| [Plan 03 — Một nhiệm vụ, sáu năng lực, sáu nguyên tắc KMP và rubric hai tầng](plans/03-thcs-task-rubric-specification-and-coverage.md) | `SUPERSEDED_AFTER_A_B` | Workstreams A–B và grounding pool được kế thừa; phương pháp chọn trực tiếp tập nguyên tắc ở C dừng sau forward test 3/5 | 2.028 ứng viên; 665 family; nhãn nguyên tắc chính thức 0 | Xem experiment `20260727_170150`; không chạy tiếp C0a/C0b tại đây | Plan 02 |
 | [Plan 04 — Evidence và audit benchmark candidate](plans/04-benchmark-candidate-evidence-and-quality-audit.md) | `DRAFT` | Kiểm schema, evidence, nguyên tắc/rubric, `gold_answer`, `gold_response`, leakage, trùng/gần trùng và giá trị đánh giá | Toàn bộ candidate | Evidence links, checklist chi tiết, `candidate_quality_suggestions.csv`, review queue | Plan 03 |
 | [Plan 05 — Pilot benchmark và HNMU/UET review](plans/05-benchmark-pilot-and-hnmu-uet-review.md) | `DRAFT` | Chọn candidate đạt yêu cầu, chuẩn bị packet, review độc lập và phân xử | Tập con sau audit; đề xuất 40 | Pilot v0, teacher packet, review/adjudication, readiness report | Plan 04 |
 | [KSE 2026 manuscript plan](../../kse_submit_manuscript/PLAN.md) | `DRAFT` | Viết paper tăng dần từ các claim đã có evidence; cập nhật theo paper-update packet thay vì chờ toàn bộ phase 2 hoàn thành | Tối đa 6 trang IEEE | Bản gửi giáo sư 27/07, submission candidate và claim–evidence registry | Plans 01–02 đã hoàn thành; nhận snapshot tăng dần từ Plans 03–05 |

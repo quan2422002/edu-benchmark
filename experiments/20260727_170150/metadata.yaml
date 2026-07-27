@@ -1,0 +1,26 @@
+id: "20260727_170150"
+title: "Requirement-scored pedagogical principles and rubric-driven tutor evaluation"
+status: active_v4_calibration_awaiting_user_run
+task_type: benchmark_principle_requirement_scoring_and_rubric_evaluation
+owner_agent: orchestrator
+parents:
+  - "20260722_000940"
+created_at: "2026-07-27T17:01:50+07:00"
+source_phase: "Giai đoạn 2 — chấm mức độ cần thiết của nguyên tắc, xây tiêu chí và đánh giá phản hồi gia sư"
+git_commit: null
+artifacts:
+  - roadmap.md
+  - plans/01-principle-requirement-score-specification.md
+  - plans/02-vertex-ai-requirement-scoring-pilot.md
+  - reports/state-transfer-from-20260722.md
+  - handoffs/single-pass-grounding-decision.md
+  - handoffs/code-first-and-path-ownership-decision.md
+  - inherited_resources/README.md
+  - inherited_resources/snapshot_manifest.csv
+  - outputs/principle_requirement_scoring/specification_v4.md
+  - outputs/principle_requirement_scoring/scoring_schema_v2.json
+  - outputs/principle_requirement_scoring/calibration_cases_v1.csv
+  - outputs/principle_requirement_scoring/specification_manifest_v4.json
+  - handoffs/plans01-02-implementation.md
+  - handoffs/requirement-guardrails-v3.md
+  - handoffs/requirement-v4-calibration.md

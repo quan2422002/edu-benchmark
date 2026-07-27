@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edu-benchmark.local/schemas/principle-requirement-scoring-v1.json",
+  "title": "Principle requirement scoring schema bundle v1",
+  "$defs": {
+    "conversation_turn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "turn_index",
+        "role",
+        "content"
+      ],
+      "properties": {
+        "turn_index": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "student",
+            "tutor"
+          ]
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "grounding_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history",
+        "source_question",
+        "gold_answer"
+      ],
+      "properties": {
+        "benchmark_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sample_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grade": {
+          "type": "integer",
+          "minimum": 6,
+          "maximum": 9
+        },
+        "lesson": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "bloom_level": {
+          "type": "string"
+        },
+        "student_prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conversation_history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conversation_turn"
+          }
+        },
+        "source_question": {
+          "type": "string"
+        },
+        "gold_answer": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "principle_score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "principle_id",
+        "requirement_score",
+        "rationale",
+        "evidence"
+      ],
+      "properties": {
+        "principle_id": {
+          "type": "string",
+          "enum": [
+            "PRINCIPLE-CHALLENGE",
+            "PRINCIPLE-EXPLANATION",
+            "PRINCIPLE-MODELLING",
+            "PRINCIPLE-PRACTICE",
+            "PRINCIPLE-FEEDBACK",
+            "PRINCIPLE-QUESTIONING"
+          ]
+        },
+        "requirement_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scoring_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "benchmark_candidate_id",
+        "principle_scores"
+      ],
+      "properties": {
+        "benchmark_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "principle_scores": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "$ref": "#/$defs/principle_score"
+          }
+        }
+      }
+    }
+  }
+}

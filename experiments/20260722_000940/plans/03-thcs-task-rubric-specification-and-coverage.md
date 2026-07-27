@@ -1,7 +1,7 @@
 # Plan 03 — Xây dựng và kiểm định benchmark theo năng lực gia sư và nguyên tắc sư phạm
 
 Experiment: `20260722_000940`
-Trạng thái: `APPROVED — WORKSTREAM_C_C0A_V3_UET_REVIEW_REQUIRED` — code/skill/schema/validator và lô 40 phân tầng của phương pháp v3 đã hoàn tất; forward test đạt kiểm tra cấu trúc nhưng chỉ khớp 3/5 tập nhãn kỳ vọng, nên C0b chưa được mở
+Trạng thái: `SUPERSEDED_BY_20260727_170150` — Workstreams A–B và grounding pool được giữ làm nền; phương pháp chọn trực tiếp tập nguyên tắc ở C không chạy tiếp, vì experiment kế nhiệm chuyển sang `requirement_score` 1–5 và Vertex AI trực tiếp
 Ngày cập nhật: 27/07/2026
 Phụ thuộc: Plan 02 đã hoàn thành và công bố bundle `full_v0`
 

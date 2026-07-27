@@ -1,0 +1,86 @@
+{
+  "validation_version": "plan03-c0a-forward-v3",
+  "status": "failed",
+  "candidate_count": 5,
+  "matched_count": 3,
+  "structural_validation": {
+    "status": "passed",
+    "candidate_count": 5,
+    "review_queue_count": 1,
+    "changed_count": 0,
+    "conflict_count": 0,
+    "coverage_gap_count": 0,
+    "high_label_count": 0
+  },
+  "cases": [
+    {
+      "benchmark_candidate_id": "FT-C01",
+      "expected_principle_set": [
+        "PRINCIPLE-EXPLANATION"
+      ],
+      "actual_principle_set": [
+        "PRINCIPLE-EXPLANATION"
+      ],
+      "set_match": true,
+      "expected_grounding_effect": "unchanged",
+      "actual_grounding_effect": "unchanged",
+      "grounding_effect_match": true
+    },
+    {
+      "benchmark_candidate_id": "FT-C02",
+      "expected_principle_set": [
+        "PRINCIPLE-FEEDBACK",
+        "PRINCIPLE-QUESTIONING"
+      ],
+      "actual_principle_set": [
+        "PRINCIPLE-EXPLANATION",
+        "PRINCIPLE-FEEDBACK"
+      ],
+      "set_match": false,
+      "expected_grounding_effect": "unchanged",
+      "actual_grounding_effect": "unchanged",
+      "grounding_effect_match": true
+    },
+    {
+      "benchmark_candidate_id": "FT-C03",
+      "expected_principle_set": [
+        "PRINCIPLE-CHALLENGE",
+        "PRINCIPLE-PRACTICE"
+      ],
+      "actual_principle_set": [
+        "PRINCIPLE-CHALLENGE",
+        "PRINCIPLE-PRACTICE"
+      ],
+      "set_match": true,
+      "expected_grounding_effect": "unchanged",
+      "actual_grounding_effect": "unchanged",
+      "grounding_effect_match": true
+    },
+    {
+      "benchmark_candidate_id": "FT-C04",
+      "expected_principle_set": [
+        "PRINCIPLE-QUESTIONING"
+      ],
+      "actual_principle_set": [
+        "PRINCIPLE-MODELLING"
+      ],
+      "set_match": false,
+      "expected_grounding_effect": "unchanged",
+      "actual_grounding_effect": "unchanged",
+      "grounding_effect_match": true
+    },
+    {
+      "benchmark_candidate_id": "FT-C05",
+      "expected_principle_set": [
+        "PRINCIPLE-EXPLANATION"
+      ],
+      "actual_principle_set": [
+        "PRINCIPLE-EXPLANATION"
+      ],
+      "set_match": true,
+      "expected_grounding_effect": "unchanged",
+      "actual_grounding_effect": "unchanged",
+      "grounding_effect_match": true
+    }
+  ]
+}
