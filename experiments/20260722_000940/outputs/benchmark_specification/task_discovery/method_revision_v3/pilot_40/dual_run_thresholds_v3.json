@@ -1,0 +1,12 @@
+{
+  "status": "uet_approved",
+  "schema_version": "unordered-set-v3",
+  "approved_by": "UET-REVIEWER-01",
+  "approved_at": "2026-07-27T12:48:26+07:00",
+  "approval_basis": "UET requested implementation and execution of the approved Plan-03 v3 revision. Exact-set replaces the old exact-pair metric; the new per-principle F1 threshold inherits the previously approved 0.90 strictness.",
+  "exact_set_agreement_min": 0.9,
+  "mean_jaccard_min": 0.9,
+  "minimum_per_principle_f1": 0.9,
+  "coverage_gap_agreement_min": 1.0,
+  "grounding_effect_agreement_min": 0.9
+}

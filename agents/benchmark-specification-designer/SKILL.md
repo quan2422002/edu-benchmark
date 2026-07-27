@@ -24,6 +24,22 @@ description: Synthesize research evidence and learning-resource mappings into be
 7. Use [references/provenance-matrix-guidelines.md](references/provenance-matrix-guidelines.md) to connect task/rubric/error items to research and learning-resource evidence.
 8. Run `scripts/validate_benchmark_specification.py` before handing off CSV specifications.
 
+## Active Plan-03 document routing
+
+For work on the active one-task, six-principle, six-capability design, read the
+canonical project artifacts directly:
+
+- six pedagogical principles:
+  `experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv`;
+- six-capability model:
+  `experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md`;
+- machine-validated capability definitions and anchors:
+  `experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv`.
+
+These paths are document-routing pointers, not a claim that principles and
+capabilities are the same construct. Do not copy their definitions into this
+skill or replace the canonical artifacts with summaries.
+
 ## Output contract
 
 Return or write:

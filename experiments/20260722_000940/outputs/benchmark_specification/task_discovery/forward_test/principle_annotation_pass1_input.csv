@@ -1,0 +1,6 @@
+benchmark_candidate_id,sample_id,grade,lesson,position,bloom_level,student_prompt,conversation_history
+FT-C01,FORWARD-FT-C01,synthetic_boundary_test,Questioning–Explanation,Workstream C0a forward test,not_assigned,Em chưa hiểu biến trong Scratch là gì và dùng để làm gì ạ?,
+FT-C02,FORWARD-FT-C02,synthetic_boundary_test,Feedback–Questioning,Workstream C0a forward test,not_assigned,"Em tính tổng từ 1 đến 5 bằng cách đặt tổng = 1 rồi cộng tiếp 2, 3, 4, 5. Như vậy đúng chưa ạ?",
+FT-C03,FORWARD-FT-C03,synthetic_boundary_test,Challenge–Practice,Workstream C0a forward test,not_assigned,Em đã làm đúng các bài kiểm tra một điều kiện rồi. Có bài nào khó hơn để em thử không?,
+FT-C04,FORWARD-FT-C04,synthetic_boundary_test,Nguyên tắc–năng lực,Workstream C0a forward test,not_assigned,"Em rối quá, không biết phải bắt đầu sửa chương trình từ đâu.",
+FT-C05,FORWARD-FT-C05,synthetic_boundary_test,Xung đột context–gold,Workstream C0a forward test,not_assigned,Em biết kết quả rồi nhưng chưa hiểu vì sao thuật toán sắp xếp lại phải đổi chỗ hai phần tử này.,

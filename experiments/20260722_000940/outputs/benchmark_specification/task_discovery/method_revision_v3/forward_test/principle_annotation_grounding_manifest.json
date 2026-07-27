@@ -1,0 +1,113 @@
+{
+  "manifest_version": "plan03-principle-grounding-v3",
+  "created_at": "2026-07-27T12:49:30.270191+07:00",
+  "grounding_pool": {
+    "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/forward_test/forward_test_grounding_input.csv",
+    "sha256": "201e939e85f6e3f5ce012a43fa4bdbbe158ef3dd46b8b2b0bc98f09c6088315e"
+  },
+  "selection": null,
+  "batch": {
+    "size": 5,
+    "ordered_id_sha256": "60e3cf4f16b4800d67e9271772544e36ae8a1d090becde28aa43425c8b9ac2ae",
+    "grade_counts": {
+      "synthetic_boundary_test": 5
+    },
+    "unique_sample_count": 5
+  },
+  "views": {
+    "context": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/forward_test/principle_annotation_pass1_input.csv",
+      "sha256": "e8d31f1bd2c3c275028efa0781bdd5ff0aead37bed342ad240082731efafda11",
+      "columns": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history"
+      ]
+    },
+    "grounding": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/forward_test/principle_annotation_grounding_input.csv",
+      "sha256": "b09dccc4a40433618f00ce4c16c2abb488ece75eb528db8e09488acfd10f9257",
+      "columns": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history",
+        "source_question",
+        "gold_answer"
+      ],
+      "gold_response_excluded": true
+    }
+  },
+  "canonical_documents": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6",
+      "size_bytes": 5767
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "046e3f6279353a582515da26f84f1c0af314d464b6c9fc1b5250769e33c82157",
+      "size_bytes": 6306
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c",
+      "size_bytes": 13146
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af",
+      "size_bytes": 10644
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1",
+      "size_bytes": 6160
+    }
+  ],
+  "runtime_documents": [
+    {
+      "path": "agents/pedagogical-principle-annotator/SKILL.md",
+      "sha256": "9db0a82252695c20dc00d61997a6e7dbfc9c089ac353713f29ffb64f847599b3",
+      "size_bytes": 3501
+    },
+    {
+      "path": "agents/pedagogical-principle-annotator/references/two_pass_annotation_contract.md",
+      "sha256": "81f4df288f25f0f75e53d8a82ef391f21e9eb455ba70eb799537fb84c642e8ce",
+      "size_bytes": 7062
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6",
+      "size_bytes": 5767
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c",
+      "size_bytes": 13146
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1",
+      "size_bytes": 6160
+    }
+  ],
+  "pilot_policy": {
+    "model": "gpt-5.4-mini",
+    "reasoning_effort": "medium",
+    "instance_count": 2,
+    "label_structure": "unordered_set",
+    "hard_label_limit": null,
+    "mandatory_review_above": 3,
+    "review_status": "needs_uet_review"
+  }
+}

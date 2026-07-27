@@ -1,9 +1,9 @@
 # P03-P003 — TutorBench
 
-Paper: `TutorBench: A Benchmark To Assess Tutoring Capabilities Of Large Language Models`  
-File local: `document/paper/source_paper/2510.02663v1.pdf`  
-Năm/nguồn: 2025, arXiv preprint  
-Registry ID: `P03-P003`  
+Paper: `TutorBench: A Benchmark To Assess Tutoring Capabilities Of Large Language Models`
+File local: `document/paper/source_paper/2510.02663v1.pdf`
+Năm/nguồn: 2025, arXiv preprint
+Registry ID: `P03-P003`
 Vai trò trong P03: paper lõi về task gia sư, sample-specific rubric, expert authoring và đánh giá theo Bloom/tutoring skills.
 
 ## 1. Vấn đề paper giải quyết
@@ -18,11 +18,12 @@ TutorBench gồm 1,490 samples ở high-school/AP STEM, phủ 6 môn: Biology, P
 
 Ba use case chính:
 
-| Use case | Ý nghĩa | Tương ứng với dự án Tin học 9 |
-|---|---|---|
+
+| Use case                        | Ý nghĩa                                                                            | Tương ứng với dự án Tin học 9                                         |
+| ------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | Adaptive Explanation Generation | Giải thích thích ứng với hiểu nhầm hoặc câu hỏi tiếp theo của học sinh. | Gia sư giải thích khái niệm/thuật toán/code theo nền của học sinh. |
-| Assessment and Feedback | Phân tích bài làm/lời giải của học sinh, chỉ lỗi và phản hồi. | Chấm/sửa lỗi code, thuật toán, nhận định khái niệm. |
-| Active Learning Support | Đưa hint/câu hỏi gợi mở để học sinh tự đi tiếp, không lộ đáp án. | Gợi ý từng bước khi học sinh mắc kẹt. |
+| Assessment and Feedback         | Phân tích bài làm/lời giải của học sinh, chỉ lỗi và phản hồi.           | Chấm/sửa lỗi code, thuật toán, nhận định khái niệm.                |
+| Active Learning Support         | Đưa hint/câu hỏi gợi mở để học sinh tự đi tiếp, không lộ đáp án.    | Gợi ý từng bước khi học sinh mắc kẹt.                                |
 
 Paper chọn các use case này vì muốn đánh giá khả năng tutor calibrate response to student needs thay vì sinh lời giải chuẩn chung cho mọi học sinh.
 
@@ -103,13 +104,14 @@ Vị trí nguồn chính: Section 5 Limitations; Section 3.7.
 
 ## 9. Candidate claims cho evidence matrix
 
-| Claim candidate | Nhãn | Vị trí nguồn | Ghi chú chuyển giao |
-|---|---|---|---|
-| Benchmark gia sư nên bao gồm adaptive explanation, assessment/feedback và active learning support. | bằng chứng | Section 2.1; Conclusion | Rất phù hợp cho P04/P05. |
-| Rubric cần cụ thể, tự đủ nghĩa, tránh chồng chéo và có thể kiểm tra được. | bằng chứng | Section 2.3 | Phù hợp với phiếu tác giả/HNMU. |
-| Serious error có thể được xử lý bằng penalty mạnh hoặc policy tách riêng. | bằng chứng + suy luận | Section 2.3 | P04 nên quyết định dùng rubric hay serious-error policy. |
-| Bloom hữu ích để phân tích cognitive demand nhưng không tuyến tính với độ khó của LLM. | bằng chứng | Section 3.4; Figure 4 | Cảnh báo cho thiết kế task theo Bloom. |
-| LLM judge cần validation với human experts trước khi dùng làm evaluator chính. | bằng chứng | Section 3.7; Figure 6 | Rất quan trọng cho phase sau, chưa nên tự động hóa chấm ngay. |
+
+| Claim candidate                                                                                        | Nhãn                    | Vị trí nguồn         | Ghi chú chuyển giao                                                  |
+| ------------------------------------------------------------------------------------------------------ | ------------------------ | ----------------------- | ---------------------------------------------------------------------- |
+| Benchmark gia sư nên bao gồm adaptive explanation, assessment/feedback và active learning support. | bằng chứng             | Section 2.1; Conclusion | Rất phù hợp cho P04/P05.                                            |
+| Rubric cần cụ thể, tự đủ nghĩa, tránh chồng chéo và có thể kiểm tra được.             | bằng chứng             | Section 2.3             | Phù hợp với phiếu tác giả/HNMU.                                  |
+| Serious error có thể được xử lý bằng penalty mạnh hoặc policy tách riêng.                  | bằng chứng + suy luận | Section 2.3             | P04 nên quyết định dùng rubric hay serious-error policy.          |
+| Bloom hữu ích để phân tích cognitive demand nhưng không tuyến tính với độ khó của LLM.  | bằng chứng             | Section 3.4; Figure 4   | Cảnh báo cho thiết kế task theo Bloom.                             |
+| LLM judge cần validation với human experts trước khi dùng làm evaluator chính.                  | bằng chứng             | Section 3.7; Figure 6   | Rất quan trọng cho phase sau, chưa nên tự động hóa chấm ngay. |
 
 ## 10. Câu hỏi mở
 

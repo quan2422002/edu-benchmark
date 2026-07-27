@@ -1,0 +1,13 @@
+legacy_item_id,legacy_item_type,proposed_disposition,replacement_item_ids,rationale,status,decision_owner
+T1,task_v0,legacy,"TASK-NEXT-TUTOR-RESPONSE;PRINCIPLE-EXPLANATION;CAP-STATE;CAP-ACC","Giải thích thích ứng được giữ qua nguyên tắc Explanation và các năng lực liên quan, không còn là task riêng.",uet_legacy_decided,UET-PROJECT-REP
+T2,task_v0,legacy,"TASK-NEXT-TUTOR-RESPONSE;PRINCIPLE-FEEDBACK;CAP-ACC;CAP-DIAG","Phản hồi bài làm được biểu diễn bằng Feedback và các năng lực áp dụng, không còn là task riêng.",uet_legacy_decided,UET-PROJECT-REP
+T3,task_v0,legacy,"TASK-NEXT-TUTOR-RESPONSE;CAP-STRAT;CAP-SCAFF;PRINCIPLE-QUESTIONING;PRINCIPLE-MODELLING","Gợi ý từng bước là cách điều tiết hỗ trợ và có thể dùng nhiều nguyên tắc, không còn là task riêng.",uet_legacy_decided,UET-PROJECT-REP
+T4,task_v0,legacy,"TASK-NEXT-TUTOR-RESPONSE;CAP-DIAG;PRINCIPLE-QUESTIONING;PRINCIPLE-FEEDBACK","Chẩn đoán được giữ như năng lực/ngữ cảnh kích hoạt, không còn là task riêng.",uet_legacy_decided,UET-PROJECT-REP
+TASK-PROBE,eight_task_candidate,legacy,"PRINCIPLE-QUESTIONING;CAP-STATE","Mục đích thăm dò được giữ trong Questioning và CAP-STATE; nhánh tám task không còn hoạt động.",uet_legacy_decided,UET-PROJECT-REP
+TASK-EXPLAIN,eight_task_candidate,legacy,"PRINCIPLE-EXPLANATION","Ý nghĩa được chuyển trực tiếp sang nguyên tắc Explanation.",uet_legacy_decided,UET-PROJECT-REP
+TASK-ASSESS,eight_task_candidate,legacy,"PRINCIPLE-FEEDBACK;CAP-ACC","Ý nghĩa đánh giá bài làm được giữ trong Feedback và năng lực chuyên môn.",uet_legacy_decided,UET-PROJECT-REP
+TASK-DIAG,eight_task_candidate,legacy,"CAP-DIAG;PRINCIPLE-QUESTIONING;PRINCIPLE-FEEDBACK","Chẩn đoán không còn là task; nó là năng lực có thể biểu hiện qua Questioning hoặc Feedback.",uet_legacy_decided,UET-PROJECT-REP
+TASK-SCAFFOLD,eight_task_candidate,legacy,"CAP-STRAT;CAP-SCAFF","Dàn giáo là cách chọn và điều tiết hỗ trợ, không phải nguyên tắc hay task độc lập.",uet_legacy_decided,UET-PROJECT-REP
+TASK-MODEL,eight_task_candidate,legacy,"PRINCIPLE-MODELLING","Ý nghĩa được chuyển trực tiếp sang nguyên tắc Modelling.",uet_legacy_decided,UET-PROJECT-REP
+TASK-PRACTICE,eight_task_candidate,legacy,"PRINCIPLE-PRACTICE;PRINCIPLE-CHALLENGE","Nhãn cũ trộn luyện tập và thử thách; hai ý nghĩa được tách theo KMP.",uet_legacy_decided,UET-PROJECT-REP
+TASK-CONSOLIDATE,eight_task_candidate,legacy,"PRINCIPLE-FEEDBACK;PRINCIPLE-QUESTIONING;PRINCIPLE-PRACTICE","Củng cố là mục đích có thể được thực hiện bằng nhiều nguyên tắc, không còn là task riêng.",uet_legacy_decided,UET-PROJECT-REP

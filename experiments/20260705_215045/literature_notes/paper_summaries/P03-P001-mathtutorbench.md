@@ -1,9 +1,9 @@
 # P03-P001 — MathTutorBench
 
-Paper: `MathTutorBench: A Benchmark for Measuring Open-ended Pedagogical Capabilities of LLM Tutors`  
-File local: `document/paper/source_paper/2502.18940v2.pdf`  
-Năm/nguồn: 2025, arXiv preprint  
-Registry ID: `P03-P001`  
+Paper: `MathTutorBench: A Benchmark for Measuring Open-ended Pedagogical Capabilities of LLM Tutors`
+File local: `document/paper/source_paper/2502.18940v2.pdf`
+Năm/nguồn: 2025, arXiv preprint
+Registry ID: `P03-P001`
 Vai trò trong P03: paper lõi về đánh giá năng lực gia sư LLM trong hội thoại mở.
 
 ## 1. Vấn đề paper giải quyết
@@ -16,14 +16,15 @@ Vị trí nguồn chính: Abstract; Section 1; Figure 1; Figure 2.
 
 MathTutorBench chia năng lực gia sư thành 3 nhóm lớn và 7 task:
 
-| Nhóm | Task | Ý nghĩa |
-|---|---|---|
-| Math Expertise | Problem Solving | Đo năng lực giải bài cơ bản. |
-| Math Expertise | Socratic Questioning | Sinh câu hỏi từng bước thay vì chỉ đưa lời giải. |
-| Student Understanding | Student Solution Correctness | Xác định lời giải của học sinh đúng/sai. |
-| Student Understanding | Mistake Location | Tìm vị trí lỗi đầu tiên trong lập luận của học sinh. |
-| Student Understanding | Mistake Correction | Sửa lời giải khi lịch sử hội thoại có bước sai. |
-| Teacher Response Generation | Scaffolding Generation | Sinh lượt phản hồi tiếp theo của gia sư trong hội thoại. |
+
+| Nhóm                       | Task                              | Ý nghĩa                                                                                                               |
+| --------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Math Expertise              | Problem Solving                   | Đo năng lực giải bài cơ bản.                                                                                     |
+| Math Expertise              | Socratic Questioning              | Sinh câu hỏi từng bước thay vì chỉ đưa lời giải.                                                             |
+| Student Understanding       | Student Solution Correctness      | Xác định lời giải của học sinh đúng/sai.                                                                       |
+| Student Understanding       | Mistake Location                  | Tìm vị trí lỗi đầu tiên trong lập luận của học sinh.                                                         |
+| Student Understanding       | Mistake Correction                | Sửa lời giải khi lịch sử hội thoại có bước sai.                                                               |
+| Teacher Response Generation | Scaffolding Generation            | Sinh lượt phản hồi tiếp theo của gia sư trong hội thoại.                                                       |
 | Teacher Response Generation | Pedagogical Instruction Following | Sinh phản hồi theo hướng dẫn sư phạm rõ hơn, ví dụ nudging/guiding question/không làm học sinh quá tải. |
 
 Nguồn dữ liệu gồm GSM8k, StepVerify, MathDialBridge và biến thể hội thoại dài hơn. Table 1 mô tả số lượng instance và loại input/ground truth cho từng task.
@@ -105,16 +106,17 @@ Vị trí nguồn chính: Limitations; Ethics Statement.
 
 ## 9. Candidate claims cho evidence matrix
 
-| Claim candidate | Nhãn | Vị trí nguồn | Ghi chú chuyển giao |
-|---|---|---|---|
-| Cần tách năng lực giải bài khỏi năng lực gia sư. | bằng chứng | Section 1; Section 6.1; Table 4 | Rất phù hợp cho P04. |
-| Benchmark gia sư nên có task chẩn đoán lỗi/học sinh hiểu sai. | bằng chứng | Section 4.1; Table 1 | Chuyển sang lỗi thuật toán/code cần HNMU xác nhận. |
+
+| Claim candidate                                                               | Nhãn        | Vị trí nguồn                    | Ghi chú chuyển giao                                                                           |
+| ----------------------------------------------------------------------------- | ------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Cần tách năng lực giải bài khỏi năng lực gia sư.                    | bằng chứng | Section 1; Section 6.1; Table 4    | Rất phù hợp cho P04.                                                                         |
+| Benchmark gia sư nên có task chẩn đoán lỗi/học sinh hiểu sai.        | bằng chứng | Section 4.1; Table 1               | Chuyển sang lỗi thuật toán/code cần HNMU xác nhận.                                       |
 | Scaffolding/không đưa đáp án ngay là tiêu chí sư phạm quan trọng. | bằng chứng | Section 3.2; Section 4.3; Figure 7 | Cần gắn với từng task, tránh áp dụng máy móc khi học sinh cần đáp án trực tiếp. |
-| Hội thoại dài làm năng lực gia sư khó hơn. | bằng chứng | Section 6.1 | Có ích cho metadata số bước/lượt. |
-| Safety nên tách thành policy riêng vì MathTutorBench chưa bao phủ. | suy luận | Limitations | Phù hợp với hướng serious error policy của dự án. |
+| Hội thoại dài làm năng lực gia sư khó hơn.                           | bằng chứng | Section 6.1                        | Có ích cho metadata số bước/lượt.                                                        |
+| Safety nên tách thành policy riêng vì MathTutorBench chưa bao phủ.     | suy luận    | Limitations                        | Phù hợp với hướng serious error policy của dự án.                                       |
 
 ## 10. Câu hỏi mở
 
 1. Với Tin học 9, “mistake location” nên áp dụng cho code, thuật toán, khái niệm hay cả ba?
 2. Có task nào học sinh cần được trả lời trực tiếp thay vì luôn Socratic/gợi mở không?
-3. Rubric rút gọn nên giữ scaffolding như một tiêu chí riêng hay gộp vào “chất lượng hỗ trợ sư phạm”? 
+3. Rubric rút gọn nên giữ scaffolding như một tiêu chí riêng hay gộp vào “chất lượng hỗ trợ sư phạm”?

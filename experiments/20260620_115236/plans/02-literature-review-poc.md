@@ -72,7 +72,9 @@ Tạo nhóm truy vấn, ví dụ:
 (education OR tutoring) AND (rubric OR reliability)
 ```
 
-Agent phải lưu nguyên truy vấn, nguồn tìm kiếm, ngày tìm, số kết quả và cách chọn. Thực hiện backward/forward citation chaining từ các paper seed.
+Agent phải lưu nguyên truy vấn, nguồn tìm kiếm, ngày tìm, số kết quả và cách chọn. Thực hiện lần theo trích dẫn ngược/xuôi từ các bài báo hạt giống.
+
+Bài báo hạt giống phải được lập độc lập từ câu hỏi rà soát, truy vấn tìm kiếm, nguồn gợi ý của giáo sư/HNMU nếu có, và lần theo trích dẫn từ các nguồn đủ liên quan. Không dùng F01 làm nguồn hạt giống chính vì F01 là sản phẩm làm gấp, có nguy cơ khóa rà soát vào các giả định ban đầu. F01 chỉ được dùng như danh sách đối chiếu sau khi đã có danh mục hạt giống độc lập: nếu F01 có bài báo/ý nào xuất hiện lại, ghi rõ vì sao được giữ; nếu không, ghi là sản phẩm lịch sử hoặc câu hỏi mở.
 
 ## 5. Inclusion và exclusion
 

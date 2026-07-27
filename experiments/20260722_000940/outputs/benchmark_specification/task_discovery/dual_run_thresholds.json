@@ -1,0 +1,10 @@
+{
+  "status": "uet_approved",
+  "approved_by": "UET-REVIEWER-01",
+  "approved_at": "2026-07-27T08:05:11+07:00",
+  "primary_exact_agreement_min": 1.0,
+  "pair_exact_agreement_min": 0.9,
+  "mean_jaccard_min": 0.9,
+  "coverage_gap_agreement_min": 1.0,
+  "reference_effect_agreement_min": 0.9
+}

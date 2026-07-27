@@ -1,0 +1,22 @@
+{
+  "pipeline_id": "plan03-task-discovery-preparation-v1",
+  "candidate_count": 2028,
+  "sample_count": 160,
+  "sample_family_count": 160,
+  "seed": "plan03-task-discovery-v1",
+  "per_grade": 40,
+  "candidate_by_grade": {
+    "6": 279,
+    "7": 438,
+    "8": 557,
+    "9": 754
+  },
+  "sample_by_grade": {
+    "6": 40,
+    "7": 40,
+    "8": 40,
+    "9": 40
+  },
+  "feature_method": "deterministic_regex_v1",
+  "semantic_warning": "content_form_signal and student_state_signal are routing signals, not HNMU-confirmed task or student-state labels"
+}

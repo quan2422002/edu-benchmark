@@ -1,0 +1,78 @@
+{
+  "manifest_version": "plan03-principle-reference-v1",
+  "created_at": "2026-07-27T06:24:12.475848+07:00",
+  "coding_input": {
+    "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/forward_test/forward_test_coding_input.csv",
+    "sha256": "f6d29a01aba4b0cb5c559846a86af27eb849f28fc8838b9249e7819386ddc304"
+  },
+  "batch": {
+    "offset": 0,
+    "size": 5,
+    "ordered_id_sha256": "60e3cf4f16b4800d67e9271772544e36ae8a1d090becde28aa43425c8b9ac2ae"
+  },
+  "views": {
+    "pass1": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/forward_test/principle_annotation_pass1_input.csv",
+      "sha256": "94da6734f63d91356f98f90c995cc6b47ce4b037b3fd7ef6e584a1a7359e7715",
+      "columns": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history"
+      ]
+    },
+    "reference": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/forward_test/principle_annotation_reference_input.csv",
+      "sha256": "f6d29a01aba4b0cb5c559846a86af27eb849f28fc8838b9249e7819386ddc304",
+      "columns": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history",
+        "gold_response",
+        "gold_answer"
+      ]
+    }
+  },
+  "canonical_documents": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "9f4b639a140d2c7def9e8ccb841c212229efd0ee7fea3e47b0931d0ca158077f",
+      "size_bytes": 5416
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "926554872c434db32d7a97f4281d0eb947d485fe740fb4a8c8f269c99ba0f2a5",
+      "size_bytes": 8487
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c",
+      "size_bytes": 13146
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af",
+      "size_bytes": 10644
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1",
+      "size_bytes": 6160
+    }
+  ],
+  "pilot_policy": {
+    "model": "gpt-5.4-mini",
+    "reasoning_effort": "medium",
+    "instance_count": 2,
+    "review_status": "needs_uet_review"
+  }
+}

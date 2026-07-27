@@ -26,7 +26,7 @@ Nếu mới hoàn thành 05A nhưng chưa nhận phản hồi HNMU/UET, trạng 
 
 ### HNMU reviewer
 
-- kiểm kiến thức, tính sư phạm, gold response, task/rubric và khả năng dùng để chấm;
+- kiểm kiến thức, tính sư phạm, gold response, nguyên tắc/rubric và khả năng dùng để chấm;
 - chọn `accept`, `revise`, `reject`, hoặc `abstain`;
 - không review chính mẫu mình đã author nếu có thể xác định tác giả.
 
@@ -78,7 +78,7 @@ Cần chốt:
 - `outputs/benchmark_candidate_audit/full_v0/candidate_duplicate_clusters.csv`
 - `outputs/benchmark_candidate_audit/full_v0/candidate_leakage_flags.csv`
 - candidate/trace từ Plan 02;
-- task/rubric/serious-error/provenance từ Plan 03;
+- nguyên tắc/rubric/serious-error/provenance từ Plan 03;
 - coverage summary từ Plan 03;
 - Plan 04 report.
 
@@ -100,7 +100,7 @@ Ràng buộc cứng:
 Mục tiêu phủ:
 
 - lớp 6–9;
-- task T1–T4 hoặc task v1 đã chốt;
+- task v1 đã được Plan 03 chốt;
 - `Biết`, `Hiểu`, `Vận dụng`;
 - nhiều topic/lesson;
 - split strategy;
@@ -122,7 +122,7 @@ Mỗi mẫu hiển thị bằng ngôn ngữ dễ đọc:
 - phản hồi gia sư dự kiến;
 - đáp án chuyên môn;
 - trích đoạn học liệu liên quan;
-- task/rubric được gợi ý;
+- nguyên tắc/rubric được gợi ý;
 - câu hỏi review;
 - ô quyết định và lý do.
 

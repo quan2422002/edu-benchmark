@@ -29,6 +29,7 @@ Canonical instructions live under `agents/<name>/`; runtime adapters must remain
 - `benchmark-specification-designer` — benchmark specification specialist for task definitions, rubrics, serious-error catalogs, and provenance matrices grounded in research and learning resources. Codex model pinned to `gpt-5.4-mini`, reasoning `high`.
 - `teacher-collaboration-designer` — teacher-workflow specialist for author/reviewer/adjudicator instructions and teacher-facing materials.
 - `hnmu-dialogue-auditor` — raw HNMU dialogue audit specialist for checklist-level consistency, SGK/SGV evidence, confidence, and review-queue suggestions before benchmark conversion. Codex model pinned to `gpt-5.4-mini`, reasoning `medium`.
+- `pedagogical-principle-annotator` — two-pass Workstream-C coding specialist for provisional KMP principle labels, reference-conflict routing, and review queues. Codex model pinned to `gpt-5.4-mini`, reasoning `medium`; it may not edit the codebook or confirm labels.
 
 ## Specialist fan-out policy
 

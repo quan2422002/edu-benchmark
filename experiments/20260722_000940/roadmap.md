@@ -89,11 +89,14 @@ Experiment này không giao toàn bộ phase 2 cho một plan duy nhất. Các p
 |---|---|---|---:|---|---|
 | [Plan 01 — Contract và pilot conversion](plans/01-audited-raw-dialogue-to-benchmark-candidate-conversion.md) | `COMPLETED` | Chốt schema, semantics evidence, code chọn input và tách hội thoại; chạy pilot deterministic | 665 input, 40 candidate pilot | Code conversion v0, schema v0, pilot, lỗi và trace | Dữ liệu phase 1 |
 | [Plan 02 — Multi-candidate conversion từ mọi lượt gia sư](plans/02-split-policy-and-full-benchmark-conversion.md) | `COMPLETED` | Migrate contract Plan 01 sang một candidate cho mỗi lượt AI; chạy pilot rồi full conversion | 665 raw sample `pass` → 2.028 candidate sơ bộ | D02-01, pilot 69 candidate, full candidate file gọn, trace, raw-sample summary và error queue | Plan 01 |
-| [Plan 03 — Task/rubric specification và coverage THCS](plans/03-thcs-task-rubric-specification-and-coverage.md) | `DRAFT` | Migrate spec sang THCS 6–9, gán task/rubric cho pool sơ bộ và ghi disposition giữ/loại có truy vết | 2.028 candidate trước filtering | Spec v1, serious errors, provenance, assignment/disposition/review queue, coverage | Plan 02 |
-| [Plan 04 — Evidence và audit benchmark candidate](plans/04-benchmark-candidate-evidence-and-quality-audit.md) | `DRAFT` | Kiểm schema, evidence, task/rubric, `gold_answer`, `gold_response`, leakage, trùng/gần trùng và giá trị đánh giá | Toàn bộ candidate | Evidence links, checklist chi tiết, `candidate_quality_suggestions.csv`, review queue | Plan 03 |
+| [Plan 03 — Một nhiệm vụ, sáu năng lực, sáu nguyên tắc KMP và rubric hai tầng](plans/03-thcs-task-rubric-specification-and-coverage.md) | `WORKSTREAM_C_C0A_V3_UET_REVIEW_REQUIRED` | Codebook/skill/schema/validator v3, grounding pool 2.028 ứng viên và lô pilot 40 phân tầng đã hoàn tất; forward test đạt cấu trúc nhưng chỉ khớp 3/5 tập nhãn kỳ vọng | 2.028 ứng viên; 665 family nguồn; pilot 40 gồm 10 ứng viên mỗi lớp; nhãn nguyên tắc chính thức 0 | UET phân xử hai ca `FT-C02` và `FT-C04`; chạy lại C0a trong thread mới, chỉ mở C0b nếu đạt 5/5 | Plan 02 |
+| [Plan 04 — Evidence và audit benchmark candidate](plans/04-benchmark-candidate-evidence-and-quality-audit.md) | `DRAFT` | Kiểm schema, evidence, nguyên tắc/rubric, `gold_answer`, `gold_response`, leakage, trùng/gần trùng và giá trị đánh giá | Toàn bộ candidate | Evidence links, checklist chi tiết, `candidate_quality_suggestions.csv`, review queue | Plan 03 |
 | [Plan 05 — Pilot benchmark và HNMU/UET review](plans/05-benchmark-pilot-and-hnmu-uet-review.md) | `DRAFT` | Chọn candidate đạt yêu cầu, chuẩn bị packet, review độc lập và phân xử | Tập con sau audit; đề xuất 40 | Pilot v0, teacher packet, review/adjudication, readiness report | Plan 04 |
+| [KSE 2026 manuscript plan](../../kse_submit_manuscript/PLAN.md) | `DRAFT` | Viết paper tăng dần từ các claim đã có evidence; cập nhật theo paper-update packet thay vì chờ toàn bộ phase 2 hoàn thành | Tối đa 6 trang IEEE | Bản gửi giáo sư 27/07, submission candidate và claim–evidence registry | Plans 01–02 đã hoàn thành; nhận snapshot tăng dần từ Plans 03–05 |
 
 Plan 01 là pilot nhỏ để kiểm contract và code path; không gán task/rubric trên toàn bộ dữ liệu, không audit chất lượng toàn bộ candidate và không thay thế các plan 02–05.
+
+KSE manuscript là workstream xuyên suốt, không phải cổng tuần tự sau Plan 05. Source LaTeX thuộc `kse_submit_manuscript/`; các plan kỹ thuật chỉ cung cấp report hoặc paper-update packet có truy vết.
 
 ### 4.1. Tình trạng sau Plan 01
 
@@ -143,24 +146,36 @@ Output dự kiến:
 - `conversion_trace.csv` trong thư mục run tương ứng;
 - Plan 02 thêm `conversion_dispositions.csv` bao phủ đủ 665 raw sample.
 
-### Giai đoạn 2.3 — Gán task/rubric và metadata còn thiếu
+### Giai đoạn 2.3 — Xây dựng và kiểm định nguyên tắc/rubric trước khi gán toàn pool
 
 Mục tiêu:
 
-- dùng task/rubric v0 từ experiment `20260705_215045`;
-- migrate task/rubric v0 thành specification v1 cho phạm vi Tin học THCS lớp 6–9; không mang giới hạn diễn đạt “Tin học 9” của artifact v0 sang schema ứng viên mới;
-- tạo serious-error catalog và provenance matrix trước khi audit candidate;
-- gán task theo hành vi gia sư cần đánh giá, không gán chỉ theo mức nhận thức;
-- mức nhận thức là metadata hỗ trợ, không thay thế task;
-- nếu agent gợi ý task/rubric, phải có confidence và lý do.
-- candidate không khớp task/rubric phải có disposition như `excluded_no_supported_task`; không xóa âm thầm khỏi luồng.
-- vì một raw dialogue sinh nhiều candidate có history lồng nhau, coverage và metric downstream phải báo cả candidate-macro và raw-dialogue-family-macro hoặc weighting tương đương.
+- dùng một nhiệm vụ benchmark chung: sinh phản hồi tiếp theo của gia sư AI;
+- dùng sáu nguyên tắc KMP làm một tập nhãn không thứ tự cấp ứng viên, không giới hạn cứng ở hai; hơn ba nguyên tắc bắt buộc UET review;
+- dùng sáu năng lực Workstreams A–B làm nền cho các chiều chất lượng;
+- đưa tám nhiệm vụ ứng viên cũ và 20 nhãn thử vào `legacy`, không dùng để gán nhãn hay review hiện hành;
+- tạo specialist `pedagogical-principle-annotator` với skill canonical, adapter mỏng, validator/test và quyền ghi bị giới hạn; skill/reference phải nêu trực tiếp đường dẫn tới tài liệu sáu nguyên tắc và mô hình sáu năng lực;
+- tách vật lý input vòng 1 chỉ có context khỏi input vòng 2 có gold/reference; mọi thay đổi nhãn sau vòng 2 phải vào review queue;
+- spawn đồng thời đúng hai instance trên cùng lô pilot 40, ghi output riêng, đo tính tái lập liên-instance và đưa toàn bộ bất đồng cho UET phân xử trước khi scale;
+- kiểm tra độ phủ sáu nguyên tắc trên mẫu 160 ứng viên; trường hợp không khớp phải có `coverage_gap_reason`, không bị ép nhãn;
+- xây rubric đúng hai tầng: chiều năng lực chung và tiêu chí theo nguyên tắc;
+- giữ dữ kiện riêng của candidate trong evaluation context, không tạo rubric tầng ba;
+- tạo danh mục lỗi nghiêm trọng và provenance matrix;
+- dùng response từ nhiều LLM và các cặp biến đổi có kiểm soát, được HNMU chấm mù, để kiểm khả năng phân biệt tốt–trung bình–kém;
+- chỉ khóa spec v1 và gán toàn pool sau khi đạt các cổng nội dung, nhất quán và hiệu lực;
+- candidate không khớp nguyên tắc/rubric phải có disposition như `excluded_no_supported_principle`; không xóa âm thầm;
+- coverage và metric downstream báo cả candidate-macro và raw-dialogue-family-macro hoặc trọng số tương đương.
 
 Output dự kiến:
 
+- `literature_notes/plan03_measurement_foundations/`
+- `outputs/benchmark_specification/construct_v1_draft/`
+- `outputs/benchmark_specification/task_discovery/`
+- `outputs/benchmark_specification/rubric_v1_draft/`
+- `outputs/benchmark_specification/validity_pilot/`
 - `outputs/benchmark_specification/spec_v1/`
-- `outputs/benchmark_specification/candidate_assignment/benchmark_candidate_task_rubric_suggestions.csv`
-- `outputs/benchmark_specification/candidate_assignment/task_rubric_review_queue.csv`
+- `outputs/benchmark_specification/candidate_assignment/benchmark_candidate_principle_rubric_suggestions.csv`
+- `outputs/benchmark_specification/candidate_assignment/principle_rubric_review_queue.csv`
 
 ### Giai đoạn 2.4 — Đánh giá chất lượng ứng viên mẫu benchmark
 
@@ -208,7 +223,8 @@ Output dự kiến:
 
 ## 7. Việc chưa triển khai ngay
 
-- Chưa chấm mô hình.
 - Chưa xây dựng benchmark chính thức.
-- Chưa thay đổi task/rubric v0 nếu chưa có yêu cầu riêng.
+- Chưa triển khai việc sinh/chấm response mô hình; Plan 03 mới chỉ quy định validity pilot và phải được duyệt trước khi chạy.
+- Chưa coi task/rubric v0 là specification chính thức.
 - Chưa đưa nhóm `need_human_review` vào chuyển đổi đại trà.
+- Chưa tạo source LaTeX; KSE manuscript plan đang `DRAFT`, với mốc đề xuất gửi giáo sư ngày 27/07/2026.

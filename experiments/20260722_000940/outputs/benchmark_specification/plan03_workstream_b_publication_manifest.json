@@ -1,0 +1,70 @@
+{
+  "publication_id": "plan03-workstream-b-provisional-v1",
+  "status": "uet_provisional_approved_for_principle_coverage_and_rubric_design",
+  "approval_scope": "workstreams_c_principle_coverage_and_d_rubric_design_only",
+  "uet_decision_date": "2026-07-26",
+  "hnmu_review_status": "deferred_to_integrated_principle_capability_rubric_example_review_after_workstream_d",
+  "workstreams_completed": [
+    "A",
+    "B"
+  ],
+  "next_workstream_status": "ready_for_workstream_c_principle_coding",
+  "workstreams_ready": [
+    "C"
+  ],
+  "workstreams_not_executed": [
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "staged_task_discovery_draft_status": "eight_task_branch_moved_to_legacy_and_excluded",
+  "summary": {
+    "capability_count": 6,
+    "observable_evidence_count": 6,
+    "overlap_pair_count": 15,
+    "provenance_count": 6,
+    "research_source_count": 6,
+    "research_support_link_count": 25,
+    "confirmed_count": 0
+  },
+  "files": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_research_basis.md",
+      "sha256": "ffee2ba86351142842fd6a3aa6d2a6442a3f84d6e69b9367ef632957725548c7"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_observable_evidence.csv",
+      "sha256": "7d7ec0d47a67688210416d40c96e893dadebe620bf05fec11a3d97308d2650f0"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_research_provenance.csv",
+      "sha256": "39ac1b6fe89b65d7e101742244127fd3f6a8281e83c028e1abe4f3a379e73e06"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/research_source_registry.csv",
+      "sha256": "4977b7c1cccd5c45d9a2d2faf2898a5129ba8a205a533e9beff7941384a55ef3"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/research_support_matrix.csv",
+      "sha256": "6c1186ed4e9cce1759f465df2678dab2611fe708e3bc7b1b906525987c625bb6"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_open_questions.md",
+      "sha256": "73c52c8978e17131b5d858de49f4727acc787d95326a4496a910b36c1ff46a4a"
+    }
+  ]
+}

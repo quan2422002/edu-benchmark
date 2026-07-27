@@ -1,0 +1,5 @@
+legacy_item_id,legacy_item_type,proposed_disposition,replacement_item_ids,rationale,status,decision_owner
+T1,task,chờ_đối_chiếu,,"Task v0 chỉ là artifact thử nghiệm; cần so với taxonomy sinh ra từ dữ liệu trước khi map.",draft,UET
+T2,task,chờ_đối_chiếu,,"Task v0 chỉ là artifact thử nghiệm; cần so với taxonomy sinh ra từ dữ liệu trước khi map.",draft,UET
+T3,task,chờ_đối_chiếu,,"Task v0 chỉ là artifact thử nghiệm; cần so với taxonomy sinh ra từ dữ liệu trước khi map.",draft,UET
+T4,task,chờ_đối_chiếu,,"Task v0 chỉ là artifact thử nghiệm; cần so với taxonomy sinh ra từ dữ liệu trước khi map.",draft,UET

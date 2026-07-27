@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pedagogical Principle Annotator"
+  short_description: "Assign unordered KMP principle sets"
+  default_prompt: "Use $pedagogical-principle-annotator to assign provisional unordered KMP pedagogical-principle sets from the delegated context and grounding inputs."

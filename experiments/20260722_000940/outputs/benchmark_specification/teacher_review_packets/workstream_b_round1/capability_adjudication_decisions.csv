@@ -1,0 +1,3 @@
+decision_id,item_type,item_id_a,item_id_b,adjudicator_id,adjudicated_action,rationale,decision_status
+UET-ADJ-001,overlap_boundary,CAP-STATE,CAP-DIAG,UET-PROJECT-REP,retain_separate_for_rubric_design,"Ranh giới được chấp thuận tạm thời để làm nền cho Workstreams C–D; đây không phải quyết định HNMU và phải được kiểm tra lại bằng nguyên tắc, rubric cùng ví dụ cụ thể sau Workstream D.",uet_provisional_approved
+UET-ADJ-002,overlap_boundary,CAP-STRAT,CAP-SCAFF,UET-PROJECT-REP,retain_separate_for_rubric_design,"Ranh giới được chấp thuận tạm thời dựa trên MTF-S013 và phương pháp HNMU; HNMU sẽ kiểm tra lại trong gói tích hợp sau Workstream D.",uet_provisional_approved

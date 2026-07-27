@@ -1,0 +1,120 @@
+{
+  "manifest_version": "plan03-principle-grounding-v3",
+  "created_at": "2026-07-27T12:48:17.297520+07:00",
+  "grounding_pool": {
+    "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/candidate_principle_grounding_pool.csv",
+    "sha256": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a"
+  },
+  "selection": {
+    "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_sample.csv",
+    "sha256": "fd208e53ea64b7f57fff53203c6907962713404e1925215f9d826f06a28f9558",
+    "per_grade": 10
+  },
+  "batch": {
+    "size": 40,
+    "ordered_id_sha256": "454293f44b3adf5d49dabaf34add2ea6b3a55c297f00c603e0fcb0ca2027e866",
+    "grade_counts": {
+      "6": 10,
+      "7": 10,
+      "8": 10,
+      "9": 10
+    },
+    "unique_sample_count": 40
+  },
+  "views": {
+    "context": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/pilot_40/principle_annotation_pass1_input.csv",
+      "sha256": "55ff1fcd906291880fcac2d3d3e7fbb7f3dcdcad810cb201d6b3a8857e3288f8",
+      "columns": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history"
+      ]
+    },
+    "grounding": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/pilot_40/principle_annotation_grounding_input.csv",
+      "sha256": "b532286f059fb18891af484148c293cb72276fce7efe1c0d27f89deba5267853",
+      "columns": [
+        "benchmark_candidate_id",
+        "sample_id",
+        "grade",
+        "lesson",
+        "position",
+        "bloom_level",
+        "student_prompt",
+        "conversation_history",
+        "source_question",
+        "gold_answer"
+      ],
+      "gold_response_excluded": true
+    }
+  },
+  "canonical_documents": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6",
+      "size_bytes": 5767
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "046e3f6279353a582515da26f84f1c0af314d464b6c9fc1b5250769e33c82157",
+      "size_bytes": 6306
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c",
+      "size_bytes": 13146
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af",
+      "size_bytes": 10644
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1",
+      "size_bytes": 6160
+    }
+  ],
+  "runtime_documents": [
+    {
+      "path": "agents/pedagogical-principle-annotator/SKILL.md",
+      "sha256": "9db0a82252695c20dc00d61997a6e7dbfc9c089ac353713f29ffb64f847599b3",
+      "size_bytes": 3501
+    },
+    {
+      "path": "agents/pedagogical-principle-annotator/references/two_pass_annotation_contract.md",
+      "sha256": "81f4df288f25f0f75e53d8a82ef391f21e9eb455ba70eb799537fb84c642e8ce",
+      "size_bytes": 7062
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6",
+      "size_bytes": 5767
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c",
+      "size_bytes": 13146
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1",
+      "size_bytes": 6160
+    }
+  ],
+  "pilot_policy": {
+    "model": "gpt-5.4-mini",
+    "reasoning_effort": "medium",
+    "instance_count": 2,
+    "label_structure": "unordered_set",
+    "hard_label_limit": null,
+    "mandatory_review_above": 3,
+    "review_status": "needs_uet_review"
+  }
+}

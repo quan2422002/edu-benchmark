@@ -31,7 +31,12 @@
     "delegation_id": {"type": "string", "minLength": 1},
     "parent_session": {"type": "string", "minLength": 1},
     "agent": {
-      "enum": ["research-methodologist", "teacher-collaboration-designer"]
+      "enum": [
+        "research-methodologist",
+        "benchmark-specification-designer",
+        "teacher-collaboration-designer",
+        "pedagogical-principle-annotator"
+      ]
     },
     "task": {"type": "string", "minLength": 1},
     "input_paths": {"type": "array", "items": {"type": "string"}},

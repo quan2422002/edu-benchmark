@@ -1,0 +1,16 @@
+capability_id_a,capability_id_b,reviewer_id,overlap_decision,proposed_action,rationale,decision_status
+CAP-ACC,CAP-STATE,,,,,not_started
+CAP-ACC,CAP-STRAT,,,,,not_started
+CAP-ACC,CAP-SCAFF,,,,,not_started
+CAP-ACC,CAP-DIAG,,,,,not_started
+CAP-ACC,CAP-CARE,,,,,not_started
+CAP-STATE,CAP-STRAT,,,,,not_started
+CAP-STATE,CAP-SCAFF,,,,,not_started
+CAP-STATE,CAP-DIAG,UET-PROJECT-REP,distinct_with_documented_boundary,retain_separate_for_task_discovery,"STATE mô tả trạng thái hiện tại; DIAG giải thích nguyên nhân và chỉ áp dụng khi có bằng chứng lỗi hoặc bế tắc.",uet_provisional_approved
+CAP-STATE,CAP-CARE,,,,,not_started
+CAP-STRAT,CAP-SCAFF,UET-PROJECT-REP,distinct_with_documented_boundary,retain_separate_for_task_discovery,"STRAT trả lời chọn phương tiện hoặc chức năng nào; SCAFF trả lời hỗ trợ bao nhiêu khi nào và giữ phần việc nào cho học sinh.",uet_provisional_approved
+CAP-STRAT,CAP-DIAG,,,,,not_started
+CAP-STRAT,CAP-CARE,,,,,not_started
+CAP-SCAFF,CAP-DIAG,,,,,not_started
+CAP-SCAFF,CAP-CARE,,,,,not_started
+CAP-DIAG,CAP-CARE,,,,,not_started

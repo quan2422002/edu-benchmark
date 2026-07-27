@@ -1,0 +1,16 @@
+{
+  "manifest_version": "plan03-principle-annotation-run-v3",
+  "coder_id": "PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V3",
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "medium",
+  "created_at": "2026-07-27T12:53:49+07:00",
+  "validated_at": "2026-07-27T12:53:49+07:00",
+  "closed_at": "2026-07-27T12:53:49+07:00",
+  "validation_status": "passed",
+  "closed": true,
+  "candidate_count": 5,
+  "input_manifest_sha256": "8a065101ae9df5364fe4e15ffc17d0674333c04bc938d3f7640d98d531df215d",
+  "input_manifest_path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/forward_test/principle_annotation_grounding_manifest.json",
+  "pass1_input_sha256": "e8d31f1bd2c3c275028efa0781bdd5ff0aead37bed342ad240082731efafda11",
+  "grounding_input_sha256": "b09dccc4a40433618f00ce4c16c2abb488ece75eb528db8e09488acfd10f9257"
+}

@@ -1,0 +1,154 @@
+{
+  "experiment_id": "20260722_000940",
+  "plan_id": "03",
+  "workstream": "C",
+  "design_id": "one-task-six-kmp-principles-six-capabilities-v1",
+  "status": "c0b_method_revision_pending_uet_review",
+  "created_at": "2026-07-26T23:30:57+07:00",
+  "benchmark_task_count": 1,
+  "pedagogical_principle_count": 6,
+  "tutor_capability_count": 6,
+  "formal_principle_annotation_count": 0,
+  "first_batch_started": true,
+  "first_batch_size": 40,
+  "active_outputs": [
+    {
+      "path": "outputs/benchmark_specification/task_discovery/benchmark_tasks.csv",
+      "sha256": "d07ac6977270420094efae692ff5a815b80d678ec16618cbd81093936c30c7dc"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "4ce9fbd134c17c1402960c6e6b713e3f2d691d9cc73cb2f20c8bbfe7d2d5957e"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/legacy_spec_dispositions.csv",
+      "sha256": "b64e0abfa297b2fa55838f7c46f4be97af1854369bcb78ee6e938d471b86028f"
+    }
+  ],
+  "locked_inputs": [
+    {
+      "path": "outputs/benchmark_specification/task_discovery/candidate_feature_census.csv",
+      "sha256": "e31c880814822d680768ee9b1300a20d9c214b2f6496cec3da28e29f9e550378"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_discovery_sample.csv",
+      "sha256": "fd208e53ea64b7f57fff53203c6907962713404e1925215f9d826f06a28f9558"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_discovery_coding_input.csv",
+      "sha256": "426b4af9d823d48ea4f57a0a4417e4cbb72b8f32ba082509002b18887289e32d"
+    }
+  ],
+  "legacy_branch": {
+    "path": "outputs/benchmark_specification/legacy/eight_task_candidate_branch/",
+    "status": "legacy_superseded",
+    "file_count": 18,
+    "inventory_sha256": "f720962c196fbd561e99b5e4b8b7f784c5b4e0f9ea09b0276244196f17213ac1",
+    "active_pipeline_must_ignore": true
+  },
+  "authority": {
+    "uet_status": "architecture_approved_for_principle_coding",
+    "hnmu_status": "deferred_to_integrated_review_after_workstream_d",
+    "confirmed_item_count": 0
+  },
+  "specialist_prerequisite": {
+    "specialist_id": "pedagogical-principle-annotator",
+    "status": "created_static_validation_passed",
+    "required_before_first_batch": true,
+    "two_pass_field_isolation_required": true,
+    "pilot_instance_count": 2,
+    "pilot_same_sample": true,
+    "pilot_concurrent_native_threads_required": true,
+    "separate_write_roots_required": true,
+    "canonical_document_paths_required_in_skill_or_reference": true,
+    "inter_instance_reproducibility_gate_required": true,
+    "skill_path": "agents/pedagogical-principle-annotator/SKILL.md",
+    "contract_path": "agents/pedagogical-principle-annotator/references/two_pass_annotation_contract.md",
+    "c0a_forward_test_status": "passed_5_of_5_on_previous_contract",
+    "c0b_status": "failed_method_revision_pending_uet_review"
+  },
+  "current_integrity_gate": {
+    "status": "method_revision_pending_uet_review",
+    "path": "outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+    "restored_base_sha256": "d87742644cddb5c82030a3bcc7918493336365071e9399118438bcd66ff430b8",
+    "published_sha256": "4ce9fbd134c17c1402960c6e6b713e3f2d691d9cc73cb2f20c8bbfe7d2d5957e",
+    "legacy_sha256": "c3a6d242485e1d6e6f6dac5f4ef6235e41350278f4d7e8462c4364ff22b365e7",
+    "active_differs_from_legacy": true,
+    "two_pass_and_dual_instance_sync_applied": true,
+    "pilot_may_proceed_to_specialist_creation": false
+  },
+  "last_integrity_sync_at": "2026-07-27T01:20:00+07:00",
+  "pilot_input_bundle": {
+    "pass1_path": "outputs/benchmark_specification/task_discovery/principle_annotation_pass1_input.csv",
+    "reference_path": "outputs/benchmark_specification/task_discovery/principle_annotation_reference_input.csv",
+    "reference_manifest_path": "outputs/benchmark_specification/task_discovery/principle_annotation_reference_manifest.json",
+    "ordered_id_sha256": "7559aa497a0227c221725ebd2c9df60867aceeb93fa8dc8fe37ec2a62f6058e3",
+    "candidate_count": 40,
+    "validation_status": "passed",
+    "reference_manifest_sha256": "a47acabcb4e363e3d8896d334dee35e17d30d6d53be3aba4a99eb586919ba8f5",
+    "rebuild_hash_stability": "passed_two_consecutive_builds"
+  },
+  "uet_preregistration": {
+    "threshold_status": "uet_approved_5_of_5",
+    "blind_calibration_count": 0,
+    "blind_calibration_status": "waived_by_uet",
+    "must_precede_dual_run_comparison": true,
+    "threshold_decisions": {
+      "primary_exact_agreement_min": 1.0,
+      "pair_exact_agreement_min": 0.9,
+      "mean_jaccard_min": 0.9,
+      "coverage_gap_agreement_min": 1.0,
+      "reference_effect_agreement_min": 0.9
+    },
+    "threshold_decided_by": "UET-REVIEWER-01",
+    "threshold_partial_decision_at": "2026-07-27T07:42:50+07:00",
+    "threshold_approved_at": "2026-07-27T08:05:11+07:00",
+    "uet_role": "post_run_reviewer_and_adjudicator_only"
+  },
+  "last_implementation_sync_at": "2026-07-27T11:03:02+07:00",
+  "c0a_validation": {
+    "skill_quick_validate": "passed",
+    "focused_tests": "15 passed",
+    "agent_and_specification_tests": "68 passed",
+    "repository_tests": "125 passed",
+    "python_executable": "/home/quannda/miniconda3/envs/benchmark_env/bin/python"
+  },
+  "uet_gate_packet": {
+    "path": "outputs/benchmark_specification/teacher_review_packets/workstream_c_c0_gate/",
+    "forward_case_count": 5,
+    "forward_case_status": "uet_approved",
+    "threshold_status": "uet_approved_5_of_5",
+    "blind_calibration_path": "outputs/benchmark_specification/task_discovery/principle_calibration.csv",
+    "blind_calibration_count": 0,
+    "blind_calibration_status": "waived_by_uet",
+    "forward_case_approved_by": "UET-REVIEWER-01",
+    "forward_case_approved_at": "2026-07-27T06:22:48+07:00",
+    "uet_role": "post_run_review_only"
+  },
+  "implementation_artifacts": [
+    {
+      "path": "agents/pedagogical-principle-annotator/SKILL.md",
+      "sha256": "6c9e4da91cc75c23e81dab8e35a038c81e26146e2eae6b4ef7d635403b80cc81"
+    },
+    {
+      "path": "agents/pedagogical-principle-annotator/references/two_pass_annotation_contract.md",
+      "sha256": "ee57a1fb31b1479464dee035a318e072374eade6213e17ce559a32061b445d71"
+    },
+    {
+      "path": "src/edu_benchmark/benchmark_specification/principle_annotation.py",
+      "sha256": "92d69b3dad7391dbea9752a613de7ae15e11576beeec64c1348a254fc3e42e36"
+    },
+    {
+      "path": "scripts/benchmark_specification/reconcile_principle_annotation_draft.py",
+      "sha256": "7c3a7df603b639404875dbac8f85aca8f8765cc6ccb407889a1870ce0f57f1a2"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/principle_annotation_reference_manifest.json",
+      "sha256": "a47acabcb4e363e3d8896d334dee35e17d30d6d53be3aba4a99eb586919ba8f5"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "summary_version": "plan03-dual-run-reproducibility-v1",
+  "candidate_count": 40,
+  "interpretation": "AI inter-instance reproducibility; not human inter-rater reliability",
+  "metrics": {
+    "primary_exact_agreement": 0.55,
+    "pair_exact_agreement": 0.55,
+    "mean_jaccard": 0.55,
+    "coverage_gap_agreement": 1.0,
+    "reference_effect_agreement": 0.7
+  },
+  "pre_registered_thresholds": {
+    "primary_exact_agreement_min": 1.0,
+    "pair_exact_agreement_min": 0.9,
+    "mean_jaccard_min": 0.9,
+    "coverage_gap_agreement_min": 1.0,
+    "reference_effect_agreement_min": 0.9
+  },
+  "gate_status": "failed",
+  "bundle_hashes": {
+    "annotator_a_final": "eef300c9b0e26ce14e1191f4cf53f366c01bd85dc6d8b1396cb837cbc63c657e",
+    "annotator_b_final": "accba1da71568d688a2c41ac732dd2771df52e0ab362fa91795f5200011aacb5"
+  }
+}

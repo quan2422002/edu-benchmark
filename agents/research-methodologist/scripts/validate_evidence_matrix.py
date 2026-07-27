@@ -52,13 +52,28 @@ def validate_evidence_matrix(path: Path) -> list[str]:
         return [f"File not found: {path}"]
 
     with path.open(newline="", encoding="utf-8-sig") as handle:
-        reader = csv.DictReader(handle)
-        fieldnames = reader.fieldnames or []
-        missing = [column for column in REQUIRED_COLUMNS if column not in fieldnames]
-        if missing:
-            errors.append(f"Missing required columns: {', '.join(missing)}")
-            return errors
+        raw_rows = list(csv.reader(handle))
 
+    fieldnames = raw_rows[0] if raw_rows else []
+    if fieldnames != list(REQUIRED_COLUMNS):
+        errors.append(
+            "Header must exactly match required columns: "
+            f"expected {list(REQUIRED_COLUMNS)!r}, found {fieldnames!r}"
+        )
+        return errors
+
+    expected_width = len(REQUIRED_COLUMNS)
+    for row_number, raw_row in enumerate(raw_rows[1:], start=2):
+        if len(raw_row) != expected_width:
+            errors.append(
+                f"Row {row_number}: expected {expected_width} columns, "
+                f"found {len(raw_row)}"
+            )
+    if errors:
+        return errors
+
+    with path.open(newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
         seen_ids: set[str] = set()
         seen_titles: set[str] = set()
         row_count = 0
@@ -69,6 +84,7 @@ def validate_evidence_matrix(path: Path) -> list[str]:
             source = (row.get("url_or_doi") or "").strip()
             status = (row.get("publication_status") or "").strip()
             relevance = (row.get("relevance_to_project") or "").strip()
+            evidence_location = (row.get("evidence_location") or "").strip()
 
             if not record_id:
                 errors.append(f"Row {row_number}: record_id is required")
@@ -94,6 +110,8 @@ def validate_evidence_matrix(path: Path) -> list[str]:
                 )
             if not relevance:
                 errors.append(f"Row {row_number}: relevance_to_project is required")
+            if not evidence_location:
+                errors.append(f"Row {row_number}: evidence_location is required")
 
         if row_count == 0:
             errors.append("Evidence matrix has no study records")

@@ -1,0 +1,6 @@
+benchmark_candidate_id,sample_id,student_state_summary,coverage_gap_reason,grounding_effect,grounding_change_reason,coder_id,review_status,adjudication_status
+FT-C01,FORWARD-FT-C01,"Học sinh chưa hiểu khái niệm biến trong Scratch và công dụng của nó.",,not_seen,,PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V3,needs_uet_review,
+FT-C02,FORWARD-FT-C02,"Học sinh đã nêu một cách tính tổng cụ thể và cần được xác nhận kèm sửa sai nếu có.",,not_seen,,PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V3,needs_uet_review,
+FT-C03,FORWARD-FT-C03,"Học sinh đã thành thạo bài một điều kiện và muốn nhận một bài khó hơn để tự thử.",,not_seen,,PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V3,needs_uet_review,
+FT-C04,FORWARD-FT-C04,"Học sinh đang bối rối, chưa biết bước đầu để bắt đầu sửa chương trình.",,not_seen,,PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V3,needs_uet_review,
+FT-C05,FORWARD-FT-C05,"Học sinh đã biết kết quả nhưng chưa hiểu lý do thao tác đổi chỗ trong sắp xếp.",,not_seen,,PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V3,needs_uet_review,

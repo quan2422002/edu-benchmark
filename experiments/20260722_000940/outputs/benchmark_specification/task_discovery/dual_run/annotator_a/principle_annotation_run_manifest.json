@@ -1,0 +1,54 @@
+{
+  "manifest_version": "plan03-principle-annotation-run-v1",
+  "experiment_id": "20260722_000940",
+  "plan_id": "03",
+  "workstream": "C0b",
+  "coder_id": "PEDAGOGICAL-PRINCIPLE-ANNOTATOR-A",
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "medium",
+  "candidate_count": 40,
+  "created_at": "2026-07-27T08:35:37+07:00",
+  "completed_at": "2026-07-27T08:35:37+07:00",
+  "validation_status": "passed",
+  "closed": true,
+  "input_hashes": {
+    "pass1_input_sha256": "a7b5380b4b72e26e822827650129b961269fece699189149f9c3aadd5fbca12a",
+    "reference_input_sha256": "03812d10fe2192a35735ed8082f8a476026ebc15987768980aa31c0be71b2b4e",
+    "reference_manifest_sha256": "a47acabcb4e363e3d8896d334dee35e17d30d6d53be3aba4a99eb586919ba8f5"
+  },
+  "canonical_documents": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "9f4b639a140d2c7def9e8ccb841c212229efd0ee7fea3e47b0931d0ca158077f"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "926554872c434db32d7a97f4281d0eb947d485fe740fb4a8c8f269c99ba0f2a5"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1"
+    }
+  ],
+  "output_hashes": {
+    "principle_annotation_pass1.csv": "7680285afa02cd7c3874f3092fb4b0bebc0acd760393f037f7ef3f748b213374",
+    "principle_annotation_final.csv": "eef300c9b0e26ce14e1191f4cf53f366c01bd85dc6d8b1396cb837cbc63c657e",
+    "principle_annotation_review_queue.csv": "0c518ccdaeb6c24a256b963190dd25de5a8d81a68fc803679029178e56e4bc8d",
+    "handoff.md": "f465604f206e5d603c7f0a47a6adfdba8ffbd23aa9e15db0461aa5c3425c91e9"
+  },
+  "counts": {
+    "label_changed": 18,
+    "unchanged": 22,
+    "conflict": 0,
+    "coverage_gap": 0
+  },
+  "notes": "All AI rows retain review_status=needs_uet_review and empty adjudication_status."
+}

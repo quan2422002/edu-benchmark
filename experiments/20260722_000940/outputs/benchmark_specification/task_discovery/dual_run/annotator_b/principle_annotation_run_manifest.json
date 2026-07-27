@@ -1,0 +1,63 @@
+{
+  "manifest_version": "plan03-principle-run-annotator-b-v1",
+  "coder_id": "PEDAGOGICAL-PRINCIPLE-ANNOTATOR-B",
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "medium",
+  "started_at": "2026-07-27T08:34:20+0700",
+  "completed_at": "2026-07-27T08:34:20+0700",
+  "validation_status": "passed",
+  "closed": true,
+  "candidate_count": 40,
+  "source_hashes": {
+    "coding_input": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_coding_input.csv",
+      "sha256": "426b4af9d823d48ea4f57a0a4417e4cbb72b8f32ba082509002b18887289e32d"
+    },
+    "pass1_input": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/principle_annotation_pass1_input.csv",
+      "sha256": "a7b5380b4b72e26e822827650129b961269fece699189149f9c3aadd5fbca12a"
+    },
+    "reference_input": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/principle_annotation_reference_input.csv",
+      "sha256": "03812d10fe2192a35735ed8082f8a476026ebc15987768980aa31c0be71b2b4e"
+    },
+    "reference_manifest": {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/principle_annotation_reference_manifest.json",
+      "sha256": "a47acabcb4e363e3d8896d334dee35e17d30d6d53be3aba4a99eb586919ba8f5"
+    },
+    "canonical_documents": [
+      {
+        "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+        "sha256": "9f4b639a140d2c7def9e8ccb841c212229efd0ee7fea3e47b0931d0ca158077f"
+      },
+      {
+        "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+        "sha256": "926554872c434db32d7a97f4281d0eb947d485fe740fb4a8c8f269c99ba0f2a5"
+      },
+      {
+        "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+        "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c"
+      },
+      {
+        "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+        "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af"
+      },
+      {
+        "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+        "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1"
+      }
+    ]
+  },
+  "output_hashes": {
+    "pass1": "a32d995ef582c509f595ccdd6724157594008fbcb49c39d5c3d4bbdfabc115f6",
+    "final": "accba1da71568d688a2c41ac732dd2771df52e0ab362fa91795f5200011aacb5",
+    "review_queue": "16885c0fca91bf32c7d2ec7ce183e1810634ec6b49ec082bc147e9c03f53bb3a",
+    "handoff": "965f537389e8419bfc4b8ae0439b94c2405f85fe3dfa1bed3152c32b15795026"
+  },
+  "review_summary": {
+    "changed_rows": 14,
+    "conflict_rows": 0,
+    "gap_rows": 0,
+    "ambiguity_rows": 0
+  }
+}

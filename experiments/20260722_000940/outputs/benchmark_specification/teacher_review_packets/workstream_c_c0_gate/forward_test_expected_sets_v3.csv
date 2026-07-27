@@ -1,0 +1,6 @@
+benchmark_candidate_id,expected_principle_set,expected_grounding_effect,decision_rationale,decision_status,decision_note
+FT-C01,PRINCIPLE-EXPLANATION,unchanged,"Nhu cầu không thể bỏ là làm rõ khái niệm và công dụng của biến; hình thức câu hỏi nguồn không tạo Questioning.",approve,"Kế thừa ca biên UET đã duyệt và áp dụng chính sách không dùng gold_response."
+FT-C02,PRINCIPLE-FEEDBACK;PRINCIPLE-QUESTIONING,unchanged,"Phản hồi phải nhận xét cách làm đã có và cần câu trả lời của học sinh để tự sửa cách khởi tạo.",approve,"Kế thừa ca biên UET đã duyệt; gold_answer chỉ xác nhận lỗi chuyên môn."
+FT-C03,PRINCIPLE-CHALLENGE;PRINCIPLE-PRACTICE,unchanged,"Học sinh cần nhiệm vụ khó hơn và trực tiếp thực hiện để luyện khả năng áp dụng.",approve,"Kế thừa ca biên UET đã duyệt; không thêm Questioning chỉ vì cần học sinh trả lời."
+FT-C04,PRINCIPLE-QUESTIONING,unchanged,"Chưa đủ dấu hiệu lỗi; câu trả lời của học sinh là cần thiết để xác định điểm bắt đầu. Sự bình tĩnh thuộc CAP-CARE.",approve,"Kế thừa ca biên UET đã duyệt."
+FT-C05,PRINCIPLE-EXPLANATION,unchanged,"Học sinh đã biết kết quả nhưng thiếu lý do; chức năng không thể bỏ là giải thích, không phải giao thêm luyện tập.",approve,"Kế thừa ca biên UET đã duyệt; grounding xác nhận yêu cầu giải nghĩa."

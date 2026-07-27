@@ -72,6 +72,25 @@ class EvidenceMatrixTests(unittest.TestCase):
             self.assertTrue(any("duplicate record_id" in error for error in errors))
             self.assertTrue(any("not a DOI" in error for error in errors))
 
+    def test_row_width_drift_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "matrix.csv"
+            valid_values = [self._valid_row()[column] for column in EVIDENCE.REQUIRED_COLUMNS]
+            with path.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.writer(handle)
+                writer.writerow(EVIDENCE.REQUIRED_COLUMNS)
+                writer.writerow(valid_values[:-1])
+            errors = EVIDENCE.validate_evidence_matrix(path)
+            self.assertTrue(any("expected 19 columns, found 18" in error for error in errors))
+
+    def test_evidence_location_is_required(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "matrix.csv"
+            row = self._valid_row() | {"evidence_location": ""}
+            self._write_matrix(path, [row])
+            errors = EVIDENCE.validate_evidence_matrix(path)
+            self.assertIn("Row 2: evidence_location is required", errors)
+
 
 class TeacherPacketTests(unittest.TestCase):
     """Validate teacher packet structure and plain-language constraints."""

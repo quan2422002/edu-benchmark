@@ -1,0 +1,9 @@
+task_id,reviewer_id,definition_clarity_decision,distinct_contract_decision,observable_evidence_decision,proposed_action,rationale,decision_status
+TASK-PROBE,,,,,,,not_started
+TASK-EXPLAIN,,,,,,,not_started
+TASK-ASSESS,,,,,,,not_started
+TASK-DIAG,,,,,,,not_started
+TASK-SCAFFOLD,,,,,,,not_started
+TASK-MODEL,,,,,,,not_started
+TASK-PRACTICE,,,,,,,not_started
+TASK-CONSOLIDATE,,,,,,,not_started

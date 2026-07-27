@@ -1,0 +1,46 @@
+{
+  "manifest_version": "plan03-input-manifest-v1",
+  "created_at": "2026-07-25T01:10:00+07:00",
+  "files": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv",
+      "size_bytes": 2058115,
+      "sha256": "6648569d5afe006acdd6e4129ee04ab2b27dfea89439c507a3b8f3b23c5eb63e"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/conversion_trace.csv",
+      "size_bytes": 281247,
+      "sha256": "776ff800fb9e56ef93242094acff2584aefd983af90fdb532c8b3b52a602421d"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/conversion_dispositions.csv",
+      "size_bytes": 27082,
+      "sha256": "3dc6f369e88a1e64f7cb510f991b6959184686d4b6b561a3806346d83d79846e"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/conversion_summary.json",
+      "size_bytes": 1740,
+      "sha256": "747917fa4dfd9e4d9785c321c9949af0fe70d5a806ba231f27e8ae882256cc0a"
+    },
+    {
+      "path": "shared/learning_resources/registries/sgk_thcs_topic_lesson_map_v0.csv",
+      "size_bytes": 42757,
+      "sha256": "5f952627a7f2e01a78ecf2b6169ef8704d58eaa680237131aa6e42977d0a1339"
+    },
+    {
+      "path": "shared/learning_resources/fragments/learning_resource_fragments.csv",
+      "size_bytes": 5040953,
+      "sha256": "59a24839bb90eb4ea7e8bd447a2254c29705ec178b30645351d6854af58c87a7"
+    },
+    {
+      "path": "shared/learning_resources/agent_context/hnmu_cognitive_level_method_canonical.md",
+      "size_bytes": 11900,
+      "sha256": "5b415e62e9ed4b04b68a843f612788992bb070744343eaf083f3271afe7d01ff"
+    },
+    {
+      "path": "shared/learning_resources/agent_context/hnmu_scaffolding_method_canonical.md",
+      "size_bytes": 13653,
+      "sha256": "c8dee0735c80c3f269584c53db3b2b96774c68fe149a39e8f52a717ae599ba91"
+    }
+  ]
+}

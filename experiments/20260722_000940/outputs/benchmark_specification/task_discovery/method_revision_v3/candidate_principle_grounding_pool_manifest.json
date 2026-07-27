@@ -1,0 +1,57 @@
+{
+  "manifest_version": "plan03-principle-grounding-pool-v1",
+  "created_at": "2026-07-27T12:18:58.861425+07:00",
+  "join_policy": {
+    "join_key": "sample_id",
+    "join_cardinality": "many_candidates_to_exactly_one_source_dialogue",
+    "source_question_field": "question",
+    "gold_answer_source_field": "answer_sgv",
+    "gold_response_excluded": true,
+    "fail_closed_on": [
+      "missing_source_sample_id",
+      "duplicate_source_sample_id",
+      "empty_source_question",
+      "candidate_source_field_mismatch"
+    ]
+  },
+  "candidate_input": {
+    "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv",
+    "sha256": "6648569d5afe006acdd6e4129ee04ab2b27dfea89439c507a3b8f3b23c5eb63e",
+    "row_count": 2028,
+    "unique_candidate_count": 2028,
+    "unique_sample_count": 665
+  },
+  "source_dialogue_inputs": [
+    {
+      "path": "experiments/20260722_000940/inherited_resources/from_20260709_155523/raw_audit_grade6_7/normalized_dialogue_rows.csv",
+      "sha256": "ce09300facdc177c3c9651d995586ee4b773a43243015d1f4bc5d3e3b70e25e3",
+      "row_count": 462
+    },
+    {
+      "path": "experiments/20260722_000940/inherited_resources/from_20260709_155523/raw_audit_grade8_9/normalized_dialogue_rows.csv",
+      "sha256": "6e2fae945bad01a63b9169e4033178e06389cf4eed2488d98852e434e76916ec",
+      "row_count": 588
+    }
+  ],
+  "source_dialogue_union": {
+    "row_count": 1050,
+    "unique_sample_count": 1050
+  },
+  "output": {
+    "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/method_revision_v3/candidate_principle_grounding_pool.csv",
+    "sha256": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a",
+    "row_count": 2028,
+    "columns": [
+      "benchmark_candidate_id",
+      "sample_id",
+      "grade",
+      "lesson",
+      "position",
+      "bloom_level",
+      "student_prompt",
+      "conversation_history",
+      "source_question",
+      "gold_answer"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+boundary_id,task_id_a,task_id_b,reviewer_id,boundary_clarity_decision,proposed_rule,rationale,decision_status
+TB-01,TASK-PROBE,TASK-DIAG,,,,,not_started
+TB-02,TASK-EXPLAIN,TASK-SCAFFOLD,,,,,not_started
+TB-03,TASK-EXPLAIN,TASK-MODEL,,,,,not_started
+TB-04,TASK-ASSESS,TASK-DIAG,,,,,not_started
+TB-05,TASK-ASSESS,TASK-CONSOLIDATE,,,,,not_started
+TB-06,TASK-SCAFFOLD,TASK-MODEL,,,,,not_started
+TB-07,TASK-PRACTICE,TASK-CONSOLIDATE,,,,,not_started

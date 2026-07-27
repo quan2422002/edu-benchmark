@@ -7,12 +7,12 @@ Phụ thuộc: Plan 03 hoàn thành
 
 ## 1. Mục tiêu
 
-Plan 04 kiểm từng benchmark candidate sau conversion và task/rubric assignment để trả lời:
+Plan 04 kiểm từng benchmark candidate sau conversion và nguyên tắc/rubric assignment để trả lời:
 
 1. candidate có đúng schema và truy vết không;
 2. điểm cắt `student_prompt`/`conversation_history`/`gold_response` có đúng không;
 3. `gold_answer` và `gold_response` có được học liệu hỗ trợ không;
-4. task/rubric có áp dụng được không;
+4. nguyên tắc/rubric có áp dụng được không;
 5. candidate có leakage, trùng/gần trùng hoặc lỗi nghiêm trọng không;
 6. candidate đủ điều kiện nào: `pass`, `need_human_review`, hay `failed`.
 
@@ -29,10 +29,14 @@ Plan 04 kiểm từng benchmark candidate sau conversion và task/rubric assignm
 ### Task/rubric/specification
 
 - `outputs/benchmark_specification/spec_v1/benchmark_tasks.csv`
+- `outputs/benchmark_specification/spec_v1/tutor_capabilities.csv`
+- `outputs/benchmark_specification/spec_v1/rubric_dimensions.csv`
+- `outputs/benchmark_specification/spec_v1/principle_rubrics.csv`
 - `outputs/benchmark_specification/spec_v1/rubrics.csv`
 - `outputs/benchmark_specification/spec_v1/serious_errors.csv`
 - `outputs/benchmark_specification/spec_v1/provenance_matrix.csv`
-- `outputs/benchmark_specification/candidate_assignment/benchmark_candidate_task_rubric_suggestions.csv`
+- `outputs/benchmark_specification/candidate_assignment/benchmark_candidate_principle_rubric_suggestions.csv`
+- `outputs/benchmark_specification/rubric_v1_draft/candidate_evaluation_context.csv`
 
 ### Checklist và học liệu
 
@@ -181,7 +185,7 @@ Confidence:
 - candidate ↔ raw trace hai chiều;
 - split content so với raw dialogue;
 - `gold_answer` so với `answer_sgv`;
-- task/rubric foreign keys;
+- nguyên tắc/rubric foreign keys;
 - evidence fragment existence;
 - exact duplicate;
 - normalized near-duplicate candidates;
@@ -203,7 +207,7 @@ Code chỉ gắn cờ near-duplicate/leakage; không tự kết luận semantic 
 Nếu plan được duyệt, được dùng một `benchmark-specification-designer` instance để rà provisional:
 
 - split correctness khi code không đủ;
-- task/rubric applicability;
+- nguyên tắc/rubric applicability;
 - evidence support;
 - gold response usefulness và serious-error indicators.
 
@@ -265,7 +269,7 @@ Test tối thiểu:
 4. raw evidence không auto-promote thành candidate evidence;
 5. support union đúng và deterministic;
 6. strict aggregation đúng;
-7. task/rubric foreign keys;
+7. nguyên tắc/rubric foreign keys;
 8. trace/split mismatch bị fail hoặc review theo registry;
 9. lexical leakage chỉ là flag trước semantic decision;
 10. duplicate cluster stable;

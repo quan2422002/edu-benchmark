@@ -1,0 +1,42 @@
+{
+  "manifest_version": "plan03-principle-annotation-run-v2",
+  "coder_id": "PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD-V2",
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "medium",
+  "created_at": "2026-07-27T08:21:59+07:00",
+  "started_at": "2026-07-27T08:18:54+07:00",
+  "completed_at": "2026-07-27T08:21:59+07:00",
+  "candidate_count": 5,
+  "output_dir": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/forward_test/run_v2",
+  "input_hashes": {
+    "pass1_input": "94da6734f63d91356f98f90c995cc6b47ce4b037b3fd7ef6e584a1a7359e7715",
+    "reference_input": "f6d29a01aba4b0cb5c559846a86af27eb849f28fc8838b9249e7819386ddc304",
+    "ordered_id_sha256": "60e3cf4f16b4800d67e9271772544e36ae8a1d090becde28aa43425c8b9ac2ae"
+  },
+  "canonical_document_hashes": {
+    "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv": "9f4b639a140d2c7def9e8ccb841c212229efd0ee7fea3e47b0931d0ca158077f",
+    "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md": "926554872c434db32d7a97f4281d0eb947d485fe740fb4a8c8f269c99ba0f2a5",
+    "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c",
+    "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af",
+    "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1"
+  },
+  "output_hashes": {
+    "principle_annotation_pass1.csv": "e35dae998bbd831c223a7cf50c381725a83c75d9556db6a0baaa491343b5c6a6",
+    "principle_annotation_final.csv": "6b161206e62152b0f4d11e7525635403eb15aca494d2c52f32e8356a2f26c6e7",
+    "principle_annotation_review_queue.csv": "658e447d1cee45391e41de9efd3abc94b2a7f81129cfe31653d803d75c6cea6e",
+    "handoff.md": "ea56e0efe735a86c1123ea012b8e8162e71060aaeee2d45ab3c12050d0c07fe1"
+  },
+  "counts": {
+    "pass1_rows": 5,
+    "final_rows": 5,
+    "review_queue_rows": 1,
+    "unchanged": 4,
+    "changed": 0,
+    "conflict": 1,
+    "coverage_gaps": 0,
+    "ambiguities": 0
+  },
+  "validated_at": "2026-07-27T08:22:36+07:00",
+  "validation_status": "passed",
+  "closed": true
+}

@@ -1,0 +1,74 @@
+{
+  "experiment_id": "20260722_000940",
+  "plan_id": "03",
+  "workstream": "C",
+  "step": "C1",
+  "status": "legacy_superseded",
+  "created_at": "2026-07-26T19:35:43+07:00",
+  "formal_annotation_count": 0,
+  "preapproval_scratch_annotation_count": 20,
+  "first_batch_started": false,
+  "first_batch_size": 40,
+  "uet_gate": {
+    "reviewer_id": "UET-REVIEWER-01",
+    "decision_status": "cancelled_legacy",
+    "required_before_step_c2": false
+  },
+  "locked_inputs": [
+    {
+      "path": "outputs/benchmark_specification/task_discovery/candidate_feature_census.csv",
+      "sha256": "e31c880814822d680768ee9b1300a20d9c214b2f6496cec3da28e29f9e550378"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_discovery_sample.csv",
+      "sha256": "fd208e53ea64b7f57fff53203c6907962713404e1925215f9d826f06a28f9558"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_discovery_coding_input.csv",
+      "sha256": "426b4af9d823d48ea4f57a0a4417e4cbb72b8f32ba082509002b18887289e32d"
+    }
+  ],
+  "c1_outputs": [
+    {
+      "path": "outputs/benchmark_specification/task_discovery/benchmark_tasks.csv",
+      "sha256": "fb7e08f22c275cd19ce589028470fb4d86046aaeeca3f255ffd5dc2de5ba2a75"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "71efe03bd78131cd606eb616d1a783ad852d77cc742f6fc1aed52431d339cb4f"
+    },
+    {
+      "path": "outputs/benchmark_specification/task_discovery/task_candidate_matrix.csv",
+      "sha256": "a3568deed6407bf6bcf80da8c7de14bceab9d2603ff1988f0aedb2453dc6d01a"
+    },
+    {
+      "path": "outputs/benchmark_specification/teacher_review_packets/workstream_c_codebook_gate/README.md",
+      "sha256": "9fd5863023f9ead3d78183cd667d766c4296c02a22a6c49978f95522e644e5e8"
+    },
+    {
+      "path": "outputs/benchmark_specification/teacher_review_packets/workstream_c_codebook_gate/task_codebook_review_task_card.md",
+      "sha256": "99ec21e7cae42a1178e43a4777d08e330571c58366777e301c1936a114bd818f"
+    },
+    {
+      "path": "outputs/benchmark_specification/teacher_review_packets/workstream_c_codebook_gate/task_review_decisions.csv",
+      "sha256": "044260eb9071539b33a72b834e7b2bec36fcbce0647abfef83b2f41ecb28ee53"
+    },
+    {
+      "path": "outputs/benchmark_specification/teacher_review_packets/workstream_c_codebook_gate/task_boundary_review_decisions.csv",
+      "sha256": "490ad8f97fec382f1db3c588541882e97ba3280b1f42625abb3448ad520e737f"
+    },
+    {
+      "path": "outputs/benchmark_specification/teacher_review_packets/workstream_c_codebook_gate/codebook_gate_decision.csv",
+      "sha256": "1113749907e921327216d3d68f81fc7e9c7a98f6196fce99d04f84259cf9910e"
+    }
+  ],
+  "excluded_preapproval_artifact": {
+    "path": "outputs/benchmark_specification/specialist_draft/task_discovery/task_discovery_annotations.csv",
+    "sha256": "a0cc01ef0fff28b81af7a9fe23b9f7ccdd90cf05cdad098b9259f69115536f75",
+    "row_count": 20,
+    "reason": "Created before the C1 codebook gate; retained only for provenance and excluded from formal coding, calibration, coverage, and saturation results."
+  },
+  "superseded_at": "2026-07-26T23:15:00+07:00",
+  "legacy_root": "outputs/benchmark_specification/legacy/eight_task_candidate_branch/",
+  "legacy_note": "Paths recorded in c1_outputs are historical paths at creation time. The corresponding files now live under legacy_root and must not be used by the active pipeline."
+}

@@ -1,0 +1,41 @@
+{
+  "manifest_version": "plan03-forward-test-bundle-v1",
+  "experiment_id": "20260722_000940",
+  "plan_id": "03",
+  "workstream": "C0a",
+  "coder_id": "PEDAGOGICAL-PRINCIPLE-ANNOTATOR-FORWARD",
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "medium",
+  "candidate_count": 5,
+  "created_at": "2026-07-27T08:11:35+07:00",
+  "validation_status": "passed",
+  "completed_at": "2026-07-27T08:13:04+07:00",
+  "closed": true,
+  "input_hashes": {
+    "pass1_input_sha256": "94da6734f63d91356f98f90c995cc6b47ce4b037b3fd7ef6e584a1a7359e7715",
+    "reference_input_sha256": "f6d29a01aba4b0cb5c559846a86af27eb849f28fc8838b9249e7819386ddc304",
+    "reference_manifest_sha256": "a47acabcb4e363e3d8896d334dee35e17d30d6d53be3aba4a99eb586919ba8f5"
+  },
+  "canonical_documents": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/pedagogical_principles.csv",
+      "sha256": "9f4b639a140d2c7def9e8ccb841c212229efd0ee7fea3e47b0931d0ca158077f"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/task_discovery/task_discovery_codebook.md",
+      "sha256": "926554872c434db32d7a97f4281d0eb947d485fe740fb4a8c8f269c99ba0f2a5"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capabilities.csv",
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_specification/construct_v1_draft/capability_overlap_matrix.csv",
+      "sha256": "400897f98d3522f0bd526cd95ec7ac52c169e671670146951f077768d545c3e1"
+    }
+  ]
+}

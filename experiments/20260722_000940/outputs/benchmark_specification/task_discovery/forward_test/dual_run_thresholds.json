@@ -1,0 +1,10 @@
+{
+  "status": "needs_uet_approval",
+  "approved_by": "",
+  "approved_at": "",
+  "primary_exact_agreement_min": null,
+  "pair_exact_agreement_min": null,
+  "mean_jaccard_min": null,
+  "coverage_gap_agreement_min": null,
+  "reference_effect_agreement_min": null
+}

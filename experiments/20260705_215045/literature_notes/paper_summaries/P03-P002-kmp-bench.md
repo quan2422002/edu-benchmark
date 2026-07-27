@@ -3,7 +3,7 @@
 Paper: `From Solver to Tutor: Evaluating the Pedagogical Intelligence of LLMs with KMP-Bench`
 File local: `document/paper/source_paper/18426-AAAI26.ShiW-NLP.pdf`
 Năm/nguồn: 2026, AAAI-26 local PDF
-Registry ID: `P03-P002`  
+Registry ID: `P03-P002`
 Vai trò trong P03: paper lõi về chuyển từ “model giải bài” sang “model làm gia sư”.
 
 ## 1. Vấn đề paper giải quyết

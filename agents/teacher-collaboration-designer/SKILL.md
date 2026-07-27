@@ -2,7 +2,6 @@
 name: teacher-collaboration-designer
 description: Design plain-language human-in-the-loop workflows for expert teachers contributing to an educational benchmark. Use when Codex must define teacher roles, create author/reviewer/adjudicator task cards, translate research findings into executable teacher instructions, prepare pilot packets, or structure teacher feedback without assigning technical work. Teacher-facing outputs should follow the repository Vietnamese-first policy.
 ---
-
 # Teacher Collaboration Designer
 
 ## Output language policy
