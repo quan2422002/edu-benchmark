@@ -1,0 +1,261 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% Template version as of 6/27/2024.
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Building a Vietnamese Secondary Informatics AI Tutor Benchmark
+from Teacher-Authored Dialogues}
+
+\author{\IEEEauthorblockN{Author names pending confirmation}
+\IEEEauthorblockA{\textit{Affiliations pending confirmation}\\
+Vietnam}}
+
+\maketitle
+
+\begin{abstract}
+\textit{Draft placeholder. The abstract will be written after the method
+and results sections are stabilized.}
+\end{abstract}
+
+\begin{IEEEkeywords}
+AI tutoring, benchmark construction, pedagogical evaluation, large
+language models, Informatics education, Vietnamese education
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Large language models (LLMs) are increasingly capable of producing
+correct answers and fluent explanations, but these abilities do not by
+themselves establish that a model can tutor effectively. Tutoring also
+requires \textit{(i)} interpreting what a learner currently understands;
+\textit{(ii)} diagnosing errors when evidence permits;
+\textit{(iii)} selecting an appropriate pedagogical move;
+\textit{(iv)} calibrating the amount of support; and
+\textit{(v)} communicating in a way that preserves the learner's
+opportunity to think. Recent tutoring benchmarks
+support this distinction. MathTutorBench reports that mathematical
+problem-solving ability does not directly translate into pedagogical
+quality \cite{macina2025mathtutorbench}; KMP-Bench separates verifiable
+mathematical skills from principle-guided dialogue quality
+\cite{shi2026kmpbench}; and TutorBench evaluates responses with
+fine-grained, sample-specific criteria \cite{srinivasa2025tutorbench}.
+Evaluating a tutor is therefore an assessment-design problem rather than
+only a question-answering problem.
+
+Prior AI-tutoring benchmarks leave three gaps for our target setting.
+First, their domain coverage is concentrated in mathematics or broad
+STEM curricula, while specialized school subjects remain less explored.
+Second, they operate predominantly in English, leaving language- and
+curriculum-specific tutoring behavior underrepresented. Third, data
+construction is not unified: \textit{(i)} KMP-Bench builds pedagogically
+planned dialogue flows; \textit{(ii)} TutorBench uses expert-authored
+situations and rubrics; and \textit{(iii)} MathTutorBench assembles
+existing tutoring datasets under predefined tasks and metrics. In each
+case, prior assumptions about tasks or
+pedagogical situations structure the data before evaluation. Less is
+known about starting from ordinary, teacher-authored pedagogical
+dialogues collected independently of a benchmark taxonomy and converting
+them into traceable evaluation units.
+
+We address these gaps by constructing a Vietnamese lower-secondary
+Informatics AI-tutor benchmark for Grades 6--9. Rather than generating
+conversations from predefined benchmark situations, our process
+\textit{(i)} begins with raw teacher-authored dialogues;
+\textit{(ii)} applies auditable quality control; and
+\textit{(iii)} converts eligible tutor turns into next-response
+evaluation candidates. The benchmark then connects six pedagogical principles with
+six tutor capabilities to specify what a response should accomplish and
+how its quality should be evaluated.
+
+The paper makes three contributions:
+\begin{enumerate}
+    \item a traceable construction pipeline that transforms 1,050 raw
+    teacher-authored dialogues into 665 quality-controlled dialogue
+    families and 2,028 turn-level benchmark candidates;
+    \item a measurement specification that combines six pedagogical
+    principles with six tutor capabilities through response requirements,
+    a common rubric tier, and principle-specific rubric tiers; and
+    \item an analysis of pedagogical-requirement coverage and benchmark
+    readiness, identifying 1,400 candidates ready for downstream
+    construction and 628 candidates routed to targeted review.
+\end{enumerate}
+Together, these contributions establish a curriculum-grounded and
+traceable basis for evaluating AI tutoring responses in Vietnamese
+lower-secondary Informatics.
+
+\section{Related Work and Background}
+
+\subsection{Pedagogical and Measurement Foundations}
+
+The pedagogical vocabulary in this work begins with Allison and Tharby's
+six principles: \textit{(i)} Challenge; \textit{(ii)} Explanation;
+\textit{(iii)} Modelling; \textit{(iv)} Practice;
+\textit{(v)} Feedback; and \textit{(vi)} Questioning
+\cite{allison2015making}. These principles are
+interrelated elements of teaching rather than mutually exclusive task
+classes. They provide a functional description of what a tutor response
+may need to accomplish: \textit{(i)} sustaining appropriate cognitive
+effort; \textit{(ii)} clarifying knowledge;
+\textit{(iii)} demonstrating application; \textit{(iv)} creating
+opportunities to practise; \textit{(v)} using learner performance to
+guide improvement; and \textit{(vi)} eliciting evidence of
+understanding.
+
+Our capability model also draws on research on adaptive scaffolding.
+Van de Pol \textit{et al.} distinguish the means of support---including
+questioning; explaining; modelling; and feedback---from four properties
+that make support contingent on the learner:
+\textit{(i)} diagnosis of current competence;
+\textit{(ii)} calibrated assistance; \textit{(iii)} fading; and
+\textit{(iv)} transfer of responsibility
+\cite{vandepol2010scaffolding}. This distinction motivates separating
+\textit{(i)} pedagogical-strategy selection from scaffolding calibration;
+and \textit{(ii)} observation of a learner's current state from diagnosis
+of the cause of an error or impasse.
+
+Evidence-centered design further requires assessment developers to link
+claims about latent capabilities to tasks and observable evidence
+\cite{mislevy2003ecd}. Contemporary validity theory similarly treats
+content review as one component of a broader argument about the intended
+interpretation and use of assessment results \cite{reeves2016validity}.
+Following these foundations, we organize tutor quality into six
+capabilities: \textit{(i)} subject-matter accuracy and grounding;
+\textit{(ii)} learner-state modelling;
+\textit{(iii)} pedagogical-strategy selection;
+\textit{(iv)} scaffolding calibration; \textit{(v)} diagnosis; and
+\textit{(vi)} clear and supportive communication appropriate to the
+learner's age. The
+principles specify response-level pedagogical requirements, whereas the
+capabilities define the qualities observed by the rubric.
+
+\subsection{Benchmarks for LLM Tutoring}
+
+Existing tutoring benchmarks operationalize tutoring quality in
+substantially different ways. MathTutorBench organizes seven tasks under
+three groups: \textit{(i)} subject expertise;
+\textit{(ii)} student understanding; and
+\textit{(iii)} pedagogical response generation
+\cite{macina2025mathtutorbench}. Structured outputs use
+task-specific metrics, whereas open-ended tutor responses are evaluated
+with a learned preference model. This makes the solver--tutor distinction
+explicit and avoids reducing all tutoring ability to answer accuracy.
+
+KMP-Bench provides the closest structural precedent for our turn-level
+candidates \cite{shi2026kmpbench}. Its KMP-Dialogue module truncates a
+dialogue before a tutor turn and associates each planned tutor action
+with one or two of the six pedagogical principles. A candidate and a
+reference response are compared using four general criteria plus three
+criteria for every assigned principle, with one of three criterion-level
+judgments: \textit{(i)} Win; \textit{(ii)} Tie; or
+\textit{(iii)} Lose. Its separate KMP-Skills module uses different,
+task-appropriate metrics for \textit{(i)} problem solving;
+\textit{(ii)} error handling; and \textit{(iii)} problem generation.
+The principles therefore select relevant aspects of
+dialogue quality rather than act as mutually exclusive benchmark tasks.
+
+TutorBench instead contains 1,490 expert-curated high-school and Advanced
+Placement STEM samples covering \textit{(i)} adaptive explanation;
+\textit{(ii)} assessment and feedback; and
+\textit{(iii)} active-learning support \cite{srinivasa2025tutorbench}.
+Each sample has its own atomic criteria, weighted by the importance and
+direction of the requirement, and an LLM judge evaluates each criterion
+independently. This provides diagnostic granularity but requires a large
+sample-specific rubric-authoring effort.
+
+These designs establish three lessons for our benchmark:
+\textit{(i)} correctness and tutoring quality must be measured
+separately; \textit{(ii)} a reference response is a comparator rather
+than the only valid wording; and \textit{(iii)} four constructs play
+distinct roles: tasks; pedagogical principles; tutor capabilities; and
+rubrics. We
+therefore \textit{(i)} use one next-response generation task;
+\textit{(ii)} represent pedagogical demand through per-candidate
+principle requirements; and \textit{(iii)} use capabilities to organize
+observable scoring criteria.
+
+\subsection{Vietnamese and Domain-Specific Educational Evaluation}
+
+Vietnamese LLM evaluation has expanded beyond translated general-purpose
+tests. VNHSGE collects more than 19,000 multiple-choice questions and 300
+literary essays from Vietnamese high-school examinations across nine
+subjects \cite{dao2023vnhsge}. ViMath-Bench focuses on Vietnamese
+mathematical reasoning \cite{nguyen2024vimath}, while VMLU evaluates
+four areas: \textit{(i)} general knowledge;
+\textit{(ii)} reading comprehension; \textit{(iii)} reasoning; and
+\textit{(iv)} general multi-turn conversation. Its subject inventory
+includes applied
+Informatics and several university-level computing areas
+\cite{bui2025vmlu}. These resources establish language- and
+curriculum-specific evaluation, but their primary units are examination
+answers, reasoning outputs, or general conversations rather than
+context-conditioned tutor responses.
+
+Vietnamese pedagogical evaluation has also begun to emerge. Outside the
+peer-reviewed literature, the publicly announced DeepEduBench initiative
+reports 13,700 Vietnamese items used to assess 52 models on
+\textit{(i)} stepwise explanation; \textit{(ii)} learner adaptation;
+\textit{(iii)} example and exercise selection; and
+\textit{(iv)} focused feedback \cite{most2026deepedubench}. We use this
+source only to document the initiative's existence and stated scope, not
+to infer its methodology. A separate workshop paper evaluates LLMs as
+tutors for Vietnamese K--12 learners using 540 yes/no questions in
+\textit{(i)} mathematics; \textit{(ii)} physics; and
+\textit{(iii)} chemistry \cite{nguyen2025vietnamtutor}. The available
+descriptions do not report a benchmark slice for the national
+lower-secondary Informatics curriculum, candidates reconstructed from
+ordinary teacher-authored dialogues, or a next-response protocol
+combining pedagogical principles with tutor capabilities.
+
+The domain-specific literature closes a different part of the gap.
+CSTutorBench evaluates 11 models as tutors in a middle-school
+block-programming and robotics environment through 17 scenario-based
+questions and an eight-criterion pedagogical rubric
+\cite{lane2026cstutorbench}. Shin \textit{et al.} instead analyze 249
+authentic CodeHelp exchanges from an undergraduate C++ course using
+criteria for \textit{(i)} mistake identification;
+\textit{(ii)} mistake location; \textit{(iii)} guidance;
+\textit{(iv)} accuracy; and \textit{(v)} next steps
+\cite{shin2026psychometric}. Multilingual
+programming work has also generated exercises in Vietnamese, but does not
+evaluate dialogue-level tutoring quality \cite{jordan2024programming}.
+Thus, prior work covers Vietnamese pedagogical evaluation and
+computing-specific tutor evaluation separately. Our literature search
+found no publicly documented benchmark that combines
+\textit{(i)} Vietnamese response generation;
+\textit{(ii)} the Grades 6--9 Informatics curriculum;
+\textit{(iii)} conversation-conditioned next-turn tutoring; and
+\textit{(iv)} candidates derived from traceable teacher-authored
+pedagogical dialogues. We therefore position this work at that specific
+intersection.
+
+% The remaining sections are intentionally scaffolded and will be written
+% after the background sections are reviewed.
+\section{Dataset and Construction}
+\textit{To be completed.}
+
+\section{Pedagogical Requirements and Rubric Design}
+\textit{To be completed.}
+
+\section{Initial Analysis}
+\textit{To be completed.}
+
+\section{Discussion and Limitations}
+\textit{To be completed.}
+
+\section{Conclusion}
+\textit{To be completed.}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
