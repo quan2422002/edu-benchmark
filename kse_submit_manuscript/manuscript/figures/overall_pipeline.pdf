@@ -1,0 +1,61 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 720 245] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 1342 >>
+stream
+0.95 0.97 0.99 rg 0.35 0.45 0.55 RG 1.2 w 20 105 150 100 re B
+0.95 0.98 0.96 rg 0.36 0.50 0.41 RG 1.2 w 195 105 150 100 re B
+0.99 0.97 0.94 rg 0.61 0.48 0.31 RG 1.2 w 370 105 150 100 re B
+0.96 0.96 0.98 rg 0.45 0.42 0.51 RG 1.2 w 545 105 150 100 re B
+0.97 0.98 0.99 rg 0.58 0.64 0.72 RG 1 w 20 40 675 30 re B
+0.28 0.33 0.40 RG 1.5 w 170 155 m 195 155 l S
+0.28 0.33 0.40 rg 195 155 m 187 160 l 187 150 l f
+0.28 0.33 0.40 RG 1.5 w 345 155 m 370 155 l S
+0.28 0.33 0.40 rg 370 155 m 362 160 l 362 150 l f
+0.28 0.33 0.40 RG 1.5 w 520 155 m 545 155 l S
+0.28 0.33 0.40 rg 545 155 m 537 160 l 537 150 l f
+0.12 0.16 0.23 rg
+BT /F2 12 Tf 46 175 Td (Teacher-authored dialogues) Tj ET
+BT /F1 11 Tf 58 151 Td (1,050 samples) Tj ET
+BT /F1 10 Tf 65 131 Td (Grades 6--9) Tj ET
+BT /F2 12 Tf 223 175 Td (Phase 1: screening) Tj ET
+BT /F1 10 Tf 215 151 Td (18 criteria per dialogue) Tj ET
+BT /F1 11 Tf 245 131 Td (665 retained) Tj ET
+BT /F2 12 Tf 394 175 Td (Phase 2: conversion) Tj ET
+BT /F1 9 Tf 383 155 Td (One candidate per tutor turn) Tj ET
+BT /F1 10 Tf 386 135 Td (2,028 provisional candidates) Tj ET
+BT /F1 9 Tf 402 118 Td (665 dialogue families) Tj ET
+BT /F2 10 Tf 558 153 Td (Phase 3: Requirement Scoring) Tj ET
+0.20 0.26 0.33 rg
+BT /F1 10 Tf 156 51 Td (Criterion-level evidence  /  source trace  /  reviewer actions retained across the pipeline) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000001650 00000 n 
+0000001720 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R /Producer (Local vector PDF fallback) >>
+startxref
+1795
+%%EOF

@@ -1,0 +1,18 @@
+<mxfile host="app.diagrams.net" modified="2026-07-28T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="overall-pipeline" name="Overall pipeline">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="stage1" value="&lt;b&gt;Teacher-authored dialogues&lt;/b&gt;&lt;br&gt;&lt;br&gt;1,050 samples&lt;br&gt;Grades 6--9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F7FB;strokeColor=#58728C;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1"><mxGeometry x="20" y="105" width="150" height="105" as="geometry"/></mxCell>
+        <mxCell id="stage2" value="&lt;b&gt;Phase 1: screening&lt;/b&gt;&lt;br&gt;&lt;br&gt;18 criteria per dialogue&lt;br&gt;665 retained" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F8F4;strokeColor=#5C8068;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1"><mxGeometry x="195" y="105" width="150" height="105" as="geometry"/></mxCell>
+        <mxCell id="stage3" value="&lt;b&gt;Phase 2: conversion&lt;/b&gt;&lt;br&gt;&lt;br&gt;One candidate per tutor turn&lt;br&gt;2,028 provisional candidates&lt;br&gt;665 dialogue families" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCF7F0;strokeColor=#9B7B50;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1"><mxGeometry x="370" y="105" width="150" height="105" as="geometry"/></mxCell>
+        <mxCell id="stage4" value="&lt;b&gt;Phase 3: Requirement Scoring&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F4F8;strokeColor=#746C83;strokeWidth=1.25;fontColor=#1F2937;fontSize=11;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1"><mxGeometry x="545" y="105" width="150" height="105" as="geometry"/></mxCell>
+        <mxCell id="provenance" value="Criterion-level evidence  •  source trace  •  reviewer actions retained across the pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1;fontColor=#334155;fontSize=11;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1"><mxGeometry x="20" y="35" width="675" height="34" as="geometry"/></mxCell>
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="stage1" target="stage2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="stage2" target="stage3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="stage3" target="stage4"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

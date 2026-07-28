@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "path": "experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv",
+    "sha256": "d3f156dc80ce5815d79c07d23f75cc856de34241cf89155479daa25a17a95b57",
+    "logical_dialogue_count": 665,
+    "data_fields_used_for_statistics": [
+      "sample_id",
+      "grade",
+      "raw_dialogue"
+    ],
+    "excluded_field": "conversion_dialogue"
+  },
+  "measurement_definitions": {
+    "turn": "One utterance prefixed by HS: or AI:, not a student-tutor exchange.",
+    "character_count": "Count of utterance content after removing the HS:/AI: label, colon, and at most one optional whitespace character immediately after the colon.",
+    "whitespace": "Internal whitespace and line breaks are included.",
+    "parser_semantics_source": "src/edu_benchmark/benchmark_conversion/dialogue_split.py",
+    "raw_source_exception": "The canonical parser's role-label and content semantics are used, but its alternating-role gate is not applied: raw sources HNMU-G7-R0189-STT6 and HNMU-G9-R0237-STT12 have three adjacent-role transitions before Phase-2 corrections. The raw utterances are counted unchanged.",
+    "quantile_method": "R-7 linear interpolation: index = (n - 1) * p"
+  },
+  "grade_distribution": [
+    {
+      "grade": "6",
+      "dialogue_count": 106,
+      "percentage": "15.94"
+    },
+    {
+      "grade": "7",
+      "dialogue_count": 132,
+      "percentage": "19.85"
+    },
+    {
+      "grade": "8",
+      "dialogue_count": 209,
+      "percentage": "31.43"
+    },
+    {
+      "grade": "9",
+      "dialogue_count": 218,
+      "percentage": "32.78"
+    },
+    {
+      "grade": "Total",
+      "dialogue_count": 665,
+      "percentage": "100.00"
+    }
+  ],
+  "turns": {
+    "total": 4354,
+    "student": 2326,
+    "ai": 2028,
+    "per_dialogue_frequency": [
+      {
+        "total_turns": 4,
+        "dialogue_count": 99,
+        "percentage": "14.89"
+      },
+      {
+        "total_turns": 5,
+        "dialogue_count": 193,
+        "percentage": "29.02"
+      },
+      {
+        "total_turns": 6,
+        "dialogue_count": 125,
+        "percentage": "18.80"
+      },
+      {
+        "total_turns": 7,
+        "dialogue_count": 42,
+        "percentage": "6.32"
+      },
+      {
+        "total_turns": 8,
+        "dialogue_count": 59,
+        "percentage": "8.87"
+      },
+      {
+        "total_turns": 9,
+        "dialogue_count": 46,
+        "percentage": "6.92"
+      },
+      {
+        "total_turns": 10,
+        "dialogue_count": 71,
+        "percentage": "10.68"
+      },
+      {
+        "total_turns": 11,
+        "dialogue_count": 14,
+        "percentage": "2.11"
+      },
+      {
+        "total_turns": 12,
+        "dialogue_count": 11,
+        "percentage": "1.65"
+      },
+      {
+        "total_turns": 13,
+        "dialogue_count": 3,
+        "percentage": "0.45"
+      },
+      {
+        "total_turns": 14,
+        "dialogue_count": 2,
+        "percentage": "0.30"
+      }
+    ]
+  },
+  "character_count": {
+    "all_turns": {
+      "count": 4354,
+      "min": 7,
+      "q1": "53.000000",
+      "median": "79.000000",
+      "q3": "113.000000",
+      "max": 294,
+      "mean": "86.456821",
+      "quantile_method": "R-7 linear interpolation: index = (n - 1) * p"
+    },
+    "HS": {
+      "count": 2326,
+      "min": 7,
+      "q1": "40.000000",
+      "median": "60.000000",
+      "q3": "81.000000",
+      "max": 238,
+      "mean": "63.029235",
+      "quantile_method": "R-7 linear interpolation: index = (n - 1) * p"
+    },
+    "AI": {
+      "count": 2028,
+      "min": 10,
+      "q1": "81.000000",
+      "median": "108.000000",
+      "q3": "140.000000",
+      "max": 294,
+      "mean": "113.326923",
+      "quantile_method": "R-7 linear interpolation: index = (n - 1) * p"
+    }
+  },
+  "validation": {
+    "exactly_665_dialogues": {
+      "expected": 665,
+      "actual": 665,
+      "passed": true
+    },
+    "grade_counts": {
+      "expected": {
+        "6": 106,
+        "7": 132,
+        "8": 209,
+        "9": 218
+      },
+      "actual": {
+        "6": 106,
+        "7": 132,
+        "8": 209,
+        "9": 218
+      },
+      "passed": true
+    },
+    "grade_counts_sum_to_665": {
+      "expected": 665,
+      "actual": 665,
+      "passed": true
+    },
+    "total_raw_utterances": {
+      "expected": 4354,
+      "actual": 4354,
+      "passed": true
+    },
+    "student_turns": {
+      "expected": 2326,
+      "actual": 2326,
+      "passed": true
+    },
+    "ai_turns": {
+      "expected": 2028,
+      "actual": 2028,
+      "passed": true
+    },
+    "turn_frequency_sums_to_665": {
+      "expected": 665,
+      "actual": 665,
+      "passed": true
+    },
+    "characters_per_turn_row_count": {
+      "expected": 4354,
+      "actual": 4354,
+      "passed": true
+    },
+    "raw_dialogue_only": {
+      "actual": "Only sample_id, grade, and raw_dialogue were read for statistics.",
+      "passed": true
+    },
+    "later_phase1_recheck_artifacts_used": {
+      "actual": [],
+      "passed": true
+    },
+    "raw_dialogue_parser_exception_documented": {
+      "actual": {
+        "non_alternating_transition_count": 3,
+        "sample_ids": [
+          "HNMU-G7-R0189-STT6",
+          "HNMU-G9-R0237-STT12"
+        ],
+        "handling": "Count raw labelled utterances; do not repair, merge, exclude, or read conversion_dialogue."
+      },
+      "passed": true
+    }
+  }
+}

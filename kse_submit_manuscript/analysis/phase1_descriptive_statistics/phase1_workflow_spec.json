@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "scope": "Verified Phase-1 workflow specification for external figure production.",
+  "five_phase1_audit_areas": [
+    "coverage",
+    "missing fields and formatting",
+    "consistency",
+    "duplicate and near-duplicate detection",
+    "per-sample quality assessment"
+  ],
+  "per_dialogue_checklist": {
+    "criterion_count": 18,
+    "criterion_groups": [
+      {
+        "name": "structure",
+        "criterion_count": 3
+      },
+      {
+        "name": "consistency",
+        "criterion_count": 7
+      },
+      {
+        "name": "pedagogy",
+        "criterion_count": 6
+      },
+      {
+        "name": "duplicate_risk",
+        "criterion_count": 2
+      }
+    ]
+  },
+  "wording_restrictions": [
+    "Do not call the five audit areas five groups of the 18 criteria.",
+    "Coverage is batch-level and is not represented as a per-sample criterion row.",
+    "The 18 per-dialogue criteria span four criterion groups."
+  ],
+  "raw_dialogue_statistics_note": "Descriptive statistics use raw_dialogue. The canonical parser's label/content semantics are retained, but its alternating-role gate is not applied because two raw dialogues have adjacent-role transitions. No Phase-2 correction or conversion_dialogue value is used.",
+  "workflow_stages": [
+    {
+      "order": 1,
+      "stage": "Raw-data intake and traceable normalization",
+      "description": "Register raw HNMU batches, create derived normalized rows, and preserve raw dialogue content.",
+      "evidence_paths": [
+        "experiments/20260709_155523/plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md",
+        "experiments/20260709_155523/outputs/hnmu_dialogue_audit/normalized_dialogue_rows.csv",
+        "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/normalized_dialogue_rows.csv"
+      ]
+    },
+    {
+      "order": 2,
+      "stage": "Learning-resource processing and retrieval construction",
+      "description": "Use registered SGK/SGV OCR Markdown, metadata registries, fragments, and a SQLite FTS retrieval index as draft retrieval support.",
+      "evidence_paths": [
+        "experiments/20260709_155523/roadmap.md",
+        "experiments/20260709_155523/reports/learning-resource-registries-sync-20260718.md",
+        "experiments/20260709_155523/reports/phase4-fragmentation-result.md",
+        "experiments/20260709_155523/reports/phase5-retrieval-index-result.md",
+        "shared/learning_resources/registries/ocr_text_manifest.csv",
+        "shared/learning_resources/fragments/learning_resource_fragments.csv",
+        "shared/learning_resources/indexes/README.md"
+      ]
+    },
+    {
+      "order": 3,
+      "stage": "Mechanical audit, coverage mapping, and duplicate detection",
+      "description": "Check required fields and dialogue formatting; map coverage through learning-resource registries; detect duplicate and near-duplicate risks.",
+      "evidence_paths": [
+        "experiments/20260709_155523/plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md",
+        "experiments/20260709_155523/reports/raw-dialogue-quality-checklist-v0.md"
+      ]
+    },
+    {
+      "order": 4,
+      "stage": "Agent-assisted, criterion-level audit",
+      "description": "Record one result for each sample_id and criterion_id, with evidence and suggested reviewer action where applicable.",
+      "evidence_paths": [
+        "experiments/20260709_155523/plans/07-hnmu-dialogue-auditor-specialist.md",
+        "experiments/20260709_155523/outputs/hnmu_dialogue_audit/agent_shard_audit/merged/raw_dialogue_checklist_results.repaired.csv",
+        "experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/agent_shard_audit/merged/raw_dialogue_checklist_results.regex_repaired.csv"
+      ]
+    },
+    {
+      "order": 5,
+      "stage": "Strict sample-level aggregation",
+      "description": "Aggregate criterion-level results into pass, need_human_review, or failed without allowing a sample with fail or uncertain criteria to remain pass.",
+      "evidence_paths": [
+        "src/edu_benchmark/dialogue_audit/checklist_aggregation.py",
+        "scripts/dialogue_audit/sync_quality_suggestions_from_checklist.py",
+        "experiments/20260709_155523/reports/raw-dialogue-quality-checklist-v0.md"
+      ]
+    },
+    {
+      "order": 6,
+      "stage": "Phase-2 input selection",
+      "description": "Retain only the 665 pass dialogues for deterministic turn-level conversion.",
+      "evidence_paths": [
+        "experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv",
+        "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/conversion_summary.json",
+        "experiments/20260722_000940/reports/plan02-full-multi-candidate-conversion-summary.md"
+      ]
+    }
+  ],
+  "aggregation_rules": [
+    {
+      "if": "Any criterion result is fail.",
+      "quality_decision": "failed"
+    },
+    {
+      "if": "No criterion result is fail and at least one is uncertain.",
+      "quality_decision": "need_human_review"
+    },
+    {
+      "if": "Every criterion result is pass or not_applicable.",
+      "quality_decision": "pass"
+    }
+  ],
+  "final_outcomes": {
+    "pass": 665,
+    "need_human_review": 382,
+    "failed": 3
+  },
+  "classification_evidence_paths": {
+    "five_phase1_audit_areas": [
+      "experiments/20260709_155523/plans/04-hnmu-dialogue-intake-coverage-consistency-dedup.md"
+    ],
+    "per_dialogue_18_criterion_groups": [
+      "experiments/20260722_000940/inherited_resources/from_20260709_155523/checklists/raw-dialogue-audit-criteria-v0.csv",
+      "experiments/20260709_155523/reports/raw-dialogue-quality-checklist-v0.md"
+    ]
+  }
+}
