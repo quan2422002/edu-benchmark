@@ -213,31 +213,46 @@ Phase~3.
 
 \subsection{Phase 2: Pedagogical Measurement Foundation}
 
-We distinguish pedagogical \emph{functions} from tutor \emph{quality
-attributes}. The functional layer adopts Allison and Tharby's six
-interrelated principles---Challenge, Explanation, Modelling, Practice,
-Feedback, and Questioning---as operationalized for tutor-response evaluation
-by KMP-Bench \cite{allison2015making,shi2026kmpbench}. They respectively
-capture productive cognitive demand; conceptual clarification; demonstration
-of application; opportunities for independent practice; response grounded in
-learner work; and questions whose answers advance the interaction.
+We distinguish response-level pedagogical \emph{functions} from tutor
+\emph{capabilities}. The functional layer adopts Allison and Tharby's six
+interrelated principles: Challenge; Explanation; Modelling; Practice;
+Feedback; and Questioning \cite{allison2015making}. KMP-Bench operationalizes
+these principles for tutor-response evaluation \cite{shi2026kmpbench}. They
+respectively capture productive cognitive demand; conceptual clarification;
+demonstration of application; opportunities for independent practice;
+response grounded in learner work; and questions whose answers advance the
+interaction.
 
-The capability layer was synthesized from the three tutoring benchmarks,
-adaptive-scaffolding research, HNMU's tutoring method, and evidence-centered
-assessment design. It comprises \textit{(i)} subject-matter accuracy and
-grounding; \textit{(ii)} learner-state modelling; \textit{(iii)}
-pedagogical-strategy selection; \textit{(iv)} scaffolding calibration;
-\textit{(v)} diagnosis of errors, misconceptions, and missing prerequisites;
-and \textit{(vi)} clear, supportive, age-appropriate communication
-\cite{macina2025mathtutorbench,shi2026kmpbench,srinivasa2025tutorbench,
-vandepol2010scaffolding,mislevy2003ecd}. Boundary analysis separates
-learner-state description from causal diagnosis, and the choice of a
-pedagogical means from the amount, timing, and transfer of support. The
-principles later activate response-specific instructions and criteria; the
-capabilities ensure that the overall rubric covers the qualities of an
-effective tutor.
+The six-capability model synthesizes complementary evidence. MathTutorBench
+distinguishes subject expertise, learner understanding, and pedagogical
+response generation \cite{macina2025mathtutorbench}. KMP-Bench evaluates both
+skill correctness and principle-guided dialogue behavior
+\cite{shi2026kmpbench}. TutorBench contributes adaptive explanation,
+assessment and feedback, and active-learning requirements expressed through
+atomic criteria \cite{srinivasa2025tutorbench}. Adaptive-scaffolding research
+motivates separating strategy selection from the calibration of support and
+treating learner diagnosis as an input to contingent assistance
+\cite{vandepol2010scaffolding}. HNMU's tutoring method supplies local
+expectations for diagnosing the learner's current state and gradually
+scaffolding support. Evidence-centered design motivates linking every
+capability to observable response evidence \cite{mislevy2003ecd}.
+
+Accordingly, we define six tutor capabilities: \textit{(i)} subject-matter
+accuracy and grounding; \textit{(ii)} learner-state modelling;
+\textit{(iii)} pedagogical-strategy selection; \textit{(iv)} scaffolding
+calibration; \textit{(v)} diagnosis of errors, misconceptions, and missing
+prerequisites; and \textit{(vi)} clear, supportive, age-appropriate
+communication. Boundary analysis separates learner-state description from
+causal diagnosis, and strategy selection from the amount, timing, and transfer
+of support. The principles activate response-specific instructions and
+criteria; the tutor capabilities organize the observable rubric criteria.
 
 \subsection{Phase 3: From Raw Dialogues to Benchmark Data}
+
+Phase~3 combines the audited dialogues with the pedagogical foundation from
+Phase~2 to construct benchmark samples. It comprises three operations:
+deterministic turn-level conversion, grounded principle-requirement scoring
+with code-based quality gates, and collection of the eligible benchmark pool.
 
 \subsubsection{Turn-level candidate construction}
 The 665 retained dialogues were converted deterministically by treating every
