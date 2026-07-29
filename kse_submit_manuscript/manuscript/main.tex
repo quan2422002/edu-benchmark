@@ -163,11 +163,11 @@ foundation: six principles describe the functions that a response may need
 to perform, whereas six capabilities describe the broader qualities expected
 of an effective tutor. Phase~3 brings both outputs from Phase~1 and Phase~2 together to construct,
 label, filter, and collect candidate benchmark samples to build a comprehensive benchmark.
-\IfFileExists{figures/overall_pipeline.png}{
+\IfFileExists{figures/overall_pipeline_illustrated.png}{
 
 \begin{figure*}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/overall_pipeline.png}
+\includegraphics[width=1.0\textwidth]{figures/overall_pipeline_illustrated.png}
 \caption{Overview of the three-phase benchmark-construction pipeline. Phase~1
 and Phase~2 provide complementary inputs to Phase~3.}
 \label{fig:construction-pipeline}
@@ -186,8 +186,8 @@ to expected answers and explanations.
 
 The hybrid audit combined code-based checks of coverage, required fields,
 speaker labels, lesson mapping, and duplicate risk with a semantic and
-pedagogical review led by the dedicated \texttt{hnmu-dialogue-auditor}.
-This specialist used \texttt{gpt-5.4-mini} at medium reasoning effort to
+pedagogical review led by the dedicated AI agent named \texttt{hnmu-dialogue-auditor}.
+This specialist AI agent used \texttt{gpt-5.4-mini} at medium reasoning effort to
 assess an 18-criterion checklist covering structure (3 criteria), consistency (7 criteria),
 pedagogy (6 criteria), and duplicate risk (2 criteria). For each dialogue, it used the raw
 fields, retrieved SGK/SGV fragments, and HNMU's cognitive-level and
@@ -232,7 +232,7 @@ assessment and feedback, and active-learning requirements expressed through
 atomic criteria \cite{srinivasa2025tutorbench}. Adaptive-scaffolding research
 motivates separating strategy selection from the calibration of support and
 treating learner diagnosis as an input to contingent assistance
-\cite{vandepol2010scaffolding}. HNMU's tutoring method supplies local
+\cite{vandepol2010scaffolding}. HNMU's document about scaffolding method supplies local
 expectations for diagnosing the learner's current state and gradually
 scaffolding support. Evidence-centered design motivates linking every
 capability to observable response evidence \cite{mislevy2003ecd}.
@@ -256,59 +256,70 @@ with code-based quality gates, and collection of the eligible benchmark pool.
 
 \subsubsection{Turn-level candidate construction}
 The 665 retained dialogues were converted deterministically by treating every
-tutor turn as a possible target. The initial student turn becomes the first
-prompt; all intervening utterances retain their student or tutor role as
+tutor turn as a possible reference response. The initial student turn becomes
+the prompt; intervening utterances retain their student or tutor roles in the
 conversation history; and the selected tutor turn becomes the reference
-response. Turns after the target are excluded. The teacher-provided answer is
-kept separately as subject-matter grounding. This policy produces 2,028
-candidates across 665 dialogue families, including multiple history depths
-from the same source dialogue. A one-to-one trace records the source file,
-row, target-turn position, and any approved correction, while family IDs
-prevent candidates from the same dialogue being split across evaluation
-partitions.
+response. Later turns are excluded, while the source question and teacher-provided answer are kept
+separately as subject-matter grounding. This policy produces 2,028 candidates
+across 665 dialogue families, including multiple history depths from the same
+source. For example, a six-turn raw dialogue
+\(D_1 = [S_1,T_1,S_2,T_2,S_3,T_3]\) yields 3 candidates:
+\(C_1=[S_1;\varnothing;T_1]\),
+\(C_2=[S_1;(T_1,S_2);T_2]\), and
+\(C_3=[S_1;(T_1,S_2,T_2,S_3);T_3]\), where each bracket records the prompt,
+history, and reference response, respectively. Here, \(S_i\) and \(T_i\)
+denote student and tutor turns. All three candidates retain the same family ID
+for tracing and data splitting.
 
-\subsubsection{LLM-assisted principle assignment and filtering}
-For each candidate, Gemini~3.5~Flash receives the grade, lesson, target
-position, Bloom level, student prompt, role-preserving history, source
-question, and teacher-provided answer. The reference response is deliberately
-excluded so that the criteria are not selected from the strengths of the
-response against which a model will later be compared. The scorer rates the
-necessity of each principle on a five-point scale: 1 denotes irrelevant or
-counterproductive; 2 weakly related; 3 a valid but optional strategy; 4
-required for a good response; and 5 essential to the main pedagogical need.
-Code, rather than the LLM, selects every principle scoring at least 4 and
-performs schema validation, thresholding, semantic linting, and routing.
+\subsubsection{LLM-assisted principle scoring and filtering}
+For each candidate, we use Gemini~3.5~Flash to evaluate the necessity of all six
+principles from the information available before the target tutor response:
+grade, lesson, target position, Bloom level, student prompt, role-preserving
+history, source question, and teacher-provided answer. The reference response
+is deliberately excluded, preventing the selection of evaluation criteria
+from being conditioned on the response against which the evaluated AI tutor will
+later be compared.
+
+The model assigns a five-point necessity score to each principle. A score of 1
+means that the principle is irrelevant or counterproductive in the given
+context. A score of 2 indicates only a weak relationship to the learner's
+need. A score of 3 represents a pedagogically valid but optional strategy. A
+score of 4 means that the principle is required for a good next response. A
+score of 5 is reserved for a principle that is essential to the central
+pedagogical need. Code, rather than the LLM, selects principles scoring at
+least 4 and applies schema validation, thresholding, semantic linting, and
+eligibility gates.
 
 \subsubsection{Eligible benchmark pool and descriptive statistics}
 The full scoring run contains 12,168 principle scores for all 2,028
-candidates. Deterministic gates place 1,400 candidates in
-\texttt{eligible\_without\_plan03\_review}, 628 in targeted UET review, and
-none in a structurally blocked state. The eligible pool spans 655 families:
-443 candidates require one principle, 866 require two, and 91 require three.
-It contains 631 candidates without history and 769 with non-empty history.
-Table~\ref{tab:eligible-pool} reports grade and principle incidence; because a
-candidate can require multiple principles, principle counts do not sum to
-1,400.
+candidates. We define a candidate as \emph{eligible} only when it has one to
+three required principles, all cited evidence is traceable to the supplied
+context, and every score of 4 or 5 is supported by both an independent
+pedagogical need and a counterfactual showing that this need would remain
+unmet without the principle. Eligible candidates must also contain no
+optionality conflict among required principles: in particular, Feedback must guide improvement beyond
+mere confirmation or praise, while Questioning must make a learner answer
+necessary rather than merely useful. Finally, the required-principle set must
+occur in at least five candidates across at least three dialogue families.
 
-\begin{table}[t]
-\caption{Composition of the 1,400-candidate eligible pool.}
-\label{tab:eligible-pool}
+These gates retain 1,400 eligible candidates from 655 raw dialogues passed in Phase~1 and
+exclude the remaining 628. Exclusion flags may overlap: 592 candidates reduce
+Feedback to confirmation or praise; 20 contain an inconsistent score-4/5
+rationale; 10 assign Questioning without establishing answer dependency; 8
+have no principle scoring at least 4; 7 have an insufficiently supported
+principle combination; and one requires more than three principles.
+Figure~\ref{fig:phase3-statistics} summarizes principle incidence, grade,
+turns per sample, and characters per turn.
+
+\begin{figure*}[t]
 \centering
-\small
-\begin{tabular}{lrr@{\hspace{7pt}}lrr}
-\hline
-\textbf{Grade} & \textbf{N} & \textbf{\%} &
-\textbf{Principle} & \textbf{N} & \textbf{\%} \\
-\hline
-6 & 193 & 13.8 & Challenge & 8 & 0.6 \\
-7 & 280 & 20.0 & Explanation & 863 & 61.6 \\
-8 & 412 & 29.4 & Modelling & 93 & 6.6 \\
-9 & 515 & 36.8 & Practice & 27 & 1.9 \\
- & & & Feedback & 806 & 57.6 \\
- & & & Questioning & 651 & 46.5 \\
-\hline
-\end{tabular}
-\end{table}
+\includegraphics[width=\textwidth]{figures/phase3_candidate_statistics.png}
+\caption{Distributions of 1,400 eligible samples: (a) 2,448 multi-label
+principle assignments; (b) grade; (c) turns per sample, including prompt,
+history, and reference; and (d) characters per turn across 5,508 occurrences
+(mean 96.6; median 90).}
+\label{fig:phase3-statistics}
+\end{figure*}
 
 \section{Evaluation Framework}
 
@@ -411,9 +422,9 @@ Principle-Level Accuracy scores; \textit{(iii)} General-Level Accuracy;
 \textit{(vi)} serious-error incidence and the number of criterion decisions
 changed by an error gate. Results are stratified by grade, principle, history
 availability, and dialogue family. The pool statistics in
-Table~\ref{tab:eligible-pool} show that Explanation, Feedback, and Questioning
-dominate, whereas Challenge and Practice are rare; principle-level reporting
-is therefore necessary in addition to a single overall score.
+Figure~\ref{fig:phase3-statistics} shows that Explanation, Feedback, and
+Questioning dominate, whereas Challenge and Practice are rare; principle-level
+reporting is therefore necessary in addition to a single overall score.
 
 \section{Discussion and Limitations}
 \textit{To be completed.}
