@@ -167,7 +167,7 @@ label, filter, and collect candidate benchmark samples to build a comprehensive 
 
 \begin{figure*}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/overall_pipeline.png}
+\includegraphics[width=1.0\textwidth]{figures/overall_pipeline.png}
 \caption{Overview of the three-phase benchmark-construction pipeline. Phase~1
 and Phase~2 provide complementary inputs to Phase~3.}
 \label{fig:construction-pipeline}
@@ -176,85 +176,27 @@ and Phase~2 provide complementary inputs to Phase~3.}
 
 \subsection{Phase 1: Screening Teacher-Authored Dialogues}
 
-The construction process began with 1,050 teacher-authored Vietnamese
-Informatics dialogues for Grades~6--9. Phase~1 was a screening procedure,
-not a claim that a dialogue was already a final valid benchmark item.
-Before auditing the dialogues, we prepared a curriculum-evidence layer from
-the Vietnamese Informatics textbooks (SGK) and teacher guides (SGV) for
-Grades~6--9. We normalized 154 OCR-derived Markdown units and split them into
-2,750 traceable fragments. Each fragment retains its grade, material type,
-lesson or page location, and a stable identifier. A rebuildable SQLite
-full-text search (FTS) index supports metadata filtering followed by keyword
-retrieval. During auditing, SGK fragments primarily ground lesson scope,
-student questions, and topic consistency, whereas SGV fragments primarily
-ground expected answers and explanations.
+Phase~1 screened 1,050 Vietnamese Informatics dialogues for Grades~6--9
+authored by the teaching team at Hanoi Metropolitan University (HNMU). To
+ground this audit in the national curriculum, we normalized 154 OCR-derived
+SGK/SGV Markdown units into 2,750 traceable fragments and
+built a rebuildable SQLite full-text search index. Metadata and keyword
+retrieval linked SGK evidence to lesson scope and questions, and SGV evidence
+to expected answers and explanations.
 
-Phase~1 covered five audit areas at the overall audit-process level:
-\begin{itemize}
-    \itemsep0pt
-    \item coverage;
-    \item missing fields and formatting;
-    \item consistency;
-    \item duplicate and near-duplicate detection; and
-    \item per-sample quality assessment.
-\end{itemize}
-Within this process, individual dialogues were assessed using an
-18-criterion checklist organized into four criterion groups:
-\begin{itemize}
-    \itemsep0pt
-    \item Structure (3 criteria);
-    \item Consistency (7 criteria);
-    \item Pedagogy (6 criteria); and
-    \item Duplicate risk (2 criteria).
-\end{itemize}
-The five audit areas are therefore not five groups of the 18 criteria:
-coverage is evaluated at batch level and does not create a criterion row for
-every dialogue. Code handled mechanical checks such as required fields,
-speaker labels, lesson mapping, coverage, and duplicate candidates. The
-semantic and pedagogical audit was led by the dedicated
-\texttt{hnmu-dialogue-auditor} specialist, instantiated with
-\texttt{gpt-5.4-mini} at medium reasoning effort. The dialogues were divided
-into disjoint lesson-based shards. For every sample, the specialist combined
-the raw fields, retrieved SGK/SGV fragments, and HNMU cognitive-level and
-scaffolding guidance to assess all 18 criteria independently. Each
-sample--criterion record stores the decision, confidence, evidence fragment,
-reason, and suggested reviewer action. Code then validated checklist
-completeness, merged the shards, and applied the strict sample-level
-aggregation rule below; the specialist did not directly assign the final
-sample status.
-% Figure~\ref{fig:phase1-workflow} shows the detailed workflow.
-
-% \begin{figure*}[h]
-% \centering
-% \includegraphics[width=0.5\textwidth]{figures/phase_1_flow.png}
-% \caption{Detailed Phase~1 workflow, including data intake, learning-resource
-% preparation, criterion-level auditing, and strict sample-level aggregation.}
-% \label{fig:phase1-workflow}
-% \end{figure*}
-
-We aggregated these criterion-level judgments with a strict rule:
-\begin{itemize}
-    \itemsep0pt
-    \item \textit{Failed}: at least one criterion is labelled \textit{fail}.
-    \item \textit{Need human review}: no criterion is labelled \textit{fail}
-    and at least one criterion is labelled \textit{uncertain}.
-    \item \textit{Pass}: every criterion is labelled \textit{pass} or
-    \textit{not applicable}.
-\end{itemize}
-This rule produced 665 \textit{pass} dialogues, 382 dialogues requiring
-human review, and 3 failed dialogues. Only the 665 \textit{pass} dialogues
-were retained for candidate construction in Phase~3. Thus, Phase~1 is a
-traceable eligibility filter
-rather than proof that every retained dialogue is already a final valid
-benchmark item.
-
-For the 665 retained Phase~1 dialogues, one turn denotes one utterance
-labelled \texttt{HS:} or \texttt{AI:}, not a student--tutor exchange.
-Character length is computed from the utterance content after removing the
-speaker label and colon; internal whitespace and line breaks remain included.
-These statistics use \texttt{raw\_dialogue}, not \texttt{conversion\_dialogue}
-or later Phase~1 recheck artifacts. Figure~\ref{fig:phase1-statistics}
-summarizes the resulting distributions.
+The hybrid audit combined code-based checks of coverage, required fields,
+speaker labels, lesson mapping, and duplicate risk with a semantic and
+pedagogical review led by the dedicated \texttt{hnmu-dialogue-auditor}.
+This specialist used \texttt{gpt-5.4-mini} at medium reasoning effort to
+assess an 18-criterion checklist covering structure (3 criteria), consistency (7 criteria),
+pedagogy (6 criteria), and duplicate risk (2 criteria). For each dialogue, it used the raw
+fields, retrieved SGK/SGV fragments, and HNMU's cognitive-level and
+scaffolding guidance to record criterion-level decisions, confidence,
+evidence, and reviewer actions. Code
+validated and merged the lesson-based shards, then applied a strict rule:
+any \textit{failed} criterion yielded \textit{failed}; otherwise any \textit{uncertain}
+yielded \textit{need human review}; all remaining dialogues \textit{passed}.
+This retained 665 dialogues, while routing 382 to review and rejecting 3.
 
 \begin{figure*}[h]
 \centering
@@ -264,16 +206,10 @@ Phase~1: grade, number of turns per dialogue, and character length per turn.}
 \label{fig:phase1-statistics}
 \end{figure*}
 
-Grades~8 and 9 account for 209 (31.43\%) and 218 (32.78\%) dialogues,
-respectively, or 64.21\% together; the retained set is therefore more heavily
-represented by the two upper grades. Grades~6 and 7 contribute 106 (15.94\%)
-and 132 (19.85\%) dialogues. Dialogues range from 4 to 14 turns, with a
-median of 6 and a mode of 5; 193 dialogues (29.02\%) contain 5 turns and
-417 (62.71\%) contain 4--6 turns. Across 4,354 turns, 2,326 are student
-turns and 2,028 are AI turns. Character length ranges from 7 to 294
-(Q1=53, median=79, Q3=113; mean=86.46). The mean exceeding the median
-indicates a moderate upper tail in turn length, and the median AI turn
-length (108 characters) exceeds the median student-turn length (60).
+The 665-dialogue subset, with the statistics shown in Figure~\ref{fig:phase1-statistics}, covers all four grades, although Grades~8--9 account
+for 64.21\%. Dialogues contain 4--14 utterances (median 6), totalling 4,354
+utterances, including 2,028 tutor turns that become candidate targets in
+Phase~3.
 
 \subsection{Phase 2: Pedagogical Measurement Foundation}
 
@@ -287,7 +223,7 @@ of application; opportunities for independent practice; response grounded in
 learner work; and questions whose answers advance the interaction.
 
 The capability layer was synthesized from the three tutoring benchmarks,
-adaptive-scaffolding research, the HNMU tutoring method, and evidence-centered
+adaptive-scaffolding research, HNMU's tutoring method, and evidence-centered
 assessment design. It comprises \textit{(i)} subject-matter accuracy and
 grounding; \textit{(ii)} learner-state modelling; \textit{(iii)}
 pedagogical-strategy selection; \textit{(iv)} scaffolding calibration;
