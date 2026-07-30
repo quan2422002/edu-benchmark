@@ -32,16 +32,17 @@ dialogues. The pipeline audits
 the raw dialogues, establishes a measurement foundation of six pedagogical
 principles and six tutor capabilities, and converts every eligible tutor turn
 into a context-conditioned next-response candidate. It yields 2,028 candidates
-from 665 retained dialogue families. A grounded LLM scores the necessity of
-all six principles for each candidate; deterministically checks then identify
-1,400 candidates across 655 families that can proceed without targeted review.
-We further define an evaluation framework that provides the required
+from 665 retained dialogue families. A grounded LLM scores the necessity of all six principles for each
+candidate; deterministic checks then retain 1,400 candidates across 655
+families. We further define an evaluation framework that provides the required
 principles to the tutor model, preserves native multi-turn roles, and compares
 the generated response with the teacher-authored response using four common
 criteria, three criteria per required principle, and criterion-level
-Win/Tie/Lose judgments. Together, the construction pipeline and evaluation
-framework provide a curriculum-grounded protocol for Vietnamese Informatics
-tutoring.
+Win/Tie/Lose judgments. Across 4,200 generated responses and 8,400 blind
+comparisons, two LLM judges consistently rank Llama~4~Maverick below both
+Gemini configurations, while their ordering of the two Gemini configurations
+differs. Together, the construction pipeline and evaluation framework provide
+a curriculum-grounded protocol for Vietnamese Informatics tutoring.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -178,9 +179,9 @@ and Phase~2 provide complementary inputs to Phase~3.}
 \end{figure*}
 }{}
 
-\subsection{Phase 1: Screening Teacher-Authored Dialogues}
+\subsection{Phase 1: Teacher-Authored Dialogues Audit}
 
-Phase~1 screened 1,050 Vietnamese Informatics dialogues for Grades~6--9
+Phase~1 audited 1,050 Vietnamese Informatics dialogues for Grades~6--9
 authored by the teaching team at Hanoi Metropolitan University (HNMU). To
 ground this audit in the national curriculum, we normalized 154 OCR-derived
 SGK/SGV Markdown units into 2,750 traceable fragments and
@@ -342,89 +343,397 @@ The dialogue itself is sent through the provider's native multi-turn
 interface: the initial student prompt and subsequent student turns use the
 \texttt{user} role, while prior tutor turns use the
 \texttt{assistant}/\texttt{model} role. The final message is always the
-student turn to be answered. Candidate IDs, principle scores, criteria,
+student turn to be answered. Benchmark sample IDs, principle scores, criteria,
 learning-resource fragments, the teacher-provided answer, and the reference
 response are not shown to the tutor model.
 
 \subsection{Two-Tier Rubric Construction}
 
-Six tutor capabilities, as defined in section \ref{sec:phase2-pedagogical-measurement}, provide a coverage map for four common criteria:
-\textit{(i)} subject-matter accuracy and verifiability; \textit{(ii)}
-alignment with the learner's state and immediate goal; \textit{(iii)}
-calibrated support that preserves meaningful learner work; and
-\textit{(iv)} clear, respectful, age-appropriate communication. Each of the
-six principles contributes three additional criteria that measure only its
-incremental pedagogical principle. Totally, we have 22 criteria, with 4 general criteria and 18 principle-specific criteria and all of them
-are confirmed as valid for tutor assessment by the HNMU teaching team. 
-A candidate requiring \(n\) principles istherefore evaluated with \(4 + 3n\) criteria. 
-This produces a stable common core while adapting the remaining
-criteria to the pedagogical demands of the candidate.
+Six tutor capabilities, as defined in Section~\ref{sec:phase2-pedagogical-measurement},
+provide a coverage map for four common criteria: \textit{(i)} subject-matter
+accuracy and verifiability; \textit{(ii)} alignment with the learner state and
+immediate goal; \textit{(iii)} calibrated support that preserves meaningful
+learner work; and \textit{(iv)} clear, respectful, age-appropriate
+communication. Each of the six principles contributes three criteria that
+measure its incremental pedagogical function. The resulting catalog contains
+4 common and 18 principle-specific criteria. A benchmark sample requiring \(n\)
+principles is evaluated with \(4+3n\) criteria, providing a stable common core
+while adapting the remaining criteria to its pedagogical demands.
 
 \subsection{Blind Pairwise Judging and Score Aggregation}
 
-The judge receives the same dialogue context, the source question,
-teacher-provided answer, relevant textbook/teacher-guide fragments, all
-applicable criteria, and two anonymous responses: the generated tutor
-response and the teacher-authored reference. Their order is randomized with a
-fixed seed and restored only after judging. In one call, the judge returns a
-Win, Tie, or Lose decision for every applicable criterion, and provides a separate holistic
-judgment. The comparison explicitly permits a generated response to
-outperform the reference.
-
+In this procedure, a judge receives the dialogue context, source question,
+teacher-provided answer, all applicable criteria, and two anonymous responses:
+the generated tutor response and the
+teacher-authored reference. Response order is deterministically randomized and
+restored only after judging. For every criterion, the judge selects
+\textit{response 1}, \textit{response 2}, or \textit{Tie}; code then maps the
+decision back to the target model as Win, Lose, or Tie.
 Let \(W_r,T_r,L_r\) be the numbers of Win, Tie, and Lose judgments for
 criterion \(r\). Its win rate is
 \[
- A_r = \frac{W_r}{W_r+T_r+L_r},
+ A_r = \frac{W_r}{W_r+T_r+L_r}.
 \]
-General-Level Accuracy is the mean of the four common \(A_r\) values, while
-Principle-Level Accuracy for principle \(p\) is the mean of its three
-criteria. Overall Accuracy averages General-Level Accuracy and the macro mean
-of the six Principle-Level scores. The holistic Win rate is reported
-separately. All analyses retain the full Win/Tie/Lose distribution and report
-both candidate-level and dialogue-family-level aggregates.
 
 \section{Experiments and Analysis}
 
 \subsection{Experimental Setup}
 
-The current evaluation pool of \benchmarkname{} comprises the 1,400 candidates
-that passed the Phase~3 gates. The tutor panel contains three configurations:
-\textit{(i)} Gemini~3.5~Flash, a closed general-purpose model accessed through
-Vertex AI; \textit{(ii)} Llama~4~Maverick, an open-weight general-purpose model
-accessed through Vertex AI Model-as-a-Service; and \textit{(iii)}
-Gemini~3.5~Flash with a LearnLM-oriented educational system instruction,
-evaluated as a full tutor configuration alongside the two other configurations.
+\textbf{Metrics}: Each generated response is compared with the teacher-authored
+reference by two separate LLM judges: Gemini~3.5~Flash with \texttt{thinking\_level=MEDIUM}, and the
+\texttt{gpt-5.4-mini-2026-03-17} snapshot with medium reasoning effort. Both
+use the same prompt, an 8,192-token output cap, the applicable rubric set,
+anonymous response order, and identical deterministic post-processing. The key metrics include:
+\textit{(i)} Holistic Win rate (from the Win/Tie/Lose holistic judgment);
+\textit{(ii)} General-Level Accuracy (average of the four common criteria);
+\textit{(iii)} Principle-Level Accuracy (average of the three criteria for each required principle);
+and \textit{(iv)} Overall Accuracy (average of General-Level Accuracy and the mean of Principle-Level scores).
+Furthermore, because multiple benchmark samples can originate from the same raw dialogue, we additionally report a
+family-macro Overall score that first gives each of the 655 dialogue families
+equal weight. Confidence intervals (CIs) and pairwise differences use 5,000
+cluster-bootstrap resamples over \texttt{sample\_id}; 4,995 resamples contain
+observations for all six principles.
 
-For the two Gemini configurations, sampling parameters are omitted,
-\texttt{thinking\_level=MEDIUM}, and hidden thoughts are not returned. Llama
-also omits sampling parameters. All three configurations use a 2,048-token
-output cap. All requests store the exact system instruction, native message
-sequence, model configuration, finish reason, token usage, and content hashes.
+\textbf{Models}: The tutor panel contains \textit{(i)} Gemini~3.5~Flash with the baseline
+instruction; \textit{(ii)} the same base model with a LearnLM-oriented
+educational instruction; and \textit{(iii)} Llama~4~Maverick. The first two are
+therefore instruction configurations rather than distinct base models. Both
+Gemini configurations use \texttt{thinking\_level=MEDIUM} without returned
+thoughts. All three configurations omit sampling overrides and use a
+2,048-token output cap. Each configuration generates one response for every
+sample, yielding 4,200 tutor responses on 1,400 benchmark samples.
 
-Gemini~3.5~Flash serves as the primary blind pairwise judge with
-\texttt{thinking\_level=MEDIUM}, a fixed seed, and an 8,192-token output
-cap. One judge call evaluates all applicable criteria and the holistic
-comparison for a candidate--model pair. Results in which Gemini is both tutor
-and judge are reported separately to expose possible same-model bias.
+\subsection{Detailed Results by Judge and Principle}
 
-\subsection{Reported Measures}
+\begin{table*}[t]
+\caption{Pairwise win rates (\%) under the KMP-compatible aggregation. Hol. is
+the independent holistic Win rate; Gen. averages the four common criteria;
+Family is the family-macro Overall score. Bold marks the highest value within
+each judge panel, but does not imply statistical significance.}
+\label{tab:detailed-main-results}
+\centering
+\setlength{\tabcolsep}{4.2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrrrrr}
+\hline
+Judge & Tutor configuration & Hol. & Gen. & Challenge & Explanation &
+Modelling & Practice & Questioning & Feedback & Overall & Family \\
+\hline
+Gemini & Gemini baseline
+& \textbf{93.43} & \textbf{83.27} & \textbf{100.00} & \textbf{97.88}
+& \textbf{98.92} & \textbf{91.36} & \textbf{76.65} & \textbf{90.03}
+& \textbf{87.87} & \textbf{88.49} \\
+Gemini & Gemini+LearnLM
+& 93.21 & 79.82 & \textbf{100.00} & 97.10
+& \textbf{98.92} & 87.65 & 72.40 & 89.16
+& 85.35 & 85.91 \\
+Gemini & Llama~4 Maverick
+& 55.21 & 43.07 & 87.50 & 62.96
+& 54.48 & 41.98 & 35.84 & 52.94
+& 49.51 & 49.40 \\
+\hline
+GPT & Gemini baseline
+& 90.79 & 78.32 & 95.83 & 94.82
+& \textbf{98.21} & \textbf{91.36} & 66.97 & 90.98
+& 84.01 & 84.72 \\
+GPT & Gemini+LearnLM
+& \textbf{91.86} & \textbf{79.09} & \textbf{100.00} & \textbf{95.44}
+& \textbf{98.21} & 90.12 & \textbf{67.84} & \textbf{91.19}
+& \textbf{84.78} & \textbf{85.32} \\
+GPT & Llama~4 Maverick
+& 81.86 & 72.43 & 87.50 & 90.23
+& 75.27 & 87.65 & 41.42 & 78.04
+& 74.56 & 75.98 \\
+\hline
+\end{tabular}}
+\vspace{2pt}
 
-For each tutor configuration, we report \textit{(i)} the win rates and full
-Win/Tie/Lose distributions for the four common criteria; \textit{(ii)} six
-Principle-Level Accuracy scores; \textit{(iii)} General-Level Accuracy;
-\textit{(iv)} Overall Accuracy; \textit{(v)} holistic judgment Win rate; and
-\textit{(vi)} serious-error incidence and the number of criterion decisions
-changed by an error gate. Results are stratified by grade, principle, history
-availability, and dialogue family. The pool statistics in
-Figure~\ref{fig:phase3-statistics} shows that Explanation, Feedback, and
-Questioning dominate, whereas Challenge and Practice are rare; principle-level
-reporting is therefore necessary in addition to a single overall score.
+\footnotesize Applicable candidates per tutor configuration:
+Challenge \(=8\), Explanation \(=863\), Modelling \(=93\),
+Practice \(=27\), Questioning \(=651\), and Feedback \(=806\).
+\end{table*}
 
+Table~\ref{tab:detailed-main-results} exposes two patterns that are hidden by
+an Overall-only table. First, both judges place the two Gemini configurations
+above Llama~4~Maverick on General, Overall, and Family scores. The largest
+recurring principle-level separations occur in Questioning, Feedback, and
+Modelling. Second, judge severity differs substantially. For Llama, the
+Gemini judge reports an Overall score of 49.51, whereas the GPT judge reports
+74.56. Explanation differs especially strongly (62.96 versus 90.23), while
+both judges give Llama 87.50 on the eight Challenge candidates. This shared
+Challenge value should not be interpreted as stable principle-level evidence
+because that principle has very limited support.
+
+The two Gemini configurations remain close. The Gemini judge assigns the
+baseline the higher Overall score (87.87 versus 85.35), whereas the GPT judge
+slightly favors the LearnLM-oriented instruction (84.78 versus 84.01).
+Consequently, the absolute score values and the ordering of nearby
+configurations are judge-dependent, even though the coarser Gemini--Llama
+ordering is shared.
+
+\subsection{Uncertainty and Pairwise Separation}
+
+\begin{table}[t]
+\caption{Cluster-bootstrap comparisons of Overall scores. Each difference is
+row configuration minus the named comparator, in percentage points.}
+\label{tab:pairwise-differences}
+\centering
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llrr}
+\hline
+Judge & Contrast & Difference & 95\% CI \\
+\hline
+Gemini & Baseline--LearnLM & +2.52 & [1.53, 3.57] \\
+Gemini & Baseline--Llama & +38.36 & [35.53, 41.21] \\
+Gemini & LearnLM--Llama & +35.84 & [32.89, 38.82] \\
+GPT & Baseline--LearnLM & -0.77 & [-2.14, 0.45] \\
+GPT & Baseline--Llama & +9.45 & [7.43, 11.71] \\
+GPT & LearnLM--Llama & +10.22 & [8.04, 13.04] \\
+\hline
+\end{tabular}
+\end{table}
+
+The 95\% Overall CIs are [86.46, 89.19], [83.76, 86.83], and
+[46.54, 52.37] under the Gemini judge; and [82.36, 85.51],
+[83.28, 86.14], and [71.62, 76.97] under the GPT judge for baseline,
+LearnLM, and Llama, respectively. More importantly,
+Table~\ref{tab:pairwise-differences} shows that all four Gemini--Llama
+difference intervals exclude zero. The smallest lower bound is 7.43
+percentage points. In contrast, only the Gemini judge finds a non-zero
+baseline--LearnLM difference; the GPT interval crosses zero.
+
+The family-macro scores differ from the candidate-level Overall scores by only
+0.1--1.4 points and cause no rank reversal within either judge. Thus, the
+shared Gemini--Llama ordering is not an artifact of dialogues that yield more
+candidates. The clustered analysis remains necessary, however, because 1,400
+candidates are not 1,400 independent dialogue families.
+
+\begin{table}[t]
+\caption{Holistic Win/Tie/Lose outcomes against the teacher-authored response.}
+\label{tab:holistic-wtl}
+\centering
+\setlength{\tabcolsep}{3.2pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llrrr}
+\hline
+Judge & Tutor configuration & Win & Tie & Lose \\
+\hline
+Gemini & Gemini baseline & 1,308 (93.43) & 6 (0.43) & 86 (6.14) \\
+Gemini & Gemini+LearnLM & 1,305 (93.21) & 7 (0.50) & 88 (6.29) \\
+Gemini & Llama~4 Maverick & 773 (55.21) & 24 (1.71) & 603 (43.07) \\
+GPT & Gemini baseline & 1,271 (90.79) & 5 (0.36) & 124 (8.86) \\
+GPT & Gemini+LearnLM & 1,286 (91.86) & 9 (0.64) & 105 (7.50) \\
+GPT & Llama~4 Maverick & 1,146 (81.86) & 7 (0.50) & 247 (17.64) \\
+\hline
+\end{tabular}}
+
+\footnotesize Percentages are shown in parentheses; each row contains
+1,400 comparisons.
+\end{table}
+
+The holistic counts in Table~\ref{tab:holistic-wtl} reinforce the difference
+in judge severity toward Llama: Gemini records 603 holistic losses for the
+target response, compared with 247 under GPT. Holistic judgment is reported
+separately and is not reconstructed from criterion-level votes.
+
+\subsection{Inter-Judge Agreement}
+
+\begin{table}[t]
+\caption{Agreement on holistic Win/Tie/Lose judgments.}
+\label{tab:holistic-agreement}
+\centering
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{lrrr}
+\hline
+Scope & Exact (\%) & Cohen's \(\kappa\) & Gwet's \(AC1\) \\
+\hline
+All configurations & 80.45 & 0.271 & 0.775 \\
+Gemini baseline & 88.36 & 0.204 & 0.874 \\
+Gemini+LearnLM & 89.79 & 0.265 & 0.890 \\
+Llama~4 Maverick & 63.21 & 0.221 & 0.529 \\
+\hline
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:holistic-agreement} reports exact agreement together with
+Cohen's \(\kappa\) and Gwet's \(AC1\). The high prevalence of Win decisions
+for the two Gemini configurations depresses \(\kappa\), so no single agreement
+coefficient is sufficient. Agreement is high for both Gemini configurations
+but falls to 63.21\% for Llama. Table~\ref{tab:directional-disagreement}
+decomposes disagreements that point in opposite directions.
+
+\begin{table}[t]
+\caption{Directional holistic disagreements between judges.}
+\label{tab:directional-disagreement}
+\centering
+\setlength{\tabcolsep}{3.3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrr}
+\hline
+Tutor configuration & Gemini Lose/GPT Win & Gemini Win/GPT Lose \\
+\hline
+Gemini baseline & 57 & 95 \\
+Gemini+LearnLM & 54 & 73 \\
+Llama~4 Maverick & 419 & 65 \\
+\hline
+\end{tabular}}
+\end{table}
+
+The Llama disagreements are strongly asymmetric: the Gemini judge assigns Lose
+while GPT assigns Win in 419 cases, whereas the reverse occurs in only 65.
+This pattern is consistent with different judge severity and is also compatible
+with a same-family effect, but it does not identify the cause.
+
+\begin{table*}[t]
+\caption{Criterion-level agreement between the Gemini and GPT judges.
+``Common'' aggregates the four common criteria; the following four indented
+rows decompose that group.}
+\label{tab:criterion-agreement}
+\centering
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lrrrr}
+\hline
+Rubric group or criterion & Paired decisions & Exact (\%) &
+Cohen's \(\kappa\) & Gwet's \(AC1\) \\
+\hline
+All criteria & 38,832 & 73.24 & 0.315 & 0.668 \\
+Common & 16,800 & 67.33 & 0.253 & 0.583 \\
+\quad Subject-matter accuracy & 4,200 & 65.55 & 0.309 & 0.546 \\
+\quad Learner-state and goal alignment & 4,200 & 72.90 & 0.246 & 0.671 \\
+\quad Calibrated support and agency & 4,200 & 68.98 & 0.221 & 0.613 \\
+\quad Appropriate communication & 4,200 & 61.90 & 0.180 & 0.504 \\
+Challenge & 72 & 95.83 & 0.553 & 0.956 \\
+Explanation & 7,767 & 84.69 & 0.196 & 0.831 \\
+Modelling & 837 & 86.74 & 0.426 & 0.850 \\
+Practice & 243 & 77.78 & 0.319 & 0.736 \\
+Questioning & 5,859 & 68.12 & 0.429 & 0.558 \\
+Feedback & 7,254 & 76.88 & 0.264 & 0.726 \\
+\hline
+\end{tabular}
+\end{table*}
+
+Across all 38,832 paired criterion decisions, exact agreement is 73.24\%.
+Table~\ref{tab:criterion-agreement} shows substantial heterogeneity:
+Explanation and Modelling exceed 84\% exact agreement, whereas Questioning
+reaches only 68.12\%. The common criteria collectively reach 67.33\%; within
+that group, appropriate communication is lowest at 61.90\%. Challenge has the
+highest agreement but only 72 paired decisions, corresponding to eight
+candidates evaluated under three tutor configurations. These results identify
+Questioning and the common criteria as priorities for rubric calibration;
+they do not by themselves reveal whether disagreement originates from the
+rubric wording, insufficient grounding, or judge behavior.
+
+\subsection{Position and Confidence Sensitivity}
+
+\begin{table}[t]
+\caption{Target Win-rate difference when the target is shown as response 1
+rather than response 2, in percentage points.}
+\label{tab:position-sensitivity}
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\hline
+Judge & Baseline & LearnLM & Llama \\
+\hline
+Gemini & +8.04 & +6.60 & +14.61 \\
+GPT & +0.88 & +1.51 & +0.31 \\
+\hline
+\end{tabular}
+\end{table}
+
+Target position is nearly balanced: response 1 contains the target in 2,124
+requests and response 2 in 2,076. Nevertheless,
+Table~\ref{tab:position-sensitivity} reveals much larger descriptive position
+effects for the Gemini judge, especially on Llama. Near-balanced exposure can
+reduce aggregate bias but cannot estimate the causal effect of position,
+because the same response pair was not judged in both orders.
+
+Self-reported confidence does not resolve these disagreements. Mean holistic
+confidence is 0.950 for Gemini and 0.908 for GPT. On cases where the judges
+disagree, the corresponding means remain 0.910 and 0.859; 76.37\% of Gemini's
+disagreements and 48.60\% of GPT's disagreements still have confidence at
+least 0.9. Confidence is therefore not used to filter decisions.
+
+\clearpage
 \section{Discussion and Limitations}
-\textit{To be completed.}
 
+\subsection{What the Evaluation Distinguishes}
+
+The intersection of the two judge panels provides the most defensible result:
+both judges, candidate-level aggregation, family-macro aggregation, and all
+four clustered Gemini--Llama comparisons support the same coarse ordering.
+This is evidence that the context-specific rubric can detect a comparatively
+large performance difference in the evaluated panel. The conclusion is not
+dependent on one judge or on over-represented dialogue families.
+
+The experiment does not establish three absolute levels of tutor quality.
+Model names are not controlled quality labels, and no human-locked set of
+good, medium, and poor responses was used. The reversed baseline--LearnLM
+ordering further shows that the framework does not yet resolve small
+instruction-level differences consistently across judges. Accordingly,
+Overall is a relative pairwise score under this protocol, not an absolute
+certificate of tutoring quality.
+
+\subsection{Measurement Implications}
+
+The detailed results expose where the evaluation framework is more and less
+stable. Explanation and Modelling show comparatively high cross-judge
+agreement, while Questioning and the common criteria require further
+calibration. The extreme scarcity of Challenge and Practice also means that
+their principle-level scores have high conceptual importance but weak
+empirical support. Since the KMP-compatible Overall score macro-weights all
+six principles equally, Challenge with eight candidates receives the same
+principle-level weight as Explanation with 863 candidates. The
+KMP-compatible score is useful for methodological comparability
+\cite{shi2026kmpbench}, but should be accompanied by principle support and
+family-sensitive results.
+
+\subsection{Threats to Validity and Next Validation}
+
+Several limitations constrain interpretation. First, both judges are LLMs;
+their agreement measures cross-judge stability rather than correctness against
+independent human ground truth. A stratified human evaluation should focus on
+the common accuracy, communication, and scaffolding criteria, Questioning, and
+cases with directional judge disagreement.
+
+Second, Gemini judges two responses produced by the same model family and is
+substantially harsher than GPT toward Llama. This same-family relationship is a
+potential confound, particularly because the Gemini judge observes a
+35.84--38.36 point Gemini--Llama gap while GPT observes a 9.45--10.22 point
+gap. Third, Gemini exhibits a descriptive preference for response 1. A
+controlled swap-order evaluation on the same stratified response pairs is
+needed to separate position effects from response quality.
+
+Fourth, the \textit{gold-answer-only v4} contract deliberately excludes
+raw-audit learning fragments because they were not reliable at candidate
+level. Although \texttt{gold\_answer} provides a cleaner subject-matter
+anchor, it may not cover multiple correct procedures, interface or code
+variants, or pedagogically valuable strategies that differ from the
+teacher-authored reference. This limitation is especially relevant to the
+65.55\% agreement on subject-matter accuracy.
+
+Finally, the rubric catalog and model-assigned required-principle sets require
+further expert calibration. The principle set is activated by a single
+Gemini requirement-scoring run at \texttt{requirement\_score >= 4}; an
+activation error changes which principle-specific criteria are applied.
+Further validation should therefore calibrate the rubric boundaries without
+editing them merely to maximize judge agreement, review the activated
+principles, and add Challenge, Practice, and Modelling cases before making
+fine-grained principle-level claims.
 \section{Conclusion}
-\textit{To be completed.}
+
+We introduced \benchmarkname, a Vietnamese Grades~6--9 Informatics tutoring
+benchmark constructed from teacher-authored dialogues through auditable
+screening, turn-level conversion, grounded pedagogical-requirement scoring,
+and deterministic eligibility gates. Its 1,400 samples support native
+multi-turn tutor generation and context-specific evaluation with four common
+criteria plus three criteria per required principle. Across three tutor
+configurations and two separately reported LLM judges, the framework
+consistently distinguishes the larger Gemini--Llama performance gap, while the
+Gemini baseline--LearnLM ordering remains judge-dependent. These results
+support relative discrimination of large differences, not absolute quality
+certification; expert calibration and controlled position-bias testing remain
+necessary next steps.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
