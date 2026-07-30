@@ -24,25 +24,23 @@ Vietnam}}
 \maketitle
 
 \begin{abstract}
-Evaluating a large language model as a tutor requires more than checking
-answer correctness: the model must interpret the learner's state, select an
-appropriate pedagogical move, and provide calibrated support. We present
-\benchmarkname, a Vietnamese Grades~6--9 Informatics AI-tutor benchmark
-constructed through a traceable pipeline from 1,050 teacher-authored
-dialogues. The pipeline audits
-the raw dialogues, establishes a measurement foundation of six pedagogical
-principles and six tutor capabilities, and converts every eligible tutor turn
-into a context-conditioned next-response candidate. It yields 2,028 candidates
-from 665 retained dialogue families. A grounded LLM scores the necessity of all six principles for each
-candidate; deterministic checks then retain 1,400 candidates across 655
-families. We further define an evaluation framework that provides the required
-principles to the tutor model, preserves native multi-turn roles, and compares
-the generated response with the teacher-authored response using four common
-criteria, three criteria per required principle, and criterion-level
-Win/Tie/Lose judgments. We use the resulting benchmark to evaluate three
-tutor configurations---two Gemini-based tutors and Llama~4~Maverick---with
-their generated responses independently assessed by two LLM judges. Together, the construction pipeline and evaluation framework provide
-a curriculum-grounded protocol for Vietnamese Informatics tutoring.
+Evaluating a large language model as a tutor requires interpreting the
+learner's state, selecting an appropriate pedagogical move, and providing
+calibrated support, not merely checking answer correctness. We present
+\benchmarkname, a Vietnamese Grades~6--9 Informatics AI-tutor benchmark built
+through a traceable pipeline from 1,050 teacher-authored dialogues. The
+pipeline audits the dialogues, establishes six pedagogical principles and six
+tutor capabilities, and converts eligible tutor turns into 2,028
+context-conditioned candidates from 665 retained dialogue families. A
+grounded LLM scores the necessity of all six principles; deterministic checks
+retain 1,400 candidates across 655 dialogue families. Our evaluation framework
+preserves native multi-turn roles and compares generated and teacher-authored
+responses using four common criteria, three criteria per required principle,
+and criterion-level Win/Tie/Lose judgments. We evaluate three tutor
+configurations---two Gemini-based tutors and Llama~4~Maverick---whose responses
+are independently assessed by two LLM judges. Together, the pipeline and
+framework provide a curriculum-grounded protocol for Vietnamese Informatics
+tutoring.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -52,71 +50,56 @@ language models, Informatics education, Vietnamese education
 
 \section{Introduction}
 
-Large language models (LLMs) are increasingly capable of producing
-correct answers and fluent explanations, but these abilities do not by
-themselves establish that a model can tutor effectively. Tutoring also
-requires \textit{(i)} interpreting what a learner currently understands;
-\textit{(ii)} diagnosing errors when evidence permits;
-\textit{(iii)} selecting an appropriate pedagogical move;
-\textit{(iv)} calibrating the amount of support; and
-\textit{(v)} communicating in a way that preserves the learner's
-opportunity to think. Recent tutoring benchmarks
-support this distinction. MathTutorBench reports that mathematical
-problem-solving ability does not directly translate into pedagogical
-quality \cite{macina2025mathtutorbench}; KMP-Bench separates verifiable
-mathematical skills from principle-guided dialogue quality
-\cite{shi2026kmpbench}; and TutorBench evaluates responses with
-fine-grained, sample-specific criteria \cite{srinivasa2025tutorbench}.
-Evaluating a tutor is therefore an assessment-design problem rather than
-only a question-answering problem.
+Large language models (LLMs) produce increasingly correct and fluent
+answers, but effective tutoring also requires \textit{(i)} interpreting the
+learner's understanding; \textit{(ii)} diagnosing errors when evidence
+permits; \textit{(iii)} selecting a pedagogical move; \textit{(iv)}
+calibrating support; and \textit{(v)} preserving the learner's opportunity to
+think. MathTutorBench shows that problem-solving ability does not directly
+translate into pedagogical quality \cite{macina2025mathtutorbench}; KMP-Bench
+separates verifiable skills from principle-guided dialogue quality
+\cite{shi2026kmpbench}; and TutorBench uses fine-grained, sample-specific
+criteria \cite{srinivasa2025tutorbench}. Tutor evaluation is therefore an
+assessment-design problem, not only a question-answering problem.
 
-Prior AI-tutoring benchmarks leave three gaps for our target setting.
-First, their domain coverage is concentrated in mathematics or broad
-STEM curricula, while specialized school subjects remain less explored.
-Second, they operate predominantly in English, leaving language- and
-curriculum-specific tutoring behavior underrepresented. Third, data
-construction is not unified: \textit{(i)} KMP-Bench builds pedagogically
-planned dialogue flows; \textit{(ii)} TutorBench uses expert-authored
-situations and rubrics; and \textit{(iii)} MathTutorBench assembles
-existing tutoring datasets under predefined tasks and metrics. In each
-case, prior assumptions about tasks or
-pedagogical situations structure the data before evaluation. Less is
-known about starting from ordinary, teacher-authored pedagogical
-dialogues collected independently of a benchmark taxonomy and converting
-them into traceable evaluation units.
+Prior AI-tutoring benchmarks leave three gaps for our setting. First,
+they concentrate on mathematics or broad STEM curricula rather than
+specialized school subjects. Second, they operate predominantly in English, leaving low-resource languages underserved.
+Third, construction method is not unified: KMP-Bench builds planned dialogue flows;
+TutorBench uses expert-authored situations and rubrics; and MathTutorBench
+organizes existing tutoring data under predefined tasks and metrics. These
+approaches structure data through prior task or situation assumptions. Less is
+known about converting ordinary teacher-authored pedagogical dialogues,
+collected independently of a benchmark taxonomy, into traceable evaluation
+units.
 
 We address these gaps by constructing \benchmarkname, a Vietnamese
 secondary-school Informatics AI-tutor benchmark for Grades~6--9. Rather than generating
 conversations from predefined benchmark situations, our construction and
 evaluation process:
 \begin{itemize}
-    \item begins with raw teacher-authored dialogues and audits their
-    structural, curricular, and pedagogical quality;
+    \setlength{\itemsep}{0pt}\setlength{\topsep}{2pt}
+    \item audits the structural, curricular, and pedagogical quality of raw
+    teacher-authored dialogues;
     \item converts eligible tutor turns into traceable,
-    context-conditioned next-response candidate samples;
-    \item scores the requirement of all six pedagogical principles for
-    every candidate, then applies deterministic filtering and locking
-    rules to construct the completed benchmark set; and
-    \item combines Allison and Tharby's six pedagogical principles
+    context-conditioned next-response candidates;
+    \item scores all six pedagogical principles, then applies deterministic
+    filtering and locking; and
+    \item combines Allison and Tharby's principles
     \cite{allison2015making} with six tutor capabilities to construct
     context-specific rubrics and an AI-tutor evaluation protocol.
 \end{itemize}
 
 The paper makes three contributions:
 \begin{enumerate}
-    \item an automated and traceable construction pipeline that transforms
-    raw teacher-authored dialogues into benchmark candidates and then
-    completed benchmark samples through auditing, pedagogical-principle
-    assignment, deterministic filtering, and locking;
-    \item a context-specific rubric library and evaluation method that
-    combines common criteria with criteria associated with each required
-    pedagogical principle to evaluate AI tutors; and
-    \item \benchmarkname, a Vietnamese Grades~6--9 Informatics tutoring
-    benchmark comprising 1,400 completed samples across 655 raw dialogues.
+    \setlength{\itemsep}{0pt}\setlength{\topsep}{2pt}
+    \item an automated, traceable pipeline from raw dialogues to audited,
+    principle-assigned, filtered, and locked benchmark samples;
+    \item a context-specific rubric library and evaluation method combining
+    common and required-principle criteria; and
+    \item \benchmarkname, with 1,400 completed Vietnamese Grades~6--9
+    Informatics tutoring samples across 655 raw dialogues.
 \end{enumerate}
-Together, these contributions establish a curriculum-grounded and
-traceable basis for evaluating AI tutoring responses with
-\benchmarkname{} in Vietnamese secondary-school Informatics.
 
 \section{Related Work and Background}
 
@@ -134,39 +117,35 @@ to organize observable rubric criteria.
 
 \subsection{General AI-Tutoring Benchmarks}
 
-Existing benchmarks show that answer correctness alone does not capture
-tutoring quality. MathTutorBench distinguishes subject expertise, learner
-understanding, and pedagogical response generation \cite{macina2025mathtutorbench};
-KMP-Bench evaluates a tutor turn in dialogue context with
-principle-guided criteria \cite{shi2026kmpbench}; and TutorBench uses
-fine-grained, sample-specific criteria \cite{srinivasa2025tutorbench}. These
-benchmarks motivate context-conditioned evaluation and explicit pedagogical
-requirements, but do not address our curriculum and data-construction setting.
+Existing benchmarks show that correctness alone does not capture tutoring
+quality. MathTutorBench distinguishes subject expertise, learner understanding,
+and pedagogical response generation \cite{macina2025mathtutorbench}; KMP-Bench
+uses dialogue context and principle-guided criteria \cite{shi2026kmpbench}; and
+TutorBench uses fine-grained, sample-specific criteria
+\cite{srinivasa2025tutorbench}. They motivate context-conditioned evaluation and explicit pedagogical requirements,
+but do not address our curriculum and data-construction setting.
 
-\subsection{Vietnamese and Computing-Specific Educational Evaluation}
+\subsection{Vietnamese and Informatics-Specific Educational Evaluation}
 
 Vietnamese evaluation resources establish language- and curriculum-aware
 assessment, but primarily evaluate examination answers, reasoning, or general
 conversation rather than context-conditioned tutor responses
 \cite{dao2023vnhsge,nguyen2024vimath,bui2025vmlu}. Vietnamese tutoring work
-has examined K--12 science questions, while computing-focused studies assess
+has examined K--12 science questions, while Informatics-focused studies assess
 tutoring in block programming, robotics, or undergraduate programming
 contexts \cite{nguyen2025vietnamtutor,lane2026cstutorbench,shin2026psychometric,jordan2024programming}.
-Thus, Vietnamese educational evaluation and computing-specific tutor evaluation
-have been addressed separately. Our literature search found no publicly
+Thus, Vietnamese educational evaluation and Informatics-specific tutor evaluation
+have been addressed separately. Beside them, our literature search found no publicly
 documented benchmark combining Vietnamese Grades~6--9 Informatics,
 conversation-conditioned next-response evaluation, and traceable candidates
 derived from teacher-authored pedagogical dialogues.
 
 \section{Benchmark Construction Pipeline}
 
-The pipeline used to construct \benchmarkname{} comprises three phases, as
-shown in Figure~\ref{fig:construction-pipeline}. In this pipeline, Phase~1 audits the raw
-teacher-authored dialogues. Phase~2 establishes the pedagogical measurement
-foundation: six principles describe the functions that a response may need
-to perform, whereas six capabilities describe the broader qualities expected
-of an effective tutor. Phase~3 brings both outputs from Phase~1 and Phase~2 together to construct,
-label, filter, and collect candidate benchmark samples to build a comprehensive benchmark.
+Figure~\ref{fig:construction-pipeline} summarizes the three-phase pipeline.
+Phase~1 audits raw teacher-authored dialogues; Phase~2 establishes six
+response-level principles and six broader tutor capabilities; and Phase~3
+converts, labels, filters, and collects the benchmark samples.
 \IfFileExists{figures/overall_pipeline_illustrated.png}{
 
 \begin{figure*}[h]
@@ -181,33 +160,27 @@ and Phase~2 provide complementary inputs to Phase~3.}
 
 \subsection{Phase 1: Teacher-Authored Dialogues Audit}
 
-Phase~1 audited 1,050 Vietnamese Informatics dialogues for Grades~6--9
-authored by the teaching team at Hanoi Metropolitan University (HNMU). To
-ground this audit in the national curriculum, we normalized 154 OCR-derived
-SGK/SGV Markdown units into 2,750 traceable fragments and
-built a rebuildable SQLite full-text search index. Metadata and keyword
-retrieval linked SGK evidence to lesson scope and questions, and SGV evidence
-to expected answers and explanations.
+Phase~1 audited 1,050 Grades~6--9 Vietnamese Informatics dialogues authored
+by Hanoi Metropolitan University (HNMU) teachers. Curriculum grounding used
+154 OCR-derived SGK/SGV lesson-based Markdown units, normalized into 2,750 traceable
+fragments and a rebuildable SQLite full-text search index.
 
-The hybrid audit combined code-based checks of coverage, required fields,
-speaker labels, lesson mapping, and duplicate risk with a semantic and
-pedagogical review led by the dedicated AI agent named \texttt{hnmu-dialogue-auditor}.
-This specialist AI agent used \texttt{gpt-5.4-mini} at medium reasoning effort to
-assess an 18-criterion checklist covering structure (3 criteria), consistency (7 criteria),
-pedagogy (6 criteria), and duplicate risk (2 criteria). For each dialogue, it used the raw
-fields, retrieved SGK/SGV fragments, and HNMU's cognitive-level and
-scaffolding guidance to record criterion-level decisions, confidence,
-evidence, and reviewer actions. Code
-validated and merged the lesson-based shards, then applied a strict rule:
-any \textit{failed} criterion yielded \textit{failed}; otherwise any \textit{uncertain}
-yielded \textit{need human review}; all remaining dialogues \textit{passed}.
-This retained 665 dialogues, while routing 382 to review and rejecting 3.
+The hybrid audit combined code checks of coverage, required fields and duplicates with semantic and pedagogical review by
+\texttt{hnmu-dialogue-auditor} AI agent, using \texttt{gpt-5.4-mini} at medium reasoning
+effort. It apply a 18-criterion checking covering structure (3 criteria), consistency (7 criteria), pedagogy (6 criteria), and
+duplicate risk (2 criteria), using raw fields, SGK/SGV evidence retrieved from the full-text search index, and HNMU
+guidance about scaffolding method and Bloom cognitive levels. Strict aggregation marked any failed criterion as \textit{failed},
+otherwise any uncertain criterion as \textit{need human review}, and the rest
+as \textit{passed}. It retained 665 dialogues, routed 382 to review, and
+rejected 3.
 
 \begin{table}[H]
 \caption{Basic statistics of the 665 dialogues retained after Phase~1.}
 \label{tab:phase1-statistics}
 \centering
-\setlength{\tabcolsep}{4pt}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.92}
 \begin{tabular}{lr}
 \hline
 Metric & Value \\
@@ -227,56 +200,45 @@ Characters per turn (mean / median / range) & 86.5 / 79 / 7--294 \\
 \subsection{Phase 2: Pedagogical Measurement Foundation}
 \label{sec:phase2-pedagogical-measurement}
 
-We distinguish response-level pedagogical \emph{functions} from tutor
-\emph{capabilities}. The functional layer adopts Allison and Tharby's six
-interrelated principles: Challenge; Explanation; Modelling; Practice;
-Feedback; and Questioning \cite{allison2015making}. KMP-Bench operationalizes
-these principles for tutor-response evaluation \cite{shi2026kmpbench}. They
-respectively capture productive cognitive demand; conceptual clarification;
-demonstration of application; opportunities for independent practice;
-response grounded in learner work; and questions whose answers advance the
-interaction.
+We distinguish response-level pedagogical \emph{functions} from broader
+tutor \emph{capabilities}. The functional layer adopts Allison and Tharby's
+Challenge, Explanation, Modelling, Practice, Feedback, and Questioning
+principles \cite{allison2015making}, operationalized for tutor evaluation by
+KMP-Bench \cite{shi2026kmpbench}. They cover cognitive demand, clarification,
+demonstration, independent practice, learner-grounded response, and questions
+that advance the interaction.
 
-The six-capability model synthesizes complementary evidence. MathTutorBench
-distinguishes subject expertise, learner understanding, and pedagogical
-response generation \cite{macina2025mathtutorbench}. KMP-Bench evaluates both
-skill correctness and principle-guided dialogue behavior
-\cite{shi2026kmpbench}. TutorBench contributes adaptive explanation,
-assessment and feedback, and active-learning requirements expressed through
-atomic criteria \cite{srinivasa2025tutorbench}. Adaptive-scaffolding research
-motivates separating strategy selection from the calibration of support and
-treating learner diagnosis as an input to contingent assistance
-\cite{vandepol2010scaffolding}. HNMU's document about scaffolding method supplies local
-expectations for diagnosing the learner's current state and gradually
-scaffolding support. Evidence-centered design motivates linking every
-capability to observable response evidence \cite{mislevy2003ecd}.
+The six-capability model synthesizes subject expertise, learner
+understanding, response generation, principle-guided behavior, adaptive
+explanation, feedback, and active learning from the three tutoring benchmarks
+\cite{macina2025mathtutorbench,shi2026kmpbench,srinivasa2025tutorbench}.
+Adaptive-scaffolding research \cite{vandepol2010scaffolding} and HNMU guidance separate strategy selection
+from support calibration and treat diagnosis as input to contingent assistance
+; evidence-centered design links each capability
+to observable response evidence \cite{mislevy2003ecd}.
 
-Accordingly, we define six tutor capabilities: \textit{(i)} subject-matter
-accuracy and grounding; \textit{(ii)} learner-state modelling;
-\textit{(iii)} pedagogical-strategy selection; \textit{(iv)} scaffolding
-calibration; \textit{(v)} diagnosis of errors, misconceptions, and missing
-prerequisites; and \textit{(vi)} clear, supportive, age-appropriate
-communication. Boundary analysis separates learner-state description from
-causal diagnosis, and strategy selection from the amount, timing, and transfer
-of support. The principles activate response-specific instructions and
-criteria; the tutor capabilities organize the observable rubric criteria.
+The resulting capabilities are \textit{(i)} subject-matter accuracy and
+grounding; \textit{(ii)} learner-state modelling; \textit{(iii)} pedagogical
+strategy selection; \textit{(iv)} scaffolding calibration; \textit{(v)} error,
+misconception, and prerequisite diagnosis; and \textit{(vi)} clear,
+supportive, age-appropriate communication. Boundary analysis separates state
+description from causal diagnosis, and strategy selection from the amount,
+timing, and transfer of support. Principles activate response-specific
+criteria; capabilities organize their coverage.
 
 \subsection{Phase 3: From Raw Dialogues to Benchmark Data}
 
-Phase~3 combines the audited dialogues with the pedagogical foundation from
-Phase~2 to construct \benchmarkname{} samples. It comprises three operations:
+Phase~3 combines audited dialogues and the pedagogical foundation through
 deterministic turn-level conversion, grounded principle-requirement scoring
-with code-based quality gates, and collection of the eligible benchmark pool.
+with code-based gates, and collection of the eligible pool to build the benchmark.
 
 \subsubsection{Turn-level candidate construction}
-The 665 retained dialogues were converted deterministically by treating every
-tutor turn as a possible reference response. The initial student turn becomes
-the prompt; intervening utterances retain their student or tutor roles in the
-conversation history; and the selected tutor turn becomes the reference
-response. Later turns are excluded, while the source question and teacher-provided answer are kept
-separately as subject-matter grounding. This policy produces 2,028 candidates
-across 665 dialogue families, including multiple history depths from the same
-source. For example, a six-turn raw dialogue
+Each tutor turn in the 665 retained dialogues becomes a possible reference
+response. The initial student turn is the prompt, intervening utterances retain
+their roles as history, and later turns are excluded; the source question and
+teacher-provided answer remain separate grounding. This deterministic policy
+produces 2,028 candidates across 665 families and multiple history depths. For
+example, a six-turn dialogue
 \(D_1 = [S_1,T_1,S_2,T_2,S_3,T_3]\) yields 3 candidates:
 \(C_1=[S_1;\varnothing;T_1]\),
 \(C_2=[S_1;(T_1,S_2);T_2]\), and
@@ -286,45 +248,32 @@ denote student and tutor turns. All three candidates retain the same family ID
 for tracing and data splitting.
 
 \subsubsection{LLM-assisted principle scoring and filtering}
-For each candidate, we use Gemini~3.5~Flash to evaluate the necessity of all six
-principles from the information available before the target tutor response:
-grade, lesson, target position, Bloom level, student prompt, role-preserving
-history, source question, and teacher-provided answer. The reference response
-is deliberately excluded, preventing the selection of evaluation criteria
-from being conditioned on the response against which the evaluated AI tutor will
-later be compared.
+Gemini~3.5~Flash is used to score the necessity of all six principles from information
+available before the target response: grade, lesson, target position, Bloom
+level, student prompt, role-preserving history, source question, and
+teacher-provided answer. Excluding the reference response prevents criterion
+selection from being conditioned on the response used for comparison.
 
-The model assigns a five-point necessity score to each principle. A score of 1
-means that the principle is irrelevant or counterproductive in the given
-context. A score of 2 indicates only a weak relationship to the learner's
-need. A score of 3 represents a pedagogically valid but optional strategy. A
-score of 4 means that the principle is required for a good next response. A
-score of 5 is reserved for a principle that is essential to the central
-pedagogical need. Code, rather than the LLM, selects principles scoring at
-least 4 and applies schema validation, thresholding, semantic linting, and
-eligibility gates.
+Scores range from 1 (irrelevant or counterproductive), through 2 (weak) and 3
+(valid but optional), to 4 (required) and 5 (essential). Code selects
+principles scoring at least 4 and applies schema validation, thresholding,
+semantic linting, and eligibility gates.
 
 \subsubsection{Eligible benchmark pool and descriptive statistics}
-The full scoring run contains 12,168 principle scores for all 2,028
-candidates. We define a candidate as \emph{eligible} only when it has one to
-three required principles, all cited evidence is traceable to the supplied
-context, and every score of 4 or 5 is supported by both an independent
-pedagogical need and a counterfactual showing that this need would remain
-unmet without the principle. Eligible candidates must also contain no
-optionality conflict among required principles: in particular, Feedback must guide improvement beyond
-mere confirmation or praise, while Questioning must make a learner answer
-necessary rather than merely useful. Finally, the required-principle set must
-occur in at least five candidates across at least three dialogue families.
+The run contains 12,168 scores for 2,028 candidates. Eligibility requires
+one to three principles; context-traceable evidence; an independent need and
+counterfactual for every score of 4 or 5; no optionality conflict (e.g. 
+Feedback must guide improvement beyond praise, and Questioning must make an
+answer necessary rather than merely useful.); and a
+principle set appearing in at least five candidates from three families.
 
-These gates retain 1,400 eligible candidates from 655 raw dialogues passed in
-Phase~1 as the current \benchmarkname{} benchmark set and exclude the remaining
-628. Exclusion flags may overlap: 592 candidates reduce
-Feedback to confirmation or praise; 20 contain an inconsistent score-4/5
-rationale; 10 assign Questioning without establishing answer dependency; 8
-have no principle scoring at least 4; 7 have an insufficiently supported
-principle combination; and one requires more than three principles.
-Figure~\ref{fig:phase3-statistics} summarizes principle incidence, grade,
-turns per sample, and characters per turn.
+
+These gates retain 1,400 candidates from 655 Phase~1 dialogues and exclude
+628. Overlapping flags comprise 592 confirmation-only Feedback cases, 20
+inconsistent score-4/5 rationales, 10 Questioning cases without answer
+dependency, 8 cases with no score at least 4, 7 unsupported combinations, and
+one case requiring over three principles. Figure~\ref{fig:phase3-statistics}
+summarizes principle, grade, turn, and length distributions.
 
 \begin{figure*}[t]
 \centering
@@ -338,49 +287,37 @@ history, and reference; and (d) characters per turn across 5,508 occurrences
 
 \section{Evaluation Framework}
 
-Following the KMP-Dialogue structure \cite{shi2026kmpbench}, our evaluation
-framework for \benchmarkname{} separates tutor-input preparation, criterion
-construction, and blind pairwise assessment.
+Following KMP-Dialogue \cite{shi2026kmpbench}, the framework separates tutor
+input, criterion construction, and blind pairwise assessment.
 
 \subsection{Context Loading and Tutor-Response Generation}
 
-The tutor model receives a system instruction containing its Vietnamese
-secondary-school Informatics tutoring role, grade, lesson, source task, a
-common tutoring instruction, and the exact set of required principles.
-The dialogue itself is sent through the provider's native multi-turn
-interface: the initial student prompt and subsequent student turns use the
-\texttt{user} role, while prior tutor turns use the
-\texttt{assistant}/\texttt{model} role. The final message is always the
-student turn to be answered. Benchmark sample IDs, principle scores, criteria,
-learning-resource fragments, the teacher-provided answer, and the reference
-response are not shown to the tutor model.
+The tutor receives its Vietnamese Informatics role, grade, lesson, source
+task, common instruction, and required principles. Native multi-turn input
+preserves student turns as \texttt{user} and prior tutor turns as
+\texttt{assistant}/\texttt{model}; the final message is the student turn to
+answer. Sample IDs, scores, criteria, teacher-provided answer, and
+reference response remain hidden.
 
 \subsection{Two-Tier Rubric Construction}
 
-Six tutor capabilities, as defined in Section~\ref{sec:phase2-pedagogical-measurement},
-provide a coverage map for four common criteria: \textit{(i)} subject-matter
-accuracy and verifiability; \textit{(ii)} alignment with the learner state and
-immediate goal; \textit{(iii)} calibrated support that preserves meaningful
-learner work; and \textit{(iv)} clear, respectful, age-appropriate
-communication. Each of the six principles contributes three criteria that
-measure its incremental pedagogical function. The resulting catalog contains
-4 common and 18 principle-specific criteria, which received preliminary
-confirmation from HNMU Informatics teachers.
-A benchmark sample requiring \(n\)
-principles is evaluated with \(4+3n\) criteria, providing a stable common core
-while adapting the remaining criteria to its pedagogical demands.
+The six capabilities map to four common criteria: \textit{(i)} accuracy and
+verifiability; \textit{(ii)} learner-state and goal alignment; \textit{(iii)}
+calibrated support preserving learner work; and \textit{(iv)} clear,
+respectful, age-appropriate communication. Each principle adds three criteria
+for its incremental function. The resulting 4 common and 18
+principle-specific criteria received preliminary confirmation from HNMU
+Informatics teachers; a sample requiring \(n\) principles uses \(4+3n\)
+criteria.
 
 \subsection{Blind Pairwise Judging and Score Aggregation}
 
-In this procedure, a judge receives the dialogue context, source question,
-teacher-provided answer, all applicable criteria, and two anonymous responses:
-the generated tutor response and the
-teacher-authored reference. Response order is deterministically randomized and
-restored only after judging. For every criterion, the judge selects
-\textit{response 1}, \textit{response 2}, or \textit{Tie}; code then maps the
-decision back to the target model as Win, Lose, or Tie.
-Let \(W_r,T_r,L_r\) be the numbers of Win, Tie, and Lose judgments for
-criterion \(r\). Its win rate is
+The judge receives context, source question, teacher-provided answer,
+applicable criteria, and anonymous tutor generated and teacher-authored responses.
+Their order is deterministically randomized and restored after the judge
+selects \textit{response 1}, \textit{response 2}, or \textit{Tie} per
+criterion. Code maps this to target-model Win, Lose, or Tie. For criterion
+\(r\), with counts \(W_r,T_r,L_r\), the win rate is
 \[
  A_r = \frac{W_r}{W_r+T_r+L_r}.
 \]
@@ -389,29 +326,25 @@ criterion \(r\). Its win rate is
 
 \subsection{Experimental Setup}
 
-\textbf{Metrics}: Each generated response is compared with the teacher-authored
-reference by two separate LLM judges: Gemini~3.5~Flash with \texttt{thinking\_level=MEDIUM}, and the
-\texttt{gpt-5.4-mini-2026-03-17} snapshot with medium reasoning effort. Both
-use the same prompt, an 8,192-token output cap, the applicable rubric set,
-anonymous response order, and identical deterministic post-processing. The key metrics include:
-\textit{(i)} Overall Judgement Accuracy (OJ) (from the Win/Tie/Lose holistic judgment);
-\textit{(ii)} General-Level Accuracy (average of the four common criteria);
-\textit{(iii)} Principle-Level Accuracy (average of the three criteria for each required principle);
-and \textit{(iv)} Overall Accuracy (average of General-Level Accuracy and the mean of Principle-Level scores).
-Furthermore, because multiple benchmark samples can originate from the same raw dialogue, we additionally report a
-family-macro Overall score that first gives each of the 655 dialogue families
-equal weight. Confidence intervals (CIs) and pairwise differences use 5,000
-cluster-bootstrap resamples over \texttt{sample\_id}; 4,995 resamples contain
-observations for all six principles.
+\textbf{Metrics}: Two LLM judges independently compare each tutor response with
+the teacher-authored reference: Gemini~3.5~Flash
+(\texttt{thinking\_level=MEDIUM}) and
+\texttt{gpt-5.4-mini-2026-03-17} (medium reasoning). They share the prompt,
+8,192-token cap, rubric set, anonymous ordering, and post-processing. Metrics
+are \textit{(i)} holistic Overall Judgement Accuracy; \textit{(ii)}
+General-Level Accuracy over four common criteria; \textit{(iii)}
+Principle-Level Accuracy over three criteria per required principle; and
+\textit{(iv)} Overall Accuracy, averaging General and mean Principle scores.
+Family-macro Overall weights each of 655 dialogue families equally. CIs and
+differences use 5,000 cluster-bootstrap resamples over \texttt{sample\_id};
+4,995 cover all six principles.
 
-\textbf{Models}: The tutor panel contains \textit{(i)} Gemini~3.5~Flash with the baseline
-instruction; \textit{(ii)} the same base model with a LearnLM-oriented
-educational instruction; and \textit{(iii)} Llama~4~Maverick. The first two are
-therefore instruction configurations rather than distinct base models. Both
-Gemini configurations use \texttt{thinking\_level=MEDIUM} without returned
-thoughts. All three configurations omit sampling overrides and use a
-2,048-token output cap. Each configuration generates one response for every
-sample, yielding 4,200 tutor responses on 1,400 benchmark samples.
+\textbf{Models}: The panel comprises Gemini~3.5~Flash with baseline and
+LearnLM-oriented instructions, plus Llama~4~Maverick; the Gemini tutors are two
+instruction configurations of one base model. Both use
+\texttt{thinking\_level=MEDIUM} without returned thoughts. All tutors omit
+sampling overrides, use a 2,048-token cap, and generate one response per sample:
+4,200 responses for 1,400 samples.
 
 \subsection{Main Results}
 
@@ -463,19 +396,14 @@ Challenge \(=8\), Explanation \(=863\), Modelling \(=93\),
 Practice \(=27\), Questioning \(=651\), and Feedback \(=806\).
 \end{table*}
 
-Table~\ref{tab:detailed-main-results} exposes two patterns. First, both judges place the two Gemini configurations
-above Llama~4~Maverick on General, Overall, and Family scores. The largest
-recurring principle-level separations occur in Questioning, Feedback, and
-Modelling. Second, judge severity differs substantially. For Llama, the
-Gemini judge reports an Overall score of 49.51, whereas the GPT judge reports
-74.56. Explanation differs especially strongly (62.96 versus 90.23), while
-both judges give Llama 87.50 on the eight samples with principle Challenge.
-
-The two Gemini configurations remain close. The Gemini judge assigns the
-baseline the higher Overall score (87.87 versus 85.35), whereas the GPT judge
-slightly favors the LearnLM-oriented instruction (84.78 versus 84.01).
-Consequently, the absolute score values and the ordering of nearby
-configurations are judge-dependent, even though the coarser Gemini--Llama
+Table~\ref{tab:detailed-main-results} shows both judges placing the Gemini
+configurations above Llama on General, Overall, and Family scores, with large
+recurring Questioning, Feedback, and Modelling gaps. Judge severity differs:
+Llama Overall is 49.51 under Gemini and 74.56 under GPT; Explanation is 62.96
+versus 90.23, while Challenge is 87.50 under both but has only eight samples.
+The nearby Gemini configurations reverse order: Gemini favors baseline (87.87
+vs. 85.35), whereas GPT slightly favors LearnLM (84.78 vs. 84.01). Thus, fine
+ordering and absolute values are judge-dependent, but the Gemini--Llama
 ordering is shared.
 
 \subsubsection{Pairwise Separation and Family-Level Robustness}
@@ -499,14 +427,12 @@ GPT & LearnLM--Llama & +10.22 & [8.04, 13.04] \\
 \end{tabular}
 \end{table}
 
-The 95\% Overall CIs are [86.46, 89.19], [83.76, 86.83], and
-[46.54, 52.37] under the Gemini judge; and [82.36, 85.51],
-[83.28, 86.14], and [71.62, 76.97] under the GPT judge for baseline,
-LearnLM, and Llama, respectively. More importantly,
-Table~\ref{tab:pairwise-differences} shows that all four Gemini--Llama
-difference intervals exclude zero. The smallest lower bound is 7.43
-percentage points. In contrast, only the Gemini judge finds a non-zero
-baseline--LearnLM difference; the GPT interval crosses zero.
+Baseline, LearnLM, and Llama Overall CIs are respectively [86.46, 89.19],
+[83.76, 86.83], and [46.54, 52.37] under Gemini, and [82.36, 85.51], [83.28,
+86.14], and [71.62, 76.97] under GPT. Table~\ref{tab:pairwise-differences}
+shows all four Gemini--Llama difference intervals excluding zero (smallest
+lower bound: 7.43 points); only Gemini finds a non-zero baseline--LearnLM
+difference.
 
 \begin{table}[t]
 \caption{Holistic Win/Tie/Lose results.}
@@ -582,65 +508,48 @@ families. Challenge and Overall Accuracy have 4,999 valid draws because one
 draw contains no Challenge observation; all other rows have 5,000.
 \end{table}
 
-Table~\ref{tab:instruction-ablation} isolates the instruction change because
-the two configurations share the same base model, sample set, and
-generation configuration. Under the Gemini judge, LearnLM-oriented
-instructions reduce General by 3.45 points, Questioning by 4.25 points, and
-Overall Accuracy by 2.52 points; all three intervals exclude zero. Under the
-GPT judge, every interval contains zero, including the 0.77-point increase in
-Overall Accuracy. The holistic intervals also contain zero under both judges.
-Thus, the experiment provides no cross-judge evidence that the LearnLM
-instruction improves the evaluated responses. The non-zero Gemini-judge
-effects are judge-dependent, while the null Challenge result is weak evidence
-because it is based on only eight samples.
+Because the Gemini configurations differ only in instruction,
+Table~\ref{tab:instruction-ablation} isolates this change. Gemini finds
+LearnLM reductions of 3.45 General, 4.25 Questioning, and 2.52 Overall points,
+with CIs excluding zero; all GPT and both holistic intervals include zero.
+Thus, no cross-judge evidence supports a LearnLM improvement, and the null
+Challenge result is weak with only eight samples.
 
 \subsubsection{Judge Robustness}
 
 \begin{table}[t]
-\caption{Agreement on holistic Win/Tie/Lose judgments.}
+\caption{Holistic cross-judge agreement and disagreements.}
 \label{tab:holistic-agreement}
-\centering
-\setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{lrrr}
-\hline
-Scope & \(N\) & Exact (\%) & Gwet's \(AC1\) \\
-\hline
-All configurations & 4,200 & 80.45 & 0.775 \\
-Gemini baseline & 1,400 & 88.36 & 0.874 \\
-Gemini+LearnLM & 1,400 & 89.79 & 0.890 \\
-Llama~4 Maverick & 1,400 & 63.21 & 0.529 \\
-\hline
-\end{tabular}
-\end{table}
-
-Table~\ref{tab:holistic-agreement} reports exact agreement together with
-Gwet's \(AC1\). Agreement is high for both Gemini configurations but falls to
-63.21\% for Llama. Table~\ref{tab:directional-disagreement} decomposes
-disagreements that point in opposite directions.
-
-\begin{table}[t]
-\caption{Directional holistic disagreements between judges.}
 \label{tab:directional-disagreement}
 \centering
-\setlength{\tabcolsep}{3.3pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrrr}
+\scriptsize
+\setlength{\tabcolsep}{1.5pt}
+\renewcommand{\arraystretch}{0.94}
+\begin{tabular}{@{}lrrrrrr@{}}
 \hline
-Tutor Config. & Gemini Lose/GPT Win & Gemini Win/GPT Lose & With Tie \\
+Scope & \(N\) & Exact & \(AC1\) & G1-L/G2-W & G1-W/G2-L & Tie \\
 \hline
-Gemini baseline & 57 & 95 & 11 \\
-Gemini+LearnLM & 54 & 73 & 16 \\
-Llama~4 Maverick & 419 & 65 & 31 \\
+All configurations & 4,200 & 80.45 & 0.775 & -- & -- & -- \\
+Gemini baseline & 1,400 & 88.36 & 0.874 & 57 & 95 & 11 \\
+Gemini+LearnLM & 1,400 & 89.79 & 0.890 & 54 & 73 & 16 \\
+Llama~4 Maverick & 1,400 & 63.21 & 0.529 & 419 & 65 & 31 \\
 \hline
-\end{tabular}}
+\end{tabular}
+\vspace{2pt}
+
+\footnotesize Exact is in percent. G1-L/G2-W and G1-W/G2-L denote opposite
+Lose/Win judgments by the Gemini and GPT judges respectively; Tie counts cases where exactly
+one judge assigns Tie.
 \end{table}
 
-The Llama disagreements are strongly asymmetric: the Gemini judge assigns Lose
-while GPT assigns Win in 419 cases, whereas the reverse occurs in only 65.
-This pattern is consistent with different judge severity and is also compatible
-with a same-family effect, but it does not identify the cause. ``With Tie''
-counts disagreements where exactly one judge assigns Tie; the full directional
-matrix is retained in the machine-readable analysis bundle.
+Table~\ref{tab:holistic-agreement} reports exact agreement and Gwet's
+\(AC1\), together with directional disagreements. Agreement is high for both
+Gemini configurations but falls to 63.21\% for Llama. Llama disagreements are
+strongly asymmetric: the Gemini judge assigns Lose while GPT assigns Win in
+419 cases, whereas the reverse occurs in only 65. This pattern is consistent
+with different judge severity and compatible with a same-family effect, but
+does not identify the cause. The full directional matrix is retained in the
+machine-readable analysis bundle.
 
 \begin{table}[t]
 \caption{Criterion-level agreement between judges.}
@@ -725,70 +634,55 @@ rubric wording, insufficient grounding, or judge behavior.
 
 \subsection{What the Evaluation Distinguishes}
 
-The results indicate that the current benchmark can robustly distinguish
-relatively large differences in tutor-response quality. Both judges,
-sample-level and family-macro aggregation, and all four clustered
-Gemini--Llama comparisons consistently place the two Gemini configurations
-above Llama. This separation is therefore not dependent on a single judge or
-on dialogue families that contribute more benchmark samples.
+The current benchmark robustly distinguishes relatively large differences in
+tutor-response quality. Both judges, sample-level and family-macro aggregation,
+and all four clustered Gemini--Llama comparisons consistently place the two
+Gemini configurations above Llama; the separation therefore does not depend on
+a single judge or on families contributing more samples.
 
-Discrimination is less stable when tutor configurations perform similarly.
-The ordering of the Gemini baseline and LearnLM-oriented configurations
-reverses across judges, and only the Gemini judge identifies a non-zero
-difference. The current benchmark consequently supports reliable coarse
-separation of substantial performance differences, but not yet fine-grained
-ranking of closely performing tutor configurations.
+Discrimination is less stable for similarly performing tutors. The Gemini
+baseline--LearnLM ordering reverses across judges, and only the Gemini judge
+finds a non-zero difference. The benchmark thus supports coarse separation of
+substantial differences, but not yet fine-grained ranking of close tutors.
 
 \subsection{Measurement Implications}
 
-The complete catalog of 22 rubrics---four common criteria and 18
-principle-specific criteria---received preliminary confirmation from HNMU
-Informatics teachers as appropriate to the target tutoring context. This
-provides initial expert support for the content relevance of the evaluation
-framework. At this stage, however, the experts have confirmed the rubric
-catalog rather than independently applying it to score the evaluated tutor
-responses. The detailed results further expose where the framework is more and
-less stable. Explanation and Modelling show comparatively high cross-judge
-agreement, while Questioning and the common criteria require further
-calibration. The extreme scarcity of Challenge and Practice also means that
-their principle-level scores have high conceptual importance but weak
-empirical support. Since the KMP-compatible Overall score macro-weights all
-six principles equally, Challenge with eight samples receives the same
-principle-level weight as Explanation with 863 samples. The
-KMP-compatible score is useful for methodological comparability
+The 22-rubric catalog---four common and 18 principle-specific criteria---received
+preliminary confirmation from HNMU Informatics teachers as appropriate to the
+target tutoring context. This supports its content relevance, although experts
+have not yet independently applied it to the evaluated responses. Explanation
+and Modelling show comparatively high cross-judge agreement, whereas
+Questioning and the common criteria require further calibration. Challenge and
+Practice are too scarce for strong principle-level claims. Because the
+KMP-compatible Overall score equally weights all six principles, Challenge
+with eight samples receives the same principle-level weight as Explanation
+with 863. This score supports methodological comparability
 \cite{shi2026kmpbench}, but should be accompanied by principle support and
 family-sensitive results.
 
 \subsection{Threats to Validity and Next Validation}
 
-Several limitations constrain interpretation. First, both judges are LLMs;
-their agreement measures cross-judge stability rather than correctness against
-an independent human reference. The next validation stage should ask HNMU
-expert teachers to apply the same 22 rubrics independently to a stratified set
-of response pairs. Expert disagreements should then be adjudicated into a
-human reference standard for measuring judge-model error and resolving
-conflicts between the Gemini and GPT judgments. This evaluation should
-prioritize the common accuracy, communication, and scaffolding criteria,
-Questioning, and cases with directional judge disagreement.
+First, both judges are LLMs; their agreement measures cross-judge stability,
+not correctness against an independent human reference. HNMU expert teachers
+should next apply the same 22 rubrics independently to a stratified set of
+response pairs, then adjudicate disagreements into a human reference for
+measuring judge-model error and resolving Gemini--GPT conflicts. This stage
+should prioritize the common accuracy, communication, and scaffolding criteria,
+Questioning, and directional judge disagreements.
 
-Second, the Gemini judge belongs to the same model family as two of the
-three evaluated tutor configurations. This overlap may introduce a same-family
-preference that favors Gemini-generated tutor responses, or it may simply
-reflect a difference in judge severity. The observed scores cannot distinguish
-these explanations: the Gemini judge reports Gemini--Llama Overall gaps of
-35.84--38.36 percentage points, whereas the GPT judge reports gaps of only
-9.45--10.22 points. Therefore, the larger gaps from the Gemini judge should not
-be interpreted as evidence of same-family bias without comparison against the
-human reference standard described above.
+Second, the Gemini judge belongs to the same model family as two evaluated
+tutors. This may reflect a same-family preference or merely different judge
+severity. The current scores cannot distinguish them: Gemini reports
+Gemini--Llama Overall gaps of 35.84--38.36 percentage points, versus
+9.45--10.22 for GPT. Larger Gemini-judge gaps therefore should not be treated
+as evidence of same-family bias without the human reference above.
 
-Despite this preliminary content review, the empirical boundaries between
-rubrics and the model-assigned required-principle sets require broader
-calibration. The principle set is activated by a single Gemini
-requirement-scoring run at \texttt{requirement\_score >= 4};. Further
-validation should therefore build on the HNMU review by testing rubric
-boundaries without editing them merely to maximize judge agreement, reviewing
-the activated principles, and adding Challenge, Practice, and Modelling cases
-before making fine-grained principle-level claims.
+Finally, rubric boundaries and model-assigned required-principle sets require
+broader calibration. Principles were activated by one Gemini scoring run at
+\texttt{requirement\_score >= 4}. Further validation should test rubric
+boundaries without editing them merely to maximize judge agreement, review the
+activated principles, and add Challenge, Practice, and Modelling cases before
+fine-grained principle-level claims.
 
 \section{Conclusion}
 
