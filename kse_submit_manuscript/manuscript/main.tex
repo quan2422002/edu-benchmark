@@ -39,10 +39,9 @@ families. We further define an evaluation framework that provides the required
 principles to the tutor model, preserves native multi-turn roles, and compares
 the generated response with the teacher-authored response using four common
 criteria, three criteria per required principle, and criterion-level
-Win/Tie/Lose judgments. Across 4,200 generated responses and 8,400 blind
-comparisons, two LLM judges consistently rank Llama~4~Maverick below both
-Gemini configurations, while their ordering of the two Gemini configurations
-differs. Together, the construction pipeline and evaluation framework provide
+Win/Tie/Lose judgments. We use the resulting benchmark to evaluate three
+tutor configurations---two Gemini-based tutors and Llama~4~Maverick---with
+their generated responses independently assessed by two LLM judges. Together, the construction pipeline and evaluation framework provide
 a curriculum-grounded protocol for Vietnamese Informatics tutoring.
 \end{abstract}
 
@@ -584,7 +583,7 @@ draw contains no Challenge observation; all other rows have 5,000.
 \end{table}
 
 Table~\ref{tab:instruction-ablation} isolates the instruction change because
-the two configurations share the same base model, candidate set, and
+the two configurations share the same base model, sample set, and
 generation configuration. Under the Gemini judge, LearnLM-oriented
 instructions reduce General by 3.45 points, Questioning by 4.25 points, and
 Overall Accuracy by 2.52 points; all three intervals exclude zero. Under the
@@ -754,8 +753,8 @@ agreement, while Questioning and the common criteria require further
 calibration. The extreme scarcity of Challenge and Practice also means that
 their principle-level scores have high conceptual importance but weak
 empirical support. Since the KMP-compatible Overall score macro-weights all
-six principles equally, Challenge with eight candidates receives the same
-principle-level weight as Explanation with 863 candidates. The
+six principles equally, Challenge with eight samples receives the same
+principle-level weight as Explanation with 863 samples. The
 KMP-compatible score is useful for methodological comparability
 \cite{shi2026kmpbench}, but should be accompanied by principle support and
 family-sensitive results.
