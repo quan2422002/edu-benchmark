@@ -10,11 +10,11 @@
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\newcommand{\benchmarkname}{VietInfoTutorBench}
 
 \begin{document}
 
-\title{Building a Vietnamese Secondary Informatics AI Tutor Benchmark
-from Teacher-Authored Dialogues}
+\title{\benchmarkname: a High-Quality Vietnamese Secondary-school Informatics AI Tutor Benchmark from Teacher-Authored Dialogues}
 
 \author{\IEEEauthorblockN{Author names pending confirmation}
 \IEEEauthorblockA{\textit{Affiliations pending confirmation}\\
@@ -25,9 +25,10 @@ Vietnam}}
 \begin{abstract}
 Evaluating a large language model as a tutor requires more than checking
 answer correctness: the model must interpret the learner's state, select an
-appropriate pedagogical move, and provide calibrated support. We present a
-traceable pipeline for constructing a Vietnamese Grades~6--9 Informatics
-AI-tutor benchmark from 1,050 teacher-authored dialogues. The pipeline audits
+appropriate pedagogical move, and provide calibrated support. We present
+\benchmarkname, a Vietnamese Grades~6--9 Informatics AI-tutor benchmark
+constructed through a traceable pipeline from 1,050 teacher-authored
+dialogues. The pipeline audits
 the raw dialogues, establishes a measurement foundation of six pedagogical
 principles and six tutor capabilities, and converts every eligible tutor turn
 into a context-conditioned next-response candidate. It yields 2,028 candidates
@@ -38,8 +39,9 @@ We further define an evaluation framework that provides the required
 principles to the tutor model, preserves native multi-turn roles, and compares
 the generated response with the teacher-authored response using four common
 criteria, three criteria per required principle, and criterion-level
-Win/Tie/Lose judgments. This work provides a curriculum-grounded construction
-and evaluation protocol for Vietnamese Informatics tutoring.
+Win/Tie/Lose judgments. Together, the construction pipeline and evaluation
+framework provide a curriculum-grounded protocol for Vietnamese Informatics
+tutoring.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -82,8 +84,8 @@ known about starting from ordinary, teacher-authored pedagogical
 dialogues collected independently of a benchmark taxonomy and converting
 them into traceable evaluation units.
 
-We address these gaps by constructing a Vietnamese secondary-school
-Informatics AI-tutor benchmark for Grades~6--9. Rather than generating
+We address these gaps by constructing \benchmarkname, a Vietnamese
+secondary-school Informatics AI-tutor benchmark for Grades~6--9. Rather than generating
 conversations from predefined benchmark situations, our construction and
 evaluation process:
 \begin{itemize}
@@ -108,12 +110,12 @@ The paper makes three contributions:
     \item a context-specific rubric library and evaluation method that
     combines common criteria with criteria associated with each required
     pedagogical principle to evaluate AI tutors; and
-    \item a Vietnamese Grades~6--9 Informatics tutoring benchmark
-    comprising 1,400 completed samples across 655 raw dialogues.
+    \item \benchmarkname, a Vietnamese Grades~6--9 Informatics tutoring
+    benchmark comprising 1,400 completed samples across 655 raw dialogues.
 \end{enumerate}
 Together, these contributions establish a curriculum-grounded and
-traceable basis for evaluating AI tutoring responses in Vietnamese
-secondary-school Informatics.
+traceable basis for evaluating AI tutoring responses with
+\benchmarkname{} in Vietnamese secondary-school Informatics.
 
 \section{Related Work and Background}
 
@@ -157,7 +159,8 @@ derived from teacher-authored pedagogical dialogues.
 
 \section{Benchmark Construction Pipeline}
 
-The construction pipeline comprises three phases, as shown in Figure~\ref{fig:construction-pipeline}.In this pipeline, Phase~1 audits the raw
+The pipeline used to construct \benchmarkname{} comprises three phases, as
+shown in Figure~\ref{fig:construction-pipeline}. In this pipeline, Phase~1 audits the raw
 teacher-authored dialogues. Phase~2 establishes the pedagogical measurement
 foundation: six principles describe the functions that a response may need
 to perform, whereas six capabilities describe the broader qualities expected
@@ -168,7 +171,8 @@ label, filter, and collect candidate benchmark samples to build a comprehensive 
 \begin{figure*}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/overall_pipeline_illustrated.png}
-\caption{Overview of the three-phase benchmark-construction pipeline. Phase~1
+\caption{Overview of the three-phase pipeline used to construct
+\benchmarkname{}. Phase~1
 and Phase~2 provide complementary inputs to Phase~3.}
 \label{fig:construction-pipeline}
 \end{figure*}
@@ -212,6 +216,7 @@ utterances, including 2,028 tutor turns that become candidate targets in
 Phase~3.
 
 \subsection{Phase 2: Pedagogical Measurement Foundation}
+\label{sec:phase2-pedagogical-measurement}
 
 We distinguish response-level pedagogical \emph{functions} from tutor
 \emph{capabilities}. The functional layer adopts Allison and Tharby's six
@@ -250,7 +255,7 @@ criteria; the tutor capabilities organize the observable rubric criteria.
 \subsection{Phase 3: From Raw Dialogues to Benchmark Data}
 
 Phase~3 combines the audited dialogues with the pedagogical foundation from
-Phase~2 to construct benchmark samples. It comprises three operations:
+Phase~2 to construct \benchmarkname{} samples. It comprises three operations:
 deterministic turn-level conversion, grounded principle-requirement scoring
 with code-based quality gates, and collection of the eligible benchmark pool.
 
@@ -302,8 +307,9 @@ mere confirmation or praise, while Questioning must make a learner answer
 necessary rather than merely useful. Finally, the required-principle set must
 occur in at least five candidates across at least three dialogue families.
 
-These gates retain 1,400 eligible candidates from 655 raw dialogues passed in Phase~1 and
-exclude the remaining 628. Exclusion flags may overlap: 592 candidates reduce
+These gates retain 1,400 eligible candidates from 655 raw dialogues passed in
+Phase~1 as the current \benchmarkname{} benchmark set and exclude the remaining
+628. Exclusion flags may overlap: 592 candidates reduce
 Feedback to confirmation or praise; 20 contain an inconsistent score-4/5
 rationale; 10 assign Questioning without establishing answer dependency; 8
 have no principle scoring at least 4; 7 have an insufficiently supported
@@ -314,7 +320,7 @@ turns per sample, and characters per turn.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/phase3_candidate_statistics.png}
-\caption{Distributions of 1,400 eligible samples: (a) 2,448 multi-label
+\caption{Distributions of 1,400 eligible \benchmarkname{} samples: (a) 2,448 multi-label
 principle assignments; (b) grade; (c) turns per sample, including prompt,
 history, and reference; and (d) characters per turn across 5,508 occurrences
 (mean 96.6; median 90).}
@@ -323,9 +329,9 @@ history, and reference; and (d) characters per turn across 5,508 occurrences
 
 \section{Evaluation Framework}
 
-Following the KMP-Dialogue structure \cite{shi2026kmpbench}, our framework
-separates tutor-input preparation, criterion construction, and blind
-pairwise assessment.
+Following the KMP-Dialogue structure \cite{shi2026kmpbench}, our evaluation
+framework for \benchmarkname{} separates tutor-input preparation, criterion
+construction, and blind pairwise assessment.
 
 \subsection{Context Loading and Tutor-Response Generation}
 
@@ -342,22 +348,17 @@ response are not shown to the tutor model.
 
 \subsection{Two-Tier Rubric Construction}
 
-Six tutor capabilities provide a coverage map for four common criteria:
+Six tutor capabilities, as defined in section \ref{sec:phase2-pedagogical-measurement}, provide a coverage map for four common criteria:
 \textit{(i)} subject-matter accuracy and verifiability; \textit{(ii)}
 alignment with the learner's state and immediate goal; \textit{(iii)}
 calibrated support that preserves meaningful learner work; and
 \textit{(iv)} clear, respectful, age-appropriate communication. Each of the
 six principles contributes three additional criteria that measure only its
-incremental pedagogical function. A candidate requiring \(n\) principles is
-therefore evaluated with \(4 + 3n\) criteria. This produces a stable common core while adapting the remaining
+incremental pedagogical principle. Totally, we have 22 criteria, with 4 general criteria and 18 principle-specific criteria and all of them
+are confirmed as valid for tutor assessment by the HNMU teaching team. 
+A candidate requiring \(n\) principles istherefore evaluated with \(4 + 3n\) criteria. 
+This produces a stable common core while adapting the remaining
 criteria to the pedagogical demands of the candidate.
-
-We additionally define six serious-error gates: wrong subject matter,
-fabricated grounding, reinforcement of a misconception, bypassing the
-learning process, harmful or demeaning content, and failure to address the
-learner's need. These gates are not scored as extra criteria. Instead, each
-gate can adjust only the intersection between the criteria it affects and the
-criteria active for the candidate, preventing duplicate penalties.
 
 \subsection{Blind Pairwise Judging and Score Aggregation}
 
@@ -366,8 +367,7 @@ teacher-provided answer, relevant textbook/teacher-guide fragments, all
 applicable criteria, and two anonymous responses: the generated tutor
 response and the teacher-authored reference. Their order is randomized with a
 fixed seed and restored only after judging. In one call, the judge returns a
-Win, Tie, or Lose decision for every applicable criterion, detects serious
-errors independently in both responses, and provides a separate holistic
+Win, Tie, or Lose decision for every applicable criterion, and provides a separate holistic
 judgment. The comparison explicitly permits a generated response to
 outperform the reference.
 
@@ -376,7 +376,6 @@ criterion \(r\). Its win rate is
 \[
  A_r = \frac{W_r}{W_r+T_r+L_r},
 \]
-so a Tie is retained in the denominator rather than converted to 0.5.
 General-Level Accuracy is the mean of the four common \(A_r\) values, while
 Principle-Level Accuracy for principle \(p\) is the mean of its three
 criteria. Overall Accuracy averages General-Level Accuracy and the macro mean
@@ -388,24 +387,19 @@ both candidate-level and dialogue-family-level aggregates.
 
 \subsection{Experimental Setup}
 
-The current evaluation pool comprises the 1,400 candidates that passed the
-Phase~3 gates. The tutor panel contains \textit{(i)} Gemini~3.5~Flash, a
-closed general-purpose model accessed through Vertex AI; and \textit{(ii)}
-Llama~4~Maverick, an open-weight general-purpose model accessed through
-Vertex AI Model-as-a-Service. A third configuration applies a
-LearnLM-oriented educational system instruction to the same
-Gemini~3.5~Flash base model; it is analyzed as a prompt ablation, not as an
-independent model. A specialized tutoring checkpoint was considered
-separately but was not included before passing deployment and Vietnamese
-response checks.
+The current evaluation pool of \benchmarkname{} comprises the 1,400 candidates
+that passed the Phase~3 gates. The tutor panel contains three configurations:
+\textit{(i)} Gemini~3.5~Flash, a closed general-purpose model accessed through
+Vertex AI; \textit{(ii)} Llama~4~Maverick, an open-weight general-purpose model
+accessed through Vertex AI Model-as-a-Service; and \textit{(iii)}
+Gemini~3.5~Flash with a LearnLM-oriented educational system instruction,
+evaluated as a full tutor configuration alongside the two other configurations.
 
-For Gemini target generation, sampling parameters are omitted,
-\texttt{thinking\_level=MEDIUM}, hidden thoughts are not returned, and seed
-20260728 is fixed. The initial output cap is 1,024 tokens; only responses
-terminated by the token limit are retried with a higher cap. Llama uses the
-same 1,024-token initial cap and omits sampling parameters. All requests store
-the exact system instruction, native message sequence, model configuration,
-finish reason, token usage, and content hashes.
+For the two Gemini configurations, sampling parameters are omitted,
+\texttt{thinking\_level=MEDIUM}, and hidden thoughts are not returned. Llama
+also omits sampling parameters. All three configurations use a 2,048-token
+output cap. All requests store the exact system instruction, native message
+sequence, model configuration, finish reason, token usage, and content hashes.
 
 Gemini~3.5~Flash serves as the primary blind pairwise judge with
 \texttt{thinking\_level=MEDIUM}, a fixed seed, and an 8,192-token output
