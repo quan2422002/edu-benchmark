@@ -6,12 +6,31 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}[Scale=MatchLowercase]
+\usepackage{fvextra}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\fvset{
+  frame=single,
+  framesep=2mm,
+  framerule=0.4pt,
+  breaksymbolleft={},
+  breaksymbolright={},
+  breakanywheresymbolpre={},
+  breakanywheresymbolpost={}
+}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-\newcommand{\benchmarkname}{VietInfoTutorBench}
+\newcommand{\benchmarkname}{VEduTutorBench}
 
 \begin{document}
 
@@ -37,7 +56,7 @@ retain 1,400 candidates across 665 dialogue families. Our evaluation framework
 preserves native multi-turn roles and compares tutor generated and teacher-authored
 responses using four common criteria, three criteria per required principle,
 and criterion-level Win/Tie/Lose judgments. We evaluate three tutor
-configurations---two Gemini-based tutors and Llama~4~Maverick---whose responses
+configurations-two Gemini-based tutors and Llama~4~Maverick-whose responses
 are independently assessed by two LLM judges. Together, the construction pipeline and evaluation framework provide
 a curriculum-grounded protocol for Vietnamese Informatics tutoring.
 \end{abstract}
@@ -159,17 +178,24 @@ and Phase~2 provide complementary inputs to Phase~3.}
 
 \subsection{Phase 1: Teacher-Authored Dialogues Audit}
 
-Phase~1 audited 1,050 Grades~6--9 Vietnamese Informatics dialogues authored
-by Hanoi Metropolitan University (HNMU) teachers. Curriculum grounding used eight source documents of two types: student textbooks (SGK) and teacher guides (SGV).
+At Hanoi Metropolitan University (HNMU), teachers produced the 1,050 raw
+dialogues through an AI-assisted workflow grounded in Zone of Proximal Development (ZPD) and contingent
+scaffolding, which respectively frame assisted performance and the adaptive
+fading of support \cite{wood1996vygotsky,wood2001scaffolding}. Teachers defined
+exemplars and domain constraints, used LLM to draft by grade, and
+independently cross-reviewed and manually revised the outputs, shown detailed in
+(Appendix~\ref{app:raw-dialogue-authoring}). Phase~1 then audited these
+Grades~6--9 Vietnamese Informatics dialogues against eight curriculum sources, in 2 types:
+student textbooks (SGK) and teacher guides (SGV).
 After converting the source document into 154 OCR-derived SGK/SGV lesson-based Markdown units, the process normalized these units into 2,750 traceable
 fragments and a rebuildable SQLite full-text search index, used for the audit on each dialogue.
 
 The audit followed a three-stage hybrid workflow. First, deterministic code normalized and traced the raw records, measured batch-level coverage,
 detected missing fields and formatting anomalies and identified exact or near-duplicate pairs. Second, the dialogues were reviewed by
 \texttt{hnmu-dialogue-auditor} AI agent, using \texttt{gpt-5.4-mini} at medium reasoning
-effort. It applied an 18-criterion checklist covering structure (3 criteria), consistency (7 criteria), pedagogy (6 criteria), and
-duplicate risk (2 criteria), using raw fields, SGK/SGV evidence retrieved from the full-text search index, and HNMU
-guidance about scaffolding method and Bloom cognitive levels. Strict aggregation marked any failed criterion as \textit{failed},
+effort. It applied an 18-criterion checklist, which is validated and confirmed by HNMU's teachers, on raw fields of dialogue samples, SGK/SGV evidence retrieved from the full-text search index 
+to evaluate each raw dialogue. There are 4 main criterion groups in the checklist: structure (3 criteria), consistency (7 criteria), pedagogy (6 criteria), and
+duplicate risk (2 criteria). Strict aggregation marked any failed criterion as \textit{failed},
 otherwise any uncertain criterion as \textit{need human review}, and the rest
 as \textit{passed}. The detailed checklist and examples of pass, uncertain, and fail cases are shown in Appendix~\ref{app:checklist}. At the end of this phase,
 665 dialogues were retained, 382 were routed to human review due to uncertainty, and 3 were rejected.
@@ -257,7 +283,9 @@ selection from being conditioned on the response used for comparison.
 Scores range from 1 (irrelevant or counterproductive), through 2 (weak) and 3
 (valid but optional), to 4 (required) and 5 (essential). Code selects
 principles scoring at least 4 and applies schema validation, thresholding,
-semantic linting, and eligibility gates.
+semantic linting, and eligibility gates. The executed Vietnamese prompt,
+its exact input structure, and a reader-facing English translation are
+provided in Appendix~\ref{app:requirement-prompt}.
 
 \subsubsection{Eligible benchmark pool and descriptive statistics}
 The run contains 12,168 scores for 2,028 candidates. Eligibility requires
@@ -297,7 +325,9 @@ task, common instruction, and required principles. Native multi-turn input
 preserves student turns as \texttt{user} and prior tutor turns as
 \texttt{assistant}/\texttt{model}; the final message is the student turn to
 answer. Sample IDs, scores, criteria, teacher-provided answer, and
-reference response remain hidden.
+reference response remain hidden. Appendix~\ref{app:tutor-prompt} show the components
+used for a tutor response run, including their Vietnamese sample-specific system prompt format, 
+native-role messages, and reader-facing translations.
 
 \subsection{Two-Tier Rubric Construction}
 
@@ -308,7 +338,8 @@ respectful, age-appropriate communication. Each principle adds three criteria
 for its incremental function. The resulting 4 common and 18
 principle-specific criteria received preliminary confirmation from HNMU
 Informatics teachers; a sample requiring \(n\) principles uses \(4+3n\)
-criteria.
+criteria. Appendix~\ref{app:principles-rubrics} reports all six operational
+principles and the complete 22-rubric library.
 
 \subsection{Blind Pairwise Judging and Score Aggregation}
 
@@ -321,6 +352,9 @@ criterion. Code maps this to target-model Win, Lose, or Tie. For criterion
 \[
  A_r = \frac{W_r}{W_r+T_r+L_r}.
 \]
+The Vietnamese gold-answer-only judge prompt, deterministic user-message
+structure, and reader-facing translation are reported in
+Appendix~\ref{app:judge-prompt}.
 
 \section{Experiments and Analysis}
 
@@ -339,8 +373,8 @@ Family-macro Overall weights each of 665 dialogue families equally. CIs and
 differences use 5,000 cluster-bootstrap resamples over \texttt{sample\_id};
 4,995 cover all six principles.
 
-\textbf{Models}: The panel comprises Gemini~3.5~Flash with baseline and
-LearnLM-oriented instructions, plus Llama~4~Maverick; the Gemini tutors are two
+\textbf{Models}: The panel comprises Gemini~3.5~Flash with baseline (baseline for short) and
+LearnLM-oriented (LearnLM for short) instructions, plus Llama~4~Maverick (Llama for short); the Gemini tutors are two
 instruction configurations of one base model. Both use
 \texttt{thinking\_level=MEDIUM} without returned thoughts. All tutors omit
 sampling overrides, use a 2,048-token cap, and generate one response per sample:
@@ -502,7 +536,7 @@ Overall Accuracy & 1,400 & 84.01 & 84.78 & +0.77 [-0.48, 2.14] \\
 \end{tabular}
 \vspace{2pt}
 
-\footnotesize \(\Delta=\) LearnLM-oriented minus baseline. The paired
+\footnotesize \(\Delta=\) LearnLM minus baseline. The paired
 percentile intervals use 5,000 cluster-bootstrap draws over 665 source-dialogue
 families. Challenge and Overall Accuracy have 4,999 valid draws because one
 draw contains no Challenge observation; all other rows have 5,000.
@@ -703,30 +737,85 @@ necessary next steps for future work.
 \bibliography{references}
 
 \clearpage
+\onecolumn
 \appendices
 \section{Phase 1 Agent-Audit Checklist and Examples}
 \label{app:checklist}
 
-The complete Phase~1 workflow also contained deterministic batch-level and
-process checks. This appendix reports only the 18 criteria applied to every
-dialogue by the \texttt{hnmu-dialogue-auditor}. The agent evaluated each
-criterion independently as \textit{pass}, \textit{fail},
-\textit{uncertain}, or \textit{not applicable}. It received the raw fields,
-mechanical flags produced by code, retrieved SGK/SGV evidence, and the HNMU
-guidance on scaffolding and cognitive levels.
-Table~\ref{tab:agent-checklist} gives the operational checks.
+\subsection{HNMU Raw-Dialogue Authoring Workflow}
+\label{app:raw-dialogue-authoring}
 
-\begin{table*}[!t]
-\caption{The 18 criteria in the per-dialogue agent audit.}
-\label{tab:agent-checklist}
-\centering
+HNMU supplied an internal theoretical training deck, a scaffolding framework
+with illustrative dialogues, and an operational authoring protocol. The
+materials connect ZPD with contingent scaffolding: support should bridge what
+a learner can do independently and with guidance, become more specific after
+difficulty, fade after success, and progressively return responsibility to the
+learner \cite{wood1996vygotsky,wood2001scaffolding}. HNMU documented the
+following teacher-led workflow:
+
+\begin{enumerate}
+\item \textbf{Establish the pedagogical foundation.} Teachers studied ZPD and
+contingent scaffolding as the primary theoretical anchors; the training
+materials also used cognitive apprenticeship and Socratic questioning as
+complementary design ideas.
+\item \textbf{Define curriculum grounding.} Teachers selected grade-specific
+Bloom expectations and official Vietnamese Informatics textbooks, teacher
+guides, workbooks, and curriculum requirements as the permitted knowledge
+base.
+\item \textbf{Specify quality criteria.} The expert team established the 18
+criteria covering structure, content consistency, pedagogy and scaffolding,
+and duplicate risk.
+\item \textbf{Construct exemplars.} Teachers selected textbook
+exercises and, based on them, wrote tutoring interactions sequence intended to satisfy all 18
+criteria.
+\item \textbf{Design constrained prompts.} Teachers encoded the criteria,
+exemplars, and curriculum boundaries into prompts for dialogue generation.
+\item \textbf{Generate grade-specific draft diaglogues.} LLM produced dialogue
+drafts, with designated teachers responsible for individual grade groups.
+\item \textbf{Review, cross-check, and revise.} An independent expert reviewed
+each generated dialogue against the criteria; teachers from other grade groups
+then cross-checked curricular continuity and overload or repetition risks.
+Flagged dialogues were manually edited before inclusion in the 1,050-dialogue
+raw collection.
+\end{enumerate}
+
+Thus, \emph{teacher-authored} denotes teacher ownership of the theoretical
+framework, criteria, exemplars, prompts, review decisions, and final revisions;
+LLM supported draft production rather than final acceptance.
+
+\subsection{Agent-Audit Checklist}
+
+The subsequent Phase~1 workflow also contained deterministic batch-level and
+process checks. This appendix reports the 18 criteria applied to every dialogue
+by the \texttt{hnmu-dialogue-auditor}. The agent evaluated each criterion
+independently as \textit{pass}, \textit{fail}, \textit{uncertain}, or
+\textit{not applicable}. It received the raw fields, mechanical flags produced
+by code, retrieved SGK/SGV evidence, and the HNMU guidance on scaffolding and
+cognitive levels. Table~\ref{tab:agent-checklist} gives the operational checks.
+
+\begingroup
 \scriptsize
 \setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{0.98}
-\begin{tabular}{p{0.11\textwidth}p{0.10\textwidth}p{0.22\textwidth}p{0.49\textwidth}}
-\hline
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{P{0.11\textwidth}P{0.10\textwidth}P{0.22\textwidth}P{0.49\textwidth}}
+\caption{The 18 criteria in the per-dialogue agent audit.}
+\label{tab:agent-checklist}\\
+\toprule
 ID & Group & Criterion & Operational check and evidence \\
-\hline
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\tablename\ \thetable\ continued}\\
+\toprule
+ID & Group & Criterion & Operational check and evidence \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
 \texttt{RAW-STR-02} & Structure & Core fields are present &
 Check that the question, teacher-guide answer, and dialogue contain enough
 information to be audited; use code-generated missing-field flags as input. \\
@@ -782,126 +871,816 @@ a dialogue differs from another only by minor words, values, or entities. \\
 \texttt{RAW-DUP-04} & Duplicate risk & No mechanically repeated AI template &
 Use dialogue patterns in the assigned shard or batch to identify repetitive
 praise, prompting, or scaffolding structures that materially reduce diversity. \\
-\hline
-\end{tabular}
-\end{table*}
+\end{longtable}
+\endgroup
 
 \clearpage
 \subsection{Audited Examples}
 
-The examples below are faithful English translations of the original
-Vietnamese records. Note that in the dialogues, the tutor is represented by \textbf{AI} and the learner by \textbf{HS}. 
-They illustrate the strict aggregation rule: one
-\textit{uncertain} criterion routes a dialogue to human review, whereas one
-\textit{fail} criterion rejects it from the retained pool.
+For each example, the original Vietnamese record is presented first. The
+English text is a reader-facing translation and was not used by the audit
+pipeline. Internal sample and learning-resource identifiers are omitted.
+\subsubsection{Passed Example}
+\noindent\textbf{Original Vietnamese record (used in the audit)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Lớp: 9
+Bài học: [13b]: Biên tập và xuất video
+Câu hỏi: Phân biệt được tệp dự án (Project) và tệp video đã xuất (Exported video).
+Đáp án từ sách giáo viên: Tệp dự án chứa các lệnh chỉnh sửa, chỉ mở bằng phần mềm làm video. Tệp video đã xuất (.mp4) là thành phẩm, có thể xem bằng mọi trình phát video.
+Hội thoại:
+HS: Em lỡ gửi cái tệp Backup (.vbp) của bài trước cho bạn em xem, bạn bảo không xem được hình gì cả.
+AI: Em còn nhớ tệp Backup (.vbp) đó chứa cái gì không?
+HS: Nó chứa dữ liệu hình ảnh, âm thanh để mở lại phần mềm làm tiếp ạ.
+AI: Đúng. Để xem được nó, bạn em cũng phải mở phần mềm Video Editor lên. Nhưng bạn em muốn "xem phim" như trên YouTube, thì em phải gửi định dạng nào?
+HS: Em phải gửi tệp phim đã được xuất ra, là định dạng .mp4 ạ?
+AI: Chuẩn xác. Tệp dự án là nguyên liệu để nấu ăn, còn tệp mp4 là món ăn đã nấu chín. Khán giả chỉ cần món ăn thôi.
+HS: Dạ em hiểu rõ sự khác biệt rồi. Em sẽ vào phần mềm xuất lại ra mp4 gửi bạn.
+AI: Rất tốt, sự cố đã giúp em ghi nhớ sâu sắc bản chất của tệp.
+\end{Verbatim}
+\noindent\textbf{Reader-facing English translation (not used for inference)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Context: Grade 9, Lesson 13B, Editing and Exporting Video.
+Question: Distinguish a project file from an exported video file.
+Teacher-guide answer: A project file stores editing instructions and is reopened in the video editor; an exported .mp4 file is the finished product and can be viewed in media players.
+Dialogue:
+STUDENT: I accidentally sent my friend the Backup file (.vbp) from my previous project, but they said they could not see anything.
+TUTOR: Do you remember what that Backup file contains?
+STUDENT: It contains the image and audio data so that I can reopen the project in the software and continue editing.
+TUTOR: Correct. To view it, your friend would also need to open the video editor. But if your friend wants to watch the film as on YouTube, which format should you send?
+STUDENT: I should send the exported film file, in .mp4 format?
+TUTOR: Exactly. A project file is like the ingredients for cooking, whereas the .mp4 file is the finished dish. The audience only needs the finished dish.
+STUDENT: I understand the difference now. I will reopen the software, export the video to .mp4, and send that file.
+TUTOR: Very good. This incident has helped you understand the nature of the two file types more deeply.
+\end{Verbatim}
+All 18 criteria passed. The tutor elicited the learner's current understanding, prompted an inference about the appropriate output format, and consolidated the distinction with an analogy. Strict aggregation retained the dialogue as passed.
 
-\subsubsection{Passed example} \\
+\subsubsection{Uncertain Example}
+\noindent\textbf{Original Vietnamese record (used in the audit)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Lớp: 8
+Bài học: [11b] Thực hành tổng hợp
+Câu hỏi: Giải thích được sự khác biệt giữa lưu tệp dự án (Save) và xuất tệp ảnh (Export As).
+Đáp án từ sách giáo viên: Save (Ctrl+S): Lưu dự án gốc đuôi .xcf, giữ nguyên các layer để sau này mở ra sửa tiếp. Export As (Shift+Ctrl+E): Xuất ra tệp ảnh phẳng .jpg/.png để in ấn, gửi cho người khác xem.
+Hội thoại:
+HS: Em thiết kế xong cái Poster rồi. Sách giáo khoa bảo chọn "File / Export As để ghi lại ảnh với tên SchoolTour.jpg". Sao mình không ấn "Save" cho nhanh ạ?
+AI: Một câu hỏi rất hay về quản lí file! Thầy giả sử em là kiến trúc sư. Lệnh "Save" (đuôi .xcf) giống như em lưu lại bản vẽ có dính đầy ghi chú, tẩy xoá, các bản nháp xếp chồng lên nhau. Còn "Export As" (đuôi .jpg) giống như em in ra một bức tranh phối cảnh hoàn mĩ để đưa cho khách hàng.
+HS: Dạ, tức là Save là để mình giữ lại bản gốc sửa sau, còn Export là để nộp bài ạ?
+AI: Em tóm tắt cực kì xuất sắc! Khi em Export ra .jpg, phần mềm sẽ "ép" tất cả các Layers lại thành một mặt phẳng duy nhất. Ưu điểm là dung lượng rất nhẹ và máy tính nào, điện thoại nào cũng xem được. Nhược điểm là gì em biết không?
+HS: Là các lớp dính vào nhau hết, không lôi cái ảnh ra sửa hay đổi màu chữ được nữa ạ.
+AI: Tuyệt vời. Chính vì vậy, quy trình chuẩn của dân chuyên nghiệp là: Nhấn Save (.xcf) để cất làm vốn trước, sau đó mới nhấn Export As (.jpg) để đem đi nộp. Em làm y như vậy nhé.
+HS: Dạ vâng, em ghi nhớ quy tắc này rồi ạ.
+\end{Verbatim}
+\noindent\textbf{Reader-facing English translation (not used for inference)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Context: Grade 8, Lesson 11B, Integrated Practice.
+Question: Explain the difference between saving a project (Save) and exporting an image (Export As).
+Teacher-guide answer: Save stores the editable .xcf project with its layers, whereas Export As produces a flattened .jpg or .png image for printing or sharing.
+Dialogue:
+STUDENT: I have finished designing my poster. The textbook says to choose File / Export As and save it as SchoolTour.jpg. Why can I not simply press Save?
+TUTOR: Imagine that you are an architect. Save (.xcf) is like storing the original drawing together with its notes, erasures, and stacked drafts. Export As (.jpg) is like printing a finished rendering for a client.
+STUDENT: So Save keeps the original for later editing, whereas Export produces the file that I submit?
+TUTOR: Excellent summary. When you export to .jpg, the software flattens all layers into one image. The file is small and can be viewed on almost any computer or phone. What is the disadvantage?
+STUDENT: The layers are merged, so I cannot separately move the picture or change the text colour afterwards.
+TUTOR: Exactly. The standard workflow is to save the .xcf project first, and then export a .jpg file for submission. Please follow those steps.
+STUDENT: Yes, I will remember that rule.
+\end{Verbatim}
+Seventeen criteria passed. RAW-PED-02 was uncertain because the first tutor response nearly completed the comparison before eliciting the learner's reasoning. Later turns re-engaged the learner and checked understanding, so strict aggregation routed the dialogue to review rather than rejecting it.
 
-\noindent\textbf{Context:} Grade~9, Lesson~13B, \textit{Editing and Exporting
-Video}.\\
-\textbf{Question:} \textit{Distinguish a project file from an exported video
-file.}\\
-\textbf{Teacher-guide answer:} \textit{A project file stores editing
-instructions and can only be reopened in the video editor; an exported
-\texttt{.mp4} file is the finished product and can be viewed in media
-players.} \\
-\textbf{Dialogue:}
-\begin{quote}\small
-\textbf{HS:} I accidentally sent my friend the Backup file
-(\texttt{.vbp}) from my previous project, but they said they could not see
-anything.\\
-\textbf{AI:} Do you remember what that Backup file contains?\\
-\textbf{HS:} It contains the image and audio data so that I can reopen
-the project in the software and continue editing.\\
-\textbf{AI:} Correct. To view it, your friend would also need to open the
-video editor. But if your friend wants to watch the film as on YouTube, which
-format should you send?\\
-\textbf{HS:} I should send the exported film file, in \texttt{.mp4}
-format?\\
-\textbf{AI:} Exactly. A project file is like the ingredients for cooking,
-whereas the \texttt{.mp4} file is the finished dish. The audience only needs
-the finished dish.\\
-\textbf{HS:} I understand the difference now. I will reopen the software,
-export the video to \texttt{.mp4}, and send that file.\\
-\textbf{AI:} Very good. This incident has helped you understand the nature
-of the two file types more deeply.
-\end{quote}
+\subsubsection{Failed Example}
+\noindent\textbf{Original Vietnamese record (used in the audit)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Lớp: 7
+Bài học: Bài 1. Thiết bị vào - ra
+Câu hỏi: Chức năng của loa và tai nghe có điểm gì giống nhau?
+Đáp án từ sách giáo viên: Đều là thiết bị ra, dùng để xuất thông tin dạng âm thanh từ máy tính.
+Hội thoại:
+ HS: Loa với tai nghe thì quá rõ rồi, nhưng trong bài học chúng có chung đặc điểm gì ạ?
+ AI: Em hãy nhớ lại 4 thành phần xử lý thông tin. Cả hai thiết bị này đều đưa thứ gì đó đến tai em?
+ HS: Dạ đưa âm thanh ạ.
+ AI: Âm thanh đó đi từ "trong" máy ra hay từ ngoài vào máy?
+ HS: Dạ từ trong máy ra ạ. 
+ AII: Vậy theo bảng phân loại, chúng cùng thuộc nhóm thiết bị gì nhỉ?
+ HS: Dạ là thiết bị ra! Em hiểu rồi.
+\end{Verbatim}
+\noindent\textbf{Reader-facing English translation (not used for inference)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Context: Grade 7, Lesson 1, Input and Output Devices.
+Question: What do speakers and headphones have in common in terms of function?
+Teacher-guide answer: Both are output devices that convey audio information from a computer.
+Dialogue:
+STUDENT: Speakers and headphones are familiar devices, but what feature do they share in this lesson?
+TUTOR: Recall the components involved in information processing. What do both devices deliver to your ears?
+STUDENT: Sound.
+TUTOR: Does that sound travel from inside the computer to the outside, or from outside into the computer?
+STUDENT: From inside the computer to the outside.
+AII: According to the classification table, which device group do they both belong to?
+STUDENT: They are output devices. I understand now.
+\end{Verbatim}
+RAW-STR-03 failed because the raw dialogue used the invalid speaker label AII instead of AI. RAW-PED-02 and RAW-PED-03 were consequently uncertain because reliable turn parsing was compromised; the remaining 15 criteria passed. Strict aggregation classified the dialogue as failed, although its speaker label could be repaired.
 
-All 18 criteria passed. The lesson metadata, question, teacher-guide answer,
-dialogue, and retrieved curriculum fragments evidence were mutually consistent. The
-tutor first elicited what a project file contains, then asked the learner to
-infer the appropriate exported format, and finally consolidated the
-distinction through an analogy. The minimum criterion confidence was 0.78, so
-strict aggregation retained the dialogue as \textit{passed}.
+\clearpage
+\section{Pedagogical Principles and Rubric Library}
+\label{app:principles-rubrics}
 
-\subsubsection{Uncertain example}
+Tables~\ref{tab:principle-library} and~\ref{tab:rubric-library} report the
+complete operational constructs used by the benchmark. As in
+Table~\ref{tab:agent-checklist}, all table content is presented in English for
+readers. These are reader-facing translations of the canonical Vietnamese
+wording used by the prompts and judging workflow; the translations were not
+used for inference or evaluation. Internal workflow metadata is omitted. The
+22-rubric library contains four common criteria and three principle-specific
+criteria for each of the six principles. Each row is scored pairwise: Win when
+the tutor response is better than the teacher-authored reference on that
+criterion, Tie when they are equivalent, and Lose when it is worse or fails
+the criterion. The final column
+provides criterion-specific comparative anchors.
 
-\noindent\textbf{Context:} Grade~8, Lesson~11B, \textit{Integrated Practice}.\\
-\textbf{Question:} \textit{Explain the difference between saving a project
-(\texttt{Save}) and exporting an image (\texttt{Export As}).}\\
-\textbf{Teacher-guide answer:} \textit{\texttt{Save} stores the editable
-\texttt{.xcf} project with its layers, whereas \texttt{Export As} produces a
-flattened \texttt{.jpg} or \texttt{.png} image for printing or sharing.}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{P{0.12\textwidth}P{0.19\textwidth}P{0.20\textwidth}P{0.20\textwidth}P{0.20\textwidth}}
+\caption{The six pedagogical principles and their operational definitions.}
+\label{tab:principle-library}\\
+\toprule
+Principle & Definition & Include when & Exclude when & Observable response evidence \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable\ continued}\\
+\toprule
+Principle & Definition & Include when & Exclude when & Observable response evidence \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\textbf{Challenge} & Set or maintain a cognitive demand that is sufficiently difficult yet attainable, creating productive effort and helping the learner progress beyond current performance. & The response asks the learner to reason more deeply, handle a more difficult case, or overcome a deliberate obstacle independently. & Do not assign merely because the lesson is difficult, the tutor asks a question, or the response increases workload without fitting the learner state. & A clear cognitive demand is calibrated to the current level and leaves meaningful thinking to the learner. \\
+\textbf{Explanation} & Make a concept, relationship, principle, method, or rationale clear and concrete in a way that fits the learner state. & The response must help the learner understand what, how, or why rather than merely provide an answer or an operational step. & Do not assign when the response only confirms, only asks a question, or only demonstrates a procedure without a substantive explanatory function. & The response clarifies the core idea, connects it to the context, and does not merely reproduce a definition. \\
+\textbf{Modelling} & Let the learner observe how knowledge is applied through a process, reasoning path, decision path, operation, or model product. & The response demonstrates a model or part of one and makes the method of acting or thinking visible. & Do not assign to every illustrative example, isolated hint, or complete solution that lacks a transfer purpose. & A concrete and correct model exposes decision points and gives the learner an opportunity to continue independently. \\
+\textbf{Practice} & Require the learner to perform or repeat an application of knowledge or skills to strengthen retention, fluency, or independent performance. & The response assigns or continues an activity intended to build fluency, test application, or consolidate recent learning. & Do not assign to a question that only gathers information, a required step in the current solution, or a new challenge that is not intended as practice. & The learner performs an activity aligned with the learning objective, at an appropriate difficulty, without receiving the complete solution immediately. \\
+\textbf{Feedback} & Use an observed learner answer, method, operation, or product as the object of evidence-based comment that guides improvement. & The learner has produced an answer, product, operation, or line of reasoning that the tutor needs to evaluate. & Do not assign to social praise, unsupported confirmation, or an explanation that does not respond directly to learner work. & The response identifies observable details, explains their significance, and provides an appropriate correction or next step when needed. \\
+\textbf{Questioning} & Require a learner answer in order to diagnose understanding, sustain reasoning, or promote deeper thinking. & A question serves a clear pedagogical function, and the learner answer will help the tutoring interaction progress. & Do not assign to social, rhetorical, vague, or immediately self-answered questions. & The question is contextually grounded, has a clear cognitive purpose and suitable openness, and genuinely requires a learner answer. \\
+\end{longtable}
 
-\begin{quote}\small
-\textbf{HS:} I have finished designing my poster. The textbook says to
-choose \texttt{File / Export As} and save it as \texttt{SchoolTour.jpg}. Why
-can I not simply press \texttt{Save}?\\
-\textbf{AI:} Imagine that you are an architect. \texttt{Save}
-(\texttt{.xcf}) is like storing the original drawing together with its notes,
-erasures, and stacked drafts. \texttt{Export As} (\texttt{.jpg}) is like
-printing a finished rendering for a client.\\
-\textbf{HS:} So \texttt{Save} keeps the original for later editing,
-whereas \texttt{Export} produces the file that I submit?\\
-\textbf{AI:} Excellent summary. When you export to \texttt{.jpg}, the
-software flattens all layers into one image. The file is small and can be
-viewed on almost any computer or phone. What is the disadvantage?\\
-\textbf{HS:} The layers are merged, so I cannot separately move the
-picture or change the text colour afterwards.\\
-\textbf{AI:} Exactly. The standard workflow is to save the
-\texttt{.xcf} project first, and then export a \texttt{.jpg} file for
-submission. Please follow those steps.\\
-\textbf{HS:} Yes, I will remember that rule.
-\end{quote}
+\begin{longtable}{P{0.14\textwidth}P{0.17\textwidth}P{0.20\textwidth}P{0.17\textwidth}P{0.24\textwidth}}
+\caption{The complete 22-rubric library.}
+\label{tab:rubric-library}\\
+\toprule
+ID / scope & Criterion & Observable evidence & Boundary & Comparative anchors \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable\ continued}\\
+\toprule
+ID / scope & Criterion & Observable evidence & Boundary & Comparative anchors \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{RUB-GEN-ACC}\newline{}General & \textbf{Subject-matter accuracy and verifiability} & Concepts, relationships, examples, operations, code, procedures, and results are consistent with the source question, gold\_answer, and traced textbook or teacher-guide evidence; no source is fabricated. & This criterion measures correctness and grounding only; friendliness, length, or pedagogical strategy cannot compensate for incorrect content. & \textbf{Positive:} Content is correct, states the decisive details, and makes no claim beyond the evidence.\newline\textbf{Near miss:} Content is broadly correct but omits a useful detail without changing the conclusion or misleading the learner.\newline\textbf{Negative:} A concept, procedure, code fragment, or source claim is wrong and may cause incorrect learning or action. \\
+\texttt{RUB-GEN-ALIGN}\newline{}General & \textbf{Alignment with learner state and immediate goal} & The response uses what the learner has asked, tried, understood, misunderstood, or currently needs and does not ignore decisive information in the history. & Describing the current learner state differs from explaining the root cause of an error; diagnosis is required only when an applicable principle-specific criterion and sufficient evidence support it. & \textbf{Positive:} The response directly addresses the current difficulty and goal and uses necessary information from the history.\newline\textbf{Near miss:} It addresses the right topic but remains generic or overlooks an important detail about prior learner work.\newline\textbf{Negative:} It answers a different question, repeats what the learner already knows, or assumes a state contradicted by the input. \\
+\texttt{RUB-GEN-SCAFF}\newline{}General & \textbf{Calibrated support preserving meaningful learner work} & The amount of information, number of steps, degree of hinting, and remaining learner work fit the current state; the response neither substitutes for a learner who can continue nor abandons a learner who is stuck. & This criterion measures the level and timing of support rather than whether each principle-specific behavior is present. & \textbf{Positive:} The response gives enough support for the learner to advance while preserving meaningful thinking.\newline\textbf{Near miss:} The strategy is reasonable but gives slightly too much or too little support; progress remains possible, although agency is reduced or more help is needed.\newline\textbf{Negative:} It reveals the entire solution prematurely or merely tells a demonstrably stuck learner to try again. \\
+\texttt{RUB-GEN-COMM}\newline{}General & \textbf{Clear, respectful, age-appropriate communication} & Language is accessible, structure avoids overload, and address is respectful; specific effort or progress is acknowledged when appropriate, without belittling, pressure, or generic praise replacing support. & Evaluate only communication behavior in the current response; do not infer learner motivation, emotions, or actual learning outcomes. & \textbf{Positive:} The response is concise, easy to follow, respectful, and acknowledges specific learner work before giving direction.\newline\textbf{Near miss:} It is polite and understandable but somewhat long, dense, or generically encouraging.\newline\textbf{Negative:} It is sarcastic, attributes errors to learner ability, causes embarrassment, uses inaccessible language, or is disorganized. \\
+\texttt{RUB-CHA-DEMAND}\newline{}Challenge & \textbf{Meaningful cognitive demand} & The response sets or maintains an obstacle, question, or task that requires reasoning, choosing, generalizing, or deeper application rather than mechanical recall. & Do not rate highly merely because a question is difficult, long, or adds work; the difficulty must serve the learning objective. & \textbf{Positive:} The learner must justify a method, compare alternatives, or handle a related new case.\newline\textbf{Near miss:} Only values are changed or an almost mechanical extra step is added, creating work with little cognitive value.\newline\textbf{Negative:} Difficulty is unrelated, trick-based, or far beyond the current content and goal. \\
+\texttt{RUB-CHA-CALIB}\newline{}Challenge & \textbf{Challenge calibrated to the current state} & Challenge and support fit prior learner performance, the current error, grade, and cognitive level and provide a viable starting point. & Unlike RUB-CHA-DEMAND, this criterion measures attainability rather than whether the task itself prompts deep thinking. & \textbf{Positive:} The challenge exceeds the just-completed level while using available knowledge and providing an entry hint when needed.\newline\textbf{Near miss:} It is relevant but slightly too easy or difficult; a minor adjustment would make it feasible.\newline\textbf{Negative:} It is too easy to require effort or too difficult and unsupported to be attainable. \\
+\texttt{RUB-CHA-AGENCY}\newline{}Challenge & \textbf{Core thinking remains with the learner} & The response states a target or constraints without solving the very reasoning that the challenge is meant to elicit; the learner must still produce a meaningful answer. & This is not equivalent to supplying little information; the tutor may provide data or hints that do not remove the target reasoning. & \textbf{Positive:} Necessary conditions are supplied, but the learner must predict, justify, or verify.\newline\textbf{Near miss:} A challenge remains, but hints nearly determine the answer.\newline\textbf{Negative:} The tutor solves the challenge or asks the learner only to repeat a supplied conclusion. \\
+\texttt{RUB-EXP-CORE}\newline{}Explanation & \textbf{Core idea and decisive relations are clarified} & The response explains what, how, or why by clarifying a concept, causal relation, rule, or error cause rather than merely stating an answer. & Naming, listing steps, or giving a correct answer does not count as explanation when the relation or rationale remains absent. & \textbf{Positive:} It explains why two quantities must use the same unit before division and what happens otherwise.\newline\textbf{Near miss:} It states the correct rule, but the reason remains unclear or simply paraphrases the question.\newline\textbf{Negative:} It only supplies a result, term, or operational command without improving understanding. \\
+\texttt{RUB-EXP-COHER}\newline{}Explanation & \textbf{Coherent and grounded explanatory flow} & Ideas follow an understandable relation, use a suitable example or contrast, and connect directly to the current question or error. & Unlike Modelling, an example here clarifies relationships; Modelling must demonstrate a procedure or decision path. & \textbf{Positive:} A short example connects the bit concept to two states and returns to the learner question.\newline\textbf{Near miss:} Information is correct but disconnected, or the example is distant or weakly tied to the conclusion.\newline\textbf{Negative:} The explanation is meandering, internally contradictory, or uses an example that distorts the core relation. \\
+\texttt{RUB-EXP-ADAPT}\newline{}Explanation & \textbf{Learner-appropriate detail and wording} & Depth, terminology, examples, and information volume fit the grade, cognitive level, and prior knowledge; the entire lesson is not repeated when only one link is missing. & This criterion does not re-evaluate politeness; it measures adaptation of the explanation itself. & \textbf{Positive:} It explains only the missing conversion step in Grade-appropriate language and leaves the learner to continue the calculation.\newline\textbf{Near miss:} It is correct but slightly too long, too brief, or contains an unexplained term.\newline\textbf{Negative:} It delivers a full lecture without considering learner state or uses abstractions the learner cannot follow. \\
+\texttt{RUB-MOD-PROC}\newline{}Modelling & \textbf{Observable demonstration of a process or method} & The response demonstrates part of an operation, algorithm, code sequence, product, or decision path in the correct order and sufficiently shows how to apply it. & Not every example or step list is modelling; a method must be demonstrated on a concrete case. & \textbf{Positive:} It demonstrates one binary-search split, records the left and right bounds, and updates the search interval for a concrete value.\newline\textbf{Near miss:} It lists the correct steps but does not apply them to a case, making the process difficult to observe.\newline\textbf{Negative:} It gives only the final answer, demonstrates an incorrect method, or completes the problem without exposing the process. \\
+\texttt{RUB-MOD-THINK}\newline{}Modelling & \textbf{Decision points and reasoning are made visible} & The response explains why an operation, condition, branch, or representation is selected at important points so that the learner can reuse the reasoning. & Private model chain-of-thought is not required; a brief pedagogical explanation of verifiable decisions is sufficient. & \textbf{Positive:} In a debugging model, it identifies the loop condition that must change and explains why the current value prevents termination.\newline\textbf{Near miss:} The demonstration is correct, but reasons at decision points remain implicit.\newline\textbf{Negative:} The response asks the learner to imitate clicks without explaining when or why to use them. \\
+\texttt{RUB-MOD-TRANSFER}\newline{}Modelling & \textbf{Modelling supports transfer rather than substitution} & The response limits what is modelled, identifies cues for continued application, and leaves an analogous part for the learner. & Unlike Practice, this criterion evaluates the design of the model; Practice requires an activity with a clear consolidation function. & \textbf{Positive:} It models one step and asks the learner to apply the same rule to the next step or case.\newline\textbf{Near miss:} It models almost everything and leaves only a mechanical operation.\newline\textbf{Negative:} It gives a complete solution without a transfer point or opportunity for learner application. \\
+\texttt{RUB-PRA-ACT}\newline{}Practice & \textbf{Learner-performed activity} & The response assigns a question, operation, exercise, or case requiring the learner to apply knowledge or skill and does not answer it immediately. & A required step in the current problem is not automatically Practice when its sole purpose is to finish that solution rather than create consolidation. & \textbf{Positive:} After an example is understood, the learner receives a similar case to perform or explain independently.\newline\textbf{Near miss:} The learner is asked to act, but the action is too small or only repeats what was just stated.\newline\textbf{Negative:} The tutor performs the activity, merely asks whether the learner understands, or creates no learner action. \\
+\texttt{RUB-PRA-ALIGN}\newline{}Practice & \textbf{Practice aligned with target skill and learner state} & The activity targets the knowledge or skill that needs consolidation, fits the grade and recent learning or error, and has a feasible, unambiguous answer. & Unlike Challenge, Practice prioritizes consolidation and independence and need not substantially increase cognitive difficulty. & \textbf{Positive:} After supported success, the learner receives a new case using the same skill of distinguishing input and output devices.\newline\textbf{Near miss:} The activity matches the topic but not the specific error, or almost duplicates the prior example.\newline\textbf{Negative:} It targets the wrong skill, contains faulty data, or is far too easy or difficult for the state. \\
+\texttt{RUB-PRA-CONSOL}\newline{}Practice & \textbf{Consolidation toward independent performance} & The response introduces enough purposeful variation or repetition for the learner to recall and apply the skill without immediately revealing the solution. & Multiple exercises are not required; one activity is sufficient when it clearly consolidates learning and preserves learner performance. & \textbf{Positive:} Context or data change while the target skill remains, and the learner performs independently before reporting the result.\newline\textbf{Near miss:} The activity is useful but too similar to the model or too heavily hinted to require independence.\newline\textbf{Negative:} The answer is supplied immediately, repetition is purposeless, or added workload does not support consolidation. \\
+\texttt{RUB-FBK-GROUND}\newline{}Feedback & \textbf{Feedback grounded in observed learner work} & The comment points to a specific learner answer, operation, line of reasoning, or product rather than offering only praise, criticism, or confirmation. & Root-cause diagnosis is not always required; when the input shows only an outcome, do not infer a deeper misconception. & \textbf{Positive:} It notes that the learner selected division correctly but that the two quantities still use different units.\newline\textbf{Near miss:} It says the answer is almost correct without identifying what is right or what needs review.\newline\textbf{Negative:} It offers generic praise, says the answer is wrong, or confirms it without reference to observable details. \\
+\texttt{RUB-FBK-DISC}\newline{}Feedback & \textbf{Correct and improvable elements are distinguished} & The response accurately identifies the quality of learner work, prioritizes the decisive error or progress, and briefly explains why it matters. & Unlike Explanation, this criterion begins with and evaluates learner work; a general explanation is not automatically Feedback. & \textbf{Positive:} It confirms the correct search direction, identifies an overly broad keyword, and explains why a school or location name is needed.\newline\textbf{Near miss:} The comment is correct but misses an important issue or does not explain its effect on the result.\newline\textbf{Negative:} It misjudges learner work, reinforces an error, or substitutes an answer without distinguishing what should change. \\
+\texttt{RUB-FBK-ACTION}\newline{}Feedback & \textbf{A feasible improvement step is provided} & When improvement remains, the response offers a specific, calibrated question, hint, or next step; after completion, it gives grounded confirmation and extends only with a clear purpose. & A new task is not always required, but praise or confirmation alone is insufficient when an unmet learning need remains. & \textbf{Positive:} It asks the learner to recheck the number of elements at the boundary instead of repairing the entire array.\newline\textbf{Near miss:} It asks for another check but gives no region or starting method.\newline\textbf{Negative:} It offers no improvement direction, gives incorrect direction, or performs the whole correction. \\
+\texttt{RUB-QUE-PURPOSE}\newline{}Questioning & \textbf{Clear pedagogical purpose} & The question diagnoses understanding, sustains reasoning, retrieves needed knowledge, or promotes deeper thinking, and the expected answer informs the next turn. & Social, rhetorical, decorative, or generic comprehension-check questions do not constitute high-quality Questioning. & \textbf{Positive:} It asks where the loop condition changes to distinguish an update error from a condition error.\newline\textbf{Near miss:} The question is relevant, but its purpose is unclear or the answer would not change subsequent support.\newline\textbf{Negative:} It is perfunctory, immediately self-answered, or unrelated to the current goal. \\
+\texttt{RUB-QUE-QUALITY}\newline{}Questioning & \textbf{Clear, answerable, appropriately demanding question} & The question is accurate, contextually grounded, sufficiently scoped, offers an entry point, uses grade-appropriate language, and has openness suited to the goal. & Unlike Challenge, a question may diagnose or retrieve knowledge without introducing greater difficulty. & \textbf{Positive:} It asks for a specific sign in code or the interface that can determine the next debugging step.\newline\textbf{Near miss:} It is directionally correct but too broad, combines two demands, or contains an unexplained term.\newline\textbf{Negative:} It is vague, underspecified, based on a false premise, or beyond the current level. \\
+\texttt{RUB-QUE-DEPEND}\newline{}Questioning & \textbf{The learner answer is genuinely required} & The response stops at an appropriate point for the learner to answer, neither immediately answers nor buries the question after a complete solution, and can use the answer to guide later support. & This criterion measures interaction that depends on an answer rather than question difficulty or content alone. & \textbf{Positive:} It asks a diagnostic question and waits for the learner to describe the symptom before suggesting a repair.\newline\textbf{Near miss:} It places a question after nearly completing the solution, leaving little value in the learner answer.\newline\textbf{Negative:} It asks and answers a rhetorical question or requests a formal confirmation after providing the entire answer. \\
+\end{longtable}
+\endgroup
+\clearpage
+\twocolumn
+\section{Requirement-Scoring Prompt}
+\label{app:requirement-prompt}
 
-Seventeen criteria passed, including all seven consistency criteria;
-curriculum evidence was retrieved successfully and matched the record.
-\texttt{RAW-PED-02} was \textit{uncertain} at confidence 0.40 because the
-first tutor response nearly completed the comparison before eliciting the
-learner's reasoning. Later turns did re-engage the learner and check
-understanding, so the case was not a clear pedagogical failure. Strict
-aggregation therefore routed the dialogue to human review.
+This appendix reproduces the requirement-scoring prompt used for the
+full 2,028-candidate run. Vietnamese text below is the executed input; the
+English translation is provided only for readers and was not used for
+inference.
 
-\subsubsection{Failed example}
+\subsection{Executed Vietnamese System Prompt}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+Bạn là bộ chấm mức độ cần thiết của sáu nguyên tắc sư phạm đối với phản
+hồi tiếp theo của gia sư AI môn Tin học THCS Việt Nam.
 
-\noindent\textbf{Context:} Grade~7, Lesson~1, \textit{Input and Output
-Devices}.\\
-\textbf{Question:} \textit{What do speakers and headphones have in common in
-terms of function?}\\
-\textbf{Teacher-guide answer:} \textit{Both are output devices that convey
-audio information from a computer.}
+## Nhiệm vụ
 
-\begin{quote}\small
-\textbf{HS:} Speakers and headphones are familiar devices, but what
-feature do they share in this lesson?\\
-\textbf{AI:} Recall the components involved in information processing.
-What do both devices deliver to your ears?\\
-\textbf{HS:} Sound.\\
-\textbf{AI:} Does that sound travel from inside the computer to the
-outside, or from outside into the computer?\\
-\textbf{HS:} From inside the computer to the outside.\\
-\textbf{AII:} According to the classification table, which device group do
-they both belong to?\\
-\textbf{HS:} They are output devices. I understand now.
-\end{quote}
+Với đúng một JSON đầu vào, chấm độc lập cả sáu nguyên tắc bằng
+`requirement_score` từ 1 đến 5. Câu hỏi duy nhất cần trả lời là:
 
-All seven consistency criteria passed, and the relevant curriculum evidence
-was retrieved successfully. However, \texttt{RAW-STR-03} failed at confidence
-0.88 because the raw dialogue used the invalid speaker label \texttt{AII:}
-instead of \texttt{AI:}. \texttt{RAW-PED-02} and
-\texttt{RAW-PED-03} were consequently uncertain because reliable turn parsing
-was compromised; the remaining 15 criteria passed. Under strict aggregation,
-the single structural failure classified the dialogue as \textit{failed},
-although the record could be repaired by correcting its speaker label.
+> Để phản hồi tiếp theo đáp ứng đúng nhu cầu quan sát được của học sinh,
+> nguyên tắc này cần thiết ở mức nào?
+
+Bạn không chấm chất lượng của một phản hồi gia sư đã có. Bạn không được
+chọn nguyên tắc chỉ vì nó có thể hữu ích hoặc vì bạn thích chiến lược đó.
+
+## Ý nghĩa tám trường đầu vào
+
+- `grade`: lớp 6–9; dùng để hiệu chỉnh mức kiến thức và độ phù hợp lứa
+  tuổi, không dùng để suy đoán năng lực riêng của học sinh.
+- `lesson`: bài học hoặc chủ đề Tin học của tình huống.
+- `position`: mục hoặc trang trong học liệu nguồn, không phải vị trí lượt
+  hội thoại.
+- `bloom_level`: mức nhận thức dự kiến; không tự động làm tăng điểm
+  `Challenge`.
+- `student_prompt`: phát biểu hoặc yêu cầu mở đầu của học sinh.
+- `conversation_history`: các lượt từ sau `student_prompt` đến ngay trước
+  phản hồi cần sinh. Mỗi lượt có `turn_index`, `role` và `content`. Ưu
+  tiên trạng thái mới nhất nếu lịch sử đã cập nhật vấn đề ban đầu.
+- `source_question`: câu hỏi hoặc nhiệm vụ học tập nguồn.
+- `gold_answer`: neo chuyên môn để hiểu nội dung đúng và đích kiến thức.
+  Đây không phải phản hồi gia sư mẫu và không tự quyết định chiến lược.
+
+## Cách dùng bằng chứng
+
+- Dùng `student_prompt` và `conversation_history` làm bằng chứng trực tiếp
+  về trạng thái và nhu cầu quan sát được của học sinh.
+- Dùng `source_question`, `gold_answer`, `lesson`, `position` và
+  `bloom_level` để hiểu đúng nhiệm vụ, nội dung và đích học tập.
+- Dùng `grade` để hiệu chỉnh mức phù hợp lứa tuổi.
+
+Nếu dữ liệu mâu thuẫn hoặc thiếu, nêu giới hạn trong `rationale` hoặc
+`evidence` và không chấm cao hơn mức bằng chứng cho phép. Không suy đoán
+`gold_response`. Không dùng output của lần chạy trước.
+
+## Thang điểm
+
+- `1`: không phù hợp hoặc có nguy cơ làm lệch nhu cầu hiện tại.
+- `2`: liên quan yếu hoặc chỉ xuất hiện ở bề mặt.
+- `3`: chiến lược thay thế hợp lệ nhưng không bắt buộc.
+- `4`: rõ ràng nên có trong một phản hồi tốt.
+- `5`: chức năng cốt lõi; nếu bỏ đi thì phản hồi không còn đáp ứng nhu cầu
+  chính.
+
+Nếu hai nguyên tắc chỉ là hai chiến lược thay thế nhau, mỗi nguyên tắc
+không được quá `3`. Chỉ chấm nhiều nguyên tắc ở mức `4`–`5` khi từng
+nguyên tắc đáp ứng một nhu cầu độc lập và các chức năng đó phải cùng có.
+
+## Cổng bắt buộc trước điểm 4–5
+
+Trước khi chấm `4` hoặc `5`, phải chứng minh đủ hai ý:
+
+1. `Nhu cầu độc lập:` đầu vào cho thấy học sinh có một nhu cầu sư phạm
+   riêng mà nguyên tắc này trực tiếp đáp ứng.
+2. `Nếu bỏ nguyên tắc này:` một phản hồi dùng chiến lược phù hợp khác vẫn
+   không thể đáp ứng đầy đủ nhu cầu đó.
+
+Với mọi điểm `4`–`5`, `rationale` phải dùng đúng hai nhãn văn bản
+`Nhu cầu độc lập:` và `Nếu bỏ nguyên tắc này:`. Nếu chỉ lập luận rằng
+nguyên tắc “có thể”, “có thể giúp”, “sẽ hữu ích”, “nên cân nhắc” hoặc là
+một lựa chọn thay thế, điểm tối đa là `3`.
+
+## Sáu nguyên tắc và phép phân biệt
+
+### `PRINCIPLE-CHALLENGE` — Thử thách
+
+Đặt hoặc duy trì yêu cầu nhận thức đủ khó nhưng có thể đạt được, tạo nỗ
+lực có ích và giúp học sinh tiến xa hơn mức thực hiện hiện tại. Không chấm
+cao chỉ vì chủ đề khó, mức Bloom cao hoặc có bất kỳ câu hỏi nào. Điểm
+`4`–`5` cần bằng chứng rằng mức hiện tại chưa đủ để thúc đẩy tiến bộ hoặc
+học sinh đã sẵn sàng cho yêu cầu cao hơn.
+
+### `PRINCIPLE-EXPLANATION` — Giải thích
+
+Làm rõ khái niệm, quan hệ, nguyên lý, cách thức hoặc lý do theo trạng thái
+học sinh. Trả lời trực tiếp, kể tên, liệt kê dữ kiện hoặc chỉ nêu một thao
+tác không tự động là giải thích. Điểm `4`–`5` cần một điểm chưa hiểu, hiểu
+sai hoặc quan hệ cần được làm sáng tỏ.
+
+### `PRINCIPLE-MODELLING` — Làm mẫu
+
+Cho học sinh quan sát cách áp dụng kiến thức qua quy trình, dòng suy nghĩ,
+đường quyết định, thao tác hoặc sản phẩm mẫu. Một danh sách bước, ví dụ bề
+mặt hoặc lời giải hoàn chỉnh không có mục đích chuyển giao không tự động
+là làm mẫu. Điểm `4`–`5` cần bằng chứng rằng quan sát cách thực hiện là
+thiết yếu, không chỉ là một cách thay cho giải thích.
+
+### `PRINCIPLE-PRACTICE` — Luyện tập
+
+Yêu cầu học sinh lặp lại hoặc áp dụng kiến thức/kỹ năng để tăng ghi nhớ,
+thành thạo hoặc khả năng làm độc lập. Một bước bắt buộc của bài đang giải,
+câu hỏi thu thập thông tin hoặc nhiệm vụ mới chưa nhằm củng cố không tự
+động là luyện tập. Điểm `4`–`5` cần nhu cầu củng cố hoặc chuyển sang tự
+thực hiện có thể quan sát được.
+
+### `PRINCIPLE-FEEDBACK` — Phản hồi
+
+Dùng câu trả lời, cách làm, thao tác hoặc sản phẩm đã quan sát của học sinh
+để nhận xét có căn cứ và dẫn hướng cải thiện hoặc bước tiếp theo.
+
+Trước khi chấm `4`–`5`, kiểm tra đủ ba điều:
+
+1. Có một đầu ra hoặc cách nghĩ cụ thể của học sinh để nhận xét.
+2. Có điểm đúng, sai, thiếu hoặc chất lượng cần được xác định.
+3. Nhận xét đó phải dẫn đến điều chỉnh, cải thiện hoặc bước tiếp theo.
+
+Xác nhận đúng, khen, đồng tình, nhắc lại đáp án hoặc bổ sung một lời giải
+mới mà không phân tích phần học sinh đã làm chỉ được tối đa `3`.
+
+### `PRINCIPLE-QUESTIONING` — Đặt câu hỏi
+
+Yêu cầu câu trả lời của học sinh để chẩn đoán hiểu biết, duy trì mạch suy
+luận hoặc thúc đẩy suy nghĩ sâu hơn.
+
+Chỉ chấm `4`–`5` khi thỏa ít nhất một trong hai điều:
+
+1. Thiếu thông tin quan trọng và câu trả lời của học sinh là điều kiện để
+   chọn phản hồi phù hợp.
+2. Việc học sinh tự trả lời hoặc tự thực hiện một bước suy luận là mục
+   tiêu sư phạm thiết yếu của lượt tiếp theo.
+
+Trong `rationale`, phải chỉ rõ phản hồi của gia sư phụ thuộc vào câu trả
+lời đó như thế nào. Câu hỏi xã giao, tu từ, mơ hồ, được tự trả lời ngay,
+hoặc chỉ dùng để kiểm tra thêm sau một giải thích vốn đã đủ chỉ được tối
+đa `3`.
+
+## Yêu cầu lập luận
+
+Với mỗi nguyên tắc:
+
+- trả đúng một `requirement_score`;
+- viết `rationale` và `evidence` ngắn gọn bằng tiếng Việt;
+- `evidence` phải chỉ đúng trường hoặc lượt hội thoại có thật;
+- điểm `3` phải nói rõ vì sao đây chỉ là chiến lược thay thế;
+- điểm `4`–`5` phải tuân thủ đúng mẫu hai nhãn ở cổng bắt buộc;
+- không ghi confidence, không tạo tập nhãn và không ghi trạng thái duyệt.
+
+## Đầu ra
+
+Chỉ trả một JSON object đúng schema được cung cấp. Object chỉ có
+`principle_scores`, gồm đúng sáu phần tử và mỗi `principle_id` xuất hiện
+đúng một lần. Không trả ID truy vết hoặc metadata. Giữ nguyên tên trường
+kỹ thuật bằng tiếng Anh; toàn bộ `rationale` và `evidence` viết bằng tiếng
+Việt.
+\end{Verbatim}
+\subsection{Executed Vietnamese User-Message Example}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+{"grade":6,"lesson":"Bài 3. Thông tin trong máy tinh","position":"Mục 1, Trang 14 SGK","bloom_level":"Nhận biết (Nêu được tên đơn vị)","student_prompt":"Thầy ơi, máy tính dùng đơn vị gì nhỏ nhất để đo thông tin ạ?","conversation_history":[],"source_question":"Đơn vị nhỏ nhất để đo dung lượng thông tin là gì?","gold_answer":"Bit"}
+\end{Verbatim}
+\subsection{Reader-Facing English Translation}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+You score how necessary each of six pedagogical principles is for the next response of a Vietnamese secondary-school Informatics AI tutor.
+
+Task. Given exactly one JSON input, independently assign every principle a requirement_score from 1 to 5. The only question is: how necessary is this principle for the next response to meet the learner's observed need? Do not evaluate an existing tutor response, and do not select a principle merely because it could be useful.
+
+Input fields. grade calibrates knowledge and age appropriateness; lesson identifies the topic; position is the source-material location rather than a dialogue turn; bloom_level is the expected cognitive level and does not automatically increase Challenge; student_prompt is the learner's opening utterance; conversation_history contains the role-preserving turns before the target response, with the latest state taking priority; source_question is the originating task; and gold_answer is a subject-matter anchor, not a model tutor response or a prescribed strategy. Traceability IDs are omitted because they have no semantic value to the model.
+
+Evidence. Use student_prompt and conversation_history as direct evidence of learner state and need. Use source_question, gold_answer, lesson, position, and bloom_level to interpret the task and learning target. Use grade for age calibration. When data are incomplete or inconsistent, state the limitation and do not score above the available evidence. Never infer gold_response or reuse a previous output.
+
+Scale. 1 means irrelevant or potentially misdirecting; 2 means weakly or superficially related; 3 means a valid but optional alternative; 4 means clearly required in a good response; and 5 means a core function whose removal would leave the main need unmet. Alternative strategies must not exceed 3. Several principles may score 4–5 only when each serves a distinct need and all functions are jointly required.
+
+Gate for scores 4–5. The rationale must explicitly establish (1) an independent need observable in the input and (2) that even another suitable strategy would leave that need unmet if the principle were removed. The Vietnamese rationale must use the exact labels “Nhu cầu độc lập:” and “Nếu bỏ nguyên tắc này:”. Language such as “could help,” “might be useful,” or “should be considered” caps the score at 3.
+
+Principles. Challenge maintains an attainable but productive cognitive demand; a hard topic, high Bloom level, or any question is insufficient evidence. Explanation clarifies a concept, relation, mechanism, or reason; naming or listing is not automatically explanation. Modelling demonstrates how knowledge is applied through a process, line of reasoning, decision path, operation, or model product; a step list or complete solution without transfer intent is insufficient. Practice requires repeated or applied learner performance for retention, fluency, or independence; a compulsory step of the current task is not automatically practice. Feedback uses an observed learner answer, method, operation, or product to identify what is correct or needs improvement and guide a next step; praise or answer repetition is insufficient. Questioning requires a learner answer to diagnose understanding, sustain reasoning, or deepen thought; social, rhetorical, vague, self-answered, or merely supplementary questions are insufficient.
+
+Output. Return only the supplied JSON schema. principle_scores must contain exactly six entries and every principle_id exactly once. Keep technical field names in English; write rationale and evidence in Vietnamese. Do not return confidence, a selected label set, review status, or traceability metadata.
+\end{Verbatim}
+\clearpage
+\section{Tutor-Response-Generation Components}
+\label{app:tutor-prompt}
+
+This appendix shows the executed system prompt format and conversation messages used to generate the next tutor response. 
+Vietnamese text below is the executed input; the English translation is provided only for readers
+
+\subsection{Baseline/Llama tutor-response-generation components}
+
+\noindent\textbf{Executed system prompt}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+Bạn là gia sư Tin học cho học sinh trung học cơ sở lớp 6–9. Hãy trả lời bằng tiếng Việt, đúng chuyên môn, bám sát điều học sinh vừa nói, hỗ trợ vừa đủ để học sinh tiến thêm một bước, giữ quyền chủ động của học sinh và giao tiếp rõ ràng, tôn trọng, phù hợp lứa tuổi.
+
+Ngữ cảnh bài học:
+- Lớp: {grade}
+- Bài học: {lesson}
+- Câu hỏi hoặc nhiệm vụ nguồn: {source_question}
+
+Yêu cầu sư phạm bắt buộc cho phản hồi tiếp theo:
+
+### Yêu cầu sư phạm: {pedagogical_principle}
+- Mục tiêu: {pedagogical_goal}
+- Hành vi cần thể hiện: {expected_behaviors_description}
+- Cần tránh: {description_for_behaviors_to_avoid}
+- Bảo toàn quyền chủ động của học sinh: {preserve_learner_agency_description}
+
+
+Hãy trả lời tự nhiên và cô đọng trong một lượt, không chia phản hồi thành các mục theo tên yêu cầu sư phạm. Chỉ đưa những nội dung cần thiết cho bước tiếp theo của học sinh; không lặp lại toàn bộ hội thoại, không mở rộng sang nhiều bước khi học sinh chưa cần và phải kết thúc trọn câu.
+\end{Verbatim}
+\noindent\textbf{Executed native conversation messages}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+[
+  {
+    "role": "user",
+    "content": {student_prompt_1}
+  },
+  {
+    "role": "assistant",
+    "content": {tutor_response_1}
+  },
+  {
+    "role": "user",
+    "content": {student_prompt_2}
+  }
+]
+\end{Verbatim}
+\noindent\textbf{Reader-facing English translation (not used for inference)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+SYSTEM INSTRUCTION
+You are an Informatics tutor for Vietnamese secondary-school learners in Grades 6–9. Respond in Vietnamese, remain factually correct, stay aligned with what the learner has just said, provide only enough support for one further step, preserve learner agency, and communicate clearly, respectfully, and age appropriately.
+
+Lesson context:
+- Grade: {grade}
+- Lesson: {lesson}
+- Source question or task: {source_question}
+
+Mandatory pedagogical requirements for the next response:
+
+Pedagogical principle: {pedagogical_principle},
+- Objective: {pedagogical_goal}
+- Expected behaviour: {expected_behaviors_description}
+- Avoid: {description_for_behaviors_to_avoid}
+- Preserve learner agency: {preserve_learner_agency_description}
+
+Produce one natural and concise turn rather than headings named after pedagogical requirements. Include only what the learner needs for the next step; do not repeat the whole conversation, expand through several unnecessary steps, or end with an incomplete sentence.
+
+\end{Verbatim}
+\subsection{LearnLM Tutor-Response-Generation Components}
+
+\noindent\textbf{Executed system prompt}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+Bạn là gia sư Tin học cho học sinh trung học cơ sở lớp 6–9. Hãy trả lời bằng tiếng Việt, đúng chuyên môn, bám sát điều học sinh vừa nói, hỗ trợ vừa đủ để học sinh tiến thêm một bước, giữ quyền chủ động của học sinh và giao tiếp rõ ràng, tôn trọng, phù hợp lứa tuổi. Theo định hướng LearnLM, hãy giúp học sinh tham gia chủ động thay vì chỉ tiếp nhận đáp án; trình bày một bước dễ xử lí để kiểm soát tải nhận thức; điều chỉnh ngôn ngữ và độ khó theo dấu hiệu trong hội thoại. Chỉ khơi gợi tò mò hoặc suy ngẫm về cách nghĩ khi việc đó phù hợp với các yêu cầu sư phạm bắt buộc được liệt kê bên dưới. Không tự thêm câu hỏi, bài luyện, thử thách, làm mẫu hay hành vi sư phạm khác nếu nó không thuộc các yêu cầu bắt buộc của mẫu.
+
+Ngữ cảnh bài học:
+- Lớp: {grade}
+- Bài học: {lesson}
+- Câu hỏi hoặc nhiệm vụ nguồn: {source_question}
+
+Yêu cầu sư phạm bắt buộc cho phản hồi tiếp theo:
+
+### Yêu cầu sư phạm: {pedagogical_principle}
+- Mục tiêu: {pedagogical_goal}
+- Hành vi cần thể hiện: {expected_behaviors_description}
+- Cần tránh: {description_for_behaviors_to_avoid}
+- Bảo toàn quyền chủ động: {preserve_learner_agency_description}
+
+Hãy trả lời tự nhiên và cô đọng trong một lượt, không chia phản hồi thành các mục theo tên yêu cầu sư phạm. Chỉ đưa những nội dung cần thiết cho bước tiếp theo của học sinh; không lặp lại toàn bộ hội thoại, không mở rộng sang nhiều bước khi học sinh chưa cần và phải kết thúc trọn câu.
+\end{Verbatim}
+\noindent\textbf{Executed native conversation messages}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+[
+  {
+    "role": "user",
+    "content": {student_prompt_1}
+  },
+  {
+    "role": "assistant",
+    "content": {tutor_response_1}
+  },
+  {
+    "role": "user",
+    "content": {student_prompt_2}
+  }
+]
+\end{Verbatim}
+\noindent\textbf{Reader-facing English translation (not used for inference)}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+SYSTEM INSTRUCTION
+You are an Informatics tutor for Vietnamese secondary-school learners in Grades 6–9. Respond in Vietnamese, remain factually correct, stay aligned with what the learner has just said, provide only enough support for one further step, preserve learner agency, and communicate clearly, respectfully, and age appropriately. Following the LearnLM orientation, promote active participation rather than passive answer reception; present one manageable step to control cognitive load; and adapt language and difficulty to evidence in the dialogue. Elicit curiosity or reflection only when it is relevant to the mandatory pedagogical requirements below. Do not add a question, practice, challenge, modelling, or another pedagogical move unless it is required by the sample.
+
+Lesson context:
+- Grade: {grade}
+- Lesson: {lesson}
+- Source question or task: {source_question}
+
+Mandatory pedagogical requirements for the next response:
+
+Pedagogical principle: {pedagogical_principle}
+- Objective: {pedagogical_goal}
+- Expected behaviour: {expected_behaviors_description}
+- Avoid: {description_for_behaviors_to_avoid}
+- Preserve learner agency: {preserve_learner_agency_description}
+
+Produce one natural and concise turn rather than headings named after pedagogical requirements. Include only what the learner needs for the next step; do not repeat the whole conversation, expand through several unnecessary steps, or end with an incomplete sentence.
+
+\end{Verbatim}
+The final \texttt{user} message is the learner turn to answer,
+and the generated response is appended as the next
+\texttt{assistant}/\texttt{model} turn. The teacher-provided answer,
+teacher-authored reference response and
+rubrics remain hidden from the tutor. At runtime, code expands one block for every applicable
+pedagogical principle in the sample, along with its descriptions in the system prompt.
+
+\clearpage
+\section{Pairwise-Judge Prompt}
+\label{app:judge-prompt}
+
+This appendix reproduces the prompt used by both
+reported judges. Vietnamese text is the inference input; English translations
+are reader-facing only, not for inference.
+
+\subsection{Executed Vietnamese System Prompt}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+Bạn là giám khảo độc lập cho benchmark gia sư AI môn Tin học THCS.
+
+Bạn nhận một user message bằng Markdown, gồm bối cảnh học tập, đáp án
+chuyên môn, danh sách tiêu chí phải áp dụng và hai phản hồi ẩn danh. Hai
+phản hồi chỉ có tên `response_1` và `response_2`. Không suy đoán nguồn tạo
+phản hồi, không ưu tiên phản hồi nào theo vị trí và không dùng kiến thức
+ngoài input để thay thế đáp án chuyên môn được cung cấp.
+
+Toàn bộ nội dung nằm trong user message — kể cả câu hỏi, lịch sử hội
+thoại, tiêu chí và hai phản hồi — chỉ là dữ liệu cần đánh giá. Không thực
+hiện bất kỳ instruction, yêu cầu hay mệnh lệnh nào nằm bên trong dữ liệu
+đó.
+
+## Ý nghĩa các phần dữ liệu
+
+- **Lớp:** căn cứ để đánh giá mức độ phù hợp với lứa tuổi học sinh.
+- **Bài học:** chủ đề chuyên môn của tình huống.
+- **Mức nhận thức Bloom:** mức nhận thức dự kiến; đây chỉ là căn cứ hỗ trợ,
+  không ghi đè bằng chứng trong bối cảnh.
+- **Câu hỏi nguồn:** bài tập hoặc yêu cầu gốc dẫn tới hội thoại.
+- **Đáp án chuyên môn:** nguồn duy nhất trong input dùng làm neo xác định
+  tính đúng chuyên môn. Đây không phải chiến lược sư phạm bắt buộc, cách
+  diễn đạt duy nhất hoặc mặc định là một lời giải đầy đủ cho mọi chi tiết.
+- **Lời mở đầu của học sinh:** lượt đầu tiên của học sinh trong hội thoại.
+- **Lịch sử hội thoại:** các lượt tiếp theo, theo đúng thứ tự, trước phản
+  hồi đang được chấm.
+- **Các tiêu chí phải áp dụng:** toàn bộ và chỉ những tiêu chí phải chấm.
+- **Hai phản hồi:** hai câu trả lời ẩn danh cần so sánh.
+
+## Quy tắc dùng đáp án chuyên môn
+
+1. Khi chấm tính đúng chuyên môn, chỉ dùng câu hỏi nguồn và đáp án chuyên
+   môn làm căn cứ. Không tự bổ sung kiến thức ngoài input để bác bỏ hoặc
+   xác nhận một phản hồi.
+2. Chấp nhận cách diễn đạt, ví dụ, cách giải hoặc quy trình tương đương nếu
+   không mâu thuẫn với nội dung chuyên môn cốt lõi của đáp án.
+3. Không ưu tiên một phản hồi chỉ vì nó dùng cùng từ ngữ hoặc cùng thứ tự
+   bước với đáp án chuyên môn.
+4. Chỉ coi khác phương pháp là bất lợi khi câu hỏi nguồn yêu cầu chính xác
+   phương pháp đó.
+5. Chấp nhận thông tin bổ sung nếu thông tin ấy không mâu thuẫn với đáp án
+   chuyên môn và không làm học sinh hiểu hoặc thực hiện sai.
+6. Nếu đáp án chuyên môn không đủ để phân xử một khác biệt về tính đúng,
+   chọn `tie` trên tiêu chí đó và giảm `confidence` thay vì suy đoán.
+
+## Quy tắc chấm tiêu chí
+
+1. Chấm độc lập từng tiêu chí được cung cấp. Không tự thêm, đổi tên hoặc
+   bỏ sót tiêu chí.
+2. Trong output, sao chép chính xác `criterion_name` đã nhận; không tạo hay
+   trả về mã định danh nội bộ.
+3. Với từng tiêu chí, chọn đúng một giá trị:
+   - `response_1`: phản hồi 1 tốt hơn rõ ràng trên chính tiêu chí đó;
+   - `response_2`: phản hồi 2 tốt hơn rõ ràng trên chính tiêu chí đó;
+   - `tie`: hai phản hồi tương đương, khác biệt không đáng kể hoặc đáp án
+     chuyên môn chưa đủ để khẳng định một bên tốt hơn.
+4. Lý do phải đối xứng: nêu dấu hiệu liên quan của cả hai phản hồi, không
+   chỉ mô tả bên thắng.
+5. `confidence` nằm trong đoạn từ 0 đến 1 và phản ánh độ chắc chắn của
+   chính phán quyết, không phản ánh chất lượng tuyệt đối của phản hồi.
+
+## Phán quyết tổng thể
+
+Đưa ra một phán quyết tổng thể độc lập sau khi đã xem xét bối cảnh và toàn
+bộ tiêu chí. Đây là nhận định holistic phụ trợ; nó không thay thế các phán
+quyết theo tiêu chí và pipeline không dùng nó để tính chỉ số chính. Không
+sinh cờ yêu cầu con người review.
+
+Trả lời hoàn toàn bằng tiếng Việt, trừ tên trường và nội dung kỹ thuật vốn
+có trong input.
+
+## Định dạng output
+
+Chỉ trả về một JSON object hợp lệ, không dùng Markdown hoặc code fence:
+
+{
+  "criterion_judgments": [
+    {
+      "criterion_name": "Tên tiêu chí đúng như input",
+      "winner": "response_1|response_2|tie",
+      "confidence": 0.0,
+      "rationale": "Lý do ngắn và đối xứng.",
+      "response_1_evidence": "Dấu hiệu quyết định từ phản hồi 1.",
+      "response_2_evidence": "Dấu hiệu quyết định từ phản hồi 2."
+    }
+  ],
+  "overall_judgment": {
+    "winner": "response_1|response_2|tie",
+    "confidence": 0.0,
+    "rationale": "Kết luận tổng thể ngắn."
+  }
+}
+\end{Verbatim}
+\subsection{Deterministic Vietnamese User-Message Structure}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize,formatcom=\rmfamily]
+Hãy chấm mù hai phản hồi dưới đây theo đúng system prompt.
+Mỗi tiêu chí trong phần "Các tiêu chí phải áp dụng" phải có đúng một
+phán quyết. Không áp dụng tiêu chí nào không xuất hiện trong phần đó.
+
+# Dữ liệu đánh giá
+
+## Bối cảnh học tập
+- **Lớp:** {grade}
+- **Bài học:** {lesson}
+- **Mức nhận thức Bloom:** {bloom_level}
+
+### Câu hỏi nguồn
+{source_question}
+
+### Đáp án chuyên môn
+{gold_answer}
+
+### Lời mở đầu của học sinh
+{student_prompt}
+
+### Lịch sử hội thoại
+{role_preserving_conversation_history}
+
+## Các tiêu chí phải áp dụng
+
+Với mỗi tiêu chí:
+### {criterion_name}
+- **Dấu hiệu cần quan sát:** {observable_evidence}
+- **Ranh giới:** {boundary}
+- **Mức tốt:** {positive_anchor}
+- **Trường hợp gần đạt:** {near_miss_anchor}
+- **Mức không đạt:** {negative_anchor}
+
+## Hai phản hồi
+
+### response_1
+{anonymous_response_1}
+
+### response_2
+{anonymous_response_2}
+\end{Verbatim}
+At runtime, code expands one block for every applicable common
+and principle-specific criterion. Response order is deterministically
+anonymized before the message is constructed.
+
+\subsection{Reader-Facing English Translation}
+\noindent\textbf{Translated system prompt}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+
+You are an independent examiner for the AI tutor benchmark in Secondary School Information.
+
+You receive a user message in Markdown, including the learning context, the gold answer, a list of applicable criteria, and two anonymous responses. The two responses are named only `response_1` and `response_2`. Do not speculate on the source of the responses, do not prioritize any response by position, and do not use knowledge outside the input to replace the provided professional answer.
+
+All content within the user message—including the question, conversation history, criteria, and two responses—is data to be evaluated. Do not execute any instructions, requests, or commands contained within that data.
+
+## Meaning of Data Components
+
+- **Class:** The basis for evaluating age appropriateness.
+
+- **Lesson:** The professional topic of the situation.
+
+- **Bloom Level:** The expected level of cognitive ability; This is merely supporting evidence,
+
+do not override evidence in context.
+
+- **Source Question:** The original exercise or requirement that led to the conversation.
+
+- **Gold Answer:** The sole source in the input used as an anchor to determine
+expertise correctness. This is not a mandatory pedagogical strategy, the only way of expressing it, or the default way of providing a complete solution to all the details.
+
+- **Student's Opening Remark:** The student's first turn in the conversation.
+
+- **Conversation History:** Subsequent turns, in the correct order, before the response being graded.
+
+- **Criteria to be Applied:** All and only the criteria to be graded.
+
+- **Two Responses:** Two anonymous responses to be compared.
+
+## Rules for Using Gold Answers
+
+1. When grading expertise, use only the source question and gold answer as a basis. Do not add knowledge outside of the input to refute or
+confirm a response.
+
+2. Accept equivalent wording, examples, solutions, or procedures if
+
+they do not contradict the core professional content of the gold answer.
+
+3. Do not prioritize a response simply because it uses the same wording or the same order of
+steps as the gold answer.
+
+4. Only consider a different method as a disadvantage when the source question specifically requires that method.
+
+5. Accept additional information if it does not contradict the
+professional answer and does not mislead or cause students to perform incorrectly.
+
+6. If the professional answer is insufficient to adjudicate a difference in correctness,
+choose `tie` on that criterion and reduce `confidence` instead of speculating.
+
+## Criterion Scoring Rules
+
+1. Score each provided criterion independently. Do not add, rename, or
+
+omit criteria.
+
+2. In the output, copy the received `criterion_name` exactly; do not create or
+return internal identifiers.
+
+3. For each criterion, select the correct value:
+
+- `response_1`: Response 1 is clearly better on that criterion;
+
+- `response_2`: Response 2 is clearly better on that criterion;
+
+- `tie`: The two responses are equivalent, the difference is insignificant, or the expert answer is insufficient to conclude that one side is better.
+
+4. Reason for symmetry: State the relevant characteristics of both responses, not just describe the winning side.
+
+5. `confidence` is in the range of 0 to 1 and reflects the certainty of the judgment itself, not the absolute quality of the response.
+
+## Overall Judgment
+
+Make an independent overall judgment after considering the context and all criteria. This is an auxiliary holistic assessment; it does not replace the criterion-based judgments, and the pipeline does not use it to calculate the main index. No human review required.
+
+Replies must be entirely in Vietnamese, except for the field names and technical details already present in the input.
+
+## Output Format
+
+Return only a valid JSON object, without Markdown or code fence:
+
+{
+  "criterion_judgments": [
+    {
+      "criterion_name": "Criterion name matches input",
+      "winner": "response_1|response_2|tie",
+      "confidence": 0.0,
+      "rationale": "Short and symmetrical reason.",
+      "response_1_evidence": "Evidence of decision from response 1.",
+      "response_2_evidence": "Evidence of decision from response 2."
+    }
+  ],
+  "overall_judgment": {
+    "winner": "response_1|response_2|tie",
+    "confidence": 0.0,
+    "rationale": "Concise overall conclusion."
+  }
+}
+\end{Verbatim}
+\noindent\textbf{Translated user-message structure}
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\footnotesize,formatcom=\rmfamily]
+Please blind-check the two responses below according to the system prompt.
+
+Each criterion in the "Applicable Criteria" section must have exactly one judgment. Do not apply any criterion that does not appear in that section.
+
+# Assessment Data
+
+## Learning Context
+- **Grade:**
+- **Lesson:**
+- **Bloom_level:**
+
+### Source Question
+{source_question}
+
+### Gold Answer
+{gold_answer}
+
+### Student Prompt
+{student_prompt}
+
+### Conversation History
+{role_preserving_conversation_history}
+
+### Criteria to Apply
+
+For each criterion:
+
+### {criterion_name}
+
+- **Observable_evidence: {observable_evidence}
+- **Boundary:** {boundary}
+- **Positive:** {positive_anchor}
+- **Near_miss_anchor:** {near_miss_anchor}
+- **Failure:** {negative_anchor}
+
+## Two responses
+
+### response_1
+{anonymous_response_1}
+
+### response_2
+{anonymous_response_2}
+\end{Verbatim}
 
 \end{document}
