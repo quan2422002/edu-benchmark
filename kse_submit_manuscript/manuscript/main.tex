@@ -33,14 +33,13 @@ pipeline audits the dialogues, establishes six pedagogical principles and six
 tutor capabilities, and converts eligible tutor turns into 2,028
 context-conditioned candidates from 665 retained dialogue families. A
 grounded LLM scores the necessity of all six principles; deterministic checks
-retain 1,400 candidates across 655 dialogue families. Our evaluation framework
-preserves native multi-turn roles and compares generated and teacher-authored
+retain 1,400 candidates across 665 dialogue families. Our evaluation framework
+preserves native multi-turn roles and compares tutor generated and teacher-authored
 responses using four common criteria, three criteria per required principle,
 and criterion-level Win/Tie/Lose judgments. We evaluate three tutor
 configurations---two Gemini-based tutors and Llama~4~Maverick---whose responses
-are independently assessed by two LLM judges. Together, the pipeline and
-framework provide a curriculum-grounded protocol for Vietnamese Informatics
-tutoring.
+are independently assessed by two LLM judges. Together, the construction pipeline and evaluation framework provide
+a curriculum-grounded protocol for Vietnamese Informatics tutoring.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -98,7 +97,7 @@ The paper makes three contributions:
     \item a context-specific rubric library and evaluation method combining
     common and required-principle criteria; and
     \item \benchmarkname, with 1,400 completed Vietnamese Grades~6--9
-    Informatics tutoring samples across 655 raw dialogues.
+    Informatics tutoring samples across 665 raw dialogues.
 \end{enumerate}
 
 \section{Related Work and Background}
@@ -161,18 +160,19 @@ and Phase~2 provide complementary inputs to Phase~3.}
 \subsection{Phase 1: Teacher-Authored Dialogues Audit}
 
 Phase~1 audited 1,050 Grades~6--9 Vietnamese Informatics dialogues authored
-by Hanoi Metropolitan University (HNMU) teachers. Curriculum grounding used
-154 OCR-derived SGK/SGV lesson-based Markdown units, normalized into 2,750 traceable
-fragments and a rebuildable SQLite full-text search index.
+by Hanoi Metropolitan University (HNMU) teachers. Curriculum grounding used eight source documents of two types: student textbooks (SGK) and teacher guides (SGV).
+After converting the source document into 154 OCR-derived SGK/SGV lesson-based Markdown units, the process normalized these units into 2,750 traceable
+fragments and a rebuildable SQLite full-text search index, used for the audit on each dialogue.
 
-The hybrid audit combined code checks of coverage, required fields and duplicates with semantic and pedagogical review by
+The audit followed a three-stage hybrid workflow. First, deterministic code normalized and traced the raw records, measured batch-level coverage,
+detected missing fields and formatting anomalies and identified exact or near-duplicate pairs. Second, the dialogues were reviewed by
 \texttt{hnmu-dialogue-auditor} AI agent, using \texttt{gpt-5.4-mini} at medium reasoning
-effort. It apply a 18-criterion checking covering structure (3 criteria), consistency (7 criteria), pedagogy (6 criteria), and
+effort. It applied an 18-criterion checklist covering structure (3 criteria), consistency (7 criteria), pedagogy (6 criteria), and
 duplicate risk (2 criteria), using raw fields, SGK/SGV evidence retrieved from the full-text search index, and HNMU
 guidance about scaffolding method and Bloom cognitive levels. Strict aggregation marked any failed criterion as \textit{failed},
 otherwise any uncertain criterion as \textit{need human review}, and the rest
-as \textit{passed}. It retained 665 dialogues, routed 382 to review, and
-rejected 3.
+as \textit{passed}. The detailed checklist and examples of pass, uncertain, and fail cases are shown in Appendix~\ref{app:checklist}. At the end of this phase,
+665 dialogues were retained, 382 were routed to human review due to uncertainty, and 3 were rejected.
 
 \begin{table}[H]
 \caption{Basic statistics of the 665 dialogues retained after Phase~1.}
@@ -262,13 +262,13 @@ semantic linting, and eligibility gates.
 \subsubsection{Eligible benchmark pool and descriptive statistics}
 The run contains 12,168 scores for 2,028 candidates. Eligibility requires
 one to three principles; context-traceable evidence; an independent need and
-counterfactual for every score of 4 or 5; no optionality conflict (e.g. 
+counterfactual for every score of 4 or 5; no optionality conflict (e.g.
 Feedback must guide improvement beyond praise, and Questioning must make an
 answer necessary rather than merely useful.); and a
 principle set appearing in at least five candidates from three families.
 
 
-These gates retain 1,400 candidates from 655 Phase~1 dialogues and exclude
+These gates retain 1,400 candidates from 665 Phase~1 dialogues and exclude
 628. Overlapping flags comprise 592 confirmation-only Feedback cases, 20
 inconsistent score-4/5 rationales, 10 Questioning cases without answer
 dependency, 8 cases with no score at least 4, 7 unsupported combinations, and
@@ -335,7 +335,7 @@ are \textit{(i)} holistic Overall Judgement Accuracy; \textit{(ii)}
 General-Level Accuracy over four common criteria; \textit{(iii)}
 Principle-Level Accuracy over three criteria per required principle; and
 \textit{(iv)} Overall Accuracy, averaging General and mean Principle scores.
-Family-macro Overall weights each of 655 dialogue families equally. CIs and
+Family-macro Overall weights each of 665 dialogue families equally. CIs and
 differences use 5,000 cluster-bootstrap resamples over \texttt{sample\_id};
 4,995 cover all six principles.
 
@@ -503,7 +503,7 @@ Overall Accuracy & 1,400 & 84.01 & 84.78 & +0.77 [-0.48, 2.14] \\
 \vspace{2pt}
 
 \footnotesize \(\Delta=\) LearnLM-oriented minus baseline. The paired
-percentile intervals use 5,000 cluster-bootstrap draws over 655 source-dialogue
+percentile intervals use 5,000 cluster-bootstrap draws over 665 source-dialogue
 families. Challenge and Overall Accuracy have 4,999 valid draws because one
 draw contains no Challenge observation; all other rows have 5,000.
 \end{table}
@@ -701,5 +701,207 @@ necessary next steps for future work.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
+
+\clearpage
+\appendices
+\section{Phase 1 Agent-Audit Checklist and Examples}
+\label{app:checklist}
+
+The complete Phase~1 workflow also contained deterministic batch-level and
+process checks. This appendix reports only the 18 criteria applied to every
+dialogue by the \texttt{hnmu-dialogue-auditor}. The agent evaluated each
+criterion independently as \textit{pass}, \textit{fail},
+\textit{uncertain}, or \textit{not applicable}. It received the raw fields,
+mechanical flags produced by code, retrieved SGK/SGV evidence, and the HNMU
+guidance on scaffolding and cognitive levels.
+Table~\ref{tab:agent-checklist} gives the operational checks.
+
+\begin{table*}[!t]
+\caption{The 18 criteria in the per-dialogue agent audit.}
+\label{tab:agent-checklist}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{0.98}
+\begin{tabular}{p{0.11\textwidth}p{0.10\textwidth}p{0.22\textwidth}p{0.49\textwidth}}
+\hline
+ID & Group & Criterion & Operational check and evidence \\
+\hline
+\texttt{RAW-STR-02} & Structure & Core fields are present &
+Check that the question, teacher-guide answer, and dialogue contain enough
+information to be audited; use code-generated missing-field flags as input. \\
+\texttt{RAW-STR-03} & Structure & Speaker labels are valid &
+Check that learner and tutor turns can be parsed reliably; use mechanical
+speaker-label flags and the raw dialogue. \\
+\texttt{RAW-STR-04} & Structure & Dialogue is sufficiently complete &
+Check that the dialogue has enough turns and substantive content for a
+semantic and pedagogical audit; use code-generated length flags as supporting
+signals. \\
+\texttt{RAW-CON-01} & Consistency & Question matches lesson and position &
+Compare the question and recorded location against retrieved SGK/SGV content
+from the same grade and lesson. \\
+\texttt{RAW-CON-02} & Consistency & Teacher-guide answer matches the question &
+Determine whether the recorded SGV answer correctly and sufficiently answers
+the question, using SGV evidence when available. \\
+\texttt{RAW-CON-03} & Consistency & Dialogue addresses the question &
+Determine whether the interaction responds to the learner's stated problem
+rather than drifting to a different task. \\
+\texttt{RAW-CON-04} & Consistency & Dialogue is consistent with the answer &
+Determine whether the tutor guides the learner toward content that is
+consistent with the teacher-provided answer and SGV evidence. \\
+\texttt{RAW-CON-05} & Consistency & Cognitive level is appropriate &
+Compare the recorded Bloom level with the action, object, and demand of the
+question under the normalized HNMU cognitive-level guidance. \\
+\texttt{RAW-CON-06} & Consistency & No unsupported curriculum content &
+Use retrieved SGK/SGV evidence to detect claims that are fabricated or
+contradict the relevant curriculum content. \\
+\texttt{RAW-CON-07} & Consistency & Metadata and content are mutually consistent &
+Check whether grade, lesson, position, question, answer, and dialogue refer to
+the same curricular content, using the lesson map and retrieved evidence. \\
+\texttt{RAW-PED-01} & Pedagogy & Scaffolding is present &
+Check for elicitation, hints, staged support, or understanding checks before
+the tutor concludes. \\
+\texttt{RAW-PED-02} & Pedagogy & The answer is not revealed prematurely &
+Check whether the tutor gives the complete answer or solution before
+diagnosis, learner effort, or an appropriate level of support. \\
+\texttt{RAW-PED-03} & Pedagogy & The dialogue sequence is coherent &
+Check whether successive turns respond to the learner's evolving state and
+form a coherent progression from support to consolidation. \\
+\texttt{RAW-PED-04} & Pedagogy & Turns have learning value &
+Identify redundant turns, generic praise, or repetition that adds no useful
+feedback, hint, explanation, or next step. \\
+\texttt{RAW-PED-05} & Pedagogy & Language is age appropriate &
+Check whether wording, length, and tone are suitable for Grades~6--9 learners;
+route ambiguous cases to HNMU review. \\
+\texttt{RAW-PED-06} & Pedagogy & No off-task substitution &
+Check whether the tutor avoids or replaces the learner's task with unrelated
+content or generic advice. \\
+\texttt{RAW-DUP-03} & Duplicate risk & Not a trivial variant &
+Use code-generated duplicate candidates and the sample texts to decide whether
+a dialogue differs from another only by minor words, values, or entities. \\
+\texttt{RAW-DUP-04} & Duplicate risk & No mechanically repeated AI template &
+Use dialogue patterns in the assigned shard or batch to identify repetitive
+praise, prompting, or scaffolding structures that materially reduce diversity. \\
+\hline
+\end{tabular}
+\end{table*}
+
+\clearpage
+\subsection{Audited Examples}
+
+The examples below are faithful English translations of the original
+Vietnamese records. Note that in the dialogues, the tutor is represented by \textbf{AI} and the learner by \textbf{HS}. 
+They illustrate the strict aggregation rule: one
+\textit{uncertain} criterion routes a dialogue to human review, whereas one
+\textit{fail} criterion rejects it from the retained pool.
+
+\subsubsection{Passed example} \\
+
+\noindent\textbf{Context:} Grade~9, Lesson~13B, \textit{Editing and Exporting
+Video}.\\
+\textbf{Question:} \textit{Distinguish a project file from an exported video
+file.}\\
+\textbf{Teacher-guide answer:} \textit{A project file stores editing
+instructions and can only be reopened in the video editor; an exported
+\texttt{.mp4} file is the finished product and can be viewed in media
+players.} \\
+\textbf{Dialogue:}
+\begin{quote}\small
+\textbf{HS:} I accidentally sent my friend the Backup file
+(\texttt{.vbp}) from my previous project, but they said they could not see
+anything.\\
+\textbf{AI:} Do you remember what that Backup file contains?\\
+\textbf{HS:} It contains the image and audio data so that I can reopen
+the project in the software and continue editing.\\
+\textbf{AI:} Correct. To view it, your friend would also need to open the
+video editor. But if your friend wants to watch the film as on YouTube, which
+format should you send?\\
+\textbf{HS:} I should send the exported film file, in \texttt{.mp4}
+format?\\
+\textbf{AI:} Exactly. A project file is like the ingredients for cooking,
+whereas the \texttt{.mp4} file is the finished dish. The audience only needs
+the finished dish.\\
+\textbf{HS:} I understand the difference now. I will reopen the software,
+export the video to \texttt{.mp4}, and send that file.\\
+\textbf{AI:} Very good. This incident has helped you understand the nature
+of the two file types more deeply.
+\end{quote}
+
+All 18 criteria passed. The lesson metadata, question, teacher-guide answer,
+dialogue, and retrieved curriculum fragments evidence were mutually consistent. The
+tutor first elicited what a project file contains, then asked the learner to
+infer the appropriate exported format, and finally consolidated the
+distinction through an analogy. The minimum criterion confidence was 0.78, so
+strict aggregation retained the dialogue as \textit{passed}.
+
+\subsubsection{Uncertain example}
+
+\noindent\textbf{Context:} Grade~8, Lesson~11B, \textit{Integrated Practice}.\\
+\textbf{Question:} \textit{Explain the difference between saving a project
+(\texttt{Save}) and exporting an image (\texttt{Export As}).}\\
+\textbf{Teacher-guide answer:} \textit{\texttt{Save} stores the editable
+\texttt{.xcf} project with its layers, whereas \texttt{Export As} produces a
+flattened \texttt{.jpg} or \texttt{.png} image for printing or sharing.}
+
+\begin{quote}\small
+\textbf{HS:} I have finished designing my poster. The textbook says to
+choose \texttt{File / Export As} and save it as \texttt{SchoolTour.jpg}. Why
+can I not simply press \texttt{Save}?\\
+\textbf{AI:} Imagine that you are an architect. \texttt{Save}
+(\texttt{.xcf}) is like storing the original drawing together with its notes,
+erasures, and stacked drafts. \texttt{Export As} (\texttt{.jpg}) is like
+printing a finished rendering for a client.\\
+\textbf{HS:} So \texttt{Save} keeps the original for later editing,
+whereas \texttt{Export} produces the file that I submit?\\
+\textbf{AI:} Excellent summary. When you export to \texttt{.jpg}, the
+software flattens all layers into one image. The file is small and can be
+viewed on almost any computer or phone. What is the disadvantage?\\
+\textbf{HS:} The layers are merged, so I cannot separately move the
+picture or change the text colour afterwards.\\
+\textbf{AI:} Exactly. The standard workflow is to save the
+\texttt{.xcf} project first, and then export a \texttt{.jpg} file for
+submission. Please follow those steps.\\
+\textbf{HS:} Yes, I will remember that rule.
+\end{quote}
+
+Seventeen criteria passed, including all seven consistency criteria;
+curriculum evidence was retrieved successfully and matched the record.
+\texttt{RAW-PED-02} was \textit{uncertain} at confidence 0.40 because the
+first tutor response nearly completed the comparison before eliciting the
+learner's reasoning. Later turns did re-engage the learner and check
+understanding, so the case was not a clear pedagogical failure. Strict
+aggregation therefore routed the dialogue to human review.
+
+\subsubsection{Failed example}
+
+\noindent\textbf{Context:} Grade~7, Lesson~1, \textit{Input and Output
+Devices}.\\
+\textbf{Question:} \textit{What do speakers and headphones have in common in
+terms of function?}\\
+\textbf{Teacher-guide answer:} \textit{Both are output devices that convey
+audio information from a computer.}
+
+\begin{quote}\small
+\textbf{HS:} Speakers and headphones are familiar devices, but what
+feature do they share in this lesson?\\
+\textbf{AI:} Recall the components involved in information processing.
+What do both devices deliver to your ears?\\
+\textbf{HS:} Sound.\\
+\textbf{AI:} Does that sound travel from inside the computer to the
+outside, or from outside into the computer?\\
+\textbf{HS:} From inside the computer to the outside.\\
+\textbf{AII:} According to the classification table, which device group do
+they both belong to?\\
+\textbf{HS:} They are output devices. I understand now.
+\end{quote}
+
+All seven consistency criteria passed, and the relevant curriculum evidence
+was retrieved successfully. However, \texttt{RAW-STR-03} failed at confidence
+0.88 because the raw dialogue used the invalid speaker label \texttt{AII:}
+instead of \texttt{AI:}. \texttt{RAW-PED-02} and
+\texttt{RAW-PED-03} were consequently uncertain because reliable turn parsing
+was compromised; the remaining 15 criteria passed. Under strict aggregation,
+the single structural failure classified the dialogue as \textit{failed},
+although the record could be repaired by correcting its speaker label.
 
 \end{document}
