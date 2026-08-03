@@ -1,0 +1,56 @@
+# Specialist handoff
+
+- Delegation ID: Không áp dụng
+- Agent: `root` dùng skill `benchmark-specification-designer`
+- Status: Hoàn thành báo cáo; không gọi provider và không đổi pipeline
+- Native thread ID/label: single-agent
+
+## Delegation prompt
+
+Viết báo cáo các phần Plan 05 đã hoàn thành, tập trung vào phiên bản prompt
+sinh phản hồi và prompt judge để làm căn cứ viết phần thực nghiệm của paper.
+
+## Follow-up or steer messages
+
+Không có.
+
+## Inputs read
+
+- Plan 05 và report tiến độ trước đó
+- ba instruction bundle sinh phản hồi
+- bốn system prompt judge
+- code dựng prompt, native conversation và hậu xử lý judge
+- manifest của ba target full, hai judge pilot v3/v4 và hai full batch
+- 180 judgment v3 cùng 180 judgment v4 để tính lại agreement
+
+## Outputs created
+
+- `reports/plan05-response-generation-and-judge-experimental-report-20260730.md`
+- handoff này
+
+## Result summary
+
+Báo cáo khóa cấu trúc prompt, hash, model/config, recovery, chi phí target,
+tiến hóa judge v1–v4, thiết kế chấm mù, kết quả agreement pilot, chỉ số
+KMP-style, trạng thái full batch, đoạn văn có thể dùng cho paper, giới hạn
+và ma trận truy vết. Kết quả pilot v4 được tính lại trực tiếp: overall
+agreement 85,6%, rubric agreement 75,1% và accuracy-rubric agreement 72,2%.
+
+## Orchestrator decision
+
+Dùng GPT-5.4-mini làm judge chính, Gemini làm sensitivity check và báo
+riêng. Không trung bình cơ học hai judge. Không trình bày full result trước
+khi hai batch được collect và validate đủ 4.200 record mỗi judge.
+
+## Uncertainty
+
+Các judgment là đầu ra mô hình, chưa phải ground truth chuyên gia.
+`gold_answer`, rubric và instruction chưa hoàn tất xác nhận HNMU ở toàn bộ
+1.400 candidate.
+
+## Open questions and next human decisions
+
+- Sau khi full batch hoàn tất, tạo report kết quả chính và cập nhật các
+  đoạn paper từ thì tương lai sang quá khứ.
+- UET quyết định phạm vi claim có thể giữ sau khi xem độ nhạy giữa hai
+  judge trên full set.

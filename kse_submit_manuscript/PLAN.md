@@ -4,7 +4,8 @@ Trạng thái: `APPROVED — IMPLEMENTATION_IN_PROGRESS`
 
 - Hạn KSE: `31/07/2026`.
 - Bản gửi giáo sư: trước `11:00, 29/07/2026`.
-- Giới hạn: tối đa 6 trang, IEEE Conference LaTeX.
+- Giới hạn bản nộp cuối: tối đa 6 trang, IEEE Conference LaTeX.
+- Quyết định ngày 30/07: bản làm việc tạm thời được phép vượt 6 trang để hoàn thiện đầy đủ phần thực nghiệm; việc rút gọn sẽ được thực hiện sau khi duyệt nội dung.
 
 ## 1. Câu chuyện khoa học
 
@@ -13,9 +14,7 @@ Working title:
 > Building a Vietnamese LowerSecondary Informatics AI Tutor Benchmark
 > from Teacher-Authored Dialogues
 
-Paper trình bày **quy trình xây dựng và đặc tả đo lường benchmark**, chưa
-khẳng định benchmark đã được chuyên gia freeze và chưa cần kết quả đánh
-giá nhiều tutor model.
+Paper trình bày **quy trình xây dựng, đặc tả đo lường và thực nghiệm đánh giá benchmark**; các kết luận thực nghiệm phải báo riêng theo từng judge và không được diễn giải thành chất lượng tuyệt đối.
 
 Ba câu hỏi nghiên cứu:
 
@@ -23,8 +22,7 @@ Ba câu hỏi nghiên cứu:
    benchmark có truy vết và kiểm soát chất lượng?
 2. Làm thế nào kết hợp sáu nguyên tắc sư phạm với sáu năng lực gia sư để
    xác định yêu cầu và tiêu chí chấm cho từng phản hồi?
-3. Pool candidate hiện tại có phân bố yêu cầu sư phạm và mức sẵn sàng đưa
-   vào benchmark như thế nào?
+3. Trên tập benchmark hoàn chỉnh, bộ rubric phân biệt các cấu hình gia sư đến mức nào và kết luận có ổn định giữa hai judge cùng phép gộp candidate/family hay không?
 
 Ba đóng góp dự kiến:
 
@@ -32,8 +30,7 @@ Ba đóng góp dự kiến:
    `pass` và 2.028 candidate, có provenance, family grouping và validator.
 2. Phương pháp `requirement_score` cho sáu nguyên tắc và thư viện rubric
    hai tầng dựa trên sáu năng lực gia sư.
-3. Phân tích pool hiện tại: 1.400 candidate ưu tiên, 628 candidate chờ UET
-   review và phân bố tập nguyên tắc ở cấp candidate/family.
+3. Tập benchmark gồm 1.400 mẫu hoàn chỉnh cùng phân tích thực nghiệm ba cấu hình gia sư bằng hai LLM judge, có bootstrap theo family và kiểm tra độ nhạy.
 
 ## 2. Giới hạn claim
 
@@ -43,26 +40,28 @@ Ba đóng góp dự kiến:
 | Kết quả pipeline | 665 hội thoại, 2.028 candidate, validation                    | Kết quả xác định của pipeline hiện tại |
 | Kết quả Plan 03  | 12.168 score, 1.400/628/0 và phân bố nguyên tắc            | Model-assisted, single-run, provisional        |
 | Rubric Plan 04     | 4 tiêu chí chung, 18 tiêu chí riêng, 6 lỗi nghiêm trọng | Thiết kế provisional, chờ UET/HNMU review   |
-| Plan 05–07        | Panel model, judge và đánh giá khả năng phân biệt       | Giao thức dự kiến hoặc future work         |
+| Kết quả Plan 05 | 4.200 response, hai judge, điểm theo rubric, bootstrap, agreement và sensitivity | Báo riêng từng judge; chỉ kết luận khác biệt lớn được cả hai judge hỗ trợ |
+| Plan 06–07 | Human calibration và các kiểm định tiếp theo | Future work |
 
 Không tuyên bố learning gain, expert agreement, accuracy của
 `requirement_score` hoặc benchmark đã được HNMU xác nhận.
 
-## 3. Cấu trúc 6 trang
+## 3. Cấu trúc mục tiêu cho bản nộp 6 trang
 
 
-| Phần                              | Nội dung                                                     | Ngân sách |
-| ---------------------------------- | ------------------------------------------------------------- | ----------: |
-| Abstract + Introduction            | vấn đề, khoảng trống, ba đóng góp                     |   0,8 trang |
-| Related Work + Background          | benchmark gia sư, KMP, sáu nguyên tắc và sáu năng lực |   0,9 trang |
-| Dataset and Construction           | audit, conversion, provenance, family                         |   1,5 trang |
-| Pedagogical Requirement and Rubric | requirement scoring và rubric hai tầng                      |   1,1 trang |
-| Results                            | thống kê pipeline, Plan 03 và artifact Plan 04             |   0,8 trang |
-| Discussion + Conclusion            | giới hạn, expert review, future evaluation                  |   0,4 trang |
-| References                         | nguồn trực tiếp                                            |   0,5 trang |
+| Phần | Nội dung | Ngân sách |
+| --- | --- | ---: |
+| Abstract + Introduction | vấn đề, ba khoảng trống, ba đóng góp | 0,8 trang |
+| Related Work + Background | nền tảng sư phạm; benchmark gia sư; tiếng Việt/Tin học | 0,8 trang |
+| Dataset Construction | Phase 1 audit; Phase 2 xây 6 năng lực–6 nguyên tắc; Phase 3 conversion, gán nguyên tắc, lọc và thống kê | 2,0 trang |
+| Evaluation Framework | nạp context native; rubric `4 + 3n`; blind judge và `Win/Tie/Lose` | 1,0 trang |
+| Experiments and Analysis | model tutor/judge, generation config, metrics và kết quả | 0,7 trang |
+| Discussion + Conclusion | giới hạn và kết luận | 0,3 trang |
+| References | tính trong giới hạn 6 trang | 0,4 trang |
 
-Chỉ dùng một hình pipeline và tối đa hai bảng: thống kê dữ liệu và tóm tắt
-khung đo lường/kết quả.
+Giữ một sơ đồ tổng thể có source `.drawio`; hình quy trình/đặc trưng Phase 1
+chỉ được giữ nếu toàn bộ PDF, kể cả tài liệu tham khảo, không vượt 6 trang.
+Bản làm việc giữ các bảng thực nghiệm chi tiết để review. Trước khi nộp, các bảng sẽ được chọn lọc hoặc gộp lại, với mục tiêu cuối là bảng thống kê dữ liệu và bảng kết quả đánh giá chính.
 
 ## 4. Quy trình sau khi UET duyệt
 
@@ -132,7 +131,7 @@ chưa cần.
   nhau.
 - `Evidence`: mọi số liệu/claim chính có nguồn; provisional được ghi rõ.
 - `Coherence`: method trả lời RQ; results không vượt quá bằng chứng.
-- `Format`: compile được, tối đa 6 trang, không sửa format IEEE.
+- `Format`: bản làm việc phải compile được và giữ format IEEE; bản nộp cuối mới bắt buộc tối đa 6 trang.
 - `Authority`: author, affiliation, track và bản nộp do người dùng/giáo
   sư duyệt; HNMU vẫn giữ thẩm quyền xác nhận sư phạm.
 

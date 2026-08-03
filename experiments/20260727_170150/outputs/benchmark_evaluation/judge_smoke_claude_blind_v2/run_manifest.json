@@ -1,0 +1,116 @@
+{
+  "record_type": "judge_smoke_manifest",
+  "status": "incomplete",
+  "updated_at": "2026-07-28T19:42:54.827082+00:00",
+  "experiment_id": "20260727_170150",
+  "plan_id": "plan05",
+  "pipeline_stage": "benchmark_evaluation_judge_smoke",
+  "run_id": "judge_smoke_claude_blind_v2",
+  "project": "edu-benchmark",
+  "location": "us-east5",
+  "model": "claude-sonnet-4-6",
+  "generation_config": {
+    "temperature": 0.0,
+    "max_output_tokens": 3072
+  },
+  "seed": 20260728,
+  "concurrency": 2,
+  "max_retries": 2,
+  "system_prompt": {
+    "path": "shared/prompts/benchmark_response_judging/system_prompt_v2.md",
+    "version": "v2",
+    "sha256": "7c2834f4da09bd21a2e3289e06686f234e5a3592fc46a680364278fc80a935e6"
+  },
+  "evaluation_schema": {
+    "path": "experiments/20260727_170150/outputs/benchmark_evaluation/evaluation_schema.json",
+    "sha256": "3965a13ca40e28f199d6a56d38eb7a9dce2e3bfa4c326d521508875678442f3d"
+  },
+  "judge_output_contract_version": "v2",
+  "input_sha256": {
+    "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_conversion/full_v0/benchmark_candidate_splits.csv": "6648569d5afe006acdd6e4129ee04ab2b27dfea89439c507a3b8f3b23c5eb63e",
+    "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a",
+    "experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv": "d3f156dc80ce5815d79c07d23f75cc856de34241cf89155479daa25a17a95b57",
+    "shared/learning_resources/fragments/learning_resource_fragments.csv": "59a24839bb90eb4ea7e8bd447a2254c29705ec178b30645351d6854af58c87a7",
+    "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/run_full.jsonl": "123a458d6afcbfb63e05e313665ec6bd0272fa3bbe5fb6a34b1f1d4c304fc3d8",
+    "experiments/20260727_170150/outputs/benchmark_rubric/rubrics.csv": "6617b179e0b4af92182d64e3883e69cf458b4b2ad1ca97b5d042bb24344a581f",
+    "experiments/20260727_170150/outputs/benchmark_rubric/serious_errors.csv": "c6e703fa601269be909d391b7321fbe1f605c6871e38565dc0db682a3c36a3cf",
+    "experiments/20260727_170150/outputs/benchmark_evaluation/evaluation_schema.json": "3965a13ca40e28f199d6a56d38eb7a9dce2e3bfa4c326d521508875678442f3d",
+    "shared/prompts/benchmark_response_judging/system_prompt_v2.md": "8ef17c6fb4bf08477ebbf77535bc657ed827dabda2284bca48230d444cfb9a84",
+    "experiments/20260727_170150/outputs/benchmark_evaluation/smoke_gemini35_instruction_v2/run_smoke.jsonl": "279be53fbff96bec442173b39d33389baa0ccc6e7439b24081a87c1c4439c9d9",
+    "experiments/20260727_170150/outputs/benchmark_evaluation/smoke_llama4_maverick_instruction_v2_retry1/run_smoke.jsonl": "f61ae4800ba49ea83392b1a516700a694a83dc43d85d73ef3683bc4b9e530844"
+  },
+  "comparison_ids": [
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G6-R0239-STT14-AI08",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G7-R0204-STT7-AI14",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G9-R0224-STT13-AI08",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G8-R0189-STT6-AI04",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G7-R0164-STT9-AI08",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G6-R0042-STT13-AI04",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G8-R0186-STT3-AI06",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G9-R0215-STT4-AI04",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G6-R0236-STT11-AI06",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G7-R0207-STT10-AI10",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G6-R0239-STT14-AI08",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G7-R0204-STT7-AI14",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G8-R0189-STT6-AI04",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G9-R0224-STT13-AI08",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G6-R0042-STT13-AI04",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G7-R0164-STT9-AI08",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G8-R0186-STT3-AI06",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G9-R0215-STT4-AI04",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G6-R0236-STT11-AI06",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G7-R0207-STT10-AI10"
+  ],
+  "candidate_ids": [
+    "BC-HNMU-G6-R0042-STT13-AI04",
+    "BC-HNMU-G6-R0236-STT11-AI06",
+    "BC-HNMU-G6-R0239-STT14-AI08",
+    "BC-HNMU-G7-R0164-STT9-AI08",
+    "BC-HNMU-G7-R0204-STT7-AI14",
+    "BC-HNMU-G7-R0207-STT10-AI10",
+    "BC-HNMU-G8-R0186-STT3-AI06",
+    "BC-HNMU-G8-R0189-STT6-AI04",
+    "BC-HNMU-G9-R0215-STT4-AI04",
+    "BC-HNMU-G9-R0224-STT13-AI08"
+  ],
+  "budget": {
+    "input_usd_per_million": 3.3,
+    "output_usd_per_million": 16.5,
+    "upper_bound_cost_usd": 1.67376,
+    "stage_cap_usd": 2.0,
+    "actual_spend_to_date_usd": 56.52,
+    "hard_budget_usd": 250.0,
+    "reserve_usd": 25.0,
+    "actual_run_cost_usd": 0
+  },
+  "progress": {
+    "expected": 20,
+    "completed": 0,
+    "failed": 20
+  },
+  "failed_comparison_ids": [
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G6-R0042-STT13-AI04",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G6-R0236-STT11-AI06",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G6-R0239-STT14-AI08",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G7-R0164-STT9-AI08",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G7-R0204-STT7-AI14",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G7-R0207-STT10-AI10",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G8-R0186-STT3-AI06",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G8-R0189-STT6-AI04",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G9-R0215-STT4-AI04",
+    "JUDGE-smoke_gemini35_instruction_v2-BC-HNMU-G9-R0224-STT13-AI08",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G6-R0042-STT13-AI04",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G6-R0236-STT11-AI06",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G6-R0239-STT14-AI08",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G7-R0164-STT9-AI08",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G7-R0204-STT7-AI14",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G7-R0207-STT10-AI10",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G8-R0186-STT3-AI06",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G8-R0189-STT6-AI04",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G9-R0215-STT4-AI04",
+    "JUDGE-smoke_llama4_maverick_instruction_v2_retry1-BC-HNMU-G9-R0224-STT13-AI08"
+  ],
+  "integrity": {
+    "validated": false
+  }
+}

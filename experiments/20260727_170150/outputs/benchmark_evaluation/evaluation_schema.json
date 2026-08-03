@@ -1,0 +1,1091 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "benchmark-evaluation-schema-v2.json",
+  "title": "Tutor benchmark target and bundled judge records",
+  "x-principle-selection-policy": {
+    "source_field": "requirement_score",
+    "operator": ">=",
+    "threshold": 4,
+    "score_3_selected": false
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/target_response"
+    },
+    {
+      "$ref": "#/$defs/evaluation_record"
+    },
+    {
+      "$ref": "#/$defs/blind_pairwise_judgment_v2"
+    }
+  ],
+  "$defs": {
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_tokens",
+        "output_tokens",
+        "estimated_cost_usd"
+      ],
+      "properties": {
+        "input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "estimated_cost_usd": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "required_principle_set": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "PRINCIPLE-CHALLENGE",
+          "PRINCIPLE-EXPLANATION",
+          "PRINCIPLE-MODELLING",
+          "PRINCIPLE-PRACTICE",
+          "PRINCIPLE-FEEDBACK",
+          "PRINCIPLE-QUESTIONING"
+        ]
+      },
+      "description": "The exact unordered set derived by code from requirement_score >= 4. Score-3 principles are forbidden."
+    },
+    "target_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "response_id",
+        "benchmark_candidate_id",
+        "experiment_id",
+        "plan_id",
+        "pipeline_stage",
+        "run_id",
+        "model_id",
+        "response_text",
+        "finish_reason",
+        "response_status",
+        "completion_issue",
+        "system_prompt",
+        "user_prompt",
+        "conversation_messages",
+        "input_hash",
+        "system_instruction_hash",
+        "messages_hash",
+        "instruction_bundle_version",
+        "instruction_bundle_sha256",
+        "required_principle_ids",
+        "usage"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "target_response"
+        },
+        "response_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "benchmark_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "experiment_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pipeline_stage": {
+          "enum": [
+            "benchmark_evaluation_target_smoke",
+            "benchmark_evaluation_target_pilot",
+            "benchmark_evaluation_target_full"
+          ]
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "finish_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_status": {
+          "enum": [
+            "completed",
+            "needs_review"
+          ]
+        },
+        "completion_issue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "system_prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "user_prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conversation_messages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "content"
+            ],
+            "properties": {
+              "role": {
+                "enum": [
+                  "user",
+                  "assistant"
+                ]
+              },
+              "content": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "input_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "system_instruction_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "messages_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "instruction_bundle_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instruction_bundle_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "required_principle_ids": {
+          "$ref": "#/$defs/required_principle_set"
+        },
+        "usage": {
+          "$ref": "#/$defs/usage"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "model_version": {
+          "type": "string"
+        },
+        "latency_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "criterion_judgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rubric_id",
+        "judgment",
+        "rationale",
+        "model_response_evidence",
+        "gold_response_evidence"
+      ],
+      "properties": {
+        "rubric_id": {
+          "enum": [
+            "RUB-GEN-ACC",
+            "RUB-GEN-ALIGN",
+            "RUB-GEN-SCAFF",
+            "RUB-GEN-COMM",
+            "RUB-CHA-DEMAND",
+            "RUB-CHA-CALIB",
+            "RUB-CHA-AGENCY",
+            "RUB-EXP-CORE",
+            "RUB-EXP-COHER",
+            "RUB-EXP-ADAPT",
+            "RUB-MOD-PROC",
+            "RUB-MOD-THINK",
+            "RUB-MOD-TRANSFER",
+            "RUB-PRA-ACT",
+            "RUB-PRA-ALIGN",
+            "RUB-PRA-CONSOL",
+            "RUB-FBK-GROUND",
+            "RUB-FBK-DISC",
+            "RUB-FBK-ACTION",
+            "RUB-QUE-PURPOSE",
+            "RUB-QUE-QUALITY",
+            "RUB-QUE-DEPEND"
+          ]
+        },
+        "judgment": {
+          "enum": [
+            "Win",
+            "Tie",
+            "Lose"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_response_evidence": {
+          "type": "string"
+        },
+        "gold_response_evidence": {
+          "type": "string"
+        }
+      }
+    },
+    "serious_error_judgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "error_id",
+        "detected",
+        "rationale",
+        "applied_action"
+      ],
+      "properties": {
+        "error_id": {
+          "enum": [
+            "ERR-WRONG-CONTENT",
+            "ERR-FABRICATED-GROUNDING",
+            "ERR-REINFORCE-MISCONCEPTION",
+            "ERR-BYPASS-LEARNING",
+            "ERR-HARMFUL-OR-DEMEANING",
+            "ERR-NONRESPONSIVE"
+          ]
+        },
+        "detected": {
+          "type": "boolean"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "applied_action": {
+          "type": "string"
+        }
+      }
+    },
+    "evaluation_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "One judge call returns every applicable criterion, serious error decision and overall judgment for one target response.",
+      "required": [
+        "record_type",
+        "judge_call_id",
+        "response_id",
+        "benchmark_candidate_id",
+        "judge_model_id",
+        "pair_order",
+        "required_principle_ids",
+        "applicable_rubric_ids",
+        "criterion_judgments",
+        "serious_errors",
+        "overall_judgment",
+        "same_model_family",
+        "usage"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "evaluation_record"
+        },
+        "judge_call_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "benchmark_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "judge_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pair_order": {
+          "enum": [
+            "model_A_gold_B",
+            "gold_A_model_B"
+          ]
+        },
+        "required_principle_ids": {
+          "$ref": "#/$defs/required_principle_set"
+        },
+        "applicable_rubric_ids": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "RUB-GEN-ACC",
+              "RUB-GEN-ALIGN",
+              "RUB-GEN-SCAFF",
+              "RUB-GEN-COMM",
+              "RUB-CHA-DEMAND",
+              "RUB-CHA-CALIB",
+              "RUB-CHA-AGENCY",
+              "RUB-EXP-CORE",
+              "RUB-EXP-COHER",
+              "RUB-EXP-ADAPT",
+              "RUB-MOD-PROC",
+              "RUB-MOD-THINK",
+              "RUB-MOD-TRANSFER",
+              "RUB-PRA-ACT",
+              "RUB-PRA-ALIGN",
+              "RUB-PRA-CONSOL",
+              "RUB-FBK-GROUND",
+              "RUB-FBK-DISC",
+              "RUB-FBK-ACTION",
+              "RUB-QUE-PURPOSE",
+              "RUB-QUE-QUALITY",
+              "RUB-QUE-DEPEND"
+            ]
+          }
+        },
+        "criterion_judgments": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/criterion_judgment"
+          }
+        },
+        "serious_errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serious_error_judgment"
+          }
+        },
+        "overall_judgment": {
+          "enum": [
+            "Win",
+            "Tie",
+            "Lose"
+          ]
+        },
+        "same_model_family": {
+          "type": "boolean"
+        },
+        "usage": {
+          "$ref": "#/$defs/usage"
+        }
+      },
+      "allOf": [
+        {
+          "properties": {
+            "applicable_rubric_ids": {
+              "contains": {
+                "const": "RUB-GEN-ACC"
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "applicable_rubric_ids": {
+              "contains": {
+                "const": "RUB-GEN-ALIGN"
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "applicable_rubric_ids": {
+              "contains": {
+                "const": "RUB-GEN-SCAFF"
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "applicable_rubric_ids": {
+              "contains": {
+                "const": "RUB-GEN-COMM"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required_principle_ids": {
+                "contains": {
+                  "const": "PRINCIPLE-CHALLENGE"
+                }
+              }
+            }
+          },
+          "then": {
+            "allOf": [
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-CHA-DEMAND"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-CHA-CALIB"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-CHA-AGENCY"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "applicable_rubric_ids": {
+                "not": {
+                  "contains": {
+                    "enum": [
+                      "RUB-CHA-DEMAND",
+                      "RUB-CHA-CALIB",
+                      "RUB-CHA-AGENCY"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required_principle_ids": {
+                "contains": {
+                  "const": "PRINCIPLE-EXPLANATION"
+                }
+              }
+            }
+          },
+          "then": {
+            "allOf": [
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-EXP-CORE"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-EXP-COHER"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-EXP-ADAPT"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "applicable_rubric_ids": {
+                "not": {
+                  "contains": {
+                    "enum": [
+                      "RUB-EXP-CORE",
+                      "RUB-EXP-COHER",
+                      "RUB-EXP-ADAPT"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required_principle_ids": {
+                "contains": {
+                  "const": "PRINCIPLE-MODELLING"
+                }
+              }
+            }
+          },
+          "then": {
+            "allOf": [
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-MOD-PROC"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-MOD-THINK"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-MOD-TRANSFER"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "applicable_rubric_ids": {
+                "not": {
+                  "contains": {
+                    "enum": [
+                      "RUB-MOD-PROC",
+                      "RUB-MOD-THINK",
+                      "RUB-MOD-TRANSFER"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required_principle_ids": {
+                "contains": {
+                  "const": "PRINCIPLE-PRACTICE"
+                }
+              }
+            }
+          },
+          "then": {
+            "allOf": [
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-PRA-ACT"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-PRA-ALIGN"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-PRA-CONSOL"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "applicable_rubric_ids": {
+                "not": {
+                  "contains": {
+                    "enum": [
+                      "RUB-PRA-ACT",
+                      "RUB-PRA-ALIGN",
+                      "RUB-PRA-CONSOL"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required_principle_ids": {
+                "contains": {
+                  "const": "PRINCIPLE-FEEDBACK"
+                }
+              }
+            }
+          },
+          "then": {
+            "allOf": [
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-FBK-GROUND"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-FBK-DISC"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-FBK-ACTION"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "applicable_rubric_ids": {
+                "not": {
+                  "contains": {
+                    "enum": [
+                      "RUB-FBK-GROUND",
+                      "RUB-FBK-DISC",
+                      "RUB-FBK-ACTION"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required_principle_ids": {
+                "contains": {
+                  "const": "PRINCIPLE-QUESTIONING"
+                }
+              }
+            }
+          },
+          "then": {
+            "allOf": [
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-QUE-PURPOSE"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-QUE-QUALITY"
+                    }
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicable_rubric_ids": {
+                    "contains": {
+                      "const": "RUB-QUE-DEPEND"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "else": {
+            "properties": {
+              "applicable_rubric_ids": {
+                "not": {
+                  "contains": {
+                    "enum": [
+                      "RUB-QUE-PURPOSE",
+                      "RUB-QUE-QUALITY",
+                      "RUB-QUE-DEPEND"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "blind_target_judgment": {
+      "enum": [
+        "Win",
+        "Tie",
+        "Lose"
+      ]
+    },
+    "blind_criterion_judgment_v2": {
+      "type": "object",
+      "required": [
+        "criterion_name",
+        "rubric_id",
+        "target_judgment"
+      ],
+      "properties": {
+        "criterion_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rubric_id": {
+          "enum": [
+            "RUB-GEN-ACC",
+            "RUB-GEN-ALIGN",
+            "RUB-GEN-SCAFF",
+            "RUB-GEN-COMM",
+            "RUB-CHA-DEMAND",
+            "RUB-CHA-CALIB",
+            "RUB-CHA-AGENCY",
+            "RUB-EXP-CORE",
+            "RUB-EXP-COHER",
+            "RUB-EXP-ADAPT",
+            "RUB-MOD-PROC",
+            "RUB-MOD-THINK",
+            "RUB-MOD-TRANSFER",
+            "RUB-PRA-ACT",
+            "RUB-PRA-ALIGN",
+            "RUB-PRA-CONSOL",
+            "RUB-FBK-GROUND",
+            "RUB-FBK-DISC",
+            "RUB-FBK-ACTION",
+            "RUB-QUE-PURPOSE",
+            "RUB-QUE-QUALITY",
+            "RUB-QUE-DEPEND"
+          ]
+        },
+        "target_judgment": {
+          "$ref": "#/$defs/blind_target_judgment"
+        }
+      }
+    },
+    "serious_error_finding_v2": {
+      "type": "object",
+      "required": [
+        "error_name",
+        "error_id",
+        "affected_rubric_ids",
+        "detected_sources",
+        "target_detected",
+        "reference_detected"
+      ],
+      "properties": {
+        "error_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "error_id": {
+          "enum": [
+            "ERR-WRONG-CONTENT",
+            "ERR-FABRICATED-GROUNDING",
+            "ERR-REINFORCE-MISCONCEPTION",
+            "ERR-BYPASS-LEARNING",
+            "ERR-HARMFUL-OR-DEMEANING",
+            "ERR-NONRESPONSIVE"
+          ]
+        },
+        "affected_rubric_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "RUB-GEN-ACC",
+              "RUB-GEN-ALIGN",
+              "RUB-GEN-SCAFF",
+              "RUB-GEN-COMM",
+              "RUB-CHA-DEMAND",
+              "RUB-CHA-CALIB",
+              "RUB-CHA-AGENCY",
+              "RUB-EXP-CORE",
+              "RUB-EXP-COHER",
+              "RUB-EXP-ADAPT",
+              "RUB-MOD-PROC",
+              "RUB-MOD-THINK",
+              "RUB-MOD-TRANSFER",
+              "RUB-PRA-ACT",
+              "RUB-PRA-ALIGN",
+              "RUB-PRA-CONSOL",
+              "RUB-FBK-GROUND",
+              "RUB-FBK-DISC",
+              "RUB-FBK-ACTION",
+              "RUB-QUE-PURPOSE",
+              "RUB-QUE-QUALITY",
+              "RUB-QUE-DEPEND"
+            ]
+          }
+        },
+        "detected_sources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "target",
+              "reference"
+            ]
+          }
+        },
+        "target_detected": {
+          "type": "boolean"
+        },
+        "reference_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+    "criterion_adjustment_v2": {
+      "type": "object",
+      "required": [
+        "rubric_id",
+        "criterion_name",
+        "raw_target_judgment",
+        "adjusted_target_judgment",
+        "changed",
+        "serious_errors"
+      ],
+      "properties": {
+        "rubric_id": {
+          "enum": [
+            "RUB-GEN-ACC",
+            "RUB-GEN-ALIGN",
+            "RUB-GEN-SCAFF",
+            "RUB-GEN-COMM",
+            "RUB-CHA-DEMAND",
+            "RUB-CHA-CALIB",
+            "RUB-CHA-AGENCY",
+            "RUB-EXP-CORE",
+            "RUB-EXP-COHER",
+            "RUB-EXP-ADAPT",
+            "RUB-MOD-PROC",
+            "RUB-MOD-THINK",
+            "RUB-MOD-TRANSFER",
+            "RUB-PRA-ACT",
+            "RUB-PRA-ALIGN",
+            "RUB-PRA-CONSOL",
+            "RUB-FBK-GROUND",
+            "RUB-FBK-DISC",
+            "RUB-FBK-ACTION",
+            "RUB-QUE-PURPOSE",
+            "RUB-QUE-QUALITY",
+            "RUB-QUE-DEPEND"
+          ]
+        },
+        "criterion_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_target_judgment": {
+          "$ref": "#/$defs/blind_target_judgment"
+        },
+        "adjusted_target_judgment": {
+          "$ref": "#/$defs/blind_target_judgment"
+        },
+        "changed": {
+          "type": "boolean"
+        },
+        "serious_errors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "blind_pairwise_judgment_v2": {
+      "type": "object",
+      "description": "Plan 05 v2 blind pairwise judge record with raw and serious-error-adjusted criterion judgments.",
+      "required": [
+        "record_type",
+        "record_status",
+        "comparison_id",
+        "benchmark_candidate_id",
+        "target_run_id",
+        "target_response_id",
+        "target_model_id",
+        "judge_model_id",
+        "system_prompt",
+        "user_prompt",
+        "judge_output_contract_version",
+        "raw_judge_response",
+        "blind_judgment",
+        "raw_criterion_judgments",
+        "serious_error_findings",
+        "adjusted_criterion_judgments",
+        "criterion_adjustments",
+        "overall_judgment",
+        "usage"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "blind_pairwise_judgment"
+        },
+        "record_status": {
+          "const": "completed"
+        },
+        "comparison_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "benchmark_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_response_id": {
+          "type": "string"
+        },
+        "target_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "judge_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "system_prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "user_prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "judge_output_contract_version": {
+          "const": "v2"
+        },
+        "raw_judge_response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blind_judgment": {
+          "type": "object"
+        },
+        "raw_criterion_judgments": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/blind_criterion_judgment_v2"
+          }
+        },
+        "serious_error_findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serious_error_finding_v2"
+          }
+        },
+        "adjusted_criterion_judgments": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/blind_criterion_judgment_v2"
+          }
+        },
+        "criterion_adjustments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/criterion_adjustment_v2"
+          }
+        },
+        "overall_judgment": {
+          "type": "object",
+          "required": [
+            "target_judgment"
+          ],
+          "properties": {
+            "target_judgment": {
+              "$ref": "#/$defs/blind_target_judgment"
+            }
+          }
+        },
+        "usage": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

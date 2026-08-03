@@ -49,18 +49,19 @@ File này trả lời các câu hỏi:
 
 Các cột chính:
 
-| Cột | Ý nghĩa |
-| --- | --- |
-| `learning_material_id` | Mã định danh cấp quyển, ví dụ `LM-SGK-TIN6-0001`. |
-| `source_title` | Tên học liệu, ví dụ `Sách giáo khoa Tin học 6`. |
-| `material_type` | Loại học liệu: thường là `SGK` hoặc `SGV`. |
-| `grade` | Khối lớp. |
-| `source_url` | URL nguồn trên trang tập huấn. |
-| `source_key` | Mã nguồn rút từ URL hoặc hệ thống nguồn. |
-| `local_file_path` | Thư mục local chứa ảnh trang gốc. |
-| `version_label` | Nhãn phiên bản/lượt xử lý. |
-| `status` | Trạng thái, hiện thường là `draft`. |
-| `notes` | Ghi chú về nguồn, OCR, PDF dẫn xuất, quyền sử dụng hoặc điểm cần review. |
+
+| Cột                   | Ý nghĩa                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `learning_material_id` | Mã định danh cấp quyển, ví dụ`LM-SGK-TIN6-0001`.                              |
+| `source_title`         | Tên học liệu, ví dụ`Sách giáo khoa Tin học 6`.                               |
+| `material_type`        | Loại học liệu: thường là`SGK` hoặc `SGV`.                                     |
+| `grade`                | Khối lớp.                                                                          |
+| `source_url`           | URL nguồn trên trang tập huấn.                                                   |
+| `source_key`           | Mã nguồn rút từ URL hoặc hệ thống nguồn.                                     |
+| `local_file_path`      | Thư mục local chứa ảnh trang gốc.                                               |
+| `version_label`        | Nhãn phiên bản/lượt xử lý.                                                    |
+| `status`               | Trạng thái, hiện thường là`draft`.                                             |
+| `notes`                | Ghi chú về nguồn, OCR, PDF dẫn xuất, quyền sử dụng hoặc điểm cần review. |
 
 Khi dùng:
 
@@ -81,18 +82,19 @@ File này ghi lại từng ảnh trang học liệu đang được quản lý tr
 
 Các cột chính:
 
-| Cột | Ý nghĩa |
-| --- | --- |
-| `resource_batch_id` | Lượt copy/crawl/đăng ký file. |
-| `source_type` | Loại nguồn, ví dụ `SGK` hoặc `SGV`. |
-| `grade` | Khối lớp. |
-| `source_path` | Đường dẫn ban đầu trước khi đưa vào `shared/`. |
-| `shared_path` | Đường dẫn ảnh trong vùng shared. |
-| `sha256` | Checksum để phát hiện file thay đổi hoặc trùng file. |
-| `file_size_bytes` | Kích thước file. |
-| `registered_date` | Ngày đăng ký. |
-| `processing_status` | Trạng thái xử lý file, ví dụ `copied`, `crawled`. |
-| `notes` | Ghi chú về nguồn và trạng thái OCR. |
+
+| Cột                | Ý nghĩa                                                    |
+| ------------------- | ------------------------------------------------------------ |
+| `resource_batch_id` | Lượt copy/crawl/đăng ký file.                           |
+| `source_type`       | Loại nguồn, ví dụ`SGK` hoặc `SGV`.                      |
+| `grade`             | Khối lớp.                                                  |
+| `source_path`       | Đường dẫn ban đầu trước khi đưa vào`shared/`.     |
+| `shared_path`       | Đường dẫn ảnh trong vùng shared.                       |
+| `sha256`            | Checksum để phát hiện file thay đổi hoặc trùng file. |
+| `file_size_bytes`   | Kích thước file.                                          |
+| `registered_date`   | Ngày đăng ký.                                            |
+| `processing_status` | Trạng thái xử lý file, ví dụ`copied`, `crawled`.       |
+| `notes`             | Ghi chú về nguồn và trạng thái OCR.                    |
 
 Khi dùng:
 
@@ -113,27 +115,28 @@ Vai trò: manifest cấp **đơn vị OCR Markdown**.
 
 Các cột chính:
 
-| Cột | Ý nghĩa |
-| --- | --- |
-| `ocr_text_id` | Mã đơn vị OCR Markdown, ví dụ `OCR-SGK-TIN6-BAI01`. |
-| `learning_material_id` | Mã quyển sách tương ứng trong `sgk_sgv_source_registry.csv`. |
-| `material_type` | `SGK` hoặc `SGV`. |
-| `grade` | Khối lớp. |
-| `book_title` | Tên quyển sách. |
-| `lesson_key` | Khóa bài học dạng ổn định, ví dụ `bai_01`. |
-| `lesson_number` | Số bài, nếu có. |
-| `lesson_title` | Tên bài học. |
-| `topic_title` | Tên chủ đề chứa bài học. |
-| `source_markdown_path` | Đường dẫn file Markdown OCR. |
-| `source_metadata_path` | Đường dẫn metadata đi kèm, nếu có. |
-| `image_dir` | Thư mục ảnh/phụ kiện đi kèm OCR Markdown. |
-| `page_marker_count` | Số marker trang nhận diện được trong Markdown. |
-| `page_stat_count` | Số trang theo thống kê metadata. |
-| `table_count` | Số bảng phát hiện trong Markdown. |
-| `image_count` | Số ảnh/hình minh họa trong đơn vị OCR. |
-| `first_heading` | Heading đầu tiên trong Markdown. |
-| `status` | Trạng thái của OCR Markdown, hiện thường là `draft`. |
-| `notes` | Ghi chú thêm. |
+
+| Cột                   | Ý nghĩa                                                         |
+| ---------------------- | ----------------------------------------------------------------- |
+| `ocr_text_id`          | Mã đơn vị OCR Markdown, ví dụ`OCR-SGK-TIN6-BAI01`.          |
+| `learning_material_id` | Mã quyển sách tương ứng trong`sgk_sgv_source_registry.csv`. |
+| `material_type`        | `SGK` hoặc `SGV`.                                                |
+| `grade`                | Khối lớp.                                                       |
+| `book_title`           | Tên quyển sách.                                                |
+| `lesson_key`           | Khóa bài học dạng ổn định, ví dụ`bai_01`.                |
+| `lesson_number`        | Số bài, nếu có.                                               |
+| `lesson_title`         | Tên bài học.                                                   |
+| `topic_title`          | Tên chủ đề chứa bài học.                                   |
+| `source_markdown_path` | Đường dẫn file Markdown OCR.                                  |
+| `source_metadata_path` | Đường dẫn metadata đi kèm, nếu có.                        |
+| `image_dir`            | Thư mục ảnh/phụ kiện đi kèm OCR Markdown.                  |
+| `page_marker_count`    | Số marker trang nhận diện được trong Markdown.              |
+| `page_stat_count`      | Số trang theo thống kê metadata.                               |
+| `table_count`          | Số bảng phát hiện trong Markdown.                             |
+| `image_count`          | Số ảnh/hình minh họa trong đơn vị OCR.                     |
+| `first_heading`        | Heading đầu tiên trong Markdown.                               |
+| `status`               | Trạng thái của OCR Markdown, hiện thường là`draft`.        |
+| `notes`                | Ghi chú thêm.                                                   |
 
 Khi dùng:
 
@@ -154,21 +157,22 @@ Vai trò: bản đồ **chủ đề → bài học** theo mục lục SGK/SGV Ti
 
 Các cột chính:
 
-| Cột | Ý nghĩa |
-| --- | --- |
-| `item_id` | Mã chủ đề hoặc bài học, ví dụ `TIN6-CD01`, `TIN6-B01`. |
-| `parent_id` | Mã cha. Với bài học, đây là mã chủ đề chứa bài đó. |
-| `item_type` | Loại item: `chu_de` hoặc `bai_hoc`. |
-| `grade` | Khối lớp. |
-| `source_label` | Nhãn gốc theo mục lục, ví dụ `Chủ đề 1. Máy tính và cộng đồng`. |
-| `normalized_label` | Nhãn đã chuẩn hóa để so khớp/thống kê. |
-| `print_page_start` | Trang in bắt đầu theo mục lục. |
-| `source_image_page_start` | Trang ảnh bắt đầu, nếu đã map chắc. |
-| `learning_material_id` | Quyển SGK/SGV chứa item này. |
-| `evidence_type` | Loại bằng chứng dùng để tạo dòng registry. |
-| `evidence_source` | Nguồn bằng chứng, thường là file OCR Markdown chứa mục lục. |
-| `status` | Trạng thái xác nhận. |
-| `notes` | Ghi chú về nguồn và việc cần HNMU/UET review. |
+
+| Cột                      | Ý nghĩa                                                                     |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| `item_id`                 | Mã chủ đề hoặc bài học, ví dụ`TIN6-CD01`, `TIN6-B01`.                |
+| `parent_id`               | Mã cha. Với bài học, đây là mã chủ đề chứa bài đó.             |
+| `item_type`               | Loại item:`chu_de` hoặc `bai_hoc`.                                          |
+| `grade`                   | Khối lớp.                                                                   |
+| `source_label`            | Nhãn gốc theo mục lục, ví dụ`Chủ đề 1. Máy tính và cộng đồng`. |
+| `normalized_label`        | Nhãn đã chuẩn hóa để so khớp/thống kê.                              |
+| `print_page_start`        | Trang in bắt đầu theo mục lục.                                           |
+| `source_image_page_start` | Trang ảnh bắt đầu, nếu đã map chắc.                                   |
+| `learning_material_id`    | Quyển SGK/SGV chứa item này.                                               |
+| `evidence_type`           | Loại bằng chứng dùng để tạo dòng registry.                            |
+| `evidence_source`         | Nguồn bằng chứng, thường là file OCR Markdown chứa mục lục.          |
+| `status`                  | Trạng thái xác nhận.                                                      |
+| `notes`                   | Ghi chú về nguồn và việc cần HNMU/UET review.                           |
 
 Khi dùng:
 
@@ -195,24 +199,25 @@ File này ghi các vị trí như “Hoạt động 1, Trang 6 SGK”, “Câu 1
 
 Các cột chính:
 
-| Cột | Ý nghĩa |
-| --- | --- |
-| `position_id` | Mã vị trí cụ thể. |
-| `grade` | Khối lớp. |
-| `learning_material_id` | Quyển sách liên quan. |
-| `material_type` | `SGK` hoặc `SGV`. |
-| `lesson_item_id` | Mã bài học trong `sgk_thcs_topic_lesson_map_v0.csv`, nếu map được. |
-| `lesson_label` | Tên bài học. |
-| `position_label` | Vị trí cụ thể trong bài/trang. |
-| `print_page` | Trang in được nhắc tới. |
-| `page_kind` | Cách hiểu trang, ví dụ lấy từ cột `Vị trí` của HNMU. |
-| `source_image_path` | Ảnh trang nếu đã map chắc. Hiện có thể để trống. |
-| `pdf_path` | PDF dẫn xuất để người dùng mở xem nhanh. |
-| `source_batch` | Batch dữ liệu HNMU tạo ra vị trí này. |
-| `evidence_type` | Loại bằng chứng của vị trí. |
-| `status` | Trạng thái xác nhận. |
-| `hnmu_dialogue_count` | Số mẫu HNMU nhắc tới vị trí này. |
-| `notes` | Ghi chú về độ chắc chắn. |
+
+| Cột                   | Ý nghĩa                                                                |
+| ---------------------- | ------------------------------------------------------------------------ |
+| `position_id`          | Mã vị trí cụ thể.                                                   |
+| `grade`                | Khối lớp.                                                              |
+| `learning_material_id` | Quyển sách liên quan.                                                 |
+| `material_type`        | `SGK` hoặc `SGV`.                                                       |
+| `lesson_item_id`       | Mã bài học trong`sgk_thcs_topic_lesson_map_v0.csv`, nếu map được. |
+| `lesson_label`         | Tên bài học.                                                          |
+| `position_label`       | Vị trí cụ thể trong bài/trang.                                      |
+| `print_page`           | Trang in được nhắc tới.                                             |
+| `page_kind`            | Cách hiểu trang, ví dụ lấy từ cột`Vị trí` của HNMU.            |
+| `source_image_path`    | Ảnh trang nếu đã map chắc. Hiện có thể để trống.              |
+| `pdf_path`             | PDF dẫn xuất để người dùng mở xem nhanh.                         |
+| `source_batch`         | Batch dữ liệu HNMU tạo ra vị trí này.                              |
+| `evidence_type`        | Loại bằng chứng của vị trí.                                        |
+| `status`               | Trạng thái xác nhận.                                                 |
+| `hnmu_dialogue_count`  | Số mẫu HNMU nhắc tới vị trí này.                                  |
+| `notes`                | Ghi chú về độ chắc chắn.                                           |
 
 Khi dùng:
 
@@ -260,14 +265,15 @@ Khi kiểm dữ liệu hội thoại HNMU:
 
 ## 5. Khi nào cần cập nhật file nào?
 
-| Tình huống | File cần cập nhật |
-| --- | --- |
-| Thêm một quyển SGK/SGV mới | `sgk_sgv_source_registry.csv` |
-| Copy/crawl thêm ảnh trang | `learning_resource_file_manifest.csv` |
-| Nguyên gửi thêm OCR Markdown hoặc OCR được thay thế | `ocr_text_manifest.csv` |
-| Chốt/sửa mục lục, chủ đề, bài học | `sgk_thcs_topic_lesson_map_v0.csv` |
-| Có vị trí học liệu mới từ dữ liệu HNMU hoặc đã map được trang cụ thể | `sgk_thcs_lesson_position_registry_v0.csv` |
-| Muốn agent tìm kiếm nội dung tốt hơn | rebuild `learning_resource_fragments.csv` và SQLite index, không chỉ sửa registry |
+
+| Tình huống                                                                          | File cần cập nhật                                                                 |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Thêm một quyển SGK/SGV mới                                                        | `sgk_sgv_source_registry.csv`                                                        |
+| Copy/crawl thêm ảnh trang                                                           | `learning_resource_file_manifest.csv`                                                |
+| Nguyên gửi thêm OCR Markdown hoặc OCR được thay thế                           | `ocr_text_manifest.csv`                                                              |
+| Chốt/sửa mục lục, chủ đề, bài học                                            | `sgk_thcs_topic_lesson_map_v0.csv`                                                   |
+| Có vị trí học liệu mới từ dữ liệu HNMU hoặc đã map được trang cụ thể | `sgk_thcs_lesson_position_registry_v0.csv`                                           |
+| Muốn agent tìm kiếm nội dung tốt hơn                                            | rebuild`learning_resource_fragments.csv` và SQLite index, không chỉ sửa registry |
 
 ## 6. Trạng thái và giới hạn hiện tại
 

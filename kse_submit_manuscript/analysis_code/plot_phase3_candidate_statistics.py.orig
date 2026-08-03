@@ -1,0 +1,165 @@
+"""Plot Phase-3 statistics for the 1,400 eligible benchmark samples.
+
+The figure is derived from the exported eligible candidate pool rather than
+from manuscript literals. It contains three panels matching the compact
+multi-panel style used for the Phase-1 descriptive figure.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+from collections import Counter
+from pathlib import Path
+from typing import Sequence
+
+import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
+
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_INPUT = (
+    REPOSITORY_ROOT
+    / "experiments/20260727_170150/outputs/benchmark_candidate_pool/"
+    "eligible_without_plan03_review.csv"
+)
+DEFAULT_OUTPUT = (
+    REPOSITORY_ROOT
+    / "kse_submit_manuscript/manuscript/figures/"
+    "phase3_candidate_statistics.png"
+)
+
+EXPECTED_ROWS = 1_400
+PRINCIPLE_LABELS = {
+    "PRINCIPLE-CHALLENGE": "Challenge",
+    "PRINCIPLE-EXPLANATION": "Explanation",
+    "PRINCIPLE-MODELLING": "Modelling",
+    "PRINCIPLE-PRACTICE": "Practice",
+    "PRINCIPLE-FEEDBACK": "Feedback",
+    "PRINCIPLE-QUESTIONING": "Questioning",
+}
+
+
+def load_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) != EXPECTED_ROWS:
+        raise ValueError(f"Expected {EXPECTED_ROWS} eligible rows, found {len(rows)}")
+    candidate_ids = [row["benchmark_candidate_id"] for row in rows]
+    if len(candidate_ids) != len(set(candidate_ids)):
+        raise ValueError("Eligible pool contains duplicate candidate IDs")
+    return rows
+
+
+def annotate_bars(
+    axis: plt.Axes,
+    bars: Sequence[plt.Rectangle],
+    counts: Sequence[int],
+    total: int,
+    *,
+    horizontal: bool = False,
+) -> None:
+    for bar, count in zip(bars, counts, strict=True):
+        label = f"{count:,}\n({count / total:.1%})"
+        if horizontal:
+            axis.text(
+                bar.get_width() + total * 0.008,
+                bar.get_y() + bar.get_height() / 2,
+                label,
+                va="center",
+                ha="left",
+                fontsize=9,
+            )
+        else:
+            axis.text(
+                bar.get_x() + bar.get_width() / 2,
+                bar.get_height() + total * 0.015,
+                label,
+                va="bottom",
+                ha="center",
+                fontsize=9,
+            )
+
+
+def build_figure(rows: list[dict[str, str]], output_path: Path) -> None:
+    total = len(rows)
+    grade_counts = Counter(row["grade"] for row in rows)
+    required_count_counts = Counter(int(row["required_principle_count"]) for row in rows)
+    principle_counts: Counter[str] = Counter()
+    for row in rows:
+        principle_ids = json.loads(row["required_principle_set"])
+        if len(principle_ids) != int(row["required_principle_count"]):
+            raise ValueError(
+                f"{row['benchmark_candidate_id']}: required-principle count mismatch"
+            )
+        unknown = set(principle_ids) - set(PRINCIPLE_LABELS)
+        if unknown:
+            raise ValueError(f"Unknown principle IDs: {sorted(unknown)}")
+        principle_counts.update(principle_ids)
+
+    if set(grade_counts) != {"6", "7", "8", "9"}:
+        raise ValueError(f"Unexpected grade coverage: {sorted(grade_counts)}")
+    if set(required_count_counts) != {1, 2, 3}:
+        raise ValueError(
+            f"Unexpected required-principle counts: {sorted(required_count_counts)}"
+        )
+
+    plt.rcParams.update(
+        {
+            "font.family": "DejaVu Sans",
+            "axes.titlesize": 12,
+            "axes.labelsize": 10,
+            "xtick.labelsize": 9,
+            "ytick.labelsize": 9,
+        }
+    )
+    figure, axes = plt.subplots(1, 3, figsize=(14.8, 4.8))
+    figure.patch.set_facecolor("white")
+
+    grades = ["6", "7", "8", "9"]
+    grade_values = [grade_counts[grade] for grade in grades]
+    grade_bars = axes[0].bar(
+        grades,
+        grade_values,
+        color=["#b8d8f0", "#c7e9c0", "#fdd0a2", "#dadaeb"],
+        edgecolor="#4c566a",
+        linewidth=0.7,
+    )
+    axes[0].set_title("(a) Grade distribution")
+    axes[0].set_xlabel("Grade")
+    axes[0].set_ylabel("Eligible samples")
+    axes[0].set_ylim(0, max(grade_values) * 1.22)
+    annotate_bars(axes[0], grade_bars, grade_values, total)
+
+    sizes = [1, 2, 3]
+    size_values = [required_count_counts[size] for size in sizes]
+    size_bars = axes[1].bar(
+        [str(size) for size in sizes],
+        size_values,
+        color=["#fdd49e", "#c6dbef", "#c7e9c0"],
+        edgecolor="#4c566a",
+        linewidth=0.7,
+    )
+    axes[1].set_title("(b) Required principles per sample")
+    axes[1].set_xlabel("Number of required principles")
+    axes[1].set_ylabel("Eligible samples")
+    axes[1].set_ylim(0, max(size_values) * 1.2)
+    annotate_bars(axes[1], size_bars, size_values, total)
+
+    ordered_principles = sorted(
+        PRINCIPLE_LABELS,
+        key=lambda principle_id: principle_counts[principle_id],
+    )
+    principle_values = [principle_counts[principle_id] for principle_id in ordered_principles]
+    principle_labels = [PRINCIPLE_LABELS[principle_id] for principle_id in ordered_principles]
+    principle_bars = axes[2].barh(
+        principle_labels,
+        principle_values,
+        color="#d9f0d3",
+        edgecolor="#4c566a",
+        linewidth=0.7,
+    )
+    axes[2].set_title("(c) Required-principle incidence")
+    axes[2].set_xlabel("Share of eligible samples")
+    axes[2].set_xlim(0, total * 0.72)

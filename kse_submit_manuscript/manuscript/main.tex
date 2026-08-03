@@ -18,6 +18,12 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+% Compact float spacing while preserving IEEE margins and type sizes.
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+\setlength{\dblfloatsep}{5pt plus 2pt minus 2pt}
+\setlength{\intextsep}{5pt plus 2pt minus 2pt}
 \fvset{
   frame=single,
   framesep=2mm,
@@ -36,29 +42,132 @@
 
 \title{\benchmarkname: a High-Quality Vietnamese Secondary-school Informatics AI Tutor Benchmark from Teacher-Authored Dialogues}
 
-\author{\IEEEauthorblockN{Author names pending confirmation}
-\IEEEauthorblockA{\textit{Affiliations pending confirmation}\\
-Vietnam}}
+% % The author order follows the contributors' confirmed a--h sequence.
+% \author{
+% \IEEEauthorblockN{Anh-Quan Nguyen-Duc\textsuperscript{1,*}, Huu-Quynh Nguyen\textsuperscript{2}, Van-Vinh Nguyen\textsuperscript{1}, Anh-Hoang Truong\textsuperscript{2},\\
+% Thi-Mai Hoang\textsuperscript{3}, Chi-Chung Le\textsuperscript{3}, Hong-Cuong Do\textsuperscript{3}, and Khoi-Nguyen Duong\textsuperscript{1}}
+% \IEEEauthorblockA{\textsuperscript{1}\textit{VNU University of Engineering and Technology (UET)}, Hanoi, Vietnam\\
+% Anh-Quan Nguyen-Duc: 26025008@vnu.edu.vn (*corresponding author); Van-Vinh Nguyen: vinhnv@vnu.edu.vn;\\
+% Khoi-Nguyen Duong: 23020127@vnu.edu.vn}
+% \IEEEauthorblockA{\textsuperscript{2}\textit{CMC University}, Hanoi, Vietnam\\
+% Huu-Quynh Nguyen: nhquynh@cmcu.edu.vn; Anh-Hoang Truong: Tahoang@cmcu.edu.vn}
+% \IEEEauthorblockA{\textsuperscript{3}\textit{Hanoi Metropolitan University (HNMU)}, Hanoi, Vietnam\\
+% Thi-Mai Hoang: htmai@hnmu.edu.vn; Chi-Chung Le: lcchung@hnmu.edu.cn;\\
+% Hong-Cuong Do: dhcuong@hnmu.edu.vn}
+% }
 
+% % Active author block: one IEEE author/affiliation block per author, following the conference template.
+% \author{
+% \IEEEauthorblockN{Anh-Quan Nguyen-Duc\textsuperscript{*}}
+% \IEEEauthorblockA{\textit{VNU University of Engineering}\\
+% \textit{and Technology (UET)}\\
+% Hanoi, Vietnam\\
+% 26025008@vnu.edu.vn (*corresponding author)}
+% \and
+% \IEEEauthorblockN{Huu-Quynh Nguyen}
+% \IEEEauthorblockA{\textit{CMC University}\\
+% Hanoi, Vietnam\\
+% nhquynh@cmcu.edu.vn}
+% \and
+% \IEEEauthorblockN{Van-Vinh Nguyen}
+% \IEEEauthorblockA{\textit{VNU University of Engineering}\\
+% \textit{and Technology (UET)}\\
+% Hanoi, Vietnam\\
+% vinhnv@vnu.edu.vn}
+% \and
+% \IEEEauthorblockN{Anh-Hoang Truong}
+% \IEEEauthorblockA{\textit{CMC University}\\
+% Hanoi, Vietnam\\
+% Tahoang@cmcu.edu.vn}
+% \and
+% \IEEEauthorblockN{Thi-Mai Hoang}
+% \IEEEauthorblockA{\textit{Hanoi Metropolitan}\\
+% \textit{University (HNMU)}\\
+% Hanoi, Vietnam\\
+% htmai@hnmu.edu.vn}
+% \and
+% \IEEEauthorblockN{Chi-Chung Le}
+% \IEEEauthorblockA{\textit{Hanoi Metropolitan}\\
+% \textit{University (HNMU)}\\
+% Hanoi, Vietnam\\
+% lcchung@hnmu.edu.cn}
+% \and
+% \IEEEauthorblockN{Hong-Cuong Do}
+% \IEEEauthorblockA{\textit{Hanoi Metropolitan}\\
+% \textit{University (HNMU)}\\
+% Hanoi, Vietnam\\
+% dhcuong@hnmu.edu.vn}
+% \and
+% \IEEEauthorblockN{Khoi-Nguyen Duong}
+% \IEEEauthorblockA{\textit{VNU University of Engineering}\\
+% \textit{and Technology (UET)}\\
+% Hanoi, Vietnam\\
+% 23020127@vnu.edu.vn}
+% }
+
+% Active hybrid author block: individual name--email cells with a shared affiliation map.
+\author{
+\IEEEauthorblockN{%
+{\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}cccc@{}}
+\begin{minipage}[t]{0.235\textwidth}\centering
+Anh-Quan Nguyen-Duc\textsuperscript{1,*}\\[-0.15ex]
+{\normalsize 26025008@vnu.edu.vn}
+\end{minipage} &
+\begin{minipage}[t]{0.235\textwidth}\centering
+Huu-Quynh Nguyen\textsuperscript{2}\\[-0.15ex]
+{\normalsize nhquynh@cmcu.edu.vn}
+\end{minipage} &
+\begin{minipage}[t]{0.235\textwidth}\centering
+Van-Vinh Nguyen\textsuperscript{1}\\[-0.15ex]
+{\normalsize vinhnv@vnu.edu.vn}
+\end{minipage} &
+\begin{minipage}[t]{0.235\textwidth}\centering
+Anh-Hoang Truong\textsuperscript{2}\\[-0.15ex]
+{\normalsize tahoang@cmcu.edu.vn}
+\end{minipage}
+\\[1.2ex]
+\begin{minipage}[t]{0.235\textwidth}\centering
+Thi-Mai Hoang\textsuperscript{3}\\[-0.15ex]
+{\normalsize htmai@hnmu.edu.vn}
+\end{minipage} &
+\begin{minipage}[t]{0.235\textwidth}\centering
+Chi-Chung Le\textsuperscript{3}\\[-0.15ex]
+{\normalsize lcchung@hnmu.edu.cn}
+\end{minipage} &
+\begin{minipage}[t]{0.235\textwidth}\centering
+Hong-Cuong Do\textsuperscript{3}\\[-0.15ex]
+{\normalsize dhcuong@hnmu.edu.vn}
+\end{minipage} &
+\begin{minipage}[t]{0.235\textwidth}\centering
+Khoi-Nguyen Duong\textsuperscript{1}\\[-0.15ex]
+{\normalsize 23020127@vnu.edu.vn}
+\end{minipage}
+\end{tabular}}}
+\IEEEauthorblockA{\textsuperscript{1}\textit{VNU University of Engineering and Technology (UET)}, Hanoi, Vietnam; \
+\textsuperscript{2}\textit{CMC University}, Hanoi, Vietnam\\
+\textsuperscript{3}\textit{Hanoi Metropolitan University (HNMU)}, Hanoi, Vietnam; \
+\textsuperscript{*}Corresponding author: Anh-Quan Nguyen-Duc}
+}
 \maketitle
 
 \begin{abstract}
 Evaluating a large language model as a tutor requires interpreting the
 learner's state, selecting an appropriate pedagogical move, and providing
 calibrated support, not merely checking answer correctness. We present
-\benchmarkname, a Vietnamese Grades~6--9 Informatics AI-tutor benchmark built
+\benchmarkname, a Vietnamese Grades~6-9 Informatics AI-tutor benchmark built
 through a traceable pipeline from 1,050 teacher-authored dialogues. The
 pipeline audits the dialogues, establishes six pedagogical principles and six
 tutor capabilities, and converts eligible tutor turns into 2,028
 context-conditioned candidates from 665 retained dialogue families. A
-grounded LLM scores the necessity of all six principles; deterministic checks
+grounded LLM scores the necessity of all six principles for each candidate; deterministic checks
 retain 1,400 candidates across 665 dialogue families. Our evaluation framework
 preserves native multi-turn roles and compares tutor generated and teacher-authored
 responses using four common criteria, three criteria per required principle,
 and criterion-level Win/Tie/Lose judgments. We evaluate three tutor
 configurations-two Gemini-based tutors and Llama~4~Maverick-whose responses
 are independently assessed by two LLM judges. Together, the construction pipeline and evaluation framework provide
-a curriculum-grounded protocol for Vietnamese Informatics tutoring.
+a curriculum-grounded protocol for Vietnamese Informatics AI tutoring.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -168,10 +277,8 @@ converts, labels, filters, and collects the benchmark samples.
 
 \begin{figure*}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/overall_pipeline_illustrated.png}
-\caption{Overview of the three-phase pipeline used to construct
-\benchmarkname{}. Phase~1
-and Phase~2 provide complementary inputs to Phase~3.}
+\includegraphics[width=0.96\textwidth]{figures/overall_pipeline_illustrated.png}
+\caption{Three-phase construction pipeline for \benchmarkname{}.}
 \label{fig:construction-pipeline}
 \end{figure*}
 }{}
@@ -201,7 +308,7 @@ as \textit{passed}. The detailed checklist and examples of pass, uncertain, and 
 665 dialogues were retained, 382 were routed to human review due to uncertainty, and 3 were rejected.
 
 \begin{table}[H]
-\caption{Basic statistics of the 665 dialogues retained after Phase~1.}
+\caption{Statistics of the 665 dialogues retained after Phase~1.}
 \label{tab:phase1-statistics}
 \centering
 \footnotesize
@@ -305,11 +412,8 @@ summarizes principle, grade, turn, and length distributions.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/phase3_candidate_statistics.png}
-\caption{Distributions of 1,400 eligible \benchmarkname{} samples: (a) 2,448 multi-label
-principle assignments; (b) grade; (c) turns per sample, including prompt,
-history, and reference; and (d) characters per turn across 5,508 occurrences
-(mean 96.6; median 90).}
+\includegraphics[width=0.96\textwidth]{figures/phase3_candidate_statistics.png}
+\caption{Distributions of 1,400 eligible samples: (a) 2,448 principle assignments; (b) grade; (c) turns per sample, including prompt, history, and reference; and (d) characters per turn across 5,508 turns (mean 96.6; median 90).}
 \label{fig:phase3-statistics}
 \end{figure*}
 
@@ -420,14 +524,7 @@ GPT & Llama~4 Maverick
 & 74.56 & 75.98 \\
 \hline
 \end{tabular}}
-\vspace{2pt}
-
-\footnotesize OJ: Overall Judgement Acc.; GL: General-Level Acc.;
-the six middle columns are Principle-Level Acc.; OA: Overall Acc.;
-FM: family-macro OA. All Acc. values are pairwise win rates, not absolute
-classification accuracy. Applicable benchmark samples per tutor configuration:
-Challenge \(=8\), Explanation \(=863\), Modelling \(=93\),
-Practice \(=27\), Questioning \(=651\), and Feedback \(=806\).
+\footnotesize OJ: Overall Judgement; GL: General level; the six middle columns: principle level; OA: Overall; FM: family-macro OA. All values are pairwise win rates. Samples per configuration: Challenge 8, Explanation 863, Modelling 93, Practice 27, Questioning 651, and Feedback 806.
 \end{table*}
 
 Table~\ref{tab:detailed-main-results} shows both judges placing the Gemini
@@ -487,8 +584,7 @@ GPT & Llama~4 Maverick & 1,146 (81.86) & 7 (0.50) & 247 (17.64) \\
 \hline
 \end{tabular}}
 
-\footnotesize Percentages are shown in parentheses; each row contains
-1,400 comparisons.
+\footnotesize Parentheses show percentages; each row contains 1,400 comparisons.
 \end{table}
 
 The holistic counts in Table~\ref{tab:holistic-wtl} reinforce the difference
@@ -534,12 +630,7 @@ Feedback & 806 & 90.98 & 91.19 & +0.21 [-1.38, 1.75] \\
 Overall Accuracy & 1,400 & 84.01 & 84.78 & +0.77 [-0.48, 2.14] \\
 \hline
 \end{tabular}
-\vspace{2pt}
-
-\footnotesize \(\Delta=\) LearnLM minus baseline. The paired
-percentile intervals use 5,000 cluster-bootstrap draws over 665 source-dialogue
-families. Challenge and Overall Accuracy have 4,999 valid draws because one
-draw contains no Challenge observation; all other rows have 5,000.
+\footnotesize \(\Delta=\) LearnLM minus baseline; CIs use 5,000 cluster-bootstrap draws over 665 families (4,999 for Challenge and Overall Accuracy because one draw has no Challenge sample).
 \end{table}
 
 Because the Gemini configurations differ only in instruction,
@@ -569,11 +660,7 @@ Gemini+LearnLM & 1,400 & 89.79 & 0.890 & 54 & 73 & 16 \\
 Llama~4 Maverick & 1,400 & 63.21 & 0.529 & 419 & 65 & 31 \\
 \hline
 \end{tabular}
-\vspace{2pt}
-
-\footnotesize Exact is in percent. G1-L/G2-W and G1-W/G2-L denote opposite
-Lose/Win judgments by the Gemini and GPT judges respectively; Tie counts cases where exactly
-one judge assigns Tie.
+\footnotesize Exact is a percentage. G1-L/G2-W and G1-W/G2-L denote opposite Gemini/GPT Lose--Win judgments; Tie means exactly one judge assigns Tie.
 \end{table}
 
 Table~\ref{tab:holistic-agreement} reports exact agreement and Gwet's
@@ -591,7 +678,7 @@ machine-readable analysis bundle.
 \centering
 \footnotesize
 \setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{0.94}
+\renewcommand{\arraystretch}{0.88}
 \begin{tabular}{@{}p{0.52\columnwidth}rrr@{}}
 \hline
 Rubric group or criterion & \(N\) & Exact (\%) & Gwet's \(AC1\) \\
@@ -610,8 +697,6 @@ Questioning & 5,859 & 68.12 & 0.558 \\
 Feedback & 7,254 & 76.88 & 0.726 \\
 \hline
 \end{tabular}
-\vspace{2pt}
-
 \footnotesize \(N\) denotes paired criterion decisions.
 \end{table}
 

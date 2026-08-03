@@ -4,6 +4,9 @@ document/
 # Legacy/local credential file; the active Vertex runner uses ADC and never reads it
 src/vertex_ai_call/.env
 
+# Local API credentials for direct provider calls
+src/.env
+
 # Python bytecode and test caches
 __pycache__/
 
@@ -204,3 +207,9 @@ tests/learning_resources/test_ocr_pipeline_units.py
 
 
 google-cloud-sdk/*
+
+*.log
+google-cloud-cli-linux-x86_64.tar.gz
+conference-latex-template.zip
+# Generated experiment JSONL outputs
+/experiments/*/outputs/**/*.jsonl

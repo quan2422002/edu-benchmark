@@ -1,0 +1,189 @@
+{
+  "record_type": "benchmark_evaluation_pilot_candidate_manifest",
+  "manifest_version": "pilot_80_v1",
+  "candidate_count": 80,
+  "candidate_ids": [
+    "BC-HNMU-G6-R0042-STT13-AI04",
+    "BC-HNMU-G6-R0054-STT11-AI02",
+    "BC-HNMU-G6-R0085-STT14-AI06",
+    "BC-HNMU-G6-R0090-STT5-AI02",
+    "BC-HNMU-G6-R0096-STT11-AI04",
+    "BC-HNMU-G6-R0099-STT14-AI02",
+    "BC-HNMU-G6-R0118-STT5-AI02",
+    "BC-HNMU-G6-R0140-STT13-AI02",
+    "BC-HNMU-G6-R0152-STT11-AI06",
+    "BC-HNMU-G6-R0153-STT12-AI02",
+    "BC-HNMU-G6-R0178-STT9-AI02",
+    "BC-HNMU-G6-R0181-STT12-AI08",
+    "BC-HNMU-G6-R0185-STT2-AI02",
+    "BC-HNMU-G6-R0216-STT5-AI04",
+    "BC-HNMU-G6-R0217-STT6-AI02",
+    "BC-HNMU-G6-R0220-STT9-AI04",
+    "BC-HNMU-G6-R0221-STT10-AI06",
+    "BC-HNMU-G6-R0229-STT4-AI02",
+    "BC-HNMU-G6-R0236-STT11-AI06",
+    "BC-HNMU-G6-R0239-STT14-AI08",
+    "BC-HNMU-G7-R0009-STT8-AI06",
+    "BC-HNMU-G7-R0020-STT5-AI02",
+    "BC-HNMU-G7-R0026-STT11-AI04",
+    "BC-HNMU-G7-R0041-STT12-AI02",
+    "BC-HNMU-G7-R0061-STT4-AI06",
+    "BC-HNMU-G7-R0067-STT10-AI04",
+    "BC-HNMU-G7-R0074-STT3-AI02",
+    "BC-HNMU-G7-R0101-STT2-AI02",
+    "BC-HNMU-G7-R0107-STT8-AI02",
+    "BC-HNMU-G7-R0109-STT10-AI06",
+    "BC-HNMU-G7-R0115-STT2-AI02",
+    "BC-HNMU-G7-R0144-STT3-AI02",
+    "BC-HNMU-G7-R0145-STT4-AI04",
+    "BC-HNMU-G7-R0150-STT9-AI02",
+    "BC-HNMU-G7-R0161-STT6-AI02",
+    "BC-HNMU-G7-R0164-STT9-AI08",
+    "BC-HNMU-G7-R0187-STT4-AI02",
+    "BC-HNMU-G7-R0203-STT6-AI08",
+    "BC-HNMU-G7-R0204-STT7-AI14",
+    "BC-HNMU-G7-R0207-STT10-AI10",
+    "BC-HNMU-G8-R0015-STT14-AI06",
+    "BC-HNMU-G8-R0016-STT1-AI06",
+    "BC-HNMU-G8-R0037-STT8-AI02",
+    "BC-HNMU-G8-R0047-STT4-AI02",
+    "BC-HNMU-G8-R0064-STT7-AI02",
+    "BC-HNMU-G8-R0080-STT9-AI04",
+    "BC-HNMU-G8-R0092-STT7-AI02",
+    "BC-HNMU-G8-R0160-STT5-AI04",
+    "BC-HNMU-G8-R0172-STT3-AI06",
+    "BC-HNMU-G8-R0185-STT2-AI08",
+    "BC-HNMU-G8-R0186-STT3-AI06",
+    "BC-HNMU-G8-R0187-STT4-AI08",
+    "BC-HNMU-G8-R0189-STT6-AI04",
+    "BC-HNMU-G8-R0195-STT12-AI10",
+    "BC-HNMU-G8-R0197-STT14-AI08",
+    "BC-HNMU-G8-R0206-STT9-AI04",
+    "BC-HNMU-G8-R0226-STT1-AI02",
+    "BC-HNMU-G8-R0246-STT7-AI02",
+    "BC-HNMU-G8-R0266-STT13-AI02",
+    "BC-HNMU-G8-R0276-STT9-AI02",
+    "BC-HNMU-G9-R0011-STT10-AI02",
+    "BC-HNMU-G9-R0016-STT1-AI02",
+    "BC-HNMU-G9-R0033-STT4-AI02",
+    "BC-HNMU-G9-R0044-STT1-AI02",
+    "BC-HNMU-G9-R0068-STT11-AI04",
+    "BC-HNMU-G9-R0098-STT13-AI02",
+    "BC-HNMU-G9-R0109-STT10-AI02",
+    "BC-HNMU-G9-R0128-STT1-AI04",
+    "BC-HNMU-G9-R0141-STT14-AI02",
+    "BC-HNMU-G9-R0150-STT9-AI02",
+    "BC-HNMU-G9-R0196-STT13-AI10",
+    "BC-HNMU-G9-R0211-STT14-AI12",
+    "BC-HNMU-G9-R0215-STT4-AI04",
+    "BC-HNMU-G9-R0224-STT13-AI08",
+    "BC-HNMU-G9-R0228-STT3-AI02",
+    "BC-HNMU-G9-R0242-STT3-AI02",
+    "BC-HNMU-G9-R0262-STT9-AI10",
+    "BC-HNMU-G9-R0269-STT2-AI10",
+    "BC-HNMU-G9-R0280-STT13-AI02",
+    "BC-HNMU-G9-R0292-STT11-AI10"
+  ],
+  "smoke_anchor_candidate_ids": [
+    "BC-HNMU-G6-R0239-STT14-AI08",
+    "BC-HNMU-G7-R0204-STT7-AI14",
+    "BC-HNMU-G8-R0189-STT6-AI04",
+    "BC-HNMU-G9-R0224-STT13-AI08",
+    "BC-HNMU-G6-R0042-STT13-AI04",
+    "BC-HNMU-G7-R0164-STT9-AI08",
+    "BC-HNMU-G8-R0186-STT3-AI06",
+    "BC-HNMU-G9-R0215-STT4-AI04",
+    "BC-HNMU-G6-R0236-STT11-AI06",
+    "BC-HNMU-G7-R0207-STT10-AI10"
+  ],
+  "challenge_census_candidate_ids": [
+    "BC-HNMU-G6-R0085-STT14-AI06",
+    "BC-HNMU-G6-R0181-STT12-AI08",
+    "BC-HNMU-G6-R0221-STT10-AI06",
+    "BC-HNMU-G8-R0187-STT4-AI08",
+    "BC-HNMU-G8-R0195-STT12-AI10",
+    "BC-HNMU-G8-R0197-STT14-AI08",
+    "BC-HNMU-G9-R0196-STT13-AI10",
+    "BC-HNMU-G9-R0211-STT14-AI12"
+  ],
+  "selection_contract": {
+    "sampling_role": "coverage_oriented_not_population_representative",
+    "grade_targets": {
+      "6": 20,
+      "7": 20,
+      "8": 20,
+      "9": 20
+    },
+    "principle_minimums": {
+      "PRINCIPLE-CHALLENGE": 8,
+      "PRINCIPLE-EXPLANATION": 20,
+      "PRINCIPLE-MODELLING": 12,
+      "PRINCIPLE-PRACTICE": 12,
+      "PRINCIPLE-FEEDBACK": 20,
+      "PRINCIPLE-QUESTIONING": 20
+    },
+    "history_minimums": {
+      "empty": 30,
+      "nonempty": 30
+    },
+    "bloom_group_minimums": {
+      "remember": 20,
+      "understand": 20,
+      "apply": 20
+    },
+    "required_set_size_minimums": {
+      "1": 12,
+      "2": 12,
+      "3": 12
+    },
+    "minimum_distinct_grade_lessons": 32,
+    "unique_family_required": true,
+    "include_all_eligible_challenge_candidates": true,
+    "include_smoke_anchors": true,
+    "seed": 20260729,
+    "deterministic_restarts": 96
+  },
+  "coverage": {
+    "grade_counts": {
+      "6": 20,
+      "7": 20,
+      "8": 20,
+      "9": 20
+    },
+    "principle_incidence_counts": {
+      "PRINCIPLE-CHALLENGE": 8,
+      "PRINCIPLE-EXPLANATION": 48,
+      "PRINCIPLE-FEEDBACK": 41,
+      "PRINCIPLE-MODELLING": 14,
+      "PRINCIPLE-PRACTICE": 12,
+      "PRINCIPLE-QUESTIONING": 35
+    },
+    "history_counts": {
+      "empty": 39,
+      "nonempty": 41
+    },
+    "bloom_group_counts": {
+      "apply": 25,
+      "remember": 24,
+      "understand": 31
+    },
+    "required_principle_set_size_counts": {
+      "1": 23,
+      "2": 36,
+      "3": 21
+    },
+    "distinct_family_count": 80,
+    "distinct_grade_lesson_count": 54
+  },
+  "input_sha256": {
+    "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a",
+    "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_analysis.json": "b7083a38d90901521444cef34f6320fc5eb289ef53221589559c3bf31701992c",
+    "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/run_full.jsonl": "123a458d6afcbfb63e05e313665ec6bd0272fa3bbe5fb6a34b1f1d4c304fc3d8",
+    "experiments/20260727_170150/outputs/benchmark_evaluation/smoke_gemini35_instruction_v2/run_manifest.json": "feb874d062a23bb1b19757057ca54dc4e07d947ee58f611941da348bf010e7b2"
+  },
+  "limitations": [
+    "Challenge and Practice are deliberately oversampled; unweighted pilot rates are not population estimates.",
+    "The active pilot has two unique base models across three target configurations; the LearnLM-prompted configuration uses the same Gemini 3.5 Flash model as the baseline.",
+    "LearnLM is integrated into Gemini and is not a separate specialized-education model; the specialized-model panel requirement remains an operational gap."
+  ]
+}

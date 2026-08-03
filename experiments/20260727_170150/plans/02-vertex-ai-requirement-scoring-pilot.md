@@ -1,7 +1,7 @@
 # Plan 02 — Pipeline, calibration và full run requirement-scoring
 
 Experiment: `20260727_170150`
-Trạng thái: `APPROVED — FULL_SINGLE_RUN_IMPLEMENTED; AWAITING_USER_RUN`
+Trạng thái: `COMPLETED — FULL_BUNDLE_VALIDATED`
 Ngày soạn: 27/07/2026
 Phụ thuộc: Plan 01 hoàn thành và công bố specification manifest V4
 
@@ -268,8 +268,8 @@ Retry không diễn ra ngay khi một candidate lỗi. Runner:
 
 1. chạy toàn bộ candidate chưa hoàn thành trong lượt quét hiện tại;
 2. ghi ngay từng candidate thành công vào JSONL;
-3. thu danh sách candidate lỗi vào manifest, không lưu exception message
-   có thể chứa credential;
+3. thu danh sách candidate lỗi vào manifest; chỉ giữ thông báo lỗi đã
+   giới hạn độ dài, không lưu traceback hoặc credential;
 4. sau khi toàn bộ lượt quét kết thúc, chỉ gửi lại các candidate lỗi;
 5. lặp tối đa `max_retries` lượt retry cho mỗi candidate, đồng thời luôn
    tuân theo trần tổng `max_requests`.
@@ -277,6 +277,28 @@ Retry không diễn ra ngay khi một candidate lỗi. Runner:
 Giữa các lượt retry dùng exponential backoff có jitter và trần chờ 30
 giây. Nếu runner bị dừng, lần chạy lại đọc JSONL, kiểm request hash và bỏ
 qua mọi candidate đã thành công.
+
+### Bước 4.2 — Chạy bù candidate còn lỗi
+
+Nếu lượt `full` đã dùng hết retry nhưng chỉ còn một số candidate thiếu,
+lệnh `retry-failed`:
+
+1. kiểm manifest và yêu cầu tập ID lỗi phải khớp chính xác tập ID còn
+   thiếu trong `run_full.jsonl`;
+2. giữ nguyên prompt, schema, model, generation config và request hash;
+3. chỉ gửi lại các candidate còn thiếu, với số retry bổ sung hữu hạn;
+4. nối thêm từng kết quả hợp lệ vào chính `run_full.jsonl`;
+5. chỉ chuyển bundle sang `completed_awaiting_analysis` sau khi validator
+   kiểm đủ toàn bộ record và score;
+6. ghi thời gian, ID, số request trước/sau và hash runner vào
+   `recovery_runs` của manifest.
+
+Lệnh này không tạo bundle phụ và không gửi lại candidate đã thành công.
+
+Kết quả thực tế: hai candidate còn lỗi sau lượt `full` đã được chạy bù
+riêng; ba request bổ sung nâng tổng số request từ 2.057 lên 2.060. Bundle
+cuối có 2.028 record duy nhất, 12.168 score, không còn failure và đã qua
+validator.
 
 ### Bước 5 — Dẫn xuất tập bằng code
 

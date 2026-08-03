@@ -15,6 +15,11 @@ Trạng thái hiện tại:
 - plan đã được UET duyệt và đang `APPROVED — IMPLEMENTATION_IN_PROGRESS`;
 - source `manuscript/main.tex` đã có bản nháp `Introduction` và
   `Related Work and Background`, cùng `manuscript/references.bib`;
+- Section V giữ nguyên `Experimental Setup`, đã gom kết quả full vào
+  `Main Results` và hoàn thành `Ablation Study` gồm instruction ablation,
+  judge robustness và descriptive position sensitivity; đặc tả và bundle
+  đã validate được liên kết trong
+  `notes/section-v-ablation-analysis-requirements.md`;
 - evidence registry đã nhận ba claim tạm thời từ Plan 03 tại
   `notes/claim_evidence_registry.csv`; mọi claim requirement-scoring đều
   ghi rõ giới hạn single-run và trạng thái chờ UET;

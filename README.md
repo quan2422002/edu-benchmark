@@ -4,7 +4,44 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment `20260722_000940` đã chuyển 665 hội thoại `pass` thành 2.028 candidate và xây nền tảng sáu năng lực–sáu nguyên tắc. Experiment active `20260727_170150` đã hoàn thành đặc tả `requirement_score` 1–5 và hai calibration bằng Gemini 2.5/3.5 Flash. Gemini 3.5 đạt 34/36 expected range nhưng không đạt gate độ lặp lại; UET quyết định dừng calibration và chạy một lần trên toàn bộ 2.028 candidate bằng `gemini-3.5-flash`, `thinking_level=MEDIUM`, `include_thoughts=false`, không gửi sampling legacy, giữ `max_output_tokens=4096` và seed `20260727`. Lệnh `full` dùng ADC cho project `edu-benchmark`, concurrency 20, ghi tăng dần, resume và retry sau lượt quét; bundle active là `full_gemini35_medium_v1`. Plan 03 sẽ thống kê bằng code và tạo review queue, nhưng output model vẫn là đề xuất tạm thời, không phải ground truth hoặc nhãn HNMU xác nhận.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment active `20260727_170150` đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT: mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+
+Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
+và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
+trọng không ổn định theo response đối đầu. Theo quyết định UET, contract
+`rubric-only-v3` loại phần này khỏi cả system/user prompt, output model và
+hậu xử lý; các trường tương thích trong record được giữ rỗng. Wrapper chung
+cho hai judge đã hoàn thành đúng 90 phép so sánh mỗi mô hình, không ghi đè
+bundle v2. Gemini và GPT đạt agreement 86,7% ở overall và 77,2% ở cấp
+rubric; điểm tổng hợp kiểu KMP-Bench cùng xếp LearnLM-prompted cao nhất,
+Gemini baseline thứ hai và Llama Maverick thứ ba. Cost-pilot vẫn chỉ là
+bằng chứng thăm dò vì có 30 candidate và Gemini vừa là target vừa là judge.
+
+Audit fragment trên 30 candidate cho thấy 2 mẫu có evidence sai, 20 mẫu có
+evidence không đủ và chỉ 8 mẫu đủ hoặc gần đủ ở cấp candidate. UET vì vậy
+đã mở contract `gold-answer-only-v4`: giữ nguyên v2/v3, bỏ fragment khỏi
+judge input, dùng `gold_answer` làm neo duy nhất cho `RUB-GEN-ACC` và ghi
+policy loại evidence trong manifest/record. Đoạn này ghi trạng thái lịch sử
+trước khi v4 được chạy đủ và cổng batch được UET mở.
+
+Lần chạy trả phí v4 đầu tiên giữ được 88/90 phán quyết Gemini; hai lỗi còn
+lại là một biến thể tên tiêu chí tương đương và một output `MAX_TOKENS`.
+Recovery đã được cô lập cho v4: chuẩn hóa đúng alias đã biết, chỉ chạy bù
+hai request Gemini ở 12.288 token rồi mới chạy GPT ở giới hạn 8.192 token.
+
+V4 hiện đã hoàn thành 90/90 cho cả Gemini và GPT. UET đã mở full judge cho
+1.400 candidate × ba target bằng hai judge. Pipeline Batch API mới giữ
+nguyên prompt/hậu xử lý v4, tách hoàn toàn khỏi runner synchronous, dùng p95
+usage của pilot để khóa ngân sách. Sau collect và recovery, cả Gemini và
+GPT đều hoàn thành 4.200/4.200 request; wrapper hoạt động là
+`scripts/benchmark_evaluation/run_full_1400_judge_batch.sh`.
+
+Phân tích Section V đã được tái lập hoàn toàn bằng code trên hai full judge
+bundle. Artifact tinh gọn chứa instruction ablation, độ bền vững giữa hai
+judge và descriptive position sensitivity tại
+`experiments/20260727_170150/outputs/benchmark_evaluation/section_v_ablation_analysis_v1/results.json`;
+mọi cổng 4.200/38.832 và các anchor đã khóa đều đạt. Không có model call mới
+trong bước này.
 
 Active planning roadmap: [experiments/20260727_170150/roadmap.md](experiments/20260727_170150/roadmap.md)
 Previous phase-2 construction roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
@@ -31,6 +68,8 @@ Current plans:
 - [Experiment 20260727 Plan 01 — Principle requirement-score specification](experiments/20260727_170150/plans/01-principle-requirement-score-specification.md)
 - [Experiment 20260727 Plan 02 — Vertex AI requirement-scoring pilot](experiments/20260727_170150/plans/02-vertex-ai-requirement-scoring-pilot.md)
 - [Experiment 20260727 Plan 03 — Full-run statistics and analysis](experiments/20260727_170150/plans/03-full-run-statistics-and-analysis.md)
+- [Experiment 20260727 Plan 04 — Two-tier rubric library](experiments/20260727_170150/plans/04-two-tier-rubric-library.md)
+- [Experiment 20260727 Plan 05 — Benchmark evaluation configuration](experiments/20260727_170150/plans/05-benchmark-evaluation-configuration.md)
 
 ## People and decision authority
 
@@ -87,7 +126,7 @@ shared/                 Shared raw data and learning resources reused across exp
 src/edu_benchmark/      Shared project code for data I/O, audit, conversion, resources, and quality checks
 src/vertex_ai_call/     Vertex AI pilot runner for six-principle requirement scoring
 document/               User-provided project source documents
-kse_submit_manuscript/  KSE 2026 writing plan, LaTeX source, evidence registry, snapshots, and releases
+kse_submit_manuscript/  KSE 2026 writing plan, LaTeX source, evidence registry, and releases
 tests/agents/           Agent and documentation tests
 ```
 

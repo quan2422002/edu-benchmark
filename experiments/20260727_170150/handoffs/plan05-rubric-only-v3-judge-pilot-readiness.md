@@ -1,0 +1,66 @@
+# Specialist handoff
+
+- Delegation ID: Không áp dụng
+- Agent: root
+- Status: Hoàn thành cài đặt và API run; hai bundle đạt 90/90
+- Native thread ID/label: single-agent implementation
+
+## Delegation prompt
+
+Không có delegation. UET yêu cầu loại hoàn toàn lỗi nghiêm trọng khỏi quá
+trình judge, giữ ảnh hưởng tới code hiện tại ở mức thấp và chuẩn bị lệnh chạy
+lại cho Gemini 3.5 Flash cùng GPT-5.4-mini.
+
+## Follow-up or steer messages
+
+UET cho phép chạy thao tác cài đặt và kiểm thử ngoài sandbox khi cần.
+
+## Inputs read
+
+- `experiments/20260727_170150/plans/05-benchmark-evaluation-configuration.md`
+- `experiments/20260727_170150/roadmap.md`
+- `shared/prompts/benchmark_response_judging/system_prompt_v2.md`
+- `src/edu_benchmark/benchmark_evaluation/judge.py`
+- `src/edu_benchmark/benchmark_evaluation/openai_judge.py`
+- `src/edu_benchmark/benchmark_evaluation/gemini_judge.py`
+- `scripts/benchmark_evaluation/run_claude_judge_smoke.py`
+- cost-pilot manifest và ba target bundle full 1.400 mẫu
+
+## Outputs created
+
+- `shared/prompts/benchmark_response_judging/system_prompt_rubric_only_v3.md`
+- `scripts/benchmark_evaluation/run_rubric_only_v3_judge_pilot_30.sh`
+- test v3 trong `tests/benchmark_evaluation/`
+- cập nhật Plan 05, roadmap, README và ARCHITECTURE
+
+## Result summary
+
+Contract `rubric-only-v3` dùng chung prompt builder cho Gemini và OpenAI,
+nhưng không đọc `serious_errors.csv`, không đưa danh mục lỗi vào request và
+không yêu cầu model trả lỗi. Record cuối giữ các trường lỗi/adjustment rỗng
+để tương thích downstream; contract version và hash ngăn resume lẫn v2.
+Structured Outputs OpenAI cũng bỏ trường lỗi. Hai output v3 dùng thư mục mới.
+
+Toàn bộ 83 test `tests/benchmark_evaluation` đạt bằng
+`/home/quannda/miniconda3/envs/benchmark_env/bin/python`. Gemini đạt 90/90,
+chi phí cộng dồn 4,061927 USD; GPT đạt 90/90, chi phí 1,356143 USD.
+Agreement là 86,7% ở overall và 77,2% ở rubric, tăng từ 81,1% và 75,3% của
+v2. Cả hai cùng xếp LearnLM-prompted > Gemini baseline > Llama Maverick
+theo điểm tổng hợp kiểu KMP-Bench.
+
+## Orchestrator decision
+
+Giữ v2 nguyên trạng làm provenance. Dùng wrapper v3 duy nhất để chạy tuần tự
+Gemini trước, GPT sau; nếu Gemini thất bại thì dừng đóng trước GPT.
+
+## Uncertainty
+
+Cost-pilot chỉ có 30 candidate; một số nguyên tắc hiếm chỉ có hai candidate
+mỗi target. Gemini vừa là target vừa là judge và có dấu hiệu ưu tiên response
+cùng họ. `overall_judgment` vẫn là kết quả phụ, không phải metric chính.
+
+## Open questions and next human decisions
+
+- Chưa mở full judge; cần dự toán lại từ usage thực tế và xem xét thiên lệch
+  cùng họ của Gemini judge.
+- Ưu tiên kiểm các ca Gemini–GPT bất đồng mạnh trước khi scale.

@@ -1,0 +1,93 @@
+<mxfile host="65bd71144e">
+    <diagram id="vietinfotutorbench-eval-v2" name="Page-1">
+        <mxGraphModel dx="2300" dy="1423" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="790" background="#FFFFFF" math="1" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="panel-generation" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFCFF;strokeColor=#6D8EAD;strokeWidth=2.2;dashed=1;dashPattern=9 7;arcSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="65" width="850" height="680" as="geometry"/>
+                </mxCell>
+                <mxCell id="panel-judging" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDFC;strokeColor=#9A8068;strokeWidth=2.2;dashed=1;dashPattern=9 7;arcSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="65" width="980" height="680" as="geometry"/>
+                </mxCell>
+                <mxCell id="generation-title" value="&lt;b&gt;A. Prompting the AI tutors&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=Helvetica;fontSize=23;fontColor=#365B7D;" parent="1" vertex="1">
+                    <mxGeometry x="48" y="80" width="370" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="judging-title" value="&lt;b&gt;B. Evaluating the responses&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=Helvetica;fontSize=23;fontColor=#74543B;" parent="1" vertex="1">
+                    <mxGeometry x="930" y="80" width="400" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="candidate" value="&lt;b&gt;Benchmark candidate&lt;/b&gt;&lt;br&gt;&lt;br&gt;Grade and lesson&lt;br&gt;Source question/task&lt;br&gt;Required principles (score ≥ 4)&lt;br&gt;Student prompt&lt;br&gt;Role-preserving history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF3FB;strokeColor=#567B9D;strokeWidth=1.8;fontColor=#294A66;fontSize=18;align=left;verticalAlign=middle;spacingLeft=16;spacingRight=12;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="242.5" width="190" height="245" as="geometry"/>
+                </mxCell>
+                <mxCell id="provider-request" value="&lt;b&gt;Provider request&lt;/b&gt;&lt;br&gt;&lt;b&gt;SYSTEM PROMPT — separate field&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6A4A18&quot;&gt;&quot;Bạn là gia sư Tin học cho học sinh trung học cơ sở lớp 6–9. Hãy trả lời bằng tiếng Việt, đúng chuyên môn...&quot;&lt;/font&gt;&lt;br&gt;&lt;br&gt;Yêu cầu sư phạm bắt buộc:&lt;br&gt;• Phản hồi • Đặt câu hỏi ....&lt;br&gt;&lt;br&gt;&lt;b&gt;NATIVE MESSAGES&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34699A&quot;&gt;USER&lt;/font&gt;: &quot;Thầy ơi, nếu không có mạng...&quot;&lt;br&gt;&lt;font color=&quot;#7B5A28&quot;&gt;ASSISTANT&lt;/font&gt;: &quot;Nếu cả lớp có 30 máy...&quot;&lt;br&gt;&lt;font color=&quot;#34699A&quot;&gt;USER&lt;/font&gt;: &quot;Chắc là phải copy vào USB...&quot;&lt;br&gt;&lt;br&gt;→ Generate the next assistant turn" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E8;strokeColor=#A8894A;strokeWidth=1.9;fontColor=#51401D;fontSize=16;align=left;verticalAlign=middle;spacingLeft=16;spacingRight=14;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="285" y="120" width="300" height="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="tutor-group" value="&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;b&gt;Candidate AI Tutor&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#617B96;strokeWidth=1.9;fontColor=#334E68;fontSize=19;align=center;verticalAlign=top;spacingTop=13;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="625" y="310" width="210" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" style="edgeStyle=none;html=1;" parent="1" source="tutor-output" target="target-response" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="tutor-output" value="&lt;b&gt;Tutor response&lt;/b&gt;&lt;br&gt;one per configuration&lt;br&gt;&lt;font color=&quot;#4C6072&quot;&gt;2,048-token cap&lt;/font&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#E7F2FF;strokeColor=#4E79A0;strokeWidth=2;fontColor=#24496B;fontSize=18;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="635" y="535" width="190" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="hidden-tutor" value="&lt;b&gt;Not shown to the tutor:&lt;/b&gt; gold answer · teacher reference · requirement scores · rubrics · internal IDs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F0;strokeColor=#C45E59;strokeWidth=1.6;dashed=1;dashPattern=5 4;fontColor=#7A302C;fontSize=17;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="660" width="760" height="58" as="geometry"/>
+                </mxCell>
+                <mxCell id="judge-package" value="&lt;b&gt;Evaluation package&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Vietnamese context in System prompt&lt;/b&gt;&lt;br&gt;Câu hỏi nguồn: &quot;Các cột của trang tính được đặt tên như thế nào?&quot;&lt;br&gt;Đáp án chuyên môn: &quot;A, B, C... từ trái sang phải.&quot;&lt;br&gt;Lời học sinh: &quot;Vậy còn các chữ cái A, B, C ở phía trên là gì hả thầy?&quot;&lt;div&gt;&lt;font color=&quot;#304b63&quot;&gt;Lịch sử hội thoại:....&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;Applicable rubrics: 4 + 3k&lt;/b&gt;&lt;br&gt;Four common criteria + three criteria for each required principle&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF5FA;strokeColor=#63819A;strokeWidth=1.9;fontColor=#304B63;fontSize=16;align=left;verticalAlign=middle;spacingLeft=16;spacingRight=14;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="930" y="125" width="500" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="reference-response" value="&lt;b&gt;Teacher-authored reference&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6A4A18&quot;&gt;&amp;quot;Em đã biết hàng được đánh số rồi...&amp;quot;&lt;/font&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#FFF5D9;strokeColor=#B28A3E;strokeWidth=1.8;fontColor=#664B18;fontSize=16;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="930" y="395" width="220" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="target-response" value="&lt;b&gt;Generated tutor response&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#24496B&quot;&gt;&amp;quot;Các chữ cái A, B, C... là tên của các cột đấy em.&amp;quot;&lt;/font&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#E7F2FF;strokeColor=#4E79A0;strokeWidth=1.8;fontColor=#24496B;fontSize=16;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="930" y="535" width="220" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="blind-pair" value="&lt;b&gt;Anonymize and shuffle&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#375A7F&quot;&gt;response_1&lt;/font&gt; vs. &lt;font color=&quot;#7A5730&quot;&gt;response_2&lt;/font&gt;&lt;br&gt;&lt;br&gt;Model and reference identities are hidden" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#737373;strokeWidth=1.8;fontColor=#414141;fontSize=17;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="425" width="230" height="165" as="geometry"/>
+                </mxCell>
+                <mxCell id="judge-request" value="&lt;b&gt;Vietnamese judge request&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#6A4A18&quot;&gt;&amp;quot;Hãy chấm mù hai phản hồi dưới đây theo đúng system prompt. Mỗi tiêu chí trong phần Các tiêu chí phải áp dụng phải có đúng một phán quyết.&amp;quot;&lt;/font&gt;&lt;br&gt;&lt;br&gt;Context + gold answer + applicable rubrics + anonymous responses" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E8;strokeColor=#9A8068;strokeWidth=1.9;fontColor=#604B39;fontSize=16;align=left;verticalAlign=middle;spacingLeft=16;spacingRight=14;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1480" y="125" width="350" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="judges" value="&lt;b&gt;Source-blind LLM judges&lt;/b&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;fixedSize=1;whiteSpace=wrap;html=1;fillColor=#F4EDEA;strokeColor=#8C6A54;strokeWidth=2;fontColor=#553E30;fontSize=18;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1480" y="405" width="350" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="results" value="&lt;b&gt;Criterion-level decision&lt;/b&gt;&lt;br&gt;response_1 · response_2 · tie&lt;br&gt;&lt;br&gt;&lt;b&gt;Code restores target outcome&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#2F7D42&quot;&gt;Win&lt;/font&gt; · &lt;font color=&quot;#8A6B2F&quot;&gt;Tie&lt;/font&gt; · &lt;font color=&quot;#AA3F3A&quot;&gt;Lose&lt;/font&gt;&lt;br&gt;&lt;br&gt;General · Principle-level · Overall · Holistic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F8F2;strokeColor=#5E8B67;strokeWidth=2;fontColor=#304D36;fontSize=17;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1480" y="575" width="350" height="145" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-candidate-request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;" parent="1" source="candidate" target="provider-request" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-request-tutors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;" parent="1" source="provider-request" target="tutor-group" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-tutors-output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4E6A80;strokeWidth=2;endArrow=block;endFill=1;endSize=9;" parent="1" source="tutor-group" target="tutor-output" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-reference-blind" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8A7042;strokeWidth=1.9;endArrow=block;endFill=1;endSize=9;" parent="1" source="reference-response" target="blind-pair" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-target-blind" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4E79A0;strokeWidth=1.9;endArrow=block;endFill=1;endSize=9;" parent="1" source="target-response" target="blind-pair" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-package-request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;" parent="1" source="judge-package" target="judge-request" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-blind-request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;endSize=9;entryX=0;entryY=0.82;entryDx=0;entryDy=0;" parent="1" source="blind-pair" target="judge-request" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1455" y="508"/>
+                            <mxPoint x="1455" y="314"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-request-judges" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6E5949;strokeWidth=2.2;endArrow=block;endFill=1;endSize=10;" parent="1" source="judge-request" target="judges" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-judges-results" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F7557;strokeWidth=2.2;endArrow=block;endFill=1;endSize=10;" parent="1" source="judges" target="results" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

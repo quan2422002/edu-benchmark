@@ -38,6 +38,7 @@ from src.vertex_ai_call.run_requirement_scoring import (
     finalize_full,
     main,
     prepare,
+    retry_failed_full,
 )
 from src.vertex_ai_call.vertex_client import VertexRequirementClient
 
@@ -653,7 +654,133 @@ def test_full_single_run_uses_all_rows_and_publishes_integrity(
     assert completed["integrity"]["record_count"] == 4
     assert completed["integrity"]["score_count"] == 24
     assert completed["integrity"]["distinct_response_id_count"] == 4
+    assert {
+        item["limitation_id"] for item in completed["limitations"]
+    } == {
+        "single_run_no_repeatability_estimate",
+        "no_expert_accuracy",
+        "provisional_model_scores",
+    }
+    assert completed["failure_state"] == {
+        "current_failure_count": 0,
+        "current_failed_candidate_ids": [],
+        "current_failure_source": "runs.full.failed_candidate_ids",
+        "historical_error_count": 0,
+        "historical_errors_retained_for_provenance": True,
+    }
     assert len((bundle_dir / "run_full.jsonl").read_text().splitlines()) == 4
+
+
+def test_retry_failed_full_appends_only_missing_records(
+    tmp_path: Path,
+) -> None:
+    pool_path = tmp_path / "grounding_pool.csv"
+    pool_rows = [
+        _row(9, family, with_history=True)
+        for family in (1, 2)
+    ]
+    with pool_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=GROUNDING_HEADER)
+        writer.writeheader()
+        for row in pool_rows:
+            serialized = dict(row)
+            serialized["conversation_history"] = json.dumps(
+                row["conversation_history"],
+                ensure_ascii=False,
+            )
+            writer.writerow(serialized)
+
+    parser = build_parser()
+    args = parser.parse_args(
+        [
+            "full",
+            "--pool",
+            str(pool_path),
+            "--output-root",
+            str(tmp_path),
+            "--bundle-name",
+            "full_recovery_test",
+            "--max-retries",
+            "0",
+            "--max-requests",
+            "4",
+            "--concurrency",
+            "2",
+            "--execute-api",
+        ]
+    )
+    for field in (
+        "pool",
+        "output_root",
+        "prompt",
+        "schema",
+        "spec_manifest",
+        "calibration_input",
+        "snapshot_manifest",
+    ):
+        setattr(args, field, getattr(args, field).resolve())
+    prepare(args)
+    prompt_to_candidate = {
+        serialize_user_prompt(build_grounding_payload(row)): row[
+            "benchmark_candidate_id"
+        ]
+        for row in pool_rows
+    }
+    failed_id = pool_rows[-1]["benchmark_candidate_id"]
+
+    class InitialClient:
+        def generate(self, user_prompt):
+            candidate_id = prompt_to_candidate[user_prompt]
+            if candidate_id == failed_id:
+                raise RequirementScoringError("synthetic invalid response")
+            return {
+                "raw_response_text": json.dumps(_response(), ensure_ascii=False),
+                "response_id": f"initial-{candidate_id}",
+                "model_version": "fake-v1",
+                "finish_reason": "STOP",
+                "usage_metadata": {},
+            }
+
+    with pytest.raises(RequirementScoringError, match="1 failed candidates"):
+        execute_run(args, run_id="full", client=InitialClient())
+    bundle_dir = tmp_path / "full_recovery_test"
+    assert len((bundle_dir / "run_full.jsonl").read_text().splitlines()) == 1
+    failed_manifest = json.loads(
+        (bundle_dir / "run_manifest.json").read_text(encoding="utf-8")
+    )
+    assert failed_manifest["runs"]["full"]["failed_candidate_ids"] == [failed_id]
+    assert failed_manifest["runs"]["full"]["last_failures"][0][
+        "error_message"
+    ] == "synthetic invalid response"
+
+    class RecoveryClient:
+        def __init__(self) -> None:
+            self.calls = []
+
+        def generate(self, user_prompt):
+            candidate_id = prompt_to_candidate[user_prompt]
+            self.calls.append(candidate_id)
+            return {
+                "raw_response_text": json.dumps(_response(), ensure_ascii=False),
+                "response_id": f"recovery-{candidate_id}",
+                "model_version": "fake-v1",
+                "finish_reason": "STOP",
+                "usage_metadata": {},
+            }
+
+    recovery_client = RecoveryClient()
+    args.command = "retry-failed"
+    args.additional_retries = 2
+    retry_failed_full(args, client=recovery_client)
+    assert recovery_client.calls == [failed_id]
+    completed_manifest = json.loads(
+        (bundle_dir / "run_manifest.json").read_text(encoding="utf-8")
+    )
+    assert completed_manifest["status"] == "completed_awaiting_analysis"
+    assert completed_manifest["integrity"]["record_count"] == 2
+    assert completed_manifest["runs"]["full"]["failed_candidate_ids"] == []
+    assert completed_manifest["recovery_runs"][-1]["status"] == "completed"
+    assert len((bundle_dir / "run_full.jsonl").read_text().splitlines()) == 2
 
 
 def test_full_command_refuses_network_without_explicit_flag(
@@ -765,6 +892,22 @@ def test_semantic_lint_accepts_actionable_feedback_reasoning() -> None:
     assert not [
         reason for reason in reasons if "PRINCIPLE-FEEDBACK" in reason
     ]
+
+
+def test_semantic_lint_ignores_modal_language_inside_counterfactual() -> None:
+    response = _response()
+    explanation = next(
+        item
+        for item in response["principle_scores"]
+        if item["principle_id"] == "PRINCIPLE-EXPLANATION"
+    )
+    explanation["requirement_score"] = 4
+    explanation["rationale"] = (
+        "Nhu cầu độc lập: học sinh cần hiểu rõ quan hệ giữa hai khái niệm. "
+        "Nếu bỏ nguyên tắc này: học sinh có thể tiếp tục nhầm lẫn."
+    )
+    reasons = lint_principle_scores(response)
+    assert "high_score_modal_conflict:PRINCIPLE-EXPLANATION" not in reasons
 
 
 def test_inherited_snapshot_manifest_hashes_are_valid() -> None:

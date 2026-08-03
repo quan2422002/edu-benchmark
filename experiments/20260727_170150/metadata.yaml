@@ -1,6 +1,6 @@
 id: "20260727_170150"
 title: "Requirement-scored pedagogical principles and rubric-driven tutor evaluation"
-status: active_full_single_run_awaiting_user_run
+status: active_plan05_gemini_baseline_recovery_ready
 task_type: benchmark_principle_requirement_scoring_and_rubric_evaluation
 owner_agent: orchestrator
 parents:
@@ -13,6 +13,8 @@ artifacts:
   - plans/01-principle-requirement-score-specification.md
   - plans/02-vertex-ai-requirement-scoring-pilot.md
   - plans/03-full-run-statistics-and-analysis.md
+  - plans/04-two-tier-rubric-library.md
+  - plans/05-benchmark-evaluation-configuration.md
   - reports/state-transfer-from-20260722.md
   - handoffs/single-pass-grounding-decision.md
   - handoffs/code-first-and-path-ownership-decision.md
@@ -27,3 +29,26 @@ artifacts:
   - handoffs/requirement-v4-calibration.md
   - handoffs/gemini35-medium-calibration-comparison.md
   - handoffs/full-single-run-implementation.md
+  - handoffs/plans04-05-and-kse-writing-plan.md
+  - handoffs/full-run-failed-candidate-recovery.md
+  - handoffs/plan03-full-run-analysis.md
+  - handoffs/plan03-close-plan04-activation.md
+  - outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_analysis.json
+  - outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_analysis.md
+  - outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_review_queue.csv
+  - outputs/benchmark_rubric/benchmark_tasks.csv
+  - outputs/benchmark_rubric/rubrics.csv
+  - outputs/benchmark_rubric/serious_errors.csv
+  - outputs/benchmark_rubric/provenance_matrix.csv
+  - outputs/benchmark_rubric/rubric_review_packet.md
+  - handoffs/plan04-rubric-library-implementation.md
+  - outputs/benchmark_evaluation/evaluation_protocol.md
+  - outputs/benchmark_evaluation/model_registry.csv
+  - outputs/benchmark_evaluation/instruction_registry.csv
+  - outputs/benchmark_evaluation/evaluation_schema.json
+  - outputs/benchmark_evaluation/smoke_gemini35_instruction_v1/run_smoke.jsonl
+  - outputs/benchmark_evaluation/smoke_gemini35_instruction_v1/run_manifest.json
+  - handoffs/plan05-versioned-instruction-bundle.md
+  - outputs/benchmark_evaluation/full_1400_v1/judge_cost_pilot_30/candidate_manifest.json
+  - handoffs/plan05-hybrid-full-target-cost-pilot30.md
+  - handoffs/plan05-gemini-baseline-truncation-recovery.md

@@ -1,26 +1,38 @@
 # Trạng thái manuscript KSE 2026
 
-Cập nhật: 28/07/2026
+Cập nhật: 30/07/2026
 
 ## Đã hoàn thành
 
-- Plan đã được UET phê duyệt để bắt đầu triển khai.
-- Đã tạo source LaTeX theo `IEEEtran` conference mode.
-- Đã viết bản nháp đầu tiên của `Introduction`.
-- Đã viết bản nháp đầu tiên của `Related Work and Background`.
-- Đã tạo `references.bib` với 15 nguồn được dùng trực tiếp.
+- Plan đã được UET phê duyệt và đang triển khai.
+- Source LaTeX dùng `IEEEtran` conference mode và 15 nguồn được trích dẫn.
+- Đã hoàn thành bản nháp `Abstract`, `Introduction` và `Related Work and Background`.
+- Đã tích hợp nội dung Phase 1 của Nguyên và tái cấu trúc Section III thành
+  `Dataset Construction` với đúng ba phase: audit; nền tảng sáu năng lực–sáu
+  nguyên tắc; conversion–gán nguyên tắc–lọc–thu thập pool.
+- Đã viết Section IV `Evaluation Framework`: native conversation context,
+  rubric `4 + 3n`, cổng lỗi nghiêm trọng và blind `Win/Tie/Lose` judging.
+- Đã viết phần cấu hình và metric của Section V `Experiments and Analysis`.
+- Đã tái cấu trúc Section V thành `Experimental Setup`, `Main Results` và
+  `Ablation Study`; Main Results và ba phân tích C-1/C-2/C-5 đã dùng bundle
+  full judge được tái lập bằng code. Instruction effect không bền vững qua
+  hai judge; judge agreement và descriptive position sensitivity được báo
+  cùng giới hạn tương ứng.
+- Đã cập nhật source `diagrams/overall_pipeline.drawio` theo cấu trúc mới.
 
 ## Giới hạn hiện tại
 
 - Tên và thứ tự tác giả, affiliation và corresponding author chưa được
   cung cấp nên source đang dùng placeholder.
-- Abstract và các phần Method, Results, Discussion, Conclusion chưa được
-  viết.
-- Bản thảo hiện biên dịch thành công bằng `latexmk`/`pdflatex`/`bibtex`
-  trên TeX Live 2023; PDF nền hiện có ba trang. Còn một cảnh báo
-  `underfull hbox` trong danh sách đóng góp, một cảnh báo tương tự trong
-  Related Work và một cảnh báo URL hơi tràn ở bibliography; các cảnh báo
-  này không làm hỏng bản PDF.
+- `Discussion and Limitations` cùng `Conclusion` đã có bản nháp dựa trên
+  full judge; Section V-C đã hoàn tất nhưng toàn bài còn cần rút gọn.
+- Máy hiện không có draw.io CLI. `main.tex` chỉ tự chèn sơ đồ mới khi
+  `manuscript/figures/overall_pipeline_v2.pdf` tồn tại, nên PDF hiện tại
+  không hiển thị nhầm PNG sơ đồ cũ.
+- Bản thảo biên dịch thành công bằng `latexmk`/`pdflatex`/`bibtex`
+  trên TeX Live 2023; PDF hiện có chín trang và đang vượt giới hạn sáu trang.
+  Không có citation/reference chưa resolve; còn cảnh báo `underfull hbox/vbox`
+  không làm hỏng PDF.
 - Các nhãn và kết quả đã được đại diện UET phê duyệt được dùng làm
   ground truth vận hành của nghiên cứu. Việc kiểm định hiệu lực đo lường
   rộng hơn là câu hỏi nghiên cứu tiếp theo, không phải lý do hạ thấp trạng
@@ -28,11 +40,9 @@ Cập nhật: 28/07/2026
 
 ## Bước gần nhất
 
-1. UET rà soát câu chuyện khoa học, mức độ claim và độ dài hai phần nền.
-2. Bổ sung thông tin tác giả/đơn vị.
-3. Biên dịch lại và kiểm tra giới hạn sáu trang sau mỗi phần mới.
-4. Viết `Dataset and Construction` và hình pipeline.
-
+1. UET rà Sections III–VI và cung cấp thông tin tác giả/đơn vị.
+2. Cắt/chỉnh hình, bảng và văn bản để toàn bộ PDF, kể cả references,
+   không vượt sáu trang.
 ## Nhật ký tìm kiếm cho claim tính mới — 28/07/2026
 
 Câu hỏi: đã có benchmark công khai nào đánh giá phản hồi gia sư AI bằng

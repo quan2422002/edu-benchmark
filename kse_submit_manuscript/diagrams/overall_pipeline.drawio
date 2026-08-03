@@ -1,0 +1,61 @@
+<mxfile host="65bd71144e">
+    <diagram id="overall-pipeline" name="Overall pipeline">
+        <mxGraphModel dx="1020" dy="534" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="raw" value="&lt;b&gt;Teacher-authored dialogues&lt;/b&gt;&lt;br&gt;1,050 dialog samples between student and tutor in Infomatic, at grades 6-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F7FB;strokeColor=#58728C;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="55" width="165" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="research" value="&lt;b&gt;Research&amp;nbsp; on Tutor benchmarks and Pedagogical-specific documents&lt;/b&gt;&lt;br&gt;Tutoring benchmarks,&lt;br&gt;Scaffolding and assessment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F7FB;strokeColor=#58728C;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="217.5" y="245" width="205" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase1" value="&lt;b&gt;Phase 1: dialogue audit&lt;/b&gt;&lt;div&gt;Learning material chunking&lt;br&gt;Full- text search tool&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;18-criterion checklist&lt;/span&gt;&lt;/div&gt;&lt;div&gt;665 pass dialogues&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F8F4;strokeColor=#5C8068;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="55" width="180" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase2" value="&lt;b&gt;Phase 2: measurement foundation&lt;/b&gt;&lt;br&gt;Identifying&lt;br&gt;6 pedagogical principles&amp;nbsp;&lt;br&gt;6 tutor capabilities for a tutor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCF7F0;strokeColor=#9B7B50;strokeWidth=1.25;fontColor=#1F2937;fontSize=13;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="245" width="180" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase3a" value="&lt;b&gt;Phase 3a: conversion&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Converse passed dialogues into multiple candidates samples by truncation, Obtaining 2,028 candidates&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F4F8;strokeColor=#746C83;strokeWidth=1.25;fontColor=#1F2937;fontSize=12;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="55" width="175" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase3b" value="&lt;b&gt;Phase 3b: assignment and filtering&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;LLM&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;requirement score&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp;assignment for all 6 principles for each candidate sample, along with reasoning&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;Rule-based, consitency reasoning checking, threshold and gate filtering to obtain qualified candidate samples&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F4F8;strokeColor=#746C83;strokeWidth=1.25;fontColor=#1F2937;fontSize=12;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="110" width="190" height="185" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase3c" value="&lt;b&gt;Phase 3c: benchmark pool&lt;/b&gt;&lt;br&gt;&lt;br&gt;1,400 eligible candidate samples from&lt;br&gt;655 raw dialogue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF6FF;strokeColor=#3B6E9E;strokeWidth=1.5;fontColor=#1F2937;fontSize=12;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+                    <mxGeometry x="925" y="145" width="180" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="raw" target="phase1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="research" target="phase2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="phase1" target="phase3a">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="phase3a" target="phase3b">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="660" y="107"/>
+                            <mxPoint x="660" y="203"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="297.57142857142856" as="sourcePoint"/>
+                        <mxPoint x="690" y="203" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="660" y="298"/>
+                            <mxPoint x="660" y="203"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endFill=1;endSize=7;" edge="1" parent="1" source="phase3b" target="phase3c">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

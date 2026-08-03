@@ -1,0 +1,137 @@
+{
+  "record_type": "benchmark_evaluation_judge_cost_pilot_manifest",
+  "manifest_version": "judge_cost_pilot_30_v1",
+  "candidate_count": 30,
+  "candidate_ids": [
+    "BC-HNMU-G6-R0042-STT13-AI04",
+    "BC-HNMU-G6-R0054-STT11-AI02",
+    "BC-HNMU-G6-R0090-STT5-AI02",
+    "BC-HNMU-G6-R0140-STT13-AI02",
+    "BC-HNMU-G6-R0181-STT12-AI08",
+    "BC-HNMU-G6-R0216-STT5-AI04",
+    "BC-HNMU-G6-R0236-STT11-AI06",
+    "BC-HNMU-G6-R0239-STT14-AI08",
+    "BC-HNMU-G7-R0026-STT11-AI04",
+    "BC-HNMU-G7-R0061-STT4-AI06",
+    "BC-HNMU-G7-R0074-STT3-AI02",
+    "BC-HNMU-G7-R0109-STT10-AI06",
+    "BC-HNMU-G7-R0164-STT9-AI08",
+    "BC-HNMU-G7-R0187-STT4-AI02",
+    "BC-HNMU-G7-R0204-STT7-AI14",
+    "BC-HNMU-G7-R0207-STT10-AI10",
+    "BC-HNMU-G8-R0047-STT4-AI02",
+    "BC-HNMU-G8-R0160-STT5-AI04",
+    "BC-HNMU-G8-R0172-STT3-AI06",
+    "BC-HNMU-G8-R0186-STT3-AI06",
+    "BC-HNMU-G8-R0189-STT6-AI04",
+    "BC-HNMU-G8-R0226-STT1-AI02",
+    "BC-HNMU-G8-R0266-STT13-AI02",
+    "BC-HNMU-G9-R0141-STT14-AI02",
+    "BC-HNMU-G9-R0211-STT14-AI12",
+    "BC-HNMU-G9-R0215-STT4-AI04",
+    "BC-HNMU-G9-R0224-STT13-AI08",
+    "BC-HNMU-G9-R0228-STT3-AI02",
+    "BC-HNMU-G9-R0242-STT3-AI02",
+    "BC-HNMU-G9-R0262-STT9-AI10"
+  ],
+  "candidate_ids_sha256": "74d103fb35724373ef4f91a7eb89fbfcae5e9937716591491f5b4ad1772e1068",
+  "smoke_anchor_candidate_ids": [
+    "BC-HNMU-G6-R0239-STT14-AI08",
+    "BC-HNMU-G7-R0204-STT7-AI14",
+    "BC-HNMU-G8-R0189-STT6-AI04",
+    "BC-HNMU-G9-R0224-STT13-AI08",
+    "BC-HNMU-G6-R0042-STT13-AI04",
+    "BC-HNMU-G7-R0164-STT9-AI08",
+    "BC-HNMU-G8-R0186-STT3-AI06",
+    "BC-HNMU-G9-R0215-STT4-AI04",
+    "BC-HNMU-G6-R0236-STT11-AI06",
+    "BC-HNMU-G7-R0207-STT10-AI10"
+  ],
+  "selection_contract": {
+    "selection_role": "cost_and_operational_calibration_not_quality_estimate",
+    "source_frame": "pilot_80_v1",
+    "grade_targets": {
+      "6": 8,
+      "7": 8,
+      "8": 7,
+      "9": 7
+    },
+    "principle_minimums": {
+      "PRINCIPLE-CHALLENGE": 2,
+      "PRINCIPLE-EXPLANATION": 12,
+      "PRINCIPLE-MODELLING": 5,
+      "PRINCIPLE-PRACTICE": 5,
+      "PRINCIPLE-FEEDBACK": 12,
+      "PRINCIPLE-QUESTIONING": 10
+    },
+    "history_minimums": {
+      "empty": 10,
+      "nonempty": 10
+    },
+    "bloom_group_minimums": {
+      "remember": 7,
+      "understand": 7,
+      "apply": 7
+    },
+    "required_set_size_minimums": {
+      "1": 5,
+      "2": 8,
+      "3": 5
+    },
+    "context_length_bucket_minimums": {
+      "short": 8,
+      "medium": 8,
+      "long": 8
+    },
+    "minimum_distinct_grade_lessons": 20,
+    "include_smoke_anchors": true,
+    "seed": 20260729,
+    "deterministic_restarts": 30000
+  },
+  "coverage": {
+    "grade_counts": {
+      "6": 8,
+      "7": 8,
+      "8": 7,
+      "9": 7
+    },
+    "principle_incidence_counts": {
+      "PRINCIPLE-CHALLENGE": 2,
+      "PRINCIPLE-EXPLANATION": 15,
+      "PRINCIPLE-FEEDBACK": 15,
+      "PRINCIPLE-MODELLING": 5,
+      "PRINCIPLE-PRACTICE": 5,
+      "PRINCIPLE-QUESTIONING": 12
+    },
+    "history_counts": {
+      "empty": 11,
+      "nonempty": 19
+    },
+    "bloom_group_counts": {
+      "apply": 11,
+      "remember": 10,
+      "understand": 9
+    },
+    "required_principle_set_size_counts": {
+      "1": 12,
+      "2": 12,
+      "3": 6
+    },
+    "context_length_bucket_counts": {
+      "long": 11,
+      "medium": 11,
+      "short": 8
+    },
+    "distinct_family_count": 30,
+    "distinct_grade_lesson_count": 26
+  },
+  "input_sha256": {
+    "experiments/20260727_170150/outputs/benchmark_evaluation/pilot_80_v1/candidate_manifest.json": "4b8c487790d6a9b6590752c8b9475104fa829aa484b372ed7177588b919c7edd",
+    "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv": "c8c480312b8abac3b6ca9a46ca5eae0a70aa52cc810bec77be2358710cfc756a",
+    "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/run_full.jsonl": "123a458d6afcbfb63e05e313665ec6bd0272fa3bbe5fb6a34b1f1d4c304fc3d8"
+  },
+  "limitations": [
+    "The 30 candidates estimate judge cost and operational behavior only.",
+    "The subset is not a population sample and does not validate judge accuracy."
+  ]
+}

@@ -1,0 +1,240 @@
+<mxfile host="65bd71144e">
+    <diagram id="illustrated-overall-pipeline" name="Illustrated overall pipeline">
+        <mxGraphModel dx="2131" dy="1220" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1650" pageHeight="740" math="1" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="143" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F7FC;fillOpacity=60;strokeColor=#8D82A5;strokeWidth=2;dashed=1;dashPattern=8 6;arcSize=4;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="150" width="620" height="470" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFCF5;fillOpacity=60;strokeColor=#C6A76E;strokeWidth=2;dashed=1;dashPattern=8 6;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="475" y="150" width="430" height="470" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase1-frame" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FCF9;fillOpacity=55;strokeColor=#7AA789;strokeWidth=2;dashed=1;dashPattern=8 6;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="150" width="430" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase1-title" value="&lt;b&gt;PHASE 1 · DATA AUDIT&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEFE2;strokeColor=#5F8F70;strokeWidth=1.5;fontColor=#214B30;fontSize=20;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="117.5" y="112" width="235" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase2-title" value="&lt;b&gt;PHASE 2 · MEASUREMENT FOUNDATION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F6E7C7;strokeColor=#AF8B4E;strokeWidth=1.5;fontColor=#5F431A;fontSize=20;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="517" y="112" width="360" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="phase3-title" value="&lt;b&gt;PHASE 3 · BENCHMARK SAMPLE CONSTRUCTION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E7E1F2;strokeColor=#786B91;strokeWidth=1.5;fontColor=#403452;fontSize=20;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1052.5" y="112" width="440" height="44" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-raw-db" value="&lt;b&gt;1,050 raw dialogues&lt;/b&gt;&lt;br&gt;Grades 6–9" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=16;fillColor=#EEF5FA;strokeColor=#52718E;strokeWidth=1.5;fontColor=#243B53;fontSize=17;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="51" y="216.5" width="125" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-doc-back" value="SGK" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#FFFDF5;strokeColor=#A28A4A;strokeWidth=1.2;fontColor=#5C4A1D;fontSize=14;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="330" width="75" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-doc-front" value="SGV" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#FFF7D9;strokeColor=#A28A4A;strokeWidth=1.2;fontColor=#5C4A1D;fontSize=14;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="76" y="362" width="75" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-search-circle" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#3E6B73;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="132" y="327" width="47" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-search-handle" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#3E6B73;strokeWidth=4;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="369" as="sourcePoint"/>
+                        <mxPoint x="195" y="394" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p1-resource-label" value="&lt;b&gt;Curriculum grounding&lt;/b&gt;&lt;br&gt;154 SGK/SGV units&lt;br&gt;2,750 fragments + FTS tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDF5;strokeColor=#B7A065;strokeWidth=1.2;fontColor=#51451F;fontSize=15;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="29" y="456" width="150" height="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-audit-card" value="&lt;b&gt;Hybrid audit&lt;/b&gt;&lt;br&gt;&lt;br&gt;☑ 18-criterion checklist&lt;br&gt;☑ Code-based checks&lt;br&gt;☑ SGK/SGV evidence&lt;br&gt;☑ Specialist review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5F8F70;strokeWidth=1.7;fontColor=#23382A;fontSize=17;align=left;verticalAlign=middle;spacingLeft=16;spacingRight=10;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="225" y="205" width="180" height="215" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-ai-badge" value="AI agent" style="shape=hexagon;perimeter=hexagonPerimeter2;fixedSize=1;whiteSpace=wrap;html=1;fillColor=#DCEFE2;strokeColor=#5F8F70;strokeWidth=1.5;fontColor=#214B30;fontSize=17;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="278" y="167" width="70" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1-output" value="&lt;b&gt;665 retained&lt;/b&gt;&lt;br&gt;dialogue families" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=16;fillColor=#E3F3E7;strokeColor=#4F825F;strokeWidth=1.7;fontColor=#20452C;fontSize=17;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="459" width="130" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-book1" value="Evidence-centered design" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F0F8;strokeColor=#557A95;strokeWidth=1.2;fontColor=#294A61;fontSize=14;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="196" width="110" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-book2" value="AI Tutor Benchmarks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D7E7F4;strokeColor=#557A95;strokeWidth=1.2;fontColor=#294A61;fontSize=14;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="238" width="110" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-book3" value="Adaptive Scaffolding method" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C7DDED;strokeColor=#557A95;strokeWidth=1.2;fontColor=#294A61;fontSize=14;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="281" width="110" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-hnmu" value="&lt;b&gt;HNMU documents about scaffolding method&lt;/b&gt;&lt;br&gt;learner diagnosis&lt;br&gt;and gradual scaffolding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7DC;strokeColor=#B18A42;strokeWidth=1.3;fontColor=#5C4316;fontSize=15;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="502.5" y="434" width="145" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-synthesis" value="&lt;b&gt;SYNTHESIS&lt;/b&gt;&lt;br&gt;&amp;&lt;br&gt;boundary analysis" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFF9EA;strokeColor=#AF8B4E;strokeWidth=2;fontColor=#5C4316;fontSize=16;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="290" width="112" height="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1.015;exitY=0.137;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=0;curved=0;exitPerimeter=0;strokeWidth=2;strokeColor=default;" parent="1" source="p2-principles-card" target="p3-score-card" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="890" y="190"/>
+                            <mxPoint x="890" y="172"/>
+                            <mxPoint x="1228" y="172"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p2-principles-card" value="&lt;b&gt;6 pedagogical principles&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B18A42;strokeWidth=1.4;fontColor=#5C4316;fontSize=14;align=center;verticalAlign=top;spacingTop=10;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="164" width="120" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="principle-C" value="C" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F4C7C3;strokeColor=#B06C66;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="792" y="215" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="principle-E" value="E" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#CCEFD2;strokeColor=#6D9C75;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="837" y="215" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="principle-M" value="M" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F8E0AA;strokeColor=#A8894A;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="792" y="257" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="principle-P" value="P" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#C9DCED;strokeColor=#6C8FAA;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="837" y="257" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="principle-F" value="F" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#EFF3C4;strokeColor=#9A9E58;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="792" y="299" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="principle-Q" value="Q" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#E5D2EC;strokeColor=#8C6D9A;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="837" y="299" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="p2-capabilities-card" value="&lt;b&gt;6 tutor capabilities&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6F86A0;strokeWidth=1.4;fontColor=#334E68;fontSize=14;align=center;verticalAlign=top;spacingTop=10;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="362" width="120" height="205" as="geometry"/>
+                </mxCell>
+                <mxCell id="cap1" value="" style="rounded=1;fillColor=#8FB3D1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="413" width="70" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="cap2" value="" style="rounded=1;fillColor=#98C7B0;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="438" width="55" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="cap3" value="" style="rounded=1;fillColor=#D8B979;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="463" width="65" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="cap4" value="" style="rounded=1;fillColor=#B5A6C9;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="488" width="48" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="cap5" value="" style="rounded=1;fillColor=#D49B93;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="513" width="62" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="cap6" value="" style="rounded=1;fillColor=#A9B8C6;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="538" width="58" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-convert-card" value="&lt;b&gt;Turn-level conversion&lt;/b&gt;&lt;br&gt;665 dialogues&lt;br&gt;→ 2,028 candidates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6E7F96;strokeWidth=1.5;fontColor=#334155;fontSize=17;align=center;verticalAlign=bottom;spacingBottom=14;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="950" y="181.5" width="165" height="205" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="p3-turn1" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=none;html=1;" parent="1" source="p3-turn1" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="p3-turn1" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-turn1" value="D&lt;sub&gt;1&lt;/sub&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F1F8;strokeColor=#58728C;fontSize=14;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="970" y="220.5" width="42" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-score-card" value="&lt;b&gt;Requirement scoring&lt;/b&gt;&lt;br&gt;Six scores per candidate&lt;br&gt;1 · 2 · 3 · 4 · 5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D6E98;strokeWidth=1.5;fontColor=#403452;fontSize=17;align=center;verticalAlign=bottom;spacingBottom=14;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1145" y="181.5" width="165" height="205" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-llm-chip" value="&lt;b&gt;LLM&lt;/b&gt;&lt;br&gt;Gemini 3.5" style="shape=hexagon;perimeter=hexagonPerimeter2;fixedSize=1;whiteSpace=wrap;html=1;fillColor=#E7E1F2;strokeColor=#786B91;strokeWidth=1.6;fontColor=#403452;fontSize=15;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1176.75" y="199" width="101.5" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-filter-card" value="&lt;b&gt;Deterministic gates&lt;/b&gt;&lt;br&gt;score ≥ 4 · traceability&lt;br&gt;semantic consistency&lt;br&gt;coverage thresholds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8B7550;strokeWidth=1.5;fontColor=#544226;fontSize=17;align=center;verticalAlign=bottom;spacingBottom=12;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1343" y="178" width="185" height="205" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-funnel" value="&lt;b&gt;CODE&lt;/b&gt;" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=#F6E7C7;strokeColor=#9B7B50;strokeWidth=1.6;fontColor=#5F431A;fontSize=15;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1398" y="196" width="85" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-output" value="&lt;b&gt;1,400 eligible samples&lt;/b&gt;&lt;br&gt;655 dialogue families" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=16;fillColor=#E9F3FF;strokeColor=#4F78A0;strokeWidth=2;fontColor=#24496B;fontSize=19;align=center;verticalAlign=middle;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1225" y="466.5" width="190" height="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-check" value="✓" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DDF3E3;strokeColor=#4F825F;strokeWidth=1.6;fontColor=#28733D;fontSize=28;fontStyle=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1390" y="456.5" width="48" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="p3-rubric" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;b style=&quot;&quot;&gt;Rubric foundation&lt;/b&gt;&lt;br&gt;6 capabilities + required principles&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F0F8;strokeColor=#786B91;strokeWidth=1.3;fontColor=#403452;fontSize=15;align=center;verticalAlign=middle;dashed=1;dashPattern=4 4;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1012" y="483" width="175" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-p1-raw-audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=1.7;endArrow=block;endFill=1;endSize=8;" parent="1" source="p1-raw-db" target="p1-audit-card" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-p1-resource-audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=1.7;endArrow=block;endFill=1;endSize=8;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="p1-resource-label" target="p1-audit-card" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="200" y="499"/>
+                            <mxPoint x="200" y="366"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p1-audit-output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=1.7;endArrow=block;endFill=1;endSize=8;" parent="1" source="p1-audit-card" target="p1-output" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-p2-books-synthesis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#705D38;strokeWidth=1.6;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="p2-book2" target="p2-synthesis" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="676" y="259"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p2-hnmu-synthesis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#705D38;strokeWidth=1.6;endArrow=block;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="p2-hnmu" target="p2-synthesis" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="666" y="487"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p2-synthesis-principles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#705D38;strokeWidth=1.6;endArrow=block;endFill=1;endSize=8;" parent="1" source="p2-synthesis" target="p2-principles-card" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-p2-synthesis-capabilities" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#705D38;strokeWidth=1.6;endArrow=block;endFill=1;endSize=8;" parent="1" source="p2-synthesis" target="p2-capabilities-card" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-p1-to-p3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;fontSize=14;fontColor=#3F4F5E;labelBackgroundColor=#FFFFFF;fontFamily=Helvetica;" parent="1" source="p1-output" target="p3-convert-card" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="430" y="590"/>
+                            <mxPoint x="930" y="590"/>
+                            <mxPoint x="930" y="238"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p2-capabilities-rubric" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#60758B;strokeWidth=1.7;dashed=1;dashPattern=5 4;endArrow=block;endFill=1;endSize=8;fontSize=14;fontColor=#43566A;labelBackgroundColor=#FFFFFF;fontFamily=Helvetica;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="p2-capabilities-card" target="p3-rubric" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="950" y="523"/>
+                            <mxPoint x="950" y="523"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p3-convert-score" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;" parent="1" source="p3-convert-card" target="p3-score-card" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e-p3-score-filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;" parent="1" source="p3-score-card" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1340" y="284.0000000000001" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p3-filter-output" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;eligible&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F6475;strokeWidth=2;endArrow=block;endFill=1;endSize=9;fontSize=14;fontColor=#3F4F5E;labelBackgroundColor=#FFFFFF;fontFamily=Helvetica;" parent="1" target="p3-output" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1433" y="426.5"/>
+                            <mxPoint x="1320" y="426.5"/>
+                        </Array>
+                        <mxPoint x="1432.5" y="386.5" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e-p3-rubric-output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#786B91;strokeWidth=1.7;dashed=1;dashPattern=5 4;endArrow=block;endFill=1;endSize=8;" parent="1" source="p3-rubric" target="p3-output" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;C&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;1&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F1F8;strokeColor=#58728C;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1055" y="195.5" width="42" height="23" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="C&lt;sub&gt;2&lt;/sub&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F1F8;strokeColor=#58728C;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1055" y="224.5" width="42" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;C&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;3&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F1F8;strokeColor=#58728C;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1055" y="253" width="42" height="26" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

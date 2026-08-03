@@ -793,13 +793,19 @@ def lint_principle_scores(response: Mapping[str, Any]) -> list[str]:
         principle_id = str(item["principle_id"])
         score = int(item["requirement_score"])
         rationale = str(item["rationale"]).casefold()
+        strategy_rationale = rationale.split(
+            "nếu bỏ nguyên tắc này:", 1
+        )[0]
         if score < 4:
             continue
         if "nhu cầu độc lập:" not in rationale:
             reasons.append(f"high_score_missing_need:{principle_id}")
         if "nếu bỏ nguyên tắc này:" not in rationale:
             reasons.append(f"high_score_missing_counterfactual:{principle_id}")
-        if any(pattern.search(rationale) for pattern in _HIGH_SCORE_MODAL_PATTERNS):
+        if any(
+            pattern.search(strategy_rationale)
+            for pattern in _HIGH_SCORE_MODAL_PATTERNS
+        ):
             reasons.append(f"high_score_modal_conflict:{principle_id}")
         if principle_id == "PRINCIPLE-FEEDBACK":
             has_confirmation = any(

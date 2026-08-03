@@ -72,6 +72,30 @@ DEFAULT_SNAPSHOT_MANIFEST = (
 DEFAULT_PROJECT = "edu-benchmark"
 DEFAULT_LOCATION = "global"
 
+FULL_SINGLE_RUN_LIMITATIONS: tuple[dict[str, str], ...] = (
+    {
+        "limitation_id": "single_run_no_repeatability_estimate",
+        "statement_vi": (
+            "Full output chỉ có một run nên không thể tính agreement A/B "
+            "hoặc độ lặp lại trên chính 2.028 candidate."
+        ),
+    },
+    {
+        "limitation_id": "no_expert_accuracy",
+        "statement_vi": (
+            "Chưa có nhãn chuyên gia cấp candidate nên không được diễn giải "
+            "score như accuracy hoặc ground truth."
+        ),
+    },
+    {
+        "limitation_id": "provisional_model_scores",
+        "statement_vi": (
+            "Requirement score là đề xuất của model, còn chờ UET phân tích "
+            "và HNMU xác nhận trong gói benchmark tích hợp."
+        ),
+    },
+)
+
 
 class _ProgressBar:
     """Dependency-free terminal progress for one request sweep."""
@@ -225,7 +249,11 @@ def _is_calibration(args: argparse.Namespace) -> bool:
 
 
 def _is_full(args: argparse.Namespace) -> bool:
-    return getattr(args, "command", "pilot") == "full"
+    return getattr(args, "command", "pilot") in {
+        "full",
+        "retry-failed",
+        "refresh-full-manifest",
+    }
 
 
 def _pilot_directory(args: argparse.Namespace) -> Path:
@@ -529,6 +557,7 @@ def _safe_failure(
         "benchmark_candidate_id": candidate_id,
         "attempt": attempt,
         "error_type": type(exc).__name__,
+        "error_message": str(exc)[:1000],
     }
 
 
@@ -537,6 +566,7 @@ def execute_run(
     *,
     run_id: str,
     client: VertexRequirementClient | None = None,
+    additional_retry_attempts: int = 0,
 ) -> None:
     if not args.execute_api:
         raise RequirementScoringError(
@@ -614,7 +644,13 @@ def execute_run(
     atomic_write_json(manifest_path, manifest)
     try:
         pending = list(work_items)
-        max_attempts_per_candidate = generation_config.max_retries + 1
+        if additional_retry_attempts < 0:
+            raise RequirementScoringError(
+                "additional_retry_attempts must not be negative"
+            )
+        max_attempts_per_candidate = (
+            generation_config.max_retries + 1 + additional_retry_attempts
+        )
         retry_sweep = int(run_state.get("retry_sweeps_completed", 0))
         progress_enabled = bool(getattr(args, "progress", False))
         with ThreadPoolExecutor(
@@ -879,6 +915,16 @@ def finalize_full(args: argparse.Namespace) -> dict[str, Any]:
     run_path = bundle_dir / "run_full.jsonl"
     records = load_run_records(run_path)
     validated = validate_run_records(records, rows, run_id="full")
+    failed_candidate_ids = sorted(
+        str(candidate_id)
+        for candidate_id in manifest.get("runs", {})
+        .get("full", {})
+        .get("failed_candidate_ids", [])
+    )
+    if failed_candidate_ids:
+        raise RequirementScoringError(
+            "Cannot finalize full bundle while current failed candidates remain"
+        )
     model_versions = Counter(
         str(record.get("model_version", "")) for record in records
     )
@@ -904,6 +950,16 @@ def finalize_full(args: argparse.Namespace) -> dict[str, Any]:
         ),
         "run_file_sha256": sha256_file(run_path),
         "validated_record_count": len(validated),
+    }
+    manifest["limitations"] = [
+        dict(limitation) for limitation in FULL_SINGLE_RUN_LIMITATIONS
+    ]
+    manifest["failure_state"] = {
+        "current_failure_count": 0,
+        "current_failed_candidate_ids": [],
+        "current_failure_source": "runs.full.failed_candidate_ids",
+        "historical_error_count": len(manifest.get("errors", [])),
+        "historical_errors_retained_for_provenance": True,
     }
     manifest["status"] = "completed_awaiting_analysis"
     manifest["updated_at"] = utc_now()
@@ -944,6 +1000,98 @@ def run_full_dataset(args: argparse.Namespace) -> None:
     if getattr(args, "progress", False):
         print(
             f"Full run completed; analysis input: {bundle_dir}",
+            file=sys.stderr,
+        )
+
+
+def retry_failed_full(
+    args: argparse.Namespace,
+    *,
+    client: VertexRequirementClient | None = None,
+) -> None:
+    """Retry only missing records from a failed full bundle."""
+
+    if not args.execute_api:
+        raise RequirementScoringError(
+            "The retry-failed command requires --execute-api; no request was sent"
+        )
+    if args.additional_retries < 1:
+        raise RequirementScoringError("--additional-retries must be at least 1")
+    bundle_dir = _pilot_directory(args)
+    manifest_path = bundle_dir / "run_manifest.json"
+    run_path = bundle_dir / "run_full.jsonl"
+    if not manifest_path.is_file() or not run_path.is_file():
+        raise RequirementScoringError(
+            "retry-failed requires an existing full bundle and run_full.jsonl"
+        )
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("bundle_type") != "full_single_run_requirement_scoring":
+        raise RequirementScoringError("retry-failed only supports a full bundle")
+    failed_ids = sorted(
+        str(candidate_id)
+        for candidate_id in manifest.get("runs", {})
+        .get("full", {})
+        .get("failed_candidate_ids", [])
+    )
+    if not failed_ids:
+        raise RequirementScoringError("The full bundle has no failed candidates")
+    rows = _load_scoring_rows(args)
+    completed = _completed_records(run_path, "full")
+    missing_ids = sorted(
+        str(row["benchmark_candidate_id"])
+        for row in rows
+        if str(row["benchmark_candidate_id"]) not in completed
+    )
+    if missing_ids != failed_ids:
+        raise RequirementScoringError(
+            "Manifest failed IDs do not match missing run records"
+        )
+    recovery = {
+        "started_at": utc_now(),
+        "status": "running",
+        "candidate_ids": failed_ids,
+        "additional_retries": args.additional_retries,
+        "runner_sha256": sha256_file(Path(__file__)),
+        "api_request_attempt_count_before": int(
+            manifest.get("api_request_attempt_count", 0)
+        ),
+    }
+    manifest.setdefault("recovery_runs", []).append(recovery)
+    atomic_write_json(manifest_path, manifest)
+    if getattr(args, "progress", False):
+        print(
+            f"Retrying {len(failed_ids)} failed candidates in: {bundle_dir}",
+            file=sys.stderr,
+        )
+    try:
+        execute_run(
+            args,
+            run_id="full",
+            client=client,
+            additional_retry_attempts=args.additional_retries,
+        )
+        completed_manifest = finalize_full(args)
+    except Exception:
+        failed_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        failed_recovery = failed_manifest["recovery_runs"][-1]
+        failed_recovery["status"] = "failed"
+        failed_recovery["completed_at"] = utc_now()
+        failed_recovery["api_request_attempt_count_after"] = int(
+            failed_manifest.get("api_request_attempt_count", 0)
+        )
+        atomic_write_json(manifest_path, failed_manifest)
+        raise
+    completed_recovery = completed_manifest["recovery_runs"][-1]
+    completed_recovery["status"] = "completed"
+    completed_recovery["completed_at"] = utc_now()
+    completed_recovery["api_request_attempt_count_after"] = int(
+        completed_manifest.get("api_request_attempt_count", 0)
+    )
+    atomic_write_json(manifest_path, completed_manifest)
+    if getattr(args, "progress", False):
+        print(
+            f"Recovery completed; validated records: "
+            f"{completed_manifest['integrity']['record_count']}",
             file=sys.stderr,
         )
 
@@ -1047,6 +1195,20 @@ def build_parser() -> argparse.ArgumentParser:
         default_concurrency=20,
     )
     full_parser.add_argument("--execute-api", action="store_true")
+    retry_parser = subparsers.add_parser("retry-failed")
+    add_common_arguments(
+        retry_parser,
+        default_max_requests=2500,
+        default_concurrency=20,
+    )
+    retry_parser.add_argument("--additional-retries", type=int, default=2)
+    retry_parser.add_argument("--execute-api", action="store_true")
+    refresh_parser = subparsers.add_parser("refresh-full-manifest")
+    add_common_arguments(
+        refresh_parser,
+        default_max_requests=2500,
+        default_concurrency=20,
+    )
     run_parser = subparsers.add_parser("run")
     add_common_arguments(run_parser)
     run_parser.add_argument("--run-id", choices=("a", "b"), required=True)
@@ -1075,6 +1237,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             run_full_pilot(args)
         elif args.command == "full":
             run_full_dataset(args)
+        elif args.command == "retry-failed":
+            retry_failed_full(args)
+        elif args.command == "refresh-full-manifest":
+            finalize_full(args)
         else:
             parser.error(f"Unsupported command: {args.command}")
     except (RequirementScoringError, OSError, RuntimeError) as exc:
