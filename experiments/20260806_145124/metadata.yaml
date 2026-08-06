@@ -1,0 +1,23 @@
+id: "20260806_145124"
+slug: "repository-architecture-and-governance-refactor"
+title: "Cải tổ kiến trúc, quản trị artifact và khả năng tái lập của repository"
+status: "planning_awaiting_plan01_approval"
+task_type: "repository_architecture_governance_and_reproducibility_refactor"
+owner_agent: "orchestrator"
+parents:
+  - "20260727_170150"
+created_at: "2026-08-06T14:51:24+07:00"
+source_phase: "Cải tổ repository sau full benchmark evaluation"
+git_commit: null
+artifacts:
+  - roadmap.md
+  - plans/01-planning-governance-and-decision-records.md
+  - plans/02-python-packaging-and-clean-environment-validation.md
+  - plans/03-shared-benchmark-artifact-registry-and-promotion.md
+  - plans/04-experiment-configs-runbooks-and-portable-paths.md
+  - plans/05-src-scripts-boundary-and-runtime-refactor.md
+  - plans/06-output-retention-deduplication-and-repository-hygiene.md
+  - plans/07-documentation-reconciliation-validation-and-closeout.md
+  - coordination/coordination_log.jsonl
+  - handoffs/experiment-bootstrap-and-roadmap-planning.md
+
