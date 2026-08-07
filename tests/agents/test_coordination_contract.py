@@ -13,31 +13,42 @@ ROOT = Path(__file__).resolve().parents[2]
 class CoordinationContractTests(unittest.TestCase):
     """Check required event schema fields and handoff sections."""
 
-    def test_event_schema_required_fields(self) -> None:
+    def test_event_schema_supports_workflow_and_delegation_records(self) -> None:
         path = ROOT / "experiments/_templates/coordination-event.schema.json"
         schema = json.loads(path.read_text(encoding="utf-8"))
-        required = set(schema["required"])
+        self.assertEqual(len(schema["oneOf"]), 3)
+
+        workflow_required = set(schema["$defs"]["workflow_event"]["required"])
         self.assertTrue(
             {
+                "schema_version",
+                "event_id",
                 "timestamp",
                 "event_type",
-                "delegation_id",
-                "agent",
+                "actor",
                 "task",
                 "status",
                 "input_paths",
                 "allowed_write_paths",
                 "output_paths",
                 "open_questions",
-            }.issubset(required)
+            }.issubset(workflow_required)
         )
-        self.assertFalse(schema["additionalProperties"])
+
+        delegation_required = set(schema["$defs"]["delegation_event"]["required"])
+        self.assertTrue(
+            {"delegation_id", "parent_session", "agent"}.issubset(
+                delegation_required
+            )
+        )
+        self.assertFalse(schema["$defs"]["workflow_event"]["additionalProperties"])
+        self.assertFalse(schema["$defs"]["delegation_event"]["additionalProperties"])
 
     def test_handoff_has_audit_sections(self) -> None:
         content = (ROOT / "experiments/_templates/handoff.md").read_text(encoding="utf-8")
         for heading in (
-            "Delegation prompt",
-            "Follow-up or steer messages",
+            "Task or delegation request",
+            "Follow-up or scope changes",
             "Inputs read",
             "Outputs created",
             "Orchestrator decision",

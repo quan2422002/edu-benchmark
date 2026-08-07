@@ -9,6 +9,7 @@ The system supports a human-in-the-loop research workflow for a Vietnamese lower
 - canonical specialist definitions with thin runtime adapters;
 - native, observable delegation instead of hidden subprocess agents;
 - append-only coordination records and artifact-based handoffs;
+- concise approved plan baselines with machine-readable lifecycle status;
 - fail-closed or single-agent fallback when specialist activity cannot be inspected.
 
 ## Vertex requirement-scoring transport
@@ -56,6 +57,7 @@ In plain language: the user directs the orchestrator; the orchestrator delegates
 | Claude adapters | `.claude/agents/` | P01 | Static validation; runtime deferred |
 | Skill discovery links | `.agents/skills/` | P01 | Generated and validated by P01 |
 | Coordination contract | `experiments/_templates/` | P01 | Implemented by P01 |
+| Experiment governance v1 | `experiments/_templates/`, `src/edu_benchmark/governance/`, `scripts/governance/` | 20260806 Plan 01 | Approved baseline is the authorization surface; status YAML, chronological amendments, artifact budgets, local links, metadata, and coordination records are validated offline |
 | Modular plans | `experiments/<id>/plans/` | Respective plan | Active |
 | Shared raw data | `shared/raw_data/` | 20260709 Plan 02 | Implemented for HNMU dialogue manifests lớp 6–9; Plan 04 audit outputs cover lớp 6–7 and a separate follow-up run for lớp 8–9 |
 | Shared learning resources | `shared/learning_resources/` | 20260709 Plan 02 layout / Plan 03 content | SGK/SGV images, derived PDFs, registries, Nguyen OCR Markdown for SGK/SGV Tin học 6–9, `ocr_text_manifest.csv`, `learning_resource_fragments.csv`, a rebuildable SQLite FTS retrieval index, and `agent_context/` for audit-agent navigation are available; OCR/MinerU probe outputs remain experiment artifacts and are not the primary retrieval source |
@@ -99,7 +101,7 @@ The parent thread remains the decision surface. The user can inspect, steer, sto
 
 ## Observability model
 
-Every delegation has:
+Every specialist delegation has:
 
 1. a pre-delegation announcement in the parent thread;
 2. a native agent thread when the runtime exposes one;
@@ -109,6 +111,44 @@ Every delegation has:
 6. a summary of the orchestrator decision and unresolved questions.
 
 Observability covers messages exposed by the runtime, tool activity, artifacts, and decisions. It does not expose or claim access to private model chain-of-thought.
+
+Single-agent and orchestrator-only plan work uses the workflow-event branch of
+the same coordination schema and a handoff with `native thread = not-applicable`.
+Historical delegation events and the pre-v1 bootstrap event remain readable;
+append-only logs are not rewritten just to adopt a new schema version.
+
+## Experiment planning and governance
+
+Experiment `20260806_145124` Plan 01 establishes the v1 governance contract:
+
+```text
+roadmap.md                          human-readable plan order and gates
+plans/NN-<name>.md                 stable approved baseline
+plans/NN-status.yaml               current machine-readable lifecycle
+decisions/planNN-amendments.md     chronological situational decisions
+runbooks/planNN*.md                exact operational procedure when needed
+reports/planNN-final.md            acceptance evidence versus baseline
+handoffs/planNN-*.md               next human gate
+coordination/coordination_log.jsonl append-only machine events
+```
+
+Only an explicit `APPROVED` line in the baseline authorizes implementation.
+Status YAML records current state but cannot self-authorize work. Amendment IDs
+are allocated as decisions arise, so plans do not predict a fixed work-package
+graph. Humans follow roadmap order and timeline; optional technical relationships
+stay in status/coordination metadata.
+
+The governance validator lives in `src/edu_benchmark/governance/` with a thin
+CLI in `scripts/governance/`. Until Plan 02 installs the src-layout package, the
+CLI has one explicit source-path bootstrap; reusable validation logic remains in
+the package. The default artifact budget is one baseline, status, amendment log,
+runbook, final report, and handoff plus three consumed machine outputs.
+
+Durable decisions are recorded in:
+
+- `docs/decisions/0001-src-scripts-boundary.md`;
+- `docs/decisions/0002-shared-artifact-promotion.md`;
+- `docs/decisions/0003-experiment-planning-and-output-retention.md`.
 
 ## Runtime model
 
@@ -146,7 +186,7 @@ Package installation, project scripts, validators, and tests must run with the m
 
 ## Dependency direction
 
-P01 owns the original agent infrastructure and root coordination contract. The 20260701 specialist-expansion plan adds `learning-resource-curator` as P06 support and `benchmark-specification-designer` as P05 support. P02 may consume the research specialist but does not modify it without a P01 migration. P03/P04 consume teacher-workflow capabilities. P05–P07 still own official benchmark, dataset, and evaluation artifacts respectively.
+The historical P01 owns the original agent infrastructure and delegation contract. Experiment `20260806_145124` Plan 01 owns the current cross-experiment planning/status/amendment contract while retaining backward-compatible delegation records. The 20260701 specialist-expansion plan adds `learning-resource-curator` as P06 support and `benchmark-specification-designer` as P05 support. P02 may consume the research specialist but does not modify it without a P01 migration. P03/P04 consume teacher-workflow capabilities. P05–P07 still own official benchmark, dataset, and evaluation artifacts respectively.
 
 For experiment `20260709_155523`, Plan 02 owns the shared layout contract:
 
@@ -340,11 +380,13 @@ Later plans must not move canonical logic into runtime adapters or redefine P01 
 - Codex IDE subagent visibility may be incomplete; CLI/App are the P01 audit surfaces.
 - Claude adapters are not runtime-tested in P01.
 - Coordination events are file-based and not yet backed by a database or UI.
+- The governance validator implements the v1 rules directly because `jsonschema`
+  is not a project dependency; JSON Schema files remain the portable contract.
 - Native transcripts depend on runtime retention and do not include private chain-of-thought.
 - Benchmark taxonomy, dataset schema, and evaluation metrics remain provisional or unimplemented; the new benchmark-specification specialist produces candidate specifications, not final HNMU-approved benchmark content.
 - Direct Python dependencies are pinned in `requirements.txt`; a complete Conda environment export and transitive lockfile have not yet been assigned to a dedicated plan.
 
-Last verified against P01 on 2026-06-21.
+Last verified against experiment `20260806_145124` Plan 01 on 2026-08-06.
 
 ### HNMU dialogue auditor specialist
 

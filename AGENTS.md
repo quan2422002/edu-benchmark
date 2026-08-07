@@ -20,6 +20,33 @@ Read [README.md](README.md), [ARCHITECTURE.md](ARCHITECTURE.md), and the active 
 - Report the exact Python executable used for validation when it matters to reproducibility.
 - Update `ARCHITECTURE.md` with component/runtime/ownership changes and `README.md` with onboarding/status changes.
 
+## Experiment governance
+
+For experiments that adopt the v1 governance contract in
+`experiments/_templates/`:
+
+- Treat the Markdown plan as the human authorization surface. Its status line
+  must explicitly contain `APPROVED`; `plans/NN-status.yaml` cannot authorize
+  implementation by itself.
+- After approval, keep the baseline plan stable. Record situational scope or
+  decision changes chronologically in `decisions/planNN-amendments.md` using
+  IDs assigned only when needed (`PNN-A001`, `PNN-A002`, ...).
+- Keep current lifecycle, the latest amendment, gate state, and primary
+  artifacts in `plans/NN-status.yaml`. Use only: `draft`, `approved`,
+  `in_progress`, `blocked`, `completed`, `cancelled`, or `superseded`.
+- Keep human review chronological. Machine-readable relationships may live in
+  status YAML or coordination JSONL; do not require reviewers to follow a
+  baseline/amendment dependency graph.
+- Default to one baseline, status file, amendment log, runbook, final report,
+  and handoff per plan, plus at most three consumed machine outputs. Justify
+  exceptions in the status file.
+- Validate the active experiment with `scripts/governance/validate_experiment.py`
+  before reporting a gate complete. Historical experiments do not need a
+  cosmetic rewrite into this contract.
+- Use workflow coordination events for single-agent/orchestrator work and
+  delegation events for specialist threads. Both use the versioned contract in
+  `experiments/_templates/coordination-event.schema.json`.
+
 ## Current specialists
 
 Canonical instructions live under `agents/<name>/`; runtime adapters must remain thin and must not fork workflow logic.

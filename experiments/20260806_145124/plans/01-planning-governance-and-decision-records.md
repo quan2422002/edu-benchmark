@@ -1,7 +1,7 @@
 # Plan 01 — Quản trị plan và bản ghi quyết định
 
 Experiment: `20260806_145124`
-Trạng thái: `DRAFT — AWAITING PROJECT-LEAD APPROVAL`
+Trạng thái: `APPROVED — 2026-08-06 — PROJECT LEAD`
 Phụ thuộc: không
 
 ## 1. Mục tiêu

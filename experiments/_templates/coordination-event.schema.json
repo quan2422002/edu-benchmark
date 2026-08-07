@@ -1,50 +1,112 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "coordination-event.schema.json",
-  "title": "Specialist delegation event",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "timestamp",
-    "event_type",
-    "delegation_id",
-    "parent_session",
-    "agent",
-    "task",
-    "input_paths",
-    "allowed_write_paths",
-    "status",
-    "output_paths",
-    "open_questions"
+  "title": "Experiment coordination event",
+  "description": "Supports current workflow events, historical delegation events, and the pre-v1 bootstrap record without rewriting append-only logs.",
+  "oneOf": [
+    {"$ref": "#/$defs/workflow_event"},
+    {"$ref": "#/$defs/delegation_event"},
+    {"$ref": "#/$defs/legacy_bootstrap_event"}
   ],
-  "properties": {
-    "timestamp": {"type": "string", "format": "date-time"},
-    "event_type": {
-      "enum": [
-        "delegation_started",
-        "delegation_steered",
-        "delegation_completed",
-        "delegation_stopped",
-        "delegation_failed"
-      ]
+  "$defs": {
+    "path_array": {
+      "type": "array",
+      "items": {"type": "string"}
     },
-    "delegation_id": {"type": "string", "minLength": 1},
-    "parent_session": {"type": "string", "minLength": 1},
-    "agent": {
-      "enum": [
-        "research-methodologist",
-        "benchmark-specification-designer",
-        "teacher-collaboration-designer",
-        "pedagogical-principle-annotator"
-      ]
+    "workflow_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "event_id",
+        "timestamp",
+        "event_type",
+        "actor",
+        "task",
+        "input_paths",
+        "allowed_write_paths",
+        "status",
+        "output_paths",
+        "open_questions"
+      ],
+      "properties": {
+        "schema_version": {"const": "1.0"},
+        "event_id": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "event_type": {
+          "enum": [
+            "plan_approved",
+            "workflow_started",
+            "workflow_updated",
+            "workflow_completed",
+            "workflow_blocked",
+            "amendment_recorded",
+            "validation_completed"
+          ]
+        },
+        "actor": {"enum": ["project_lead", "orchestrator", "specialist"]},
+        "plan_id": {"type": ["string", "null"], "pattern": "^P[0-9]{2}$"},
+        "task": {"type": "string", "minLength": 1},
+        "input_paths": {"$ref": "#/$defs/path_array"},
+        "allowed_write_paths": {"$ref": "#/$defs/path_array"},
+        "status": {"enum": ["recorded", "started", "running", "completed", "blocked", "failed"]},
+        "native_thread_id": {"type": ["string", "null"]},
+        "output_paths": {"$ref": "#/$defs/path_array"},
+        "summary": {"type": ["string", "null"]},
+        "open_questions": {"$ref": "#/$defs/path_array"},
+        "details": {"type": "object"}
+      }
     },
-    "task": {"type": "string", "minLength": 1},
-    "input_paths": {"type": "array", "items": {"type": "string"}},
-    "allowed_write_paths": {"type": "array", "items": {"type": "string"}},
-    "status": {"enum": ["started", "running", "completed", "stopped", "failed"]},
-    "native_thread_id": {"type": ["string", "null"]},
-    "output_paths": {"type": "array", "items": {"type": "string"}},
-    "summary": {"type": ["string", "null"]},
-    "open_questions": {"type": "array", "items": {"type": "string"}}
+    "delegation_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timestamp",
+        "event_type",
+        "delegation_id",
+        "parent_session",
+        "agent",
+        "task",
+        "input_paths",
+        "allowed_write_paths",
+        "status",
+        "output_paths",
+        "open_questions"
+      ],
+      "properties": {
+        "timestamp": {"type": "string", "format": "date-time"},
+        "event_type": {
+          "enum": [
+            "delegation_started",
+            "delegation_steered",
+            "delegation_completed",
+            "delegation_stopped",
+            "delegation_failed"
+          ]
+        },
+        "delegation_id": {"type": "string", "minLength": 1},
+        "parent_session": {"type": "string", "minLength": 1},
+        "agent": {"type": "string", "minLength": 1},
+        "task": {"type": "string", "minLength": 1},
+        "input_paths": {"$ref": "#/$defs/path_array"},
+        "allowed_write_paths": {"$ref": "#/$defs/path_array"},
+        "status": {"enum": ["started", "running", "completed", "stopped", "failed"]},
+        "native_thread_id": {"type": ["string", "null"]},
+        "output_paths": {"$ref": "#/$defs/path_array"},
+        "summary": {"type": ["string", "null"]},
+        "open_questions": {"$ref": "#/$defs/path_array"}
+      }
+    },
+    "legacy_bootstrap_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timestamp", "actor", "event", "details"],
+      "properties": {
+        "timestamp": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string", "minLength": 1},
+        "event": {"type": "string", "minLength": 1},
+        "details": {"type": "object"}
+      }
+    }
   }
 }

@@ -1,13 +1,15 @@
-# Specialist handoff
+# Handoff
 
-- Delegation ID:
+- Event ID:
+- Plan ID:
+- Mode: `single-agent` hoặc `delegated-specialist`
 - Agent:
 - Status:
-- Native thread ID/label:
+- Native thread ID/label: `not-applicable` nếu không delegation
 
-## Delegation prompt
+## Task or delegation request
 
-## Follow-up or steer messages
+## Follow-up or scope changes
 
 ## Inputs read
 

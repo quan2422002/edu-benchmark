@@ -4,7 +4,7 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment active `20260727_170150` đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT: mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01 đã hoàn tất governance v1 cho plan/status/amendment, ADR, artifact budget và validation, còn Plan 02 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
 
 Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
 và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
@@ -43,7 +43,8 @@ judge và descriptive position sensitivity tại
 mọi cổng 4.200/38.832 và các anchor đã khóa đều đạt. Không có model call mới
 trong bước này.
 
-Active planning roadmap: [experiments/20260727_170150/roadmap.md](experiments/20260727_170150/roadmap.md)
+Active repository-refactor roadmap: [experiments/20260806_145124/roadmap.md](experiments/20260806_145124/roadmap.md)
+Current benchmark/evaluation roadmap: [experiments/20260727_170150/roadmap.md](experiments/20260727_170150/roadmap.md)
 Previous phase-2 construction roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
 Previous raw-dialogue audit roadmap: [experiments/20260709_155523/roadmap.md](experiments/20260709_155523/roadmap.md)
 Previous design roadmap: [experiments/20260705_215045/roadmap.md](experiments/20260705_215045/roadmap.md)
@@ -121,9 +122,11 @@ agents/                 Canonical specialist skills, references, and validators
 .agents/skills/         Skill discovery links for Codex
 .codex/agents/          Codex custom-agent adapters
 .claude/agents/         Claude project-agent adapters; static validation only
-experiments/            Modular plans, coordination records, and reports
+docs/decisions/         Durable architecture decision records (ADRs)
+experiments/            Plans, machine-readable status, runbooks, coordination, and reports
 shared/                 Shared raw data and learning resources reused across experiments
 src/edu_benchmark/      Shared project code for data I/O, audit, conversion, resources, and quality checks
+scripts/governance/     Thin CLI for experiment-governance validation
 src/vertex_ai_call/     Vertex AI pilot runner for six-principle requirement scoring
 document/               User-provided project source documents
 kse_submit_manuscript/  KSE 2026 writing plan, LaTeX source, evidence registry, and releases
@@ -141,6 +144,25 @@ Experiment `20260709_155523` Plan 02 established the shared layout:
 - Reusable implementation code belongs under `src/edu_benchmark/`. Experiments should store run outputs, not reusable code.
 - Plan 04 dialogue audit v0 reads HNMU raw Excel files through `src/edu_benchmark/data_io/` and `src/edu_benchmark/dialogue_audit/`, then writes experiment-scoped audit tables. The lớp 6–7 audit remains under `experiments/20260709_155523/outputs/hnmu_dialogue_audit/`; the separate lớp 8–9 follow-up audit is under `experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/`. Both runs are draft audits and do not replace HNMU/UET subject-matter review.
 - Agent-assisted Plan 04 outputs must aggregate the main sample-level `agent_shard_audit/merged/quality_check_suggestions.csv` from criterion-level `raw_dialogue_checklist_results*.csv` with the strict checklist rule implemented in `src/edu_benchmark/dialogue_audit/checklist_aggregation.py` and `scripts/dialogue_audit/sync_quality_suggestions_from_checklist.py`. This file uses the canonical `quality_decision` labels `pass`, `need_human_review`, and `failed`. A sample cannot remain `pass` if any required criterion is `fail` or `uncertain`.
+
+## Experiment governance
+
+New experiments use [experiments/_templates/README.md](experiments/_templates/README.md).
+The concise Markdown plan is the approval surface; a machine-readable status
+file cannot grant implementation authority. After approval, situational changes
+go into one chronological amendment log rather than rewriting the baseline.
+
+Validate a governed experiment from the repository root with:
+
+```bash
+/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+  scripts/governance/validate_experiment.py experiments/20260806_145124
+```
+
+The validator checks metadata, explicit approval, lifecycle/status consistency,
+roadmap links, amendment references, coordination JSONL, registered artifacts,
+and the default artifact budget. Historical experiments remain valid provenance
+and do not require a cosmetic migration.
 
 
 ## Project Python environment

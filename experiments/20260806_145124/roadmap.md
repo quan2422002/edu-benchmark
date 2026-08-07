@@ -1,7 +1,7 @@
 # Roadmap — Cải tổ repository để con người và agent cùng vận hành được
 
 Experiment: `20260806_145124`
-Trạng thái: `PLANNING — AWAITING PLAN 01 APPROVAL`
+Trạng thái: `ACTIVE — PLAN 02 AWAITING APPROVAL`
 Nguồn hiện trạng chính: `20260727_170150`
 
 ## 1. Mục tiêu
@@ -28,7 +28,7 @@ nhãn sư phạm, sửa rubric, thay đổi sample, hoặc thay quyết định 
 4. Quan hệ kỹ thuật giữa baseline, amendment, commit và artifact được để trong
    metadata máy đọc do Plan 01 quy định.
 5. Không di chuyển hoặc xóa artifact chỉ vì tên/path có vẻ trùng. Mọi migration
-   phải có inventory, checksum, consupp;mer audit và cách rollback.
+   phải có inventory, checksum, consumer audit và cách rollback.
 6. Artifact chuẩn dùng chung chỉ được `promote` sau khi xác định authority,
    version, schema, provenance, quyền chia sẻ và trạng thái phê duyệt.
 7. Không gọi API trả phí trong experiment này nếu một plan sau không nêu rõ và
@@ -118,8 +118,8 @@ còn payload được đặt tại kho được phép và manifest ghi locator/c
 
 | Thứ tự | Plan                                                                                                                       | Trạng thái | Gate mở plan kế tiếp                                                                |
 | -------: | -------------------------------------------------------------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------- |
-|       01 | [Quản trị plan và bản ghi quyết định](plans/01-planning-governance-and-decision-records.md)                         | `DRAFT`      | Template, status machine-readable, amendment và artifact budget được duyệt        |
-|       02 | [Đóng gói Python và kiểm chứng môi trường sạch](plans/02-python-packaging-and-clean-environment-validation.md)   | `DRAFT`      | Import/package/test chạy bằng`benchmark_env`; CI tối thiểu không gọi API         |
+|       01 | [Quản trị plan và bản ghi quyết định](plans/01-planning-governance-and-decision-records.md)                         | `COMPLETED`   | Template, status machine-readable, amendment và artifact budget được duyệt        |
+|       02 | [Đóng gói Python và kiểm chứng môi trường sạch](plans/02-python-packaging-and-clean-environment-validation.md)   | `DRAFT — READY_FOR_REVIEW` | Import/package/test chạy bằng `benchmark_env`; CI tối thiểu không gọi API |
 |       03 | [Registry và promotion artifact benchmark dùng chung](plans/03-shared-benchmark-artifact-registry-and-promotion.md)      | `DRAFT`      | Registry, manifest và các count/provenance được đối chiếu; authority rõ ràng |
 |       04 | [Config, runbook và path khả chuyển](plans/04-experiment-configs-runbooks-and-portable-paths.md)                        | `DRAFT`      | Run đại diện preflight được từ repo root, không absolute path/secret           |
 |       05 | [Tách ranh giới `src/` và `scripts/`](plans/05-src-scripts-boundary-and-runtime-refactor.md)                            | `DRAFT`      | CLI mỏng, logic dùng lại trong package, compatibility và test đạt                |
@@ -175,7 +175,7 @@ Trước khi hoàn tất:
 
 ## 9. Cổng dừng hiện tại
 
-Tất cả bảy plan đang là bản nháp. Chỉ Plan 01 được đưa ra duyệt đầu tiên.
-Cho đến khi Plan 01 được project lead đổi rõ ràng sang `APPROVED`, experiment
-này không cho phép thay đổi code, di chuyển dữ liệu, tạo packaging, sửa CI,
-hoặc dọn file cũ.
+Plan 01 đã hoàn tất validation và đóng gate. Plan 02 sẵn sàng để project lead
+review nhưng vẫn là bản nháp; Plan 03–07 tiếp tục đóng. Cho đến khi baseline
+Plan 02 có dòng `APPROVED`, experiment không cho phép tạo packaging, sửa import,
+thêm CI hoặc thay đổi environment specification.
