@@ -1,14 +1,12 @@
 # Plan 03 — Registry và promotion artifact benchmark dùng chung
 
 Experiment: `20260806_145124`
-Trạng thái: `DRAFT — AWAITING PLAN 02 COMPLETION AND PROJECT-LEAD APPROVAL`
+Trạng thái: `APPROVED — 2026-08-07 — PROJECT LEAD`
 Phụ thuộc: Plan 01–02
 
 ## 1. Mục tiêu
 
-Đưa các nền tảng benchmark ổn định ra khỏi cây experiment khó tìm, nhưng vẫn
-giữ provenance và không biến kết quả tạm thời thành ground truth. Shared là nơi
-tiêu thụ chuẩn; experiment vẫn là nơi tạo ra và lưu lịch sử run.
+Đưa các nền tảng benchmark ổn định ra khỏi cây experiment khó tìm, nhưng vẫn giữ provenance và không biến kết quả tạm thời thành ground truth. Shared là nơi tiêu thụ chuẩn; experiment vẫn là nơi tạo ra và lưu lịch sử run.
 
 ## 2. Phạm vi artifact
 
@@ -17,13 +15,10 @@ Plan phải inventory và xác minh trước khi promote:
 - checklist audit hội thoại 18 tiêu chí;
 - 665 hội thoại có disposition `pass` sau Phase 1;
 - 2.028 candidate đã conversion/validation từ 665 family;
-- selection tạm dùng 1.400 candidate từ Plan 03 cũ, cùng provenance của 628
-  candidate cần review và trạng thái 0 blocked;
-- capability, pedagogical principle và rubric library đang dùng, với trạng thái
-  `provisional`/`awaiting_review` đúng thực tế.
+- selection tạm dùng 1.400 candidate từ Plan 03 cũ, cùng provenance của 628 candidate cần review và trạng thái 0 blocked;
+- capability, pedagogical principle và rubric library đang dùng, với trạng thái `provisional`/`awaiting_review` đúng thực tế.
 
-Nguồn đã biết gồm experiment `20260722_000940`, snapshot kế thừa và output của
-`20260727_170150`; inventory phải xác định nguồn chuẩn thay vì chọn file theo tên.
+Nguồn đã biết gồm experiment `20260722_000940`, snapshot kế thừa và output của `20260727_170150`; inventory phải xác định nguồn chuẩn thay vì chọn file theo tên.
 
 ## 3. Registry và manifest
 
@@ -34,15 +29,11 @@ Nguồn đã biết gồm experiment `20260722_000940`, snapshot kế thừa và
 - count chính (`dialogue`, `family`, `candidate`) khi áp dụng;
 - `approval_authority`, `approved_at`, `supersedes`, `access_policy`, `notes`.
 
-Mỗi bundle có manifest ghi nguồn, transformation command/code version, checksum,
-count invariant, schema và giới hạn sử dụng. Registry không tự nâng trạng thái
-phê duyệt.
+Mỗi bundle có manifest ghi nguồn, transformation command/code version, checksum, count invariant, schema và giới hạn sử dụng. Registry không tự nâng trạng thái phê duyệt.
 
 ## 4. Cách biểu diễn selection 1.400
 
-Không sao chép toàn bộ payload 1.400 dòng nếu có thể join từ candidate pool.
-`selection.csv` giữ candidate ID, family ID nếu cần, disposition, reason và
-provenance. `requirement_scores.csv` chỉ giữ trường cần để tái lập selection.
+Không sao chép toàn bộ payload 1.400 dòng nếu có thể join từ candidate pool. `selection.csv` giữ candidate ID, family ID nếu cần, disposition, reason và provenance. `requirement_scores.csv` chỉ giữ trường cần để tái lập selection.
 Materialized evaluation input là derived artifact và thuộc experiment run.
 
 ## 5. Các bước triển khai dự kiến

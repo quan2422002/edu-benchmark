@@ -1,0 +1,44 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "pedagogical_principles",
+  "artifact_type": "specification",
+  "authority": {
+    "approval_authority": "UET provisional operational use",
+    "approved_at": null,
+    "pending_authorities": [
+      "HNMU content confirmation"
+    ]
+  },
+  "canonical_path": "shared/benchmark/specifications/pedagogical_principles/v0",
+  "files": [
+    {
+      "path": "specifications/pedagogical_principles/v0/pedagogical_principles.csv",
+      "row_count": 6,
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6"
+    }
+  ],
+  "invariants": {
+    "principle_count": 6
+  },
+  "limitations": [
+    "Provisional specification; not a validated or frozen benchmark contract."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260727_170150",
+  "sources": [
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/principle_foundation/pedagogical_principles.csv",
+      "role": "pedagogical_principles.csv",
+      "row_count": 6,
+      "sha256": "856b9ba06801038ff0fc7c66930dfaa6b8ac40d4a933e2dee29a1241d964f7f6"
+    }
+  ],
+  "status": "needs_hnmu_review",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "byte_copy"
+  },
+  "upstream_locators": [],
+  "version": "v0"
+}

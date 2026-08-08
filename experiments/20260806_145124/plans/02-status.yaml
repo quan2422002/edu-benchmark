@@ -1,0 +1,41 @@
+schema_version: "1.0"
+experiment_id: "20260806_145124"
+plan_id: "P02"
+sequence: 2
+baseline_path: "plans/02-python-packaging-and-clean-environment-validation.md"
+status: "completed"
+approval:
+  state: "approved"
+  authority: "project_lead"
+  approved_at: "2026-08-07T11:59:59+07:00"
+updated_at: "2026-08-07T15:24:29+07:00"
+current_step: null
+last_amendment: "P02-A003"
+depends_on:
+  - "P01"
+gate:
+  state: "passed"
+  summary: "Packaging, provider-independent core tests, trackable-snapshot wheel validation, self-contained offline tests, and governance passed; Plan 03 may be reviewed."
+artifacts:
+  - path: "plans/02-python-packaging-and-clean-environment-validation.md"
+    kind: "baseline_plan"
+  - path: "plans/02-status.yaml"
+    kind: "status_file"
+  - path: "decisions/plan02-amendments.md"
+    kind: "amendment_log"
+  - path: "runbooks/plan02-packaging-and-offline-validation.md"
+    kind: "runbook"
+  - path: "reports/plan02-final.md"
+    kind: "final_report"
+  - path: "handoffs/plan02-packaging-closeout.md"
+    kind: "handoff"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []

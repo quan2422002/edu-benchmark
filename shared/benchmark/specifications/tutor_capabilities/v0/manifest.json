@@ -1,0 +1,53 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "tutor_capabilities",
+  "artifact_type": "specification",
+  "authority": {
+    "approval_authority": "UET provisional operational use",
+    "approved_at": null,
+    "pending_authorities": [
+      "HNMU content confirmation"
+    ]
+  },
+  "canonical_path": "shared/benchmark/specifications/tutor_capabilities/v0",
+  "files": [
+    {
+      "path": "specifications/tutor_capabilities/v0/tutor_capabilities.csv",
+      "row_count": 6,
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c"
+    },
+    {
+      "path": "specifications/tutor_capabilities/v0/tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af"
+    }
+  ],
+  "invariants": {
+    "capability_count": 6
+  },
+  "limitations": [
+    "Provisional specification; not a validated or frozen benchmark contract."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260727_170150",
+  "sources": [
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/capability_model/tutor_capabilities.csv",
+      "role": "tutor_capabilities.csv",
+      "row_count": 6,
+      "sha256": "e5bbc6b180ef997ab0b089f9ab51b641d59853316723de7e67caa36000b97d1c"
+    },
+    {
+      "path": "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/capability_model/tutor_capability_model.md",
+      "role": "tutor_capability_model.md",
+      "sha256": "07191a0ba605b8e462e4bfcc76146bde07461645104e34bdb879a1716f3f03af"
+    }
+  ],
+  "status": "needs_hnmu_review",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "byte_copy"
+  },
+  "upstream_locators": [],
+  "version": "v0"
+}

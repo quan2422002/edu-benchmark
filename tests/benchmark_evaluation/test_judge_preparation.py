@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from src.edu_benchmark.benchmark_evaluation.judge import (
+from edu_benchmark.benchmark_evaluation.judge import (
     GOLD_ANSWER_ONLY_CRITERION_NAME_ALIASES,
     JudgeOutputError,
     postprocess_judge_output,

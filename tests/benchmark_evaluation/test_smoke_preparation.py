@@ -3,11 +3,11 @@ import json
 
 import pytest
 
-from src.edu_benchmark.benchmark_evaluation.config_builder import (
+from edu_benchmark.benchmark_evaluation.config_builder import (
     PRINCIPLE_ORDER,
     build_evaluation_config,
 )
-from src.edu_benchmark.benchmark_evaluation.smoke import (
+from edu_benchmark.benchmark_evaluation.smoke import (
     SmokePreparationError,
     load_required_principle_sets,
     prepare_smoke_requests,

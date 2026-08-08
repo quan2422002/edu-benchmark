@@ -1,0 +1,86 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "rubric_library",
+  "artifact_type": "specification",
+  "authority": {
+    "approval_authority": "UET provisional operational use",
+    "approved_at": null,
+    "pending_authorities": [
+      "HNMU content confirmation"
+    ]
+  },
+  "canonical_path": "shared/benchmark/specifications/rubric_library/v0",
+  "files": [
+    {
+      "path": "specifications/rubric_library/v0/benchmark_tasks.csv",
+      "row_count": 1,
+      "sha256": "7ad53cad8e91a247c63d57973203f7053d7f1abd439ea6fb5c8dd4f24e2fc043"
+    },
+    {
+      "path": "specifications/rubric_library/v0/rubrics.csv",
+      "row_count": 22,
+      "sha256": "6617b179e0b4af92182d64e3883e69cf458b4b2ad1ca97b5d042bb24344a581f"
+    },
+    {
+      "path": "specifications/rubric_library/v0/serious_errors.csv",
+      "row_count": 6,
+      "sha256": "c6e703fa601269be909d391b7321fbe1f605c6871e38565dc0db682a3c36a3cf"
+    },
+    {
+      "path": "specifications/rubric_library/v0/provenance_matrix.csv",
+      "row_count": 29,
+      "sha256": "4e8ee008834b4b4870e6f7836d9b05aec393ced16aec0c384b6e1c53588b5e94"
+    },
+    {
+      "path": "specifications/rubric_library/v0/rubric_review_packet.md",
+      "sha256": "806d37e771eceba253152159afbd108027c10fd5138d7dd5a58da74ccf4b9d88"
+    }
+  ],
+  "invariants": {
+    "rubric_count": 22
+  },
+  "limitations": [
+    "Provisional specification; not a validated or frozen benchmark contract."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260727_170150",
+  "sources": [
+    {
+      "path": "experiments/20260727_170150/outputs/benchmark_rubric/benchmark_tasks.csv",
+      "role": "benchmark_tasks.csv",
+      "row_count": 1,
+      "sha256": "7ad53cad8e91a247c63d57973203f7053d7f1abd439ea6fb5c8dd4f24e2fc043"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/benchmark_rubric/rubrics.csv",
+      "role": "rubrics.csv",
+      "row_count": 22,
+      "sha256": "6617b179e0b4af92182d64e3883e69cf458b4b2ad1ca97b5d042bb24344a581f"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/benchmark_rubric/serious_errors.csv",
+      "role": "serious_errors.csv",
+      "row_count": 6,
+      "sha256": "c6e703fa601269be909d391b7321fbe1f605c6871e38565dc0db682a3c36a3cf"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/benchmark_rubric/provenance_matrix.csv",
+      "role": "provenance_matrix.csv",
+      "row_count": 29,
+      "sha256": "4e8ee008834b4b4870e6f7836d9b05aec393ced16aec0c384b6e1c53588b5e94"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/benchmark_rubric/rubric_review_packet.md",
+      "role": "rubric_review_packet.md",
+      "sha256": "806d37e771eceba253152159afbd108027c10fd5138d7dd5a58da74ccf4b9d88"
+    }
+  ],
+  "status": "needs_hnmu_review",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "byte_copy"
+  },
+  "upstream_locators": [],
+  "version": "v0"
+}

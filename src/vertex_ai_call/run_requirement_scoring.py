@@ -16,10 +16,8 @@ from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.vertex_ai_call.requirement_scoring import (  # noqa: E402
+from vertex_ai_call.requirement_scoring import (  # noqa: E402
     GenerationConfig,
     RequirementScoringError,
     atomic_write_json,
@@ -46,7 +44,7 @@ from src.vertex_ai_call.requirement_scoring import (  # noqa: E402
     write_pilot_input,
     write_review_queue,
 )
-from src.vertex_ai_call.vertex_client import VertexRequirementClient  # noqa: E402
+from vertex_ai_call.vertex_client import VertexRequirementClient  # noqa: E402
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]

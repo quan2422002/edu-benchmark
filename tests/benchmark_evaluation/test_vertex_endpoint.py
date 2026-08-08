@@ -8,7 +8,7 @@ from scripts.benchmark_evaluation.run_vertex_smoke import (
     _normalize_finish_reason,
     _prepare_vertex_endpoint_runtime,
 )
-from src.edu_benchmark.benchmark_evaluation.vertex_endpoint import (
+from edu_benchmark.benchmark_evaluation.vertex_endpoint import (
     endpoint_id_from_resource,
     load_lifecycle_manifest,
     parse_openai_chat_response,

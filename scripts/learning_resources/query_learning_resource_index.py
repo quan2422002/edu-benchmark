@@ -5,11 +5,9 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from edu_benchmark.learning_resources.retrieval_api import search_learning_fragments  # noqa: E402
 

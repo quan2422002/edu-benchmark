@@ -1,0 +1,38 @@
+schema_version: "1.0"
+experiment_id: "20260806_145124"
+plan_id: "P06"
+sequence: 6
+baseline_path: "plans/06-output-retention-deduplication-and-repository-hygiene.md"
+status: "draft"
+approval:
+  state: "pending"
+  authority: null
+  approved_at: null
+updated_at: "2026-08-06T15:55:09+07:00"
+current_step: null
+last_amendment: null
+depends_on:
+  - "P01"
+  - "P02"
+  - "P03"
+  - "P04"
+  - "P05"
+gate:
+  state: "closed"
+  summary: "Awaiting Plans 01 through 05 completion."
+artifacts:
+  - path: "plans/06-output-retention-deduplication-and-repository-hygiene.md"
+    kind: "baseline_plan"
+  - path: "plans/06-status.yaml"
+    kind: "status_file"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []
+

@@ -1,0 +1,46 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "phase1_pass_dialogues",
+  "artifact_type": "dataset",
+  "authority": {
+    "approval_authority": "UET operational Phase-1 audit",
+    "approved_at": null,
+    "pending_authorities": [
+      "HNMU final sample review"
+    ]
+  },
+  "canonical_path": "shared/benchmark/datasets/phase1_pass_dialogues/v1",
+  "files": [
+    {
+      "path": "datasets/phase1_pass_dialogues/v1/dialogues.csv",
+      "row_count": 665,
+      "sha256": "d3f156dc80ce5815d79c07d23f75cc856de34241cf89155479daa25a17a95b57"
+    }
+  ],
+  "invariants": {
+    "dialogue_count": 665,
+    "quality_decision": "pass",
+    "unique_sample_id_count": 665
+  },
+  "limitations": [
+    "Operational Phase-1 pass does not mean final HNMU approval."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260722_000940",
+  "sources": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv",
+      "role": "phase1_pass_input",
+      "row_count": 665,
+      "sha256": "d3f156dc80ce5815d79c07d23f75cc856de34241cf89155479daa25a17a95b57"
+    }
+  ],
+  "status": "provisional_phase1_pass",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "byte_copy"
+  },
+  "upstream_locators": [],
+  "version": "v1"
+}

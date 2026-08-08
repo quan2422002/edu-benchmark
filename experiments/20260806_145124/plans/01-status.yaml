@@ -1,0 +1,38 @@
+schema_version: "1.0"
+experiment_id: "20260806_145124"
+plan_id: "P01"
+sequence: 1
+baseline_path: "plans/01-planning-governance-and-decision-records.md"
+status: "completed"
+approval:
+  state: "approved"
+  authority: "project_lead"
+  approved_at: "2026-08-06T15:55:09+07:00"
+updated_at: "2026-08-06T16:06:17+07:00"
+current_step: null
+last_amendment: null
+depends_on: []
+gate:
+  state: "passed"
+  summary: "Governance templates, ADRs, validator, documentation, and tests passed; Plan 02 may be reviewed."
+artifacts:
+  - path: "plans/01-planning-governance-and-decision-records.md"
+    kind: "baseline_plan"
+  - path: "plans/01-status.yaml"
+    kind: "status_file"
+  - path: "runbooks/plan01-governance-validation.md"
+    kind: "runbook"
+  - path: "reports/plan01-final.md"
+    kind: "final_report"
+  - path: "handoffs/plan01-governance-completed.md"
+    kind: "handoff"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []

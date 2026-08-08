@@ -11,15 +11,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
-if __package__ in {None, ""}:
-    import sys
 
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-
-from src.vertex_ai_call.analyze_requirement_scoring import (  # noqa: E402
+from vertex_ai_call.analyze_requirement_scoring import (  # noqa: E402
     load_conversion_trace,
 )
-from src.vertex_ai_call.requirement_scoring import (  # noqa: E402
+from vertex_ai_call.requirement_scoring import (  # noqa: E402
     PRINCIPLE_IDS,
     RequirementScoringError,
     load_grounding_pool,

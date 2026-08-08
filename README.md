@@ -4,7 +4,7 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01 đã hoàn tất governance v1 cho plan/status/amendment, ADR, artifact budget và validation, còn Plan 02 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–03 đã hoàn tất governance, packaging và shared benchmark registry. Plan 04 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
 
 Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
 và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
@@ -124,8 +124,12 @@ agents/                 Canonical specialist skills, references, and validators
 .claude/agents/         Claude project-agent adapters; static validation only
 docs/decisions/         Durable architecture decision records (ADRs)
 experiments/            Plans, machine-readable status, runbooks, coordination, and reports
-shared/                 Shared raw data and learning resources reused across experiments
+pyproject.toml           Src-layout package metadata and dependency groups
+environment.yml          Human-maintained Conda environment specification
+shared/benchmark/       Versioned benchmark registry, canonical datasets, selections, and provisional specifications
+shared/                 Shared raw data, learning resources, prompts, and benchmark artifacts
 src/edu_benchmark/      Shared project code for data I/O, audit, conversion, resources, and quality checks
+scripts/benchmark_registry/ Thin CLI for deterministic shared benchmark promotion/validation
 scripts/governance/     Thin CLI for experiment-governance validation
 src/vertex_ai_call/     Vertex AI pilot runner for six-principle requirement scoring
 document/               User-provided project source documents
@@ -137,6 +141,12 @@ tests/agents/           Agent and documentation tests
 
 Experiment `20260709_155523` Plan 02 established the shared layout:
 
+- Canonical benchmark discovery begins at `shared/benchmark/README.md` and
+  `shared/benchmark/artifact_registry.csv`. The registry points to the
+  18-criterion checklist, 665 Phase-1 dialogues, 2,028-candidate conversion
+  pool, provisional 1,400-candidate selection with the 628/0 backlog state, and
+  provisional capability/principle/rubric bundles. Each bundle has a manifest
+  with source hashes, counts, authority, access policy, and limitations.
 - HNMU raw dialogue batches live under `shared/raw_data/HNMU-teacher_dialog_samples/` and are registered in `manifest.csv`. Do not edit the raw Excel files directly.
 - Shared SGK/SGV learning resources belong under `shared/learning_resources/`. Plan 03 will populate this area with copied SGK images, SGV sources, registries, OCR text, and fragments.
 - Processed learning-resource pages should use Markdown with front matter and stable anchors as the temporary human-readable source for review and retrieval indexing. These Markdown pages should be generated from OCR text plus bounding boxes through a layout-reconstruction step, not from plain text alone. JSON/crop debug artifacts are optional and should be generated only when bbox/table/cell-level inspection is needed.
@@ -183,71 +193,53 @@ python -c "import sys; print(sys.executable)"
 
 The executable must resolve to one of the paths above. All package installation, Python scripts, validators, and tests must use `benchmark_env`. Do not use Conda base or system Python. For reproducible commands, use the absolute interpreter path.
 
-Install the project dependencies into `benchmark_env`:
+Create the environment from the repository root:
+
+```bash
+conda env create -f environment.yml
+conda activate benchmark_env
+```
+
+For an existing `benchmark_env`, synchronize direct dependencies and install
+the src-layout package editable:
 
 ```powershell
 D:\conda-envs\benchmark_env\python.exe -m pip install -r requirements.txt
+D:\conda-envs\benchmark_env\python.exe -m pip install --no-deps -e .
 ```
 
 ```bash
 /home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements.txt
+/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install --no-deps -e .
 ```
 
-Optional OCR GPU stacks for SGK/SGV image probes:
+`pyproject.toml` separates core, `dev`, and `providers` dependency groups.
+`requirements.txt` intentionally installs their union for the current full
+runner environment. Direct dependencies and Python 3.12 are pinned; transitive
+pip/Conda packages are not yet fully locked, so `environment.yml` is not a
+bit-for-bit lockfile.
+
+The offline GitHub Actions workflow has two clean-clone lanes. The first installs
+only `.[dev]` and runs provider-independent tests. The second installs the full
+runner requirements and runs self-contained offline tests without credentials.
+Tests that consume intentionally ignored raw XLSX or experiment JSONL remain
+local integration tests and are not clean-clone CI gates.
+
+After installation, verify import portability from outside the repository:
 
 ```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements-ocr-easyocr-gpu.txt
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements-ocr-paddle-gpu.txt
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements-ocr-paddle-vietocr-cpu.txt
+cd /tmp
+/home/quannda/miniconda3/envs/benchmark_env/bin/python -I -c \
+  "import edu_benchmark, vertex_ai_call; print(edu_benchmark.__file__); print(vertex_ai_call.__file__)"
 ```
 
-Standalone VietOCR GPU recognition should use a separate Conda environment:
-
-```bash
-conda create -n ocr_vietocr_gpu python=3.10 -y
-conda activate ocr_vietocr_gpu
-python -m pip install -r requirements-ocr-vietocr-gpu.txt
-```
-
-These optional stacks are intentionally separate from `requirements.txt` because CUDA wheels and OCR model dependencies are large and only needed on OCR workstations. Do not casually mix EasyOCR GPU, PaddleOCR GPU, and VietOCR GPU in one long-lived environment because their CUDA runtime dependencies can conflict. The current best OCR direction from the July 15 probes is PaddleOCR for detection/layout plus VietOCR GPU for Vietnamese recognition, using separate environments: `vgg_transformer` is better for quality, while `vgg_seq2seq` is better for speed. The OCR result should then pass through a layout-reconstruction step before Markdown is written, especially for tables and tables of contents. CPU-only OCR dependencies remain in `requirements-ocr-cpu.txt`.
-
-For Plan 03 Phases 3–5, reusable code belongs under `src/edu_benchmark/learning_resources/`. Thin command-line wrappers, if needed, should live under `scripts/learning_resources/`. Use `benchmark_env` for orchestration, layout reconstruction, Markdown export, fragment/index building, tests, and validation. Use `/home/quannda/miniconda3/envs/ocr_vietocr_gpu/bin/python` only for VietOCR GPU recognition, then pass intermediate OCR outputs back to the `benchmark_env` steps.
-
-Standalone MinerU probes should also use a separate Conda environment because MinerU pulls a large document-parsing stack, including Torch/CUDA runtime packages:
-
-```bash
-conda create -n ocr_mineru python=3.11 -y
-/home/quannda/miniconda3/envs/ocr_mineru/bin/python -m pip install -r requirements-ocr-mineru-core.txt
-```
-
-Use `/home/quannda/miniconda3/envs/ocr_mineru/bin/mineru` only for MinerU library/model probes. Do not install MinerU into `benchmark_env`. The first setup on 2026-07-16 installed `mineru[core]==3.4.4` and confirmed Torch CUDA outside the sandbox on the local RTX 4060 Ti. Model download and parsing are separate follow-up steps.
-
-Plan 03 Phase A now has reusable preparation scripts for book-level MinerU runs. Use `benchmark_env` to create per-book manifests, filtered PDFs, and user-run MinerU commands. By default, the preparation step excludes original pages `1-4` and the final 2 pages of each book from the MinerU input PDF while preserving them in the manifest for traceability:
-
-```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
-  scripts/learning_resources/prepare_mineru_book_phase_a.py
-```
-
-The generated commands are written to:
-
-```text
-experiments/20260709_155523/outputs/mineru_book_phase_a/mineru_commands.md
-```
-
-Run MinerU itself outside the sandbox with `/home/quannda/miniconda3/envs/ocr_mineru/bin/mineru`, then collect Markdown outputs back with:
-
-```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
-  scripts/learning_resources/collect_mineru_book_markdown.py
-```
-
-After MinerU completes, run the deterministic post-processing step in `benchmark_env` to create cleaned page-level Markdown, a page manifest, and a review queue:
-
-```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
-  scripts/learning_resources/postprocess_mineru_book_phase.py
-```
+The earlier PaddleOCR, VietOCR, and MinerU extraction attempts did not become a
+supported repository workflow. Their experimental code, tests, and environment
+files are retained only in the project lead's ignored local workspace for
+historical reference; they are not part of the tracked package or the
+`benchmark_env` reproducibility contract. Do not rely on those local files from
+a clean clone. The active learning-resource path consumes the registered Nguyen
+OCR Markdown and uses the tracked manifest, fragment, and retrieval modules.
 
 ## Validate current specialists
 

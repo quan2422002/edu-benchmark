@@ -10,31 +10,28 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import sys
 import threading
 import time
 import traceback
 from typing import Any
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from tqdm import tqdm  # noqa: E402
 
-from src.edu_benchmark.benchmark_evaluation.claude_judge import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.claude_judge import (  # noqa: E402
     ClaudeVertexJudgeCaller,
 )
-from src.edu_benchmark.benchmark_evaluation.gemini_judge import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.gemini_judge import (  # noqa: E402
     GeminiVertexJudgeCaller,
 )
-from src.edu_benchmark.benchmark_evaluation.openai_judge import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.openai_judge import (  # noqa: E402
     OpenAIJudgeCaller,
 )
-from src.edu_benchmark.benchmark_evaluation.costing import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.costing import (  # noqa: E402
     BudgetPolicy,
     TokenPricing,
 )
-from src.edu_benchmark.benchmark_evaluation.judge import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.judge import (  # noqa: E402
     GOLD_ANSWER_ONLY_CRITERION_NAME_ALIASES,
     JudgeOutputError,
     PreparedJudgeRequest,

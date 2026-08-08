@@ -58,6 +58,8 @@ In plain language: the user directs the orchestrator; the orchestrator delegates
 | Skill discovery links | `.agents/skills/` | P01 | Generated and validated by P01 |
 | Coordination contract | `experiments/_templates/` | P01 | Implemented by P01 |
 | Experiment governance v1 | `experiments/_templates/`, `src/edu_benchmark/governance/`, `scripts/governance/` | 20260806 Plan 01 | Approved baseline is the authorization surface; status YAML, chronological amendments, artifact budgets, local links, metadata, and coordination records are validated offline |
+| Python packaging and offline CI | `pyproject.toml`, `environment.yml`, `requirements.txt`, `.github/workflows/offline-tests.yml` | 20260806 Plan 02 | Src-layout editable package for Python 3.12; core/dev/provider groups are explicit; direct dependencies are pinned; Ubuntu CI runs governance plus all offline tests without credentials or provider calls |
+| Shared benchmark registry | `shared/benchmark/`, `src/edu_benchmark/benchmark_registry/`, `scripts/benchmark_registry/` | 20260806 Plan 03 | Seven versioned bundles cover the 18-criterion checklist, 665 Phase-1 dialogues, 2,028 validated conversion candidates, the provisional 1,400/628/0 selection state, and provisional capability/principle/rubric specifications. Promotion is staged, idempotent, checksum-validated, and does not copy raw XLSX/model JSONL or alter scientific authority |
 | Modular plans | `experiments/<id>/plans/` | Respective plan | Active |
 | Shared raw data | `shared/raw_data/` | 20260709 Plan 02 | Implemented for HNMU dialogue manifests lớp 6–9; Plan 04 audit outputs cover lớp 6–7 and a separate follow-up run for lớp 8–9 |
 | Shared learning resources | `shared/learning_resources/` | 20260709 Plan 02 layout / Plan 03 content | SGK/SGV images, derived PDFs, registries, Nguyen OCR Markdown for SGK/SGV Tin học 6–9, `ocr_text_manifest.csv`, `learning_resource_fragments.csv`, a rebuildable SQLite FTS retrieval index, and `agent_context/` for audit-agent navigation are available; OCR/MinerU probe outputs remain experiment artifacts and are not the primary retrieval source |
@@ -139,9 +141,9 @@ graph. Humans follow roadmap order and timeline; optional technical relationship
 stay in status/coordination metadata.
 
 The governance validator lives in `src/edu_benchmark/governance/` with a thin
-CLI in `scripts/governance/`. Until Plan 02 installs the src-layout package, the
-CLI has one explicit source-path bootstrap; reusable validation logic remains in
-the package. The default artifact budget is one baseline, status, amendment log,
+CLI in `scripts/governance/`. Plan 02 removed its temporary source-path
+bootstrap; the CLI now consumes the editable package like every other active
+Python entry point. The default artifact budget is one baseline, status, amendment log,
 runbook, final report, and handoff plus three consumed machine outputs.
 
 Durable decisions are recorded in:
@@ -173,7 +175,19 @@ Windows Python: D:\conda-envs\benchmark_env\python.exe
 Linux Python:   /home/quannda/miniconda3/envs/benchmark_env/bin/python
 ```
 
-Package installation, project scripts, validators, and tests must run with the matching `benchmark_env` interpreter for the active platform. Direct Python dependencies are pinned in `requirements.txt`. Agents must not install project packages into Conda base, system Python, or an ad-hoc virtual environment. Temporary isolated tooling is allowed only when an approved plan explicitly requires it and the result does not represent project validation.
+Package installation, project scripts, validators, and tests must run with the matching `benchmark_env` interpreter for the active platform. Plan 02 adds a setuptools src-layout package: install pinned direct dependencies from `requirements.txt`, then install the repository with `python -m pip install --no-deps -e .`. Production code, scripts, and tests import `edu_benchmark` or the temporary compatibility package `vertex_ai_call` directly; they do not mutate `sys.path` or import through `src.*`. Agents must not install project packages into Conda base, system Python, or an ad-hoc virtual environment. Temporary isolated build targets are allowed only when an approved plan explicitly requires them and the authoritative validation still uses `benchmark_env`.
+
+`environment.yml` declares Python 3.12, pip, ipykernel, the pinned direct pip
+requirements, and editable project install. It is a human-maintained environment
+specification, not a transitive or bit-for-bit lock. `pyproject.toml` separates
+core dependencies from `dev` and `providers`; `requirements.txt` installs their
+union for the full current runner. The initial GitHub Actions matrix is Ubuntu +
+Python 3.12 only. CI may download dependencies during setup, but all validation
+after installation is offline and receives no provider credentials. One CI lane
+installs only core plus development dependencies; the other installs the full
+runner and executes tests whose fixtures are tracked in Git. Data-backed tests
+that require ignored raw XLSX or experiment JSONL remain local integration tests
+and are not represented as clean-clone gates.
 
 ## Permissions and safety
 
@@ -197,11 +211,14 @@ For experiment `20260709_155523`, Plan 02 owns the shared layout contract:
 
 Plan 03 may populate `shared/learning_resources/` and its learning-resource manifest, but should not redefine the Plan 02 layout without an explicit roadmap update. As of 2026-07-18, Plan 03 Phases 0–2 have copied SGK images, crawled SGV images, created derived PDFs, and produced v0 topic/lesson/position registries for Tin học 6–9. Phase 3 OCR probes remain useful as technical evidence, but the current shared retrieval source is Nguyen OCR Markdown under `shared/learning_resources/ocr_text/`, not the old OCR/MinerU probe outputs. The agreed processed-learning-resource direction is Markdown-first: Markdown pages with front matter and stable anchors are the human-readable artifact and feed SQLite/DuckDB retrieval indexes. Nguyen OCR Markdown for SGK/SGV Tin học 6–9 has been registered as 154 OCR units, split into 2,750 fragments, and indexed in a rebuildable SQLite FTS artifact. All OCR/fragment/index outputs remain `draft` until UET/HNMU review. Plan 04 and Plan 06 should add code under `src/edu_benchmark/` rather than placing reusable scripts inside experiment folders.
 
-For Plan 03 Phases 3–5, reusable learning-resource processing code should live under `src/edu_benchmark/learning_resources/`; thin CLI wrappers may live under `scripts/learning_resources/`. The default `benchmark_env` runs orchestration, layout reconstruction, Markdown export, fragment/index building, tests, and validation. The separate `ocr_vietocr_gpu` Conda environment is reserved for VietOCR GPU recognition only, with intermediate files connecting it back to the `benchmark_env` pipeline.
-
-MinerU local document-parsing probes use a separate `ocr_mineru` Conda environment. This keeps MinerU's Torch/CUDA/document-parsing dependency stack isolated from `benchmark_env` and `ocr_vietocr_gpu`. The `ocr_mineru` environment is for MinerU model/library probes only; project orchestration, validation, and reusable code still belong to `benchmark_env` and `src/edu_benchmark/`.
-
-Plan 03 Phase A adds a book-level MinerU preparation layer under `src/edu_benchmark/learning_resources/mineru_book_phase_a.py`, with thin CLIs in `scripts/learning_resources/prepare_mineru_book_phase_a.py` and `scripts/learning_resources/collect_mineru_book_markdown.py`. The preparation step runs in `benchmark_env`, writes experiment-scoped manifests and filtered PDFs under `experiments/20260709_155523/outputs/mineru_book_phase_a/`, and emits commands for the user to run MinerU outside the sandbox in `ocr_mineru`. Raw source images remain unchanged; by default, original pages `1-4` and the final 2 pages are excluded only through manifests and derived PDFs. The follow-up post-processing layer lives in `src/edu_benchmark/learning_resources/mineru_postprocess.py` and `scripts/learning_resources/postprocess_mineru_book_phase.py`; it runs in `benchmark_env`, reads MinerU `*_content_list_v2.json`, writes cleaned page-level Markdown under the experiment output folder, and creates a review queue instead of silently promoting pages to shared parsed learning resources.
+The PaddleOCR, VietOCR, and MinerU extraction implementations were unsuccessful
+local prototypes rather than supported repository components. Their code,
+tests, and environment manifests remain ignored in the project lead's local
+workspace for historical reference and are deliberately excluded from package,
+CI, and clean-clone guarantees. The tracked learning-resource runtime begins at
+the Nguyen OCR Markdown manifest and provides deterministic fragmentation and
+retrieval. Any future OCR runtime must be introduced through a separately
+approved plan with tracked dependencies and tests.
 
 Plan 04 adds deterministic dialogue-audit tooling under `src/edu_benchmark/data_io/` and `src/edu_benchmark/dialogue_audit/`, with a CLI in `scripts/dialogue_audit/`. The completed Plan 04 v0 lớp 6–7 run writes under `experiments/20260709_155523/outputs/hnmu_dialogue_audit/`. A separate explicit follow-up audit for lớp 8–9 now writes under `experiments/20260709_155523/outputs/hnmu_dialogue_audit_grade8_9/`, with its 3-shard specialist checklist output under `agent_shard_audit/`. In each merged agent-audit output, `quality_check_suggestions.csv` is the main sample-level review file and uses the canonical `quality_decision` labels `pass`, `need_human_review`, and `failed`; `raw_dialogue_checklist_results*.csv` remains the detailed criterion-level source of truth. The audit is a v0 mechanical/retrieval/agent-assisted pass, not final HNMU/UET subject-matter adjudication.
 
@@ -384,9 +401,11 @@ Later plans must not move canonical logic into runtime adapters or redefine P01 
   is not a project dependency; JSON Schema files remain the portable contract.
 - Native transcripts depend on runtime retention and do not include private chain-of-thought.
 - Benchmark taxonomy, dataset schema, and evaluation metrics remain provisional or unimplemented; the new benchmark-specification specialist produces candidate specifications, not final HNMU-approved benchmark content.
-- Direct Python dependencies are pinned in `requirements.txt`; a complete Conda environment export and transitive lockfile have not yet been assigned to a dedicated plan.
+- Direct Python dependencies and Python 3.12 are pinned, but a cross-platform
+  transitive Conda/pip lock is not implemented. `environment.yml` is a
+  specification, not a bit-for-bit lock.
 
-Last verified against experiment `20260806_145124` Plan 01 on 2026-08-06.
+Last verified against experiment `20260806_145124` Plan 03 on 2026-08-07.
 
 ### HNMU dialogue auditor specialist
 

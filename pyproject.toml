@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=78,<79", "wheel>=0.47,<0.48"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edu-benchmark"
+version = "0.1.0"
+description = "Vietnamese secondary-school Informatics AI-tutor benchmark tooling"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy==2.3.5",
+  "Pillow==10.2.0",
+  "PyYAML==6.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.1.1",
+]
+providers = [
+  "google-auth==2.56.2",
+  "google-genai==2.14.0",
+  "openai==2.50.0",
+  "python-dotenv==1.2.2",
+  "tqdm==4.68.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["edu_benchmark*", "vertex_ai_call*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

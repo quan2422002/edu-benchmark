@@ -1,0 +1,42 @@
+schema_version: "1.0"
+experiment_id: "20260806_145124"
+plan_id: "P03"
+sequence: 3
+baseline_path: "plans/03-shared-benchmark-artifact-registry-and-promotion.md"
+status: "completed"
+approval:
+  state: "approved"
+  authority: "project_lead"
+  approved_at: "2026-08-07T23:08:37+07:00"
+updated_at: "2026-08-08T19:45:11+07:00"
+current_step: null
+last_amendment: "P03-A002"
+depends_on:
+  - "P01"
+  - "P02"
+gate:
+  state: "passed"
+  summary: "Seven shared bundles, deterministic promotion, count/checksum/join validation, and representative consumer equivalence passed; Plan 04 may be reviewed."
+artifacts:
+  - path: "plans/03-shared-benchmark-artifact-registry-and-promotion.md"
+    kind: "baseline_plan"
+  - path: "plans/03-status.yaml"
+    kind: "status_file"
+  - path: "decisions/plan03-amendments.md"
+    kind: "amendment_log"
+  - path: "runbooks/plan03-shared-benchmark-promotion.md"
+    kind: "runbook"
+  - path: "reports/plan03-final.md"
+    kind: "final_report"
+  - path: "handoffs/plan03-shared-benchmark-completed.md"
+    kind: "handoff"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []

@@ -16,15 +16,13 @@ import time
 import traceback
 from typing import Any, Mapping
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import google.auth  # noqa: E402
 from google import genai  # noqa: E402
 from google.genai import types  # noqa: E402
 from openai import OpenAI  # noqa: E402
 
-from src.edu_benchmark.benchmark_evaluation.batch_judge import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.batch_judge import (  # noqa: E402
     BatchJudgeError,
     actual_cost_usd,
     append_jsonl,
@@ -41,7 +39,7 @@ from src.edu_benchmark.benchmark_evaluation.batch_judge import (  # noqa: E402
     utc_now,
     validate_judgment_records,
 )
-from src.edu_benchmark.benchmark_evaluation.judge import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.judge import (  # noqa: E402
     PreparedJudgeRequest,
     prepare_judge_requests,
 )

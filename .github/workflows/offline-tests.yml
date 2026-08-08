@@ -1,0 +1,89 @@
+name: Offline tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  core-without-providers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install core and development dependencies only
+        run: python -m pip install -e ".[dev]"
+
+      - name: Verify core import outside the repository
+        run: |
+          cd /tmp
+          python -I -c "import edu_benchmark; print(edu_benchmark.__file__)"
+
+      - name: Validate active experiment governance
+        run: python scripts/governance/validate_experiment.py experiments/20260806_145124
+
+      - name: Run provider-independent offline tests
+        env:
+          PYTHONHASHSEED: "0"
+        run: |
+          python -m pytest -q \
+            tests/agents \
+            tests/benchmark_conversion \
+            tests/benchmark_registry \
+            tests/benchmark_specification \
+            tests/dialogue_audit/test_checklist_aggregation.py \
+            tests/governance \
+            tests/learning_resources/test_learning_resource_fragments.py \
+            tests/learning_resources/test_learning_resource_retrieval.py \
+            tests/learning_resources/test_ocr_text_manifest.py \
+            tests/packaging
+
+  self-contained-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install pinned dependencies and editable package
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install --no-deps -e .
+
+      - name: Verify installed imports outside the repository
+        run: |
+          cd /tmp
+          python -c "import edu_benchmark, vertex_ai_call; print(edu_benchmark.__file__); print(vertex_ai_call.__file__)"
+
+      - name: Validate active experiment governance
+        run: python scripts/governance/validate_experiment.py experiments/20260806_145124
+
+      - name: Run self-contained offline test suite
+        env:
+          PYTHONHASHSEED: "0"
+        run: |
+          python -m pytest -q \
+            --ignore=tests/benchmark_evaluation/test_judge_preparation.py \
+            --ignore=tests/benchmark_evaluation/test_pilot_selection.py \
+            --ignore=tests/benchmark_evaluation/test_recovery.py \
+            --ignore=tests/benchmark_evaluation/test_smoke_preparation.py \
+            --ignore=tests/dialogue_audit/test_hnmu_dialogue_audit.py \
+            --ignore=tests/vertex_ai_call/test_requirement_scoring.py

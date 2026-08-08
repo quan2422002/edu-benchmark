@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from src.edu_benchmark.benchmark_evaluation.recovery import (
+from edu_benchmark.benchmark_evaluation.recovery import (
     TargetRecoveryError,
     build_followup_recovery_manifest,
     build_recovery_manifest,

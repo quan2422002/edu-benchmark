@@ -1,0 +1,71 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "candidate_pool",
+  "artifact_type": "dataset",
+  "authority": {
+    "approval_authority": "Project lead/UET conversion contract",
+    "approved_at": "2026-07-23",
+    "pending_authorities": [
+      "UET/HNMU candidate quality review"
+    ]
+  },
+  "canonical_path": "shared/benchmark/datasets/candidate_pool/v1",
+  "files": [
+    {
+      "path": "datasets/candidate_pool/v1/candidates.csv",
+      "row_count": 2028,
+      "sha256": "6648569d5afe006acdd6e4129ee04ab2b27dfea89439c507a3b8f3b23c5eb63e"
+    },
+    {
+      "path": "datasets/candidate_pool/v1/trace.csv",
+      "row_count": 2028,
+      "sha256": "776ff800fb9e56ef93242094acff2584aefd983af90fdb532c8b3b52a602421d"
+    },
+    {
+      "path": "datasets/candidate_pool/v1/dispositions.csv",
+      "row_count": 665,
+      "sha256": "3dc6f369e88a1e64f7cb510f991b6959184686d4b6b561a3806346d83d79846e"
+    }
+  ],
+  "invariants": {
+    "blocking_error_count": 0,
+    "candidate_count": 2028,
+    "converted_disposition_count": 665,
+    "family_count": 665,
+    "trace_count": 2028,
+    "unique_candidate_count": 2028
+  },
+  "limitations": [
+    "Conversion validation does not make this a frozen benchmark."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260722_000940",
+  "sources": [
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv",
+      "role": "candidate_payload",
+      "row_count": 2028,
+      "sha256": "6648569d5afe006acdd6e4129ee04ab2b27dfea89439c507a3b8f3b23c5eb63e"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/conversion_trace.csv",
+      "role": "one_to_one_trace",
+      "row_count": 2028,
+      "sha256": "776ff800fb9e56ef93242094acff2584aefd983af90fdb532c8b3b52a602421d"
+    },
+    {
+      "path": "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/conversion_dispositions.csv",
+      "role": "family_disposition",
+      "row_count": 665,
+      "sha256": "3dc6f369e88a1e64f7cb510f991b6959184686d4b6b561a3806346d83d79846e"
+    }
+  ],
+  "status": "conversion_validated_provisional",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "byte_copy"
+  },
+  "upstream_locators": [],
+  "version": "v1"
+}

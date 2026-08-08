@@ -1,10 +1,12 @@
-# Skill metadata validation
+# Core package dependencies
+numpy==2.3.5
+Pillow==10.2.0
 PyYAML==6.0.3
 
 # Project test runner
 pytest==9.1.1
 
-# Vertex AI runners
+# Optional provider runners included in the full benchmark_env
 google-genai==2.14.0
 google-auth==2.56.2
 tqdm==4.68.4

@@ -9,7 +9,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from src.vertex_ai_call.requirement_scoring import (
+from vertex_ai_call.requirement_scoring import (
     GROUNDING_HEADER,
     PRINCIPLE_IDS,
     GenerationConfig,
@@ -30,7 +30,7 @@ from src.vertex_ai_call.requirement_scoring import (
     validate_specification_manifest,
     write_pilot_input,
 )
-from src.vertex_ai_call.run_requirement_scoring import (
+from vertex_ai_call.run_requirement_scoring import (
     _ProgressBar,
     _load_schema,
     build_parser,
@@ -40,7 +40,7 @@ from src.vertex_ai_call.run_requirement_scoring import (
     prepare,
     retry_failed_full,
 )
-from src.vertex_ai_call.vertex_client import VertexRequirementClient
+from vertex_ai_call.vertex_client import VertexRequirementClient
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]

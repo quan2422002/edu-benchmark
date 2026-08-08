@@ -9,10 +9,8 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-# Temporary bootstrap until Plan 02 makes the src-layout package installable.
-sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from edu_benchmark.governance import validate_experiment, validate_templates  # noqa: E402
+from edu_benchmark.governance import validate_experiment, validate_templates
 
 
 def parse_args() -> argparse.Namespace:
@@ -43,4 +41,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

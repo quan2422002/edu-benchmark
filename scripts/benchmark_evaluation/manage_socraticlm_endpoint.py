@@ -12,14 +12,12 @@ import subprocess
 import sys
 from typing import Any, Sequence
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.edu_benchmark.benchmark_evaluation.costing import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.costing import (  # noqa: E402
     BudgetPolicy,
     estimate_self_deployed_cost,
 )
-from src.edu_benchmark.benchmark_evaluation.vertex_endpoint import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.vertex_endpoint import (  # noqa: E402
     endpoint_id_from_resource,
 )
 

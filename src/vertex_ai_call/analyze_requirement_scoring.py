@@ -15,12 +15,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
-if __package__ in {None, ""}:
-    import sys
 
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-
-from src.vertex_ai_call.requirement_scoring import (  # noqa: E402
+from vertex_ai_call.requirement_scoring import (  # noqa: E402
     PRINCIPLE_IDS,
     GenerationConfig,
     RequirementScoringError,

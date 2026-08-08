@@ -1,0 +1,54 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "raw_dialogue_checklist",
+  "artifact_type": "checklist",
+  "authority": {
+    "approval_authority": "UET operational audit use",
+    "approved_at": null,
+    "pending_authorities": [
+      "HNMU integrated methodology confirmation"
+    ]
+  },
+  "canonical_path": "shared/benchmark/checklists/raw_dialogue/v1",
+  "files": [
+    {
+      "path": "checklists/raw_dialogue/v1/criteria.csv",
+      "row_count": 18,
+      "sha256": "507f3df73e63d2f01fb80f98dc4568aa00b410080d26f4d1e951f8d4549b3016"
+    },
+    {
+      "path": "checklists/raw_dialogue/v1/checklist.md",
+      "sha256": "5a3947a669c8a53a0477320dcff44a991c2aad1c45afe4077251ad7d9c9c784e"
+    }
+  ],
+  "invariants": {
+    "criterion_count": 18,
+    "unique_criterion_count": 18
+  },
+  "limitations": [
+    "Not a benchmark-response evaluation rubric."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260709_155523",
+  "sources": [
+    {
+      "path": "experiments/20260722_000940/inherited_resources/from_20260709_155523/checklists/raw-dialogue-audit-criteria-v0.csv",
+      "role": "criteria",
+      "row_count": 18,
+      "sha256": "507f3df73e63d2f01fb80f98dc4568aa00b410080d26f4d1e951f8d4549b3016"
+    },
+    {
+      "path": "experiments/20260722_000940/inherited_resources/from_20260709_155523/checklists/raw-dialogue-quality-checklist-v0.md",
+      "role": "human_checklist",
+      "sha256": "5a3947a669c8a53a0477320dcff44a991c2aad1c45afe4077251ad7d9c9c784e"
+    }
+  ],
+  "status": "operational_v0_awaiting_hnmu_review",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "byte_copy"
+  },
+  "upstream_locators": [],
+  "version": "v1"
+}

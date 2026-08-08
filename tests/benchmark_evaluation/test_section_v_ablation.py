@@ -1,6 +1,6 @@
 import math
 
-from src.edu_benchmark.benchmark_evaluation.section_v_ablation import (
+from edu_benchmark.benchmark_evaluation.section_v_ablation import (
     agreement_statistics,
     score_records,
 )

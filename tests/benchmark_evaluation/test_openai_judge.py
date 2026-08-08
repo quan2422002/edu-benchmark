@@ -2,10 +2,10 @@ from dataclasses import replace
 import json
 from types import SimpleNamespace
 
-from src.edu_benchmark.benchmark_evaluation.judge import (
+from edu_benchmark.benchmark_evaluation.judge import (
     PreparedJudgeRequest,
 )
-from src.edu_benchmark.benchmark_evaluation.openai_judge import (
+from edu_benchmark.benchmark_evaluation.openai_judge import (
     OpenAIJudgeCaller,
     build_judge_response_schema,
 )

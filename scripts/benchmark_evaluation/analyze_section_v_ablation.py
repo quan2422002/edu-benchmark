@@ -5,12 +5,9 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-import sys
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.edu_benchmark.benchmark_evaluation.section_v_ablation import (
+from edu_benchmark.benchmark_evaluation.section_v_ablation import (
     build_results,
     write_results_atomic,
 )

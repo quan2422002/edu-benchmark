@@ -4,14 +4,14 @@ import csv
 import json
 from pathlib import Path
 
-from src.vertex_ai_call.analyze_requirement_scoring import (
+from vertex_ai_call.analyze_requirement_scoring import (
     PAPER_REGISTRY_HEADER,
     REVIEW_HEADER,
     TRACE_HEADER,
     analyze_full_run,
     evidence_reference_is_traceable,
 )
-from src.vertex_ai_call.requirement_scoring import (
+from vertex_ai_call.requirement_scoring import (
     GROUNDING_HEADER,
     PRINCIPLE_IDS,
     GenerationConfig,

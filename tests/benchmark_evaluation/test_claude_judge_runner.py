@@ -11,10 +11,10 @@ from scripts.benchmark_evaluation.run_claude_judge_smoke import (
     load_completed,
     validate_records,
 )
-from src.edu_benchmark.benchmark_evaluation.judge import (
+from edu_benchmark.benchmark_evaluation.judge import (
     PreparedJudgeRequest,
 )
-from src.edu_benchmark.benchmark_evaluation.gemini_judge import (
+from edu_benchmark.benchmark_evaluation.gemini_judge import (
     GeminiJudgeCallError,
     GeminiVertexJudgeCaller,
     _is_retryable_exception,

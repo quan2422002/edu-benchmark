@@ -10,7 +10,6 @@ import json
 import os
 from pathlib import Path
 import random
-import sys
 import threading
 import time
 import traceback
@@ -18,8 +17,6 @@ from typing import Any
 from urllib import error as urllib_error
 from urllib import request as urllib_request
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import google.auth  # noqa: E402
 from google.auth.transport.requests import Request as GoogleAuthRequest  # noqa: E402
@@ -27,24 +24,24 @@ from google import genai  # noqa: E402
 from google.genai import types  # noqa: E402
 from tqdm import tqdm  # noqa: E402
 
-from src.edu_benchmark.benchmark_evaluation.costing import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.costing import (  # noqa: E402
     BudgetPolicy,
     TokenPricing,
     estimate_self_deployed_cost,
 )
-from src.edu_benchmark.benchmark_evaluation.config_builder import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.config_builder import (  # noqa: E402
     PRINCIPLE_ORDER,
 )
-from src.edu_benchmark.benchmark_evaluation.provider_adapters import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.provider_adapters import (  # noqa: E402
     to_gemini_request,
     to_openai_compatible_request,
 )
-from src.edu_benchmark.benchmark_evaluation.smoke import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.smoke import (  # noqa: E402
     PreparedTutorRequest,
     prepare_smoke_requests,
     prepare_tutor_requests,
 )
-from src.edu_benchmark.benchmark_evaluation.vertex_endpoint import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.vertex_endpoint import (  # noqa: E402
     VertexRawPredictCaller,
     endpoint_id_from_resource,
     load_lifecycle_manifest,

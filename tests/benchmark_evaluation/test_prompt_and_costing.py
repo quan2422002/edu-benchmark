@@ -2,16 +2,16 @@ from pathlib import Path
 
 import pytest
 
-from src.edu_benchmark.benchmark_evaluation.costing import (
+from edu_benchmark.benchmark_evaluation.costing import (
     BudgetExceededError,
     BudgetPolicy,
     TokenPricing,
     estimate_self_deployed_cost,
 )
-from src.edu_benchmark.benchmark_evaluation.prompt_builder import (
+from edu_benchmark.benchmark_evaluation.prompt_builder import (
     build_candidate_system_instruction,
 )
-from src.edu_benchmark.benchmark_evaluation.instruction_bundle import (
+from edu_benchmark.benchmark_evaluation.instruction_bundle import (
     load_instruction_bundle,
 )
 

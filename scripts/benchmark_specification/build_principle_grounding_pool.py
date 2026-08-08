@@ -5,11 +5,9 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from edu_benchmark.benchmark_specification.principle_grounding import (
     materialize_principle_grounding_pool,
@@ -17,8 +15,7 @@ from edu_benchmark.benchmark_specification.principle_grounding import (
 
 DEFAULT_CANDIDATE_INPUT = (
     REPO_ROOT
-    / "experiments/20260722_000940/outputs/benchmark_conversion/full_v0"
-    / "benchmark_candidate_splits.csv"
+    / "shared/benchmark/datasets/candidate_pool/v1/candidates.csv"
 )
 DEFAULT_SOURCE_INPUTS = (
     REPO_ROOT

@@ -1,0 +1,33 @@
+schema_version: "1.0"
+experiment_id: "<YYYYMMDD_HHMMSS>"
+plan_id: "PNN"
+sequence: 0
+baseline_path: "plans/NN-<name>.md"
+status: "draft"
+approval:
+  state: "pending"
+  authority: null
+  approved_at: null
+updated_at: "<ISO-8601 timestamp>"
+current_step: null
+last_amendment: null
+depends_on: []
+gate:
+  state: "closed"
+  summary: "Awaiting project-lead approval."
+artifacts:
+  - path: "plans/NN-<name>.md"
+    kind: "baseline_plan"
+  - path: "plans/NN-status.yaml"
+    kind: "status_file"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []
+

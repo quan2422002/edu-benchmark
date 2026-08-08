@@ -1,12 +1,12 @@
 from pathlib import Path
 import csv
 
-from src.edu_benchmark.benchmark_evaluation.config_builder import (
+from edu_benchmark.benchmark_evaluation.config_builder import (
     build_evaluation_config,
     read_csv,
     select_applicable_rubric_ids,
 )
-from src.edu_benchmark.benchmark_evaluation.validation import (
+from edu_benchmark.benchmark_evaluation.validation import (
     EXPECTED_FILES,
     validate_evaluation_config,
 )

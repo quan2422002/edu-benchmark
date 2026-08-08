@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from src.edu_benchmark.benchmark_evaluation.dialogue_transport import (
+from edu_benchmark.benchmark_evaluation.dialogue_transport import (
     DialogueTransportError,
     build_native_conversation,
 )

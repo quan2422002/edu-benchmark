@@ -10,7 +10,7 @@ from google import genai
 from google.auth.exceptions import DefaultCredentialsError
 from google.genai import types
 
-from src.vertex_ai_call.requirement_scoring import GenerationConfig
+from vertex_ai_call.requirement_scoring import GenerationConfig
 
 
 class VertexClientConfigurationError(RuntimeError):

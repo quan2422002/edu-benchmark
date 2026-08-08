@@ -1,8 +1,8 @@
 import json
 from types import SimpleNamespace
 
-from src.edu_benchmark.benchmark_evaluation import batch_judge
-from src.edu_benchmark.benchmark_evaluation.batch_judge import (
+from edu_benchmark.benchmark_evaluation import batch_judge
+from edu_benchmark.benchmark_evaluation.batch_judge import (
     ParsedProviderResult,
     build_gemini_batch_line,
     build_judgment_record,
@@ -12,7 +12,7 @@ from src.edu_benchmark.benchmark_evaluation.batch_judge import (
     parse_openai_batch_output,
     validate_judgment_records,
 )
-from src.edu_benchmark.benchmark_evaluation.judge import PreparedJudgeRequest
+from edu_benchmark.benchmark_evaluation.judge import PreparedJudgeRequest
 
 
 def prepared() -> PreparedJudgeRequest:

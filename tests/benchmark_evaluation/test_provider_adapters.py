@@ -1,7 +1,7 @@
-from src.edu_benchmark.benchmark_evaluation.dialogue_transport import (
+from edu_benchmark.benchmark_evaluation.dialogue_transport import (
     build_native_conversation,
 )
-from src.edu_benchmark.benchmark_evaluation.provider_adapters import (
+from edu_benchmark.benchmark_evaluation.provider_adapters import (
     to_anthropic_request,
     to_gemini_request,
     to_openai_compatible_request,

@@ -5,15 +5,12 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-import sys
 
-if __package__ in {None, ""}:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.edu_benchmark.benchmark_evaluation.config_builder import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.config_builder import (  # noqa: E402
     build_evaluation_config,
 )
-from src.edu_benchmark.benchmark_evaluation.validation import (  # noqa: E402
+from edu_benchmark.benchmark_evaluation.validation import (  # noqa: E402
     validate_evaluation_config,
 )
 

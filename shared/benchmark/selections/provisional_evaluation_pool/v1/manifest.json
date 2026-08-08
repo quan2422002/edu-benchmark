@@ -1,0 +1,80 @@
+{
+  "access_policy": "repository_internal_research",
+  "artifact_id": "provisional_evaluation_pool",
+  "artifact_type": "selection",
+  "authority": {
+    "approval_authority": "UET operational priority decision",
+    "approved_at": "2026-07-28",
+    "pending_authorities": [
+      "UET disposition for 628 review candidates",
+      "HNMU integrated task/rubric review"
+    ]
+  },
+  "canonical_path": "shared/benchmark/selections/provisional_evaluation_pool/v1",
+  "files": [
+    {
+      "path": "selections/provisional_evaluation_pool/v1/selection.csv",
+      "row_count": 1400,
+      "sha256": "7daf615e3b496ad564cd10b77b0ee9142565f4c6e8768563a2fe0fe8e24158b6"
+    },
+    {
+      "path": "selections/provisional_evaluation_pool/v1/requirement_scores.csv",
+      "row_count": 2028,
+      "sha256": "ea20a02d7133cc8d16d472b8dcbd8e1737cf4b98b83991d0976974a4849ee256"
+    }
+  ],
+  "invariants": {
+    "blocked_count": 0,
+    "candidate_pool_count": 2028,
+    "duplicate_candidate_id_count": 0,
+    "needs_uet_review_count": 628,
+    "selected_candidate_count": 1400,
+    "selected_family_count": 655
+  },
+  "limitations": [
+    "Selection is not benchmark v1, ground truth, or HNMU confirmation.",
+    "Requirement scores come from one model run without expert accuracy labels."
+  ],
+  "schema_version": "1.0",
+  "source_experiment": "20260727_170150",
+  "sources": [
+    {
+      "path": "experiments/20260727_170150/outputs/benchmark_candidate_pool/eligible_without_plan03_review.csv",
+      "role": "selected_payload_source",
+      "row_count": 1400,
+      "sha256": "7dec13c3cc3a53337bc6c5fdf800e6c89856f49a3b6b0626dca885e59cb0fed9"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_analysis.json",
+      "role": "eligibility_analysis",
+      "sha256": "b7083a38d90901521444cef34f6320fc5eb289ef53221589559c3bf31701992c"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_review_queue.csv",
+      "role": "review_backlog",
+      "row_count": 636,
+      "sha256": "54e008f9f0c00aaee2712a8c98eb32e276040895929535a55ab13fbce9458b42"
+    },
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/run_manifest.json",
+      "role": "run_provenance",
+      "sha256": "e01dc7054ea3186232754eaa147ee6d876553c4da1292adb201e008340e08c94"
+    }
+  ],
+  "status": "provisional_awaiting_uet_hnmu_review",
+  "transformation": {
+    "command": "/home/quannda/miniconda3/envs/benchmark_env/bin/python scripts/benchmark_registry/promote_shared_benchmark.py",
+    "implementation": "src/edu_benchmark/benchmark_registry/promotion.py",
+    "mode": "compact_projection_and_join"
+  },
+  "upstream_locators": [
+    {
+      "path": "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/run_full.jsonl",
+      "record_count": 2028,
+      "role": "upstream_raw_model_run_not_copied",
+      "sha256": "123a458d6afcbfb63e05e313665ec6bd0272fa3bbe5fb6a34b1f1d4c304fc3d8",
+      "tracked_payload": false
+    }
+  ],
+  "version": "v1"
+}

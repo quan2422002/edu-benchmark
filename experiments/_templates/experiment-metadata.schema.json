@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "experiment-metadata.schema.json",
+  "title": "Experiment metadata",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "title",
+    "status",
+    "task_type",
+    "owner_agent",
+    "parents",
+    "created_at",
+    "artifacts"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[0-9]{8}_[0-9]{6}$"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "task_type": {"type": "string", "minLength": 1},
+    "owner_agent": {"type": "string", "minLength": 1},
+    "parents": {"type": "array", "items": {"type": "string"}},
+    "created_at": {"type": "string", "format": "date-time"},
+    "git_commit": {"type": ["string", "null"]},
+    "artifacts": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  }
+}
+

@@ -1,18 +1,14 @@
 # Plan 02 — Đóng gói Python và kiểm chứng môi trường sạch
 
 Experiment: `20260806_145124`
-Trạng thái: `DRAFT — AWAITING PLAN 01 COMPLETION AND PROJECT-LEAD APPROVAL`
+Trạng thái: `APPROVED — 2026-08-07 — PROJECT LEAD`
 Phụ thuộc: Plan 01
 
 ## 1. Mục tiêu
 
-Biến `src/edu_benchmark/` thành package có thể cài và import nhất quán, thay vì
-phụ thuộc working directory hoặc `sys.path` injection. Ghi rõ dependency để
-một máy sạch có thể dựng lại môi trường và chạy test offline tối thiểu.
+Biến `src/edu_benchmark/` thành package có thể cài và import nhất quán, thay vì phụ thuộc working directory hoặc `sys.path` injection. Ghi rõ dependency để một máy sạch có thể dựng lại môi trường và chạy test offline tối thiểu.
 
-`pyproject.toml` giải quyết metadata build/install và mapping package từ `src/`.
-Nó không tự khóa toàn bộ environment; vì vậy plan còn cần một bản khai môi
-trường/lock phù hợp với `benchmark_env`.
+`pyproject.toml` giải quyết metadata build/install và mapping package từ `src/`. Nó không tự khóa toàn bộ environment; vì vậy plan còn cần một bản khai môi trường/lock phù hợp với `benchmark_env`.
 
 ## 2. Phạm vi
 
@@ -27,8 +23,7 @@ trường/lock phù hợp với `benchmark_env`.
 ## 3. Khảo sát bắt buộc trước khi sửa
 
 - Import graph của `src/`, `scripts/`, `tests/`.
-- Nội dung `requirements.txt`, các import chỉ xuất hiện ở runner provider và
-  dependency hệ thống ngoài pip nếu có.
+- Nội dung `requirements.txt`, các import chỉ xuất hiện ở runner provider và dependency hệ thống ngoài pip nếu có.
 - Các shell wrapper chứa absolute path hoặc giả định Conda hiện hành.
 - Test đang dựa vào `tests/conftest.py` để sửa `sys.path`.
 

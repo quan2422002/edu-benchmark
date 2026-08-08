@@ -17,8 +17,8 @@ from scripts.benchmark_evaluation.run_vertex_smoke import (
     _validate_smoke_records,
     append_jsonl,
 )
-from src.edu_benchmark.benchmark_evaluation.smoke import PreparedTutorRequest
-from src.edu_benchmark.benchmark_evaluation.dialogue_transport import (
+from edu_benchmark.benchmark_evaluation.smoke import PreparedTutorRequest
+from edu_benchmark.benchmark_evaluation.dialogue_transport import (
     ChatMessage,
     NormalizedConversation,
 )

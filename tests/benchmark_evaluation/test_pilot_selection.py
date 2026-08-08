@@ -1,14 +1,14 @@
 import json
 from pathlib import Path
 
-from src.edu_benchmark.benchmark_evaluation.cost_pilot import (
+from edu_benchmark.benchmark_evaluation.cost_pilot import (
     PRINCIPLE_MINIMUMS as COST_PILOT_PRINCIPLE_MINIMUMS,
     build_judge_cost_pilot_manifest,
 )
-from src.edu_benchmark.benchmark_evaluation.full import (
+from edu_benchmark.benchmark_evaluation.full import (
     build_full_manifest,
 )
-from src.edu_benchmark.benchmark_evaluation.pilot import (
+from edu_benchmark.benchmark_evaluation.pilot import (
     PRINCIPLE_MINIMUMS,
     build_pilot_manifest,
     bloom_group,
