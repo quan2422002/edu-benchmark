@@ -4,7 +4,7 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–03 đã hoàn tất governance, packaging và shared benchmark registry. Plan 04 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–04 đã hoàn tất governance, packaging, shared benchmark registry và cấu hình/đường dẫn khả chuyển cho quy trình Section V đại diện. Plan 05 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
 
 Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
 và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
@@ -129,6 +129,7 @@ environment.yml          Human-maintained Conda environment specification
 shared/benchmark/       Versioned benchmark registry, canonical datasets, selections, and provisional specifications
 shared/                 Shared raw data, learning resources, prompts, and benchmark artifacts
 src/edu_benchmark/      Shared project code for data I/O, audit, conversion, resources, and quality checks
+src/edu_benchmark/experiment_runtime/ Portable YAML config, path resolution, preflight, and offline execution
 scripts/benchmark_registry/ Thin CLI for deterministic shared benchmark promotion/validation
 scripts/governance/     Thin CLI for experiment-governance validation
 src/vertex_ai_call/     Vertex AI pilot runner for six-principle requirement scoring
@@ -173,6 +174,32 @@ The validator checks metadata, explicit approval, lifecycle/status consistency,
 roadmap links, amendment references, coordination JSONL, registered artifacts,
 and the default artifact budget. Historical experiments remain valid provenance
 and do not require a cosmetic migration.
+
+## Portable experiment runtime
+
+Plan 04 established a config-driven runtime under
+`src/edu_benchmark/experiment_runtime/`. Runtime YAML files use only
+repository-relative paths. Loading fails closed on path escape, missing files,
+checksum/count mismatch, unknown fields, or serialized credential material.
+
+The representative Section V config is
+`experiments/20260806_145124/configs/section-v-ablation-v1.yaml`. Preflight and
+execution use the same command from the repository root or another working
+directory after the editable package is installed:
+
+```bash
+/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+  -m edu_benchmark.experiment_runtime preflight \
+  --config experiments/20260806_145124/configs/section-v-ablation-v1.yaml
+
+/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+  -m edu_benchmark.experiment_runtime run \
+  --config experiments/20260806_145124/configs/section-v-ablation-v1.yaml
+```
+
+This representative run is offline and requires no provider credential. Its
+two large judge JSONL inputs remain historical experiment artifacts rather than
+clean-clone CI fixtures; unit tests use self-contained temporary fixtures.
 
 
 ## Project Python environment

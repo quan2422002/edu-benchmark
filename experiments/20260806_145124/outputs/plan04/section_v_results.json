@@ -1,0 +1,2035 @@
+{
+  "instruction_ablation": {
+    "contrast": {
+      "control": "target_gemini35",
+      "treatment": "target_gemini35_learnlm_prompted",
+      "delta_definition": "treatment_minus_control"
+    },
+    "bootstrap": {
+      "unit": "sample_id",
+      "method": "paired percentile cluster bootstrap",
+      "iterations": 5000,
+      "seed": 20260730,
+      "family_count": 655
+    },
+    "component_rows": [
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Overall Judgement",
+        "n_candidate": 1400,
+        "baseline": 0.9342857142857143,
+        "learnlm": 0.9321428571428572,
+        "delta": -0.002142857142857113,
+        "ci95": [
+          -0.01653546220975225,
+          0.012049049074763792
+        ],
+        "baseline_percent": 93.42857142857143,
+        "learnlm_percent": 93.21428571428572,
+        "delta_percentage_points": -0.2142857142857113,
+        "ci95_percentage_points": [
+          -1.6535462209752252,
+          1.2049049074763791
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "General",
+        "n_candidate": 1400,
+        "baseline": 0.8326785714285714,
+        "learnlm": 0.7982142857142858,
+        "delta": -0.034464285714285614,
+        "ci95": [
+          -0.04821944352090439,
+          -0.020604917152887384
+        ],
+        "baseline_percent": 83.26785714285714,
+        "learnlm_percent": 79.82142857142858,
+        "delta_percentage_points": -3.4464285714285614,
+        "ci95_percentage_points": [
+          -4.821944352090439,
+          -2.0604917152887383
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Challenge",
+        "n_candidate": 8,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 4999
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Explanation",
+        "n_candidate": 863,
+        "baseline": 0.9787562765546544,
+        "learnlm": 0.9710312862108922,
+        "delta": -0.0077249903437621725,
+        "ci95": [
+          -0.017706018524830208,
+          0.0018688831172345621
+        ],
+        "baseline_percent": 97.87562765546544,
+        "learnlm_percent": 97.10312862108921,
+        "delta_percentage_points": -0.7724990343762173,
+        "ci95_percentage_points": [
+          -1.7706018524830207,
+          0.1868883117234562
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Modelling",
+        "n_candidate": 93,
+        "baseline": 0.989247311827957,
+        "learnlm": 0.989247311827957,
+        "delta": 0.0,
+        "ci95": [
+          -0.010526315789473606,
+          0.010309278350515427
+        ],
+        "baseline_percent": 98.9247311827957,
+        "learnlm_percent": 98.9247311827957,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          -1.0526315789473606,
+          1.0309278350515427
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Practice",
+        "n_candidate": 27,
+        "baseline": 0.9135802469135803,
+        "learnlm": 0.8765432098765432,
+        "delta": -0.03703703703703709,
+        "ci95": [
+          -0.10000000000000009,
+          0.0
+        ],
+        "baseline_percent": 91.35802469135803,
+        "learnlm_percent": 87.65432098765432,
+        "delta_percentage_points": -3.703703703703709,
+        "ci95_percentage_points": [
+          -10.000000000000009,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Questioning",
+        "n_candidate": 651,
+        "baseline": 0.7665130568356374,
+        "learnlm": 0.7240143369175627,
+        "delta": -0.042498719918074745,
+        "ci95": [
+          -0.06688072814668192,
+          -0.017664420442782065
+        ],
+        "baseline_percent": 76.65130568356375,
+        "learnlm_percent": 72.40143369175627,
+        "delta_percentage_points": -4.249871991807474,
+        "ci95_percentage_points": [
+          -6.688072814668192,
+          -1.7664420442782065
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Feedback",
+        "n_candidate": 806,
+        "baseline": 0.9003308519437553,
+        "learnlm": 0.8916459884201821,
+        "delta": -0.008684863523573227,
+        "ci95": [
+          -0.026316330950833956,
+          0.00991806813281571
+        ],
+        "baseline_percent": 90.03308519437553,
+        "learnlm_percent": 89.16459884201821,
+        "delta_percentage_points": -0.8684863523573227,
+        "ci95_percentage_points": [
+          -2.6316330950833957,
+          0.991806813281571
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "Overall Acc.",
+        "n_candidate": 1400,
+        "baseline": 0.878708264387251,
+        "learnlm": 0.8534806539615709,
+        "delta": -0.025227610425680114,
+        "ci95": [
+          -0.03579997947249744,
+          -0.01500486248781209
+        ],
+        "baseline_percent": 87.8708264387251,
+        "learnlm_percent": 85.3480653961571,
+        "delta_percentage_points": -2.5227610425680114,
+        "ci95_percentage_points": [
+          -3.579997947249744,
+          -1.500486248781209
+        ],
+        "valid_bootstrap_draws": 4999
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Overall Judgement",
+        "n_candidate": 1400,
+        "baseline": 0.9078571428571428,
+        "learnlm": 0.9185714285714286,
+        "delta": 0.010714285714285787,
+        "ci95": [
+          -0.004394299377465998,
+          0.026410104445562934
+        ],
+        "baseline_percent": 90.78571428571428,
+        "learnlm_percent": 91.85714285714286,
+        "delta_percentage_points": 1.0714285714285787,
+        "ci95_percentage_points": [
+          -0.4394299377465998,
+          2.641010444556293
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "General",
+        "n_candidate": 1400,
+        "baseline": 0.7832142857142856,
+        "learnlm": 0.7908928571428571,
+        "delta": 0.0076785714285714235,
+        "ci95": [
+          -0.007523659478830258,
+          0.02287858410924216
+        ],
+        "baseline_percent": 78.32142857142857,
+        "learnlm_percent": 79.08928571428571,
+        "delta_percentage_points": 0.7678571428571423,
+        "ci95_percentage_points": [
+          -0.7523659478830258,
+          2.287858410924216
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Challenge",
+        "n_candidate": 8,
+        "baseline": 0.9583333333333334,
+        "learnlm": 1.0,
+        "delta": 0.04166666666666663,
+        "ci95": [
+          0.0,
+          0.1428571428571429
+        ],
+        "baseline_percent": 95.83333333333334,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 4.1666666666666625,
+        "ci95_percentage_points": [
+          0.0,
+          14.28571428571429
+        ],
+        "valid_bootstrap_draws": 4999
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Explanation",
+        "n_candidate": 863,
+        "baseline": 0.9482425646967941,
+        "learnlm": 0.9544225569718038,
+        "delta": 0.006179992275009649,
+        "ci95": [
+          -0.0041293621499604305,
+          0.01662801882805204
+        ],
+        "baseline_percent": 94.82425646967941,
+        "learnlm_percent": 95.44225569718037,
+        "delta_percentage_points": 0.6179992275009649,
+        "ci95_percentage_points": [
+          -0.41293621499604305,
+          1.6628018828052042
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Modelling",
+        "n_candidate": 93,
+        "baseline": 0.982078853046595,
+        "learnlm": 0.982078853046595,
+        "delta": 0.0,
+        "ci95": [
+          -0.010641157629833057,
+          0.010103586889301198
+        ],
+        "baseline_percent": 98.2078853046595,
+        "learnlm_percent": 98.2078853046595,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          -1.0641157629833058,
+          1.0103586889301197
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Practice",
+        "n_candidate": 27,
+        "baseline": 0.9135802469135803,
+        "learnlm": 0.9012345679012346,
+        "delta": -0.012345679012345734,
+        "ci95": [
+          -0.07692307692307687,
+          0.03571428571428559
+        ],
+        "baseline_percent": 91.35802469135803,
+        "learnlm_percent": 90.12345679012346,
+        "delta_percentage_points": -1.2345679012345734,
+        "ci95_percentage_points": [
+          -7.692307692307687,
+          3.5714285714285587
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Questioning",
+        "n_candidate": 651,
+        "baseline": 0.6697388632872503,
+        "learnlm": 0.6784434203789043,
+        "delta": 0.008704557091653964,
+        "ci95": [
+          -0.016748143495120223,
+          0.03438083510990224
+        ],
+        "baseline_percent": 66.97388632872503,
+        "learnlm_percent": 67.84434203789043,
+        "delta_percentage_points": 0.8704557091653964,
+        "ci95_percentage_points": [
+          -1.6748143495120222,
+          3.4380835109902237
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Feedback",
+        "n_candidate": 806,
+        "baseline": 0.9098428453267163,
+        "learnlm": 0.9119106699751862,
+        "delta": 0.002067824648469885,
+        "ci95": [
+          -0.013822831978319652,
+          0.01747822671005704
+        ],
+        "baseline_percent": 90.98428453267164,
+        "learnlm_percent": 91.19106699751862,
+        "delta_percentage_points": 0.20678246484698848,
+        "ci95_percentage_points": [
+          -1.3822831978319652,
+          1.747822671005704
+        ],
+        "valid_bootstrap_draws": 5000
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "Overall Acc.",
+        "n_candidate": 1400,
+        "baseline": 0.8400918684074985,
+        "learnlm": 0.8477872675942388,
+        "delta": 0.007695399186740337,
+        "ci95": [
+          -0.004807568815146529,
+          0.021377308455713784
+        ],
+        "baseline_percent": 84.00918684074985,
+        "learnlm_percent": 84.77872675942389,
+        "delta_percentage_points": 0.7695399186740337,
+        "ci95_percentage_points": [
+          -0.4807568815146529,
+          2.1377308455713786
+        ],
+        "valid_bootstrap_draws": 4999
+      }
+    ],
+    "rubric_rows": [
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-GEN-ACC",
+        "n_candidate": 1400,
+        "baseline": 0.7,
+        "learnlm": 0.6535714285714286,
+        "delta": -0.046428571428571375,
+        "ci95": [
+          -0.0706720863509463,
+          -0.022677258137970887
+        ],
+        "baseline_percent": 70.0,
+        "learnlm_percent": 65.35714285714286,
+        "delta_percentage_points": -4.642857142857137,
+        "ci95_percentage_points": [
+          -7.067208635094629,
+          -2.267725813797089
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-GEN-ALIGN",
+        "n_candidate": 1400,
+        "baseline": 0.8757142857142857,
+        "learnlm": 0.8571428571428571,
+        "delta": -0.018571428571428572,
+        "ci95": [
+          -0.0366116295764537,
+          -0.000702716031117787
+        ],
+        "baseline_percent": 87.57142857142857,
+        "learnlm_percent": 85.71428571428571,
+        "delta_percentage_points": -1.8571428571428572,
+        "ci95_percentage_points": [
+          -3.6611629576453697,
+          -0.0702716031117787
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-GEN-SCAFF",
+        "n_candidate": 1400,
+        "baseline": 0.875,
+        "learnlm": 0.8321428571428572,
+        "delta": -0.042857142857142816,
+        "ci95": [
+          -0.06218478359823071,
+          -0.022807419475274086
+        ],
+        "baseline_percent": 87.5,
+        "learnlm_percent": 83.21428571428572,
+        "delta_percentage_points": -4.285714285714281,
+        "ci95_percentage_points": [
+          -6.218478359823071,
+          -2.2807419475274084
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-GEN-COMM",
+        "n_candidate": 1400,
+        "baseline": 0.88,
+        "learnlm": 0.85,
+        "delta": -0.030000000000000027,
+        "ci95": [
+          -0.04963529533571466,
+          -0.00934512444310456
+        ],
+        "baseline_percent": 88.0,
+        "learnlm_percent": 85.0,
+        "delta_percentage_points": -3.0000000000000027,
+        "ci95_percentage_points": [
+          -4.963529533571466,
+          -0.934512444310456
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-CHA-DEMAND",
+        "n_candidate": 8,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 4999,
+        "rubric_group": "Challenge"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-CHA-CALIB",
+        "n_candidate": 8,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 4999,
+        "rubric_group": "Challenge"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-CHA-AGENCY",
+        "n_candidate": 8,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 4999,
+        "rubric_group": "Challenge"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-EXP-CORE",
+        "n_candidate": 863,
+        "baseline": 0.984936268829664,
+        "learnlm": 0.9779837775202781,
+        "delta": -0.006952491309385911,
+        "ci95": [
+          -0.016968360071301297,
+          0.0023096695291948076
+        ],
+        "baseline_percent": 98.4936268829664,
+        "learnlm_percent": 97.7983777520278,
+        "delta_percentage_points": -0.6952491309385911,
+        "ci95_percentage_points": [
+          -1.6968360071301296,
+          0.23096695291948077
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Explanation"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-EXP-COHER",
+        "n_candidate": 863,
+        "baseline": 0.9803012746234068,
+        "learnlm": 0.9733487833140209,
+        "delta": -0.006952491309385911,
+        "ci95": [
+          -0.0183600990434327,
+          0.003584444015195445
+        ],
+        "baseline_percent": 98.03012746234067,
+        "learnlm_percent": 97.33487833140208,
+        "delta_percentage_points": -0.6952491309385911,
+        "ci95_percentage_points": [
+          -1.83600990434327,
+          0.35844440151954454
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Explanation"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-EXP-ADAPT",
+        "n_candidate": 863,
+        "baseline": 0.9710312862108922,
+        "learnlm": 0.9617612977983777,
+        "delta": -0.009269988412514474,
+        "ci95": [
+          -0.023174971031286296,
+          0.004525014989008042
+        ],
+        "baseline_percent": 97.10312862108921,
+        "learnlm_percent": 96.17612977983777,
+        "delta_percentage_points": -0.9269988412514474,
+        "ci95_percentage_points": [
+          -2.3174971031286296,
+          0.4525014989008042
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Explanation"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-MOD-PROC",
+        "n_candidate": 93,
+        "baseline": 1.0,
+        "learnlm": 0.989247311827957,
+        "delta": -0.010752688172043001,
+        "ci95": [
+          -0.03703703703703709,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 98.9247311827957,
+        "delta_percentage_points": -1.0752688172043001,
+        "ci95_percentage_points": [
+          -3.703703703703709,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Modelling"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-MOD-THINK",
+        "n_candidate": 93,
+        "baseline": 0.989247311827957,
+        "learnlm": 0.989247311827957,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 98.9247311827957,
+        "learnlm_percent": 98.9247311827957,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Modelling"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-MOD-TRANSFER",
+        "n_candidate": 93,
+        "baseline": 0.978494623655914,
+        "learnlm": 0.989247311827957,
+        "delta": 0.010752688172043001,
+        "ci95": [
+          0.0,
+          0.03614457831325302
+        ],
+        "baseline_percent": 97.84946236559139,
+        "learnlm_percent": 98.9247311827957,
+        "delta_percentage_points": 1.0752688172043001,
+        "ci95_percentage_points": [
+          0.0,
+          3.6144578313253017
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Modelling"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-PRA-ACT",
+        "n_candidate": 27,
+        "baseline": 0.8888888888888888,
+        "learnlm": 0.8518518518518519,
+        "delta": -0.03703703703703698,
+        "ci95": [
+          -0.125,
+          0.0
+        ],
+        "baseline_percent": 88.88888888888889,
+        "learnlm_percent": 85.18518518518519,
+        "delta_percentage_points": -3.703703703703698,
+        "ci95_percentage_points": [
+          -12.5,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Practice"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-PRA-ALIGN",
+        "n_candidate": 27,
+        "baseline": 0.9259259259259259,
+        "learnlm": 0.8888888888888888,
+        "delta": -0.03703703703703709,
+        "ci95": [
+          -0.125,
+          0.0
+        ],
+        "baseline_percent": 92.5925925925926,
+        "learnlm_percent": 88.88888888888889,
+        "delta_percentage_points": -3.703703703703709,
+        "ci95_percentage_points": [
+          -12.5,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Practice"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-PRA-CONSOL",
+        "n_candidate": 27,
+        "baseline": 0.9259259259259259,
+        "learnlm": 0.8888888888888888,
+        "delta": -0.03703703703703709,
+        "ci95": [
+          -0.125,
+          0.0
+        ],
+        "baseline_percent": 92.5925925925926,
+        "learnlm_percent": 88.88888888888889,
+        "delta_percentage_points": -3.703703703703709,
+        "ci95_percentage_points": [
+          -12.5,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Practice"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-QUE-PURPOSE",
+        "n_candidate": 651,
+        "baseline": 0.8218125960061444,
+        "learnlm": 0.7818740399385561,
+        "delta": -0.03993855606758834,
+        "ci95": [
+          -0.0715447356431037,
+          -0.008142661491602875
+        ],
+        "baseline_percent": 82.18125960061444,
+        "learnlm_percent": 78.18740399385561,
+        "delta_percentage_points": -3.9938556067588338,
+        "ci95_percentage_points": [
+          -7.154473564310369,
+          -0.8142661491602875
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Questioning"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-QUE-QUALITY",
+        "n_candidate": 651,
+        "baseline": 0.794162826420891,
+        "learnlm": 0.7680491551459293,
+        "delta": -0.02611367127496167,
+        "ci95": [
+          -0.056923076923076965,
+          0.004709576138147489
+        ],
+        "baseline_percent": 79.4162826420891,
+        "learnlm_percent": 76.80491551459293,
+        "delta_percentage_points": -2.611367127496167,
+        "ci95_percentage_points": [
+          -5.692307692307697,
+          0.47095761381474893
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Questioning"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-QUE-DEPEND",
+        "n_candidate": 651,
+        "baseline": 0.6835637480798771,
+        "learnlm": 0.6221198156682027,
+        "delta": -0.06144393241167434,
+        "ci95": [
+          -0.09206502511851695,
+          -0.029967274398271137
+        ],
+        "baseline_percent": 68.3563748079877,
+        "learnlm_percent": 62.21198156682027,
+        "delta_percentage_points": -6.144393241167434,
+        "ci95_percentage_points": [
+          -9.206502511851696,
+          -2.9967274398271138
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Questioning"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-FBK-GROUND",
+        "n_candidate": 806,
+        "baseline": 0.8846153846153846,
+        "learnlm": 0.8784119106699751,
+        "delta": -0.006203473945409432,
+        "ci95": [
+          -0.03286978508217442,
+          0.021093123094206294
+        ],
+        "baseline_percent": 88.46153846153845,
+        "learnlm_percent": 87.84119106699751,
+        "delta_percentage_points": -0.6203473945409432,
+        "ci95_percentage_points": [
+          -3.286978508217442,
+          2.109312309420629
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Feedback"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-FBK-DISC",
+        "n_candidate": 806,
+        "baseline": 0.9230769230769231,
+        "learnlm": 0.9205955334987593,
+        "delta": -0.002481389578163795,
+        "ci95": [
+          -0.023560209424083767,
+          0.0191600886303835
+        ],
+        "baseline_percent": 92.3076923076923,
+        "learnlm_percent": 92.05955334987593,
+        "delta_percentage_points": -0.2481389578163795,
+        "ci95_percentage_points": [
+          -2.3560209424083767,
+          1.91600886303835
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Feedback"
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "component": "RUB-FBK-ACTION",
+        "n_candidate": 806,
+        "baseline": 0.8933002481389578,
+        "learnlm": 0.8759305210918115,
+        "delta": -0.017369727047146344,
+        "ci95": [
+          -0.0413986572578286,
+          0.00749087078651687
+        ],
+        "baseline_percent": 89.33002481389578,
+        "learnlm_percent": 87.59305210918114,
+        "delta_percentage_points": -1.7369727047146344,
+        "ci95_percentage_points": [
+          -4.13986572578286,
+          0.749087078651687
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Feedback"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-GEN-ACC",
+        "n_candidate": 1400,
+        "baseline": 0.7792857142857142,
+        "learnlm": 0.775,
+        "delta": -0.004285714285714226,
+        "ci95": [
+          -0.02584381676777622,
+          0.01677831837382419
+        ],
+        "baseline_percent": 77.92857142857143,
+        "learnlm_percent": 77.5,
+        "delta_percentage_points": -0.4285714285714226,
+        "ci95_percentage_points": [
+          -2.584381676777622,
+          1.677831837382419
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-GEN-ALIGN",
+        "n_candidate": 1400,
+        "baseline": 0.8414285714285714,
+        "learnlm": 0.8585714285714285,
+        "delta": 0.017142857142857126,
+        "ci95": [
+          -0.004175656716787529,
+          0.03756267875004394
+        ],
+        "baseline_percent": 84.14285714285714,
+        "learnlm_percent": 85.85714285714286,
+        "delta_percentage_points": 1.7142857142857126,
+        "ci95_percentage_points": [
+          -0.4175656716787529,
+          3.756267875004394
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-GEN-SCAFF",
+        "n_candidate": 1400,
+        "baseline": 0.7992857142857143,
+        "learnlm": 0.8171428571428572,
+        "delta": 0.017857142857142905,
+        "ci95": [
+          -0.004225426555102277,
+          0.0398037528543534
+        ],
+        "baseline_percent": 79.92857142857143,
+        "learnlm_percent": 81.71428571428572,
+        "delta_percentage_points": 1.7857142857142905,
+        "ci95_percentage_points": [
+          -0.4225426555102277,
+          3.98037528543534
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-GEN-COMM",
+        "n_candidate": 1400,
+        "baseline": 0.7128571428571429,
+        "learnlm": 0.7128571428571429,
+        "delta": 0.0,
+        "ci95": [
+          -0.02555048914446095,
+          0.025388151713097783
+        ],
+        "baseline_percent": 71.28571428571429,
+        "learnlm_percent": 71.28571428571429,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          -2.555048914446095,
+          2.5388151713097784
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "General"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-CHA-DEMAND",
+        "n_candidate": 8,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 4999,
+        "rubric_group": "Challenge"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-CHA-CALIB",
+        "n_candidate": 8,
+        "baseline": 0.875,
+        "learnlm": 1.0,
+        "delta": 0.125,
+        "ci95": [
+          0.0,
+          0.4285714285714286
+        ],
+        "baseline_percent": 87.5,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 12.5,
+        "ci95_percentage_points": [
+          0.0,
+          42.85714285714286
+        ],
+        "valid_bootstrap_draws": 4999,
+        "rubric_group": "Challenge"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-CHA-AGENCY",
+        "n_candidate": 8,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 4999,
+        "rubric_group": "Challenge"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-EXP-CORE",
+        "n_candidate": 863,
+        "baseline": 0.9826187717265353,
+        "learnlm": 0.9768250289687138,
+        "delta": -0.005793742757821518,
+        "ci95": [
+          -0.016779228469911485,
+          0.005793910789804052
+        ],
+        "baseline_percent": 98.26187717265353,
+        "learnlm_percent": 97.68250289687138,
+        "delta_percentage_points": -0.5793742757821518,
+        "ci95_percentage_points": [
+          -1.6779228469911485,
+          0.5793910789804052
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Explanation"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-EXP-COHER",
+        "n_candidate": 863,
+        "baseline": 0.9884125144843569,
+        "learnlm": 0.9907300115874855,
+        "delta": 0.002317497103128674,
+        "ci95": [
+          -0.0068732467716926616,
+          0.01148105625717566
+        ],
+        "baseline_percent": 98.84125144843568,
+        "learnlm_percent": 99.07300115874855,
+        "delta_percentage_points": 0.2317497103128674,
+        "ci95_percentage_points": [
+          -0.6873246771692662,
+          1.148105625717566
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Explanation"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-EXP-ADAPT",
+        "n_candidate": 863,
+        "baseline": 0.8736964078794901,
+        "learnlm": 0.895712630359212,
+        "delta": 0.022016222479721903,
+        "ci95": [
+          0.0,
+          0.04407075285770588
+        ],
+        "baseline_percent": 87.36964078794901,
+        "learnlm_percent": 89.5712630359212,
+        "delta_percentage_points": 2.2016222479721903,
+        "ci95_percentage_points": [
+          0.0,
+          4.407075285770588
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Explanation"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-MOD-PROC",
+        "n_candidate": 93,
+        "baseline": 0.978494623655914,
+        "learnlm": 0.978494623655914,
+        "delta": 0.0,
+        "ci95": [
+          -0.031923472889498955,
+          0.030310760667903492
+        ],
+        "baseline_percent": 97.84946236559139,
+        "learnlm_percent": 97.84946236559139,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          -3.1923472889498954,
+          3.0310760667903494
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Modelling"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-MOD-THINK",
+        "n_candidate": 93,
+        "baseline": 1.0,
+        "learnlm": 1.0,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 100.0,
+        "learnlm_percent": 100.0,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Modelling"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-MOD-TRANSFER",
+        "n_candidate": 93,
+        "baseline": 0.967741935483871,
+        "learnlm": 0.967741935483871,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 96.7741935483871,
+        "learnlm_percent": 96.7741935483871,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Modelling"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-PRA-ACT",
+        "n_candidate": 27,
+        "baseline": 0.8888888888888888,
+        "learnlm": 0.8888888888888888,
+        "delta": 0.0,
+        "ci95": [
+          -0.11111111111111105,
+          0.11111111111111105
+        ],
+        "baseline_percent": 88.88888888888889,
+        "learnlm_percent": 88.88888888888889,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          -11.111111111111105,
+          11.111111111111105
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Practice"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-PRA-ALIGN",
+        "n_candidate": 27,
+        "baseline": 0.9259259259259259,
+        "learnlm": 0.9259259259259259,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_percent": 92.5925925925926,
+        "learnlm_percent": 92.5925925925926,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          0.0,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Practice"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-PRA-CONSOL",
+        "n_candidate": 27,
+        "baseline": 0.9259259259259259,
+        "learnlm": 0.8888888888888888,
+        "delta": -0.03703703703703709,
+        "ci95": [
+          -0.12508012820512818,
+          0.0
+        ],
+        "baseline_percent": 92.5925925925926,
+        "learnlm_percent": 88.88888888888889,
+        "delta_percentage_points": -3.703703703703709,
+        "ci95_percentage_points": [
+          -12.508012820512818,
+          0.0
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Practice"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-QUE-PURPOSE",
+        "n_candidate": 651,
+        "baseline": 0.8033794162826421,
+        "learnlm": 0.8018433179723502,
+        "delta": -0.001536098310291889,
+        "ci95": [
+          -0.03437001329787234,
+          0.031884828862164614
+        ],
+        "baseline_percent": 80.3379416282642,
+        "learnlm_percent": 80.18433179723502,
+        "delta_percentage_points": -0.1536098310291889,
+        "ci95_percentage_points": [
+          -3.4370013297872344,
+          3.1884828862164616
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Questioning"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-QUE-QUALITY",
+        "n_candidate": 651,
+        "baseline": 0.717357910906298,
+        "learnlm": 0.7450076804915514,
+        "delta": 0.027649769585253448,
+        "ci95": [
+          -0.008039885950946448,
+          0.06451994504935382
+        ],
+        "baseline_percent": 71.7357910906298,
+        "learnlm_percent": 74.50076804915514,
+        "delta_percentage_points": 2.7649769585253448,
+        "ci95_percentage_points": [
+          -0.8039885950946448,
+          6.451994504935382
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Questioning"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-QUE-DEPEND",
+        "n_candidate": 651,
+        "baseline": 0.48847926267281105,
+        "learnlm": 0.48847926267281105,
+        "delta": 0.0,
+        "ci95": [
+          -0.03433846381530267,
+          0.03364221658455996
+        ],
+        "baseline_percent": 48.8479262672811,
+        "learnlm_percent": 48.8479262672811,
+        "delta_percentage_points": 0.0,
+        "ci95_percentage_points": [
+          -3.4338463815302673,
+          3.364221658455996
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Questioning"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-FBK-GROUND",
+        "n_candidate": 806,
+        "baseline": 0.9305210918114144,
+        "learnlm": 0.9230769230769231,
+        "delta": -0.007444168734491274,
+        "ci95": [
+          -0.02905714592208904,
+          0.014475271411338864
+        ],
+        "baseline_percent": 93.05210918114145,
+        "learnlm_percent": 92.3076923076923,
+        "delta_percentage_points": -0.7444168734491274,
+        "ci95_percentage_points": [
+          -2.905714592208904,
+          1.4475271411338864
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Feedback"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-FBK-DISC",
+        "n_candidate": 806,
+        "baseline": 0.9491315136476427,
+        "learnlm": 0.9404466501240695,
+        "delta": -0.008684863523573227,
+        "ci95": [
+          -0.02746600351710895,
+          0.009629590590880657
+        ],
+        "baseline_percent": 94.91315136476427,
+        "learnlm_percent": 94.04466501240695,
+        "delta_percentage_points": -0.8684863523573227,
+        "ci95_percentage_points": [
+          -2.746600351710895,
+          0.9629590590880657
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Feedback"
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "component": "RUB-FBK-ACTION",
+        "n_candidate": 806,
+        "baseline": 0.8498759305210918,
+        "learnlm": 0.8722084367245657,
+        "delta": 0.022332506203473934,
+        "ci95": [
+          -0.006329113924050667,
+          0.05029958487932111
+        ],
+        "baseline_percent": 84.98759305210918,
+        "learnlm_percent": 87.22084367245657,
+        "delta_percentage_points": 2.2332506203473934,
+        "ci95_percentage_points": [
+          -0.6329113924050667,
+          5.029958487932111
+        ],
+        "valid_bootstrap_draws": 5000,
+        "rubric_group": "Feedback"
+      }
+    ],
+    "provenance": {
+      "analysis_contract": "section-v-ablation-analysis-v1",
+      "judge_output_contract": "gold-answer-only-v4",
+      "candidate_count": 1400,
+      "family_count": 655,
+      "comparison_count_per_judge": 4200,
+      "criterion_judgment_count_per_judge": 38832,
+      "inputs": {
+        "candidate_pool": {
+          "path": "experiments/20260727_170150/outputs/benchmark_candidate_pool/eligible_without_plan03_review.csv",
+          "sha256": "7dec13c3cc3a53337bc6c5fdf800e6c89856f49a3b6b0626dca885e59cb0fed9"
+        },
+        "gemini_judge": {
+          "path": "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/judge_full_batch_gold_answer_only_v4/gemini35/run_judgments.jsonl",
+          "sha256": "4c2e7f5b9ffd68a1dad5f6999700864683536386df6331ec16a0c6e279902936"
+        },
+        "gpt_judge": {
+          "path": "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/judge_full_batch_gold_answer_only_v4/openai_gpt54_mini_medium/run_judgments.jsonl",
+          "sha256": "ebfc8bd0276b105ef3348c2ec0227571ce7267b186d60490fc2107633a104ab9"
+        }
+      }
+    }
+  },
+  "judge_robustness": {
+    "overall_agreement": [
+      {
+        "scope": "All configurations",
+        "target_run_id": null,
+        "n_pairs": 4200,
+        "exact_agreement": 0.8045238095238095,
+        "cohen_kappa": 0.2711497516493821,
+        "gwet_ac1": 0.7746040532606269
+      },
+      {
+        "scope": "Gemini baseline",
+        "target_run_id": "target_gemini35",
+        "n_pairs": 1400,
+        "exact_agreement": 0.8835714285714286,
+        "cohen_kappa": 0.20442898081844077,
+        "gwet_ac1": 0.8744037169234798
+      },
+      {
+        "scope": "Gemini+LearnLM",
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "n_pairs": 1400,
+        "exact_agreement": 0.8978571428571429,
+        "cohen_kappa": 0.26523211985304634,
+        "gwet_ac1": 0.8902320957897677
+      },
+      {
+        "scope": "Llama 4 Maverick",
+        "target_run_id": "target_llama4_maverick",
+        "n_pairs": 1400,
+        "exact_agreement": 0.6321428571428571,
+        "cohen_kappa": 0.2205683472913938,
+        "gwet_ac1": 0.528989903823462
+      }
+    ],
+    "criterion_agreement": [
+      {
+        "scope": "All criteria",
+        "n_pairs": 38832,
+        "exact_agreement": 0.732437165224557,
+        "cohen_kappa": 0.31487680343548263,
+        "gwet_ac1": 0.6678919778843743
+      },
+      {
+        "scope": "Common",
+        "n_pairs": 16800,
+        "exact_agreement": 0.6733333333333333,
+        "cohen_kappa": 0.2531967822882289,
+        "gwet_ac1": 0.5826414733703347
+      },
+      {
+        "scope": "Challenge",
+        "n_pairs": 72,
+        "exact_agreement": 0.9583333333333334,
+        "cohen_kappa": 0.5527950310559009,
+        "gwet_ac1": 0.9562996307723434
+      },
+      {
+        "scope": "Explanation",
+        "n_pairs": 7767,
+        "exact_agreement": 0.8469164413544483,
+        "cohen_kappa": 0.1961949360861443,
+        "gwet_ac1": 0.8310040746023287
+      },
+      {
+        "scope": "Modelling",
+        "n_pairs": 837,
+        "exact_agreement": 0.8673835125448028,
+        "cohen_kappa": 0.4254786286731967,
+        "gwet_ac1": 0.8502635099198994
+      },
+      {
+        "scope": "Practice",
+        "n_pairs": 243,
+        "exact_agreement": 0.7777777777777778,
+        "cohen_kappa": 0.3190098085007009,
+        "gwet_ac1": 0.7360940021821217
+      },
+      {
+        "scope": "Questioning",
+        "n_pairs": 5859,
+        "exact_agreement": 0.6811742618194231,
+        "cohen_kappa": 0.4292944844218986,
+        "gwet_ac1": 0.5578057957836995
+      },
+      {
+        "scope": "Feedback",
+        "n_pairs": 7254,
+        "exact_agreement": 0.7688172043010753,
+        "cohen_kappa": 0.263534039011218,
+        "gwet_ac1": 0.7263782392822011
+      },
+      {
+        "scope": "RUB-GEN-ACC",
+        "n_pairs": 4200,
+        "exact_agreement": 0.6554761904761904,
+        "cohen_kappa": 0.3092153944464891,
+        "gwet_ac1": 0.5462146624020472
+      },
+      {
+        "scope": "RUB-GEN-ALIGN",
+        "n_pairs": 4200,
+        "exact_agreement": 0.729047619047619,
+        "cohen_kappa": 0.24564012949560343,
+        "gwet_ac1": 0.6705499078703253
+      },
+      {
+        "scope": "RUB-GEN-SCAFF",
+        "n_pairs": 4200,
+        "exact_agreement": 0.6897619047619048,
+        "cohen_kappa": 0.22073472728492144,
+        "gwet_ac1": 0.6131148249092025
+      },
+      {
+        "scope": "RUB-GEN-COMM",
+        "n_pairs": 4200,
+        "exact_agreement": 0.6190476190476191,
+        "cohen_kappa": 0.17988111693357559,
+        "gwet_ac1": 0.5040340501289835
+      }
+    ],
+    "directional_disagreement": [
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "gemini_lose_gpt_win": 57,
+        "gemini_win_gpt_lose": 95,
+        "disagreements_with_tie": 11,
+        "matrix_gemini_rows_gpt_columns": {
+          "Win": {
+            "Win": 1209,
+            "Tie": 4,
+            "Lose": 95
+          },
+          "Tie": {
+            "Win": 5,
+            "Tie": 0,
+            "Lose": 1
+          },
+          "Lose": {
+            "Win": 57,
+            "Tie": 1,
+            "Lose": 28
+          }
+        }
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "gemini_lose_gpt_win": 54,
+        "gemini_win_gpt_lose": 73,
+        "disagreements_with_tie": 16,
+        "matrix_gemini_rows_gpt_columns": {
+          "Win": {
+            "Win": 1226,
+            "Tie": 6,
+            "Lose": 73
+          },
+          "Tie": {
+            "Win": 6,
+            "Tie": 0,
+            "Lose": 1
+          },
+          "Lose": {
+            "Win": 54,
+            "Tie": 3,
+            "Lose": 31
+          }
+        }
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "gemini_lose_gpt_win": 419,
+        "gemini_win_gpt_lose": 65,
+        "disagreements_with_tie": 31,
+        "matrix_gemini_rows_gpt_columns": {
+          "Win": {
+            "Win": 705,
+            "Tie": 3,
+            "Lose": 65
+          },
+          "Tie": {
+            "Win": 22,
+            "Tie": 0,
+            "Lose": 2
+          },
+          "Lose": {
+            "Win": 419,
+            "Tie": 4,
+            "Lose": 180
+          }
+        }
+      }
+    ],
+    "severity_gap": [
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Overall Judgement",
+        "gemini_judge": 0.9342857142857143,
+        "gpt_judge": 0.9078571428571428,
+        "gap_gemini_minus_gpt": 0.026428571428571468,
+        "gemini_judge_percent": 93.42857142857143,
+        "gpt_judge_percent": 90.78571428571428,
+        "gap_percentage_points": 2.642857142857147
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "General",
+        "gemini_judge": 0.8326785714285714,
+        "gpt_judge": 0.7832142857142856,
+        "gap_gemini_minus_gpt": 0.04946428571428574,
+        "gemini_judge_percent": 83.26785714285714,
+        "gpt_judge_percent": 78.32142857142857,
+        "gap_percentage_points": 4.946428571428574
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Challenge",
+        "gemini_judge": 1.0,
+        "gpt_judge": 0.9583333333333334,
+        "gap_gemini_minus_gpt": 0.04166666666666663,
+        "gemini_judge_percent": 100.0,
+        "gpt_judge_percent": 95.83333333333334,
+        "gap_percentage_points": 4.1666666666666625
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Explanation",
+        "gemini_judge": 0.9787562765546544,
+        "gpt_judge": 0.9482425646967941,
+        "gap_gemini_minus_gpt": 0.030513711857860226,
+        "gemini_judge_percent": 97.87562765546544,
+        "gpt_judge_percent": 94.82425646967941,
+        "gap_percentage_points": 3.0513711857860226
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Modelling",
+        "gemini_judge": 0.989247311827957,
+        "gpt_judge": 0.982078853046595,
+        "gap_gemini_minus_gpt": 0.007168458781361964,
+        "gemini_judge_percent": 98.9247311827957,
+        "gpt_judge_percent": 98.2078853046595,
+        "gap_percentage_points": 0.7168458781361964
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Practice",
+        "gemini_judge": 0.9135802469135803,
+        "gpt_judge": 0.9135802469135803,
+        "gap_gemini_minus_gpt": 0.0,
+        "gemini_judge_percent": 91.35802469135803,
+        "gpt_judge_percent": 91.35802469135803,
+        "gap_percentage_points": 0.0
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Questioning",
+        "gemini_judge": 0.7665130568356374,
+        "gpt_judge": 0.6697388632872503,
+        "gap_gemini_minus_gpt": 0.09677419354838712,
+        "gemini_judge_percent": 76.65130568356375,
+        "gpt_judge_percent": 66.97388632872503,
+        "gap_percentage_points": 9.677419354838712
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Feedback",
+        "gemini_judge": 0.9003308519437553,
+        "gpt_judge": 0.9098428453267163,
+        "gap_gemini_minus_gpt": -0.009511993382961048,
+        "gemini_judge_percent": 90.03308519437553,
+        "gpt_judge_percent": 90.98428453267164,
+        "gap_percentage_points": -0.9511993382961048
+      },
+      {
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "component": "Overall Acc.",
+        "gemini_judge": 0.878708264387251,
+        "gpt_judge": 0.8400918684074985,
+        "gap_gemini_minus_gpt": 0.03861639597975253,
+        "gemini_judge_percent": 87.8708264387251,
+        "gpt_judge_percent": 84.00918684074985,
+        "gap_percentage_points": 3.8616395979752527
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Overall Judgement",
+        "gemini_judge": 0.9321428571428572,
+        "gpt_judge": 0.9185714285714286,
+        "gap_gemini_minus_gpt": 0.013571428571428568,
+        "gemini_judge_percent": 93.21428571428572,
+        "gpt_judge_percent": 91.85714285714286,
+        "gap_percentage_points": 1.3571428571428568
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "General",
+        "gemini_judge": 0.7982142857142858,
+        "gpt_judge": 0.7908928571428571,
+        "gap_gemini_minus_gpt": 0.007321428571428701,
+        "gemini_judge_percent": 79.82142857142858,
+        "gpt_judge_percent": 79.08928571428571,
+        "gap_percentage_points": 0.7321428571428701
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Challenge",
+        "gemini_judge": 1.0,
+        "gpt_judge": 1.0,
+        "gap_gemini_minus_gpt": 0.0,
+        "gemini_judge_percent": 100.0,
+        "gpt_judge_percent": 100.0,
+        "gap_percentage_points": 0.0
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Explanation",
+        "gemini_judge": 0.9710312862108922,
+        "gpt_judge": 0.9544225569718038,
+        "gap_gemini_minus_gpt": 0.016608729239088404,
+        "gemini_judge_percent": 97.10312862108921,
+        "gpt_judge_percent": 95.44225569718037,
+        "gap_percentage_points": 1.6608729239088404
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Modelling",
+        "gemini_judge": 0.989247311827957,
+        "gpt_judge": 0.982078853046595,
+        "gap_gemini_minus_gpt": 0.007168458781361964,
+        "gemini_judge_percent": 98.9247311827957,
+        "gpt_judge_percent": 98.2078853046595,
+        "gap_percentage_points": 0.7168458781361964
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Practice",
+        "gemini_judge": 0.8765432098765432,
+        "gpt_judge": 0.9012345679012346,
+        "gap_gemini_minus_gpt": -0.024691358024691357,
+        "gemini_judge_percent": 87.65432098765432,
+        "gpt_judge_percent": 90.12345679012346,
+        "gap_percentage_points": -2.4691358024691357
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Questioning",
+        "gemini_judge": 0.7240143369175627,
+        "gpt_judge": 0.6784434203789043,
+        "gap_gemini_minus_gpt": 0.04557091653865841,
+        "gemini_judge_percent": 72.40143369175627,
+        "gpt_judge_percent": 67.84434203789043,
+        "gap_percentage_points": 4.557091653865841
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Feedback",
+        "gemini_judge": 0.8916459884201821,
+        "gpt_judge": 0.9119106699751862,
+        "gap_gemini_minus_gpt": -0.02026468155500416,
+        "gemini_judge_percent": 89.16459884201821,
+        "gpt_judge_percent": 91.19106699751862,
+        "gap_percentage_points": -2.026468155500416
+      },
+      {
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "component": "Overall Acc.",
+        "gemini_judge": 0.8534806539615709,
+        "gpt_judge": 0.8477872675942388,
+        "gap_gemini_minus_gpt": 0.005693386367332076,
+        "gemini_judge_percent": 85.3480653961571,
+        "gpt_judge_percent": 84.77872675942389,
+        "gap_percentage_points": 0.5693386367332076
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Overall Judgement",
+        "gemini_judge": 0.5521428571428572,
+        "gpt_judge": 0.8185714285714286,
+        "gap_gemini_minus_gpt": -0.26642857142857146,
+        "gemini_judge_percent": 55.214285714285715,
+        "gpt_judge_percent": 81.85714285714286,
+        "gap_percentage_points": -26.642857142857146
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "General",
+        "gemini_judge": 0.4307142857142857,
+        "gpt_judge": 0.7242857142857143,
+        "gap_gemini_minus_gpt": -0.2935714285714286,
+        "gemini_judge_percent": 43.07142857142857,
+        "gpt_judge_percent": 72.42857142857143,
+        "gap_percentage_points": -29.35714285714286
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Challenge",
+        "gemini_judge": 0.875,
+        "gpt_judge": 0.875,
+        "gap_gemini_minus_gpt": 0.0,
+        "gemini_judge_percent": 87.5,
+        "gpt_judge_percent": 87.5,
+        "gap_percentage_points": 0.0
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Explanation",
+        "gemini_judge": 0.6295867130166087,
+        "gpt_judge": 0.9022788721514098,
+        "gap_gemini_minus_gpt": -0.27269215913480105,
+        "gemini_judge_percent": 62.95867130166087,
+        "gpt_judge_percent": 90.22788721514098,
+        "gap_percentage_points": -27.269215913480103
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Modelling",
+        "gemini_judge": 0.5448028673835125,
+        "gpt_judge": 0.7526881720430106,
+        "gap_gemini_minus_gpt": -0.20788530465949817,
+        "gemini_judge_percent": 54.480286738351246,
+        "gpt_judge_percent": 75.26881720430106,
+        "gap_percentage_points": -20.78853046594982
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Practice",
+        "gemini_judge": 0.4197530864197531,
+        "gpt_judge": 0.8765432098765432,
+        "gap_gemini_minus_gpt": -0.4567901234567901,
+        "gemini_judge_percent": 41.97530864197531,
+        "gpt_judge_percent": 87.65432098765432,
+        "gap_percentage_points": -45.67901234567901
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Questioning",
+        "gemini_judge": 0.35842293906810035,
+        "gpt_judge": 0.4142345110087045,
+        "gap_gemini_minus_gpt": -0.055811571940604154,
+        "gemini_judge_percent": 35.842293906810035,
+        "gpt_judge_percent": 41.42345110087045,
+        "gap_percentage_points": -5.581157194060415
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Feedback",
+        "gemini_judge": 0.5293631100082713,
+        "gpt_judge": 0.7803970223325062,
+        "gap_gemini_minus_gpt": -0.2510339123242349,
+        "gemini_judge_percent": 52.93631100082713,
+        "gpt_judge_percent": 78.03970223325062,
+        "gap_percentage_points": -25.10339123242349
+      },
+      {
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "component": "Overall Acc.",
+        "gemini_judge": 0.4951012025151633,
+        "gpt_judge": 0.745571339427205,
+        "gap_gemini_minus_gpt": -0.2504701369120417,
+        "gemini_judge_percent": 49.510120251516334,
+        "gpt_judge_percent": 74.5571339427205,
+        "gap_percentage_points": -25.047013691204167
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "anchors": {
+        "overall_exact_agreement": 0.8045238095238095,
+        "criterion_exact_agreement": 0.732437165224557,
+        "overall_position_counts": {
+          "response_1": 2124,
+          "response_2": 2076
+        }
+      }
+    }
+  },
+  "position_sensitivity": {
+    "interpretation_boundary": "descriptive_only_not_causal; identical response pairs were not evaluated in both orders",
+    "overall_position_counts": {
+      "response_2": 2076,
+      "response_1": 2124
+    },
+    "rows": [
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "response_1": {
+          "n": 717,
+          "win": 698,
+          "tie": 2,
+          "lose": 17,
+          "win_rate": 0.9735006973500697
+        },
+        "response_2": {
+          "n": 683,
+          "win": 610,
+          "tie": 4,
+          "lose": 69,
+          "win_rate": 0.8931185944363104
+        },
+        "position_delta": 0.08038210291375936,
+        "position_delta_percentage_points": 8.038210291375936
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "response_1": {
+          "n": 679,
+          "win": 656,
+          "tie": 3,
+          "lose": 20,
+          "win_rate": 0.9661266568483063
+        },
+        "response_2": {
+          "n": 721,
+          "win": 649,
+          "tie": 4,
+          "lose": 68,
+          "win_rate": 0.9001386962552012
+        },
+        "position_delta": 0.06598796059310519,
+        "position_delta_percentage_points": 6.598796059310519
+      },
+      {
+        "judge": "Gemini",
+        "judge_key": "gemini",
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "response_1": {
+          "n": 728,
+          "win": 453,
+          "tie": 13,
+          "lose": 262,
+          "win_rate": 0.6222527472527473
+        },
+        "response_2": {
+          "n": 672,
+          "win": 320,
+          "tie": 11,
+          "lose": 341,
+          "win_rate": 0.47619047619047616
+        },
+        "position_delta": 0.1460622710622711,
+        "position_delta_percentage_points": 14.60622710622711
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "target_run_id": "target_gemini35",
+        "tutor_configuration": "Gemini baseline",
+        "response_1": {
+          "n": 717,
+          "win": 654,
+          "tie": 0,
+          "lose": 63,
+          "win_rate": 0.9121338912133892
+        },
+        "response_2": {
+          "n": 683,
+          "win": 617,
+          "tie": 5,
+          "lose": 61,
+          "win_rate": 0.9033674963396779
+        },
+        "position_delta": 0.008766394873711225,
+        "position_delta_percentage_points": 0.8766394873711225
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "target_run_id": "target_gemini35_learnlm_prompted",
+        "tutor_configuration": "Gemini+LearnLM",
+        "response_1": {
+          "n": 679,
+          "win": 629,
+          "tie": 4,
+          "lose": 46,
+          "win_rate": 0.9263622974963182
+        },
+        "response_2": {
+          "n": 721,
+          "win": 657,
+          "tie": 5,
+          "lose": 59,
+          "win_rate": 0.9112343966712899
+        },
+        "position_delta": 0.01512790082502824,
+        "position_delta_percentage_points": 1.512790082502824
+      },
+      {
+        "judge": "GPT",
+        "judge_key": "gpt",
+        "target_run_id": "target_llama4_maverick",
+        "tutor_configuration": "Llama 4 Maverick",
+        "response_1": {
+          "n": 728,
+          "win": 597,
+          "tie": 5,
+          "lose": 126,
+          "win_rate": 0.820054945054945
+        },
+        "response_2": {
+          "n": 672,
+          "win": 549,
+          "tie": 2,
+          "lose": 121,
+          "win_rate": 0.8169642857142857
+        },
+        "position_delta": 0.0030906593406593297,
+        "position_delta_percentage_points": 0.30906593406593297
+      }
+    ]
+  }
+}

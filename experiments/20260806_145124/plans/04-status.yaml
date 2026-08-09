@@ -3,26 +3,40 @@ experiment_id: "20260806_145124"
 plan_id: "P04"
 sequence: 4
 baseline_path: "plans/04-experiment-configs-runbooks-and-portable-paths.md"
-status: "draft"
+status: "completed"
 approval:
-  state: "pending"
-  authority: null
-  approved_at: null
-updated_at: "2026-08-07T23:18:11+07:00"
+  state: "approved"
+  authority: "project_lead"
+  approved_at: "2026-08-09T10:37:39+07:00"
+updated_at: "2026-08-09T11:01:06+07:00"
 current_step: null
-last_amendment: null
+last_amendment: "P04-A001"
 depends_on:
   - "P01"
   - "P02"
   - "P03"
 gate:
-  state: "closed"
-  summary: "Plans 01 through 03 are complete; awaiting project-lead approval of Plan 04."
+  state: "passed"
+  summary: "Portable YAML config, two-CWD preflight, fail-closed path/secret validation, and semantic Section V baseline equivalence passed; Plan 05 may be reviewed."
 artifacts:
   - path: "plans/04-experiment-configs-runbooks-and-portable-paths.md"
     kind: "baseline_plan"
   - path: "plans/04-status.yaml"
     kind: "status_file"
+  - path: "decisions/plan04-amendments.md"
+    kind: "amendment_log"
+  - path: "runbooks/plan04-portable-section-v-analysis.md"
+    kind: "runbook"
+  - path: "outputs/plan04/active_pipeline_inventory.csv"
+    kind: "machine_output"
+  - path: "outputs/plan04/section_v_results.json"
+    kind: "machine_output"
+  - path: "outputs/plan04/section_v_run_manifest.json"
+    kind: "machine_output"
+  - path: "reports/plan04-final.md"
+    kind: "final_report"
+  - path: "handoffs/plan04-portable-runtime-completed.md"
+    kind: "handoff"
 artifact_budget:
   limits:
     baseline_plan: 1

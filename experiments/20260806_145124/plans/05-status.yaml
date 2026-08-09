@@ -8,7 +8,7 @@ approval:
   state: "pending"
   authority: null
   approved_at: null
-updated_at: "2026-08-06T15:55:09+07:00"
+updated_at: "2026-08-09T10:56:58+07:00"
 current_step: null
 last_amendment: null
 depends_on:
@@ -17,8 +17,8 @@ depends_on:
   - "P03"
   - "P04"
 gate:
-  state: "closed"
-  summary: "Awaiting Plans 01 through 04 completion."
+  state: "open"
+  summary: "Plans 01 through 04 are complete; awaiting project-lead approval of Plan 05."
 artifacts:
   - path: "plans/05-src-scripts-boundary-and-runtime-refactor.md"
     kind: "baseline_plan"
@@ -34,4 +34,3 @@ artifact_budget:
     handoff: 1
     machine_output: 3
   exceptions: []
-

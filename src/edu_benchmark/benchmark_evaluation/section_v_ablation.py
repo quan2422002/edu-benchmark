@@ -979,6 +979,7 @@ def build_results(
     gpt_judge: Path,
     iterations: int = 5000,
     seed: int = 20260730,
+    provenance_paths: Mapping[str, str] | None = None,
 ) -> dict[str, Any]:
     candidate_to_family, candidate_sha = load_candidate_families(
         candidate_pool
@@ -993,6 +994,17 @@ def build_results(
         raise SectionVAblationError(
             "The two judges do not contain the same 4200 comparison IDs"
         )
+    displayed_paths = provenance_paths or {
+        "candidate_pool": str(candidate_pool),
+        "gemini_judge": str(gemini_judge),
+        "gpt_judge": str(gpt_judge),
+    }
+    if set(displayed_paths) != {
+        "candidate_pool",
+        "gemini_judge",
+        "gpt_judge",
+    }:
+        raise SectionVAblationError("Invalid provenance path mapping")
     provenance = {
         "analysis_contract": "section-v-ablation-analysis-v1",
         "judge_output_contract": EXPECTED_CONTRACT,
@@ -1002,15 +1014,15 @@ def build_results(
         "criterion_judgment_count_per_judge": 38832,
         "inputs": {
             "candidate_pool": {
-                "path": str(candidate_pool),
+                "path": displayed_paths["candidate_pool"],
                 "sha256": candidate_sha,
             },
             "gemini_judge": {
-                "path": str(gemini_judge),
+                "path": displayed_paths["gemini_judge"],
                 "sha256": judges["gemini"].sha256,
             },
             "gpt_judge": {
-                "path": str(gpt_judge),
+                "path": displayed_paths["gpt_judge"],
                 "sha256": judges["gpt"].sha256,
             },
         },

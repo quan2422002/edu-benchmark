@@ -1,7 +1,7 @@
 # Roadmap — Cải tổ repository để con người và agent cùng vận hành được
 
 Experiment: `20260806_145124`
-Trạng thái: `ACTIVE — PLAN 04 AWAITING APPROVAL`
+Trạng thái: `ACTIVE — PLAN 05 AWAITING APPROVAL`
 Nguồn hiện trạng chính: `20260727_170150`
 
 ## 1. Mục tiêu
@@ -121,7 +121,7 @@ còn payload được đặt tại kho được phép và manifest ghi locator/c
 |       01 | [Quản trị plan và bản ghi quyết định](plans/01-planning-governance-and-decision-records.md)                         | `COMPLETED`   | Template, status machine-readable, amendment và artifact budget được duyệt        |
 |       02 | [Đóng gói Python và kiểm chứng môi trường sạch](plans/02-python-packaging-and-clean-environment-validation.md)   | `COMPLETED` | Import/package/test chạy bằng `benchmark_env`; CI tối thiểu không gọi API |
 |       03 | [Registry và promotion artifact benchmark dùng chung](plans/03-shared-benchmark-artifact-registry-and-promotion.md)      | `COMPLETED` | Registry, manifest và các count/provenance được đối chiếu; authority rõ ràng |
-|       04 | [Config, runbook và path khả chuyển](plans/04-experiment-configs-runbooks-and-portable-paths.md)                        | `DRAFT`      | Run đại diện preflight được từ repo root, không absolute path/secret           |
+|       04 | [Cấu hình thử nghiệm, hướng dẫn vận hành và đường dẫn khả chuyển](plans/04-experiment-configs-runbooks-and-portable-paths.md) | `COMPLETED` | Lần chạy đại diện kiểm tra được từ nhiều thư mục, không có đường dẫn tuyệt đối hoặc thông tin bí mật |
 |       05 | [Tách ranh giới `src/` và `scripts/`](plans/05-src-scripts-boundary-and-runtime-refactor.md)                            | `DRAFT`      | CLI mỏng, logic dùng lại trong package, compatibility và test đạt                |
 |       06 | [Retention output, khử trùng lặp và vệ sinh repo](plans/06-output-retention-deduplication-and-repository-hygiene.md)  | `DRAFT`      | Inventory đối chiếu, archive/ignore policy áp dụng, xóa chỉ sau duyệt riêng   |
 |       07 | [Đồng bộ tài liệu, validation và đóng migration](plans/07-documentation-reconciliation-validation-and-closeout.md) | `DRAFT`      | Clean-clone drill, docs/current-state và final report được duyệt                  |
@@ -175,7 +175,8 @@ Trước khi hoàn tất:
 
 ## 9. Cổng dừng hiện tại
 
-Plan 01–03 đã hoàn tất validation. Shared registry hiện dẫn tới checklist 18
+Plan 01–04 đã hoàn tất validation. Shared registry hiện dẫn tới checklist 18
 tiêu chí, 665 dialogue Phase 1, 2.028 conversion candidate, selection tạm 1.400
-cùng backlog 628/blocked 0 và ba specification bundle provisional. Plan 04 là
-gate kế tiếp nhưng vẫn `DRAFT`; chưa được triển khai trước khi project lead duyệt.
+cùng backlog 628/blocked 0 và ba specification bundle provisional. Runtime cấu
+hình khả chuyển đã tái lập Section V từ nhiều thư mục làm việc. Plan 05 là gate
+kế tiếp nhưng vẫn `DRAFT`; chưa được triển khai trước khi project lead duyệt.

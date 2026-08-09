@@ -1,0 +1,71 @@
+schema_version: "1.0"
+config_id: "section-v-ablation-v1"
+config_version: "v1"
+pipeline_id: "section_v_ablation"
+experiment_id: "20260806_145124"
+repository_root: "../../.."
+
+execution:
+  mode: "offline"
+  runner: "scripts/benchmark_evaluation/analyze_section_v_ablation.py"
+  resume_policy: "unsupported"
+  resume_note: "Deterministic offline rebuild; partial candidate-level resume is not applicable."
+
+inputs:
+  - role: "candidate_pool"
+    artifact_id: "provisional_evaluation_pool"
+    version: "v1"
+    path: "experiments/20260727_170150/outputs/benchmark_candidate_pool/eligible_without_plan03_review.csv"
+    sha256: "7dec13c3cc3a53337bc6c5fdf800e6c89856f49a3b6b0626dca885e59cb0fed9"
+    record_count: 1400
+    format: "csv"
+  - role: "gemini_judge"
+    artifact_id: "full_judge_gold_answer_only_gemini35"
+    version: "v4"
+    path: "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/judge_full_batch_gold_answer_only_v4/gemini35/run_judgments.jsonl"
+    sha256: "4c2e7f5b9ffd68a1dad5f6999700864683536386df6331ec16a0c6e279902936"
+    record_count: 4200
+    format: "jsonl"
+  - role: "gpt_judge"
+    artifact_id: "full_judge_gold_answer_only_openai_gpt54_mini_medium"
+    version: "v4"
+    path: "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/judge_full_batch_gold_answer_only_v4/openai_gpt54_mini_medium/run_judgments.jsonl"
+    sha256: "ebfc8bd0276b105ef3348c2ec0227571ce7267b186d60490fc2107633a104ab9"
+    record_count: 4200
+    format: "jsonl"
+
+outputs:
+  result:
+    path: "experiments/20260806_145124/outputs/plan04/section_v_results.json"
+    schema_version: "section-v-ablation-analysis-v1"
+  run_manifest:
+    path: "experiments/20260806_145124/outputs/plan04/section_v_run_manifest.json"
+    schema_version: "experiment-runtime-manifest-v1"
+
+parameters:
+  bootstrap_iterations: 5000
+  seed: 20260730
+
+provenance:
+  code_commit: null
+  code_commit_note: "Plan 04 changes are awaiting a project-lead-managed commit."
+  code_paths:
+    - "src/edu_benchmark/benchmark_evaluation/section_v_ablation.py"
+    - "src/edu_benchmark/experiment_runtime/config.py"
+    - "src/edu_benchmark/experiment_runtime/cli.py"
+  prompt_bundle: null
+  provider:
+    name: null
+    model: null
+    location: null
+    reason: "Offline analysis; no model request is made."
+  credential_policy: "external_only_not_required_for_offline_analysis"
+  cost:
+    currency: null
+    amount: 0
+    reason: "No paid API call."
+
+equivalence:
+  baseline_result_path: "experiments/20260727_170150/outputs/benchmark_evaluation/section_v_ablation_analysis_v1/results.json"
+  baseline_result_sha256: "000839d69791b59066da838f0db581856e5a4bf99c957b62bdf9e117d7828919"
+  comparison: "normalize_repository_paths_only"

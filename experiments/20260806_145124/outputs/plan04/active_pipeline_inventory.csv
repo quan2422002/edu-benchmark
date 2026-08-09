@@ -1,0 +1,10 @@
+pipeline_id,entrypoint,classification,hardcoded_machine_path_before_plan04,hardcoded_experiment_id_before_plan04,current_configuration,plan04_action,rationale
+section_v_ablation,scripts/benchmark_evaluation/analyze_section_v_ablation.py,active,false,true,experiments/20260806_145124/configs/section-v-ablation-v1.yaml,migrated,"Current reproducible full-1400 offline analysis with a locked baseline"
+requirement_scoring,src/vertex_ai_call/run_requirement_scoring.py,compatibility,false,true,embedded_cli_defaults,retain,"Full scoring completed; retry semantics remain available but no paid rerun is authorized"
+full_target_generation,scripts/benchmark_evaluation/run_full_1400_targets.sh,historical-only,true,true,shell_constants,retain,"All three target bundles are complete"
+full_judge_batch,scripts/benchmark_evaluation/run_full_1400_judge_batch.sh,compatibility,true,true,shell_constants,retain,"Full v4 judge bundles are complete; wrapper remains for lifecycle provenance"
+legacy_full_judge,scripts/benchmark_evaluation/run_full_1400_judge.sh,historical-only,true,true,shell_constants,retain,"Superseded by the completed asynchronous v4 batch wrapper"
+evaluation_config_build,scripts/benchmark_evaluation/build_evaluation_config.py,historical-only,false,true,embedded_cli_defaults,retain,"Plan 05 evaluation configuration was already built and validated"
+full_candidate_manifest,scripts/benchmark_evaluation/build_full_manifest.py,historical-only,false,true,embedded_cli_defaults,retain,"The locked 1,400-candidate manifest already exists"
+target_runner,scripts/benchmark_evaluation/run_vertex_smoke.py,compatibility,false,true,cli_arguments_from_wrapper,retain,"Shared runner retained for completed target bundles and rollback"
+batch_judge_runner,scripts/benchmark_evaluation/run_batch_judge.py,compatibility,false,true,cli_arguments_from_wrapper,retain,"Shared batch lifecycle runner retained under the existing wrapper"
