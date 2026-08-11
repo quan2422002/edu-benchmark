@@ -8,16 +8,16 @@ approval:
   state: "approved"
   authority: "project_lead"
   approved_at: "2026-08-09T10:37:39+07:00"
-updated_at: "2026-08-09T11:01:06+07:00"
+updated_at: "2026-08-10T00:11:52+07:00"
 current_step: null
-last_amendment: "P04-A001"
+last_amendment: "P04-A003"
 depends_on:
   - "P01"
   - "P02"
   - "P03"
 gate:
   state: "passed"
-  summary: "Portable YAML config, two-CWD preflight, fail-closed path/secret validation, and semantic Section V baseline equivalence passed; Plan 05 may be reviewed."
+  summary: "Portable YAML config, complete 27-entrypoint inventory, executable-contract preflight with explicit failure status, non-destructive matched/stale manifest reporting, strict provenance validation, and semantic Section V baseline equivalence passed; Plan 05 may be reviewed."
 artifacts:
   - path: "plans/04-experiment-configs-runbooks-and-portable-paths.md"
     kind: "baseline_plan"

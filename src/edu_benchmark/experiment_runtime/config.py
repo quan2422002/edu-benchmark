@@ -218,6 +218,128 @@ class RuntimeConfig:
             raise RuntimeConfigError(f"Config is missing output role: {role}") from exc
 
 
+def validate_runtime_contract(config: RuntimeConfig) -> None:
+    """Validate every run-blocking field for the supported offline pipeline."""
+
+    if config.pipeline_id != "section_v_ablation":
+        raise RuntimeConfigError(
+            f"Unsupported pipeline for this runtime: {config.pipeline_id}"
+        )
+
+    execution = _mapping(config.raw["execution"], "execution")
+    expected_execution_keys = {"mode", "runner", "resume_policy", "resume_note"}
+    if set(execution) != expected_execution_keys:
+        raise RuntimeConfigError(
+            "execution must contain exactly: "
+            + ", ".join(sorted(expected_execution_keys))
+        )
+    if execution["mode"] != "offline":
+        raise RuntimeConfigError("Section V execution mode must be offline")
+    if execution["resume_policy"] != "unsupported":
+        raise RuntimeConfigError("Section V resume policy must be unsupported")
+    runner = Path(_string(execution["runner"], "execution.runner")).as_posix()
+    _string(execution["resume_note"], "execution.resume_note")
+
+    expected_input_formats = {
+        "candidate_pool": "csv",
+        "gemini_judge": "jsonl",
+        "gpt_judge": "jsonl",
+    }
+    if set(config.inputs) != set(expected_input_formats):
+        raise RuntimeConfigError(
+            "Section V input roles must be exactly: "
+            + ", ".join(sorted(expected_input_formats))
+        )
+    for role, expected_format in expected_input_formats.items():
+        if config.inputs[role].file_format != expected_format:
+            raise RuntimeConfigError(
+                f"Section V input {role} must use {expected_format} format"
+            )
+
+    expected_output_schemas = {
+        "result": "section-v-ablation-analysis-v1",
+        "run_manifest": "experiment-runtime-manifest-v1",
+    }
+    for role, expected_schema in expected_output_schemas.items():
+        if config.outputs[role][2] != expected_schema:
+            raise RuntimeConfigError(
+                f"Section V output {role} schema must be {expected_schema}"
+            )
+
+    parameters = _mapping(config.raw["parameters"], "parameters")
+    if set(parameters) != {"bootstrap_iterations", "seed"}:
+        raise RuntimeConfigError(
+            "Section V parameters must contain exactly bootstrap_iterations and seed"
+        )
+    iterations = parameters["bootstrap_iterations"]
+    if isinstance(iterations, bool) or not isinstance(iterations, int) or iterations < 1:
+        raise RuntimeConfigError("bootstrap_iterations must be a positive integer")
+    seed = parameters["seed"]
+    if isinstance(seed, bool) or not isinstance(seed, int):
+        raise RuntimeConfigError("seed must be an integer")
+
+    provenance = _mapping(config.raw["provenance"], "provenance")
+    expected_provenance_keys = {
+        "code_commit",
+        "code_commit_note",
+        "code_paths",
+        "prompt_bundle",
+        "provider",
+        "credential_policy",
+        "cost",
+    }
+    if set(provenance) != expected_provenance_keys:
+        raise RuntimeConfigError(
+            "provenance must contain exactly: "
+            + ", ".join(sorted(expected_provenance_keys))
+        )
+    code_commit = provenance["code_commit"]
+    if code_commit is not None:
+        _string(code_commit, "provenance.code_commit")
+    _string(provenance["code_commit_note"], "provenance.code_commit_note")
+    code_paths = provenance["code_paths"]
+    if not isinstance(code_paths, list) or not code_paths:
+        raise RuntimeConfigError("provenance.code_paths must be a non-empty list")
+    normalized_code_paths = {
+        Path(_string(path, "provenance.code_paths[]")).as_posix()
+        for path in code_paths
+    }
+    if len(normalized_code_paths) != len(code_paths):
+        raise RuntimeConfigError("provenance.code_paths must not contain duplicates")
+    if runner not in normalized_code_paths:
+        raise RuntimeConfigError(
+            "execution.runner must be included in provenance.code_paths"
+        )
+    if provenance["prompt_bundle"] is not None:
+        raise RuntimeConfigError("Offline Section V prompt_bundle must be null")
+
+    provider = _mapping(provenance["provider"], "provenance.provider")
+    expected_provider_keys = {"name", "model", "location", "reason"}
+    if set(provider) != expected_provider_keys:
+        raise RuntimeConfigError(
+            "provenance.provider must contain exactly: "
+            + ", ".join(sorted(expected_provider_keys))
+        )
+    if any(provider[key] is not None for key in ("name", "model", "location")):
+        raise RuntimeConfigError("Offline Section V provider fields must be null")
+    _string(provider["reason"], "provenance.provider.reason")
+    if provenance["credential_policy"] != (
+        "external_only_not_required_for_offline_analysis"
+    ):
+        raise RuntimeConfigError("Invalid offline credential policy")
+
+    cost = _mapping(provenance["cost"], "provenance.cost")
+    if set(cost) != {"currency", "amount", "reason"}:
+        raise RuntimeConfigError(
+            "provenance.cost must contain exactly amount, currency, and reason"
+        )
+    if cost["currency"] is not None:
+        raise RuntimeConfigError("Offline Section V cost currency must be null")
+    if isinstance(cost["amount"], bool) or cost["amount"] != 0:
+        raise RuntimeConfigError("Offline Section V cost amount must be zero")
+    _string(cost["reason"], "provenance.cost.reason")
+
+
 def _resolve_config_path(path: Path, repo_root: Path) -> Path:
     if path.is_absolute():
         resolved = path.resolve()
@@ -390,7 +512,7 @@ def load_runtime_config(
         )
 
     config_relative = config_path.relative_to(discovered_root).as_posix()
-    return RuntimeConfig(
+    config = RuntimeConfig(
         path=config_path,
         relative_path=config_relative,
         repo_root=discovered_root,
@@ -400,9 +522,12 @@ def load_runtime_config(
         outputs=outputs,
         equivalence_baseline=(baseline_relative, baseline_path, baseline_sha),
     )
+    validate_runtime_contract(config)
+    return config
 
 
 def build_preflight_manifest(config: RuntimeConfig) -> dict[str, Any]:
+    validate_runtime_contract(config)
     execution = _mapping(config.raw["execution"], "execution")
     provenance = copy.deepcopy(_mapping(config.raw["provenance"], "provenance"))
     code_paths = provenance.pop("code_paths", [])

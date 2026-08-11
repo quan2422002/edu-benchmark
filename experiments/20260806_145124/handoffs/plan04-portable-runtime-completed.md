@@ -1,6 +1,6 @@
 # Handoff — Plan 04 cấu hình và đường dẫn khả chuyển
 
-- Event ID: `EXP-20260806-P04-WORKFLOW-COMPLETED-027`
+- Event ID: `EXP-20260806-P04-WORKFLOW-COMPLETED-035`
 - Plan ID: `P04`
 - Mode: `single-agent`
 - Agent: `orchestrator`
@@ -16,7 +16,11 @@ nhiều thư mục làm việc mà không gọi API trả phí.
 ## Thay đổi phạm vi hoặc quyết định phát sinh
 
 `P04-A001` chọn Section V làm quy trình đầu tiên, YAML làm định dạng cấu hình và
-giữ wrapper trả phí đến Plan 07. Không có nhãn, phán quyết hoặc nội dung
+giữ wrapper trả phí đến Plan 07. `P04-A002` hoàn thiện inventory 27 entrypoint,
+ngăn preflight ghi đè manifest `completed` và buộc validate đối chiếu fingerprint
+cùng provenance hiện tại. `P04-A003` buộc preflight và run dùng chung toàn bộ
+contract có thể thực thi, trả trạng thái lỗi máy đọc được và phân biệt manifest
+được bảo toàn đang khớp hay đã cũ. Không có nhãn, phán quyết hoặc nội dung
 benchmark nào được sửa.
 
 ## Input đã đọc
@@ -38,10 +42,13 @@ benchmark nào được sửa.
 
 ## Tóm tắt kết quả
 
-Preflight từ repository root và `/tmp` cho cùng fingerprint. Kết quả Section V
-mới có cùng semantic SHA-256 với baseline sau khi chỉ chuẩn hóa đường dẫn
-provenance tuyệt đối thành tương đối. Mọi checksum/count/anchor và secret scan
-đều đạt; không có provider call.
+Preflight từ repository root và `/tmp` cho cùng fingerprint, đồng thời giữ
+nguyên manifest `completed`. Kết quả Section V mới có cùng semantic SHA-256 với
+baseline sau khi chỉ chuẩn hóa đường dẫn provenance tuyệt đối thành tương đối.
+Inventory bao phủ đủ 27 entrypoint ưu tiên; validate phát hiện được code hoặc
+manifest provenance bị trôi. Preflight chặn config không thể thực thi trước khi
+trả trạng thái pass và xác nhận manifest hiện tại là `matched_preserved`. Mọi
+checksum/count/anchor và secret scan đều đạt; không có provider call.
 
 ## Quyết định của orchestrator
 
