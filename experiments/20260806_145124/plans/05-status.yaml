@@ -3,27 +3,41 @@ experiment_id: "20260806_145124"
 plan_id: "P05"
 sequence: 5
 baseline_path: "plans/05-src-scripts-boundary-and-runtime-refactor.md"
-status: "draft"
+status: "completed"
 approval:
-  state: "pending"
-  authority: null
-  approved_at: null
-updated_at: "2026-08-09T10:56:58+07:00"
+  state: "approved"
+  authority: "project_lead"
+  approved_at: "2026-08-10T14:44:56+07:00"
+updated_at: "2026-08-11T15:38:46+07:00"
 current_step: null
-last_amendment: null
+last_amendment: "P05-A002"
 depends_on:
   - "P01"
   - "P02"
   - "P03"
   - "P04"
 gate:
-  state: "open"
-  summary: "Plans 01 through 04 are complete; awaiting project-lead approval of Plan 05."
+  state: "passed"
+  summary: "Independent Vertex AI/OpenAI provider contracts, requirement-scoring migration, representative judge consumers, thin CLIs, old-namespace removal, offline compatibility, 299 repository tests, packaging, and governance validation passed."
 artifacts:
   - path: "plans/05-src-scripts-boundary-and-runtime-refactor.md"
     kind: "baseline_plan"
   - path: "plans/05-status.yaml"
     kind: "status_file"
+  - path: "decisions/plan05-amendments.md"
+    kind: "amendment_log"
+  - path: "outputs/plan05/module_inventory.csv"
+    kind: "machine_output"
+  - path: "outputs/plan05/dependency_edges.csv"
+    kind: "machine_output"
+  - path: "outputs/plan05/compatibility_matrix.csv"
+    kind: "machine_output"
+  - path: "runbooks/plan05-provider-and-requirement-scoring-migration.md"
+    kind: "runbook"
+  - path: "reports/plan05-final.md"
+    kind: "final_report"
+  - path: "handoffs/plan05-provider-boundary-completed.md"
+    kind: "handoff"
 artifact_budget:
   limits:
     baseline_plan: 1

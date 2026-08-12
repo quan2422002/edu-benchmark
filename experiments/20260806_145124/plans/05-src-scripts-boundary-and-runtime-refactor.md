@@ -1,7 +1,7 @@
 # Plan 05 — Tách ranh giới `src/`, `scripts/` và tầng nhà cung cấp mô hình
 
 Experiment: `20260806_145124`
-Trạng thái: `DRAFT — CHỜ NGƯỜI PHỤ TRÁCH DỰ ÁN DUYỆT`
+Trạng thái: `APPROVED — NGƯỜI PHỤ TRÁCH DỰ ÁN DUYỆT NGÀY 2026-08-10`
 Phụ thuộc: Plan 01–04 đã hoàn tất
 
 ## 1. Mục tiêu

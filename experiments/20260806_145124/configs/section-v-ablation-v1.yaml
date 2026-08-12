@@ -50,6 +50,7 @@ provenance:
   code_commit: null
   code_commit_note: "Plan 04 changes are awaiting a project-lead-managed commit."
   code_paths:
+    - "scripts/benchmark_evaluation/analyze_section_v_ablation.py"
     - "src/edu_benchmark/benchmark_evaluation/section_v_ablation.py"
     - "src/edu_benchmark/experiment_runtime/config.py"
     - "src/edu_benchmark/experiment_runtime/cli.py"

@@ -1,7 +1,7 @@
 id: "20260806_145124"
 slug: "repository-architecture-and-governance-refactor"
 title: "Cải tổ kiến trúc, quản trị artifact và khả năng tái lập của repository"
-status: "active_plan05_awaiting_approval"
+status: "active_plan06_awaiting_approval"
 task_type: "repository_architecture_governance_and_reproducibility_refactor"
 owner_agent: "orchestrator"
 parents:
@@ -28,6 +28,7 @@ artifacts:
   - decisions/plan02-amendments.md
   - decisions/plan03-amendments.md
   - decisions/plan04-amendments.md
+  - decisions/plan05-amendments.md
   - configs/section-v-ablation-v1.yaml
   - runbooks/plan04-portable-section-v-analysis.md
   - outputs/plan04/active_pipeline_inventory.csv
@@ -35,6 +36,12 @@ artifacts:
   - outputs/plan04/section_v_run_manifest.json
   - reports/plan04-final.md
   - handoffs/plan04-portable-runtime-completed.md
+  - outputs/plan05/module_inventory.csv
+  - outputs/plan05/dependency_edges.csv
+  - outputs/plan05/compatibility_matrix.csv
+  - runbooks/plan05-provider-and-requirement-scoring-migration.md
+  - reports/plan05-final.md
+  - handoffs/plan05-provider-boundary-completed.md
   - runbooks/plan02-packaging-and-offline-validation.md
   - runbooks/plan03-shared-benchmark-promotion.md
   - reports/plan03-final.md
