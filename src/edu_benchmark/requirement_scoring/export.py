@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
 import csv
 import json
 import os
@@ -12,10 +11,10 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 
-from vertex_ai_call.analyze_requirement_scoring import (  # noqa: E402
+from .analysis import (
     load_conversion_trace,
 )
-from vertex_ai_call.requirement_scoring import (  # noqa: E402
+from .core import (
     PRINCIPLE_IDS,
     RequirementScoringError,
     load_grounding_pool,
@@ -24,7 +23,7 @@ from vertex_ai_call.requirement_scoring import (  # noqa: E402
 )
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
 DEFAULT_ANALYSIS = (
     DEFAULT_EXPERIMENT
@@ -359,43 +358,3 @@ def export_eligible_candidate_pool(
         "family_count": len({row["sample_id"] for row in output_rows}),
     }
 
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description=(
-            "Xuất một CSV tự chứa cho candidate có trạng thái "
-            "eligible_without_plan03_review."
-        )
-    )
-    parser.add_argument("--analysis", type=Path, default=DEFAULT_ANALYSIS)
-    parser.add_argument("--run", type=Path, default=DEFAULT_RUN)
-    parser.add_argument(
-        "--grounding-pool",
-        type=Path,
-        default=DEFAULT_GROUNDING_POOL,
-    )
-    parser.add_argument(
-        "--candidates",
-        type=Path,
-        default=DEFAULT_CANDIDATES,
-    )
-    parser.add_argument("--trace", type=Path, default=DEFAULT_TRACE)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    return parser
-
-
-def main() -> None:
-    args = build_parser().parse_args()
-    summary = export_eligible_candidate_pool(
-        analysis_path=args.analysis.resolve(),
-        run_path=args.run.resolve(),
-        grounding_pool_path=args.grounding_pool.resolve(),
-        candidates_path=args.candidates.resolve(),
-        trace_path=args.trace.resolve(),
-        output_path=args.output.resolve(),
-    )
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
-
-
-if __name__ == "__main__":
-    main()

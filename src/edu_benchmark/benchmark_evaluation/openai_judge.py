@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
-import json
 from typing import Any
 
-import openai
-from openai import OpenAI
+from edu_benchmark.model_providers import (
+    GenerationSettings,
+    ModelMessage,
+    ModelProvider,
+    ModelRequest,
+    ProviderCallError,
+    StructuredOutput,
+)
+from edu_benchmark.model_providers.openai import OpenAIProvider
 
 from .judge import PreparedJudgeRequest
 
@@ -26,12 +32,6 @@ class OpenAIJudgeCallError(RuntimeError):
         self.retryable = retryable
         self.http_status = http_status
         self.response_body = response_body
-
-
-def _is_retryable_status(status: int | None) -> bool:
-    return status in {408, 409, 425, 429} or (
-        isinstance(status, int) and 500 <= status <= 599
-    )
 
 
 def _object(properties: dict[str, Any]) -> dict[str, Any]:
@@ -110,19 +110,6 @@ def build_judge_response_schema(
     return _object(properties)
 
 
-def _response_body(response: Any) -> str:
-    dump = getattr(response, "model_dump", None)
-    if callable(dump):
-        try:
-            return json.dumps(
-                dump(mode="json", exclude_none=True),
-                ensure_ascii=False,
-            )[:8000]
-        except (TypeError, ValueError):
-            pass
-    return str(response)[:8000]
-
-
 class OpenAIJudgeCaller:
     """Call the OpenAI Responses API with strict Structured Outputs."""
 
@@ -134,6 +121,7 @@ class OpenAIJudgeCaller:
         max_output_tokens: int,
         reasoning_effort: str = "medium",
         timeout_seconds: float = 180.0,
+        provider: ModelProvider | None = None,
     ) -> None:
         if not api_key.strip():
             raise ValueError("OpenAI API key must be non-empty")
@@ -151,11 +139,9 @@ class OpenAIJudgeCaller:
         self.model = model
         self.max_output_tokens = max_output_tokens
         self.reasoning_effort = normalized_effort
-        # Retry is owned by the outer runner so every attempt is observable.
-        self.client = OpenAI(
+        self.provider = provider or OpenAIProvider(
             api_key=api_key,
-            timeout=timeout_seconds,
-            max_retries=0,
+            timeout_seconds=timeout_seconds,
         )
 
     def call(self, prepared: PreparedJudgeRequest) -> dict[str, Any]:
@@ -167,81 +153,40 @@ class OpenAIJudgeCaller:
                 "blind_pairwise_judgment_gold_answer_only_v4"
             ),
         }[prepared.judge_output_contract_version]
-        try:
-            response = self.client.responses.create(
-                model=self.model,
-                instructions=prepared.system_prompt,
-                input=prepared.user_prompt,
+        request = ModelRequest(
+            backend="openai",
+            model=self.model,
+            system_instruction=prepared.system_prompt,
+            messages=(ModelMessage(role="user", content=prepared.user_prompt),),
+            generation=GenerationSettings(
                 max_output_tokens=self.max_output_tokens,
-                reasoning={"effort": self.reasoning_effort},
-                text={
-                    "format": {
-                        "type": "json_schema",
-                        "name": schema_name,
-                        "schema": schema,
-                        "strict": True,
-                    }
-                },
-                store=False,
-                truncation="disabled",
-            )
-        except openai.APIStatusError as exc:
-            status = getattr(exc, "status_code", None)
-            response_body = str(getattr(exc, "response", "") or "")[:8000]
-            raise OpenAIJudgeCallError(
-                f"OpenAI HTTP {status}: {exc}",
-                retryable=_is_retryable_status(status),
-                http_status=status,
-                response_body=response_body,
-            ) from exc
-        except (
-            openai.APIConnectionError,
-            openai.APITimeoutError,
-        ) as exc:
-            raise OpenAIJudgeCallError(
-                f"OpenAI transport error: {exc}",
-                retryable=True,
-            ) from exc
-        except openai.OpenAIError as exc:
-            raise OpenAIJudgeCallError(
-                f"OpenAI API error: {exc}",
-                retryable=False,
-            ) from exc
-
-        status = str(getattr(response, "status", "") or "").lower()
-        incomplete = getattr(response, "incomplete_details", None)
-        incomplete_reason = str(
-            getattr(incomplete, "reason", "") or ""
-        ).upper()
-        finish_reason = (
-            "STOP"
-            if status == "completed"
-            else incomplete_reason or status.upper() or "UNKNOWN"
-        )
-        response_text = str(getattr(response, "output_text", "") or "")
-        if not response_text.strip():
-            raise OpenAIJudgeCallError(
-                f"empty OpenAI response ({finish_reason})",
-                retryable=status in {"in_progress", "queued"},
-                response_body=_response_body(response),
-            )
-        usage = getattr(response, "usage", None)
-        usage_dict = (
-            usage.model_dump(mode="json", exclude_none=True)
-            if usage is not None and hasattr(usage, "model_dump")
-            else {}
-        )
-        return {
-            "response_text": response_text,
-            "response_id": str(getattr(response, "id", "") or ""),
-            "model_version": str(
-                getattr(response, "model", "") or self.model
+                reasoning_effort=self.reasoning_effort,
             ),
-            "finish_reason": finish_reason,
-            "input_tokens": int(usage_dict.get("input_tokens", 0) or 0),
-            "output_tokens": int(usage_dict.get("output_tokens", 0) or 0),
-            "usage_metadata": usage_dict,
+            structured_output=StructuredOutput(
+                name=schema_name,
+                schema=schema,
+                strict=True,
+            ),
+            provider_options={"store": False, "truncation": "disabled"},
+        )
+        try:
+            response = self.provider.generate(request)
+        except ProviderCallError as exc:
+            raise OpenAIJudgeCallError(
+                str(exc),
+                retryable=exc.retryable,
+                http_status=exc.http_status,
+                response_body=exc.response_body,
+            ) from exc
+        return {
+            "response_text": response.text,
+            "response_id": response.response_id,
+            "model_version": response.model_version,
+            "finish_reason": response.finish_reason,
+            "input_tokens": response.usage.input_tokens,
+            "output_tokens": response.usage.output_tokens,
+            "usage_metadata": dict(response.usage.metadata),
         }
 
     def close(self) -> None:
-        self.client.close()
+        self.provider.close()

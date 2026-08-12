@@ -17,10 +17,10 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from google.genai import types
 from openai.types.responses.response import Response as OpenAIResponse
+from edu_benchmark.model_providers.vertex_ai import normalize_finish_reason
 
 from .gemini_judge import (
     _build_gemini_response_schema,
-    _normalize_finish_reason,
 )
 from .judge import (
     GOLD_ANSWER_ONLY_CRITERION_NAME_ALIASES,
@@ -285,7 +285,7 @@ def parse_gemini_batch_output(
         )
     response = types.GenerateContentResponse.model_validate(body)
     candidates = response.candidates or []
-    finish_reason = _normalize_finish_reason(
+    finish_reason = normalize_finish_reason(
         candidates[0].finish_reason if candidates else None
     )
     try:

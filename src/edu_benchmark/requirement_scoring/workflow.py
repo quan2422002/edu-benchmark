@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
 import copy
 import importlib.metadata
 import json
@@ -17,7 +16,7 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 
-from vertex_ai_call.requirement_scoring import (  # noqa: E402
+from .core import (
     GenerationConfig,
     RequirementScoringError,
     atomic_write_json,
@@ -44,10 +43,13 @@ from vertex_ai_call.requirement_scoring import (  # noqa: E402
     write_pilot_input,
     write_review_queue,
 )
-from vertex_ai_call.vertex_client import VertexRequirementClient  # noqa: E402
+from .provider import (
+    RequirementResponseClient,
+    build_vertex_requirement_client,
+)
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
 DEFAULT_POOL = (
     DEFAULT_EXPERIMENT
@@ -216,7 +218,7 @@ def _load_schema(path: Path) -> dict[str, Any]:
     return resolved
 
 
-def _config_from_args(args: argparse.Namespace) -> GenerationConfig:
+def _config_from_args(args: Any) -> GenerationConfig:
     thinking_level = getattr(args, "thinking_level", None)
     thinking_budget = getattr(args, "thinking_budget", None)
     if (
@@ -242,11 +244,11 @@ def _config_from_args(args: argparse.Namespace) -> GenerationConfig:
     )
 
 
-def _is_calibration(args: argparse.Namespace) -> bool:
+def _is_calibration(args: Any) -> bool:
     return getattr(args, "command", "pilot") == "calibration"
 
 
-def _is_full(args: argparse.Namespace) -> bool:
+def _is_full(args: Any) -> bool:
     return getattr(args, "command", "pilot") in {
         "full",
         "retry-failed",
@@ -254,7 +256,7 @@ def _is_full(args: argparse.Namespace) -> bool:
     }
 
 
-def _pilot_directory(args: argparse.Namespace) -> Path:
+def _pilot_directory(args: Any) -> Path:
     bundle_name = getattr(args, "bundle_name", None)
     if bundle_name:
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", bundle_name):
@@ -269,7 +271,7 @@ def _pilot_directory(args: argparse.Namespace) -> Path:
     return args.output_root / "pilot_v4"
 
 
-def _load_scoring_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
+def _load_scoring_rows(args: Any) -> list[dict[str, Any]]:
     if _is_calibration(args):
         return load_calibration_cases(args.calibration_input)
     if _is_full(args):
@@ -288,17 +290,23 @@ def _manifest_path(path: Path) -> str:
 
 def _planned_manifest(
     *,
-    args: argparse.Namespace,
+    args: Any,
     pilot_rows: Sequence[Mapping[str, Any]],
     generation_config: GenerationConfig,
 ) -> dict[str, Any]:
+    model_policy = generation_config.model_policy()
+    execution_policy = generation_config.execution_policy()
     ordered_ids = [row["benchmark_candidate_id"] for row in pilot_rows]
     prompt_hash = sha256_file(args.prompt)
     schema_hash = sha256_file(args.schema)
     code_paths = (
-        REPOSITORY_ROOT / "src/vertex_ai_call/requirement_scoring.py",
-        REPOSITORY_ROOT / "src/vertex_ai_call/vertex_client.py",
-        REPOSITORY_ROOT / "src/vertex_ai_call/run_requirement_scoring.py",
+        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/core.py",
+        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/provider.py",
+        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/workflow.py",
+        REPOSITORY_ROOT
+        / "src/edu_benchmark/model_providers/vertex_ai/provider.py",
+        REPOSITORY_ROOT
+        / "scripts/requirement_scoring/run_requirement_scoring.py",
     )
     if _is_full(args):
         input_manifest = {
@@ -370,7 +378,7 @@ def _planned_manifest(
             "api_version": "v1",
             "project": args.project,
             "location": args.location,
-            "model": generation_config.model,
+            "model": model_policy.model,
             "sdk_package": "google-genai",
             "sdk_version": importlib.metadata.version("google-genai"),
             "response_mime_type": "application/json",
@@ -389,17 +397,17 @@ def _planned_manifest(
             ],
         },
         "runtime": {
-            "concurrency": generation_config.concurrency,
+            "concurrency": execution_policy.concurrency,
             "retry_strategy": "retry_failed_candidates_after_each_full_sweep",
-            "retry_count": generation_config.max_retries,
+            "retry_count": execution_policy.max_retries,
             "retry_base_delay_seconds": (
-                generation_config.retry_base_delay_seconds
+                execution_policy.retry_base_delay_seconds
             ),
-            "timeout_seconds": generation_config.timeout_seconds,
+            "timeout_seconds": model_policy.timeout_seconds,
             "monetary_budget_usd": None,
             "cost_guard": "request_ceiling",
         },
-        "request_ceiling": generation_config.max_requests,
+        "request_ceiling": execution_policy.max_requests,
         "api_request_attempt_count": 0,
         "runs": {
             run_id: {
@@ -416,7 +424,7 @@ def _planned_manifest(
     }
 
 
-def prepare(args: argparse.Namespace) -> dict[str, Any]:
+def prepare(args: Any) -> dict[str, Any]:
     validate_snapshot_manifest(args.snapshot_manifest)
     validate_specification_manifest(args.spec_manifest, REPOSITORY_ROOT)
     rows = load_grounding_pool(args.pool)
@@ -430,18 +438,19 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
     pilot_input = pilot_dir / "pilot_input.csv"
     manifest_path = pilot_dir / "run_manifest.json"
     generation_config = _config_from_args(args)
+    execution_policy = generation_config.execution_policy()
     run_count = 1 if _is_full(args) else 2
     minimum_requests = len(pilot_rows) * run_count
-    if generation_config.max_requests < minimum_requests:
+    if execution_policy.max_requests < minimum_requests:
         raise RequirementScoringError(
             f"max_requests must be at least {minimum_requests} for "
             f"{run_count} complete run(s)"
         )
-    if generation_config.concurrency < 1:
+    if execution_policy.concurrency < 1:
         raise RequirementScoringError("concurrency must be at least 1")
-    if generation_config.max_retries < 0:
+    if execution_policy.max_retries < 0:
         raise RequirementScoringError("max_retries must not be negative")
-    if generation_config.retry_base_delay_seconds < 0:
+    if execution_policy.retry_base_delay_seconds < 0:
         raise RequirementScoringError(
             "retry_base_delay_seconds must not be negative"
         )
@@ -512,7 +521,7 @@ def _completed_records(path: Path, run_id: str) -> dict[str, dict[str, Any]]:
 
 def _generate_record(
     *,
-    live_client: VertexRequirementClient,
+    live_client: RequirementResponseClient,
     row: Mapping[str, Any],
     request_hash: str,
     run_id: str,
@@ -560,10 +569,10 @@ def _safe_failure(
 
 
 def execute_run(
-    args: argparse.Namespace,
+    args: Any,
     *,
     run_id: str,
-    client: VertexRequirementClient | None = None,
+    client: RequirementResponseClient | None = None,
     additional_retry_attempts: int = 0,
 ) -> None:
     if not args.execute_api:
@@ -575,6 +584,7 @@ def execute_run(
         raise RequirementScoringError("Run prepare before calling Vertex AI")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     generation_config = _config_from_args(args)
+    execution_policy = generation_config.execution_policy()
     if canonical_json_hash(generation_config.as_dict()) != manifest.get(
         "generation_config_sha256"
     ):
@@ -598,7 +608,7 @@ def execute_run(
     prompt = args.prompt.read_text(encoding="utf-8")
     response_schema = _load_schema(args.schema)
     owns_client = client is None
-    live_client = client or VertexRequirementClient(
+    live_client = client or build_vertex_requirement_client(
         project=args.project,
         location=args.location,
         system_prompt=prompt,
@@ -647,12 +657,12 @@ def execute_run(
                 "additional_retry_attempts must not be negative"
             )
         max_attempts_per_candidate = (
-            generation_config.max_retries + 1 + additional_retry_attempts
+            execution_policy.max_retries + 1 + additional_retry_attempts
         )
         retry_sweep = int(run_state.get("retry_sweeps_completed", 0))
         progress_enabled = bool(getattr(args, "progress", False))
         with ThreadPoolExecutor(
-            max_workers=generation_config.concurrency,
+            max_workers=execution_policy.concurrency,
             thread_name_prefix=f"vertex-{run_id}",
         ) as executor:
             while pending:
@@ -665,7 +675,7 @@ def execute_run(
                     < max_attempts_per_candidate
                 ]
                 request_capacity = (
-                    generation_config.max_requests
+                    execution_policy.max_requests
                     - int(manifest["api_request_attempt_count"])
                 )
                 if not eligible or request_capacity <= 0:
@@ -698,7 +708,7 @@ def execute_run(
                     label=f"Run {run_id.upper()} | {sweep_label}",
                     total=len(sweep),
                     overall_total=len(pilot_rows),
-                    request_ceiling=generation_config.max_requests,
+                    request_ceiling=execution_policy.max_requests,
                     enabled=progress_enabled,
                 )
                 processed_in_sweep = 0
@@ -785,16 +795,16 @@ def execute_run(
                 if (
                     not retryable
                     or manifest["api_request_attempt_count"]
-                    >= generation_config.max_requests
+                    >= execution_policy.max_requests
                 ):
                     break
                 retry_sweep += 1
                 run_state["retry_sweeps_completed"] = retry_sweep
                 jitter = random.Random(
                     f"{generation_config.seed}:{run_id}:{retry_sweep}"
-                ).uniform(0.0, generation_config.retry_base_delay_seconds)
+                ).uniform(0.0, execution_policy.retry_base_delay_seconds)
                 delay = min(
-                    generation_config.retry_base_delay_seconds
+                    execution_policy.retry_base_delay_seconds
                     * (2 ** (retry_sweep - 1))
                     + jitter,
                     30.0,
@@ -858,7 +868,7 @@ def execute_run(
             live_client.close()
 
 
-def finalize(args: argparse.Namespace) -> dict[str, Any]:
+def finalize(args: Any) -> dict[str, Any]:
     pilot_dir = _pilot_directory(args)
     manifest_path = pilot_dir / "run_manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -903,7 +913,7 @@ def finalize(args: argparse.Namespace) -> dict[str, Any]:
     return manifest
 
 
-def finalize_full(args: argparse.Namespace) -> dict[str, Any]:
+def finalize_full(args: Any) -> dict[str, Any]:
     """Validate a full single-run bundle without doing semantic analysis."""
 
     bundle_dir = _pilot_directory(args)
@@ -965,7 +975,7 @@ def finalize_full(args: argparse.Namespace) -> dict[str, Any]:
     return manifest
 
 
-def run_full_pilot(args: argparse.Namespace) -> None:
+def run_full_pilot(args: Any) -> None:
     if not args.execute_api:
         raise RequirementScoringError(
             "The pilot command requires --execute-api; no request was sent"
@@ -984,7 +994,7 @@ def run_full_pilot(args: argparse.Namespace) -> None:
         )
 
 
-def run_full_dataset(args: argparse.Namespace) -> None:
+def run_full_dataset(args: Any) -> None:
     if not args.execute_api:
         raise RequirementScoringError(
             "The full command requires --execute-api; no request was sent"
@@ -1003,9 +1013,9 @@ def run_full_dataset(args: argparse.Namespace) -> None:
 
 
 def retry_failed_full(
-    args: argparse.Namespace,
+    args: Any,
     *,
-    client: VertexRequirementClient | None = None,
+    client: RequirementResponseClient | None = None,
 ) -> None:
     """Retry only missing records from a failed full bundle."""
 
@@ -1092,160 +1102,3 @@ def retry_failed_full(
             f"{completed_manifest['integrity']['record_count']}",
             file=sys.stderr,
         )
-
-
-def add_common_arguments(
-    parser: argparse.ArgumentParser,
-    *,
-    default_max_requests: int = 120,
-    default_concurrency: int = 20,
-) -> None:
-    parser.add_argument("--pool", type=Path, default=DEFAULT_POOL)
-    parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
-    parser.add_argument(
-        "--bundle-name",
-        help=(
-            "Name of the output bundle below --output-root; "
-            "defaults to the active bundle for the selected command"
-        ),
-    )
-    parser.add_argument("--prompt", type=Path, default=DEFAULT_PROMPT)
-    parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA)
-    parser.add_argument("--spec-manifest", type=Path, default=DEFAULT_SPEC_MANIFEST)
-    parser.add_argument(
-        "--calibration-input",
-        type=Path,
-        default=DEFAULT_CALIBRATION_INPUT,
-    )
-    parser.add_argument(
-        "--snapshot-manifest",
-        type=Path,
-        default=DEFAULT_SNAPSHOT_MANIFEST,
-    )
-    parser.add_argument("--project", default=DEFAULT_PROJECT)
-    parser.add_argument("--location", default=DEFAULT_LOCATION)
-    parser.add_argument("--model", default="gemini-3.5-flash")
-    parser.add_argument(
-        "--temperature",
-        type=float,
-        help="Legacy sampling override; omit for Gemini 3 models",
-    )
-    parser.add_argument(
-        "--top-p",
-        type=float,
-        help="Legacy sampling override; omit for Gemini 3 models",
-    )
-    parser.add_argument("--max-output-tokens", type=int, default=4096)
-    parser.add_argument("--seed", type=int, default=20260727)
-    parser.add_argument(
-        "--thinking-budget",
-        type=int,
-        help="Legacy Gemini 2.5 thinking budget; mutually exclusive with level",
-    )
-    parser.add_argument(
-        "--thinking-level",
-        choices=("MINIMAL", "LOW", "MEDIUM", "HIGH"),
-        help="Gemini 3 thinking level; defaults to MEDIUM for Gemini 3",
-    )
-    parser.add_argument(
-        "--include-thoughts",
-        action=argparse.BooleanOptionalAction,
-        default=False,
-        help="Include thought summaries in the response (default: disabled)",
-    )
-    parser.add_argument("--selection-seed", type=int, default=20260727)
-    parser.add_argument("--timeout-seconds", type=float, default=120.0)
-    parser.add_argument("--max-retries", type=int, default=3)
-    parser.add_argument(
-        "--max-requests",
-        type=int,
-        default=default_max_requests,
-    )
-    parser.add_argument(
-        "--concurrency",
-        type=int,
-        default=default_concurrency,
-    )
-    parser.add_argument("--retry-base-delay-seconds", type=float, default=2.0)
-    parser.add_argument("--spot-check-count", type=int, default=4)
-    parser.add_argument(
-        "--progress",
-        action=argparse.BooleanOptionalAction,
-        default=True,
-        help="Show terminal progress bars (use --no-progress to disable)",
-    )
-
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Vertex AI pedagogical-principle requirement scoring pilot"
-    )
-    subparsers = parser.add_subparsers(dest="command", required=True)
-    for command in ("prepare", "finalize", "pilot", "calibration"):
-        subparser = subparsers.add_parser(command)
-        add_common_arguments(subparser)
-        if command in {"pilot", "calibration"}:
-            subparser.add_argument("--execute-api", action="store_true")
-    full_parser = subparsers.add_parser("full")
-    add_common_arguments(
-        full_parser,
-        default_max_requests=2500,
-        default_concurrency=20,
-    )
-    full_parser.add_argument("--execute-api", action="store_true")
-    retry_parser = subparsers.add_parser("retry-failed")
-    add_common_arguments(
-        retry_parser,
-        default_max_requests=2500,
-        default_concurrency=20,
-    )
-    retry_parser.add_argument("--additional-retries", type=int, default=2)
-    retry_parser.add_argument("--execute-api", action="store_true")
-    refresh_parser = subparsers.add_parser("refresh-full-manifest")
-    add_common_arguments(
-        refresh_parser,
-        default_max_requests=2500,
-        default_concurrency=20,
-    )
-    run_parser = subparsers.add_parser("run")
-    add_common_arguments(run_parser)
-    run_parser.add_argument("--run-id", choices=("a", "b"), required=True)
-    run_parser.add_argument("--execute-api", action="store_true")
-    return parser
-
-
-def main(argv: Sequence[str] | None = None) -> int:
-    parser = build_parser()
-    args = parser.parse_args(argv)
-    args.pool = args.pool.resolve()
-    args.output_root = args.output_root.resolve()
-    args.prompt = args.prompt.resolve()
-    args.schema = args.schema.resolve()
-    args.spec_manifest = args.spec_manifest.resolve()
-    args.calibration_input = args.calibration_input.resolve()
-    args.snapshot_manifest = args.snapshot_manifest.resolve()
-    try:
-        if args.command == "prepare":
-            prepare(args)
-        elif args.command == "run":
-            execute_run(args, run_id=args.run_id)
-        elif args.command == "finalize":
-            finalize(args)
-        elif args.command in {"pilot", "calibration"}:
-            run_full_pilot(args)
-        elif args.command == "full":
-            run_full_dataset(args)
-        elif args.command == "retry-failed":
-            retry_failed_full(args)
-        elif args.command == "refresh-full-manifest":
-            finalize_full(args)
-        else:
-            parser.error(f"Unsupported command: {args.command}")
-    except (RequirementScoringError, OSError, RuntimeError) as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        return 2
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

@@ -2,12 +2,17 @@
 
 from __future__ import annotations
 
-import threading
 from typing import Any
 
-import google.auth
-from google import genai
-from google.genai import types
+from edu_benchmark.model_providers import (
+    GenerationSettings,
+    ModelMessage,
+    ModelProvider,
+    ModelRequest,
+    ProviderCallError,
+    StructuredOutput,
+)
+from edu_benchmark.model_providers.vertex_ai import VertexAIProvider
 
 from .judge import PreparedJudgeRequest
 from .openai_judge import build_judge_response_schema
@@ -26,58 +31,6 @@ class GeminiJudgeCallError(RuntimeError):
         super().__init__(message)
         self.retryable = retryable
         self.http_status = http_status
-
-
-def _normalize_finish_reason(value: Any) -> str:
-    if value is None:
-        return "UNKNOWN"
-    name = getattr(value, "name", None)
-    if isinstance(name, str) and name.strip():
-        text = name
-    else:
-        text = str(getattr(value, "value", value))
-    return text.rsplit(".", 1)[-1].strip().upper() or "UNKNOWN"
-
-
-def _is_retryable_exception(
-    exc: BaseException, status: int | None
-) -> bool:
-    """Classify transient HTTP and transport failures for judge retry."""
-
-    if status in {408, 409, 425, 429} or (
-        isinstance(status, int) and 500 <= status <= 599
-    ):
-        return True
-    retryable_names = {
-        "ConnectError",
-        "ConnectTimeout",
-        "DeadlineExceeded",
-        "NetworkError",
-        "PoolTimeout",
-        "ReadTimeout",
-        "ResourceExhausted",
-        "ServiceUnavailable",
-        "TimeoutException",
-    }
-    retryable_messages = (
-        "temporary failure in name resolution",
-        "name or service not known",
-        "connection reset",
-        "connection refused",
-        "network is unreachable",
-        "temporarily unavailable",
-    )
-    seen: set[int] = set()
-    current: BaseException | None = exc
-    while current is not None and id(current) not in seen:
-        seen.add(id(current))
-        if type(current).__name__ in retryable_names:
-            return True
-        message = str(current).lower()
-        if any(value in message for value in retryable_messages):
-            return True
-        current = current.__cause__ or current.__context__
-    return False
 
 
 def _build_gemini_response_schema(
@@ -108,6 +61,7 @@ class GeminiVertexJudgeCaller:
         thinking_level: str = "MEDIUM",
         temperature: float | None = None,
         timeout_ms: int = 180_000,
+        provider: ModelProvider | None = None,
     ) -> None:
         if max_output_tokens <= 0:
             raise ValueError("max_output_tokens must be positive")
@@ -116,113 +70,53 @@ class GeminiVertexJudgeCaller:
         normalized_level = thinking_level.strip().upper()
         if normalized_level not in {"MINIMAL", "LOW", "MEDIUM", "HIGH"}:
             raise ValueError("invalid Gemini thinking level")
-        self.project = project
-        self.location = location
         self.model = model
         self.max_output_tokens = max_output_tokens
         self.seed = seed
         self.thinking_level = normalized_level
         self.temperature = temperature
         self.timeout_ms = timeout_ms
-        self.credentials, _ = google.auth.default(
-            quota_project_id=self.project
+        self.provider = provider or VertexAIProvider(
+            project=project,
+            location=location,
         )
-        self.local = threading.local()
-        self.clients: list[Any] = []
-        self.lock = threading.Lock()
-
-    def _client(self) -> Any:
-        client = getattr(self.local, "client", None)
-        if client is None:
-            client = genai.Client(
-                vertexai=True,
-                project=self.project,
-                location=self.location,
-                credentials=self.credentials,
-                http_options=types.HttpOptions(
-                    api_version="v1", timeout=self.timeout_ms
-                ),
-            )
-            self.local.client = client
-            with self.lock:
-                self.clients.append(client)
-        return client
 
     def call(self, prepared: PreparedJudgeRequest) -> dict[str, Any]:
-        config_kwargs: dict[str, Any] = {
-            "system_instruction": prepared.system_prompt,
-            "max_output_tokens": self.max_output_tokens,
-            "seed": self.seed,
-            "response_mime_type": "application/json",
-            "response_json_schema": _build_gemini_response_schema(prepared),
-            "thinking_config": types.ThinkingConfig(
-                thinking_level=getattr(
-                    types.ThinkingLevel, self.thinking_level
-                ),
-                include_thoughts=False,
+        request = ModelRequest(
+            backend="vertex_ai",
+            model=self.model,
+            system_instruction=prepared.system_prompt,
+            messages=(ModelMessage(role="user", content=prepared.user_prompt),),
+            generation=GenerationSettings(
+                max_output_tokens=self.max_output_tokens,
+                seed=self.seed,
+                thinking_level=self.thinking_level,
+                include_thoughts=True,
+                temperature=self.temperature,
+                timeout_seconds=self.timeout_ms / 1000,
             ),
-        }
-        if self.temperature is not None:
-            config_kwargs["temperature"] = self.temperature
+            structured_output=StructuredOutput(
+                name="blind_pairwise_judgment_gemini",
+                schema=_build_gemini_response_schema(prepared),
+            ),
+        )
         try:
-            response = self._client().models.generate_content(
-                model=self.model,
-                contents=prepared.user_prompt,
-                config=types.GenerateContentConfig(**config_kwargs),
-            )
-        except Exception as exc:
-            status = getattr(exc, "status_code", None)
-            if not isinstance(status, int):
-                code = getattr(exc, "code", None)
-                status = code if isinstance(code, int) else None
+            response = self.provider.generate(request)
+        except ProviderCallError as exc:
             raise GeminiJudgeCallError(
-                f"Vertex Gemini call failed: {exc}",
-                retryable=_is_retryable_exception(exc, status),
-                http_status=status,
+                str(exc),
+                retryable=exc.retryable,
+                http_status=exc.http_status,
             ) from exc
-
-        candidates = getattr(response, "candidates", None) or []
-        finish_reason = _normalize_finish_reason(
-            getattr(candidates[0], "finish_reason", None)
-            if candidates
-            else None
-        )
-        try:
-            response_text = response.text
-        except (AttributeError, ValueError):
-            response_text = ""
-        if not isinstance(response_text, str) or not response_text.strip():
-            raise GeminiJudgeCallError(
-                f"empty Gemini response ({finish_reason})",
-                retryable=True,
-            )
-        usage = getattr(response, "usage_metadata", None)
-        usage_dict = (
-            usage.model_dump(mode="json", exclude_none=True)
-            if usage is not None and hasattr(usage, "model_dump")
-            else {}
-        )
         return {
-            "response_text": response_text,
-            "response_id": str(
-                getattr(response, "response_id", "") or ""
-            ),
-            "model_version": str(
-                getattr(response, "model_version", "") or self.model
-            ),
-            "finish_reason": finish_reason,
-            "input_tokens": int(
-                usage_dict.get("prompt_token_count", 0) or 0
-            ),
-            "output_tokens": int(
-                (usage_dict.get("candidates_token_count", 0) or 0)
-                + (usage_dict.get("thoughts_token_count", 0) or 0)
-            ),
-            "usage_metadata": usage_dict,
+            "response_text": response.text,
+            "response_id": response.response_id,
+            "model_version": response.model_version,
+            "finish_reason": response.finish_reason,
+            "input_tokens": response.usage.input_tokens,
+            "output_tokens": response.usage.output_tokens,
+            "usage_metadata": dict(response.usage.metadata),
         }
 
     def close(self) -> None:
-        for client in self.clients:
-            close = getattr(client, "close", None)
-            if callable(close):
-                close()
+        self.provider.close()

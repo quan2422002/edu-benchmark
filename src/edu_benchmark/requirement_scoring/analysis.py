@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
 import csv
 import hashlib
 import json
@@ -16,7 +15,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 
-from vertex_ai_call.requirement_scoring import (  # noqa: E402
+from .core import (
     PRINCIPLE_IDS,
     GenerationConfig,
     RequirementScoringError,
@@ -34,7 +33,7 @@ from vertex_ai_call.requirement_scoring import (  # noqa: E402
 )
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
 DEFAULT_BUNDLE = (
     DEFAULT_EXPERIMENT
@@ -1214,47 +1213,3 @@ def analyze_full_run(
     )
     return analysis
 
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Analyze the validated full requirement-scoring run"
-    )
-    parser.add_argument("--bundle-dir", type=Path, default=DEFAULT_BUNDLE)
-    parser.add_argument("--pool", type=Path, default=DEFAULT_POOL)
-    parser.add_argument("--trace", type=Path, default=DEFAULT_TRACE)
-    parser.add_argument(
-        "--paper-registry",
-        type=Path,
-        default=DEFAULT_PAPER_REGISTRY,
-    )
-    parser.add_argument("--expected-candidates", type=int, default=2028)
-    parser.add_argument("--expected-families", type=int, default=665)
-    return parser
-
-
-def main(argv: Sequence[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
-    try:
-        analysis = analyze_full_run(
-            bundle_dir=args.bundle_dir.resolve(),
-            pool_path=args.pool.resolve(),
-            trace_path=args.trace.resolve(),
-            paper_registry_path=args.paper_registry.resolve(),
-            expected_candidate_count=args.expected_candidates,
-            expected_family_count=args.expected_families,
-        )
-    except (RequirementScoringError, OSError, ValueError) as exc:
-        print(f"ERROR: {exc}", file=__import__("sys").stderr)
-        return 2
-    counts = analysis["eligibility"]["counts"]
-    print(
-        "Plan 03 completed: "
-        f"eligible={counts['eligible_without_plan03_review']}, "
-        f"review={counts['needs_uet_review']}, "
-        f"blocked={counts['blocked']}"
-    )
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

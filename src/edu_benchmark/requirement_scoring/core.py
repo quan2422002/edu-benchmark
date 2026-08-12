@@ -99,8 +99,54 @@ class RequirementScoringError(ValueError):
 
 
 @dataclass(frozen=True)
+class ModelGenerationPolicy:
+    """Values that can change one provider request or response."""
+
+    model: str
+    temperature: float | None
+    top_p: float | None
+    max_output_tokens: int
+    seed: int
+    thinking_budget: int | None
+    thinking_level: str | None
+    include_thoughts: bool
+    timeout_seconds: float
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "model": self.model,
+            "temperature": self.temperature,
+            "top_p": self.top_p,
+            "max_output_tokens": self.max_output_tokens,
+            "seed": self.seed,
+            "thinking_budget": self.thinking_budget,
+            "thinking_level": self.thinking_level,
+            "include_thoughts": self.include_thoughts,
+            "timeout_seconds": self.timeout_seconds,
+        }
+
+
+@dataclass(frozen=True)
+class RunExecutionPolicy:
+    """Retry, request-budget, and concurrency controls owned by the workflow."""
+
+    max_retries: int
+    max_requests: int
+    concurrency: int
+    retry_base_delay_seconds: float
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "max_retries": self.max_retries,
+            "max_requests": self.max_requests,
+            "concurrency": self.concurrency,
+            "retry_base_delay_seconds": self.retry_base_delay_seconds,
+        }
+
+
+@dataclass(frozen=True)
 class GenerationConfig:
-    """Registered generation configuration used by both pilot runs."""
+    """Backward-compatible registered config with explicit policy views."""
 
     model: str
     temperature: float | None = None
@@ -146,34 +192,37 @@ class GenerationConfig:
 
     def as_dict(self) -> dict[str, Any]:
         return {
-            "model": self.model,
-            "temperature": self.temperature,
-            "top_p": self.top_p,
-            "max_output_tokens": self.max_output_tokens,
-            "seed": self.seed,
-            "thinking_budget": self.thinking_budget,
-            "thinking_level": self.thinking_level,
-            "include_thoughts": self.include_thoughts,
-            "timeout_seconds": self.timeout_seconds,
-            "max_retries": self.max_retries,
-            "max_requests": self.max_requests,
-            "concurrency": self.concurrency,
-            "retry_base_delay_seconds": self.retry_base_delay_seconds,
+            **self.model_policy().as_dict(),
+            **self.execution_policy().as_dict(),
         }
+
+    def model_policy(self) -> ModelGenerationPolicy:
+        return ModelGenerationPolicy(
+            model=self.model,
+            temperature=self.temperature,
+            top_p=self.top_p,
+            max_output_tokens=self.max_output_tokens,
+            seed=self.seed,
+            thinking_budget=self.thinking_budget,
+            thinking_level=self.thinking_level,
+            include_thoughts=self.include_thoughts,
+            timeout_seconds=self.timeout_seconds,
+        )
+
+    def execution_policy(self) -> RunExecutionPolicy:
+        return RunExecutionPolicy(
+            max_retries=self.max_retries,
+            max_requests=self.max_requests,
+            concurrency=self.concurrency,
+            retry_base_delay_seconds=self.retry_base_delay_seconds,
+        )
 
     def request_dict(self) -> dict[str, Any]:
         """Return only values that can change one model response."""
 
-        return {
-            "model": self.model,
-            "temperature": self.temperature,
-            "top_p": self.top_p,
-            "max_output_tokens": self.max_output_tokens,
-            "seed": self.seed,
-            "thinking_budget": self.thinking_budget,
-            "thinking_level": self.thinking_level,
-            "include_thoughts": self.include_thoughts,
-        }
+        policy = self.model_policy().as_dict()
+        policy.pop("timeout_seconds")
+        return policy
 
 
 def utc_now() -> str:
