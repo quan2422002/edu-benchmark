@@ -28,7 +28,7 @@ providers = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["edu_benchmark*", "vertex_ai_call*"]
+include = ["edu_benchmark*"]
 namespaces = false
 
 [tool.pytest.ini_options]
