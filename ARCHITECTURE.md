@@ -60,13 +60,15 @@ In plain language: the user directs the orchestrator; the orchestrator delegates
 | Experiment governance v1 | `experiments/_templates/`, `src/edu_benchmark/governance/`, `scripts/governance/` | 20260806 Plan 01 | Approved baseline is the authorization surface; status YAML, chronological amendments, artifact budgets, local links, metadata, and coordination records are validated offline |
 | Python packaging and offline CI | `pyproject.toml`, `environment.yml`, `requirements.txt`, `.github/workflows/offline-tests.yml` | 20260806 Plan 02 | Src-layout editable package for Python 3.12; core/dev/provider groups are explicit; direct dependencies are pinned; Ubuntu CI runs governance plus all offline tests without credentials or provider calls |
 | Shared benchmark registry | `shared/benchmark/`, `src/edu_benchmark/benchmark_registry/`, `scripts/benchmark_registry/` | 20260806 Plan 03 | Seven versioned bundles cover the 18-criterion checklist, 665 Phase-1 dialogues, 2,028 validated conversion candidates, the provisional 1,400/628/0 selection state, and provisional capability/principle/rubric specifications. Promotion is staged, idempotent, checksum-validated, and does not copy raw XLSX/model JSONL or alter scientific authority |
+| Portable experiment runtime | `src/edu_benchmark/experiment_runtime/`, `experiments/20260806_145124/configs/`, `experiments/20260806_145124/runbooks/` | 20260806 Plan 04 | YAML configs contain repository-relative paths only. One fail-closed contract validates the supported pipeline, execution, input roles/formats, output schemas, parameters, and offline provenance before preflight or run. Preflight preserves an existing completed manifest and reports whether it matches the current fingerprint; validation recomputes the fingerprint and checks the recorded runtime contract before accepting the offline Section V result |
+| Tầng nhà cung cấp mô hình | `src/edu_benchmark/model_providers/` | 20260806 Plan 05 | Mô-đun hạ tầng độc lập cung cấp hợp đồng yêu cầu/phản hồi/lỗi chuẩn hóa, registry mở rộng và implementation hiện hành cho Vertex AI cùng OpenAI. Mô-đun không import workflow, không đọc artifact benchmark và được kiểm thử bằng SDK client giả lập. |
+| Chấm yêu cầu nguyên tắc | `src/edu_benchmark/requirement_scoring/`, `scripts/requirement_scoring/`, `experiments/20260806_145124/configs/requirement-scoring-20260727-v1.yaml`, `shared/prompts/benchmark_candidate_task_assigning/` và `experiments/20260727_170150/outputs/` | 20260727 Plans 01–03 / 20260806 Plan 05 | Logic chấm, phân tích và export thuộc package nghiệp vụ; ba CLI công khai nhận config khả chuyển rồi chuyển tiếp vào package. Kết nối Vertex AI đi qua `model_providers`; namespace tạm `vertex_ai_call` đã bị loại bỏ. Workflow chỉ retry lỗi provider được phân loại có thể thử lại và phản hồi model sai lược đồ; JSONL vẫn được ghi tăng dần. P05-A003 dùng `include_thoughts=true` cho các đường Gemini hiện hành. |
 | Modular plans | `experiments/<id>/plans/` | Respective plan | Active |
 | Shared raw data | `shared/raw_data/` | 20260709 Plan 02 | Implemented for HNMU dialogue manifests lớp 6–9; Plan 04 audit outputs cover lớp 6–7 and a separate follow-up run for lớp 8–9 |
 | Shared learning resources | `shared/learning_resources/` | 20260709 Plan 02 layout / Plan 03 content | SGK/SGV images, derived PDFs, registries, Nguyen OCR Markdown for SGK/SGV Tin học 6–9, `ocr_text_manifest.csv`, `learning_resource_fragments.csv`, a rebuildable SQLite FTS retrieval index, and `agent_context/` for audit-agent navigation are available; OCR/MinerU probe outputs remain experiment artifacts and are not the primary retrieval source |
 | Shared project package | `src/edu_benchmark/` | 20260709 Plan 02 layout; Plan 03/04 and 20260722 Plans 01–03 add logic | Data I/O, learning-resource fragmentation/retrieval, dialogue-audit v0, strict checklist-to-sample aggregation, deterministic benchmark conversion, and provisional benchmark-specification validation/publication tooling are implemented; model evaluation remains a later plan |
 | Benchmark conversion v0 | `src/edu_benchmark/benchmark_conversion/` and `scripts/benchmark_conversion/` | 20260722 Plans 01–02 | Implemented for schema validation, phase-1 evidence aggregation, hash-guarded correction overlays, pass-input joins, the legacy `final_tutor_response` pilot, and reproducible `each_tutor_turn` pilot/full conversion. Published bundles use atomic staging, explicit run status, exhaustive regex/structural validation, and raw-level `conversion_dispositions.csv`. The full pool contains 2,028 preliminary candidates from 665 pass dialogues |
 | Chuẩn bị đặc tả benchmark | `src/edu_benchmark/benchmark_specification/` và `scripts/benchmark_specification/` | 20260722 Plan 03 A–C | Đã có khóa input, census/lấy mẫu xác định, mô hình sáu năng lực, schema một nhiệm vụ và sáu nguyên tắc KMP, truy vết nguồn và cơ chế đóng khi lỗi. Nhánh tám nhiệm vụ, schema chính–phụ và phương pháp v3 dùng tập nguyên tắc không thứ tự đều là legacy/chẩn đoán; chưa có nhãn nguyên tắc chính thức. Grounding pool có đủ 2.028 ứng viên và là đầu vào được kế thừa bởi experiment `20260727_170150`. |
-| Chấm yêu cầu nguyên tắc | `src/vertex_ai_call/`, `shared/prompts/benchmark_candidate_task_assigning/` và `experiments/20260727_170150/outputs/` | 20260727 Plans 01–03 | Plan 01 công bố V4; Plan 02 hoàn thành full single-run 2.028 candidate và 12.168 score bằng Gemini 3.5 Flash. `analyze_requirement_scoring.py` của Plan 03 kiểm hash/join/request, tính candidate-macro và family-macro, phân bố toàn bộ tập nguyên tắc, semantic lint và eligibility mà không gọi model. UET đã đóng Plan 03 và dùng 1.400 candidate không bị cờ riêng làm pool ưu tiên cho Plan 04; 628 candidate cần review được giữ nguyên làm backlog, 0 candidate bị chặn và review queue 636 dòng gồm 8 mẫu đối chứng. |
 | Thư viện rubric hai tầng | `experiments/20260727_170150/outputs/benchmark_rubric/` | 20260727 Plan 04 | Đã triển khai một task, 4 tiêu chí chung, 18 tiêu chí riêng (3 cho mỗi nguyên tắc), 6 lỗi nghiêm trọng và 29 quan hệ provenance. Rubric chung đo điều kiện nền, rubric riêng đo giá trị tăng thêm; serious error chỉ áp một lần theo `suggested_action` và không được cộng như rubric. Sáu năng lực và sáu nguyên tắc đều được bao phủ; artifact đã qua validator nhưng vẫn là provisional, còn pilot chồng lấn/khả năng phân biệt được hoãn sang Plan 07. |
 | KSE 2026 manuscript workspace | `kse_submit_manuscript/` | KSE manuscript plan | Plan approved and implementation active. `manuscript/main.tex` now contains the first Introduction and Related Work/Background draft; `references.bib` owns cited metadata, while `notes/claim_evidence_registry.csv` remains the claim–evidence control. Technical plans provide versioned paper-update packets; author metadata and PDF compilation are still pending |
 | Quy trình và gói giáo viên | `experiments/20260722_000940/outputs/benchmark_specification/teacher_review_packets/` | 20260722 Plan 03 Workstreams B–D | Hiện lưu hồ sơ UET phê duyệt tạm thời sáu năng lực. Packet C1 của tám nhiệm vụ đã chuyển sang nhánh legacy và không còn chờ review. Packet HNMU hiện hành sẽ là gói tích hợp sáu năng lực–sáu nguyên tắc–rubric–ví dụ sau Workstream D. |
@@ -175,7 +177,7 @@ Windows Python: D:\conda-envs\benchmark_env\python.exe
 Linux Python:   /home/quannda/miniconda3/envs/benchmark_env/bin/python
 ```
 
-Package installation, project scripts, validators, and tests must run with the matching `benchmark_env` interpreter for the active platform. Plan 02 adds a setuptools src-layout package: install pinned direct dependencies from `requirements.txt`, then install the repository with `python -m pip install --no-deps -e .`. Production code, scripts, and tests import `edu_benchmark` or the temporary compatibility package `vertex_ai_call` directly; they do not mutate `sys.path` or import through `src.*`. Agents must not install project packages into Conda base, system Python, or an ad-hoc virtual environment. Temporary isolated build targets are allowed only when an approved plan explicitly requires them and the authoritative validation still uses `benchmark_env`.
+Package installation, project scripts, validators, and tests must run with the matching `benchmark_env` interpreter for the active platform. Plan 02 adds a setuptools src-layout package: install pinned direct dependencies from `requirements.txt`, then install the repository with `python -m pip install --no-deps -e .`. Production code, scripts, and tests import only through `edu_benchmark`; they do not mutate `sys.path` or import through `src.*`. Agents must not install project packages into Conda base, system Python, or an ad-hoc virtual environment. Temporary isolated build targets are allowed only when an approved plan explicitly requires them and the authoritative validation still uses `benchmark_env`.
 
 `environment.yml` declares Python 3.12, pip, ipykernel, the pinned direct pip
 requirements, and editable project install. It is a human-maintained environment
@@ -376,12 +378,24 @@ request `MAX_TOKENS` ở giới hạn 9.000 token.
 
 Section V analysis is a deterministic post-processing layer under
 `src/edu_benchmark/benchmark_evaluation/section_v_ablation.py`, with the thin
-CLI `scripts/benchmark_evaluation/analyze_section_v_ablation.py`. It reads
-only the locked 1,400-candidate pool and the two 4,200-record full judge
-bundles, applies paired family-cluster bootstrap and agreement statistics,
-validates paper-facing anchors, then atomically publishes one
-experiment-scoped `results.json`. This layer never calls model providers and
-does not modify judge or target-response artifacts.
+compatibility CLI `scripts/benchmark_evaluation/analyze_section_v_ablation.py`.
+Plan 04 moved its active defaults into
+`experiments/20260806_145124/configs/section-v-ablation-v1.yaml`; the shared
+runtime resolves those paths independently of CWD and records relative
+provenance in a versioned manifest. It reads only the locked 1,400-candidate
+pool and the two 4,200-record full judge bundles, applies paired family-cluster
+bootstrap and agreement statistics, validates paper-facing anchors, then
+atomically publishes one experiment-scoped result. The Plan 04 rebuild has the
+same semantic SHA-256 as the historical baseline after normalizing only the
+old repository-absolute provenance paths. This layer never calls model
+providers and does not modify judge or target-response artifacts. A later
+preflight check cannot downgrade a completed manifest. Validation rebuilds the
+preflight contract from the current config, input checksums and code hashes,
+then compares it with the stored fingerprint and manifest provenance before
+accepting the result. Preflight and execution share the same run-blocking
+contract; unsupported pipelines, invalid parameters, input-role/format drift,
+output-schema drift, incompatible resume policy, or incomplete offline
+provenance fail with a machine-readable command status and exit code 2.
 
 Later plans must not move canonical logic into runtime adapters or redefine P01 coordination semantics without an explicit architecture decision and migration plan.
 
@@ -405,7 +419,7 @@ Later plans must not move canonical logic into runtime adapters or redefine P01 
   transitive Conda/pip lock is not implemented. `environment.yml` is a
   specification, not a bit-for-bit lock.
 
-Last verified against experiment `20260806_145124` Plan 03 on 2026-08-07.
+Last verified against experiment `20260806_145124` Plan 05 on 2026-08-12.
 
 ### HNMU dialogue auditor specialist
 

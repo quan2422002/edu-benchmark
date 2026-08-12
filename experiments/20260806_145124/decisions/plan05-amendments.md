@@ -48,3 +48,38 @@ Hai sản phẩm máy đọc không thuộc phạm vi dịch:
 
 Điều chỉnh này không thay đổi mã nguồn, hợp đồng, kết quả kiểm thử, trạng thái
 cổng hoặc nội dung benchmark.
+
+## P05-A003 — Hoàn thiện cấu hình vận hành, thinking và chính sách thử lại
+
+Thời điểm: `2026-08-12T17:45:53+07:00`
+Trạng thái: `RECORDED`
+
+Người phụ trách dự án yêu cầu hoàn thiện ba điểm sau khi rà soát cổng đóng:
+
+- chuyển experiment ID, đường dẫn, model, seed, bundle name, giới hạn request,
+  concurrency và các giá trị vận hành riêng của requirement scoring khỏi package
+  nghiệp vụ sang
+  `configs/requirement-scoring-20260727-v1.yaml`; cả ba CLI phải nhận
+  `--config`, còn tham số CLI tường minh tiếp tục được quyền ghi đè;
+- dùng `include_thoughts: true` nhất quán cho các đường Gemini đang hoạt động
+  trong requirement scoring, target generation, synchronous judging và batch
+  judging; đây là thay đổi có chủ đích của người phụ trách dự án, không phải
+  invariant kế thừa từ payload cũ;
+- để workflow requirement scoring chỉ tự thử lại lỗi provider có
+  `retryable=true` và lỗi phản hồi mô hình không đạt lược đồ nghiệp vụ. Lỗi
+  provider không thể thử lại cùng lỗi không được phân loại phải dừng ở candidate
+  đó, trong khi các candidate độc lập khác vẫn được ghi kết quả.
+
+Ảnh hưởng:
+
+- mã nghiệp vụ không còn gắn cứng với experiment `20260727_170150`;
+- tệp kê khai lần chạy mới ghi config ID, đường dẫn tương đối và SHA-256 của
+  config vận hành;
+- các lần gọi Gemini trong tương lai yêu cầu trả thought summary; không chạy lại
+  model và không sửa output lịch sử trong điều chỉnh này;
+- bản ghi lỗi requirement scoring thêm trường `retryable` để giải thích quyết
+  định thử lại.
+
+Khả năng quay lui: đặt `include_thoughts: false` trong một config đã được duyệt
+hoặc quay lại lát cắt trước P05-A003. Không khôi phục hằng số experiment vào
+package nghiệp vụ và không làm mất các response đã ghi tăng dần.

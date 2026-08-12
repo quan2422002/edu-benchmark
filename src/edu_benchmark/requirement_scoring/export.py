@@ -23,39 +23,6 @@ from .core import (
 )
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
-DEFAULT_ANALYSIS = (
-    DEFAULT_EXPERIMENT
-    / "outputs/principle_requirement_scoring/full_gemini35_medium_v1/"
-    "full_run_analysis.json"
-)
-DEFAULT_RUN = (
-    DEFAULT_EXPERIMENT
-    / "outputs/principle_requirement_scoring/full_gemini35_medium_v1/"
-    "run_full.jsonl"
-)
-DEFAULT_GROUNDING_POOL = (
-    DEFAULT_EXPERIMENT
-    / "inherited_resources/from_20260722_000940/benchmark_specification/"
-    "candidate_grounding/candidate_principle_grounding_pool.csv"
-)
-DEFAULT_CANDIDATES = (
-    DEFAULT_EXPERIMENT
-    / "inherited_resources/from_20260722_000940/benchmark_conversion/"
-    "full_v0/benchmark_candidate_splits.csv"
-)
-DEFAULT_TRACE = (
-    DEFAULT_EXPERIMENT
-    / "inherited_resources/from_20260722_000940/benchmark_conversion/"
-    "full_v0/conversion_trace.csv"
-)
-DEFAULT_OUTPUT = (
-    DEFAULT_EXPERIMENT
-    / "outputs/benchmark_candidate_pool/"
-    "eligible_without_plan03_review.csv"
-)
-
 CANDIDATE_HEADER: tuple[str, ...] = (
     "benchmark_candidate_id",
     "sample_id",
@@ -357,4 +324,3 @@ def export_eligible_candidate_pool(
         ),
         "family_count": len({row["sample_id"] for row in output_rows}),
     }
-

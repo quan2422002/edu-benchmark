@@ -8,9 +8,9 @@ approval:
   state: "approved"
   authority: "project_lead"
   approved_at: "2026-08-10T14:44:56+07:00"
-updated_at: "2026-08-11T15:38:46+07:00"
+updated_at: "2026-08-12T17:50:57+07:00"
 current_step: null
-last_amendment: "P05-A002"
+last_amendment: "P05-A003"
 depends_on:
   - "P01"
   - "P02"
@@ -18,7 +18,7 @@ depends_on:
   - "P04"
 gate:
   state: "passed"
-  summary: "Independent Vertex AI/OpenAI provider contracts, requirement-scoring migration, representative judge consumers, thin CLIs, old-namespace removal, offline compatibility, 299 repository tests, packaging, and governance validation passed."
+  summary: "Independent Vertex AI/OpenAI provider contracts, config-driven requirement scoring, authorized Gemini thought summaries, classified retry behavior, representative judge consumers, thin CLIs, old-namespace removal, offline compatibility, packaging, and governance validation passed."
 artifacts:
   - path: "plans/05-src-scripts-boundary-and-runtime-refactor.md"
     kind: "baseline_plan"

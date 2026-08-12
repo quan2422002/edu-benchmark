@@ -347,7 +347,7 @@ class GeminiCaller:
         if self.model.startswith("gemini-3.5"):
             config_kwargs["thinking_config"] = types.ThinkingConfig(
                 thinking_level=types.ThinkingLevel.MEDIUM,
-                include_thoughts=False,
+                include_thoughts=True,
             )
         response = self._client().models.generate_content(
             model=self.model,

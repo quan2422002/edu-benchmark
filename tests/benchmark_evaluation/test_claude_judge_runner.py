@@ -201,6 +201,7 @@ def test_gemini_judge_uses_native_prompts_and_medium_thinking():
     assert request.messages[0].content == "User"
     assert request.system_instruction == "System"
     assert request.generation.thinking_level == "MEDIUM"
+    assert request.generation.include_thoughts is True
     assert request.structured_output.schema["properties"][
         "criterion_judgments"
     ]["minItems"] == len(prepared().rubric_name_to_id)

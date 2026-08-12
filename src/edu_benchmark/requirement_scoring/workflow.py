@@ -1,4 +1,4 @@
-"""CLI for preparing, running, and finalizing the Vertex requirement pilot."""
+"""Workflow for preparing, running, and finalizing requirement scoring."""
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
+from edu_benchmark.model_providers.contracts import ProviderCallError
 
 from .core import (
     GenerationConfig,
@@ -50,27 +51,6 @@ from .provider import (
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
-DEFAULT_POOL = (
-    DEFAULT_EXPERIMENT
-    / "inherited_resources/from_20260722_000940/benchmark_specification/"
-    "candidate_grounding/candidate_principle_grounding_pool.csv"
-)
-DEFAULT_OUTPUT_ROOT = (
-    DEFAULT_EXPERIMENT / "outputs/principle_requirement_scoring"
-)
-DEFAULT_PROMPT = (
-    REPOSITORY_ROOT
-    / "shared/prompts/benchmark_candidate_task_assigning/system_prompt_v4.md"
-)
-DEFAULT_SCHEMA = DEFAULT_OUTPUT_ROOT / "scoring_schema_v2.json"
-DEFAULT_SPEC_MANIFEST = DEFAULT_OUTPUT_ROOT / "specification_manifest_v4.json"
-DEFAULT_CALIBRATION_INPUT = DEFAULT_OUTPUT_ROOT / "calibration_cases_v1.csv"
-DEFAULT_SNAPSHOT_MANIFEST = (
-    DEFAULT_EXPERIMENT / "inherited_resources/snapshot_manifest.csv"
-)
-DEFAULT_PROJECT = "edu-benchmark"
-DEFAULT_LOCATION = "global"
 
 FULL_SINGLE_RUN_LIMITATIONS: tuple[dict[str, str], ...] = (
     {
@@ -235,7 +215,7 @@ def _config_from_args(args: Any) -> GenerationConfig:
         seed=args.seed,
         thinking_budget=thinking_budget,
         thinking_level=thinking_level,
-        include_thoughts=getattr(args, "include_thoughts", False),
+        include_thoughts=args.include_thoughts,
         timeout_seconds=args.timeout_seconds,
         max_retries=args.max_retries,
         max_requests=args.max_requests,
@@ -264,11 +244,12 @@ def _pilot_directory(args: Any) -> Path:
                 "--bundle-name must contain only letters, numbers, '.', '_' or '-'"
             )
         return args.output_root / bundle_name
-    if _is_calibration(args):
-        return args.output_root / "calibration_gemini35_medium_v1"
-    if _is_full(args):
-        return args.output_root / "full_gemini35_medium_v1"
-    return args.output_root / "pilot_v4"
+    default_bundle_name = getattr(args, "default_bundle_name", None)
+    if not default_bundle_name:
+        raise RequirementScoringError(
+            "The selected config does not define a default bundle name"
+        )
+    return args.output_root / default_bundle_name
 
 
 def _load_scoring_rows(args: Any) -> list[dict[str, Any]]:
@@ -300,6 +281,7 @@ def _planned_manifest(
     prompt_hash = sha256_file(args.prompt)
     schema_hash = sha256_file(args.schema)
     code_paths = (
+        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/config.py",
         REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/core.py",
         REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/provider.py",
         REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/workflow.py",
@@ -338,7 +320,12 @@ def _planned_manifest(
             else "stratified_repeatability_pilot"
         )
     return {
-        "experiment_id": "20260727_170150",
+        "experiment_id": args.experiment_id,
+        "operational_config": {
+            "config_id": args.config_id,
+            "path": _manifest_path(args.config),
+            "sha256": sha256_file(args.config),
+        },
         "bundle_version": _pilot_directory(args).name,
         **(
             {}
@@ -559,13 +546,29 @@ def _safe_failure(
     candidate_id: str,
     attempt: int,
     exc: Exception,
+    retryable: bool,
 ) -> dict[str, Any]:
     return {
         "benchmark_candidate_id": candidate_id,
         "attempt": attempt,
+        "retryable": retryable,
         "error_type": type(exc).__name__,
         "error_message": str(exc)[:1000],
     }
+
+
+def _is_retryable_failure(exc: Exception) -> bool:
+    """Retry transient transport errors and invalid model responses only."""
+
+    if isinstance(exc, ProviderCallError):
+        return exc.retryable
+    # These errors are raised after a provider response fails the task schema.
+    # A fresh generation can repair malformed JSON or semantically invalid output.
+    if isinstance(exc, RequirementScoringError):
+        return True
+    # Unknown programming/configuration failures fail closed instead of spending
+    # more provider requests without an explicit retry classification.
+    return False
 
 
 def execute_run(
@@ -660,6 +663,10 @@ def execute_run(
             execution_policy.max_retries + 1 + additional_retry_attempts
         )
         retry_sweep = int(run_state.get("retry_sweeps_completed", 0))
+        terminal_failed_items: dict[
+            str, tuple[dict[str, Any], str]
+        ] = {}
+        terminal_failures: dict[str, dict[str, Any]] = {}
         progress_enabled = bool(getattr(args, "progress", False))
         with ThreadPoolExecutor(
             max_workers=execution_policy.concurrency,
@@ -697,7 +704,10 @@ def execute_run(
                 manifest["api_request_attempt_count"] += len(sweep)
                 run_state["attempts_by_candidate"] = attempts_by_candidate
                 run_state["active_sweep_size"] = len(sweep)
-                run_state["last_failures"] = []
+                run_state["last_failures"] = sorted(
+                    terminal_failures.values(),
+                    key=lambda item: item["benchmark_candidate_id"],
+                )
                 manifest["updated_at"] = utc_now()
                 atomic_write_json(manifest_path, manifest)
 
@@ -739,27 +749,39 @@ def execute_run(
                     try:
                         record = future.result()
                     except Exception as exc:
-                        failed_items.append((row, request_hash))
-                        last_failures.append(
-                            _safe_failure(
-                                candidate_id=candidate_id,
-                                attempt=attempts_by_candidate[candidate_id],
-                                exc=exc,
-                            )
+                        retryable_failure = _is_retryable_failure(exc)
+                        failure = _safe_failure(
+                            candidate_id=candidate_id,
+                            attempt=attempts_by_candidate[candidate_id],
+                            exc=exc,
+                            retryable=retryable_failure,
                         )
+                        if retryable_failure:
+                            failed_items.append((row, request_hash))
+                            last_failures.append(failure)
+                        else:
+                            terminal_failed_items[candidate_id] = (
+                                row,
+                                request_hash,
+                            )
+                            terminal_failures[candidate_id] = failure
                     else:
                         _append_jsonl(run_path, record)
                         completed[candidate_id] = record
                     processed_in_sweep += 1
                     run_state["completed_count"] = len(completed)
                     run_state["last_failures"] = sorted(
-                        last_failures,
+                        [*terminal_failures.values(), *last_failures],
                         key=lambda item: item["benchmark_candidate_id"],
                     )
                     run_state["failed_candidate_ids"] = sorted(
                         {
                             item[0]["benchmark_candidate_id"]
-                            for item in failed_items + unscheduled
+                            for item in [
+                                *failed_items,
+                                *terminal_failed_items.values(),
+                                *unscheduled,
+                            ]
                         }
                     )
                     manifest["updated_at"] = utc_now()
@@ -779,7 +801,13 @@ def execute_run(
                 )
                 pending = failed_items + unscheduled
                 run_state["failed_candidate_ids"] = sorted(
-                    item[0]["benchmark_candidate_id"] for item in pending
+                    {
+                        item[0]["benchmark_candidate_id"]
+                        for item in [
+                            *pending,
+                            *terminal_failed_items.values(),
+                        ]
+                    }
                 )
                 run_state["active_sweep_size"] = 0
                 manifest["updated_at"] = utc_now()
@@ -814,14 +842,20 @@ def execute_run(
                 atomic_write_json(manifest_path, manifest)
                 time.sleep(delay)
 
-        if pending:
+        if pending or terminal_failed_items:
             failed_ids = sorted(
-                row["benchmark_candidate_id"] for row, _ in pending
+                {
+                    row["benchmark_candidate_id"]
+                    for row, _ in [
+                        *pending,
+                        *terminal_failed_items.values(),
+                    ]
+                }
             )
             run_state["failed_candidate_ids"] = failed_ids
             raise RequirementScoringError(
                 f"Run {run_id} has {len(failed_ids)} failed candidates after "
-                "retry sweeps or request-ceiling exhaustion"
+                "non-retryable failures, retry sweeps, or request-ceiling exhaustion"
             )
         records = load_run_records(run_path)
         validate_run_records(records, pilot_rows, run_id=run_id)

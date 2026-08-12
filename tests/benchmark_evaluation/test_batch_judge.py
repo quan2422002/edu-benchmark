@@ -99,6 +99,7 @@ def test_batch_request_lines_preserve_contract_and_native_provider_shape():
     assert body["generation_config"]["thinkingConfig"][
         "thinkingLevel"
     ] == "MEDIUM"
+    assert body["generation_config"]["thinkingConfig"]["includeThoughts"] is True
 
 
 def test_parse_openai_batch_output(monkeypatch):

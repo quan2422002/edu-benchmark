@@ -221,6 +221,8 @@ def test_plan03_analysis_partitions_rows_and_writes_lean_artifacts(
         paper_registry_path=registry,
         expected_candidate_count=10,
         expected_family_count=5,
+        selection_seed=20260727,
+        control_sample_per_grade=2,
     )
     assert analysis["integrity"]["candidate_count"] == 10
     assert analysis["integrity"]["score_count"] == 60
@@ -256,6 +258,8 @@ def test_plan03_analysis_partitions_rows_and_writes_lean_artifacts(
         paper_registry_path=registry,
         expected_candidate_count=10,
         expected_family_count=5,
+        selection_seed=20260727,
+        control_sample_per_grade=2,
     )
     with registry.open(encoding="utf-8", newline="") as handle:
         assert len(list(csv.DictReader(handle))) == 3

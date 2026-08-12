@@ -36,6 +36,33 @@ Ba tệp giao diện dòng lệnh chỉ khai báo tham số và điều phối. 
 nằm dưới `src/edu_benchmark/requirement_scoring/`; phần kết nối SDK nằm dưới
 `src/edu_benchmark/model_providers/`.
 
+## Cấu hình requirement scoring
+
+Giá trị riêng của lần chạy kế thừa từ experiment `20260727_170150` nằm tại:
+
+```text
+experiments/20260806_145124/configs/requirement-scoring-20260727-v1.yaml
+```
+
+Tệp này sở hữu experiment ID, đường dẫn, cấu hình provider/model, seed, bundle
+name, giới hạn request, concurrency và chính sách retry. Các đường dẫn đều tính
+từ repository root và loader dừng khi schema sai, đường dẫn thoát khỏi repository
+hoặc có trường chứa thông tin xác thực. Mỗi lệnh thực thi phải truyền
+`--config`; tham số được viết trực tiếp trên CLI được ưu tiên hơn giá trị YAML.
+
+Ví dụ chỉ chuẩn bị manifest, không gọi model:
+
+```bash
+/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+  scripts/requirement_scoring/run_requirement_scoring.py prepare \
+  --config experiments/20260806_145124/configs/requirement-scoring-20260727-v1.yaml \
+  --output-root /tmp/edu-benchmark-requirement-scoring-check
+```
+
+Manifest mới ghi `config_id`, đường dẫn tương đối và SHA-256 của config. Cấu
+hình hiện hành đặt `include_thoughts: true` cho Gemini theo quyết định
+P05-A003.
+
 ## Kiểm tra việc nhập gói
 
 Chạy từ ngoài kho mã nguồn:
@@ -67,6 +94,11 @@ Hai đường dẫn phải trỏ vào `src/edu_benchmark/`. Lệnh sau phải th
 Các lệnh chạy mô hình vẫn có cổng an toàn: nếu thiếu `--execute-api`, quy trình
 trả mã thoát `2` trước khi tạo yêu cầu gửi đến nhà cung cấp.
 
+Workflow chỉ tự thử lại lỗi provider có `retryable=true` và phản hồi model
+không đạt lược đồ nghiệp vụ. Lỗi provider có `retryable=false` cùng lỗi không
+được phân loại sẽ dừng tại candidate tương ứng; response đã hoàn thành vẫn được
+ghi tăng dần và có thể tiếp tục từ JSONL hiện có.
+
 ## Kiểm tra ngoại tuyến theo lát cắt
 
 ```bash
@@ -74,6 +106,7 @@ trả mã thoát `2` trước khi tạo yêu cầu gửi đến nhà cung cấp.
   tests/model_providers \
   tests/requirement_scoring \
   tests/benchmark_evaluation/test_claude_judge_runner.py \
+  tests/benchmark_evaluation/test_batch_judge.py \
   tests/benchmark_evaluation/test_openai_judge.py
 ```
 

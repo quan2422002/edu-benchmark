@@ -34,25 +34,6 @@ from .core import (
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_EXPERIMENT = REPOSITORY_ROOT / "experiments/20260727_170150"
-DEFAULT_BUNDLE = (
-    DEFAULT_EXPERIMENT
-    / "outputs/principle_requirement_scoring/full_gemini35_medium_v1"
-)
-DEFAULT_POOL = (
-    DEFAULT_EXPERIMENT
-    / "inherited_resources/from_20260722_000940/benchmark_specification/"
-    "candidate_grounding/candidate_principle_grounding_pool.csv"
-)
-DEFAULT_TRACE = (
-    DEFAULT_EXPERIMENT
-    / "inherited_resources/from_20260722_000940/benchmark_conversion/"
-    "full_v0/conversion_trace.csv"
-)
-DEFAULT_PAPER_REGISTRY = (
-    REPOSITORY_ROOT
-    / "kse_submit_manuscript/notes/claim_evidence_registry.csv"
-)
 
 TRACE_HEADER: tuple[str, ...] = (
     "benchmark_candidate_id",
@@ -101,8 +82,6 @@ PAPER_REGISTRY_HEADER: tuple[str, ...] = (
 RARE_CANDIDATE_THRESHOLD = 5
 RARE_FAMILY_THRESHOLD = 3
 SMALL_STRATUM_THRESHOLD = 10
-CONTROL_SAMPLE_PER_GRADE = 2
-SELECTION_SEED = 20260727
 
 EXPECTED_LIMITATION_IDS: frozenset[str] = frozenset(
     {
@@ -138,7 +117,7 @@ def _mean(values: Iterable[float]) -> float:
     return round(sum(materialized) / len(materialized), 6) if materialized else 0.0
 
 
-def _stable_key(value: str, *, seed: int = SELECTION_SEED) -> str:
+def _stable_key(value: str, *, seed: int) -> str:
     return hashlib.sha256(f"{seed}:{value}".encode("utf-8")).hexdigest()
 
 
@@ -778,8 +757,10 @@ def analyze_full_run(
     pool_path: Path,
     trace_path: Path,
     paper_registry_path: Path,
-    expected_candidate_count: int = 2028,
-    expected_family_count: int = 665,
+    expected_candidate_count: int,
+    expected_family_count: int,
+    selection_seed: int,
+    control_sample_per_grade: int,
 ) -> dict[str, Any]:
     """Validate, analyze, and publish the three approved Plan-03 artifacts."""
 
@@ -974,9 +955,9 @@ def analyze_full_run(
                 )["grade"]
                 == grade
             ),
-            key=_stable_key,
+            key=lambda value: _stable_key(value, seed=selection_seed),
         )
-        controls.update(grade_eligible[:CONTROL_SAMPLE_PER_GRADE])
+        controls.update(grade_eligible[:control_sample_per_grade])
 
     review_rows: list[dict[str, Any]] = []
     for row in joined:
@@ -1050,8 +1031,8 @@ def analyze_full_run(
             "rare_candidate_threshold_exclusive": RARE_CANDIDATE_THRESHOLD,
             "rare_family_threshold_exclusive": RARE_FAMILY_THRESHOLD,
             "small_stratum_threshold_exclusive": SMALL_STRATUM_THRESHOLD,
-            "control_sample_per_grade": CONTROL_SAMPLE_PER_GRADE,
-            "selection_seed": SELECTION_SEED,
+            "control_sample_per_grade": control_sample_per_grade,
+            "selection_seed": selection_seed,
             "outlier_policy": (
                 "descriptive_only_no_candidate_level_flag"
             ),
@@ -1212,4 +1193,3 @@ def analyze_full_run(
         manifest_path=manifest_path,
     )
     return analysis
-

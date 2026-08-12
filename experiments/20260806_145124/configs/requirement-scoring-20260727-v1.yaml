@@ -1,0 +1,61 @@
+schema_version: "1.0"
+config_id: "requirement-scoring-20260727-v1"
+experiment_id: "20260727_170150"
+repository_root: "../../.."
+
+run:
+  provider:
+    project: "edu-benchmark"
+    location: "global"
+  generation:
+    model: "gemini-3.5-flash"
+    temperature: null
+    top_p: null
+    max_output_tokens: 4096
+    seed: 20260727
+    thinking_budget: null
+    thinking_level: "MEDIUM"
+    include_thoughts: true
+    timeout_seconds: 120.0
+  execution:
+    max_retries: 3
+    retry_base_delay_seconds: 2.0
+    standard:
+      max_requests: 120
+      concurrency: 20
+    full:
+      max_requests: 2500
+      concurrency: 20
+  selection:
+    seed: 20260727
+    spot_check_count: 4
+  bundle_names:
+    pilot: "pilot_v4"
+    calibration: "calibration_gemini35_medium_v1"
+    full: "full_gemini35_medium_v1"
+  paths:
+    pool: "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv"
+    output_root: "experiments/20260727_170150/outputs/principle_requirement_scoring"
+    prompt: "shared/prompts/benchmark_candidate_task_assigning/system_prompt_v4.md"
+    schema: "experiments/20260727_170150/outputs/principle_requirement_scoring/scoring_schema_v2.json"
+    spec_manifest: "experiments/20260727_170150/outputs/principle_requirement_scoring/specification_manifest_v4.json"
+    calibration_input: "experiments/20260727_170150/outputs/principle_requirement_scoring/calibration_cases_v1.csv"
+    snapshot_manifest: "experiments/20260727_170150/inherited_resources/snapshot_manifest.csv"
+
+analysis:
+  bundle_dir: "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1"
+  pool: "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv"
+  trace: "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_conversion/full_v0/conversion_trace.csv"
+  paper_registry: "kse_submit_manuscript/notes/claim_evidence_registry.csv"
+  expected_candidates: 2028
+  expected_families: 665
+  selection_seed: 20260727
+  control_sample_per_grade: 2
+
+export:
+  analysis: "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/full_run_analysis.json"
+  run: "experiments/20260727_170150/outputs/principle_requirement_scoring/full_gemini35_medium_v1/run_full.jsonl"
+  grounding_pool: "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv"
+  candidates: "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_conversion/full_v0/benchmark_candidate_splits.csv"
+  trace: "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_conversion/full_v0/conversion_trace.csv"
+  output: "experiments/20260727_170150/outputs/benchmark_candidate_pool/eligible_without_plan03_review.csv"

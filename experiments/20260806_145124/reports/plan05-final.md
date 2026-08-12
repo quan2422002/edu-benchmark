@@ -42,12 +42,22 @@ hình, mã phản hồi, lý do kết thúc, mức sử dụng token và siêu d
 cung cấp. Lỗi kỹ thuật ghi nền tảng thực thi, mã trạng thái HTTP, khả năng thử
 lại và nội dung phản hồi lỗi khi có.
 
-`GenerationConfig` lịch sử được giữ để không làm thay đổi tệp kê khai và mã
-băm. Cấu hình này hiện có hai góc nhìn tách biệt:
+`GenerationConfig` lịch sử được giữ về cấu trúc để duy trì hợp đồng tệp kê khai
+và cách tính mã băm. Cấu hình này hiện có hai góc nhìn tách biệt:
 `ModelGenerationPolicy` dành cho một yêu cầu mô hình và `RunExecutionPolicy`
 dành cho chính sách thử lại, mức đồng thời cùng giới hạn số yêu cầu. Bộ chuyển
 đổi của nghiệp vụ chấm mức độ bắt buộc chỉ nhận góc nhìn thứ nhất; quy trình
 nghiệp vụ sở hữu góc nhìn thứ hai.
+
+Sau P05-A003, các giá trị riêng của lần chạy không còn nằm trong package nghiệp
+vụ. Tệp
+[`requirement-scoring-20260727-v1.yaml`](../configs/requirement-scoring-20260727-v1.yaml)
+sở hữu experiment ID, đường dẫn, model, seed, bundle name, concurrency và giới
+hạn request. Ba CLI bắt buộc nhận `--config` và vẫn cho phép override tường minh.
+Manifest lần chạy mới ghi ID, đường dẫn tương đối cùng SHA-256 của config.
+Giá trị `include_thoughts=true` được duyệt tại P05-A003 nên request hash mới có
+thể khác output lịch sử dùng `false`; thay đổi này được ghi công khai, không bị
+trình bày như một phép tương đương bit-for-bit.
 
 ## 3. Thành phần sử dụng đại diện
 
@@ -61,6 +71,16 @@ nghiệp vụ sở hữu góc nhìn thứ hai.
 Các giao diện công khai của hai bộ chấm giữ nguyên tham số và cấu trúc kết quả.
 Quy trình chấm theo lô dùng hàm chuẩn hóa lý do kết thúc từ phần Vertex dùng
 chung; logic theo lô và bảng tiêu chí vẫn thuộc gói nghiệp vụ.
+
+P05-A003 đặt `include_thoughts=true` nhất quán cho requirement scoring, target
+generation, bộ chấm Gemini đồng bộ và bộ chấm Gemini theo lô. Đây là thay đổi
+được người phụ trách dự án yêu cầu sau refactor; bảng tương thích và phép kiểm
+thử khóa giá trị mới thay vì tuyên bố giữ nguyên payload `false` trước đây.
+
+Workflow requirement scoring nay dùng phân loại `ProviderCallError.retryable`.
+Lỗi provider có thể thử lại và phản hồi model không đạt lược đồ được đưa vào
+retry sweep; lỗi provider không thể thử lại cùng lỗi chưa phân loại dừng ngay ở
+candidate tương ứng. Mỗi bản ghi lỗi nêu rõ quyết định `retryable`.
 
 ## 4. Giao diện dòng lệnh và ánh xạ đường dẫn
 
@@ -96,12 +116,14 @@ bản cố định vốn đã được khai báo trong gói và phù hợp với
 
 - Trình thông dịch:
   `/home/quannda/miniconda3/envs/benchmark_env/bin/python`.
-- Phép kiểm thử nhà cung cấp, nghiệp vụ chấm mức độ bắt buộc và hai thành phần
-  gọi bộ chấm: `46 passed`.
-- Toàn bộ kho mã nguồn: `299 passed`.
+- Phép kiểm thử mục tiêu cho cấu hình, provider, retry và các đường Gemini:
+  `62 passed`.
+- Toàn bộ kho mã nguồn sau P05-A003: `302 passed`.
 - Bộ kiểm tra quản trị thử nghiệm: `passed`.
 - `pip check`: `No broken requirements found`.
 - Ba lệnh CLI `--help`: mã thoát `0`, không cần thông tin xác thực.
+- Loader config từ chối repository escape; package nghiệp vụ không còn chứa ID
+  hoặc đường dẫn gắn cứng với experiment `20260727_170150`.
 - Quét đường nhập và đường dẫn đang hoạt động của `vertex_ai_call`: không có
   kết quả.
 - Phép nhập cô lập từ `/tmp`: hai gói mới trỏ về `src/edu_benchmark/`; không

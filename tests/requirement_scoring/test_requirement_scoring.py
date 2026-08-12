@@ -9,6 +9,11 @@ from types import SimpleNamespace
 
 import pytest
 
+from edu_benchmark.model_providers.contracts import ProviderCallError
+from edu_benchmark.requirement_scoring.config import (
+    RequirementScoringConfigError,
+    load_requirement_scoring_config,
+)
 from edu_benchmark.requirement_scoring.core import (
     GROUNDING_HEADER,
     PRINCIPLE_IDS,
@@ -32,19 +37,25 @@ from edu_benchmark.requirement_scoring.core import (
 )
 from edu_benchmark.requirement_scoring.workflow import (
     _ProgressBar,
+    _is_retryable_failure,
     _load_schema,
     execute_run,
     finalize_full,
     prepare,
     retry_failed_full,
 )
-from scripts.requirement_scoring.run_requirement_scoring import build_parser, main
+from scripts.requirement_scoring.run_requirement_scoring import main, parse_args
 from edu_benchmark.requirement_scoring.provider import (
     build_vertex_requirement_client,
 )
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+CONFIG_PATH = (
+    REPOSITORY_ROOT
+    / "experiments/20260806_145124/configs/"
+    "requirement-scoring-20260727-v1.yaml"
+)
 
 
 def _row(grade: int, family: int, *, with_history: bool) -> dict:
@@ -265,6 +276,7 @@ def test_vertex_client_uses_injected_fake_without_network() -> None:
             model="fake-model",
             temperature=0.0,
             top_p=1.0,
+            seed=17,
             thinking_budget=0,
         ),
         sdk_client=fake,
@@ -279,7 +291,7 @@ def test_vertex_client_uses_injected_fake_without_network() -> None:
     assert request_config.temperature == 0.0
     assert request_config.top_p == 1.0
     assert request_config.max_output_tokens == 4096
-    assert request_config.seed == 20260727
+    assert request_config.seed == 17
     assert request_config.thinking_config.thinking_budget == 0
 
 
@@ -364,6 +376,53 @@ def test_request_hash_ignores_runtime_only_concurrency() -> None:
     assert serial_hash == parallel_hash
 
 
+def test_runtime_config_owns_historical_operational_defaults() -> None:
+    config = load_requirement_scoring_config(CONFIG_PATH)
+    full = config.run_defaults("full")
+    assert config.experiment_id == "20260727_170150"
+    assert full["model"] == "gemini-3.5-flash"
+    assert full["include_thoughts"] is True
+    assert full["max_requests"] == 2500
+    assert full["pool"].is_file()
+    assert config.analysis_defaults()["expected_candidates"] == 2028
+    assert config.export_defaults()["output"].is_absolute()
+
+    for relative in (
+        "src/edu_benchmark/requirement_scoring/workflow.py",
+        "src/edu_benchmark/requirement_scoring/analysis.py",
+        "src/edu_benchmark/requirement_scoring/export.py",
+    ):
+        assert "20260727_170150" not in (
+            REPOSITORY_ROOT / relative
+        ).read_text(encoding="utf-8")
+
+
+def test_requirement_config_rejects_repository_escape(tmp_path: Path) -> None:
+    invalid = tmp_path / "invalid.yaml"
+    invalid.write_text(
+        CONFIG_PATH.read_text(encoding="utf-8").replace(
+            'repository_root: "../../.."',
+            'repository_root: "../../../../../../"',
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(RequirementScoringConfigError, match="repository_root"):
+        load_requirement_scoring_config(invalid)
+
+
+def test_retry_classification_is_fail_closed() -> None:
+    assert _is_retryable_failure(
+        ProviderCallError("transient", backend="vertex_ai", retryable=True)
+    )
+    assert not _is_retryable_failure(
+        ProviderCallError("invalid", backend="vertex_ai", retryable=False)
+    )
+    assert _is_retryable_failure(
+        RequirementScoringError("invalid model response")
+    )
+    assert not _is_retryable_failure(RuntimeError("unknown programming error"))
+
+
 def test_concurrent_run_writes_successes_and_retries_after_full_sweep(
     tmp_path: Path,
 ) -> None:
@@ -412,6 +471,7 @@ def test_concurrent_run_writes_successes_and_retries_after_full_sweep(
     }
     atomic_write_json(pilot_dir / "run_manifest.json", manifest)
     first_candidate = pilot_rows[0]["benchmark_candidate_id"]
+    terminal_candidate = pilot_rows[1]["benchmark_candidate_id"]
     pilot_rows[0]["student_prompt"] = "Mẫu lỗi tạm thời duy nhất."
     write_pilot_input(pilot_dir / "pilot_input.csv", pilot_rows)
     prompt_to_candidate = {
@@ -434,7 +494,17 @@ def test_concurrent_run_writes_successes_and_retries_after_full_sweep(
                 self.attempts[candidate_id] = self.attempts.get(candidate_id, 0) + 1
                 attempt = self.attempts[candidate_id]
             if candidate_id == first_candidate and attempt == 1:
-                raise RuntimeError("synthetic transient failure")
+                raise ProviderCallError(
+                    "synthetic transient failure",
+                    backend="vertex_ai",
+                    retryable=True,
+                )
+            if candidate_id == terminal_candidate:
+                raise ProviderCallError(
+                    "synthetic invalid request",
+                    backend="vertex_ai",
+                    retryable=False,
+                )
             response = _response()
             return {
                 "raw_response_text": json.dumps(response, ensure_ascii=False),
@@ -472,10 +542,13 @@ def test_concurrent_run_writes_successes_and_retries_after_full_sweep(
         max_requests=config.max_requests,
         concurrency=config.concurrency,
         retry_base_delay_seconds=config.retry_base_delay_seconds,
+        experiment_id="20260727_170150",
+        default_bundle_name="pilot_v4",
     )
-    execute_run(args, run_id="a", client=fake)
+    with pytest.raises(RequirementScoringError, match="1 failed candidates"):
+        execute_run(args, run_id="a", client=fake)
     run_lines = (pilot_dir / "run_a.jsonl").read_text().splitlines()
-    assert len(run_lines) == 40
+    assert len(run_lines) == 39
     first_record = json.loads(run_lines[0])
     assert json.loads(first_record["user_prompt"]) == build_grounding_payload(
         next(
@@ -488,6 +561,7 @@ def test_concurrent_run_writes_successes_and_retries_after_full_sweep(
     assert "benchmark_candidate_id" not in json.loads(first_record["user_prompt"])
     assert "sample_id" not in json.loads(first_record["user_prompt"])
     assert fake.attempts[first_candidate] == 2
+    assert fake.attempts[terminal_candidate] == 1
     second_attempt_index = len(fake.calls) - 1
     assert fake.calls[second_attempt_index] == first_candidate
     assert set(fake.calls[:second_attempt_index]) == {
@@ -499,6 +573,8 @@ def test_cli_refuses_network_without_explicit_flag(tmp_path: Path) -> None:
     exit_code = main(
         [
             "pilot",
+            "--config",
+            str(CONFIG_PATH),
             "--output-root",
             str(tmp_path),
         ]
@@ -510,9 +586,14 @@ def test_cli_refuses_network_without_explicit_flag(tmp_path: Path) -> None:
 def test_calibration_prepare_validates_and_writes_no_copied_input(
     tmp_path: Path,
 ) -> None:
-    parser = build_parser()
-    args = parser.parse_args(
-        ["calibration", "--output-root", str(tmp_path)]
+    args = parse_args(
+        [
+            "calibration",
+            "--config",
+            str(CONFIG_PATH),
+            "--output-root",
+            str(tmp_path),
+        ]
     )
     for field in (
         "pool",
@@ -534,16 +615,17 @@ def test_calibration_prepare_validates_and_writes_no_copied_input(
     assert manifest["generation_config"]["top_p"] is None
     assert manifest["generation_config"]["thinking_budget"] is None
     assert manifest["generation_config"]["thinking_level"] == "MEDIUM"
-    assert manifest["generation_config"]["include_thoughts"] is False
+    assert manifest["generation_config"]["include_thoughts"] is True
     assert (calibration_dir / "run_manifest.json").is_file()
     assert not (calibration_dir / "pilot_input.csv").exists()
 
 
 def test_calibration_bundle_name_is_separate_and_safe(tmp_path: Path) -> None:
-    parser = build_parser()
-    args = parser.parse_args(
+    args = parse_args(
         [
             "calibration",
+            "--config",
+            str(CONFIG_PATH),
             "--output-root",
             str(tmp_path),
             "--bundle-name",
@@ -588,14 +670,15 @@ def test_full_single_run_uses_all_rows_and_publishes_integrity(
             )
             writer.writerow(serialized)
 
-    parser = build_parser()
-    defaults = parser.parse_args(["full"])
+    defaults = parse_args(["full", "--config", str(CONFIG_PATH)])
     assert defaults.concurrency == 20
     assert defaults.max_requests == 2500
 
-    args = parser.parse_args(
+    args = parse_args(
         [
             "full",
+            "--config",
+            str(CONFIG_PATH),
             "--pool",
             str(pool_path),
             "--output-root",
@@ -691,10 +774,11 @@ def test_retry_failed_full_appends_only_missing_records(
             )
             writer.writerow(serialized)
 
-    parser = build_parser()
-    args = parser.parse_args(
+    args = parse_args(
         [
             "full",
+            "--config",
+            str(CONFIG_PATH),
             "--pool",
             str(pool_path),
             "--output-root",
@@ -702,7 +786,7 @@ def test_retry_failed_full_appends_only_missing_records(
             "--bundle-name",
             "full_recovery_test",
             "--max-retries",
-            "0",
+            "1",
             "--max-requests",
             "4",
             "--concurrency",
@@ -730,8 +814,12 @@ def test_retry_failed_full_appends_only_missing_records(
     failed_id = pool_rows[-1]["benchmark_candidate_id"]
 
     class InitialClient:
+        def __init__(self) -> None:
+            self.calls = []
+
         def generate(self, user_prompt):
             candidate_id = prompt_to_candidate[user_prompt]
+            self.calls.append(candidate_id)
             if candidate_id == failed_id:
                 raise RequirementScoringError("synthetic invalid response")
             return {
@@ -742,8 +830,9 @@ def test_retry_failed_full_appends_only_missing_records(
                 "usage_metadata": {},
             }
 
+    initial_client = InitialClient()
     with pytest.raises(RequirementScoringError, match="1 failed candidates"):
-        execute_run(args, run_id="full", client=InitialClient())
+        execute_run(args, run_id="full", client=initial_client)
     bundle_dir = tmp_path / "full_recovery_test"
     assert len((bundle_dir / "run_full.jsonl").read_text().splitlines()) == 1
     failed_manifest = json.loads(
@@ -753,6 +842,10 @@ def test_retry_failed_full_appends_only_missing_records(
     assert failed_manifest["runs"]["full"]["last_failures"][0][
         "error_message"
     ] == "synthetic invalid response"
+    assert initial_client.calls.count(failed_id) == 2
+    assert failed_manifest["runs"]["full"]["last_failures"][0][
+        "retryable"
+    ] is True
 
     class RecoveryClient:
         def __init__(self) -> None:
@@ -790,6 +883,8 @@ def test_full_command_refuses_network_without_explicit_flag(
     exit_code = main(
         [
             "full",
+            "--config",
+            str(CONFIG_PATH),
             "--output-root",
             str(tmp_path),
         ]

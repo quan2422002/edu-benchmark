@@ -1,7 +1,7 @@
 # Core package dependencies
 numpy==2.3.5
 Pillow==10.2.0
-PyYAML==6.0.3
+PyYAML==6.0.2
 
 # Project test runner
 pytest==9.1.1

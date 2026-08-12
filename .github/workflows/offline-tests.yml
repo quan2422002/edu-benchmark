@@ -71,7 +71,7 @@ jobs:
       - name: Verify installed imports outside the repository
         run: |
           cd /tmp
-          python -c "import edu_benchmark, vertex_ai_call; print(edu_benchmark.__file__); print(vertex_ai_call.__file__)"
+          python -c "from edu_benchmark import model_providers, requirement_scoring; print(model_providers.__file__); print(requirement_scoring.__file__)"
 
       - name: Validate active experiment governance
         run: python scripts/governance/validate_experiment.py experiments/20260806_145124
@@ -85,5 +85,4 @@ jobs:
             --ignore=tests/benchmark_evaluation/test_pilot_selection.py \
             --ignore=tests/benchmark_evaluation/test_recovery.py \
             --ignore=tests/benchmark_evaluation/test_smoke_preparation.py \
-            --ignore=tests/dialogue_audit/test_hnmu_dialogue_audit.py \
-            --ignore=tests/vertex_ai_call/test_requirement_scoring.py
+            --ignore=tests/dialogue_audit/test_hnmu_dialogue_audit.py

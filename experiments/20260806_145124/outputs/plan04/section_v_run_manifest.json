@@ -6,7 +6,7 @@
     "id": "section-v-ablation-v1",
     "version": "v1",
     "path": "experiments/20260806_145124/configs/section-v-ablation-v1.yaml",
-    "sha256": "bda7e80142e641ea2bb53818813dbf33b93d71749389d65c03cab3016afca205"
+    "sha256": "fe70465bed7b1e8898eeb75e77511bc3ee5a06591b825ff42221bfb48d8918a2"
   },
   "pipeline": {
     "id": "section_v_ablation",
@@ -75,16 +75,20 @@
     },
     "code_files": [
       {
+        "path": "scripts/benchmark_evaluation/analyze_section_v_ablation.py",
+        "sha256": "1fcc710fe6df97c4582951ec118d641a6f900b42628ee51ab4e5c6ef65dc33a5"
+      },
+      {
         "path": "src/edu_benchmark/benchmark_evaluation/section_v_ablation.py",
         "sha256": "0ec1a59f891b7913b67528a392511ef20a647eb6f4e63738d376b71a41d06b9b"
       },
       {
         "path": "src/edu_benchmark/experiment_runtime/config.py",
-        "sha256": "42e4fd1b1d9647c5a2bbd5073f46fd5624a46d0015c19988084f5e814b38a222"
+        "sha256": "8279071d9727b2359a80b486ac4653d0904bfd9146eb6c292be4bb9bd8a2b998"
       },
       {
         "path": "src/edu_benchmark/experiment_runtime/cli.py",
-        "sha256": "ef315b517dac79ee9dc69076101c9f1c55235e628e12c41412219478cfa6cb5a"
+        "sha256": "4330d9200e5ff2f566d2e20f2b8af176a68ac8276bd2c31d1505970e6b7e5f21"
       }
     ]
   },
@@ -96,7 +100,7 @@
         "action": "full_offline_rebuild",
         "status": "completed",
         "pending_id_count": 0,
-        "recorded_at": "2026-08-09T04:00:16.898497Z"
+        "recorded_at": "2026-08-09T17:09:54.085383Z"
       }
     ]
   },
@@ -113,9 +117,9 @@
     "status": "passed",
     "serialized_credentials": false
   },
-  "generated_at": "2026-08-09T04:00:16.898497Z",
-  "preflight_fingerprint": "7db20cf65ea89508365f1313ae42670dd90cbcf03fd5238d907308455e0c49ac",
-  "completed_at": "2026-08-09T04:00:16.898497Z",
+  "generated_at": "2026-08-09T17:09:54.085383Z",
+  "preflight_fingerprint": "b3765f732bbbc4870ac981ea7efdb19d57d8d0d00751aacdc4161516aedee32e",
+  "completed_at": "2026-08-09T17:09:54.085383Z",
   "result": {
     "path": "experiments/20260806_145124/outputs/plan04/section_v_results.json",
     "sha256": "d35f8512b0ea059fea4c1c9b912f5f7ef4c8332c4719fef58b07b47d14d98469",

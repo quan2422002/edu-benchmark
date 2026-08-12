@@ -30,6 +30,7 @@ artifacts:
   - decisions/plan04-amendments.md
   - decisions/plan05-amendments.md
   - configs/section-v-ablation-v1.yaml
+  - configs/requirement-scoring-20260727-v1.yaml
   - runbooks/plan04-portable-section-v-analysis.md
   - outputs/plan04/active_pipeline_inventory.csv
   - outputs/plan04/section_v_results.json

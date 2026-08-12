@@ -134,7 +134,7 @@ def model_rows() -> list[dict[str, str]]:
                 '"sampling_parameters":"omitted"}}'
             ),
             "thinking_config_json": (
-                '{"thinking_level":"MEDIUM","include_thoughts":false}'
+                '{"thinking_level":"MEDIUM","include_thoughts":true}'
             ),
             "config_status": "target_passed_judge_smoke_ready",
         },

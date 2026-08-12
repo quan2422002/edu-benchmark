@@ -152,7 +152,7 @@ class GenerationConfig:
     temperature: float | None = None
     top_p: float | None = None
     max_output_tokens: int = 4096
-    seed: int = 20260727
+    seed: int = 0
     thinking_budget: int | None = None
     thinking_level: str | None = None
     include_thoughts: bool = False
@@ -411,7 +411,7 @@ def select_pilot(
     rows: Sequence[dict[str, Any]],
     *,
     per_grade: int = 10,
-    seed: int = 20260727,
+    seed: int = 0,
 ) -> list[dict[str, Any]]:
     """Select one candidate from each family, balancing grade and history."""
 
@@ -996,7 +996,7 @@ def compare_runs(
     pilot_rows: Sequence[Mapping[str, Any]],
     *,
     spot_check_count: int = 4,
-    seed: int = 20260727,
+    seed: int = 0,
 ) -> tuple[dict[str, Any], list[dict[str, str]]]:
     if set(run_a) != set(run_b):
         raise RequirementScoringError("Run A and B candidate IDs do not match")

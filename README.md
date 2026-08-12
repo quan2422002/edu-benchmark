@@ -4,7 +4,7 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–04 đã hoàn tất governance, packaging, shared benchmark registry và cấu hình/đường dẫn khả chuyển cho quy trình Section V đại diện. Plan 05 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–05 đã hoàn tất governance, packaging, shared benchmark registry, runtime khả chuyển và ranh giới độc lập cho model provider/requirement scoring. Plan 06 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
 
 Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
 và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
@@ -130,9 +130,12 @@ shared/benchmark/       Versioned benchmark registry, canonical datasets, select
 shared/                 Shared raw data, learning resources, prompts, and benchmark artifacts
 src/edu_benchmark/      Shared project code for data I/O, audit, conversion, resources, and quality checks
 src/edu_benchmark/experiment_runtime/ Portable YAML config, path resolution, preflight, and offline execution
+src/edu_benchmark/model_providers/ Independent Vertex AI/OpenAI transport and normalized model contracts
+src/edu_benchmark/requirement_scoring/ Pedagogical-principle requirement-scoring business logic
 scripts/benchmark_registry/ Thin CLI for deterministic shared benchmark promotion/validation
 scripts/governance/     Thin CLI for experiment-governance validation
-src/vertex_ai_call/     Vertex AI pilot runner for six-principle requirement scoring
+scripts/requirement_scoring/ Thin CLI entry points for requirement scoring, analysis, and export
+experiments/20260806_145124/configs/ Requirement-scoring and portable analysis runtime configs
 document/               User-provided project source documents
 kse_submit_manuscript/  KSE 2026 writing plan, LaTeX source, evidence registry, and releases
 tests/agents/           Agent and documentation tests
@@ -200,6 +203,31 @@ directory after the editable package is installed:
 This representative run is offline and requires no provider credential. Its
 two large judge JSONL inputs remain historical experiment artifacts rather than
 clean-clone CI fixtures; unit tests use self-contained temporary fixtures.
+Running preflight after a completed run preserves the completed manifest.
+Preflight returns `preflight_passed` only after the supported pipeline, runner,
+input roles/formats, output schemas, resume policy, parameters, and offline
+provenance contract pass. A failure is machine-readable as `preflight_failed`
+with exit code 2. For a preserved completed manifest, preflight reports whether
+it matches the current fingerprint. Validation recomputes that fingerprint and
+checks the recorded config, inputs, outputs, code provenance,
+resume/equivalence contracts, secret scan, and result hashes against the
+current repository state.
+
+## Config-driven requirement scoring
+
+Requirement-scoring CLIs require the repository-relative YAML config at
+`experiments/20260806_145124/configs/requirement-scoring-20260727-v1.yaml`.
+The config owns the inherited experiment ID, paths, provider/model settings,
+seeds, bundle names, concurrency, request ceilings, and retry defaults; explicit
+CLI arguments override configured values. The business package contains no
+hard-coded `20260727_170150` paths. New run manifests record the config ID,
+portable path, and SHA-256.
+
+P05-A003 also locks `include_thoughts=true` for current Gemini requirement,
+target-generation, synchronous-judge, and batch-judge paths. Requirement
+scoring retries only provider failures classified as retryable and model
+responses that fail the task schema; unknown or non-retryable failures stop for
+that candidate without discarding already appended JSONL responses.
 
 
 ## Project Python environment
@@ -257,7 +285,7 @@ After installation, verify import portability from outside the repository:
 ```bash
 cd /tmp
 /home/quannda/miniconda3/envs/benchmark_env/bin/python -I -c \
-  "import edu_benchmark, vertex_ai_call; print(edu_benchmark.__file__); print(vertex_ai_call.__file__)"
+  "from edu_benchmark import model_providers, requirement_scoring; print(model_providers.__file__); print(requirement_scoring.__file__)"
 ```
 
 The earlier PaddleOCR, VietOCR, and MinerU extraction attempts did not become a

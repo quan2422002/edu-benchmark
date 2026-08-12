@@ -174,7 +174,7 @@ def build_gemini_batch_line(
         response_json_schema=_build_gemini_response_schema(prepared),
         thinking_config=types.ThinkingConfig(
             thinking_level=getattr(types.ThinkingLevel, normalized_level),
-            include_thoughts=False,
+            include_thoughts=True,
         ),
     ).model_dump(mode="json", by_alias=True, exclude_none=True)
     return {
