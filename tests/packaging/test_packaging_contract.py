@@ -31,7 +31,7 @@ def test_pyproject_uses_src_layout_and_python_312() -> None:
     assert data["project"]["requires-python"] == ">=3.12,<3.13"
     package_find = data["tool"]["setuptools"]["packages"]["find"]
     assert package_find["where"] == ["src"]
-    assert package_find["include"] == ["edu_benchmark*", "vertex_ai_call*"]
+    assert package_find["include"] == ["edu_benchmark*"]
 
 
 def test_full_requirements_equal_core_and_optional_dependency_groups() -> None:
@@ -73,8 +73,8 @@ def test_installed_packages_import_outside_repository(tmp_path: Path) -> None:
         "-I",
         "-c",
         (
-            "import edu_benchmark, vertex_ai_call; "
-            "print(edu_benchmark.__file__); print(vertex_ai_call.__file__)"
+            "from edu_benchmark import model_providers, requirement_scoring; "
+            "print(model_providers.__file__); print(requirement_scoring.__file__)"
         ),
     ]
     result = subprocess.run(
@@ -85,8 +85,8 @@ def test_installed_packages_import_outside_repository(tmp_path: Path) -> None:
         text=True,
     )
     assert result.returncode == 0, result.stderr
-    assert "src/edu_benchmark/__init__.py" in result.stdout
-    assert "src/vertex_ai_call/__init__.py" in result.stdout
+    assert "src/edu_benchmark/model_providers/__init__.py" in result.stdout
+    assert "src/edu_benchmark/requirement_scoring/__init__.py" in result.stdout
 
 
 def test_core_import_does_not_load_optional_provider_packages(tmp_path: Path) -> None:
@@ -101,6 +101,7 @@ class BlockOptionalProviders:
 
 sys.meta_path.insert(0, BlockOptionalProviders())
 import edu_benchmark
+import edu_benchmark.requirement_scoring
 print(edu_benchmark.__file__)
 """
     result = subprocess.run(

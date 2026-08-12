@@ -409,7 +409,7 @@ def test_plan04_inventory_covers_priority_pipeline_entrypoints():
         if path.is_file() and path.suffix in {".py", ".sh"}
     }
     requirement_entrypoints = {
-        f"src/vertex_ai_call/{name}"
+        f"scripts/requirement_scoring/{name}"
         for name in (
             "run_requirement_scoring.py",
             "analyze_requirement_scoring.py",

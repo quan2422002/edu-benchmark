@@ -17,7 +17,11 @@ from edu_benchmark.benchmark_evaluation.judge import (
 from edu_benchmark.benchmark_evaluation.gemini_judge import (
     GeminiJudgeCallError,
     GeminiVertexJudgeCaller,
-    _is_retryable_exception,
+)
+from edu_benchmark.model_providers import (
+    ModelResponse,
+    ProviderCallError,
+    TokenUsage,
 )
 
 
@@ -157,71 +161,82 @@ def test_retry_incremental_error_and_resume(tmp_path, monkeypatch):
 def test_gemini_judge_uses_native_prompts_and_medium_thinking():
     captured = {}
 
-    class FakeModels:
-        def generate_content(self, **kwargs):
-            captured.update(kwargs)
-            return SimpleNamespace(
+    class FakeProvider:
+        backend = "vertex_ai"
+
+        def generate(self, request):
+            captured["request"] = request
+            return ModelResponse(
                 text=judge_json(),
+                backend=self.backend,
+                model=request.model,
                 response_id="gemini-judge-1",
                 model_version="gemini-3.5-flash",
-                candidates=[SimpleNamespace(finish_reason="STOP")],
-                usage_metadata=SimpleNamespace(
-                    model_dump=lambda **_: {
-                        "prompt_token_count": 100,
-                        "candidates_token_count": 80,
-                        "thoughts_token_count": 20,
-                    }
+                finish_reason="STOP",
+                usage=TokenUsage(
+                    input_tokens=100,
+                    output_tokens=100,
+                    total_tokens=200,
+                    metadata={"prompt_token_count": 100},
                 ),
             )
 
-    caller = GeminiVertexJudgeCaller.__new__(GeminiVertexJudgeCaller)
-    caller.model = "gemini-3.5-flash"
-    caller.max_output_tokens = 3072
-    caller.seed = 20260728
-    caller.thinking_level = "MEDIUM"
-    caller.temperature = None
-    caller.clients = []
-    caller._client = lambda: SimpleNamespace(models=FakeModels())
+        def close(self):
+            pass
+
+    caller = GeminiVertexJudgeCaller(
+        project="edu-benchmark",
+        location="global",
+        model="gemini-3.5-flash",
+        max_output_tokens=3072,
+        seed=20260728,
+        thinking_level="MEDIUM",
+        provider=FakeProvider(),
+    )
 
     result = caller.call(prepared())
 
-    assert captured["model"] == "gemini-3.5-flash"
-    assert captured["contents"] == "User"
-    dumped = captured["config"].model_dump(mode="json", exclude_none=True)
-    assert dumped["system_instruction"] == "System"
-    assert dumped["thinking_config"]["thinking_level"] == "MEDIUM"
-    assert dumped["response_json_schema"]["properties"][
+    request = captured["request"]
+    assert request.model == "gemini-3.5-flash"
+    assert request.messages[0].content == "User"
+    assert request.system_instruction == "System"
+    assert request.generation.thinking_level == "MEDIUM"
+    assert request.structured_output.schema["properties"][
         "criterion_judgments"
     ]["minItems"] == len(prepared().rubric_name_to_id)
-    assert dumped["response_json_schema"]["properties"][
+    assert request.structured_output.schema["properties"][
         "criterion_judgments"
     ]["items"]["properties"]["criterion_name"] == {"type": "string"}
-    assert "temperature" not in dumped
+    assert request.generation.temperature is None
     assert result["finish_reason"] == "STOP"
     assert result["output_tokens"] == 100
 
 
-def test_gemini_dns_and_connect_failures_are_retryable():
-    assert _is_retryable_exception(
-        RuntimeError("Temporary failure in name resolution"), None
-    ) is True
-    ConnectError = type("ConnectError", (RuntimeError,), {})
-    assert _is_retryable_exception(ConnectError("network"), None) is True
-    assert _is_retryable_exception(ValueError("bad request"), None) is False
+def test_gemini_judge_preserves_provider_retry_metadata():
+    class FailingProvider:
+        backend = "vertex_ai"
 
-    class FailingModels:
         @staticmethod
-        def generate_content(**kwargs):
-            raise RuntimeError("Temporary failure in name resolution")
+        def generate(request):
+            raise ProviderCallError(
+                "Temporary failure in name resolution",
+                backend="vertex_ai",
+                retryable=True,
+            )
 
-    caller = GeminiVertexJudgeCaller.__new__(GeminiVertexJudgeCaller)
-    caller.model = "gemini-3.5-flash"
-    caller.max_output_tokens = 8192
-    caller.seed = 20260728
-    caller.thinking_level = "MEDIUM"
-    caller.temperature = None
-    caller.clients = []
-    caller._client = lambda: SimpleNamespace(models=FailingModels())
+        @staticmethod
+        def close():
+            pass
+
+    caller = GeminiVertexJudgeCaller(
+        project="edu-benchmark",
+        location="global",
+        model="gemini-3.5-flash",
+        max_output_tokens=8192,
+        seed=20260728,
+        thinking_level="MEDIUM",
+        provider=FailingProvider(),
+    )
 
     try:
         caller.call(prepared())

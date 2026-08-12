@@ -1,6 +1,5 @@
 from dataclasses import replace
 import json
-from types import SimpleNamespace
 
 from edu_benchmark.benchmark_evaluation.judge import (
     PreparedJudgeRequest,
@@ -9,6 +8,7 @@ from edu_benchmark.benchmark_evaluation.openai_judge import (
     OpenAIJudgeCaller,
     build_judge_response_schema,
 )
+from edu_benchmark.model_providers import ModelResponse, TokenUsage
 
 
 def prepared() -> PreparedJudgeRequest:
@@ -92,41 +92,45 @@ def test_schema_uses_names_only_and_exact_criterion_count():
 def test_openai_caller_uses_responses_api_and_strict_schema():
     captured = {}
 
-    class FakeResponses:
-        def create(self, **kwargs):
-            captured.update(kwargs)
-            return SimpleNamespace(
-                id="resp-1",
-                model="gpt-5.4-mini-2026-03-17",
-                status="completed",
-                incomplete_details=None,
-                output_text=judge_json(),
-                usage=SimpleNamespace(
-                    model_dump=lambda **_: {
-                        "input_tokens": 100,
-                        "output_tokens": 50,
-                        "total_tokens": 150,
-                    }
+    class FakeProvider:
+        backend = "openai"
+
+        def generate(self, request):
+            captured["request"] = request
+            return ModelResponse(
+                text=judge_json(),
+                backend=self.backend,
+                model=request.model,
+                response_id="resp-1",
+                model_version="gpt-5.4-mini-2026-03-17",
+                finish_reason="STOP",
+                usage=TokenUsage(
+                    input_tokens=100,
+                    output_tokens=50,
+                    total_tokens=150,
                 ),
             )
 
-    caller = OpenAIJudgeCaller.__new__(OpenAIJudgeCaller)
-    caller.model = "gpt-5.4-mini-2026-03-17"
-    caller.max_output_tokens = 8192
-    caller.reasoning_effort = "medium"
-    caller.client = SimpleNamespace(responses=FakeResponses())
+        def close(self):
+            pass
+
+    caller = OpenAIJudgeCaller(
+        api_key="unused-in-offline-test",
+        model="gpt-5.4-mini-2026-03-17",
+        max_output_tokens=8192,
+        reasoning_effort="medium",
+        provider=FakeProvider(),
+    )
 
     result = caller.call(prepared())
 
-    assert captured["instructions"] == "System"
-    assert captured["input"] == "User"
-    assert captured["reasoning"] == {"effort": "medium"}
-    assert captured["store"] is False
-    assert captured["truncation"] == "disabled"
-    assert "temperature" not in captured
-    output_format = captured["text"]["format"]
-    assert output_format["type"] == "json_schema"
-    assert output_format["strict"] is True
+    request = captured["request"]
+    assert request.system_instruction == "System"
+    assert request.messages[0].content == "User"
+    assert request.generation.reasoning_effort == "medium"
+    assert request.provider_options == {"store": False, "truncation": "disabled"}
+    assert request.generation.temperature is None
+    assert request.structured_output.strict is True
     assert result["finish_reason"] == "STOP"
     assert result["input_tokens"] == 100
     assert result["output_tokens"] == 50
@@ -150,22 +154,23 @@ def test_rubric_only_schema_omits_serious_error_output():
 def test_openai_caller_uses_distinct_gold_answer_only_v4_schema_name():
     captured = {}
 
-    class FakeResponses:
-        def create(self, **kwargs):
-            captured.update(kwargs)
-            return SimpleNamespace(
-                id="resp-v4",
-                model="gpt-5.4-mini-2026-03-17",
-                status="completed",
-                incomplete_details=None,
-                output_text=judge_json(),
-                usage=SimpleNamespace(
-                    model_dump=lambda **_: {
-                        "input_tokens": 100,
-                        "output_tokens": 50,
-                    }
-                ),
+    class FakeProvider:
+        backend = "openai"
+
+        def generate(self, model_request):
+            captured["request"] = model_request
+            return ModelResponse(
+                text=judge_json(),
+                backend=self.backend,
+                model=model_request.model,
+                response_id="resp-v4",
+                model_version="gpt-5.4-mini-2026-03-17",
+                finish_reason="STOP",
+                usage=TokenUsage(input_tokens=100, output_tokens=50),
             )
+
+        def close(self):
+            pass
 
     request = replace(
         prepared(),
@@ -176,15 +181,16 @@ def test_openai_caller_uses_distinct_gold_answer_only_v4_schema_name():
         include_serious_errors=False,
         include_learning_evidence=False,
     )
-    caller = OpenAIJudgeCaller.__new__(OpenAIJudgeCaller)
-    caller.model = "gpt-5.4-mini-2026-03-17"
-    caller.max_output_tokens = 8192
-    caller.reasoning_effort = "medium"
-    caller.client = SimpleNamespace(responses=FakeResponses())
+    caller = OpenAIJudgeCaller(
+        api_key="unused-in-offline-test",
+        model="gpt-5.4-mini-2026-03-17",
+        max_output_tokens=8192,
+        reasoning_effort="medium",
+        provider=FakeProvider(),
+    )
 
     caller.call(request)
 
-    assert captured["text"]["format"]["name"] == (
+    assert captured["request"].structured_output.name == (
         "blind_pairwise_judgment_gold_answer_only_v4"
     )
-
