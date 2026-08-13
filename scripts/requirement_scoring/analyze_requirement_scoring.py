@@ -47,6 +47,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             expected_family_count=args.expected_families,
             selection_seed=args.selection_seed,
             control_sample_per_grade=args.control_sample_per_grade,
+            repository_root=config.repository_root,
         )
     except (
         RequirementScoringConfigError,

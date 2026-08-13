@@ -85,8 +85,9 @@ def test_installed_packages_import_outside_repository(tmp_path: Path) -> None:
         text=True,
     )
     assert result.returncode == 0, result.stderr
-    assert "src/edu_benchmark/model_providers/__init__.py" in result.stdout
-    assert "src/edu_benchmark/requirement_scoring/__init__.py" in result.stdout
+    normalized = result.stdout.replace("\\", "/")
+    assert "edu_benchmark/model_providers/__init__.py" in normalized
+    assert "edu_benchmark/requirement_scoring/__init__.py" in normalized
 
 
 def test_core_import_does_not_load_optional_provider_packages(tmp_path: Path) -> None:
@@ -112,7 +113,7 @@ print(edu_benchmark.__file__)
         text=True,
     )
     assert result.returncode == 0, result.stderr
-    assert "src/edu_benchmark/__init__.py" in result.stdout
+    assert "edu_benchmark/__init__.py" in result.stdout.replace("\\", "/")
 
 
 def test_ci_is_offline_after_dependency_install() -> None:

@@ -1,0 +1,6 @@
+backlog_id,item,owner,gate,blocking,reason
+P07-B001,Obtain final HNMU/UET review for provisional benchmark taxonomy principles rubrics selection and evaluation interpretation,HNMU and UET,expert review,false,Repository refactor cannot replace pedagogical or subject-matter authority
+P07-B002,Adopt a cross-platform transitive dependency lock,repository maintainers,separately approved reproducibility plan,false,Current direct pins and environment specification are reproducible but not bit-for-bit
+P07-B003,Runtime-test Claude adapters and improve Codex IDE specialist visibility,agent-infrastructure maintainers,supported observable runtime,false,Current static validation and fail-closed fallback remain valid
+P07-B004,Choose durable backup or object storage for locally ignored model and learning-resource payloads,project lead and repository maintainers,separately approved retention decision,false,P06-A001 intentionally keeps these payloads local
+P07-B005,Run GitHub Actions on the pushed branch or pull request,repository maintainers,remote CI run,false,Local snapshot reproduces both workflow scopes but is not a remote Actions run

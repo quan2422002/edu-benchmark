@@ -33,8 +33,6 @@ from .core import (
 )
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-
 TRACE_HEADER: tuple[str, ...] = (
     "benchmark_candidate_id",
     "sample_id",
@@ -129,9 +127,9 @@ def _json_cell(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
-def _display_path(path: Path) -> str:
+def _display_path(path: Path, repository_root: Path) -> str:
     try:
-        return str(path.relative_to(REPOSITORY_ROOT))
+        return str(path.relative_to(repository_root))
     except ValueError:
         return str(path)
 
@@ -684,6 +682,7 @@ def _write_paper_registry(
     analysis: Mapping[str, Any],
     analysis_path: Path,
     manifest_path: Path,
+    repository_root: Path,
 ) -> None:
     existing: list[dict[str, str]] = []
     if path.exists():
@@ -707,7 +706,7 @@ def _write_paper_registry(
                 f"{analysis['integrity']['score_count']} requirement score hợp lệ."
             ),
             "evidence_type": "evidence",
-            "source_path": _display_path(manifest_path),
+            "source_path": _display_path(manifest_path, repository_root),
             "source_locator": "integrity; failure_state; status",
             "source_sha256": sha256_file(manifest_path),
             "status": "provisional_model_output_validated",
@@ -720,7 +719,7 @@ def _write_paper_registry(
                 f"{top_set['set_key']} với {top_set['candidate_count']} candidate."
             ),
             "evidence_type": "evidence",
-            "source_path": _display_path(analysis_path),
+            "source_path": _display_path(analysis_path, repository_root),
             "source_locator": "required_set_distribution[0]",
             "source_sha256": sha256_file(analysis_path),
             "status": "provisional_model_output",
@@ -735,7 +734,7 @@ def _write_paper_registry(
                 f"{eligibility['blocked']} candidate bị chặn."
             ),
             "evidence_type": "evidence",
-            "source_path": _display_path(analysis_path),
+            "source_path": _display_path(analysis_path, repository_root),
             "source_locator": "eligibility.counts",
             "source_sha256": sha256_file(analysis_path),
             "status": "provisional_awaiting_uet_disposition",
@@ -761,6 +760,7 @@ def analyze_full_run(
     expected_family_count: int,
     selection_seed: int,
     control_sample_per_grade: int,
+    repository_root: Path,
 ) -> dict[str, Any]:
     """Validate, analyze, and publish the three approved Plan-03 artifacts."""
 
@@ -1191,5 +1191,6 @@ def analyze_full_run(
         analysis=analysis,
         analysis_path=analysis_path,
         manifest_path=manifest_path,
+        repository_root=repository_root.resolve(),
     )
     return analysis

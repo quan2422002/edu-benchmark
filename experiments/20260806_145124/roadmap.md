@@ -1,7 +1,7 @@
 # Roadmap — Cải tổ repository để con người và agent cùng vận hành được
 
 Experiment: `20260806_145124`
-Trạng thái: `ACTIVE — PLAN 07 AWAITING APPROVAL`
+Trạng thái: `COMPLETED — PLAN 01–07 VALIDATED`
 Nguồn hiện trạng chính: `20260727_170150`
 
 ## 1. Mục tiêu
@@ -124,7 +124,7 @@ còn payload được đặt tại kho được phép và manifest ghi locator/c
 |       04 | [Cấu hình thử nghiệm, hướng dẫn vận hành và đường dẫn khả chuyển](plans/04-experiment-configs-runbooks-and-portable-paths.md) | `COMPLETED` | Lần chạy đại diện kiểm tra được từ nhiều thư mục, không có đường dẫn tuyệt đối hoặc thông tin bí mật |
 |       05 | [Tách ranh giới `src/` và `scripts/`](plans/05-src-scripts-boundary-and-runtime-refactor.md)                            | `COMPLETED`   | CLI mỏng, logic dùng lại trong package, compatibility và test đạt                |
 |       06 | [Quản lý đầu ra, khử trùng lặp và vệ sinh kho mã nguồn](plans/06-output-retention-deduplication-and-repository-hygiene.md) | `COMPLETED` | Bảng kiểm kê được đối chiếu; giữ dữ liệu tại ngữ cảnh gốc, JSONL được bỏ qua có mục tiêu và không có thao tác phá hủy |
-|       07 | [Đồng bộ tài liệu, validation và đóng migration](plans/07-documentation-reconciliation-validation-and-closeout.md) | `DRAFT`      | Clean-clone drill, docs/current-state và final report được duyệt                  |
+|       07 | [Đồng bộ tài liệu, kiểm chứng và hoàn tất quá trình cải tổ](plans/07-documentation-reconciliation-validation-and-closeout.md) | `COMPLETED` | Snapshot sạch, package, registry, liên kết, tài liệu và báo cáo cuối đã được đối chiếu |
 
 Project lead duyệt theo đúng thứ tự trên. Một plan được duyệt không tự động
 duyệt plan kế tiếp.
@@ -175,13 +175,12 @@ Trước khi hoàn tất:
 
 ## 9. Cổng dừng hiện tại
 
-Plan 01–04 đã hoàn tất validation. Shared registry hiện dẫn tới checklist 18
-tiêu chí, 665 dialogue Phase 1, 2.028 conversion candidate, selection tạm 1.400
-cùng backlog 628/blocked 0 và ba specification bundle provisional. Runtime cấu
-hình khả chuyển đã tái lập Section V từ nhiều thư mục làm việc. Plan 05 đã tách
-tầng provider độc lập, chuyển requirement scoring cùng hai judge caller đại
-diện, loại bỏ namespace tạm và đạt toàn bộ validation. Plan 06 là cổng kế tiếp
-và đã hoàn tất kiểm kê cùng chính sách lưu giữ không phá hủy. P06-A001 giữ dữ
-liệu tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và
-không dùng Git LFS. Plan 07 là cổng kế tiếp nhưng vẫn `DRAFT`; chưa được triển
-khai trước khi người phụ trách dự án duyệt.
+Plan 01–07 đã hoàn tất. Shared registry dẫn tới checklist 18 tiêu chí, 665
+dialogue Phase 1, 2.028 conversion candidate, selection tạm 1.400 cùng backlog
+628/blocked 0 và ba specification bundle provisional. Runtime cấu hình khả
+chuyển đã tái lập Section V từ nhiều thư mục làm việc. Tầng provider độc lập,
+requirement scoring, hai judge caller đại diện, kiểm kê lưu giữ không phá hủy và
+định tuyến `src/`–`scripts/`–`shared/`–`experiments/` đã qua kiểm chứng. Snapshot
+Git sạch đã dựng wheel và vượt hai phạm vi kiểm thử ngoại tuyến. Experiment này
+được đóng với backlog không chặn; backlog không được diễn giải là nội dung đã
+hoàn thành hoặc đã được HNMU/UET xác nhận.

@@ -4,7 +4,21 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–06 đã hoàn tất governance, packaging, shared benchmark registry, runtime khả chuyển, ranh giới độc lập cho model provider/requirement scoring và kiểm kê đầu ra không phá hủy. P06-A001 giữ payload tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và không dùng Git LFS; Plan 07 đang chờ người phụ trách dự án duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đã hoàn thành Plan 01–07: quản trị kế hoạch, đóng gói Python, kho sản phẩm benchmark dùng chung, runtime khả chuyển, ranh giới model provider, chính sách lưu giữ và kiểm chứng snapshot sạch đều đã đạt. P06-A001 giữ payload tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và không dùng Git LFS. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+
+## Start here
+
+- Canonical benchmark discovery: [shared/benchmark/README.md](shared/benchmark/README.md).
+  From that page, the 665 Phase-1 dialogue families, 2,028-candidate pool, and
+  provisional 1,400-candidate selection are each one direct path away.
+- Current component and ownership map: [ARCHITECTURE.md](ARCHITECTURE.md).
+- Repository operating rules for agents and contributors: [AGENTS.md](AGENTS.md).
+- Active refactor lifecycle and human gates:
+  [experiments/20260806_145124/roadmap.md](experiments/20260806_145124/roadmap.md).
+
+The shortest canonical data path is `README.md` → `shared/benchmark/README.md`
+→ the selected bundle's `manifest.json` and data files. Read the manifest before
+use: `shared` means canonical for discovery, not final HNMU/UET approval.
 
 Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
 và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
@@ -154,7 +168,9 @@ Experiment `20260709_155523` Plan 02 established the shared layout:
   provisional capability/principle/rubric bundles. Each bundle has a manifest
   with source hashes, counts, authority, access policy, and limitations.
 - HNMU raw dialogue batches live under `shared/raw_data/HNMU-teacher_dialog_samples/` and are registered in `manifest.csv`. Do not edit the raw Excel files directly.
-- Shared SGK/SGV learning resources belong under `shared/learning_resources/`. Plan 03 will populate this area with copied SGK images, SGV sources, registries, OCR text, and fragments.
+- Shared SGK/SGV learning resources belong under `shared/learning_resources/`.
+  This area contains copied source material, registries, OCR text, fragments,
+  and the inputs used to rebuild the local retrieval index.
 - Processed learning-resource pages should use Markdown with front matter and stable anchors as the temporary human-readable source for review and retrieval indexing. These Markdown pages should be generated from OCR text plus bounding boxes through a layout-reconstruction step, not from plain text alone. JSON/crop debug artifacts are optional and should be generated only when bbox/table/cell-level inspection is needed.
 - Nguyen OCR Markdown for SGK/SGV Tin học 6–9 is registered through `shared/learning_resources/registries/ocr_text_manifest.csv` (154 OCR units), split into `shared/learning_resources/fragments/learning_resource_fragments.csv` (2,750 fragments), and indexed through a generated SQLite FTS artifact under `shared/learning_resources/indexes/`. The SQLite file is rebuildable and ignored by Git. `shared/learning_resources/agent_context/` is the navigation hub for audit agents that need the checklist, fragments, index, scaffolding notes, and retrieval tools without copying canonical source files.
 - Reusable implementation code belongs under `src/edu_benchmark/`. Experiments should store run outputs, not reusable code.
@@ -346,4 +362,4 @@ Runtime smoke testing must be performed in an interactive Codex CLI/App session 
 
 Agents and contributors must follow [AGENTS.md](AGENTS.md). Architecture changes must update [ARCHITECTURE.md](ARCHITECTURE.md) in the same commit.
 
-Last verified against the current specialist setup on 2026-07-04.
+Last verified during experiment `20260806_145124` Plan 07 on 2026-08-13.

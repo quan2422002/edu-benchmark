@@ -50,8 +50,6 @@ from .provider import (
 )
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-
 FULL_SINGLE_RUN_LIMITATIONS: tuple[dict[str, str], ...] = (
     {
         "limitation_id": "single_run_no_repeatability_estimate",
@@ -260,11 +258,20 @@ def _load_scoring_rows(args: Any) -> list[dict[str, Any]]:
     return load_pilot_input(_pilot_directory(args) / "pilot_input.csv")
 
 
-def _manifest_path(path: Path) -> str:
+def _repository_root(args: Any) -> Path:
+    root = getattr(args, "repository_root", None)
+    if root is None:
+        raise RequirementScoringError(
+            "repository_root must be supplied by the loaded operational config"
+        )
+    return Path(root).resolve()
+
+
+def _manifest_path(path: Path, repository_root: Path) -> str:
     """Use repository-relative paths when possible."""
 
     try:
-        return str(path.relative_to(REPOSITORY_ROOT))
+        return str(path.relative_to(repository_root))
     except ValueError:
         return str(path)
 
@@ -275,25 +282,26 @@ def _planned_manifest(
     pilot_rows: Sequence[Mapping[str, Any]],
     generation_config: GenerationConfig,
 ) -> dict[str, Any]:
+    repository_root = _repository_root(args)
     model_policy = generation_config.model_policy()
     execution_policy = generation_config.execution_policy()
     ordered_ids = [row["benchmark_candidate_id"] for row in pilot_rows]
     prompt_hash = sha256_file(args.prompt)
     schema_hash = sha256_file(args.schema)
     code_paths = (
-        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/config.py",
-        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/core.py",
-        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/provider.py",
-        REPOSITORY_ROOT / "src/edu_benchmark/requirement_scoring/workflow.py",
-        REPOSITORY_ROOT
+        repository_root / "src/edu_benchmark/requirement_scoring/config.py",
+        repository_root / "src/edu_benchmark/requirement_scoring/core.py",
+        repository_root / "src/edu_benchmark/requirement_scoring/provider.py",
+        repository_root / "src/edu_benchmark/requirement_scoring/workflow.py",
+        repository_root
         / "src/edu_benchmark/model_providers/vertex_ai/provider.py",
-        REPOSITORY_ROOT
+        repository_root
         / "scripts/requirement_scoring/run_requirement_scoring.py",
     )
     if _is_full(args):
         input_manifest = {
             "input_role": "full_grounding_pool",
-            "scoring_input_path": _manifest_path(args.pool),
+            "scoring_input_path": _manifest_path(args.pool, repository_root),
             "scoring_input_sha256": sha256_file(args.pool),
         }
         run_ids = ("full",)
@@ -310,7 +318,7 @@ def _planned_manifest(
                 if _is_calibration(args)
                 else "stratified_repeatability_pilot"
             ),
-            "pilot_input_path": _manifest_path(input_path),
+            "pilot_input_path": _manifest_path(input_path, repository_root),
             "pilot_input_sha256": None,
         }
         run_ids = ("a", "b")
@@ -323,7 +331,7 @@ def _planned_manifest(
         "experiment_id": args.experiment_id,
         "operational_config": {
             "config_id": args.config_id,
-            "path": _manifest_path(args.config),
+            "path": _manifest_path(args.config, repository_root),
             "sha256": sha256_file(args.config),
         },
         "bundle_version": _pilot_directory(args).name,
@@ -338,7 +346,7 @@ def _planned_manifest(
         "created_at": utc_now(),
         "updated_at": utc_now(),
         "input": {
-            "grounding_pool_path": _manifest_path(args.pool),
+            "grounding_pool_path": _manifest_path(args.pool, repository_root),
             "grounding_pool_sha256": sha256_file(args.pool),
             "ordered_candidate_ids_sha256": canonical_json_hash(ordered_ids),
             "candidate_count": len(pilot_rows),
@@ -350,11 +358,11 @@ def _planned_manifest(
             **input_manifest,
         },
         "specification": {
-            "manifest_path": _manifest_path(args.spec_manifest),
+            "manifest_path": _manifest_path(args.spec_manifest, repository_root),
             "manifest_sha256": sha256_file(args.spec_manifest),
-            "prompt_path": _manifest_path(args.prompt),
+            "prompt_path": _manifest_path(args.prompt, repository_root),
             "prompt_sha256": prompt_hash,
-            "schema_path": _manifest_path(args.schema),
+            "schema_path": _manifest_path(args.schema, repository_root),
             "schema_sha256": schema_hash,
         },
         "generation_config": generation_config.as_dict(),
@@ -377,7 +385,7 @@ def _planned_manifest(
             ),
             "files": [
                 {
-                    "path": str(path.relative_to(REPOSITORY_ROOT)),
+                    "path": str(path.relative_to(repository_root)),
                     "sha256": sha256_file(path),
                 }
                 for path in code_paths
@@ -412,8 +420,9 @@ def _planned_manifest(
 
 
 def prepare(args: Any) -> dict[str, Any]:
+    repository_root = _repository_root(args)
     validate_snapshot_manifest(args.snapshot_manifest)
-    validate_specification_manifest(args.spec_manifest, REPOSITORY_ROOT)
+    validate_specification_manifest(args.spec_manifest, repository_root)
     rows = load_grounding_pool(args.pool)
     if _is_calibration(args):
         pilot_rows = load_calibration_cases(args.calibration_input)
@@ -865,7 +874,7 @@ def execute_run(
             "attempts_by_candidate": attempts_by_candidate,
             "failed_candidate_ids": [],
             "retry_sweeps_completed": retry_sweep,
-            "path": _manifest_path(run_path),
+            "path": _manifest_path(run_path, _repository_root(args)),
             "sha256": sha256_file(run_path),
         }
         manifest["status"] = (

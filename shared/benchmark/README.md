@@ -5,18 +5,25 @@ Historical experiments remain immutable provenance and are not deleted.
 
 ## What is here
 
-- `artifact_registry.csv`: one row per versioned bundle, including status,
+- [`artifact_registry.csv`](artifact_registry.csv): one row per versioned bundle, including status,
   source, checksum, counts, authority, access policy, and limitations.
-- `checklists/raw_dialogue/v1/`: the 18-criterion raw-dialogue audit checklist.
-- `datasets/phase1_pass_dialogues/v1/`: 665 dialogue families that passed the
+- [`checklists/raw_dialogue/v1/manifest.json`](checklists/raw_dialogue/v1/manifest.json):
+  the 18-criterion raw-dialogue audit checklist.
+- [`datasets/phase1_pass_dialogues/v1/manifest.json`](datasets/phase1_pass_dialogues/v1/manifest.json):
+  665 dialogue families that passed the
   operational Phase-1 audit; this is not final HNMU approval.
-- `datasets/candidate_pool/v1/`: 2,028 validated conversion candidates from the
+- [`datasets/candidate_pool/v1/manifest.json`](datasets/candidate_pool/v1/manifest.json):
+  2,028 validated conversion candidates from the
   665 families, with one-to-one trace and family dispositions.
-- `selections/provisional_evaluation_pool/v1/`: a minimal 1,400-ID provisional
+- [`selections/provisional_evaluation_pool/v1/manifest.json`](selections/provisional_evaluation_pool/v1/manifest.json):
+  a minimal 1,400-ID provisional
   selection plus compact scores/status for all 2,028 candidates. The remaining
   628 require UET review; zero are structurally blocked.
-- `specifications/`: the current capability, pedagogical-principle, and rubric
-  bundles. Their source status remains `needs_hnmu_review`.
+- Current specification manifests:
+  [capabilities](specifications/tutor_capabilities/v0/manifest.json),
+  [pedagogical principles](specifications/pedagogical_principles/v0/manifest.json),
+  and [rubrics](specifications/rubric_library/v0/manifest.json). Their source
+  status remains `needs_hnmu_review`.
 
 ## Status and authority
 

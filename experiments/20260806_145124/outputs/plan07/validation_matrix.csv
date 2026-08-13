@@ -1,0 +1,16 @@
+check_id,scope,status,evidence,blocking
+P07-V001,benchmark_env dependency synchronization,passed,requirements already satisfied and editable install succeeded,false
+P07-V002,working-tree repository tests,passed,308 tests passed with pyproject.toml as the single pytest configuration,true
+P07-V003,governance validation,passed,active experiment validator passed,true
+P07-V004,canonical benchmark registry,passed,18 criteria; 665 dialogues; 2028 candidates; 1400 selected; 628 review; 0 blocked,true
+P07-V005,portable runtime preflight,passed,preflight passed from /tmp and preserved the matching completed manifest,true
+P07-V006,clean snapshot wheel import,passed,installed modules resolved from benchmark_env site-packages,true
+P07-V007,clean snapshot self-contained lane,passed,260 tests passed without ignored local data or provider credentials,true
+P07-V008,clean snapshot core lane,passed,133 tests passed,false
+P07-V009,documentation links and navigation,passed,105 local links in 34 current documents resolved and 18/665/2028/1400 manifests are directly discoverable,true
+P07-V010,secret scan,passed,staged Git snapshot scanned; no real private key or API credential found,true
+P07-V011,large-file scan,passed,no tracked or reachable-HEAD blob exceeds 100 MiB,true
+P07-V012,externalized-output restore drill,not_applicable,Plan 06 externalized no output,false
+P07-V013,provider/model calls,not_applicable,no provider credential supplied and no API called,false
+P07-V014,dependency consistency,passed,pip check reported no broken requirements,true
+P07-V015,diff formatting,passed,git diff --check passed,true

@@ -60,8 +60,40 @@ class DocumentationTests(unittest.TestCase):
             "learning-resource-curator",
             "benchmark-specification-designer",
             "Specialist fan-out policy",
+            "Repository ownership routing",
+            "src/edu_benchmark/",
+            "scripts/",
+            "shared/benchmark/artifact_registry.csv",
+            "experiments/<id>/",
         ):
             self.assertIn(required, content)
+
+    def test_closeout_navigation_and_current_architecture(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        architecture = (ROOT / "ARCHITECTURE.md").read_text(encoding="utf-8")
+        self.assertIn("## Start here", readme)
+        self.assertIn("shared/benchmark/README.md", readme)
+        self.assertIn("665 Phase-1 dialogue families", readme)
+        self.assertIn("2,028-candidate pool", readme)
+        self.assertIn("provisional 1,400-candidate selection", readme)
+        self.assertNotIn("Future P05 artifacts", architecture)
+        self.assertNotIn("Future P06 artifacts", architecture)
+
+    def test_shared_benchmark_discovery_links_resolve(self) -> None:
+        path = ROOT / "shared" / "benchmark" / "README.md"
+        content = path.read_text(encoding="utf-8")
+        for required in (
+            "18-criterion raw-dialogue audit checklist",
+            "665 dialogue families",
+            "2,028 validated conversion candidates",
+            "1,400-ID provisional",
+        ):
+            self.assertIn(required, content)
+        for target in LINK_PATTERN.findall(content):
+            if target.startswith(("http://", "https://", "#", "mailto:")):
+                continue
+            resolved = (path.parent / target.split("#", maxsplit=1)[0]).resolve()
+            self.assertTrue(resolved.exists(), f"Broken link in {path}: {target}")
 
     def test_language_policy_keeps_agent_docs_english_first(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")

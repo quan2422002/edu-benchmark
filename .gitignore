@@ -212,6 +212,10 @@ google-cloud-sdk/*
 *.orig
 google-cloud-cli-linux-x86_64.tar.gz
 conference-latex-template.zip
+
+# Editable/wheel build metadata generated from the src-layout package.
+/src/*.egg-info/
+
 # Plan 06: keep the 45 generated JSONL files from experiment 20260727_170150
 # at their original experiment paths for local provenance, but do not push
 # their payloads to GitHub. This covers exactly these generated file roles:

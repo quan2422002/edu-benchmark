@@ -387,6 +387,9 @@ def test_runtime_config_owns_historical_operational_defaults() -> None:
     assert config.analysis_defaults()["expected_candidates"] == 2028
     assert config.export_defaults()["output"].is_absolute()
 
+    parsed = parse_args(["full", "--config", str(CONFIG_PATH)])
+    assert parsed.repository_root == REPOSITORY_ROOT
+
     for relative in (
         "src/edu_benchmark/requirement_scoring/workflow.py",
         "src/edu_benchmark/requirement_scoring/analysis.py",

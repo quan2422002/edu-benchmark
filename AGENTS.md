@@ -51,6 +51,26 @@ For experiments that adopt the v1 governance contract in
   delegation events for specialist threads. Both use the versioned contract in
   `experiments/_templates/coordination-event.schema.json`.
 
+## Repository ownership routing
+
+- Put reusable domain logic, schemas, validation, provider contracts, and
+  persistence behavior under `src/edu_benchmark/`.
+- Keep `scripts/` as thin command-line entry points for argument parsing,
+  configuration loading, package dispatch, progress reporting, and exit-code
+  mapping. Do not create a second implementation of business logic there.
+- Put stable, versioned, reusable benchmark artifacts under `shared/` only with
+  provenance, status, authority, and access-policy metadata. Start canonical
+  benchmark discovery at `shared/benchmark/artifact_registry.csv`.
+- Put run-specific configs, runbooks, outputs, reports, coordination records,
+  and handoffs under `experiments/<id>/`. Do not move reusable code into an
+  experiment directory.
+- Put durable cross-plan architectural rationale under `docs/decisions/`.
+  Human-facing lifecycle changes belong in the active roadmap, status YAML, and
+  chronological amendment log.
+- Keep large generated provider/model payloads at their approved experiment
+  paths under scoped ignore rules unless a later approved plan supplies a
+  verified external-storage or Git LFS contract.
+
 ## Current specialists
 
 Canonical instructions live under `agents/<name>/`; runtime adapters must remain thin and must not fork workflow logic.

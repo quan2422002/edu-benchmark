@@ -96,6 +96,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     config = load_requirement_scoring_config(args.config)
     args.config = config.path
     args.config_id = str(config.raw["config_id"])
+    args.repository_root = config.repository_root
     defaults = config.run_defaults(args.command)
     for field, value in defaults.items():
         if field == "thinking_level" and args.thinking_budget is not None:

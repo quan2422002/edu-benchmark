@@ -1,7 +1,7 @@
 # Plan 07 — Đồng bộ tài liệu, kiểm chứng và hoàn tất quá trình cải tổ
 
 Thử nghiệm: `20260806_145124`
-Trạng thái: `DỰ THẢO — CHỜ NGƯỜI PHỤ TRÁCH DỰ ÁN DUYỆT`
+Trạng thái: `APPROVED — 2026-08-13 — PROJECT LEAD`
 Phụ thuộc: Plan 01–06
 
 ## 1. Mục tiêu
