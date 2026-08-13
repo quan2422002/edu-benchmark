@@ -1,7 +1,7 @@
 # Roadmap — Cải tổ repository để con người và agent cùng vận hành được
 
 Experiment: `20260806_145124`
-Trạng thái: `ACTIVE — PLAN 06 AWAITING APPROVAL`
+Trạng thái: `ACTIVE — PLAN 07 AWAITING APPROVAL`
 Nguồn hiện trạng chính: `20260727_170150`
 
 ## 1. Mục tiêu
@@ -123,7 +123,7 @@ còn payload được đặt tại kho được phép và manifest ghi locator/c
 |       03 | [Registry và promotion artifact benchmark dùng chung](plans/03-shared-benchmark-artifact-registry-and-promotion.md)      | `COMPLETED` | Registry, manifest và các count/provenance được đối chiếu; authority rõ ràng |
 |       04 | [Cấu hình thử nghiệm, hướng dẫn vận hành và đường dẫn khả chuyển](plans/04-experiment-configs-runbooks-and-portable-paths.md) | `COMPLETED` | Lần chạy đại diện kiểm tra được từ nhiều thư mục, không có đường dẫn tuyệt đối hoặc thông tin bí mật |
 |       05 | [Tách ranh giới `src/` và `scripts/`](plans/05-src-scripts-boundary-and-runtime-refactor.md)                            | `COMPLETED`   | CLI mỏng, logic dùng lại trong package, compatibility và test đạt                |
-|       06 | [Retention output, khử trùng lặp và vệ sinh repo](plans/06-output-retention-deduplication-and-repository-hygiene.md)  | `DRAFT`      | Inventory đối chiếu, archive/ignore policy áp dụng, xóa chỉ sau duyệt riêng   |
+|       06 | [Quản lý đầu ra, khử trùng lặp và vệ sinh kho mã nguồn](plans/06-output-retention-deduplication-and-repository-hygiene.md) | `COMPLETED` | Bảng kiểm kê được đối chiếu; giữ dữ liệu tại ngữ cảnh gốc, JSONL được bỏ qua có mục tiêu và không có thao tác phá hủy |
 |       07 | [Đồng bộ tài liệu, validation và đóng migration](plans/07-documentation-reconciliation-validation-and-closeout.md) | `DRAFT`      | Clean-clone drill, docs/current-state và final report được duyệt                  |
 
 Project lead duyệt theo đúng thứ tự trên. Một plan được duyệt không tự động
@@ -181,4 +181,7 @@ cùng backlog 628/blocked 0 và ba specification bundle provisional. Runtime c�
 hình khả chuyển đã tái lập Section V từ nhiều thư mục làm việc. Plan 05 đã tách
 tầng provider độc lập, chuyển requirement scoring cùng hai judge caller đại
 diện, loại bỏ namespace tạm và đạt toàn bộ validation. Plan 06 là cổng kế tiếp
-nhưng vẫn `DRAFT`; chưa được triển khai trước khi project lead duyệt.
+và đã hoàn tất kiểm kê cùng chính sách lưu giữ không phá hủy. P06-A001 giữ dữ
+liệu tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và
+không dùng Git LFS. Plan 07 là cổng kế tiếp nhưng vẫn `DRAFT`; chưa được triển
+khai trước khi người phụ trách dự án duyệt.

@@ -3,14 +3,14 @@ experiment_id: "20260806_145124"
 plan_id: "P06"
 sequence: 6
 baseline_path: "plans/06-output-retention-deduplication-and-repository-hygiene.md"
-status: "draft"
+status: "completed"
 approval:
-  state: "pending"
-  authority: null
-  approved_at: null
-updated_at: "2026-08-06T15:55:09+07:00"
+  state: "approved"
+  authority: "project_lead"
+  approved_at: "2026-08-12T22:32:17+07:00"
+updated_at: "2026-08-13T16:41:33+07:00"
 current_step: null
-last_amendment: null
+last_amendment: "P06-A002"
 depends_on:
   - "P01"
   - "P02"
@@ -18,13 +18,27 @@ depends_on:
   - "P04"
   - "P05"
 gate:
-  state: "closed"
-  summary: "Awaiting Plans 01 through 05 completion."
+  state: "passed"
+  summary: "Non-destructive inventory, privacy-safe handling of unrelated untracked files, duplicate analysis, scoped and documented JSONL ignore rules, and project-lead-approved keep decisions are complete; no payload was deleted, moved, untracked, externalized, placed in LFS, or rewritten in history."
 artifacts:
   - path: "plans/06-output-retention-deduplication-and-repository-hygiene.md"
     kind: "baseline_plan"
   - path: "plans/06-status.yaml"
     kind: "status_file"
+  - path: "decisions/plan06-amendments.md"
+    kind: "amendment_log"
+  - path: "outputs/plan06/repository_inventory.csv"
+    kind: "machine_output"
+  - path: "outputs/plan06/duplicate_groups.csv"
+    kind: "machine_output"
+  - path: "outputs/plan06/retention_manifest.json"
+    kind: "machine_output"
+  - path: "runbooks/plan06-repository-inventory-and-retention-review.md"
+    kind: "runbook"
+  - path: "reports/plan06-final.md"
+    kind: "final_report"
+  - path: "handoffs/plan06-retention-target-review.md"
+    kind: "handoff"
 artifact_budget:
   limits:
     baseline_plan: 1
@@ -35,4 +49,3 @@ artifact_budget:
     handoff: 1
     machine_output: 3
   exceptions: []
-

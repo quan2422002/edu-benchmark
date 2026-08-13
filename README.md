@@ -4,7 +4,7 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–05 đã hoàn tất governance, packaging, shared benchmark registry, runtime khả chuyển và ranh giới độc lập cho model provider/requirement scoring. Plan 06 đang chờ project lead duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đang là roadmap active; Plan 01–06 đã hoàn tất governance, packaging, shared benchmark registry, runtime khả chuyển, ranh giới độc lập cho model provider/requirement scoring và kiểm kê đầu ra không phá hủy. P06-A001 giữ payload tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và không dùng Git LFS; Plan 07 đang chờ người phụ trách dự án duyệt. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
 
 Judge cost-pilot v2 đã hoàn thành 90/90 phép chấm cho cả Gemini 3.5 Flash
 và `gpt-5.4-mini-2026-03-17`. Đối chiếu phát hiện thành phần lỗi nghiêm
@@ -135,6 +135,8 @@ src/edu_benchmark/requirement_scoring/ Pedagogical-principle requirement-scoring
 scripts/benchmark_registry/ Thin CLI for deterministic shared benchmark promotion/validation
 scripts/governance/     Thin CLI for experiment-governance validation
 scripts/requirement_scoring/ Thin CLI entry points for requirement scoring, analysis, and export
+src/edu_benchmark/repository_hygiene/ Non-destructive scoped inventory, privacy-safe untracked-file aggregation, hashing, duplicate grouping, and retention summaries
+scripts/repository_hygiene/ Thin CLI for config-driven repository-hygiene inventory
 experiments/20260806_145124/configs/ Requirement-scoring and portable analysis runtime configs
 document/               User-provided project source documents
 kse_submit_manuscript/  KSE 2026 writing plan, LaTeX source, evidence registry, and releases

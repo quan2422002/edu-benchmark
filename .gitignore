@@ -209,7 +209,31 @@ tests/learning_resources/test_ocr_pipeline_units.py
 google-cloud-sdk/*
 
 *.log
+*.orig
 google-cloud-cli-linux-x86_64.tar.gz
 conference-latex-template.zip
-# Generated experiment JSONL outputs
-/experiments/*/outputs/**/*.jsonl
+# Plan 06: keep the 45 generated JSONL files from experiment 20260727_170150
+# at their original experiment paths for local provenance, but do not push
+# their payloads to GitHub. This covers exactly these generated file roles:
+# - benchmark_evaluation (34 files):
+#   run_responses.jsonl        target-model responses (3 files)
+#   run_smoke.jsonl            target smoke responses (3 files)
+#   run_judgments.jsonl        judge decisions, smoke/pilot/full (10 files)
+#   run_errors.jsonl           per-request error records (8 files)
+#   batch_input.jsonl and batch_input_retry_<N>.jsonl
+#                              Gemini/OpenAI batch requests (5 files)
+#   provider_output.jsonl and provider_output_retry_<N>.jsonl
+#                              raw Gemini/OpenAI batch results (5 files)
+# - principle_requirement_scoring (11 files):
+#   run_a.jsonl and run_b.jsonl calibration/pilot repeats (10 files)
+#   run_full.jsonl             full 2,028-candidate scoring run (1 file)
+# The two patterns are intentionally experiment- and output-family-specific.
+# Do not broaden them to *.jsonl or experiments/**/outputs/**/*.jsonl because
+# JSONL may be a tracked source fixture or a future experiment deliverable.
+/experiments/20260727_170150/outputs/benchmark_evaluation/**/*.jsonl
+/experiments/20260727_170150/outputs/principle_requirement_scoring/**/*.jsonl
+
+# Rebuildable LaTeX intermediate in the manuscript working directory.
+# The currently tracked file remains tracked until separately approved for
+# index removal; this rule only prevents new XDV intermediates from being added.
+/kse_submit_manuscript/manuscript/*.xdv

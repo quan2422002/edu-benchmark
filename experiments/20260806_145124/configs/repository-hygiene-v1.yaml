@@ -1,0 +1,173 @@
+schema_version: "1.0"
+config_id: "repository-hygiene-20260812-v1"
+repository_root: "../../.."
+output_root: "experiments/20260806_145124/outputs/plan06"
+scan_roots:
+  - "."
+exclude_globs:
+  - ".git/**"
+  - ".pytest_cache/**"
+  - "**/__pycache__/**"
+  - "**/*.pyc"
+  - ".env"
+  - "**/.env"
+  - "document/**"
+  - "google-cloud-sdk/**"
+  - "experiments/20260806_145124/**"
+duplicate_min_bytes: 1048576
+targets:
+  - target_id: "full-batch-judge-jsonl"
+    path_globs:
+      - "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/judge_full_batch_gold_answer_only_v4/**/*.jsonl"
+    reference_terms:
+      - "judge_full_batch_gold_answer_only_v4"
+    artifact_class: "raw_provider_output"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep paid-run inputs and outputs at their original experiment paths as local ignored payloads; do not use Git LFS or consolidate them under shared."
+  - target_id: "target-response-jsonl"
+    path_globs:
+      - "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/target_*/*.jsonl"
+    reference_terms:
+      - "target_gemini35"
+      - "target_llama4_maverick"
+    artifact_class: "raw_provider_output"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep generated target responses at their original experiment paths as local ignored payloads so their run context remains visible."
+  - target_id: "judge-pilot-and-smoke-jsonl"
+    path_globs:
+      - "experiments/20260727_170150/outputs/benchmark_evaluation/full_1400_v1/judge_cost_pilot_30/**/*.jsonl"
+      - "experiments/20260727_170150/outputs/benchmark_evaluation/judge_smoke_*/*.jsonl"
+      - "experiments/20260727_170150/outputs/benchmark_evaluation/smoke_*/*.jsonl"
+    reference_terms:
+      - "judge_cost_pilot_30"
+      - "judge_smoke_"
+      - "smoke_gemini35_"
+      - "smoke_llama4_maverick_"
+    artifact_class: "raw_provider_output"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep pilot and smoke JSONL at their original experiment paths as local ignored historical evidence."
+  - target_id: "requirement-scoring-jsonl"
+    path_globs:
+      - "experiments/20260727_170150/outputs/principle_requirement_scoring/**/*.jsonl"
+    reference_terms:
+      - "outputs/principle_requirement_scoring"
+    artifact_class: "raw_provider_output"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep raw scoring generations at their original experiment paths as local ignored scientific provenance."
+  - target_id: "shared-learning-source-payloads"
+    path_globs:
+      - "shared/raw_data/**/*"
+      - "shared/learning_resources/raw_page_images/**/*"
+      - "shared/learning_resources/compiled_documents/**/*.pdf"
+    reference_terms:
+      - "shared/raw_data/"
+      - "shared/learning_resources/raw_page_images/"
+      - "shared/learning_resources/compiled_documents/"
+    artifact_class: "shared_restricted_source"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: true
+    restore_test_required: true
+    rationale: "Source learning materials and restricted raw data are not rebuildable and need an approved storage authority."
+  - target_id: "rebuildable-learning-indexes"
+    path_globs:
+      - "shared/learning_resources/indexes/*.sqlite"
+      - "shared/learning_resources/indexes/*.sqlite3"
+      - "shared/learning_resources/indexes/*.db"
+      - "shared/learning_resources/indexes/*.duckdb"
+    reference_terms:
+      - "shared/learning_resources/indexes/"
+    artifact_class: "derived_rebuildable"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: true
+    rationale: "Keep the local ignored search index; the project lead explicitly declined deletion even though it is rebuildable."
+  - target_id: "legacy-ocr-prototypes"
+    path_globs:
+      - "experiments/20260709_155523/outputs/mineru_book_phase_a/**/*"
+      - "experiments/20260709_155523/outputs/mineru_probe_20260716/**/*"
+      - "experiments/20260709_155523/outputs/ocr_method_compare/**/*"
+      - "experiments/20260709_155523/outputs/ocr_probe/**/*"
+      - "experiments/20260709_155523/outputs/ocr_vietocr_gpu_probe/**/*"
+      - "experiments/20260709_155523/outputs/paddleocr_probe/**/*"
+      - "experiments/20260709_155523/outputs/learning_resource_phase3_*/*"
+    reference_terms:
+      - "outputs/mineru_book_phase_a"
+      - "outputs/mineru_probe_20260716"
+      - "outputs/ocr_method_compare"
+      - "outputs/ocr_probe"
+      - "outputs/ocr_vietocr_gpu_probe"
+      - "outputs/paddleocr_probe"
+      - "outputs/learning_resource_phase3_"
+    artifact_class: "historical_unique"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep unsuccessful OCR prototypes at their existing ignored experiment paths so their historical context remains intact."
+  - target_id: "legacy-learning-source-copies"
+    path_globs:
+      - "experiments/20260705_215045/source_scope/raw_page_images/**/*"
+    reference_terms:
+      - "experiments/20260705_215045/source_scope/raw_page_images/"
+    artifact_class: "historical_duplicate"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep historical source-scope images at their existing ignored experiment paths rather than consolidating them and losing context."
+  - target_id: "tracked-historical-snapshots"
+    path_globs:
+      - "experiments/20260722_000940/inherited_resources/from_20260709_155523/raw_audit_grade6_7/raw_dialogue_checklist_results.repaired.csv"
+      - "experiments/20260722_000940/inherited_resources/from_20260709_155523/raw_audit_grade8_9/raw_dialogue_checklist_results.regex_repaired.csv"
+      - "experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv"
+      - "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv"
+      - "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_conversion/full_v0/benchmark_candidate_splits.csv"
+      - "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv"
+    reference_terms:
+      - "experiments/20260722_000940/outputs/benchmark_conversion/conversion_input_pass_samples.csv"
+      - "experiments/20260722_000940/outputs/benchmark_conversion/full_v0/benchmark_candidate_splits.csv"
+      - "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_conversion/full_v0/benchmark_candidate_splits.csv"
+      - "experiments/20260727_170150/inherited_resources/from_20260722_000940/benchmark_specification/candidate_grounding/candidate_principle_grounding_pool.csv"
+    artifact_class: "historical_duplicate"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep all six tracked snapshots; they are already present on remote branches, remain under GitHub limits, and preserve historical provenance."
+  - target_id: "tracked-ephemeral-files"
+    path_globs:
+      - "*.orig"
+      - "**/*.orig"
+      - "output.log"
+      - "tmp.ipynb"
+    reference_terms: []
+    artifact_class: "ephemeral"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep the currently tracked backup copies, root log, and temporary notebook because the project lead explicitly declined deletion."
+  - target_id: "latex-intermediates"
+    path_globs:
+      - "kse_submit_manuscript/manuscript/*.xdv"
+    reference_terms: []
+    artifact_class: "ephemeral"
+    proposed_action: "keep"
+    approval_state: "plan_approved"
+    locator_required: false
+    restore_test_required: false
+    rationale: "Keep the currently tracked XDV intermediate because the project lead explicitly declined deletion."

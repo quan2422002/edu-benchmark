@@ -1,7 +1,7 @@
 # Plan 07 — Đồng bộ tài liệu, validation và đóng migration
 
 Experiment: `20260806_145124`
-Trạng thái: `DRAFT — AWAITING PLAN 06 COMPLETION AND PROJECT-LEAD APPROVAL`
+Trạng thái: `DRAFT — AWAITING PROJECT-LEAD APPROVAL`
 Phụ thuộc: Plan 01–06
 
 ## 1. Mục tiêu
