@@ -1,82 +1,109 @@
-# Plan 07 — Đồng bộ tài liệu, validation và đóng migration
+# Plan 07 — Đồng bộ tài liệu, kiểm chứng và hoàn tất quá trình cải tổ
 
-Experiment: `20260806_145124`
-Trạng thái: `DRAFT — AWAITING PROJECT-LEAD APPROVAL`
+Thử nghiệm: `20260806_145124`
+Trạng thái: `DỰ THẢO — CHỜ NGƯỜI PHỤ TRÁCH DỰ ÁN DUYỆT`
 Phụ thuộc: Plan 01–06
 
 ## 1. Mục tiêu
 
-Chứng minh cải tổ hoạt động như một hệ thống hoàn chỉnh, sau đó đồng bộ tài liệu
-theo hiện trạng thật và đóng experiment bằng báo cáo ngắn gọn. Plan này không
-dùng tài liệu để tuyên bố trước những migration chưa hoàn tất.
+Chứng minh toàn bộ quá trình cải tổ hoạt động như một hệ thống hoàn chỉnh, đồng
+bộ tài liệu theo đúng hiện trạng và kết thúc thử nghiệm bằng một báo cáo cô
+đọng. Kế hoạch này không dùng tài liệu để tuyên bố trước những thay đổi chưa được
+triển khai hoặc chưa qua kiểm chứng.
 
 ## 2. Phạm vi
 
-- Reconcile `README.md`, `ARCHITECTURE.md`, active roadmap và ownership map.
-- Viết onboarding cho người và routing instructions cho orchestrator.
-- Kiểm link, metadata, registry, import, CLI, config/runbook và retention policy.
-- Thực hiện clean-environment/clean-clone drill trong phạm vi không cần secret.
-- Lập deprecation list và backlog còn lại thay vì kéo dài experiment vô hạn.
-- Tạo final report so sánh kết quả với mục tiêu Roadmap và đóng handoff.
+- Đối chiếu và đồng bộ `README.md`, `ARCHITECTURE.md`, lộ trình đang hoạt động và
+  bảng phân định quyền sở hữu.
+- Viết hướng dẫn bắt đầu cho người dùng và chỉ dẫn định tuyến nhiệm vụ cho agent
+  điều phối.
+- Kiểm tra liên kết, thông tin mô tả, sổ đăng ký, khả năng nhập mô-đun, CLI, tệp
+  cấu hình, hướng dẫn vận hành và chính sách lưu giữ.
+- Thử nghiệm trên môi trường sạch và bản sao Git mới trong phạm vi không cần
+  thông tin xác thực.
+- Lập danh sách thành phần dự kiến ngừng sử dụng và công việc tồn đọng, tránh kéo
+  dài thử nghiệm hiện tại vô hạn.
+- Tạo báo cáo cuối để đối chiếu kết quả với mục tiêu của lộ trình và hoàn tất tài
+  liệu bàn giao.
 
 ## 3. Tài liệu đích
 
-- `README.md`: cách bắt đầu, artifact chuẩn ở đâu, command offline cốt lõi,
-  experiment nào đang active.
-- `ARCHITECTURE.md`: component/runtime/ownership hiện có hiệu lực.
-- `docs/decisions/`: vì sao kiến trúc chọn như vậy, không phải trạng thái run.
-- roadmap: thứ tự/gate và trạng thái cấp cao.
-- final report: baseline, thay đổi đã triển khai, validation, ngoại lệ và backlog.
+- `README.md`: hướng dẫn bắt đầu, vị trí sản phẩm chuẩn, các lệnh ngoại tuyến cốt
+  lõi và thử nghiệm đang hoạt động.
+- `ARCHITECTURE.md`: thành phần, cơ chế chạy và quyền sở hữu đang có hiệu lực.
+- `docs/decisions/`: lý do của các quyết định kiến trúc, không dùng để ghi trạng
+  thái của từng lần chạy.
+- Lộ trình: thứ tự triển khai, cổng kiểm soát và trạng thái cấp cao.
+- Báo cáo cuối: hiện trạng ban đầu, thay đổi đã triển khai, kết quả kiểm chứng,
+  ngoại lệ và công việc tồn đọng.
 
-## 4. Validation matrix
+## 4. Ma trận kiểm chứng
 
-Tối thiểu phải kiểm:
+Tối thiểu phải kiểm tra:
 
-- package install/import bằng `benchmark_env`;
-- unit/integration test offline và validator schema/link;
-- canonical artifact counts/checksums/joins;
-- representative CLI preflight từ repo root;
-- restore drill cho ít nhất một externalized output nếu Plan 06 có externalize;
-- secret scan và large-file scan;
-- link từ README → registry → manifest → source provenance;
-- không có tài liệu gọi provisional artifact là đã được HNMU/UET xác nhận.
+- cài đặt gói và khả năng nhập mô-đun bằng `benchmark_env`;
+- kiểm thử đơn vị, kiểm thử tích hợp ngoại tuyến và công cụ kiểm tra lược đồ/liên
+  kết;
+- số lượng, mã kiểm tra và phép nối của các sản phẩm chuẩn;
+- bước kiểm tra điều kiện trước khi chạy của các CLI đại diện từ thư mục gốc kho
+  mã nguồn;
+- thử phục hồi ít nhất một đầu ra được chuyển sang kho ngoài nếu Plan 06 có thực
+  hiện việc chuyển này;
+- quét thông tin nhạy cảm và tệp dung lượng lớn;
+- chuỗi liên kết từ `README.md` đến sổ đăng ký, tệp kê khai và nguồn gốc dữ liệu;
+- không có tài liệu nào gọi sản phẩm tạm thời là nội dung đã được HNMU/UET xác
+  nhận.
 
 ## 5. Các bước triển khai dự kiến
 
-1. Chụp trạng thái sau Plan 06 và danh sách acceptance còn mở.
-2. Chạy validation matrix, sửa lỗi thuộc phạm vi migration.
-3. Reconcile tài liệu từ bằng chứng đã chạy.
-4. Thực hiện clean-environment drill và ghi exact commands/interpreter.
-5. Lập backlog có owner/gate cho việc không chặn closeout.
-6. Viết `reports/plan07-final.md`, handoff và đề xuất trạng thái experiment.
+1. Ghi nhận trạng thái sau Plan 06 và danh sách tiêu chí nghiệm thu còn mở.
+2. Chạy ma trận kiểm chứng và sửa các lỗi thuộc phạm vi quá trình cải tổ.
+3. Đồng bộ tài liệu dựa trên bằng chứng đã kiểm chứng.
+4. Thử nghiệm trên môi trường sạch, ghi chính xác lệnh đã chạy và trình thông dịch
+   được sử dụng.
+5. Lập danh sách công việc tồn đọng, kèm người chịu trách nhiệm và cổng kiểm soát,
+   cho những việc không cản trở hoàn tất thử nghiệm.
+6. Viết `reports/plan07-final.md`, tài liệu bàn giao và đề xuất trạng thái cuối của
+   thử nghiệm.
 
 ## 6. Phạm vi ghi dự kiến
 
-- `README.md`, `ARCHITECTURE.md`, `AGENTS.md` nếu routing thực tế thay đổi
-- docs/decision và documentation gần component
-- test/validator chỉ để sửa lỗi closeout đã xác định
-- experiment artifacts Plan 07
+- `README.md`, `ARCHITECTURE.md` và `AGENTS.md` nếu cơ chế định tuyến thực tế thay
+  đổi;
+- `docs/decisions/` và tài liệu nằm gần thành phần liên quan;
+- kiểm thử hoặc công cụ kiểm tra, nhưng chỉ để sửa lỗi đã xác định đang chặn việc
+  hoàn tất;
+- các sản phẩm quản trị của Plan 07 trong thử nghiệm `20260806_145124`.
 
 ## 7. Nghiệm thu
 
-- Một người mới có thể tìm canonical 665/2.028/1.400 và hiểu status trong không
-  quá ba lần chuyển link từ README.
-- Agent có thể chọn đúng `src`, `scripts`, config, runbook và shared/experiment
-  ownership từ tài liệu hiện hành.
-- Clean-environment drill offline đạt hoặc mọi phần không đạt có blocker rõ ràng.
-- README, ARCHITECTURE và roadmap không mâu thuẫn về plan/status/component.
-- Final report nêu cả phần chưa làm, không biến backlog thành completed.
-- Không còn plan nào được tự động đánh dấu approved/complete thiếu bằng chứng.
+- Một người mới có thể tìm được các tập chuẩn 665/2.028/1.400 và hiểu trạng thái
+  của chúng trong không quá ba lần chuyển liên kết từ `README.md`.
+- Agent điều phối có thể chọn đúng `src/`, `scripts/`, tệp cấu hình, hướng dẫn vận
+  hành và ranh giới sở hữu giữa `shared/` với `experiments/` từ tài liệu hiện
+  hành.
+- Thử nghiệm ngoại tuyến trên môi trường sạch đạt; nếu không đạt, mọi trở ngại
+  chặn phải được ghi rõ cùng bằng chứng.
+- `README.md`, `ARCHITECTURE.md` và lộ trình không mâu thuẫn về trạng thái kế hoạch,
+  thành phần hoặc quyền sở hữu.
+- Báo cáo cuối nêu rõ cả phần chưa làm, không biến công việc tồn đọng thành nội
+  dung đã hoàn thành.
+- Không có kế hoạch nào được tự động đánh dấu `approved` hoặc `completed` khi thiếu
+  phê duyệt hay bằng chứng.
 
-## 8. Rủi ro và rollback
+## 8. Rủi ro và cách quay lui
 
-Closeout dễ biến thành một vòng refactor mới. Chỉ sửa defect chặn acceptance;
-thay đổi tính năng mới được đưa vào backlog/experiment sau. Tài liệu có thể
-rollback theo commit nếu không phản ánh đúng code đã validation.
+Giai đoạn hoàn tất dễ biến thành một vòng cải tổ mới. Chỉ sửa những lỗi trực tiếp
+chặn tiêu chí nghiệm thu; thay đổi tính năng mới phải được đưa vào danh sách công
+việc tồn đọng hoặc một thử nghiệm sau. Có thể quay lui thay đổi tài liệu qua lịch
+sử Git nếu tài liệu không phản ánh đúng phần mã đã được kiểm chứng.
 
 ## 9. Quyết định cần duyệt
 
-- Tiêu chí nào chặn đóng experiment và tiêu chí nào được đưa vào backlog.
-- Trạng thái cuối (`completed`, `completed_with_backlog` hoặc trạng thái khác theo
-  vocabulary Plan 01).
-- Experiment kế tiếp, nếu cần, chỉ được tạo sau final review.
+- Tiêu chí nào chặn việc hoàn tất thử nghiệm và tiêu chí nào được đưa vào danh
+  sách công việc tồn đọng.
+- Trạng thái cuối phải dùng đúng tập giá trị của Plan 01. Nếu mục tiêu đã hoàn
+  thành nhưng vẫn còn công việc không chặn, dùng `completed` và ghi công việc đó
+  riêng trong báo cáo; không tạo trạng thái mới như `completed_with_backlog`.
+- Chỉ tạo thử nghiệm kế tiếp sau khi báo cáo cuối của thử nghiệm hiện tại được
+  duyệt.
