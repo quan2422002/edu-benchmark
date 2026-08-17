@@ -1,0 +1,19 @@
+id: "20260814_062402"
+slug: "four-week-human-validation-pilot"
+title: "Thử nghiệm bốn tuần về truy xuất học liệu, rà soát sư phạm và kiểm định bộ chấm"
+status: "planning"
+task_type: "team_onboarding_agent_assisted_human_validation_and_freeze_readiness"
+owner_agent: "orchestrator"
+parents:
+  - "20260727_170150"
+  - "20260806_145124"
+created_at: "2026-08-14T06:24:02+07:00"
+git_commit: null
+artifacts:
+  - roadmap.md
+  - planning/team-gantt.md
+  - planning/team-gantt.xlsx
+  - planning/member-task-cards.md
+  - plans/01-four-week-human-validation-pilot.md
+  - plans/01-status.yaml
+  - coordination/coordination_log.jsonl
