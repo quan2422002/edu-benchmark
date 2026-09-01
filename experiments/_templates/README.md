@@ -35,9 +35,8 @@ status file.
 From the repository root, run:
 
 ```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   scripts/governance/validate_experiment.py experiments/<YYYYMMDD_HHMMSS>
 ```
 
 Historical experiments are not required to be rewritten into this contract.
-

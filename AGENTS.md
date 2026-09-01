@@ -4,7 +4,7 @@ Read [README.md](README.md), [ARCHITECTURE.md](ARCHITECTURE.md), and the active 
 
 ## Required workflow
 
-- Use only the platform-specific `benchmark_env` interpreter for project Python commands, package installation, validators, and tests: `D:\conda-envs\benchmark_env\python.exe` on Windows or `/home/quannda/miniconda3/envs/benchmark_env/bin/python` on Linux. Do not install project packages into Conda base or system Python.
+- Use only the platform-specific `benchmark_env` interpreter for project Python commands, package installation, validators, and tests: `D:\conda-envs\benchmark_env\python.exe` on Windows or `/workspace/quannd/miniconda3/envs/benchmark_env/bin/python` on the current Linux server. Do not install project packages into Conda base or system Python.
 - Install the repository as an editable src-layout package in `benchmark_env`
   before running project scripts or tests: install `requirements.txt`, then run
   `python -m pip install --no-deps -e .`. Import `edu_benchmark` and

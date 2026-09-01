@@ -4,17 +4,18 @@ This repository is building a human-in-the-loop benchmark for evaluating how wel
 
 ## Current status
 
-Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đã hoàn thành Plan 01–07: quản trị kế hoạch, đóng gói Python, kho sản phẩm benchmark dùng chung, runtime khả chuyển, ranh giới model provider, chính sách lưu giữ và kiểm chứng snapshot sạch đều đã đạt. P06-A001 giữ payload tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và không dùng Git LFS. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
+Dự án đang ở giai đoạn proof-of-concept nhằm xây dựng benchmark gia sư AI môn Tin học THCS lớp 6–9. Experiment cải tổ repository `20260806_145124` đã hoàn thành Plan 01–07: quản trị kế hoạch, đóng gói Python, kho sản phẩm benchmark dùng chung, runtime khả chuyển, ranh giới model provider, chính sách lưu giữ và kiểm chứng snapshot sạch đều đã đạt. P06-A001 giữ payload tại ngữ cảnh experiment gốc, dùng `.gitignore` có mục tiêu cho 45 JSONL và không dùng Git LFS. Experiment `20260817_160800` đã sinh deterministic bộ PL-REQ v1 gồm 60 candidate chính cân bằng 15/lớp và 8 reserve; đây là tập hiệu chỉnh vận hành, chưa phải ground truth và còn chờ Nguyên cùng người chấm sư phạm rà soát. Experiment benchmark `20260727_170150` vẫn là nguồn hiện trạng khoa học: đã khóa 1.400 candidate ưu tiên, sinh đủ 1.400 response cho ba target và hoàn thành full judge `gold-answer-only-v4` bằng Gemini cùng GPT, mỗi judge có đúng 4.200 phán quyết hợp lệ. Rubric, score model, instruction và phán quyết của model vẫn là kết quả tạm thời, chưa phải ground truth hoặc nội dung HNMU đã xác nhận. Bản thảo KSE nằm tại `kse_submit_manuscript/`.
 
 ## Start here
 
 - Canonical benchmark discovery: [shared/benchmark/README.md](shared/benchmark/README.md).
-  From that page, the 665 Phase-1 dialogue families, 2,028-candidate pool, and
-  provisional 1,400-candidate selection are each one direct path away.
+  From that page, the 665 Phase-1 dialogue families, 2,028-candidate pool,
+  provisional 1,400-candidate selection, and PL-REQ-60 calibration bundle are
+  each one direct path away.
 - Current component and ownership map: [ARCHITECTURE.md](ARCHITECTURE.md).
 - Repository operating rules for agents and contributors: [AGENTS.md](AGENTS.md).
-- Active refactor lifecycle and human gates:
-  [experiments/20260806_145124/roadmap.md](experiments/20260806_145124/roadmap.md).
+- Current PL-REQ selection lifecycle:
+  [experiments/20260817_160800/roadmap.md](experiments/20260817_160800/roadmap.md).
 
 The shortest canonical data path is `README.md` → `shared/benchmark/README.md`
 → the selected bundle's `manifest.json` and data files. Read the manifest before
@@ -57,7 +58,9 @@ judge và descriptive position sensitivity tại
 mọi cổng 4.200/38.832 và các anchor đã khóa đều đạt. Không có model call mới
 trong bước này.
 
-Active repository-refactor roadmap: [experiments/20260806_145124/roadmap.md](experiments/20260806_145124/roadmap.md)
+Current PL-REQ selection roadmap: [experiments/20260817_160800/roadmap.md](experiments/20260817_160800/roadmap.md)
+Human-validation planning roadmap: [experiments/20260814_062402/roadmap.md](experiments/20260814_062402/roadmap.md)
+Completed repository-refactor roadmap: [experiments/20260806_145124/roadmap.md](experiments/20260806_145124/roadmap.md)
 Current benchmark/evaluation roadmap: [experiments/20260727_170150/roadmap.md](experiments/20260727_170150/roadmap.md)
 Previous phase-2 construction roadmap: [experiments/20260722_000940/roadmap.md](experiments/20260722_000940/roadmap.md)
 Previous raw-dialogue audit roadmap: [experiments/20260709_155523/roadmap.md](experiments/20260709_155523/roadmap.md)
@@ -66,6 +69,7 @@ Historical baseline roadmap: [experiments/20260620_115236/roadmap.md](experiment
 
 Approved plans:
 
+- [Experiment 20260817 Plan 01 — PL-REQ-60 deterministic selection and shared publication](experiments/20260817_160800/plans/01-pl-req-60-selection-and-publication.md)
 - [Experiment 20260722 Plan 01 — Raw-dialogue to benchmark-candidate conversion contract and pilot](experiments/20260722_000940/plans/01-audited-raw-dialogue-to-benchmark-candidate-conversion.md)
 - [Experiment 20260722 Plan 02 — Multi-candidate conversion from every tutor turn](experiments/20260722_000940/plans/02-split-policy-and-full-benchmark-conversion.md)
 - [Experiment 20260722 Plan 03 — Measurement foundations, six capabilities, six KMP principles, and two-tier rubrics](experiments/20260722_000940/plans/03-thcs-task-rubric-specification-and-coverage.md)
@@ -165,8 +169,9 @@ Experiment `20260709_155523` Plan 02 established the shared layout:
   `shared/benchmark/artifact_registry.csv`. The registry points to the
   18-criterion checklist, 665 Phase-1 dialogues, 2,028-candidate conversion
   pool, provisional 1,400-candidate selection with the 628/0 backlog state, and
-  provisional capability/principle/rubric bundles. Each bundle has a manifest
-  with source hashes, counts, authority, access policy, and limitations.
+  provisional capability/principle/rubric bundles. It also registers PL-REQ v1:
+  60 primary candidate and 8 reserve for human calibration. Each bundle has a
+  manifest with source hashes, counts, authority, access policy, and limitations.
 - HNMU raw dialogue batches live under `shared/raw_data/HNMU-teacher_dialog_samples/` and are registered in `manifest.csv`. Do not edit the raw Excel files directly.
 - Shared SGK/SGV learning resources belong under `shared/learning_resources/`.
   This area contains copied source material, registries, OCR text, fragments,
@@ -187,7 +192,7 @@ go into one chronological amendment log rather than rewriting the baseline.
 Validate a governed experiment from the repository root with:
 
 ```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   scripts/governance/validate_experiment.py experiments/20260806_145124
 ```
 
@@ -209,11 +214,11 @@ execution use the same command from the repository root or another working
 directory after the editable package is installed:
 
 ```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   -m edu_benchmark.experiment_runtime preflight \
   --config experiments/20260806_145124/configs/section-v-ablation-v1.yaml
 
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   -m edu_benchmark.experiment_runtime run \
   --config experiments/20260806_145124/configs/section-v-ablation-v1.yaml
 ```
@@ -253,7 +258,7 @@ that candidate without discarding already appended JSONL responses.
 The required project environment is the Conda environment `benchmark_env`. The current remote development machine is Ubuntu, so use the Linux executable by default:
 
 ```text
-Linux:   /home/quannda/miniconda3/envs/benchmark_env/bin/python
+Linux (current server): /workspace/quannd/miniconda3/envs/benchmark_env/bin/python
 Windows: D:\conda-envs\benchmark_env\python.exe
 ```
 
@@ -282,8 +287,8 @@ D:\conda-envs\benchmark_env\python.exe -m pip install --no-deps -e .
 ```
 
 ```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements.txt
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pip install --no-deps -e .
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python -m pip install -r requirements.txt
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python -m pip install --no-deps -e .
 ```
 
 `pyproject.toml` separates core, `dev`, and `providers` dependency groups.
@@ -302,7 +307,7 @@ After installation, verify import portability from outside the repository:
 
 ```bash
 cd /tmp
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -I -c \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python -I -c \
   "from edu_benchmark import model_providers, requirement_scoring; print(model_providers.__file__); print(requirement_scoring.__file__)"
 ```
 
@@ -319,22 +324,22 @@ OCR Markdown and uses the tracked manifest, fragment, and retrieval modules.
 Linux / current Ubuntu remote:
 
 ```bash
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   /home/quannda/.codex/skills/.system/skill-creator/scripts/quick_validate.py \
   agents/research-methodologist
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   /home/quannda/.codex/skills/.system/skill-creator/scripts/quick_validate.py \
   agents/learning-resource-curator
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   /home/quannda/.codex/skills/.system/skill-creator/scripts/quick_validate.py \
   agents/benchmark-specification-designer
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   /home/quannda/.codex/skills/.system/skill-creator/scripts/quick_validate.py \
   agents/hnmu-dialogue-auditor
-/home/quannda/miniconda3/envs/benchmark_env/bin/python \
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python \
   /home/quannda/.codex/skills/.system/skill-creator/scripts/quick_validate.py \
   agents/teacher-collaboration-designer
-/home/quannda/miniconda3/envs/benchmark_env/bin/python -m pytest tests/agents -q
+/workspace/quannd/miniconda3/envs/benchmark_env/bin/python -m pytest tests/agents -q
 ```
 
 
@@ -362,4 +367,6 @@ Runtime smoke testing must be performed in an interactive Codex CLI/App session 
 
 Agents and contributors must follow [AGENTS.md](AGENTS.md). Architecture changes must update [ARCHITECTURE.md](ARCHITECTURE.md) in the same commit.
 
-Last verified during experiment `20260806_145124` Plan 07 on 2026-08-13.
+Last verified during experiment `20260817_160800` Plan 01 on 2026-08-17:
+PL-REQ deterministic validation, shared-registry validation and all 309 offline
+tests passed on the current server.

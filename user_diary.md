@@ -246,3 +246,14 @@ Một số vấn đề khi xử lý dữ liệu thô ở phase 2:
 
 - Dữ liệu kết thúc bằng lượt của học sinh
 - Có 1 số mẫu có vài lượt liên tiếp của HS/AI, không sự xen kẽ toàn bộ
+
+# Update plan (25/07/2026)
+
+Nhóm tôi đã được thêm 4 thành viên mới, tuy nhiên có thể sẽ chỉ duy trì trong khoảng 2 tháng. Hơn nữa, 4 thành viên này, cùng với Nguyên, cũng sẽ cần phải định hướng khóa luận tốt nghiệp đại học. Tức là, phải phân việc cho các bạn ấy thật cụ thể, và nội dung công việc cũng sẽ phải có tiềm năng phát triển lên thành 1 khóa luận tốt nghiệp hoàn thiện. Về background chuyên môn của các bạn ấy, tôi sẽ note ra như sau:
+- Nguyên: chuyên môn lập trình, chuyên về AI
+- Hoàng: chuyên môn lập trình, chuyên về lập trình software
+- Hiếu: chuyên môn lập trình, chuyên về AI
+- Thủy: chuyên môn về Toán
+- Triệu: chuyên môn về Toán
+
+Hiện tại thì tôi cũng đã phân công việc cho các bạn ấy, như ở trong experiment 20260814_062402. Ngoài ra, tôi cũng cần có phần công việc của riêng mình để phục vụ cho khóa luận tốt nghiệp thạc sĩ của mình.

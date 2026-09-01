@@ -19,6 +19,11 @@ Historical experiments remain immutable provenance and are not deleted.
   a minimal 1,400-ID provisional
   selection plus compact scores/status for all 2,028 candidates. The remaining
   628 require UET review; zero are structurally blocked.
+- [`selections/pl_req_calibration/v1/manifest.json`](selections/pl_req_calibration/v1/manifest.json):
+  bộ hiệu chỉnh PL-REQ v1 gồm 60 candidate chính (15 mỗi lớp) và 8 candidate dự
+  phòng, không trùng dialogue family. Trong 60 mẫu chính có 48 mẫu bridge đủ ba
+  target response và 12 mẫu focus từ review backlog; cả 8 ca required-set rỗng
+  đều được giữ để con người hiệu chỉnh.
 - Current specification manifests:
   [capabilities](specifications/tutor_capabilities/v0/manifest.json),
   [pedagogical principles](specifications/pedagogical_principles/v0/manifest.json),
@@ -30,7 +35,10 @@ Historical experiments remain immutable provenance and are not deleted.
 `shared` means canonical for discovery and consumption, not scientifically
 final. The 1,400 selection is a `provisional_evaluation_pool`, never benchmark
 v1 or ground truth. Model-derived requirement scores are operational evidence,
-not expert labels. Read each manifest before use.
+not expert labels. PL-REQ v1 là tập hiệu chỉnh vận hành do project lead duyệt
+contract chọn, chưa qua rà soát nội dung của Nguyên hoặc chấm độc lập của
+Thủy/Triệu. `fragment_proxy_status` chỉ phản ánh việc resolve ID và độ dài text,
+không xác nhận fragment đủ nghĩa ở cấp candidate. Read each manifest before use.
 
 ## Access and large/local sources
 
@@ -57,3 +65,6 @@ Deprecated source-to-canonical mapping:
 
 The historical paths remain valid rollback/provenance sources during this
 migration; Plan 03 does not delete them.
+
+Bundle mở rộng đã đăng ký, như PL-REQ v1, được validator kiểm manifest/checksum
+và được giữ nguyên khi công cụ promotion dựng lại bảy bundle nền tảng.
