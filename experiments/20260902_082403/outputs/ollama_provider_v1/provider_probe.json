@@ -1,0 +1,89 @@
+{
+  "schema_version": "ollama-provider-probe-v1",
+  "generated_at": "2026-09-02T08:24:03.318069+00:00",
+  "fixture_id": "ollama-provider-fixed-chat-v1",
+  "fixture_sha256": "33148296c39400749eebfc669445c5d41c971d77c90ecff1d50a107af72f6c16",
+  "request": {
+    "backend": "ollama",
+    "model": "qwen3.8:latest",
+    "message_count": 3,
+    "has_system_instruction": true,
+    "max_output_tokens": 256,
+    "thinking_level": "MEDIUM",
+    "num_ctx": 4096,
+    "seed": 20260902
+  },
+  "response": {
+    "text": "```python\nx = 5\n```\n\n`x` là biến, `5` là giá trị nó lưu.",
+    "backend": "ollama",
+    "model": "qwen3.8:latest",
+    "model_version": "qwen3.8:latest@sha256:22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+    "response_id": "ollama_38b32f4aa8acc05422ae41d6",
+    "finish_reason": "STOP",
+    "usage": {
+      "input_tokens": 82,
+      "output_tokens": 52,
+      "total_tokens": 134,
+      "metadata": {
+        "created_at": "2026-09-02T08:24:03.266751495Z",
+        "done_reason": "stop",
+        "total_duration": 2892044753,
+        "load_duration": 1077158031,
+        "prompt_eval_duration": 843546000,
+        "eval_duration": 965248000,
+        "thinking_present": true,
+        "thinking_characters": 103,
+        "ollama_version": "0.32.14"
+      }
+    }
+  },
+  "running_models": [
+    {
+      "name": "qwen3.8:latest",
+      "model": "qwen3.8:latest",
+      "expires_at": "2318-12-13T15:11:20.12178472+07:00",
+      "size": 17278099782,
+      "size_vram": 17278099782,
+      "digest": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+      "context_length": 4096,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "27.3B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ],
+  "runtime_after": {
+    "memory": {
+      "memtotal_bytes": 67067424768,
+      "memavailable_bytes": 37016334336,
+      "swaptotal_bytes": 0,
+      "swapfree_bytes": 0
+    },
+    "gpu": {
+      "available": true,
+      "uuid": "GPU-5e1bf88a-a431-9a0c-b462-37cd95b5e9b8",
+      "name": "NVIDIA GeForce RTX 3090",
+      "driver_version": "575.57.08",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 18325,
+      "memory_free_mib": 5798,
+      "utilization_gpu_percent": 88
+    }
+  },
+  "checks": {
+    "response_nonempty": true,
+    "finish_reason_known": true,
+    "usage_present": true,
+    "thinking_not_stored": true,
+    "model_loaded": true,
+    "model_fully_on_gpu": true,
+    "model_context_length": true
+  },
+  "passed": true
+}

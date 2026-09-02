@@ -10,6 +10,7 @@ from .contracts import (
     StructuredOutput,
     TokenUsage,
 )
+from .ollama import OllamaConfigurationError, OllamaProvider
 from .registry import ProviderRegistry, create_provider
 
 __all__ = [
@@ -18,6 +19,8 @@ __all__ = [
     "ModelProvider",
     "ModelRequest",
     "ModelResponse",
+    "OllamaConfigurationError",
+    "OllamaProvider",
     "ProviderCallError",
     "ProviderRegistry",
     "StructuredOutput",

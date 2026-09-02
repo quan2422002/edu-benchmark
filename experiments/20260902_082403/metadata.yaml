@@ -1,0 +1,23 @@
+id: "20260902_082403"
+slug: "ollama-qwen38-local-target-generation"
+title: "Sinh phản hồi gia sư trên 1.400 candidate bằng Qwen3.8 phục vụ qua Ollama local"
+status: "planning"
+task_type: "local_model_runtime_integration_and_benchmark_target_generation"
+owner_agent: "orchestrator"
+parents:
+  - "20260727_170150"
+created_at: "2026-09-02T08:24:03+07:00"
+git_commit: null
+artifacts:
+  - roadmap.md
+  - plans/01-ollama-qwen38-runtime-and-provider.md
+  - plans/01-status.yaml
+  - decisions/plan01-amendments.md
+  - plans/02-provider-neutral-target-runner-and-qwen38-pilot.md
+  - plans/02-status.yaml
+  - decisions/plan02-amendments.md
+  - plans/03-qwen38-full-1400-response-generation.md
+  - plans/03-status.yaml
+  - decisions/plan03-amendments.md
+  - handoffs/plan01-ollama-qwen38-planning.md
+  - coordination/coordination_log.jsonl

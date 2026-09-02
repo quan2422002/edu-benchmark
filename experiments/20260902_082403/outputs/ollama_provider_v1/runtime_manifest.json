@@ -1,0 +1,241 @@
+{
+  "schema_version": "ollama-runtime-manifest-v1",
+  "generated_at": "2026-09-02T08:23:53.564440+00:00",
+  "base_url": "http://127.0.0.1:11436",
+  "server_version": "0.32.14",
+  "expected_server_version": "0.32.14",
+  "model": "qwen3.8:latest",
+  "model_digest": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+  "expected_model_digest": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+  "model_size_bytes": 17741872154,
+  "quantization": "Q4_K_M",
+  "expected_quantization": "Q4_K_M",
+  "environment_contract": {
+    "LOCAL_LLM_CACHE_ROOT": "/workspace/quannd/local_llm_cache",
+    "OLLAMA_MODELS": "/workspace/quannd/local_llm_cache/ollama/models",
+    "OLLAMA_HOST": "127.0.0.1:11436",
+    "OLLAMA_NUM_PARALLEL": "1",
+    "OLLAMA_MAX_LOADED_MODELS": "1",
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_KV_CACHE_TYPE": "f16",
+    "CUDA_VISIBLE_DEVICES": "GPU-5e1bf88a-a431-9a0c-b462-37cd95b5e9b8"
+  },
+  "model_details": {
+    "modified_at": "2026-09-02T15:13:14.16712258+07:00",
+    "details": {
+      "parent_model": "qwen3.8:27b-q4_K_M",
+      "format": "gguf",
+      "family": "qwen35",
+      "families": [
+        "qwen35"
+      ],
+      "parameter_size": "27.3B",
+      "quantization_level": "Q4_K_M"
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ],
+    "model_info": {
+      "general.architecture": "qwen35",
+      "general.basename": "Qwen3.8",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 27320697856,
+      "general.quantization_version": 2,
+      "general.sampling.temp": 1,
+      "general.sampling.top_k": 20,
+      "general.sampling.top_p": 0.95,
+      "general.size_label": "27B",
+      "general.tags": null,
+      "general.type": "model",
+      "general.version": "0814",
+      "qwen35.attention.head_count": 24,
+      "qwen35.attention.head_count_kv": 4,
+      "qwen35.attention.key_length": 256,
+      "qwen35.attention.layer_norm_rms_epsilon": 1e-06,
+      "qwen35.attention.value_length": 256,
+      "qwen35.block_count": 65,
+      "qwen35.context_length": 262144,
+      "qwen35.embedding_length": 5120,
+      "qwen35.feed_forward_length": 17408,
+      "qwen35.full_attention_interval": 4,
+      "qwen35.nextn_predict_layers": 1,
+      "qwen35.rope.dimension_count": 64,
+      "qwen35.rope.dimension_sections": null,
+      "qwen35.rope.freq_base": 10000000,
+      "qwen35.ssm.conv_kernel": 4,
+      "qwen35.ssm.group_count": 16,
+      "qwen35.ssm.inner_size": 6144,
+      "qwen35.ssm.state_size": 128,
+      "qwen35.ssm.time_step_rank": 48,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 248044,
+      "tokenizer.ggml.eos_token_id": 248046,
+      "tokenizer.ggml.merges": null,
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 248044,
+      "tokenizer.ggml.pre": "qwen35",
+      "tokenizer.ggml.token_type": null,
+      "tokenizer.ggml.tokens": null
+    },
+    "template_sha256": "b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315",
+    "parameters_sha256": "d95d904775a371bcdb0dbbca414528c9d2394f4ec8ff06bc8ccfc5023d516c91",
+    "license_sha256": "4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+    "template_characters": 13,
+    "parameters_characters": 234,
+    "license_characters": 11345
+  },
+  "runtime_before": {
+    "ollama_version": "0.32.14",
+    "runtime_root": {
+      "path": "/workspace/quannd/local_llm_runtime/ollama/v0.32.14",
+      "owner": "quannd",
+      "group": "quannd",
+      "mode": "755",
+      "world_writable": false,
+      "disk_total_bytes": 11904378875904,
+      "disk_used_bytes": 10063084597248,
+      "disk_free_bytes": 1241270624256
+    },
+    "cache_root": {
+      "path": "/workspace/quannd/local_llm_cache",
+      "owner": "quannd",
+      "group": "quannd",
+      "mode": "750",
+      "world_writable": false,
+      "disk_total_bytes": 11904378875904,
+      "disk_used_bytes": 10063084597248,
+      "disk_free_bytes": 1241270624256
+    },
+    "binary": {
+      "path": "/workspace/quannd/local_llm_runtime/ollama/v0.32.14/bin/ollama",
+      "size_bytes": 39138928,
+      "sha256": "d0758d38ac5882a2c68fd930d0c1220af1952469fa9f30c268746d4021709bf4",
+      "executable_by_owner": true
+    },
+    "release_asset": {
+      "path": "/workspace/quannd/local_llm_runtime/ollama/v0.32.14/downloads/ollama-linux-amd64.tar.zst",
+      "size_bytes": 1421191399,
+      "expected_size_bytes": 1421191399,
+      "sha256": "c620917a71e146ab3a7f893084f066069c4c65d144ef8379a91c3cbe8b27de8f",
+      "expected_sha256": "c620917a71e146ab3a7f893084f066069c4c65d144ef8379a91c3cbe8b27de8f"
+    },
+    "memory": {
+      "memtotal_bytes": 67067424768,
+      "memavailable_bytes": 37196980224,
+      "swaptotal_bytes": 0,
+      "swapfree_bytes": 0
+    },
+    "gpu": {
+      "available": true,
+      "uuid": "GPU-5e1bf88a-a431-9a0c-b462-37cd95b5e9b8",
+      "name": "NVIDIA GeForce RTX 3090",
+      "driver_version": "575.57.08",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 18309,
+      "memory_free_mib": 5814,
+      "utilization_gpu_percent": 0
+    },
+    "checks": {
+      "runtime_on_workspace": true,
+      "cache_on_workspace": true,
+      "cache_owned_by_current_user": true,
+      "cache_not_world_writable": true,
+      "cache_free_space_at_least_30_gib": true,
+      "binary_executable": true,
+      "asset_size": true,
+      "asset_sha256": true,
+      "gpu_available": true,
+      "gpu_uuid": true,
+      "gpu_free_at_least_20_gib": false
+    }
+  },
+  "execution_preflight": {
+    "execute_model": true,
+    "model_preloaded": true,
+    "running_models": [
+      {
+        "name": "qwen3.8:latest",
+        "model": "qwen3.8:latest",
+        "expires_at": "2318-12-13T15:03:06.54380579+07:00",
+        "size": 17278099782,
+        "size_vram": 17278099782,
+        "digest": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+        "context_length": 4096,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "27.3B",
+          "quantization_level": "Q4_K_M"
+        }
+      }
+    ]
+  },
+  "checks": {
+    "runtime_on_workspace": true,
+    "cache_on_workspace": true,
+    "cache_owned_by_current_user": true,
+    "cache_not_world_writable": true,
+    "cache_free_space_at_least_30_gib": true,
+    "binary_executable": true,
+    "asset_size": true,
+    "asset_sha256": true,
+    "gpu_available": true,
+    "gpu_uuid": true,
+    "gpu_capacity_for_execution": true,
+    "server_version": true,
+    "model_tag": true,
+    "model_digest": true,
+    "quantization": true,
+    "model_loaded": true,
+    "model_fully_on_gpu": true,
+    "provider_probe": true
+  },
+  "ready": true,
+  "runtime_after": {
+    "memory": {
+      "memtotal_bytes": 67067424768,
+      "memavailable_bytes": 37016334336,
+      "swaptotal_bytes": 0,
+      "swapfree_bytes": 0
+    },
+    "gpu": {
+      "available": true,
+      "uuid": "GPU-5e1bf88a-a431-9a0c-b462-37cd95b5e9b8",
+      "name": "NVIDIA GeForce RTX 3090",
+      "driver_version": "575.57.08",
+      "memory_total_mib": 24576,
+      "memory_used_mib": 18325,
+      "memory_free_mib": 5798,
+      "utilization_gpu_percent": 88
+    }
+  },
+  "running_models": [
+    {
+      "name": "qwen3.8:latest",
+      "model": "qwen3.8:latest",
+      "expires_at": "2318-12-13T15:11:20.12178472+07:00",
+      "size": 17278099782,
+      "size_vram": 17278099782,
+      "digest": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+      "context_length": 4096,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "27.3B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ]
+}

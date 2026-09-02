@@ -24,6 +24,8 @@ class ProviderRegistry:
             "vertex": "vertex_ai",
             "google_vertex": "vertex_ai",
             "openai_api": "openai",
+            "ollama_local": "ollama",
+            "ollama_native": "ollama",
         }
         return aliases.get(normalized, normalized)
 
@@ -50,6 +52,10 @@ def _builtin_factory(backend: str) -> ProviderFactory:
         from .openai import OpenAIProvider
 
         return OpenAIProvider
+    if backend == "ollama":
+        from .ollama import OllamaProvider
+
+        return OllamaProvider
     raise ValueError(f"unsupported model-provider backend: {backend}")
 
 

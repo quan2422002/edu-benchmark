@@ -1,0 +1,39 @@
+schema_version: "1.0"
+experiment_id: "20260902_082403"
+plan_id: "P02"
+sequence: 2
+baseline_path: "plans/02-provider-neutral-target-runner-and-qwen38-pilot.md"
+status: "in_progress"
+approval:
+  state: "approved"
+  authority: "Quân — project lead"
+  approved_at: "2026-09-02T16:18:35+07:00"
+updated_at: "2026-09-02T19:27:29+07:00"
+current_step: "The sequential baseline is complete at 30/30. A 19:05 live preflight correctly rejected the still-parallel-1 service before inference; await Quân's explicit service restart with OLLAMA_NUM_PARALLEL=2 and operator-run 2-to-30 matched pilot. Agent must not call the model."
+last_amendment: "P02-A006"
+depends_on:
+  - "P01"
+gate:
+  state: "open"
+  summary: "Sequential baseline passed at 30/30. The parallel-2 bundle remains 0/30 after the old parallel-1 service failed the live context gate; only Quân may restart the service, run the 2-sample smoke, and resume 28 after the VRAM gate. Plan 03 remains closed."
+artifacts:
+  - path: "plans/02-provider-neutral-target-runner-and-qwen38-pilot.md"
+    kind: "baseline_plan"
+  - path: "plans/02-status.yaml"
+    kind: "status_file"
+  - path: "decisions/plan02-amendments.md"
+    kind: "amendment_log"
+  - path: "runbooks/plan02-qwen38-pilot.md"
+    kind: "runbook"
+  - path: "handoffs/plan02-code-ready.md"
+    kind: "handoff"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []

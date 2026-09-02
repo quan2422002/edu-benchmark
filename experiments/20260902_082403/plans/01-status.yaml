@@ -1,0 +1,44 @@
+schema_version: "1.0"
+experiment_id: "20260902_082403"
+plan_id: "P01"
+sequence: 1
+baseline_path: "plans/01-ollama-qwen38-runtime-and-provider.md"
+status: "completed"
+approval:
+  state: "approved"
+  authority: "Quân — project lead"
+  approved_at: "2026-09-02T10:16:00+07:00"
+updated_at: "2026-09-02T19:05:00+07:00"
+current_step: null
+last_amendment: "P01-A007"
+depends_on: []
+gate:
+  state: "passed"
+  summary: "Gate A has 28 passing tests. Quân's persistent service reached READY with Ollama 0.32.14, locked Qwen3.8 Q4_K_M digest, context 4096, and 100% GPU placement. Gate C passed through OllamaProvider with valid response/usage/timing and no stored thinking text."
+artifacts:
+  - path: "plans/01-ollama-qwen38-runtime-and-provider.md"
+    kind: "baseline_plan"
+  - path: "plans/01-status.yaml"
+    kind: "status_file"
+  - path: "decisions/plan01-amendments.md"
+    kind: "amendment_log"
+  - path: "handoffs/plan01-ollama-qwen38-planning.md"
+    kind: "handoff"
+  - path: "reports/plan01-final-report.md"
+    kind: "final_report"
+  - path: "outputs/ollama_provider_v1/runtime_manifest.json"
+    kind: "machine_output"
+  - path: "outputs/ollama_provider_v1/provider_probe.json"
+    kind: "machine_output"
+  - path: "runbooks/plan01-ollama-runtime-provider.md"
+    kind: "runbook"
+artifact_budget:
+  limits:
+    baseline_plan: 1
+    status_file: 1
+    amendment_log: 1
+    runbook: 1
+    final_report: 1
+    handoff: 1
+    machine_output: 3
+  exceptions: []
