@@ -1,6 +1,9 @@
 document/
 .vscode/
 
+# Repository-local provider credentials. Never commit this file.
+/.env
+
 # Legacy/local credential file; the active Vertex runner uses ADC and never reads it
 src/vertex_ai_call/.env
 
@@ -237,7 +240,17 @@ conference-latex-template.zip
 /experiments/20260727_170150/outputs/benchmark_evaluation/**/*.jsonl
 /experiments/20260727_170150/outputs/principle_requirement_scoring/**/*.jsonl
 
+# Plan 02 Datalab SBT OCR: derived PDFs, raw provider payloads, and normalized
+# run outputs remain at their governed experiment paths and are reproducible.
+/experiments/20260829_175101/outputs/datalab_ocr/**
+# Plan 03 SBT lessonizations and image reorganization
+/experiments/20260829_175101/outputs/ocr_reorganization/**
+
 # Rebuildable LaTeX intermediate in the manuscript working directory.
 # The currently tracked file remains tracked until separately approved for
 # index removal; this rule only prevents new XDV intermediates from being added.
 /kse_submit_manuscript/manuscript/*.xdv
+/nguyen_folder/*
+/tmp/*
+
+/student_work/*

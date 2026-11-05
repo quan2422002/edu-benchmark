@@ -250,6 +250,7 @@ Một số vấn đề khi xử lý dữ liệu thô ở phase 2:
 # Update plan (25/07/2026)
 
 Nhóm tôi đã được thêm 4 thành viên mới, tuy nhiên có thể sẽ chỉ duy trì trong khoảng 2 tháng. Hơn nữa, 4 thành viên này, cùng với Nguyên, cũng sẽ cần phải định hướng khóa luận tốt nghiệp đại học. Tức là, phải phân việc cho các bạn ấy thật cụ thể, và nội dung công việc cũng sẽ phải có tiềm năng phát triển lên thành 1 khóa luận tốt nghiệp hoàn thiện. Về background chuyên môn của các bạn ấy, tôi sẽ note ra như sau:
+
 - Nguyên: chuyên môn lập trình, chuyên về AI
 - Hoàng: chuyên môn lập trình, chuyên về lập trình software
 - Hiếu: chuyên môn lập trình, chuyên về AI
@@ -257,3 +258,20 @@ Nhóm tôi đã được thêm 4 thành viên mới, tuy nhiên có thể sẽ c
 - Triệu: chuyên môn về Toán
 
 Hiện tại thì tôi cũng đã phân công việc cho các bạn ấy, như ở trong experiment 20260814_062402. Ngoài ra, tôi cũng cần có phần công việc của riêng mình để phục vụ cho khóa luận tốt nghiệp thạc sĩ của mình.
+
+# Update plan (15/09/2026)
+
+Tôi sẽ cập nhật lại tình hình của đội nhóm mình cho tôi để bạn biết:
+
+- Triệu đã rời nhóm
+- Các thành viên bên HNMU đang cần sớm định hướng đề tài/tên của luận án để làm luận án tốt nghiệp trong thời gian sắp tới
+- Hiếu bày tỏ nguyện vọng muốn xây dựng mô hình chuyên biệt cho gia sư AI
+
+Vì vậy, tôi đang có kế hoạch như sau:
+- Giao cho Thủy xây dựng nội dung và phương pháp của requirement scoring + llm judge thông qua prompt, sao cho phương pháp phải thỏa mãn:
+  + Kết quả do llm gán requirement scoring và judge phải có độ đồng thuận cao so với chuyên gia con người (high human agreement)
+  + Kết quả do llm gán requirement scoring và judge phải có độ đồng thuận cao giữa các llm khác nhau (robustness among llms)
+  Ngoài ra, chuyên ngành của Thủy là Toán, vì vậy tôi nghĩ có thể định hướng khóa luận của bạn ấy theo hướng xây dựng phương pháp đánh giá cho gia sư AI triền miền Toán.
+- Đối với Hiếu, do nguyện vọng của bạn ấy đang khá khác so với công việc mà bạn này đang làm trong dự án, nên tôi sẽ cần vạch ra hướng xây dựng rõ ràng để bạn ấy có thể triển khai mô hình của minh, đặc biệt là về dữ liệu huấn luyện và thuật toán huấn luyện.
+- Đối với Hoàng, tôi nghĩ vẫn sẽ cho bạn này làm về tool search học liệu. Tuy nhiên, tool này cũng cần được đánh giá cẩn thận. Đơn cử là, ở mỗi phase của tool này (OCR học liệu, phân chia chunk theo đầu mục, kết quả tìm kiếm theo từ khóa,...) sẽ cần 1 cách đánh giá và chỉ số đánh giá riêng, ví dụ như xem độ chính xác của chúng là bao nhiêu ?
+Nên là, bây giờ, bạn hãy lên kế hoạch cho tôi, về định hướng luận án, tên cho đề tài khóa luận (quan trọng nhất) và cách triển khai khóa luận cho các bạn ấy nhé. Cập nhật các nội dung này vào experiment 20260814 luôn nhé, vì experiment đó đang liên quan trực tiếp đến việc phân công công việc đó. 

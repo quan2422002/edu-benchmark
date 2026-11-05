@@ -24,6 +24,25 @@ Read [README.md](README.md), [ARCHITECTURE.md](ARCHITECTURE.md), and the active 
 - Report the exact Python executable used for validation when it matters to reproducibility.
 - Update `ARCHITECTURE.md` with component/runtime/ownership changes and `README.md` with onboarding/status changes.
 
+## Human review artifacts
+
+- When a project lead, teacher, reviewer, or adjudicator must edit fields or
+  record a decision, provide an `.xlsx` workbook as the primary review
+  surface unless the user explicitly requests another format.
+- CSV, JSON, and JSONL may remain machine/provenance artifacts, but they must
+  not be the only or primary human-review surface.
+- Expose only the columns needed for the assigned decision. Split materially
+  different review tasks into separate sheets and retain one stable ID that
+  joins each visible row back to the machine artifact.
+- Use plain Vietnamese instructions, visually distinguish editable cells,
+  freeze headers, wrap long text, add filters, and use constrained dropdowns
+  when labels are closed-set.
+- Do not require reviewers to understand internal schemas, hashes, model
+  settings, file paths, or unused metadata. Keep such fields in machine
+  artifacts or a compact provenance note.
+- Reopen and validate every generated workbook before handoff, including sheet
+  names, row and ID counts, editable fields, and dropdown constraints.
+
 ## Experiment governance
 
 For experiments that adopt the v1 governance contract in

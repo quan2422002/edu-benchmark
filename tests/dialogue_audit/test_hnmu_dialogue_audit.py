@@ -77,8 +77,15 @@ def test_field_issues_flag_missing_ai_label():
 def test_duplicate_rows_finds_exact_question_duplicate():
     rows = load_dialogue_rows([RAW_DIR / "Lớp 6.xlsx"], include_grades={"6"})[:2]
     clone = rows[0].__class__(**{**rows[1].to_dict(), "sample_id": "CLONE", "question": rows[0].question})
-    duplicates = duplicate_rows([rows[0], clone], near_threshold=0.99)
+    progress = []
+    duplicates = duplicate_rows(
+        [rows[0], clone],
+        near_threshold=0.99,
+        progress_callback=lambda completed, total: progress.append((completed, total)),
+    )
     assert any(item["duplicate_type"] == "exact_question" for item in duplicates)
+    assert progress[0][0] == 0
+    assert progress[-1][0] == progress[-1][1]
 
 
 def test_coverage_rows_include_cross_grade_topic_and_grade_specific_lesson():

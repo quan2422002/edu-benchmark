@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>Kho học liệu Tin học THCS</title>
+    <link rel="stylesheet" href="/portal.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">HNMU · EDU BENCHMARK</p>
+        <h1>Kho học liệu Tin học THCS</h1>
+        <p class="subtitle">Tra cứu đoạn học liệu, ảnh minh họa và bản PDF dẫn xuất phục vụ rà soát.</p>
+      </div>
+      <div class="header-stat" aria-live="polite">
+        <strong id="header-fragment-count">—</strong>
+        <span>đoạn học liệu</span>
+      </div>
+    </header>
+
+    <main>
+      <nav class="tabs" aria-label="Khu vực tra cứu">
+        <button class="tab-button active" data-tab="fragments" type="button">Tra cứu đoạn học liệu</button>
+        <button class="tab-button" data-tab="books" type="button">Xem toàn bộ sách</button>
+      </nav>
+
+      <section id="tab-fragments" class="tab-panel active" aria-labelledby="Tra cứu đoạn học liệu">
+        <div class="workspace">
+          <aside class="filters" aria-label="Bộ lọc đoạn học liệu">
+            <div class="filter-heading">
+              <div>
+                <p class="eyebrow">BỘ LỌC</p>
+                <h2>Thu hẹp kết quả</h2>
+              </div>
+              <button id="reset-filters" class="text-button" type="button">Đặt lại</button>
+            </div>
+
+            <label for="search-query">Từ khóa hoặc mã đoạn học liệu</label>
+            <input id="search-query" type="search" placeholder="Ví dụ: OCR-SGK-TIN6 hoặc sơ đồ tư duy" autocomplete="off">
+            <label class="check-row" for="regex-mode">
+              <input id="regex-mode" type="checkbox">
+              <span>Dùng biểu thức chính quy</span>
+            </label>
+            <p id="search-error" class="field-error" role="alert"></p>
+
+            <label for="book-filter">Sách</label>
+            <select id="book-filter"><option value="">Tất cả sách</option></select>
+
+            <label for="lesson-filter">Bài học</label>
+            <select id="lesson-filter"><option value="">Tất cả bài học</option></select>
+          </aside>
+
+          <div class="results-area">
+            <div class="results-toolbar">
+              <div>
+                <p class="eyebrow">KẾT QUẢ</p>
+                <h2 id="result-count">Đang tải dữ liệu…</h2>
+              </div>
+              <label class="page-size-control" for="page-size">
+                Hiển thị
+                <select id="page-size">
+                  <option value="10">10</option>
+                  <option value="20" selected>20</option>
+                  <option value="50">50</option>
+                </select>
+                kết quả/trang
+              </label>
+            </div>
+            <div id="loading-state" class="state-card">Đang tải toàn bộ đoạn học liệu…</div>
+            <div id="fragment-results" class="fragment-results"></div>
+            <div id="empty-state" class="state-card hidden">Không có đoạn học liệu phù hợp với điều kiện hiện tại.</div>
+            <nav id="pagination" class="pagination" aria-label="Phân trang kết quả"></nav>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-books" class="tab-panel" aria-labelledby="Xem toàn bộ sách">
+        <div class="book-toolbar">
+          <div>
+            <p class="eyebrow">THƯ VIỆN SÁCH</p>
+            <h2>Bản PDF dẫn xuất từ ảnh trang</h2>
+            <p>Đây là bản ghép từ ảnh trang để xem nhanh, không phải PDF gốc do nhà xuất bản phát hành.</p>
+          </div>
+          <div class="book-filters">
+            <label for="book-grade-filter">Lớp</label>
+            <select id="book-grade-filter"><option value="">Tất cả lớp</option></select>
+            <label for="book-material-filter">Loại sách</label>
+            <select id="book-material-filter"><option value="">Tất cả loại sách</option></select>
+          </div>
+        </div>
+        <div class="book-layout">
+          <aside id="book-list" class="book-list" aria-label="Danh sách sách"></aside>
+          <div class="pdf-stage">
+            <div id="pdf-placeholder" class="state-card">Chọn một cuốn sách để mở. PDF chỉ được tải sau khi bạn chọn.</div>
+            <iframe id="pdf-viewer" class="pdf-viewer hidden" title="Trình xem sách PDF"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Cổng thử nghiệm chỉ đọc · Dữ liệu học liệu ở trạng thái dự thảo nếu chưa được HNMU/UET xác nhận.</span>
+    </footer>
+    <script src="/portal.js" defer></script>
+  </body>
+</html>

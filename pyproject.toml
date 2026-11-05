@@ -9,7 +9,9 @@ description = "Vietnamese secondary-school Informatics AI-tutor benchmark toolin
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+  "loguru==0.7.3",
   "numpy==2.3.5",
+  "openpyxl==3.1.5",
   "Pillow==10.2.0",
   "PyYAML==6.0.2",
 ]
@@ -19,8 +21,10 @@ dev = [
   "pytest==9.1.1",
 ]
 providers = [
+  "datalab-python-sdk==0.5.0",
   "google-auth==2.56.2",
   "google-genai==2.14.0",
+  "img2pdf==0.6.3",
   "openai==2.50.0",
   "python-dotenv==1.2.2",
   "tqdm==4.68.4",
@@ -30,6 +34,9 @@ providers = [
 where = ["src"]
 include = ["edu_benchmark*"]
 namespaces = false
+
+[tool.setuptools.package-data]
+"edu_benchmark.review_delivery.static" = ["*.html", "*.css", "*.js"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
